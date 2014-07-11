@@ -1,0 +1,11 @@
+/* Destronic Graffiti Free License */
+@font-face {
+    font-family: 'destronic_grafitti';
+    src: url('Abyssal/destronic_grafitti-webfont.eot');
+    src: url('Abyssal/destronic_grafitti-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Abyssal/destronic_grafitti-webfont.woff') format('woff'),
+         url('Abyssal/destronic_grafitti-webfont.ttf') format('truetype'),
+         url('Abyssal/destronic_grafitti-webfont.svg#destronic_grafittiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,11 @@
+/* AA-Hansika Free License */
+@font-face {
+    font-family: 'aa_hansika';
+    src: url('Alien/aa_han_1-webfont.eot');
+    src: url('Alien/aa_han_1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Alien/aa_han_1-webfont.woff') format('woff'),
+         url('Alien/aa_han_1-webfont.ttf') format('truetype'),
+         url('Alien/aa_han_1-webfont.svg#aa-hansika.plain.') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

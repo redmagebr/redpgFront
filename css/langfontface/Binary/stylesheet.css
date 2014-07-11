@@ -1,0 +1,11 @@
+/* Code 39 Freeware License - License included in "/Binary/manual_and_license_V1.2.pdf" */
+@font-face {
+    font-family: 'code39';
+    src: url('Binary/code-39-logitogo-webfont.eot');
+    src: url('Binary/code-39-logitogo-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Binary/code-39-logitogo-webfont.woff') format('woff'),
+         url('Binary/code-39-logitogo-webfont.ttf') format('truetype'),
+         url('Binary/code-39-logitogo-webfont.svg#code-39-logitogoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

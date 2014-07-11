@@ -1,0 +1,318 @@
+div.motherWindow.rightWindow.pictureContainer {
+    pointer-events: auto;
+    z-index: 200;
+    background-color: rgba(0,0,0,0.6);
+}
+
+div.pictureContainer:hover {
+    cursor: pointer;
+}
+
+div.pictureContainer > div {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 60px;
+}
+
+div.pictureContainer > a {
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+div.handler {
+    position: absolute;
+    display: block;
+    width: 100px;
+    top: 0px;
+    bottom: 0px;
+    background-repeat: no-repeat;
+    background-color: #414141;
+    z-index: 300;
+}
+
+div.handler.leftHandler {
+    padding-right: 10px;
+    left: -100px;
+    background-image: url('../img/indicatorlefttoright.png');
+    background-position: top right;
+}
+
+div.handler.rightHandler {
+    padding-left: 10px;
+    right: -100px;
+    background-image: url('../img/indicatorrighttoleft.png');
+    background-position: top left;
+}
+
+div.handler.fullScreen {
+    padding: 0px;
+    background-image: none;
+}
+
+div.handler.leftHandler.fullScreen {
+    left: 0px;
+}
+
+div.handler.rightHandler.fullScreen {
+    right: 0px;
+}
+
+div.handler > a {
+    width: 100px;
+    display: block;
+    height: 100px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+div.handler > a > span {
+    position: absolute;
+    bottom: 2px;
+    left: 3px;
+    right: 3px;
+    text-align: center;
+    font-size: 0.9em;
+    font-family: clear_sans;
+    font-weight: bold;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+div.handler > a:hover > span {
+    text-shadow:
+    -1px -1px 0 #500,
+    1px -1px 0 #500,
+    -1px 1px 0 #500,
+    1px 1px 0 #500;
+}
+
+
+/* Windows */
+
+div.motherWindow {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    pointer-events: none;
+}
+
+div.motherWindow.leftWindow {
+    right: 720px;
+    left: 10px;
+    z-index: 1;
+}
+
+div.motherWindow.rightWindow {
+    right: 10px;
+    width: 700px;
+    z-index: 100;
+}
+
+div.motherWindow.fullScreen {
+    right: 100px;
+    width: auto;
+    left: 100px;
+}
+
+div.motherWindow.rightWindow.fullScreen {
+    background-color: rgba(0,0,0,.5);
+}
+
+div.motherWindow > div.window {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+div.motherWindow.leftWindow > div.window {
+    right: 0px;
+}
+
+div.motherWindow.rightWindow > div.window {
+    left: 0px;
+}
+
+div.motherWindow > div.window > div.simpleContent {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    background-color: #FFF;
+    border: solid 2px #000;
+    font-family: alegreya;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+div.motherWindow > div.window > div.simpleContent > h1 {
+    text-align: center;
+}
+
+div.motherWindow > div.window > div.simpleContent > p {
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: justify;
+}
+
+div.motherWindow > div.window > div.simpleContent > p.centered {
+    padding: 0px;
+    text-align: center;
+}
+
+/* Body and Window */
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin: 0px;
+    background-image: url("../img/backgroundChat.jpg");
+    background-repeat: repeat;
+    position: relative;
+    padding: 0px;
+}
+
+body {
+    position: relative;
+    min-height: 570px;
+    min-width: 1000px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+body.mobile {
+    height: 570px;
+}
+
+
+/* Buttons */
+/* Botões */
+
+a.link, a.link:visited {
+    color: #00049a;
+}
+
+a.link:hover, a.link:active {
+    color: #262ce0;
+    cursor: pointer;
+}
+
+.textButton {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #FFF;
+    line-height: 2em;
+    font-size: 1.1em;
+    font-family: alegreya;
+    color: #000;
+    border: solid 1px #000;
+    margin: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+.textButton:hover {
+    cursor: pointer;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+.textButton:active {
+    margin-left: 8px;
+    margin-right: 12px;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+
+.textButton:focus {
+    outline: 0;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+.bigbutton {
+    display: block;
+    width: 48px;
+    height: 28px;
+    margin-bottom: 10px;
+    background-color:#FFF;
+    border: solid 1px #000;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+.bigbutton:hover:not(.deactivated) {
+    border-color: #a09ead;
+}
+
+.bigbutton:active:not(.deactivated) {
+    margin-right: 2px;
+    margin-top: 2px;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+    margin-bottom: 8px;
+}
+
+.button {
+    background-position: left top;
+}
+
+.button:hover {
+    background-position: right top;
+    cursor: pointer;
+}
+
+.button:active {
+    background-position: left center;
+}
+
+.button.deactivated, .button.deactivated:hover, .button.deactivated:active {
+    background-position: left top;
+    opacity: 0.2;
+}
+
+.button.toggled.deactivated, .button.toggled.deactivated:hover, .button.toggled.deactivated:active {
+    background-position: right center;
+    opacity: 0.2;
+}
+
+.button.deactivated:hover, .button.toggled.deactivated:hover {
+    cursor: initial;
+}
+
+.button.toggled {
+    background-position: right center;
+}
+
+.button.toggled:hover {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+.button.toggled:active {
+    background-position: right bottom;
+}

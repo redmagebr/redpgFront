@@ -1,0 +1,721 @@
+/** Chat Window **/
+#avatarWindowWrapper {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,.5);
+    z-index: 50;
+}
+
+#avatarWindow {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+div.centeredcell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#playerInfo {
+    display: inline-block;
+    width: 300px;
+    padding: 20px;
+    background-color: #FFF;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+#playerInfo p {
+    text-align: left;
+}
+#playerInfo p.center {
+    text-align: center;
+}
+
+#avatarContainer {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    height: 82px;
+}
+
+#avatarBox {
+    position: absolute;
+    left: -2px;
+    top: 0px;
+    bottom: 0px;
+    right: 60px;
+    overflow: hidden;
+}
+
+div.avatarWrapper {
+    display: block;
+    position: relative;
+    float: left;
+    width: 76px;
+    height: 76px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    border: solid 2px #000;
+    border-radius: 20px;
+    margin-right: 8px;
+    background-color: white;
+    overflow: hidden;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+div.avatarWrapper.noFloat {
+    float: none;
+    display: inline-block;
+}
+
+div.avatarWrapper:hover{
+    border-color: #6b6b76;
+    cursor: pointer;
+}
+
+div.avatarWrapper a.typing {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/chat/iconTypingBalloon.png');
+}
+
+div.avatarWrapper img {
+    width: 80px;
+    height: 80px;
+}
+
+div.avatarWrapper span {
+    display: block;
+    width: 100%;
+    height: 1.2em;
+    line-height: 1.2em;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 0.75em;
+    -webkit-user-select: auto;
+    -khtml-user-select: auto;
+    -moz-user-select: auto;
+    -o-user-select: auto;
+    user-select: auto;
+}
+
+
+
+#avatarButtons {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 60px;
+    height: 100%;
+    display: table;
+    vertical-align: middle;
+    text-align: right;
+}
+
+#avatarButtons a {
+    display: inline-block;
+    float: none;
+}
+
+#areaChat {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 100px;
+    bottom: 228px;
+    left: 8px;
+    right: 10px;
+}
+
+#areaChatButtons {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 60px;
+    height: 100%;
+}
+
+#areaChatButtons a {
+    float: right;
+}
+
+#chatScrolltoBottom {
+    position: absolute;
+    right: 96px;
+    bottom: 31px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+#logNotification {
+    position: absolute;
+    left: 10px;
+    bottom: 31px;
+    z-index: 1;
+}
+
+#chatScrolltoBottom:hover {
+    opacity: 1;
+}
+
+#chatNotificationArea {
+    top: 2px;
+    left: 2px;
+    right: 66px;
+    height: 32px;
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#chatNotificationArea a {
+    float: left;
+    display: block;
+    margin: 2px;
+    margin-right: 10px;
+    height: 28px;
+    width: 28px;
+    pointer-events: auto;
+}
+
+
+
+#areaChatBox {
+    position: absolute;
+    left: 2px;
+    right: 60px;
+    top: 0px;
+    bottom: 2px;
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: solid 1px #000;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+#areaChatBox {
+    color: #000;
+    border-color: #000;
+}
+
+#areaChatBox:hover {
+    border-color: #968aff;
+}
+
+#chatWindowBottom {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    position: absolute;
+}
+
+#chatBarra {
+    width: 100%;
+    display: block;
+    height: 32px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#chatButtonBox {
+    float: right;
+    display: block;
+    width: 56px;
+    height: 52px;
+}
+
+#chatButtonBox input[type=submit] {
+    float: right;
+}
+
+#sendMessageButton {
+    display: block;
+    width: 50px;
+    height: 30px;
+}
+
+#chatMensagemBox {
+    position: absolute;
+    right: 97px;
+    top: 0px;
+    left: 0px;
+    bottom: 2px;
+    height: 18px;
+}
+
+#chatMensagemTipo {
+    position: absolute;
+    display: block;
+    left: 6px;
+    top: 6px;
+    line-height: 18px;
+    width: 24px;
+    height: 18px;
+    overflow: hidden;
+    font-size: 0.6em;
+    pointer-events: none;
+}
+
+#chatMensagemTipo:before {
+    content: 'MSG';
+    color: #000;
+}
+
+#chatMensagemTipo.chatAcao:before {
+    content: 'ACT';
+    color: #b90000;
+}
+
+#chatMensagemTipo.chatOff:before {
+    content: 'OFF';
+    color: #4dbf17;
+}
+
+#chatMensagemTipo.chatNarrativa:before {
+    content: 'STO';
+    color: #8d3bb4;
+}
+
+#chatMensagemInput {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding: 5px;
+    line-height: 18px;
+    padding-left: 30px;
+    border: solid 1px #000;
+    font-family: alegreya;
+    font-size: 0.9em;
+}
+
+#chatMensagemInput:hover {
+    border-color: #8a8aff;
+}
+
+#chatMensagemInput:focus {
+    border-color: #ff8a8a;
+}
+
+#chatMensagemPrompt {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    padding-left: 30px;
+    border: solid 1px #000;
+    font-family: alegreya;
+    font-size: 0.9em;
+}
+
+#chatMensagemPrompt:hover {
+    border-color: #8a8aff;
+}
+
+#chatMensagemPrompt:focus {
+    border-color: #ff8a8a;
+}
+
+#personaCreateDiv {
+    position: absolute;
+    right: 100%;
+    margin-right: 10px;
+    margin-bottom: 12px;
+    bottom: 100%;
+    width: 300px;
+    background-color: #FFF;
+    border: solid 1px #000;
+    z-index: 2;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#PCForm > input[type=text] {
+    font-family: alegreya;
+    text-align: center;
+    width: 250px;
+    height: 25px;
+    line-height: 25px;
+    border: solid 1px #000;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+#PCForm > input[type=text]:focus {
+    outline: 0;
+    margin-top: -1px;
+    margin-bottom: 9px;
+    border: solid 2px #F00;
+}
+
+#PCForm > input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#PCForm > input[type=checkbox] + label {
+    line-height: 20px;
+}
+
+#PCForm > input[type=checkbox]:hover, #PCForm > input[type=checkbox] + label:hover {
+    cursor: pointer;
+}
+
+
+
+#personaBox {
+    display: block;
+    width: 100%;
+    height: 74px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#personaLeftButtonBox, #personaRightButtonBox {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 50px;
+}
+
+#personaLeftButtonBox a {
+    float: right;
+}
+
+#personaRightButtonBox a {
+    float: right;
+}
+
+#personaCenterBox {
+    position: absolute;
+    left: 59px;
+    right: 55px;
+    top: 0px;
+    bottom: -6px;
+    overflow: hidden;
+}
+
+#personaLeftButtonBox {
+    left: 0px;
+}
+
+#personaRightButtonBox {
+    right: 0px;
+}
+
+#personaCenterBox a {
+    float: left;
+    display: inline-block;
+    text-align: center;
+    width: 93px;
+    height: 22px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: none;
+    border-top: 4px solid rgba(169,169,169,0.55);
+    border-bottom: 4px solid rgba(169,169,169,0.55);
+    background-color: rgba(219,219,219,0.85);	
+    -moz-background-clip: content;
+    -webkit-background-clip: content;
+    background-clip: content-box;
+    font-size: 0.8em;
+    line-height: 22px;
+    color: #414141;
+    overflow: hidden;
+}
+
+#personaCenterBox a:hover {
+    border-color: rgba(130,134,174,0.55);
+    background-color: rgba(42,57,84,0.55);
+    color: #FFF;
+}
+
+#personaCenterBox a.toggled {
+    border-color: rgba(142,162,197,0.85);
+    background-color: rgba(201,207,255,0.85);
+    color: #3e4044;
+}
+
+#personaCenterBox a.toggled:hover {
+    border-color: rgba(130,134,174,0.85);
+    background-color: rgba(42,57,84,0.85);
+    color: #FFF;
+}
+
+#dadosForm {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 32px;
+    margin-bottom: -2px;
+    margin-bottom: 10px;
+}
+
+#dadosFormQuantidade {
+    display: block;
+    float: left;
+    margin-left: 0px;
+    height: 18px;
+    padding: 5px;
+    line-height: 18px;
+    border: solid 1px #000;
+    text-align: center;
+    width: 38px;
+    margin-right: 0px;
+}
+
+#dadosFormQuantidade:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormQuantidade:focus {
+    border-color: #ff8a8a;
+}
+
+#dadosFormQuantidadePrompt {
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 2px;
+    width: 48px;
+    border: 1px solid #000;
+}
+
+#dadosFormQuantidadePrompt:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormFaces {
+    display: block;
+    float: left;
+    margin-left: 14px;
+    height: 18px;
+    padding: 5px;
+    text-align: center;
+    line-height: 18px;
+    border: solid 1px #000;
+    width: 38px;
+}
+
+#dadosFormMod {
+    display: block;
+    float: left;
+    margin-left: 14px;
+    height: 18px;
+    padding: 5px;
+    text-align: center;
+    line-height: 18px;
+    border: solid 1px #000;
+    width: 38px;
+}
+
+#dadosFormMod:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormMod:focus {
+    border-color: #ff8a8a;
+}
+
+#dadosFormModPrompt {
+    display: block;
+    position: absolute;
+    left: 128px;
+    top: 0px;
+    bottom: 2px;
+    width: 48px;
+    border: solid 1px #000;
+}
+
+#dadosFormModPrompt:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormFacesPrompt {
+    display: block;
+    position: absolute;
+    left: 64px;
+    top: 0px;
+    bottom: 2px;
+    width: 48px;
+    border: solid 1px #000;
+}
+
+#dadosFormFacesPrompt:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormFaces:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormFaces:focus {
+    border-color: #ff8a8a;
+}
+
+#dadosForm input.button {
+    float: right;
+}
+
+#rolldiceButton {
+    padding: 0px;
+    outline: 0;
+    width: 50px;
+    height: 30px;
+    display: block;
+}
+
+#dadosFormSecret {
+    position: absolute;
+    right: 60px;
+    top: 0px;
+    height: 30px;
+    width: 30px;
+    display: block;
+    background-image: url('../img/chat/buttonTower.png');
+}
+
+#wrapperDadosMotivo {
+    position: absolute;
+    left: 188px;
+    top: 0px;
+    right: 112px;
+    bottom: 2px;
+}
+
+#dadosFormMotivoPrompt {
+    position: absolute;
+    padding: 5px;
+    left: 0px;
+    margin-right: -12px;
+    text-align: center;
+    font-size: 0.9em;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    border: solid 1px #000;
+}
+
+#dadosFormMotivoPrompt:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormMotivo {
+    border: solid 1px #000;
+    margin: 0px;
+    height: 18px;
+    line-height: 18px;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+#dadosFormMotivo:hover {
+    border-color: #8a8aff;
+}
+
+#dadosFormMotivo:focus {
+    border-color: #ff8a8a;
+}
+
+#dadosButtons {
+    display: block;
+    height: 42px;
+    width: 100%;
+    text-align: center;
+}
+
+#dadosButtons a {
+    width: 42px;
+    margin-left: 5px;
+    height: 42px;
+    display: inline-block;
+}
+
+#musicPlayerWrapper {
+    float: left;
+    display: none;
+    width: 93px;
+    margin-top: 4px;
+    height: 38px;
+    background-color: black;
+    border: solid 1px #000;
+}
+
+#musicPlayerWrapper.shown {
+    display: block;
+}
+
+#musicPlayerProgressCurrent {
+    width: 74px;
+    height: 10px;
+    border-bottom: solid 1px #000;
+    background-color: #545454;
+    display: block;
+}
+
+#musicPlayerProgressCurrent[value]::-webkit-progress-value {
+    background-color: #3c3c3c;
+}
+
+#musicPlayerWrapper a {
+    float: left;
+    display: block;
+    width: 37px;
+    height: 28px;
+    margin: 0px;
+}
+
+#musicPlayerVolumeWrapper {
+    display: block;
+    width: 18px;
+    height: 38px;
+    float: right;
+    position: relative;
+    background-color: #888a9c;
+    border-left: solid 1px #000;
+}
+
+#musicPlayerVolumeWrapper a {
+    width: 19px;
+    height: 19px;
+    float: right;
+    margin: 0px;
+}
+
+#musicPlayerCurrentVolume {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #000c73;
+}

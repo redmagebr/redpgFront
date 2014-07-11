@@ -1,0 +1,58 @@
+#changelogWindow {
+    font-family: alegreya;
+}
+
+#changelogWindow > div {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: solid 2px #000;
+}
+
+#changelogWindow > div > h1 {
+    margin-left: 10px;
+}
+
+#changelogAjaxTarget > div h1 {
+    font-size: 1.2em;
+    margin: 0px;
+}
+
+#changelogAjaxTarget > div p {
+    margin: 0px;
+    text-indent: 2em;
+}
+
+#changelogAjaxTarget > div.newUpdate {
+    background-color: #d28f8f;
+}
+
+#changelogAjaxTarget > div {
+    padding: 10px;
+}
+
+#changelogAjaxTarget > div:hover {
+    background-color: #cfcfcf;
+}
+
+#changelogAjaxTarget > div.newUpdate:hover {
+    background-color: #9f7c7c;
+}
+
+#changelogUpdateNotice {
+    display: none;
+    margin: 15px;
+}
+
+#changelogUpdateNotice p {
+    margin: 0px;
+}
+
+#changelogWindow > div > p {
+    margin-left: 10px;
+}

@@ -1,0 +1,1 @@
+rename *.spc *.m4a

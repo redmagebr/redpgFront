@@ -1,0 +1,11 @@
+/* Elven Common Speak Free License */
+@font-face {
+    font-family: 'elvencommonspeakregular';
+    src: url('Elvish/elvencommonspeak-webfont.eot');
+    src: url('Elvish/elvencommonspeak-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Elvish/elvencommonspeak-webfont.woff') format('woff'),
+         url('Elvish/elvencommonspeak-webfont.ttf') format('truetype'),
+         url('Elvish/elvencommonspeak-webfont.svg#elvencommonspeakregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

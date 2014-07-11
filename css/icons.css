@@ -1,0 +1,137 @@
+/* Icones */
+
+#d4Button {
+    background-image: url('../img/chat/d4.png');
+}
+
+#d6Button {
+    background-image: url('../img/chat/d6.png');
+}
+
+#d8Button {
+    background-image: url('../img/chat/d8.png');
+}
+
+#d10Button {
+    background-image: url('../img/chat/d10.png');
+}
+
+#d12Button {
+    background-image: url('../img/chat/d12.png');
+}
+
+#d18Button {
+    background-image: url('../img/chat/d18.png');
+}
+
+#d20Button {
+    background-image: url('../img/chat/d20.png');
+}
+
+#d100Button {
+    background-image: url('../img/chat/d100.png');
+}
+
+#chatScrolltoBottom {
+    background-image: url('../img/chat/btBottom.png');
+}
+
+#chatNotLoad {
+    background-image: url('../img/chat/notLoad.png');
+    -webkit-animation: rotation 1.2s infinite linear;
+}
+
+#chatNotConnError {
+    background-image: url('../img/chat/notConnError.png');
+}
+
+#changeFontSmall {
+    background-image: url('../img/chat/buttonFontDecrease.png');
+}
+
+#changeFontBig {
+    background-image: url('../img/chat/buttonFontIncrease.png');
+}
+
+#modulesButton {
+    background-image: url('../img/chat/buttonModules.png');
+}
+
+#chatSettings {
+    background-image: url('../img/chat/buttonSettings.png');
+}
+
+#chatSettings.toggled {
+    border-color: #17a627;
+}
+
+#chatSettings.toggled:hover {
+    border-color: #41cb50;
+}
+
+#leaveChatBt {
+    background-image: url('../img/chat/buttonLeave.png');
+}
+
+#avatarUpButton {
+    background-image: url('../img/chat/buttonUp.png');
+}
+
+#avatarDownButton {
+    background-image: url('../img/chat/buttonDown.png');
+}
+
+#personaUpButton {
+    background-image: url('../img/chat/buttonUp.png');
+}
+
+#personaDownButton {
+    background-image: url('../img/chat/buttonDown.png');
+}
+
+#sendMessageButton {
+    background-image: url('../img/chat/buttonSend.png');
+}
+
+#personaAddButton {
+    background-image: url('../img/chat/buttonPlus.png');
+}
+
+#personaRemoveButton {
+    background-image: url('../img/chat/buttonMinus.png');
+}
+
+#rolldiceButton {
+    background-image: url('../img/chat/buttonCorrect.png');
+}
+
+#rolldiceButton:hover {
+    border-color: #398819;
+}
+
+#musicPlayerActionButton {
+    background-image: url('../img/chat/buttonPlayPause.png');
+}
+
+#musicPlayerRepeatButton {
+    background-image: url('../img/chat/buttonRepeat.png');
+}
+
+
+/* Languages */
+
+.PT_BR_Flag {
+    background-image: url('../img/language/PT_BR.png');
+}
+
+.EN_Flag {
+    background-image: url('../img/language/EN.png');
+}
+
+.FR_Flag {
+    background-image: url('../img/language/FR.png');
+}
+
+.SP_Flag {
+    background-image: url('../img/language/SP.png');
+}

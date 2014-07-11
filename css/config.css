@@ -1,0 +1,68 @@
+#configWindow > div {
+    position: absolute;
+    display: block;
+    left: 11px;
+    top: 11px;
+    right: 11px;
+    bottom: 11px;
+    background-color: white;
+    border: solid 1px #000;
+    font-family: alegreya;
+}
+
+#configWindow > div > h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+#configVersionButton {
+    display: block;
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    color: #06198b
+}
+
+#configVersionButton:hover {
+    color: #d20303;
+    cursor: pointer;
+}
+
+
+#systemConfig p.centered {
+    text-align: center;
+}
+
+#systemConfig p.explain {
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-indent: 1em;
+}
+
+#configList > p.centered {
+    font-weight: bold;
+    line-height: 15px;
+}
+
+#configList > p.centered > input[type=radio] {
+    margin-left: 40px;
+    width: 15px;
+    height: 15px;
+}
+
+#systemConfig > p.error {
+    color: #ac0000;
+}
+
+#systemConfig > p.success {
+    color: #1d9600;
+}
+
+#configList {
+    position: absolute;
+    bottom: 30px;
+    top: 180px;
+    width: 100%;
+    overflow-y: scroll;
+}

@@ -1,0 +1,11 @@
+/* Hobbiton Brush Hand Free License */
+@font-face {
+    font-family: 'hobbiton_brush_hand';
+    src: url('Draconic/hobbitonbrushhand-webfont.eot');
+    src: url('Draconic/hobbitonbrushhand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Draconic/hobbitonbrushhand-webfont.woff') format('woff'),
+         url('Draconic/hobbitonbrushhand-webfont.ttf') format('truetype'),
+         url('Draconic/hobbitonbrushhand-webfont.svg#hobbiton_brushhahobbitonbrush') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

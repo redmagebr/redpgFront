@@ -1,0 +1,244 @@
+/* Login */
+#loginWindow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #b2b9cf;
+    display: table;
+    z-index: 999;
+    font-family: alegreya;
+}
+
+#loginWindow div.window {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+#loginFormForm p {
+    width: 302px;
+    display: inline-block;
+}
+
+#loginFormWindow p a {
+    font-size: 1em;
+    height: 2em;
+    line-height: 2em;
+}
+
+#loginFormWindow p a:hover {
+    color: #6b6b76;
+    cursor: pointer;
+}
+
+#forgotPasswordButton {
+    float: left;
+}
+#newAccountButton {
+    float: right;
+}
+
+#loginFormWindow #loginFlags a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#loginFormWindow input[type=text], #loginFormWindow input[type=password] {
+    text-align: center;
+    width: 300px;
+    height: 40px;
+    -moz-border-radius:30px; /* Firefox */
+    -webkit-border-radius: 30px; /* Safari, Chrome */
+    -khtml-border-radius: 30px; /* KHTML */
+    border-radius: 30px; /* CSS3 */
+    border-color: #000;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    padding: 0px;
+    margin: 10px;
+    background-color: #d4d4d4;
+    font-family: alegreya;
+}
+
+#loginFormWindow input[type=text]:hover, #loginFormWindow input[type=password]:hover {
+    outline: 0;
+    border-color: #ae0202;
+}
+
+#loginFormWindow input[type=text]:focus, #loginFormWindow input[type=password]:focus {
+    outline: 0;
+    border-color: #1d09c5;
+    background-color: #fff;
+}
+
+#loginFormWindow input[type=submit], #loginCreateAccountForm input[type=submit] {
+    background-color: #FFF;
+    line-height: 2em;
+    font-size: 1.1em;
+    font-family: alegreya;
+    color: #000;
+    border: solid 1px #000;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+#loginFormWindow input[type=submit]:hover, #loginCreateAccountForm input[type=submit]:hover {
+    cursor: pointer;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+#loginFormWindow input[type=submit]:active, #loginCreateAccountForm input[type=submit]:active {
+    margin-left: -2px;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+
+#loginFormWindow input[type=submit]:focus, #loginCreateAccountForm input[type=submit]:focus {
+    outline: 0;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+#loginCreateAccountForm {
+    display: inline-block;
+    width: 600px;
+}
+
+#loginCreateAccountWindow input[type=text], #loginCreateAccountWindow input[type=password] {
+    display: inline-block;
+    font-family: alegreya;
+    text-align: center;
+    margin: 0px;
+    width: 300px;
+    font-size: 1em;
+    border: solid 2px #000;
+    height: 30px;
+    background-color: #d4d4d4;
+}
+
+#loginCreateAccountWindow input[type=text]:hover, #loginCreateAccountWindow input[type=password]:hover {
+    outline: 0;
+    border-color: #a90b0b;
+}
+
+#loginCreateAccountWindow input[type=text]:focus, #loginCreateAccountWindow input[type=password]:focus {
+    outline: 0;
+    border-color: #0b27a9;
+    background-color: #fff;
+}
+
+#loginCreateAccountWindow span:before {
+    content: '✱ ';
+}
+
+#loginCreateAccountWindow span {
+    float: right;
+    height: 36px;
+    width: 350px;
+    line-height: 36px;
+    font-size: 0.9em;
+    color: #000000;
+    text-align: left;
+    overflow-x: visible;
+    overflow-y: hidden;
+    margin-right: -210px;
+    margin-left: -150px;
+    display: none;
+}
+
+#loginCreateAccountForm > p > a {
+    width: 30px;
+    line-height: 32px;
+    font-size: 1.3em;
+    height: 30px;
+    margin-top: 2px;
+    display: block;
+    position: absolute;
+    margin-left: 110px;
+    border: solid 1px #000;
+    color: #000;
+    background-color: #ffffe6;
+    border-radius: 50%;
+}
+
+#loginCreateAccountForm > p > a:hover {
+    border-color: #a90000;
+    color: #a90000;
+    cursor: help;
+}
+
+#loginCreateAccountForm input.error + span {
+    color: #c30000;
+    display: block;
+}
+
+#loginCreateAccountForm input.error + span:hover {
+    cursor: default; 
+}
+
+#loginCreateAccountForm input.error {
+    background-color: #8b5a5a;
+}
+
+#loginCreateAccountForm input.error:focus {
+    background-color: #902a2a;
+}
+
+#loginCreateAccountForm label {
+    display: inline-block;
+    width: 300px;
+    text-align: justify;
+}
+
+#loginCreateAccountForm label:hover {
+    cursor: help;
+}
+
+#loginCreateAccountForm label + input {
+    position: absolute;
+    margin-left: -336px;
+    height: 30px;
+    width: 30px;
+}
+
+#loginCreateAccountForm label + input:hover {
+    cursor: pointer;
+}
+
+#caConnError {
+    color: #ab0303;
+}
+
+#caNicknameError {
+    color: #86005b;
+}
+
+#caEmailError #emailErrorA:hover {
+    color: #8a005d;
+    cursor: pointer;
+}
+
+#caEmailError #emailErrorA {
+    color: #00048a;
+    width: auto;
+    line-height: initial;
+    font-size: initial;
+    height: auto;
+    margin-top: auto;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    border: none;
+    background-color: initial;
+    border-radius: initial;
+}

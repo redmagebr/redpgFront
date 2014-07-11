@@ -1,0 +1,354 @@
+#chatMessages > p, #chatIntro > p {
+    padding: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 0px;
+    position: relative;
+}
+
+#chatIntro > p {
+    font-family: alegreya;
+}
+    
+#chatMessages > p {
+    font-family: caudex;
+    line-height: 1.1;
+}
+
+#areaChatBox.zebra p:nth-child(even):not(:hover) {
+    background-color: #f5f5f5;
+}
+
+#chatMessages > p:hover {
+    background-color: #cbcbcb;
+}
+
+#chatMessages > p span.tooltip {
+    display: none;
+}
+
+#chatMessages > p:hover span.tooltip {
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    padding: 3px;
+    height: 1em;
+    line-height: 1em;
+    background-color: #fff;
+    color: #000;
+    border: #000 3px solid;
+    border-radius: 5px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+#chatMessages > p:hover span.tooltip:before {
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0 0px;
+    bottom: -6px;
+    content: "";
+    left: 10px;
+    position: absolute;
+}
+
+#chatMessages > p.sendError {
+    background-color: #efc9c9 !important;
+}
+
+#chatMessages > p.sendInProgress {
+    background-color: #efeac9 !important;
+}
+
+#chatMessages > p > a.retry {
+    display: block;
+    color: #180f8d;
+}
+
+#chatMessages > p > a.retry:hover {
+    color: #a19bf5;
+    cursor: pointer;
+}
+
+#chatMessages > p > a.retry:active {
+    color: #a93131;
+}
+
+#chatMessages > p.chatAcao {
+    color: #e00000;
+    color: #9a0000;
+}
+
+#chatMessages > p.chatSistema > span.target {
+    display: block;
+    width: 100%;
+    line-height: 1.5em;
+    height: 1.5em;
+}
+
+#chatMessages > p.chatSistema > span.target:hover {
+    cursor: pointer;
+    background-color: #949494;
+}
+
+#chatMessages > p.chatSistema {
+    color: #0a1a48;
+}
+
+#chatMessages > p.chatSistema:before {
+    content: '(  ';
+    white-space: pre;
+}
+
+#chatMessages > p.chatSistema:after {
+    content: '  )';
+    white-space: pre;
+}
+
+#chatMessages > p.chatSistema a {
+    color: #082dae;
+}
+
+#chatMessages > p.chatSistema a:hover {
+    color: #5f80ef;
+    cursor: pointer;
+}
+
+#chatMessages > p.chatSistema a:active {
+    color: #a81f24;
+}
+
+#chatMessages > p.chatNarrativa > span.important:before {
+    content: '[ ';
+}
+
+#chatMessages > p.chatNarrativa > span.important:after {
+    content: ' ]';
+}
+
+#chatMessages > p.chatNarrativa > span.important {
+    color: #a000b2;
+    font-weight: bold;
+}
+
+#chatMessages > p.chatNarrativa {
+    color: #610c61;
+    color: #6a6a6a;
+    color: #074fb0;
+}
+
+#chatMessages > p.chatDice {
+    color: #b900b3;
+    line-height: 1.5em;
+}
+
+#chatMessages > p.chatDice .box {
+    display: inline-block;
+    font-size: 1.2em;
+    vertical-align: middle;
+    background-color: #ffe3fe;
+    padding: 0.3em;
+    border: solid 1px;
+    border-color: #e782e4;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    border-radius: 15%;
+    min-width: 1em;
+    text-align: center;
+}
+
+#chatMessages > p.chatDice .box.mod {
+    border-radius: 50%;
+}
+
+#chatMessages > p.chatDice .box.square {
+    border-radius: 0;
+}
+
+#chatMessages > p.chatDice .box.square.sum {
+    background-color: #ffbafd;
+    border-color: #8f2281;
+}
+
+#chatMessages > p.chatDice > span.reason:before {
+    content: '* ';
+    visibility: hidden;
+}
+
+#chatMessages > p.chatDice > span.reason {
+    display: block;
+}
+
+#chatMessages > p.chatDice > span.reason > b:after {
+    content: ': ';
+}
+
+#chatMessages > p.chatDice a.equals, #chatMessages > p.chatDice a.plus {
+    display: inline-block;
+    font-size: 1.5em;
+    vertical-align: middle;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+#chatMessages > p.chatWhisper {
+    color: #920789;
+}
+
+#chatMessages > p.chatWhisper > span.origin:hover {
+    cursor: pointer;
+    color: #be18b3;
+}
+
+#chatMessages > p.chatWhisper > span.origin:active {
+    color: #b013a6;
+}
+
+#chatMessages > p.chatWhisper > span.origin {
+    font-weight: bold;
+}
+
+#chatMessages > p.chatMensagem:before {
+    font-weight: bold;
+    content: "* ";
+    visibility: hidden;
+}
+
+#chatMessages > p.chatMensagem > span.thought {
+    color: #5891ac;
+    font-style: italic;
+}
+
+#chatMessages > p.chatMensagem > span.action {
+    font-weight: bold;
+    color: #9a0000;
+}
+
+#chatMessages > p.chatMensagem span.important:before {
+    content: '[ ';
+}
+
+#chatMessages > p.chatMensagem span.important:after {
+    content: ' ]';
+}
+
+#chatMessages > p.chatMensagem span.important {
+    font-weight: bold;
+    color: #001f8d;
+}
+
+#chatMessages > p.chatVote:before {
+    font-weight: bold;
+    content: "* ";
+    visibility: hidden;
+}
+
+#chatMessages > p.chatVote {
+    //color: #0c7d0c;
+    color: #8a7400;
+    font-style: italic;
+    position: relative;
+    min-height: 3.2em;
+}
+
+#chatMessages > p.chatVote > span.voteCount {
+    display: block;
+    float: left;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    min-width: 2em;
+    line-height: 2em;
+    font-size: 1.5em;
+    width: auto;
+    height: 2em;
+    border: solid 1px #b79a00;
+    background-color: #fdf5cb;
+    text-align: center;
+    position: relative;
+}
+
+#chatMessages > p.chatVote > span.voteCount.load {
+    pointer-events: none;
+    background-color: #9c9c9c;
+    border-color: #000;
+    color: #000;
+}
+
+#chatMessages > p.chatVote > span.voteCount.owner {
+    pointer-events: none;
+}
+
+#chatMessages > p.chatVote > span.voteCount:hover {
+    cursor: pointer;
+    border-color: #c5a500;
+    background-color: #ffed92;
+}
+
+#chatMessages > p.chatVote > span.voteCount:active {
+    cursor: pointer;
+    border-color: #c5a500;
+    background-color: #d7c97f;
+}
+
+#chatMessages > p.chatOff:before {
+    font-weight: bold;
+    content: "* ";
+    visibility: hidden;
+}
+
+#chatMessages > p.chatOff {
+    //color: #0c7d0c;
+    color: #2d9d00;
+    font-style: italic;
+}
+
+#chatMessages > p.chatImagem:before {
+    font-weight: bold;
+    content: "* ";
+    visibility: hidden;
+}
+
+#chatMessages > p.chatImagem {
+    color: #384fba;
+    color: #00118a;
+}
+
+#chatMessages > p.chatImagem a {
+    color: #002dff;
+    text-decoration: none;
+}
+
+#chatMessages > p.chatImagem a:hover, #chatMessages > p.chatImagem a:active {
+    color: #768eff;
+    cursor: pointer;
+}
+
+#chatMessages > p.chatDados {
+    color: #875010;
+}
+
+#areaChatBox #chatIntro p.chatSala {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    background-color: white;
+}
+
+#areaChatBox #chatIntro p.chatDescSala {
+    text-indent: 1em;
+    background-color: white;
+}
+
+#areaChatBox #chatIntro p.chatBootIntro {
+    color: #949494;
+    background-color: white;
+}
+
+#chatIntro > p.chatBootIntro:before {
+    content: '-';
+    margin-right: 3px;
+}

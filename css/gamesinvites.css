@@ -1,0 +1,186 @@
+#gamesMyInvitesWindow > div, #gamesInviteWindow > div {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: solid 2px #000;
+    background-color: #FFF;
+    overflow-y: auto;
+    font-family: alegreya;
+}
+
+#gamesMyInvitesWindow > div > h1, #gamesInviteWindow > div > h1 {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#gamesMyInvitesWindow > div > p, #gamesInviteWindow > div > p {
+    text-align: center;
+}
+
+#gamesMyInvitesWindow > div > p.justify, #gamesInviteWindow > div > p.justify {
+    text-align: justify;
+    text-indent: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#gamesMyInvitesWindow > div > p.error, #gamesInviteWindow > div > p.error {
+    color: #8b0000;
+    font-weight: bold;
+}
+
+/* Invite List */
+
+#gamesMyInvitesList > div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#gamesMyInvitesList > div:hover {
+    background-color: #ebebeb;
+}
+
+#gamesMyInvitesList > div > p {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#gamesMyInvitesList > div > p > span {
+    font-weight: bold;
+}
+
+#gamesMyInvitesList > div > p.nameLine {
+    font-weight: bold;
+}
+
+#gamesMyInvitesList > div > p.inviteMessage {
+    text-indent: 1em;
+    text-align: justify;
+}
+
+#gamesMyInvitesList > div > p.nameLine > a {
+    color: #040083;
+}
+
+#gamesMyInvitesList > div > p.nameLine > a:before {
+    content: '- ';
+    color: #000;
+}
+
+#gamesMyInvitesList > div > p.nameLine > a:hover {
+    cursor: pointer;
+    color: #544fd9;
+}
+
+#gamesMyInvitesList > div > p.nameLine > a:active {
+    color: #9a0e0e;
+}
+
+
+/* Send Invite Form */
+
+#gamesInviteForm {
+    margin-top: 30px;
+}
+
+#gamesInviteForm > p {
+    text-align: center;
+}
+
+#gamesInviteForm > p > input[type=checkbox] {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+
+#gamesInviteForm > p > input[type=checkbox]:hover, #gamesInviteForm > p > input[type=checkbox] + label:hover {
+    cursor: pointer;
+}
+
+#gamesInviteSubmit {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #FFF;
+    line-height: 2em;
+    font-size: 1.1em;
+    font-family: alegreya;
+    color: #000;
+    border: solid 1px #000;
+    margin: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+#gamesInviteSubmit:hover {
+    cursor: pointer;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+#gamesInviteSubmit:active {
+    margin-left: 8px;
+    margin-right: 12px;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+
+#gamesInviteSubmit:focus {
+    outline: 0;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+
+#gamesInviteMessage {
+    display: inline-block;
+    width: 400px;
+    height: 100px;
+    padding: 5px;
+    border: solid 2px #000;
+    resize: none;
+    font-family: alegreya;
+    background-color: #f2f2f2;
+}
+
+#gamesInviteMessage:focus {
+    outline: 0;
+    border-color: #545454;
+    background-color: #fff;
+}
+
+#gamesInviteInput {
+    text-align: center;
+    width: 300px;
+    height: 40px;
+    -moz-border-radius:30px; /* Firefox */
+    -webkit-border-radius: 30px; /* Safari, Chrome */
+    -khtml-border-radius: 30px; /* KHTML */
+    border-radius: 30px; /* CSS3 */
+    border-color: #000;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    padding: 0px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    font-family: alegreya;
+}
+
+#gamesInviteInput:hover {
+    outline: 0;
+    border-color: #292929;
+}
+
+#gamesInviteInput:focus {
+    outline: 0;
+    border-color: #545454;
+    background-color: #fff;
+}

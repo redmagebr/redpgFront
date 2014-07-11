@@ -1,0 +1,418 @@
+/* 
+    Created on : Feb 2, 2014, 3:50:49 AM
+    Author     : reddo
+*/
+
+/* HTML, BODY */
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin: 0px;
+    background-image: url("../img/backgroundChat.jpg");
+    background-repeat: repeat;
+    position: relative;
+    padding: 0px;
+}
+
+body {
+    position: relative;
+    min-height: 570px;
+    min-width: 1000px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+body.mobile {
+    height: 570px;
+}
+
+/* Janela Esquerda */
+
+#leftWindow {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    bottom: 0px;
+    right: 720px;
+    z-index: 1;
+}
+
+#leftWindow.hidden {
+    right: 100%;
+    left: -500px;
+}
+
+#leftWindow.fullScreen {
+    right: 100px;
+    left: 100px;
+}
+
+
+#leftWindow > div.window {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#leftWindow > div.window.hidden {
+    right: 100%;
+    margin-right: 10px;
+    visibility: hidden;
+}
+
+.shadow {
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+.prompt:hover {
+    cursor: text;
+}
+
+/* Janela Direita */
+
+#rightWindow {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    bottom: 0px;
+    width: 700px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#rightWindow.hidden {
+    right: -710px;
+}
+
+#rightWindow.fullScreen {
+    width: auto;
+    left: 100px;
+    right: 100px;
+}
+
+#rightWindow.fullScreen.hidden {
+    margin-left: 100%;
+    left: 60px;
+    right: 60px;
+    width: auto;
+}
+
+#rightWindow > div.window {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    bottom: 0px;
+    pointer-events: auto;
+}
+
+#rightWindow.fullScreen div.window {
+    background-color: rgba(0,0,0,.5);
+}
+
+#rightWindow > div.window.hidden {
+    left: 100%;
+    visibility: hidden;
+}
+
+#pictureContainer {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    bottom: 0px;
+    width: 700px;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 200;
+}
+
+#pictureContainer.fullScreen {
+    width: auto;
+    left: 60px;
+    right: 60px;
+}
+
+#pictureContainer:hover {
+    cursor: pointer;
+}
+
+#pictureContainer a {
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+#pictureShow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 60px;
+}
+
+/* Botões */
+
+a.link, a.link:visited {
+    color: #00049a;
+}
+
+a.link:hover, a.link:active {
+    color: #262ce0;
+    cursor: pointer;
+}
+
+.textButton {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #FFF;
+    line-height: 2em;
+    font-size: 1.1em;
+    font-family: alegreya;
+    color: #000;
+    border: solid 1px #000;
+    margin: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+.textButton:hover {
+    cursor: pointer;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+.textButton:active {
+    margin-left: 8px;
+    margin-right: 12px;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+
+.textButton:focus {
+    outline: 0;
+    color: #6b6b76;
+    border-color: #6b6b76;
+}
+
+.bigbutton {
+    display: block;
+    width: 48px;
+    height: 28px;
+    margin-bottom: 10px;
+    background-color:#FFF;
+    border: solid 1px #000;
+    -moz-box-shadow:    -1px 1px 2px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.50);
+    box-shadow:         -1px 1px 2px 0px rgba(0,0,0,0.50);
+}
+
+.bigbutton:hover:not(.deactivated) {
+    border-color: #a09ead;
+}
+
+.bigbutton:active:not(.deactivated) {
+    margin-right: 2px;
+    margin-top: 2px;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+    margin-bottom: 8px;
+}
+
+.button {
+    background-position: left top;
+}
+
+.button:hover {
+    background-position: right top;
+    cursor: pointer;
+}
+
+.button:active {
+    background-position: left center;
+}
+
+.button.deactivated, .button.deactivated:hover, .button.deactivated:active {
+    background-position: left top;
+    opacity: 0.2;
+}
+
+.button.toggled.deactivated, .button.toggled.deactivated:hover, .button.toggled.deactivated:active {
+    background-position: right center;
+    opacity: 0.2;
+}
+
+.button.deactivated:hover, .button.toggled.deactivated:hover {
+    cursor: initial;
+}
+
+.button.toggled {
+    background-position: right center;
+}
+
+.button.toggled:hover {
+    background-position: left bottom;
+    cursor: pointer;
+}
+
+.button.toggled:active {
+    background-position: right bottom;
+}
+
+/* Sem javascript */
+
+#nojs {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #e5efff;
+    z-index: 1000;
+}
+
+#nojsmsg {
+    display: block;
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    padding: 20px;
+    margin-left: -271px;
+    top: 50%;
+    margin-top: -111px;
+    height: 180px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+/* Alerts */
+
+#alertWindow {
+    display: table;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.50);
+    z-index: 400;
+    display: none;
+}
+
+#alertBox {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#alertBox div {
+    display: inline-block;
+    width: 300px;
+    height: 80px;
+    background-color: white;
+}
+
+#alertBox div a.button {
+    display: inline-block;
+    width: 45%;
+    height: 2em;
+}
+
+/* Other Stuff */
+
+.unselectable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.unselectable:hover {
+    cursor: default;
+}
+
+.selectable {
+    -webkit-user-select: auto;
+    -khtml-user-select: auto;
+    -moz-user-select: auto;
+    -o-user-select: auto;
+    user-select: auto;
+}
+
+.selectable:hover {
+    cursor: initial;
+}
+
+/* Loading */
+
+#leftBlock {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 99;
+    display: none;
+    background-color: rgba(0,0,0,.25);
+    pointer-events: auto;
+}
+
+#rightBlock {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 199;
+    display: none;
+    background-color: rgba(0,0,0,.25);
+    pointer-events: auto;
+}
+
+#loading {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #b2b9cf;
+    z-index: 1001;
+}
+
+#loadingIcon, #leftBlock a, #rightBlock a {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    left: 50%;
+    top: 50%;
+    margin-top: -32px;
+    margin-left: -32px;
+    background-image: url('data:image/png;base64,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');
+    -webkit-animation: rotation 0.8s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}

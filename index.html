@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RedPG</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="height=570">
+        <link id="favicon" rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+        <!-- CSS Geral -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/geral.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/sounds.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/games.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/rooms.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/gamesinvites.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/alert.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/icons.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/handlers.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/chat.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
+            <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
+        <!-- CSS Fix Antigo -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/old.css">
+        <!-- Fonts Begin -->
+            <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/alegreya.css">
+            <!-- Amaranth Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/amaranth.css">
+            <!-- Arsenal Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/arsenal.css">
+            <!-- Caudex Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/caudex.css">
+            <!-- Archivo Narrow Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/archivonarrow.css">
+            <!-- Clear Sans Font-Face Licensed under Apache License. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/clearsans.css">
+            <!-- Language Font-Faces - Individual Licenses found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/langfontface/langFontFaces.css">
+        <!-- End Fonts -->
+    </head>
+    <body class="unselectable">
+        <div id="stream"></div>
+        <div id="loading">
+            <a id="loadingIcon"></a>
+        </div>
+        <div id='alertTable'>
+            <div id='alertCell'>
+                <div id='alertContainer'>
+                    <div id="alertMessage" class="selectable">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                    <div id="alertButtons">
+                        <a>Ok</a><a>Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loginWindow">
+            <div id="loginFormWindow" class="window">
+                <p id="loginInvalidError" class="error language" data-langhtml="_LOGININVALID_"></p>
+                <p id="loginConnectionError" class="error language" data-langhtml="_LOGINCONNECTIONERROR_"></p>
+                <p id="loginInactiveError" class="error language" data-langhtml="_LOGININACTIVE_"></p>
+                <p id="loginTimeoutError" class="error language" data-langhtml="_LOGINTIMEOUT_"></p>
+                <p id="loginConfirmationSuccess" class="error language" data-langhtml="_CONFIRMSUCCESS_"></p>
+                <p id="loginConfirmationFailure" class="error"><a id="loginConfirmationFailureButton" class="language" data-langhtml="_CONFIRMFAILURE_"></a></p>
+                <!-- License for flag icons can be found in /app/ui/language/LicenseFlags.txt -->
+                <p id="loginFlags"></p>
+                <form id="loginFormForm" onsubmit="return false;">
+                    <input id="loginInput" type="text" class="language shadow validate" data-validationtype="email" data-langplaceholder="_LOGIN_" /><br />
+                    <input id="passwordInput" type="password" class="language shadow validate" data-validationtype="password" data-langplaceholder="_PASSWORD_" /><br />
+                    <input type="submit"  class="language" data-langvalue="_CONFIRMLOGIN_" /><br />
+                    <p>
+                        <a id="forgotPasswordButton" class="language" data-langhtml="_FORGOTPASSWORD_"></a>
+                        <a id="newAccountButton" class="language" data-langhtml="_NEWACCOUNT_"></a>
+                    </p>
+                </form>
+            </div>
+            <div id='loginCreateAccountWindow' class='window'>
+                <form id="loginCreateAccountForm" onsubmit="return false;">
+                    <p id="caConnError" class="language" data-langhtml="_CACONNERROR_"></p>
+                    <p id="caNicknameError" class="language" data-langhtml="_CANICKERROR_"></p>
+                    <p id="caEmailError"><a id="emailErrorA" class="language button" data-langhtml="_CAEMAILERROR_"></a></p>
+                    <p>
+                        <a class="language" data-langtitle="_CANAMEHELP_">?</a>
+                        <input id="caInputName" type="text" id="createAccountName" class="validate language" data-validationtype="longname" data-langplaceholder="_CANAME_"/>
+                        <span class="language" data-langhtml="_CANAMEEXPLAIN_"></span>
+                    </p>
+                    <p>
+                        <a class="language" data-langtitle="_CANICKHELP_">?</a>
+                        <input id="caInputNick" type="text" class="language validate" data-validationtype="nickname" data-langplaceholder="_CANICK_"/>
+                        <span class="language" data-langhtml="_CANICKEXPLAIN_"></span>
+                    </p>
+                    <p>
+                        <a class="language" data-langtitle="_CAEMAILHELP_">?</a>
+                        <input id="caInputEmail" type="text" class="language validate" data-validationtype="email" data-langplaceholder="_CAEMAIL_"/>
+                        <span class="language" data-langhtml="_CAEMAILEXPLAIN_"></span>
+                    </p>
+                    <p>
+                        <a class="language" data-langtitle="_CAPASSHELP_">?</a>
+                        <input id="caInputPassword" type="password" class="language validate" data-validationtype="password" data-langplaceholder="_CAPASSWORD_"/>
+                        <span class="language" data-langhtml="_CAPASSEXPLAIN_"></span>
+                    </p>
+                    <p>
+                        <input id="caInputPassword2" type="password" class="language" data-langplaceholder="_CAPASSWORD2_"/>
+                        <span class="language" data-langhtml="_CAPASS2EXPLAIN_"></span>
+                    </p>
+                    <p class="language" data-langtitle="_CAAGEHELP_">
+                        <label for="caInputAge" class="language" data-langhtml="_CAAGE_"></label>
+                        <input id="caInputAge" type="checkbox" />
+                        <span class="language" data-langhtml="_CAAGEEXPLAIN_"></span>
+                    </p>
+                    <p>
+                        <input id="createAccountButton" type="submit" class="language" data-langvalue="_CASUBMIT_" />
+                    </p>
+                </form>
+            </div>
+            <div id="emailConfirmation" class="window">
+                <p class="language" data-langhtml="_CASUC1_"></p>
+                <p class="language" data-langhtml="_CASUC2_"></p>
+                <p>
+                    <a id="emailConfirmationReturnLink" class="language" data-langhtml="_CASUC3_"></a>
+                </p>
+            </div>
+        </div>
+        <div id="alertWindow">
+            <div id="alertBox">
+                <div class="tiny">
+                    <p>Oi</p>
+                    <a class="button">Ok</a>
+                    <a class="button">Cancelar</a>
+                </div>
+            </div>
+        </div>
+        <div id="leftHandler">
+            <a id='callChatWindowBt' class="button"><span class="language" data-langhtml="_CALLCHATWINDOW_"></span></a>
+            <a id='callGamesWindowBt' class="button"><span class="language" data-langhtml="_GAMES_"></span></a>
+            <a id='callSettingsWindowBt' class="button"><span class="language" data-langhtml="_SETTINGS_"></span></a>
+            <a id='logoutBt' class="button"><span class="language" data-langhtml="_LOGOUT_"></span></a>
+        </div>
+        <div id="rightHandler">
+            <a id='hideRightWindowsBt' class="button"><span class="language" data-langhtml="_HIDERIGHTWINDOWS_">Esconder Janela</span></a>
+            <a id='openTwitch' onclick="window.app.ui.openTwitch();" class="button"><span class="language" data-langhtml="_OPENTWITCH_"></span></a>
+            <a id='openOldBt' onclick="window.app.ui.callRightWindow('oldRedpg');" class="button"><span class="language" data-langhtml="_OPENOLDSYSTEM_"></span></a>
+            <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
+        </div>
+        <div id="leftWindow">
+            <div id="leftBlock">
+                <a></a>
+            </div>
+            <div id="createRoomWindow" class="window unselectable">
+                <div class="shadow">
+                    <h1 class="language" data-langhtml="_NEWROOMHEADER_"></h1>
+                    <p class="language" data-langhtml="_NEWROOMEXPLAIN_"></p>
+                    <p id='CRCurrentGame' class="language" data-langhtml="_NEWROOMCURRENTGAME_" data-langp="??"></p>
+                    <p id="newRoomError" class="language selectable" data-langhtml="_NEWROOMERROR_"></p>
+                    <form id="createRoomForm" onsubmit="return false;">
+                        <p>
+                            <input type="text" id="NRName" class="language validate" data-validationtype="name" data-langplaceholder="_NEWROOMNAME_" />
+                            <label for="NRName" class="language" data-langhtml="_NEWROOMNAMEERROR_"></label>
+                        </p>
+                        <p>
+                            <textarea id="NRDesc" class="language" data-langplaceholder="_NEWROOMDESCRIPTION_"></textarea>
+                        </p>
+                        <p>
+                            <input id="NRPrivate" type="checkbox" />
+                            <label for="NRPrivate" class="language" data-langhtml="_NEWROOMPRIVATE_"></label>
+                            <span class="language" data-langhtml="_NEWROOMPRIVATEEXPLAIN_"></span>
+                        </p>
+                        <p>
+                            <input id="NRStreamable" type="checkbox" />
+                            <label for="NRStreamable" class="language" data-langhtml="_NEWROOMSTREAMABLE_"></label>
+                            <span class="language" data-langhtml="_NEWROOMSTREAMABLEEXPLAIN_"></span>
+                        </p>
+                        <p>
+                            <input id="NRPBP" type="checkbox" />
+                            <label for="NRPBP" class="language" data-langhtml="_NEWROOMPBP_"></label>
+                            <span class="language" data-langhtml="_NEWROOMPBPEXPLAIN_"></span>
+                        </p>
+                        <p id="createRoomSubmitP">
+                            <input id="createRoomSubmit" type="submit" class="language textButton" data-langvalue="_SENDROOM_" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div id="createGameWindow" class="window unselectable">
+                <div class="shadow selectable">
+                    <h1 class="language" data-langhtml="_NEWGAMEHEADER_"></h1>
+                    <p id="newGameError" class="language" data-langhtml="_NEWGAMEERROR_"></p>
+                    <form id="createGameForm" onsubmit="return false;">
+                        <p>
+                            <input type="text" id="CGName" class="language validate" data-validationtype="name" data-langplaceholder="_NEWGAMENAME_" />
+                            <label for="CGName" class="language" data-langhtml="_NEWGAMENAMEERROR_"></label>
+                        </p>
+                        <p>
+                            <textarea id="CGDesc" class="language" data-langplaceholder="_NEWGAMEDESCRIPTION_"></textarea>
+                        </p>
+                        <p>
+                            <input id="CGFreejoin" type="checkbox" />
+                            <label for="CGFreejoin" class="language" data-langhtml="_NEWGAMEFREEJOIN_"></label>
+                            <span class="language" data-langhtml="_NEWGAMEFREEJOINEXP_"></span>
+                        </p>
+                        <p id="createGameSubmitP">
+                            <input id="createGameSubmit" type="submit" class="language" data-langvalue="_SENDGAME_" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div id="gamesMyInvitesWindow" class="window selectable">
+                <div class="shadow">
+                    <h1 class="language" data-langhtml="_GAMESMYINVITESHEADER_"></h1>
+                    <p class="language" data-langhtml="_GAMESMYINVITESEXPLAIN_"></p>
+                    <p id="gamesMyInvitesIdentifier" class="language" data-langhtml="_GAMESMYINVITESMYIDENTIFIER_" data-langp="?#????" />
+                    <div id="gamesMyInvitesList">
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="gamesInviteWindow" class="window unselectable">
+                <div class="shadow">
+                    <h1 class="language" data-langhtml="_GAMESINVITEHEADER_"></h1>
+                    <p class="language justify" data-langhtml="_GAMESINVITEEXPLAIN_"></p>
+                    <p id="gamesInviteCurrentGame" class="language justify" data-langhtml="_GAMESINVITECURRENTGAME_" data-langp="????"></p>
+                    <p id="inviteError401" class="language error selectable" data-langhtml="_GAMESINVITE401_"></p>
+                    <p id="inviteError404" class="language error selectable" data-langhtml="_GAMESINVITE404_"></p>
+                    <p id="inviteError500" class="language error selectable" data-langhtml="_GAMESINVITE500_"></p>
+                    <p id="inviteSuccess200" class="language success selectable" data-langhtml="_GAMESINVITE200_"></p>
+                    <p id="inviteErrorDef" class="language error selectable" data-langhtml="_GAMESINVITEDEF_"></p>
+                    <form id="gamesInviteForm" onsubmit="return false;">
+                        <p><input id="gamesInviteInput" type="text" class="language" data-langplaceholder="_GAMESINVITEINPUT_" /></p>
+                        <p><textarea id="gamesInviteMessage" class="language" data-langplaceholder="_GAMESINVITEMESSAGE_"></textarea></p>
+                        <p><input id="gamesInviteSubmit" type="submit" class="language" data-langvalue="_GAMESINVITESUBMIT_" /></p>
+                        <p><input id="gamesInviteKeepGoing" type="checkbox" /><label for="gamesInviteKeepGoing" class="language" data-langhtml="_GAMESINVITEKEEPGOING_"></label></p>
+                    </form>
+                </div>
+            </div>
+            <div id="gamesWindow" class="window selectable">
+                <div class="shadow">
+                    <h1 class="language" data-langhtml="_GAMESHEADER_"></h1>
+                    <p id="gamesNickInformant" class="language" data-langhtml="_GAMESNICK_" data-langp="????"></p>
+                    <p class="language" data-langhtml="_GAMESEXPLAIN1_"></p>
+                    <p class="language" data-langhtml="_GAMESEXPLAIN2_"></p>
+                    <p class="language" data-langhtml="_GAMESEXPLAIN3_"></p>
+                    <p id="gamesDeleteError" class="language error" data-langhtml="_GAMESDELETEERROR_"></p>
+                    <p id="gamesLoadError" class="language error" data-langhtml="_GAMESLOADERROR_"></p>
+                    <p id="gamesWindowLoading"><a></a></p>
+                    <p><a id="gamesInviteListButton" class="language" data-langhtml="_GAMESMYINVITESBUTTON_"></a></p>
+                    <div id="gamesList">
+                        <div id="gameID" class="gameDiv">
+                            <a class="right button delete language" data-langtitle="_GAMESDELETE_"></a>
+                            <a class="right button options language" data-langtitle="_GAMESOPTIONS_"></a>
+                            <span class="button paraButton language" data-langtitle="_GAMESOPENCLOSE_" onclick="$(this).toggleClass('toggled');">
+                                <a class="left button openclose"></a>
+                                <span>Um nome muito comprido mesmoeim</span>
+                            </span>
+                            <div>
+                                <p class="creatorP"><span class='language' data-langhtml='_GAMESCREATORTOOLTIP_'></span>: Criador#IIID</p>
+                                
+                                <p class="language noRooms" data-langhtml="_GAMESNOROOMS_"></p>
+                                
+                                <p class="selectable hoverMark">
+                                    <a class="language" data-langtitle="_GAMESJOINROOM_">
+                                        012345678901234567890123456789
+                                    </a>
+                                    <a class="language right delete button" data-langtitle="_GAMESDESTROYROOM_"></a>
+                                    <a class="language right options button" data-langtitle="_GAMESROOMOPTIONS_"></a>
+                                </p>
+                                
+                                <hr />
+                                <p><a class="language" data-langhtml="_GAMESNEWROOM_"></a></p>
+                                <h1>Logs</h1>
+                                
+                                <p class="language noLogs" data-langhtml="_GAMESNOLOGS_"></p>
+                                
+                                <p class="selectable hoverMark">
+                                    <a class="language" data-langtitle="_GAMESJOINROOM_">
+                                        012345678901234567890123456789
+                                    </a>
+                                    <a class="language right delete button" data-langtitle="_GAMESDESTROYLOG_"></a>
+                                    <a class="language right options button" data-langtitle="_GAMESLOGPERMISSIONS_"></a>
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <p id="gamesNewGameButton"><a class="language" data-langhtml="_GAMESNEWGAME_"></a></p>
+                </div>
+            </div>
+            <div id='changelogWindow' class='window'>
+                <div class='selectable shadow'>
+                    <h1>Changelog</h1>
+                    <div id='changelogUpdateNotice'>
+                        <p class='language' data-langhtml='_REDUPDATES_'></p>
+                        <p class='language' data-langhtml='_BACKWARDSCOMPATIBILITY_'></p>
+                        <p>&nbsp;</p>
+                    </div>
+                    <p><span class='language' data-langhtml='_YOURVERSION_'></span> <b id='currentVersion'></b>.</p>
+                    <p><span class='language' data-langhtml='_LASTVERSION_'></span> <b id='updatedVersion'></b>.</p>
+                    <div id='changelogAjaxTarget'>
+                        
+                    </div>
+                    <p id="changelogAjaxError" class="language" data-langhtml="_CHANGELOGNOTLOADED_"></p>
+                </div>
+            </div>
+            
+            <div id="configWindow" class="window">
+                <div id="systemConfig" class="shadow">
+                    <h1 class="language" data-langhtml="_SYSTEMCONFIGHEADER_"></h1>
+                    <p id="configError" class="selectable centered error language" data-langhtml="_CONFIGERROR_"></p>
+                    <p id="configSuccess" class="selectable centered success language" data-langhtml="_CONFIGSUCCESS_"></p>
+                    <p class="centered">
+                        <a id="configSaveButton" class="textButton language" data-langhtml="_CONFIGSAVE_"></a>
+                        <a id="configResetButton" class="textButton language" data-langhtml="_CONFIGRESET_"></a>
+                    </p>
+                    <div id="configList">
+                        <p class="centered">Opções Radio</p>
+                        <p class="centered">
+                            <input id="configZero0" type="radio" name="configZero" value="0" />
+                            <label for="configZero0">SIM</label>
+                            <input id="configZero1" type="radio" name="configZero" value="1" />
+                            <label for="configZero1">NAO</label>
+                        </p>
+                        <p class="explain">Explicação das opções</p>
+                    </div>
+                    <a id="configVersionButton"><span class="language" data-langhtml="_VERSIONNAME_"></span> <span id="configVersion"></span> - <span class="language" data-langhtml="_VERSIONINFO_"></span></a>
+                </div>
+            </div>
+            
+            <div id="chatWindow" class="window">
+                <div id="avatarWindowWrapper" style='display: none'>
+                    <div id="avatarWindow">
+                        <div class="centeredcell unselectable">
+                            <div id="playerInfo">
+                                <div class="avatarWrapper noFloat">
+                                    <span id="uWuserName" class="selectable"></span>
+                                    <img id="uWuserAvatar" src="images/iconAnon.jpg"/>
+                                </div>
+                                <p><b class="language" data-langhtml="_PLAYERTOOLTIP_"></b>: <span id="uWuserNick" class="selectable"></span></p>
+                                <p id="uWuserPersonaP"><b class="language" data-langhtml="_PERSONATOOLTIP_"></b>: <span id="uWuserPersona" class="selectable"></span></p>
+                                <p class="center"><a id="uWuserWhisper" class="language link" data-langhtml="_WHISPER_" data-langp="Reddo"></a></p>
+                                <p class="center"><a id="uWuserClose" class="language link" data-langhtml="_CLOSE_"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="avatarContainer">
+                    <div id="avatarBox">
+                        
+                        <div class="avatarWrapper" data-playerid="1" title="Red">
+                            <span>Reddo</span>
+                            <img src="images/iconAnon.jpg"/>
+                        </div>
+                        
+                        
+                        <div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div><div class="avatarWrapper" data-playerid="1" title="Red"><span>Reddo</span><img src="images/iconAnon.jpg"/></div>
+
+                    </div>
+                    <div id="avatarButtons">
+                        <a id="avatarUpButton" class="bigbutton button language" data-langtitle="Subir lista"></a>
+                        <a id="avatarDownButton" class="bigbutton button language" data-langtitle="Descer lista"></a>
+                    </div>
+                </div>
+                <div id="areaChat">
+                    <a id="chatScrolltoBottom" class="big button language" data-langtitle="_TOBOTTOM_"></a>
+                    <a id="logNotification" class="language"></a>
+                    <div id="areaChatButtons">
+                        <!-- <a id="changeFontBig" class="small button language" data-langtitle=""></a> -->
+                        <a id="leaveChatBt" class="bigbutton button language" data-langtitle="_LEAVECHAT_"></a>
+                        <a id="chatSettings" class="bigbutton button language" data-langtitle="_CHATSETTINGS_"></a>
+                        <a id="changeFontBig" class="bigbutton button language" data-langtitle="_INCREASEFONT_"></a>
+                        <a id="changeFontSmall" class="bigbutton button language" data-langtitle="_DECREASEFONT_"></a>
+                        <a id="modulesButton" class="bigbutton button language" data-langtitle="_MODULES_"></a>
+                    </div>
+                    <div id="chatNotificationArea">
+                        <a id="chatNotLoad" class="language" data-langtitle="_LONGLOAD_"></a>
+                        <a id="chatNotConnError" class="language" data-langtitle="_CONNECTIONERROR_"></a>
+                    </div>
+                    <div id="areaChatBox" class="selectable shadow">
+                        <div id="chatIntro">
+                            <p id="roomName" class="chatSala">Nome da Sala</p>
+                            <p id="roomDesc" class="chatDescSala">Descrição da sala</p>
+                            <p class="chatBootIntro language" data-langhtml="_BASICCOMMANDS_"></p>
+                            <p class="chatBootIntro language" data-langhtml="_ACTIONSAMPLE_"></p>
+                            <p class="chatBootIntro language" data-langhtml="_OFFSAMPLE_"></p>
+                            <p class="chatBootIntro language" data-langhtml="_ACTUALSAMPLE_"></p>
+                            <p class="chatBootIntro language" data-langhtml="_SHORTCUTS_"></p>
+                            <p class="chatBootIntro language" data-langhtml="_MORECOMMANDS_"></p>
+                            <p class="chatBootIntro language" data-langhtml="_CLEARTIP_"></p>
+                            <hr class="unselectable" />
+                        </div>
+                        
+                        <!-- Linguagesn
+                        <p class="chatMensagem fakelanguage binary"><b>Mr. Robotto: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatMensagem fakelanguage draconic"><b>Kouryuu: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="translation"><b>Tradução: </b>Temos de ir para [Grey Avalon] agora.</span><span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatMensagem fakelanguage abyssal"><b>Desire Demon: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatMensagem fakelanguage celestan"><b>Spirit of Justice: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatMensagem fakelanguage alien"><b>Fairy: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatMensagem fakelanguage ancientMagi"><b>Spell Runes on Ancient Wall: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatMensagem fakelanguage ancientTech"><b>Technological Artifact: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: Antônio</b></span></p>
+                        <p class="chatSistema language" data-langhtml="_HASCONNECTED_" data-langp="Maria">%p se conectou.</p>
+                        <p>Up there yo</p>
+                        <p class="chatMensagem fakelanguage elvish"><b>Elfo: </b>Svora lorak sunene baram <span class="universalWord">Grey Avalon</span> muru.<span class="tooltip"><b>Jogador: </b>Antônio</b></span></p>
+                        Hide! -->
+                        
+                        <div id="chatMessages">
+                            <p class="chatDice">
+                                <b>* Persona</b>
+                                <span class="language" data-langhtml="_DICEHASROLLED_"></span>
+                                <span class="box square">3d6 + 100</span>
+                                <a class="equals">=</a>
+                                <span class="results">
+                                    <a class="box">4</a>
+                                    <a class="plus">+</a>
+                                    <a class="box">2</a>
+                                    <a class="plus">+</a>
+                                    <a class="box">6</a>
+                                    <a class="plus">+</a>
+                                    <a class="box mod">100</a>
+                                </span>
+                                <a class="equals">=</a>
+                                <span class="box square">
+                                    112
+                                </span>
+                                <span class="reason">
+                                    <b class="language" data-langhtml="_DICEREASON_"></b>
+                                    Testar o sistema de dados novo.
+                                </span>
+                                <span class="tooltip">
+                                    <b class="language" data-langhtml="_PLAYERTOOLTIP_"></b>
+                                    : Nome do Jogador
+                                </span>
+                            </p>
+                            
+                            <p><a onclick="window.app.ui.chat.audioc.play('Lessien.spc');">Teste do Player </a></p>
+                            <p><a onclick="window.app.ui.youtubeui.play('moSFlvxnbgk', true);">Teste de youtube</a></p>
+                            <p class="chatSistema language" data-langhtml="_HASCONNECTED_" data-langp="Nome do Jogador"></p>
+                            <p class="chatOff"><b>Nome do Jogador: </b>Mensagem em Off</P>
+                            <p class="chatNarrativa">- Mensagem de história<span class="tooltip"><b>Mestre: </b>Nome do Mestre</span></p>
+                            <p class="chatImagem">Nome do Jogador compartilhou uma imagem. <a onclick="window.app.ui.showPicture('http://manual.redpg.com.br/imagens/DFS%20-%20Kouryuu.jpg');">Clique aqui para ver.</a></p>
+                            <p class="chatMensagem"><b>Nome do Personagem: </b>Mensagem comum<span class="tooltip"><b>Jogador</b>: Nome do Jogador</span></p>
+                            <p class="chatAcao"><b>* Nome do Personagem </b> mensagem de ação.<span class="tooltip"><b>Jogador</b>: Nome do Jogador</span></p>
+                            <p class="chatDados">
+                                <b>* Nome do Personagem </b>
+                                <span class="language" data-langhtml="_ROLLED_" data-langp="1d6 + 2 = 6 + 2 = 8" data-langd="Motivo da rolagem de dados"></span>
+                                <span class="tooltip">
+                                    <b class="language" data-langhtml="_PLAYERTOOLTIP_"></b>
+                                    : Nome do Jogador
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="chatWindowBottom">
+                    <div id="chatBarra">
+                        <form id="chatMensagemForm" onsubmit="return false;">
+                            <div id="chatMensagemBox">
+                                <a id="chatMensagemTipo"></a>
+                                <a id='chatMensagemPrompt' class="prompt"></a>
+                                <input id="chatMensagemInput" class="language shadow" data-langplaceholder="_MESSAGE_" maxlength="4980" type="text" placeholder="" />
+                            </div>
+                            <div id="chatButtonBox">
+                                <input id="sendMessageButton" type='submit' value='' class="bigbutton button language" data-langtitle="_SENDMESSAGE_" title="" />
+                            </div>
+                        </form>
+                    </div>
+                    <div id="personaBox">
+                        <div id="personaLeftButtonBox">
+                            <a id="personaUpButton" class="bigbutton button language" data-langtitle="_UPPERSONA_"></a>
+                            <a id="personaDownButton" class="bigbutton button language" data-langtitle="_DOWNPERSONA_"></a>
+                        </div>
+                        <div id="personaRightButtonBox">
+                            <div id="personaCreateDiv" class="shadow">
+                                <form id="PCForm" onsubmit="return false;">
+                                    <input id="PCFName" class="language" data-langplaceholder="_PCFNAME_" type="text" maxlength="30" />
+                                    <br />
+                                    <input id="PCFAvatar" class="language" data-langplaceholder="_PCFAVATAR_" type="text" />
+                                    <br />
+                                    <input id="PCFHide" type="checkbox" /><label for="PCFHide" class="language" data-langhtml="_PCFHIDE_"></label>
+                                    <br />
+                                    <input type="submit" class="textButton language" data-langvalue="_PCFSEND_" />
+                                </form>
+                            </div>
+                            <a id="personaAddButton" class="bigbutton button language" data-langtitle="_ADDPERSONA_"></a>
+                            <a id="personaRemoveButton" class="bigbutton button language" data-langtitle="_REMOVEPERSONA_"></a>
+                        </div>
+                        <div id="personaCenterBox">
+                            
+                            
+                            <a class="button toggled" onclick="$(this).toggleClass('toggled');">Lessien</a>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    <div id="dadosForm">
+                        <form id="chatDadosForm" onsubmit="return false;">
+                            <a id="dadosFormQuantidadePrompt" class="prompt language" data-langtitle="_DICENUMBEREXPLAIN_"></a>
+                            <a id="dadosFormFacesPrompt" class="prompt language" data-langtitle="_DICEFACESEXPLAIN_"></a>
+                            <a id="dadosFormModPrompt" class="prompt language" data-langtitle="_DICEMODEXPLAIN_"></a>
+                            <input type="number" max='99' id="dadosFormQuantidade" class="language shadow" data-langtitle="_DICENUMBEREXPLAIN_" data-langplaceholder="_DICENUMBER_" />
+                            <input type="number" id="dadosFormFaces" class="language shadow" data-langtitle="_DICEFACESEXPLAIN_" data-langplaceholder="_DICEFACES_" />
+                            <input type="number" id="dadosFormMod" class="language shadow" data-langtitle="_DICEMODEXPLAIN_" data-langplaceholder="_DICEMOD_" />
+                            <div id="wrapperDadosMotivo">
+                                <a id="dadosFormMotivoPrompt" class="prompt language" data-langtitle="_DICEREASONEXPLAIN_"></a>
+                                <input id="dadosFormMotivo" class="language shadow" data-langtitle="_DICEREASONEXPLAIN_" data-langplaceholder="_DICEREASON_" />
+                            </div>
+                            <a id='dadosFormSecret' class='button language' data-langtitle='_DICETOWER_'></a>
+                            <input id="rolldiceButton" class="bigbutton button language" data-langtitle="_ROLLDICE_" type="submit" value="" />
+                        </form>
+                    </div>
+                    <div id="dadosButtons">
+                        <div id="musicPlayerWrapper">
+                            <div id="musicPlayerVolumeWrapper">
+                                <span id="musicPlayerCurrentVolume">
+                                    
+                                </span>
+                            </div>
+                            <audio id="musicPlayerAudioBGM"></audio>
+                            <audio id="musicPlayerAudioSE"></audio>
+                            <audio id='diceRollAudio' src='img/chat/diceRolling.m4a' preload></audio>
+                            <progress value="0.5" max="1" id="musicPlayerProgressCurrent"></progress>
+                            <a id="musicPlayerActionButton" class="button"></a>
+                            <a id="musicPlayerRepeatButton" class="button"></a>
+                        </div>
+                        <a id="d4Button" class="button language" data-langtitle="_ROLLD4_"></a>
+                        <a id="d6Button" class="button language" data-langtitle="_ROLLD6_"></a>
+                        <a id="d8Button" class="button language" data-langtitle="_ROLLD8_"></a>
+                        <a id="d10Button" class="button language" data-langtitle="_ROLLD10_"></a>
+                        <a id="d12Button" class="button language" data-langtitle="_ROLLD12_"></a>
+                        <a id="d20Button" class="button language" data-langtitle="_ROLLD20_"></a>
+                        <a id="d100Button" class="button language" data-langtitle="_ROLLD100_"></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="pictureContainer" class="unselectable">
+            <div id="pictureShow">
+                <img id='pictureShown' />
+            </div>
+            <a class="language" data-langhtml="_CLOSEIMAGE_"></a>
+        </div>
+        <div id="rightWindow" class="unselectable">
+            <div id="rightBlock">
+                <a></a>
+            </div>
+            <div id="youtubeWindow" class="window">
+                <div class="shadow" id="youtubePlayer"></div>
+            </div>
+            <div id="twitchChat" class="window">
+                <div class="shadow">
+                    <iframe id="twitchChatiFrame" frameborder="0" scrolling="no">
+                    </iframe>
+                </div>
+            </div>
+            <div id="imageWindow" class="window">
+                <div class="shadow">
+                    
+                </div>
+            </div>
+            <div id="soundWindow" class="window">
+                <div class="shadow">
+                    <h1 class="language" data-langhtml="_SOUNDSHEADER_"></h1>
+                    <p class="language" data-langhtml="_SOUNDSEXPLAIN_"></p>
+                    <p class="language" data-langhtml="_SOUNDSEXPLAIN2_"></p>
+                    <p class="language" data-langhtml="_SOUNDSEXPLAIN3_"></p>
+                    <div id="soundList">
+                        
+                        
+                        
+                        <div class="folder">
+                            <div class="folderTitle">
+                                <a class="left melded openIcon"></a>
+                                <a class="right button upIcon"></a>
+                                <a class="right button downIcon"></a>
+                                <a class="right button delIcon"></a>
+                                <p onclick="alert(2)">
+                                    Room Name
+                                </p>
+                            </div>
+                            <div class="folderSounds">
+                                <p>
+                                    <span>Nome da Música</span>
+                                    <a class='button shareIcon language' data-langtitle='_SHAREMUSIC_'></a>
+                                    <a class='button delIcon language' data-langtitle='_DELETEMUSIC_'></a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <p class='centered'><a id='soundSaveButton' class='textButton language' data-langhtml='_SOUNDSSAVESOUNDS_'></a></p>
+                    
+                    <h1 class='language' data-langhtml='_SOUNDSNEWSOUNDS_'></h1>
+                    
+                    
+                    <p id='soundFolderError' class='language' data-langhtml='_SOUNDFOLDERERROR_'></p>
+                    <p id="tryCors"><a target="_blank" href='https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi' class='language' data-langhtml='_TRYCORS_'></a></p>
+                    
+                    <p class='centered'>
+                        <select id='folderSelect'>
+                            <option id='folderSelectNone' class="language" data-langhtml='_SOUNDSPICKONE_' value='-1' selected disabled></option>
+                            <optgroup id='foldersOptions' class='language' data-langlabel='_SOUNDSFOLDERS_'>
+                                <option>One!</option>
+                            </optgroup>
+                            <option id='newFolderOption' class='language' data-langhtml='_SOUNDSNEWFOLDER_' value='-1'></option>
+                        </select>
+                        <input id='folderCreate' type='text' class='language' data-langplaceholder='_NEWFOLDERNAME_' />
+                    </p>
+                    <form id='soundsMethodForm' onsubmit='return false;'>
+                        <input id='soundsFolderMethod' type='radio' name='soundsMethod' />
+                        <label for='soundsFolderMethod' class='language' data-langhtml='_SOUNDSUSEFILES_'></label>
+                        -
+                        <input id='soundsLinkMethod' type='radio' name='soundsMethod'>
+                        <label for='soundsLinkMethod' class='language' data-langhtml='_SOUNDSUSELINK_'></label> <br />
+                        <input id='soundsBGM' type='checkbox' checked><label for='soundsBGM' class='language' data-langhtml='_SOUNDSISBGM_'></label>
+                    </form>
+                    
+                    
+                    <p class='centered' id='soundFileInput'>
+                        <input type="file" id="soundFileList" multiple /> <br/>
+                        <input type='submit' id='soundFileListSubmit' class='language' data-langvalue='_SOUNDSSUBMITLIST_' />
+                    </p>
+                    
+                    
+                    <form id='soundLinkForm' onsubmit='return false;'>
+                        <input type='text' id='soundFileLink' class='language' data-langplaceholder='_SOUNDSLINK_' /> <br />
+                        <input type='submit' class='language' data-langvalue='_SOUNDSSUBMITLINK_' />
+                    </form>
+                    
+                </div>
+            </div>
+            <div id="oldRedpg" class="window">
+                <div id="loadingBody">
+                    <img src="images/loading.gif" />
+                </div>
+                <div id="rightmenu" class='menu'>
+                </div>
+                <div id="theonemenu" class="shadow">
+                <div id="leftmenu" class='menu'>
+                </div>
+                <div id="usuario">
+                  <p>Não conectado. <a href="#" onclick="loginajax('AJAX/ajax_loginForm.php');">Conectar?</a></p>
+                </div>
+                </div>
+                <div id="conteudoWrapper" class="unselectable">
+                    <div id="conteudo" class="selectable shadow">
+                       <p>Essa versão do sistema é um beta bem inicial.</p>
+                       <p>Caso alguém deseje colocar o RedPG na própria máquina:</p>
+                       <p><a href="http://redpg.com.br/Sauce.rar" target="_blank">Link para o código fonte do sistema</a></p>
+                       <p>O Lado direito é uma adaptação do antigo RedPG, rodando em PHP. O Lado esquerdo é a nova versão do RedPG, rodando em Java.</p>
+                       <p>Infelizmente, são dois sistemas diferentes e acaba sendo necessário que você tenha dois Logins. O sistema novo permite a criação de contas e ele possui apenas o Chat, basicamente.</p>
+                       <p>Então após loggar no sistema novo, é necessário loggar no sistema antigo para controlar as fichas. Isso pode ser feito pelo Login da direita, que é igual ao antigo.</p>
+                       <p>É possível utilizar o sistema localmente, copiando ele todo para a sua máquina. Isso faria o sistema ficar mais rápido e também libera algumas funções extras para o chat (Não é possível tocar músicas Mp3/Mp4 a partir do site online. Proteções de Browsers só permitem isso localmente).</p>
+                       <p><a href='http://redpg.com.br/app/Zip.php' target='_blank'>Um link atualizado para os arquivos offline é mantido aqui.</a> Só é preciso extrair e abrir o index.html. Você pode colocar todas as músicas na pasta Sons.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="messageBox"></div>
+        <!-- jQuery and libraries -->
+            <script src="js/lib2.1.0.min.js"></script>
+        <!-- Fix for old Redpg -->
+            <script src="js/oldRedpg.js"></script>
+        <!-- End Fix -->
+        <!-- Application! -->
+            <script src="app/Application.js"></script>
+            <script src="app/program/LoginApp.js"></script>
+            <script src="app/program/GameApp.js"></script>
+            <script src="app/program/ChatApp.js"></script>
+            <script src="app/program/RoomApp.js"></script>
+            <script src="app/ajax/AjaxController.js"></script>
+            <script src="app/ajax/ChangelogAjax.js"></script>
+            <script src="app/database/kinds/Message.js"></script>
+            <script src="app/database/kinds/User.js"></script>
+            <script src="app/database/kinds/Room.js"></script>
+            <script src="app/database/kinds/Invite.js"></script>
+            <script src="app/database/kinds/Game.js"></script>
+            <script src="app/database/ConfigDB.js"></script>
+            <script src="app/database/GameDB.js"></script>
+            <script src="app/database/RoomDB.js"></script>
+            <script src="app/database/UserDB.js"></script>
+            <script src="app/ui/language/Language.js"></script>
+            <script src="app/ui/language/translation/PTBR.js"></script>
+            <script src="app/ui/language/translation/EN.js"></script>
+            <script src="app/ui/UI.js"></script>
+            <script src="app/ui/sounds/SoundUI.js"></script>
+            <script src="app/ui/images/ImageUI.js"></script>
+            <script src="app/ui/youtube/YoutubeUI.js"></script>
+            <script src="app/ui/config/AddonConfig.js"></script>
+            <script src="app/ui/config/ConfigOption.js"></script>
+            <script src="app/ui/config/ConfigUI.js"></script>
+            <script src="app/ui/changelog/ChangelogUI.js"></script>
+            <script src="app/ui/FormValidator.js"></script>
+            <script src="app/ui/Validator.js"></script>
+            <script src="app/ui/chat/Chat.js"></script>
+            <script src="app/ui/chat/ChatController.js"></script>
+            <script src="app/ui/chat/Logger.js"></script>
+            <script src="app/ui/chat/PlayerController.js"></script>
+            <script src="app/ui/chat/DiceController.js"></script>
+            <script src="app/ui/chat/AudioController.js"></script>
+            <script src="app/ui/chat/message/MessageController.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleRoleplay.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleYoutube.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleCountdown.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleVote.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleBGM.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleSEPLAY.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleAction.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleClear.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleImage.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleNotification.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleNoWhisper.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleNoSE.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleStream.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleTitle.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleSplay.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleStory.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleZebra.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleDice.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleOff.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleWhisper.js"></script>
+            <script src="app/ui/chat/message/modules/ModulePersona.js"></script>
+            <script src="app/ui/chat/message/modules/ModuleLogger.js"></script>
+            <script src="app/ui/chat/persona/PersonaController.js"></script>
+            <script src="app/ui/chat/avatar/AvatarController.js"></script>
+            <script src="app/ui/games/GameUI.js"></script>
+            <script src="app/ui/games/RoomUI.js"></script>
+            <script src="app/ui/games/Game$.js"></script>
+            <script src="app/ui/games/GameInviteUI.js"></script>
+            <script src="app/ui/games/GameInvite$.js"></script>
+            <script src="app/ui/login/LoginUI.js"></script>
+        <!-- Application End -->
+        <script type="text/javascript">
+            
+            window.app = new Application(true);
+        </script>
+    </body>
+</html>

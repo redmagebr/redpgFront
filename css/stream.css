@@ -1,0 +1,124 @@
+#stream {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    background-color: #000;
+    width: 854px;
+    height: 480px;
+    left: 100px;
+    top: 10px;
+}
+
+#youtubePlayer {
+    position: fixed;
+    display: block;
+    width: 854px;
+    height: 480px;
+    left: 100px;
+    top: 10px;
+    z-index: 200;
+    border: none;
+}
+
+#rightWindow, #youtubeWindow {
+    overflow: visible;
+    border: none;
+}
+
+#youtubeWindow, #rightWindow {
+    z-index: 200;
+}
+
+#stream > img {
+    width: 854px;
+    height: 480px;
+}
+
+#avatarContainer {
+    position: fixed;
+    left: 100px;
+    top: 388px;
+    width: 854px;
+    height: 98px;
+    z-index: 50;
+    background-color: rgba(0,0,0,.5);
+    border-top: 5px solid #000;
+}
+
+div.avatarWrapper {
+    float: right;
+}
+
+#avatarBox {
+    margin-top: 7px;
+    right: 0px;
+}
+
+.jspTrack
+{
+    background: #7e7e7e;
+}
+
+.jspDrag
+{
+    background: #4e4e4e;
+}
+
+#avatarButtons {
+    display: none;
+    margin-right: 7px;
+}
+
+#areaChatBox {
+    position: fixed;
+    left: 100px;
+    top: 10px;
+    width: 510px;
+    height: 378px;
+    z-index: 100;
+    border: none;
+    border-right: 5px #000 solid;
+}
+#areaChat {
+    border: none;
+}
+
+#leftWindow, #chatWindow, #areaChat {
+    z-index: 100;
+}
+
+#pictureContainer {
+    position: fixed;
+    left: 610px;
+    border-left: solid 5px #000;
+    width: 339px;
+    top: 10px;
+    height: 480px;
+    z-index: 45;
+    overflow: hidden;
+}
+
+#pictureShow {
+    position: absolute;
+    left: -100px;
+    top: 0px;
+    right: -100px;
+    bottom: 0px;
+    z-index: 45;
+}
+
+#pictureContainer a {
+    display: none;
+}
+
+#areaChatButtons {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+#chatScrolltoBottom {
+    position: fixed;
+    left: 10px;
+    top: 400px;
+}
