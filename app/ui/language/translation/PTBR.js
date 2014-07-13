@@ -1,4 +1,4 @@
-window.lingo['PT_BR'] = {
+window.lingo['pt_br'] = {
     _LANGUAGENAME_ : 'Português - Brasil',
     
     _NEWMESSAGES_ : 'Mensagens',

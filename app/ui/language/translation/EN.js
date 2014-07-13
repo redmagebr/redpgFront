@@ -1,4 +1,4 @@
-window.lingo['EN'] = {
+window.lingo['en'] = {
     _LANGUAGENAME_ : 'English (Incomplete)',
     
     /* Login */

@@ -8,7 +8,7 @@ function Language () {
      * Not implemented. This needs to be stored and retrieved from database object.
      * @type String|String
      */
-    this.currentlang = 'PT_BR';
+    this.currentlang = 'pt_br';
     
     /**
      * Generates clickable flags to change language.
@@ -168,9 +168,15 @@ function Language () {
     
     
     this.updateConfig = function () {
-        var language = window.app.configdb.get("language", "PT_BR");
-        if (language !== this.currentlang) {
+        var language = window.app.configdb.get("language", navigator.language);
+        language.replace('-', '_');
+        if (typeof window.lingo[language] === 'undefined' && language.indexOf('_') !== -1) {
+            language = language.split('_')[0];
+        }
+        if (language !== this.currentlang && typeof window.lingo[language] !== 'undefined') {
             this.currentlang = language;
+            this.applyLanguage();
+        } else {
             this.applyLanguage();
         }
     };
