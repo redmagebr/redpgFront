@@ -1,6 +1,6 @@
 /** 
  * @param {boolean} debug
- * @class Aplicação Completa
+ * @class AplicaÃ§Ã£o Completa
  * @constructor
  * @requires UI
  */
@@ -18,6 +18,7 @@ function Application (debug) {
      */
     this.host = 'http://localhost:8080/RedPG/';
     this.host = 'http://redpg.com.br/chat/';
+    this.host = 'http://204.124.181.154/service/';
     
     
     
