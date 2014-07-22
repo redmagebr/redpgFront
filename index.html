@@ -22,8 +22,6 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
-        <!-- CSS Fix Antigo -->
-            <link rel="stylesheet" type="text/css" media="all" href="css/old.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
             <link rel="stylesheet" type="text/css" media="all" href="css/fontface/alegreya.css">
@@ -146,7 +144,6 @@
         <div id="rightHandler">
             <a id='hideRightWindowsBt' class="button"><span class="language" data-langhtml="_HIDERIGHTWINDOWS_">Esconder Janela</span></a>
             <a id='openTwitch' onclick="window.app.ui.openTwitch();" class="button"><span class="language" data-langhtml="_OPENTWITCH_"></span></a>
-            <a id='openOldBt' onclick="window.app.ui.callRightWindow('oldRedpg');" class="button"><span class="language" data-langhtml="_OPENOLDSYSTEM_"></span></a>
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
         </div>
         <div id="leftWindow">
@@ -636,38 +633,10 @@
                     
                 </div>
             </div>
-            <div id="oldRedpg" class="window">
-                <div id="loadingBody">
-                    <img src="images/loading.gif" />
-                </div>
-                <div id="rightmenu" class='menu'>
-                </div>
-                <div id="theonemenu" class="shadow">
-                <div id="leftmenu" class='menu'>
-                </div>
-                <div id="usuario">
-                  <p>Não conectado. <a href="#" onclick="loginajax('AJAX/ajax_loginForm.php');">Conectar?</a></p>
-                </div>
-                </div>
-                <div id="conteudoWrapper" class="unselectable">
-                    <div id="conteudo" class="selectable shadow">
-                       <p>Essa versão do sistema é um beta bem inicial.</p>
-                       <p>Caso alguém deseje colocar o RedPG na própria máquina:</p>
-                       <p><a href="http://redpg.com.br/Sauce.rar" target="_blank">Link para o código fonte do sistema</a></p>
-                       <p>O Lado direito é uma adaptação do antigo RedPG, rodando em PHP. O Lado esquerdo é a nova versão do RedPG, rodando em Java.</p>
-                       <p>Infelizmente, são dois sistemas diferentes e acaba sendo necessário que você tenha dois Logins. O sistema novo permite a criação de contas e ele possui apenas o Chat, basicamente.</p>
-                       <p>Então após loggar no sistema novo, é necessário loggar no sistema antigo para controlar as fichas. Isso pode ser feito pelo Login da direita, que é igual ao antigo.</p>
-                       <p>É possível utilizar o sistema localmente, copiando ele todo para a sua máquina. Isso faria o sistema ficar mais rápido e também libera algumas funções extras para o chat (Não é possível tocar músicas Mp3/Mp4 a partir do site online. Proteções de Browsers só permitem isso localmente).</p>
-                       <p><a href='https://github.com/redmagebr/redpgFront' target='_blank'>Um link atualizado para os arquivos offline é mantido aqui.</a> Clique em "Download as Zip" para iniciar o download. Só é preciso extrair e abrir o index.html. Você pode colocar todas as músicas na pasta Sons.</p>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="messageBox"></div>
         <!-- jQuery and libraries -->
             <script src="js/lib2.1.0.min.js"></script>
-        <!-- Fix for old Redpg -->
-            <script src="js/oldRedpg.js"></script>
         <!-- End Fix -->
         <!-- Application! -->
             <script src="app/Application.js"></script>

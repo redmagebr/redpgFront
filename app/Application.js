@@ -16,9 +16,8 @@ function Application (debug) {
      * Host must point to the server we're using.
      * It will be prepended to every AJAX url.
      */
-    this.host = 'http://localhost:8080/RedPG/';
-    this.host = 'http://redpg.com.br/chat/';
-    this.host = 'http://204.124.181.154/service/';
+    //this.host = 'http://localhost:8080/RedPG/';
+    this.host = 'http://redpg.com.br/service/';
     
     
     
