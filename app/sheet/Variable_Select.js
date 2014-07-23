@@ -93,6 +93,10 @@ function Variable_Select ($visible, style, missingid, parent) {
     };
 
     this.getObject = function () {
+        return this.value;
+    };
+    
+    this.getOption = function () {
         return this.options[this.value];
     };
     

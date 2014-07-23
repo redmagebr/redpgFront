@@ -362,8 +362,10 @@ function Style_00 (sheet) {
         
         // Mudar tipo de Pericia
         sheet.fields['Tecnicas'].$visible.on('changedVariable', function (e, variable) {
-            /** @type jQuery */ var $parent = variable.parent.$visible;
-            var tipo = variable.parent.fields['Tipo'].getObject();
+            var parent = variable.parent;
+            if (typeof parent.fields['Tipo'] === 'undefined') { return false; }
+            /** @type jQuery */ var $parent = parent.$visible;
+            var tipo = parent.fields['Tipo'].getOption();
             $parent.removeClass("techEdL techEspecial techPassiva techAtaque").
                     addClass("tech" + 
                              (tipo === 'Estilo de Luta' ? 'EdL' : tipo)
