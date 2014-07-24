@@ -16,6 +16,7 @@ function Game () {
     this.storyteller = false;
     
     this.rooms = [];
+    this.sheets = [];
     
     this.isOwner = function () {
         return window.app.loginapp.user.id === this.creatorid;
@@ -62,6 +63,27 @@ function Game () {
                     return 0;
                 }, {roomdb : window.app.roomdb});
                 this.rooms.sort(sortFunction);
+            }
+        }
+        if (typeof json.sheets !== 'undefined') {
+            this.sheets = [];
+            for (i = 0; i < json.sheets.length; i++) {
+                this.sheets.push(json.sheets[i].id);
+                json.sheets[i].gameid = this.id;
+            }
+            window.app.sheetdb.updateFromJSON(json.sheets);
+            
+            if (this.sheets.length > 0) {
+                var sortFunction = window.app.emulateBind(function (a, b) {
+                    var oa = this.sheetdb.getSheet(a);
+                    var ob = this.sheetdb.getSheet(b);
+                    if (oa.name < ob.name)
+                        return -1;
+                    if (oa.name > ob.name)
+                        return 1;
+                    return 0;
+                }, {sheetdb : window.app.sheetdb});
+                this.sheets.sort(sortFunction);
             }
         }
     };

@@ -33,6 +33,7 @@ function Application (debug) {
      * Databases
      */
     this.configdb = new ConfigDB();
+    this.sheetdb = new SheetDB();
     this.gamedb = new GameDB();
     this.roomdb = new RoomDB();
     this.userdb = new UserDB();
