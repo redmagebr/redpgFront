@@ -18,6 +18,7 @@ function Application (debug) {
      */
     //this.host = 'http://localhost:8080/RedPG/';
     this.host = 'http://redpg.com.br/service/';
+    this.staticHost = 'http://redpg.com.br/';
     
     
     
