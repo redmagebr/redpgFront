@@ -29,7 +29,7 @@ function AudioController () {
     
     this.updateBar = function (current, max) {
         this.$bar.attr('value', current / max);
-        if (jQuery.browser.mobile && current >= max) {
+        if (current >= max) {
             this.ended();
         }
     };
@@ -65,7 +65,7 @@ function AudioController () {
             //this.bgm.currentTime = 0;
             //this.bgm.play();
             var filename = this.lastFilename;
-            this.play("aaaa");
+            //this.play("aaaa");
             this.play(filename);
         }
     };
