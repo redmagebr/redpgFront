@@ -62,8 +62,11 @@ function AudioController () {
             this.bgm.currentTime = 0;
             this.bgm.pause();
         } else {
-            this.bgm.currentTime = 0;
-            this.bgm.play();
+            //this.bgm.currentTime = 0;
+            //this.bgm.play();
+            var filename = this.lastFilename;
+            this.play("aaaa");
+            this.play(filename);
         }
     };
     
@@ -144,6 +147,7 @@ function AudioController () {
     };
     
     this.play = function (filename) {
+        this.lastFilename = filename;
         this.$player.addClass('shown');
         if (filename.indexOf('://') === -1) {
             filename = 'Sons/' + filename;
