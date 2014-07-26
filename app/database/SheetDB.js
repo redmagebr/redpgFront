@@ -17,6 +17,14 @@ function SheetDB () {
         return null;
     };
     
+    this.deleteSheet = function (id) {
+        if (typeof this.sheets[id] !== 'undefined') {
+            delete this.sheets[id];
+            return true;
+        }
+        return false;
+    };
+    
     
     this.updateFromJSON = function (json) {
         for (var i = 0; i < json.length; i++) {

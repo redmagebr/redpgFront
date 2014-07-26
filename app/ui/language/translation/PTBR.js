@@ -63,6 +63,8 @@ window.lingo['pt_br'] = {
     
     _SHEETSAVE_ : 'Salvar',
     _SHEETEDIT_ : 'Editar',
+    _SHEETRELOAD_ : 'Recarregar Valores da Ficha',
+    _SHEETFULLRELOAD_ : 'Recarregar Valores e Aparência da Ficha',
     _SHEETIMPORT_ : 'Importar JSON com Valores',
     _SHEETEXPORT_ : 'Exportar JSON com Valores',
     _SHEETAUTO_ : 'Atualizar Automaticamente (Não implementado)',

@@ -5,7 +5,7 @@
     border: solid 1px #000;
     border-radius: 10px;
     bottom: 40px;
-    left: 155px;
+    left: 210px;
     width: 400px;
     text-align: center;
     padding-bottom: 20px;
@@ -13,7 +13,7 @@
 }
 
 #sheetExportForm {
-    left: 220px;
+    left: 270px;
 }
 
 #sheetSaveSuccess, #sheetSaveError {
@@ -87,6 +87,14 @@
 
 #importButton {
     background-image: url('../img/sheet/iconInbox.png');
+}
+
+#reloadButton {
+    background-image: url('../img/sheet/iconReload.png');
+}
+
+#fullReloadButton {
+    background-image: url('../img/sheet/iconFullReload.png');
 }
 
 #sheetListContainer {

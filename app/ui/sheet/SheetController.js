@@ -51,6 +51,14 @@ function SheetController () {
         $('#sheetImportForm').on('submit', function () {
             window.app.ui.sheetui.controller.importValues();
         });
+        
+        $('#reloadButton').on('click', function () {
+            window.app.ui.sheetui.controller.reload(true, false);
+        });
+        
+        $('#fullReloadButton').on('click', function () {
+            window.app.ui.sheetui.controller.reload(true, true);
+        });
     };
     
     this.toggleEdit = function () {
@@ -142,7 +150,9 @@ function SheetController () {
                 });
             }
         } else {
-            window.app.sheetdb.getSheet(oldInstance).values = this.styles[styleid].getObject();
+            if (window.app.sheetdb.getSheet(oldInstance) !== null) {
+                window.app.sheetdb.getSheet(oldInstance).values = this.styles[styleid].getObject();
+            }
             this.styles[styleid].switchInstance(window.app.sheetdb.getSheet(sheetid));
         }
         
@@ -303,5 +313,35 @@ function SheetController () {
         var name = sheet.name;
         
         window.app.sheetapp.sendSheet(this.currentInstance, name, values, cbs, cbe);
+    };
+    
+    this.reload = function (sheet, style) {
+        var oldStyle = this.currentStyle;
+        var oldInstance = this.currentInstance;
+        if (style) {
+            var sheet = window.app.sheetdb.getSheet(this.currentInstance);
+            var style = this.styles[this.currentStyle];
+            sheet.values = style.getObject();
+            this.$css.remove();
+            this.$html.remove();
+            this.$css = $('<style />');
+            this.$html = $('<div />');
+            style.seppuku();
+            delete this.styles[this.currentStyle];
+            delete window.Style[this.currentStyle];
+            
+            this.currentStyle = 0;
+        }
+        
+        if (sheet) {
+            if (typeof this.$listed[sheet] !== 'undefined') {
+                this.$listed[this.currentInstance].remove();
+                delete this.$listed[sheet];
+            }
+            window.app.sheetdb.deleteSheet(this.currentInstance);
+            this.currentInstance = 0;
+        }
+        
+        this.openSheet(oldInstance, oldStyle);
     };
 }
