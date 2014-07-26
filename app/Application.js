@@ -28,7 +28,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 11, 0];
+    this.version = [0, 12, 0];
     
     /**
      * Databases
@@ -38,6 +38,7 @@ function Application (debug) {
     this.gamedb = new GameDB();
     this.roomdb = new RoomDB();
     this.userdb = new UserDB();
+    this.sheetdb = new SheetDB();
     
     /**
      * Apps
@@ -46,6 +47,7 @@ function Application (debug) {
     this.gameapp = new GameApp();
     this.roomapp = new RoomApp();
     this.chatapp = new ChatApp();
+    this.sheetapp = new SheetApp();
     
     this.ui = new UI();
     

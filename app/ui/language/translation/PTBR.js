@@ -31,6 +31,49 @@ window.lingo['pt_br'] = {
     _SOUNDSISBGM_ : 'BGM? É Sound Effect se não for.',
     _SOUNDFOLDERERROR_ : 'Para adicionar sons, é necessário escolher uma pasta para colocá-las.',
     
+    /* Sheets */
+    
+    _SHEETSHEADER_ : 'Fichas',
+    _SHEETSEXPLAIN_ : 'Fichas são algo que mestres e seus jogadores podem guardar no sistema, garantindo que todos estejam vendo a mesma versão desse recurso.',
+    _SHEETSEXPLAIN2_ : 'Normalmente são usadas para guardar as informações de personagens, mas têm o potencial para guardar qualquer tipo de informação.',
+    _SHEETSEXPLAIN3_ : 'Cada ficha utiliza um "Estilo", que define a aparência dela e os valores que ela precisa guardar. Como alguns estilos não são criados por um administrador, tome cuidado ao abrir fichas que utilizem estilos criados por alguém em quem você não confia. Apenas os estilos criados por um administrador são considerados seguros.',
+    _SHEETSERROR_ : 'Houve um erro no processamento. Tente novamente.',
+
+    _SHEETSDELETE_ : 'Deletar',
+    _SHEETSPRIVILEGES_ : 'Permissões',
+    _SHEETSAFE_ : 'Essa ficha utiliza um estilo Seguro.',
+    _SHEETUNSAFE_ : 'Essa ficha utiliza um estilo que não é Seguro. Não abra essa ficha se não confiar no seu criador.',
+    _SHEETSNAMETITLE_ : 'Clique aqui para abrir essa ficha',
+    _SHEETSNOSHEETS_ : 'Nenhuma ficha para listar.',
+    _SHEETSNOGAMES_ : 'Você não faz parte de nenhum jogo. Crie um jogo pelo menu da esquerda ou aceite um convite para um jogo de outra pessoa para ter acesso às fichas.',
+    _SHEETSADD_ : 'Criar ficha',
+    _SHEETSGAMETITLE_ : 'Clique aqui para listar as fichas desse jogo.',
+    
+    _SHEETCREATIONHEADER_ : 'Criar Ficha',
+    _SHEETCREATIONNAME_ : "Nome da Ficha",
+    _SHEETCREATIONSUBMIT_ : 'Enviar',
+    _SHEETCREATIONPUBLIC_ : 'Pública',
+    _SHEETCREATIONPUBLICEXPLAIN_ : 'Fichas públicas podem ser vistas por todos os jogadores.',
+    
+    _SHEETPERMISSIONNHEADER_ : 'Permissões de Ficha',
+    _SHEETPERMISSIONVIEW_ : 'Ver',
+    _SHEETPERMISSIONEDIT_ : 'Editar',
+    _SHEETPERMISSIONDELETE_ : 'Deletar',
+    _SHEETPERMISSIONSUBMIT_ : 'Enviar',
+    
+    _SHEETSAVE_ : 'Salvar',
+    _SHEETEDIT_ : 'Editar',
+    _SHEETIMPORT_ : 'Importar JSON com Valores',
+    _SHEETEXPORT_ : 'Exportar JSON com Valores',
+    _SHEETAUTO_ : 'Atualizar Automaticamente (Não implementado)',
+    _SHEETIMPORTEXPLAIN_ : 'Cole aqui o código JSON da ficha que deseja importar.',
+    _SHEETIMPORTSEND_ : 'Assumir nova forma',
+    _SHEETEXPORTEXPLAIN_ : 'Código JSON dos valores da ficha',
+    _SHEETIMPORTERROR_ : 'Código JSON inválido.',
+    _SHEETSAVESUCCESSHEADER_ : 'Sucesso',
+    _SHEETSAVESUCCESSMESSAGE_ : 'A ficha foi salva com sucesso.',
+    _SHEETSAVEERRORHEADER_ : 'Erro',
+    _SHEETSAVEERRORMESSAGE_ : 'Não foi possível salvar a ficha, tente novamente.',
     
     
     /* Login */
@@ -81,7 +124,8 @@ window.lingo['pt_br'] = {
     _MODULES_ : 'Addons',
 
     _HIDERIGHTWINDOWS_ : 'Esconder Janelas',
-    _SHEETS_ : 'Fichas',
+    _SHEETS_ : 'Listar Fichas',
+    _SHEET_ : 'Fichas',
     _STYLES_ : 'Estilos',
     _MYACCOUNT_ : 'Minha Conta',
     _LOGOUT_ : 'Logout',

@@ -36,6 +36,8 @@ function UI () {
     
     this.youtubeui = new YoutubeUI();
     
+    this.sheetui = new SheetUI();
+    
     /**
      * Only call element once.
      */
@@ -105,6 +107,7 @@ function UI () {
         this.imageui.init();
         this.loginui.init();
         this.youtubeui.init();
+        this.sheetui.init();
         this.handleResize();
         
         this.$leftBlocker = $('#leftBlock');
@@ -416,6 +419,7 @@ function UI () {
         this.soundui.updateConfig();
         this.imageui.updateConfig();
         this.youtubeui.updateConfig();
+        this.sheetui.updateConfig();
         
         this.language.applyLanguageOn(this.configui.$configlist);
     };

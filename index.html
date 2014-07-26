@@ -21,6 +21,8 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/chat.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/sheet.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
@@ -144,6 +146,8 @@
         <div id="rightHandler">
             <a id='hideRightWindowsBt' class="button"><span class="language" data-langhtml="_HIDERIGHTWINDOWS_">Esconder Janela</span></a>
             <a id='openTwitch' onclick="window.app.ui.openTwitch();" class="button"><span class="language" data-langhtml="_OPENTWITCH_"></span></a>
+            <a id='callSheetsWindowBt' class="button"><span class="language" data-langhtml="_SHEETS_"></span></a>
+            <a id='callSheetWindowBt' class="button"><span class="language" data-langhtml="_SHEET_"></span></a>
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
         </div>
         <div id="leftWindow">
@@ -546,6 +550,79 @@
             <div id="rightBlock">
                 <a></a>
             </div>
+            
+            <div id='sheetListWindow' class="window">
+                <div class="shadow">
+                    <h1 class="language" data-langhtml="_SHEETSHEADER_"></h1>
+                    <p class="language" data-langhtml="_SHEETSEXPLAIN_"></p>
+                    <p class="language" data-langhtml="_SHEETSEXPLAIN2_"></p>
+                    <p class="language" data-langhtml="_SHEETSEXPLAIN3_"></p>
+                    <div id="sheetListLoadError">
+                        <p class="language" data-langhtml="_SHEETSERROR_"></p>
+                    </div>
+                    <div id="sheetListDiv">
+                        
+                    </div>
+                    <form id='sheetCreationForm' onsubmit='return false;'>
+                        <h1 class='language' data-langhtml='_SHEETCREATIONHEADER_'></h1>
+                        <p id='sheetCreationGameName'></p>
+                        <p><input id='sheetCreationName' class='language' data-placeholder='_SHEETCREATIONNAME_' /></p>
+                        <p>
+                            <select id='sheetCreationGame'>
+                                
+                            </select>
+                        </p>
+                        <p>
+                            <label for="sheetCreationPublic" class="language" data-langhtml="_SHEETCREATIONPUBLIC_" data-langtitle="_SHEETCREATIONPUBLICEXPLAIN_"></label>
+                            <input id="sheetCreationPublic" type="checkbox" />
+                        </p>
+                        <p><input type='submit' class='textButton language' data-langvalue='_SHEETCREATIONSUBMIT_' /></p>
+                    </form>
+                    <form id='sheetPermissionForm' onsubmit='return false;'>
+                        <input id="sheetPermissionIdSheet" type="hidden" class="idSheet" value="1" />
+                        <h1 class='language' data-langhtml='_SHEETPERMISSIONNHEADER_'></h1>
+                        <p id='sheetPermissionsSheetName'>Lessien Tonerre</p>
+                        <div id="sheetPermissionsList">
+                            
+                        </div>
+                        <p id="sheetPermissionsSendButton"><input type='submit' class='textButton language' data-langvalue='_SHEETPERMISSIONSUBMIT_' /></p>
+                    </form>
+                </div>
+            </div>
+            
+            <div id='sheetWindow' class='window'>
+                <div id="sheetListContainer">
+                    <div id="sheetList" class="unselectable">
+                        
+                    </div>
+                </div>
+                <div id="sheetViewer">
+                </div>
+                <form id="sheetImportForm" onsubmit="return false;">
+                    <textarea id="sheetImportJSON" class="language" data-langplaceholder="_SHEETIMPORTEXPLAIN_"></textarea>
+                    <input type="submit" class="textButton language" data-langvalue="_SHEETIMPORTSEND_" />
+                    <p id="sheetImportError" class="language" data-langhtml="_SHEETIMPORTERROR_"></p>
+                </form>
+                <form id="sheetExportForm" onsubmit="return false;">
+                    <textarea id="sheetExportJSON" class="language" data-langplaceholder="_SHEETEXPORTEXPLAIN_"></textarea>
+                </form>
+                <div id="sheetSaveSuccess">
+                    <h1 class="language" data-langhtml="_SHEETSAVESUCCESSHEADER_"></h1>
+                    <p class="language" data-langhtml="_SHEETSAVESUCCESSMESSAGE_"></p>
+                </div>
+                <div id="sheetSaveError">
+                    <h1 class="language" data-langhtml="_SHEETSAVEERRORHEADER_"></h1>
+                    <p class="language" data-langhtml="_SHEETSAVEERRORMESSAGE_"></p>
+                </div>
+                <div id="sheetButtons">
+                    <a id="saveButton" class="language button" data-langtitle="_SHEETSAVE_"></a>
+                    <a id="editButton" class="language button" data-langtitle="_SHEETEDIT_"></a>
+                    <a id="importButton" class="language button" data-langtitle="_SHEETIMPORT_"></a>
+                    <a id="exportButton" class="language button" data-langtitle="_SHEETEXPORT_"></a>
+                    <a id="automaticButton" class="language button" data-langtitle="_SHEETAUTO_"></a>
+                </div>
+            </div>
+            
             <div id="youtubeWindow" class="window">
                 <div class="shadow" id="youtubePlayer"></div>
             </div>
@@ -644,6 +721,7 @@
             <script src="app/program/GameApp.js"></script>
             <script src="app/program/ChatApp.js"></script>
             <script src="app/program/RoomApp.js"></script>
+            <script src="app/program/SheetApp.js"></script>
             <script src="app/ajax/AjaxController.js"></script>
             <script src="app/ajax/ChangelogAjax.js"></script>
             <script src="app/database/kinds/Message.js"></script>
@@ -651,7 +729,7 @@
             <script src="app/database/kinds/Room.js"></script>
             <script src="app/database/kinds/Invite.js"></script>
             <script src="app/database/kinds/Game.js"></script>
-            <script src="app/database/kinds/Sheet.js"></script>
+            <script type="text/javascript" src="app/database/kinds/Sheet_Instance.js"></script>
             <script src="app/database/ConfigDB.js"></script>
             <script src="app/database/GameDB.js"></script>
             <script src="app/database/RoomDB.js"></script>
@@ -663,6 +741,8 @@
             <script src="app/ui/sounds/SoundUI.js"></script>
             <script src="app/ui/images/ImageUI.js"></script>
             <script src="app/ui/youtube/YoutubeUI.js"></script>
+            <script src="app/ui/sheet/SheetUI.js"></script>
+            <script src="app/ui/sheet/SheetController.js"></script>
             <script src="app/ui/config/AddonConfig.js"></script>
             <script src="app/ui/config/ConfigOption.js"></script>
             <script src="app/ui/config/ConfigUI.js"></script>
@@ -710,7 +790,6 @@
             <!-- Chat Modules End -->
             <!-- Sheet Application -->
                 <script type="text/javascript" src="app/sheet/Sheet.js"></script>
-                <script type="text/javascript" src="app/sheet/Sheet_Instance.js"></script>
                 <script type="text/javascript" src="app/sheet/Sheet_List.js"></script>
                 <script type="text/javascript" src="app/sheet/Variable_Varchar.js"></script>
                 <script type="text/javascript" src="app/sheet/Variable_Picture.js"></script>

@@ -109,8 +109,16 @@ function Sheet ($list, style, baseSheet) {
         
         if (this.style.editing) {
             this.$visible.find('.addRow').show();
+            this.$visible.find('.editOnly').show();
         } else {
             this.$visible.find('.addRow').hide();
+            this.$visible.find('.editOnly').hide();
+        }
+        
+        if (!this.style.sheet.editable) {
+            this.$visible.find('.editableOnly').hide();
+        } else {
+            this.$visible.find('.editableOnly').show();
         }
         
         
