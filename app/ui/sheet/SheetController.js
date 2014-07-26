@@ -105,6 +105,26 @@ function SheetController () {
             return;
         }
         
+        if (typeof this.$listed[sheetid] === 'undefined') {
+            this.$listed[sheetid] = $('<a class="toggled" />');
+            
+            this.$listed[sheetid].on('click', window.app.emulateBind(function () {
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid);
+            }, {sheetid : sheetid, styleid : styleid}));
+            
+            this.$list.append(this.$listed[sheetid]);
+        } else {
+            this.$listed[sheetid].addClass('toggled');
+        }
+        
+        if (typeof this.$listed[this.currentInstance] !== 'undefined') {
+            this.$listed[this.currentInstance].removeClass('toggled');
+        }
+        
+        var oldInstance = this.currentInstance;
+        this.currentInstance = sheetid;
+        this.updateCurrentButton();
+        
         if (typeof this.styles[styleid] === 'undefined') {
             this.styles[styleid] = new window.Style[styleid](window.app.sheetdb.getSheet(sheetid));
             this.styles[styleid].process();
@@ -122,6 +142,7 @@ function SheetController () {
                 });
             }
         } else {
+            window.app.sheetdb.getSheet(oldInstance).values = this.styles[styleid].getObject();
             this.styles[styleid].switchInstance(window.app.sheetdb.getSheet(sheetid));
         }
         
@@ -136,30 +157,6 @@ function SheetController () {
             this.currentStyle = styleid;
         } else {
             this.currentStyle = styleid;
-        }
-        
-        if (typeof this.$listed[sheetid] === 'undefined') {
-            this.$listed[sheetid] = $('<a class="toggled" />');
-            
-            this.$listed[sheetid].on('click', window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid);
-            }, {sheetid : sheetid, styleid : styleid}));
-            
-            this.$list.append(this.$listed[sheetid]);
-        } else {
-            this.$listed[sheetid].addClass('toggled');
-        }
-        
-        if (typeof this.$listed[this.currentInstance] !== 'undefined') {
-            this.$listed[this.currentInstance].removeClass('toggled');
-        }
-        
-        this.currentInstance = sheetid;
-        this.updateCurrentButton();
-        
-        if (typeof window.app.sheetdb.getSheet(sheetid).values['Jogador'] !== 'undefined' && 
-                window.app.sheetdb.getSheet(sheetid).values['Jogador'] === 'NPC') {
-            this.$listed[sheetid].removeClass('character').addClass('nonplayer');
         }
         
         window.app.ui.callRightWindow('sheetWindow');
@@ -179,8 +176,23 @@ function SheetController () {
     
     this.updateCurrentButton = function () {
         this.$listed[this.currentInstance].removeClass('character nonplayer');
-        if (typeof window.app.sheetdb.getSheet(this.currentInstance).values['Jogador'] !== 'undefined' && 
-                window.app.sheetdb.getSheet(this.currentInstance).values['Jogador'] === 'NPC') {
+        
+        if (typeof this.styles[this.currentStyle] !== 'undefined') {
+            var style = this.styles[this.currentStyle];
+            if (typeof style.mainSheet.fields['Jogador'] !== 'undefined') {
+                var jogador = style.mainSheet.fields['Jogador'].getObject();
+            }
+        } else {
+            var sheet = window.app.sheetdb.getSheet(this.currentInstance);
+            if (typeof sheet.values['Jogador'] !== 'undefined') {
+                var jogador = sheet.values['Jogador'];
+            }
+        }
+        
+        
+        
+        
+        if ( jogador === 'NPC') {
             this.$listed[this.currentInstance].addClass('nonplayer');
         } else {
             this.$listed[this.currentInstance].addClass('character');
