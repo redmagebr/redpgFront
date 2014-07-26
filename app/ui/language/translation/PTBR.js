@@ -78,6 +78,11 @@ window.lingo['pt_br'] = {
     _SHEETSAVEERRORHEADER_ : 'Erro',
     _SHEETSAVEERRORMESSAGE_ : 'Não foi possível salvar a ficha, tente novamente.',
     
+    _SHEETWASUPDATED_ : 'foi atualizada.',
+    _SHEETCLICKTOUPDATE_ : 'Clique aqui para recarregar a ficha.',
+    _SHEETCLICKAUTOUPDATEOFF_ : 'Clique aqui para desativar recarregamento automático.',
+    _SHEETCLICKAUTOUPDATEON_ : 'Clique aqui para ativar carregamento automático de fichas.',
+    
     
     /* Login */
     _LOGIN_ : 'E-mail',

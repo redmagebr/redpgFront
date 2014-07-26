@@ -6,6 +6,7 @@ function SheetController () {
     this.$list;
     this.$import;
     this.$export;
+    this.autoUpdate = false;
     
     
     this.$html = $('<div />');
@@ -58,6 +59,10 @@ function SheetController () {
         
         $('#reloadButton').on('click', function () {
             window.app.ui.sheetui.controller.reload(true, false);
+        });
+        
+        $('#automaticButton').on('click', function () {
+            window.app.ui.sheetui.controller.toggleAuto();
         });
         
         $('#fullReloadButton').on('click', function () {
@@ -303,6 +308,7 @@ function SheetController () {
             $('#sheetSaveSuccess').finish().fadeIn().delay(1500).fadeOut();
             $('#sheetSaveError').finish().hide();
             window.app.ui.unblockRight();
+            window.app.ui.sheetui.controller.considerWarning();
         };
         var cbe = function () {
             $('#sheetSaveSuccess').finish().hide();
@@ -349,5 +355,57 @@ function SheetController () {
         }
         
         this.openSheet(oldInstance, oldStyle);
+    };
+    
+    this.updateSpecificSheet = function (sheetid) {
+        if (sheetid === this.currentInstance) {
+            this.reload(true, false);
+            return;
+        }
+        var sheet = window.app.sheetdb.getSheet(sheetid);
+        if (sheet === null) {
+            return;
+        }
+        window.app.ui.blockRight();
+        var cbs = window.app.emulateBind(function () {
+            window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid);
+            window.app.ui.unblockRight();
+        }, {sheetid : sheetid, styleid : sheet.system});
+
+        var cbe = function () {
+            window.app.ui.unblockRight();
+            window.app.ui.callRightWindow('sheetListWindow');
+            window.app.ui.sheetui.$error.show();
+        };
+
+        window.app.sheetapp.loadSheet(sheetid, cbs, cbe);
+    };
+    
+    this.toggleAuto = function (auto) {
+        if (typeof auto === 'undefined') {
+            var auto = !this.autoUpdate;
+        }
+        
+        if (auto) {
+            $('#automaticButton').addClass('toggled');
+            this.autoUpdate = true;
+        } else {
+            this.autoUpdate = false;
+            $('#automaticButton').removeClass('toggled');
+        }
+    };
+    
+    this.considerWarning = function () {
+        if (window.app.ui.chat.cc.room === null) {
+            return false;
+        }
+        var message = new Message();
+        message.setOrigin(window.app.loginapp.user.id);
+        message.roomid = window.app.ui.chat.cc.room.id;
+        message.module = "sheetup";
+        message.setSpecial("sheetid", this.currentInstance);
+        
+        window.app.ui.chat.cc.room.addLocal(message);
+        window.app.chatapp.sendMessage(message);
     };
 }
