@@ -149,7 +149,7 @@ function AvatarController () {
         
         if (callIgnore.indexOf('avatar') === -1) { 
             if (user.avatarS === null || user.avatarS === '') {
-                $user.children('img').attr('src', "images/iconAnon.jpg");
+                $user.children('img').attr('src', "img/chat/iconAnon.jpg");
             } else {
                 $user.children('img').attr('src', user.avatar);
             }
@@ -211,7 +211,7 @@ function AvatarController () {
         if (avatar !== null && avatar !== '') {
             $html.append($('<img />').attr('src', avatar));
         } else {
-            $html.append($('<img />').attr('src', "images/iconAnon.jpg"));
+            $html.append($('<img />').attr('src', "img/chat/iconAnon.jpg"));
         }
         
 //        <div class="avatarWrapper">
@@ -237,7 +237,7 @@ function AvatarController () {
         if (user.avatarS !== null && user.avatarS !== '') {
             this.$uwAvatar.attr('src', user.avatarS);
         } else {
-            this.$uwAvatar.attr('src', "images/iconAnon.jpg");
+            this.$uwAvatar.attr('src', "img/chat/iconAnon.jpg");
         }
         var nick = user.nickname + '#' + user.nicknamesufix;
         var persona = user.personaS;
