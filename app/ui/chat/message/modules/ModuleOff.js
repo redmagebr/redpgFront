@@ -25,9 +25,17 @@ window.chatModules.push({
             user = new User();
             user.nickname = '?';
             user.nicknamesufix = '?';
+            var snowflake = false;
+        } else {
+            var snowflake = user.specialSnowflakeCheck();
         }
         
-        var $jogador = $('<b />').text(user.nickname + '#' + user.nicknamesufix + ':');
+        var $jogador = $('<b />');
+        if (!snowflake) {
+            $jogador.text(user.nickname + '#' + user.nicknamesufix + ':');
+        } else {
+            $jogador.text(user.nickname + ':');
+        }
         $msg.append($jogador).append(' ' + $('<p />').text(msg.msg).html());
         
         if (msg.id !== null) {

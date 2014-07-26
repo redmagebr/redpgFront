@@ -53,4 +53,15 @@ function User () {
     this.isOffline = function (currenttime, afktime) {
         return !(currenttime <= (this.lastrefresh + afktime));
     };
+    
+    this.specialSnowflakeCheck = function () {
+        var users = window.app.userdb.users;
+        
+        for (var i in users) {
+            if (users[i].id !== this.id && users[i].nickname === this.nickname) {
+                return false;
+            }
+        }
+        return true;
+    };
 }

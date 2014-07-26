@@ -25,17 +25,28 @@ window.chatModules.push({
             user = new User();
             user.nickname = '?';
             user.nicknamesufix = '?';
+            var snowflake = false;
+        } else {
+            var snowflake = user.specialSnowflakeCheck();
         }
         
         if (msg.getSpecial("name", null) === null) {
             var $who = $('<span class="language" data-langhtml="_SHAREDIMAGE_" />');
-            $who.attr('data-langp', (user.nickname + '#' + user.nicknamesufix));
+            if (!snowflake) {
+                $who.attr('data-langp', (user.nickname + '#' + user.nicknamesufix));
+            } else {
+                $who.attr('data-langp', (user.nickname));
+            }
             $msg.append($who);
 
             $msg.append (' ');
         } else {
             var $who = $('<span class="language" data-langhtml="_SHAREDTHEIMAGE_" />');
-            $who.attr('data-langp', (user.nickname + '#' + user.nicknamesufix));
+            if (!snowflake) {
+                $who.attr('data-langp', (user.nickname + '#' + user.nicknamesufix));
+            } else {
+                $who.attr('data-langp', (user.nickname));
+            }
             $msg.append($who);
 
             $msg.append (': ');

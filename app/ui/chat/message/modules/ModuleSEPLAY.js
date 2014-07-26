@@ -25,10 +25,17 @@ window.chatModules.push({
             user = new User();
             user.nickname = '?';
             user.nicknamesufix = '?';
+            var snowflake = false;
+        } else {
+            var snowflake = user.specialSnowflakeCheck();
         }
         
         var $who = $('<span class="language" data-langhtml="_SHAREDSOUNDEFFECT_" />');
-        $who.attr('data-langp', (user.nickname + '#' + user.nicknamesufix));
+        if (!snowflake) {
+            $who.attr('data-langp', (user.nickname + '#' + user.nicknamesufix));
+        } else {
+            $who.attr('data-langp', (user.nickname));
+        }
         $msg.append($who);
         
         var name = msg.getSpecial('name', null);

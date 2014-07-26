@@ -47,6 +47,9 @@ window.chatModules.push({
             user.id = msg.origin;
             user.nickname = '?';
             user.nicknamesufix = '?';
+            var snowflake = false;
+        } else {
+            var snowflake = user.specialSnowflakeCheck();
         }
         
         if (votefor !== null) {
@@ -54,7 +57,12 @@ window.chatModules.push({
             return null;
         }
         
-        var $jogador = $('<b />').text(user.nickname + '#' + user.nicknamesufix + ' ');
+        var $jogador = $('<b />');
+        if (!snowflake) {
+            $jogador.text(user.nickname + '#' + user.nicknamesufix + ' ');
+        } else {
+            $jogador.text(user.nickname + ' ');
+        }
         $msg.append($jogador);
         
         $msg.append($('<span class="language" data-langhtml="_VOTECREATED_" />'));
