@@ -48,6 +48,10 @@ function SheetController () {
             window.app.ui.sheetui.controller.exportSheet();
         });
         
+        $('#closeButton').on('click', function () {
+            window.app.ui.sheetui.controller.closeSheet();
+        });
+        
         $('#sheetImportForm').on('submit', function () {
             window.app.ui.sheetui.controller.importValues();
         });
@@ -232,6 +236,8 @@ function SheetController () {
         this.$html.remove();
         this.$css = $('<style />');
         this.$html = $('<div />');
+        
+        window.app.sheetdb.deleteSheet(this.currentInstance);
         
         this.currentStyle = 0;
         this.currentInstance = 0;

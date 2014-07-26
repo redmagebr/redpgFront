@@ -68,6 +68,7 @@ window.lingo['pt_br'] = {
     _SHEETIMPORT_ : 'Importar JSON com Valores',
     _SHEETEXPORT_ : 'Exportar JSON com Valores',
     _SHEETAUTO_ : 'Atualizar Automaticamente (Não implementado)',
+    _SHEETCLOSE_ : 'Fechar a ficha (Mudanças não salvas serão perdidas)',
     _SHEETIMPORTEXPLAIN_ : 'Cole aqui o código JSON da ficha que deseja importar.',
     _SHEETIMPORTSEND_ : 'Assumir nova forma',
     _SHEETEXPORTEXPLAIN_ : 'Código JSON dos valores da ficha',

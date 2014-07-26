@@ -89,6 +89,14 @@
     background-image: url('../img/sheet/iconInbox.png');
 }
 
+#automaticButton {
+    background-image: url('../img/sheet/iconAutomatic.png');
+}
+
+#closeButton {
+    background-image: url('../img/sheet/iconClose.png');
+}
+
 #reloadButton {
     background-image: url('../img/sheet/iconReload.png');
 }
