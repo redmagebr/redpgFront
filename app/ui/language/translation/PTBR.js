@@ -3,6 +3,8 @@ window.lingo['pt_br'] = {
     
     _NEWMESSAGES_ : 'Mensagens',
     
+    _LEAVING_ : 'Tem certeza que deseja sair?',
+    
     /* Sounds */
     _OPENSOUNDS_ : 'Sons',
     _SOUNDSHEADER_ : 'Lista de Sons',
