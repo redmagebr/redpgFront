@@ -18,7 +18,7 @@ function Variable_Integer ($visible, style, missingid, parent) {
         this.default = "0";
     }
     
-    if (isNaN(this.default)) {
+    if (isNaN(this.default, 10)) {
         this.default = 0;
     } else {
         this.default = parseInt(this.default);
@@ -36,6 +36,28 @@ function Variable_Integer ($visible, style, missingid, parent) {
         this.placeholder = this.$visible.attr('data-placeholder');
     } else {
         this.placeholder = null;
+    }
+    
+    if (this.$visible.is('[data-max]')) {
+        this.max = this.$visible.attr('data-max');
+        if (isNaN(this.max, 10)) {
+            this.max = null;
+        } else {
+            this.max = parseInt(this.max);
+        }
+    } else {
+        this.max = null;
+    }
+    
+    if (this.$visible.is('[data-min]')) {
+        this.min = this.$visible.attr('data-min');
+        if (isNaN(this.max, 10)) {
+            this.min = null;
+        } else {
+            this.min = parseInt(this.min);
+        }
+    } else {
+        this.min = null;
     }
 
     this.update$ = function () {
@@ -67,6 +89,12 @@ function Variable_Integer ($visible, style, missingid, parent) {
             value = this.value;
         } else {
             value = parseInt(value,10);
+        }
+        if (this.min !== null & this.min > value) {
+            value = this.min;
+        }
+        if (this.max !== null & this.max < value) {
+            value = this.max;
         }
         if (value !== this.value) {
             this.value = value;
