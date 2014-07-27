@@ -18,6 +18,10 @@ window.chatModules.push({
      * @returns {jQuery}
      */
     get$ : function (msg) {
+        if (window.app.ui.chat.cc.firstPrint) {
+            return null;
+        }
+        
         var sheetid = msg.getSpecial('sheetid', 0);
         if (typeof window.app.ui.sheetui.controller.$listed[sheetid] === 'undefined') {
             return null;
