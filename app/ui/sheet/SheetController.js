@@ -9,8 +9,10 @@ function SheetController () {
     this.autoUpdate = false;
     
     
-    this.$html = $('<div />');
-    this.$css = $('<style />');
+    this.$cleanhtml = $('<div />');
+    this.$cleancss = $('<style />');
+    this.$html = this.$cleanhtml;
+    this.$css = this.$cleancss;
     
     this.init = function () {
         this.$list = $('#sheetList').empty();
@@ -22,6 +24,7 @@ function SheetController () {
         
         $('#sheetImportForm').hide();
         $('#sheetExportForm').hide();
+        
         
         
         window.Style = {};
@@ -166,13 +169,12 @@ function SheetController () {
         }
         
         if (this.currentStyle !== styleid) {
-            this.$html.remove();
-            this.$css.remove();
-            
+            this.$css.detach();
+            this.$html.detach();
             this.$html = this.styles[styleid].get$();
             this.$css = this.styles[styleid].get$css();
-            $('head').append(this.$css);
             $('#sheetViewer').empty().append(this.$html);
+            $('head').append(this.$css);
             this.currentStyle = styleid;
         } else {
             this.currentStyle = styleid;
@@ -237,10 +239,8 @@ function SheetController () {
         this.$listed[this.currentInstance].remove();
         delete this.$listed[this.currentInstance];
         
-        this.$css.remove();
-        this.$html.remove();
-        this.$css = $('<style />');
-        this.$html = $('<div />');
+        this.$css.detach();
+        this.$html.detach();
         
         window.app.sheetdb.deleteSheet(this.currentInstance);
         
@@ -334,10 +334,10 @@ function SheetController () {
             var sheet = window.app.sheetdb.getSheet(this.currentInstance);
             var style = this.styles[this.currentStyle];
             sheet.values = style.getObject();
-            this.$css.remove();
-            this.$html.remove();
-            this.$css = $('<style />');
-            this.$html = $('<div />');
+            this.$css.detach();
+            this.$html.detach();
+            this.$css = this.$cleancss;
+            this.$html = this.$cleanhtml;
             style.seppuku();
             delete this.styles[this.currentStyle];
             delete window.Style[this.currentStyle];
