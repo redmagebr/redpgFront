@@ -40,7 +40,7 @@ window.chatModules.push({
         
         var name = msg.getSpecial('name', null);
         
-        if (name != null) {
+        if (name !== null) {
             $msg.append(' ');
             $msg.append($("<span />").text('"' + name + '".'));
         }
@@ -50,6 +50,7 @@ window.chatModules.push({
         var cleanMsg = msg.msg.trim();
         
         var $link = $('<a class="language" data-langhtml="_SOUNDLINK_" />');
+        $link.attr('href', cleanMsg);
         $link.bind('click', window.app.emulateBind(
             function () {
                 window.app.ui.chat.audioc.playse(this.link);
