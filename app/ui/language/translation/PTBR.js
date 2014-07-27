@@ -35,6 +35,8 @@ window.lingo['pt_br'] = {
     
     /* Sheets */
     
+    _MSGLOSTHP_ : 'perdeu HP',
+    
     _SHEETSHEADER_ : 'Fichas',
     _SHEETSEXPLAIN_ : 'Fichas são algo que mestres e seus jogadores podem guardar no sistema, garantindo que todos estejam vendo a mesma versão desse recurso.',
     _SHEETSEXPLAIN2_ : 'Normalmente são usadas para guardar as informações de personagens, mas têm o potencial para guardar qualquer tipo de informação.',
