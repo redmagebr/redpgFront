@@ -192,6 +192,9 @@ function SheetController () {
             $('#saveButton').hide();
             $('#editButton').hide();
             $('#importButton').hide();
+            if (this.styles[this.currentStyle].editing) {
+                this.styles[this.currentStyle].toggleEdit();
+            }
         }
     };
     
