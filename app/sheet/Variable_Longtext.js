@@ -31,9 +31,15 @@ function Variable_Longtext ($visible, style, missingid, parent) {
     } else {
         this.placeholder = null;
     }
+    
+    if (this.$visible.is('[data-editable]')) {
+        this.editable = this.$visible.attr('data-editable') === '1';
+    } else {
+        this.editable = true;
+    }
 
     this.update$ = function () {
-        if (this.style.editing) {
+        if (this.style.editing && this.editable) {
             var $input = $('<textarea spellcheck="false" />');
             $input.val(this.value);
             
