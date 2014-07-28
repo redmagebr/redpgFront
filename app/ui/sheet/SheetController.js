@@ -163,7 +163,7 @@ function SheetController () {
             }
         } else {
             if (window.app.sheetdb.getSheet(oldInstance) !== null) {
-                window.app.sheetdb.getSheet(oldInstance).values = this.styles[styleid].getObject();
+                window.app.sheetdb.getSheet(oldInstance).values = this.styles[this.currentStyle].getObject();
             }
             this.styles[styleid].switchInstance(window.app.sheetdb.getSheet(sheetid));
         }
