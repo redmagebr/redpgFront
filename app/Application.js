@@ -1,6 +1,6 @@
 /** 
  * @param {boolean} debug
- * @class AplicaÃ§Ã£o Completa
+ * @class Application
  * @constructor
  * @requires UI
  */
