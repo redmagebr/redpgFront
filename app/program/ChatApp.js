@@ -70,7 +70,10 @@ function ChatApp () {
         
         this.defaultTimeout();
         
-        this.newTimeout(true);
+        
+        if (!this.running) {
+            this.newTimeout(true);
+        }
     };
     
     this.newTimeout = function (now) {
