@@ -38,6 +38,8 @@ function UI () {
     
     this.sheetui = new SheetUI();
     
+    this.navigator = new Navigator();
+    
     /**
      * Only call element once.
      */
@@ -108,6 +110,7 @@ function UI () {
         this.loginui.init();
         this.youtubeui.init();
         this.sheetui.init();
+        this.navigator.init();
         this.handleResize();
         
         this.$leftBlocker = $('#leftBlock');
@@ -204,13 +207,17 @@ function UI () {
             this.$leftWindow.addClass('fullScreen');
             this.$rightWindow.addClass('fullScreen');
             this.$leftHandler.addClass('fullScreen');
+            this.$leftHandler.removeAttr('style');
             this.$rightHandler.addClass('fullScreen');
+            this.$rightHandler.removeAttr('style');
             this.$pictureContainer.addClass('fullScreen');
         } else {
             this.$leftWindow.removeClass('fullScreen');
             this.$rightWindow.removeClass('fullScreen');
             this.$leftHandler.removeClass('fullScreen');
+            this.$leftHandler.css('left', '-100px');
             this.$rightHandler.removeClass('fullScreen');
+            this.$rightHandler.css('right', '-100px');
             this.$pictureContainer.removeClass('fullScreen');
         }
     };

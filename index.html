@@ -23,6 +23,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheet.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/navigator.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
@@ -141,6 +142,7 @@
             <a id='callChatWindowBt' class="button"><span class="language" data-langhtml="_CALLCHATWINDOW_"></span></a>
             <a id='callGamesWindowBt' class="button"><span class="language" data-langhtml="_GAMES_"></span></a>
             <a id='callSettingsWindowBt' class="button"><span class="language" data-langhtml="_SETTINGS_"></span></a>
+            <a id='navigationBt' class="button"><span class="language" data-langhtml="_NAVIGATOR_"></span></a>
             <a id='logoutBt' class="button"><span class="language" data-langhtml="_LOGOUT_"></span></a>
         </div>
         <div id="rightHandler">
@@ -539,6 +541,20 @@
                 </div>
             </div>
             
+            <div id="navigationLinksWindow" class="window">
+                <div class="shadow">
+                    <a id="forumBt" class="button" onclick="window.app.ui.navigator.navigate('http://forum.redpg.com.br');"></a>
+                    <a id="regrasBt" class="button" onclick="window.app.ui.navigator.navigate('http://rules.redpg.com.br');"></a>
+                </div>
+            </div>
+            
+            <div id="navigationWindow" class="window">
+                <div class="shadow">
+                    <iframe id="navigationiFrame" frameborder="0">
+                    </iframe>
+                </div>
+            </div>
+            
         </div>
         <div id="pictureContainer" class="unselectable">
             <div id="pictureShow">
@@ -767,6 +783,7 @@
             <script src="app/ui/games/GameInviteUI.js"></script>
             <script src="app/ui/games/GameInvite$.js"></script>
             <script src="app/ui/login/LoginUI.js"></script>
+            <script src="app/ui/navigator/Navigator.js"></script>
             <!-- Chat Modules -->
                 <script src="app/ui/chat/message/modules/ModuleRoleplay.js"></script>
                 <script src="app/ui/chat/message/modules/ModuleYoutube.js"></script>
