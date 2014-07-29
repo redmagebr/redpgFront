@@ -26,7 +26,10 @@ function YoutubeUI () {
         if (autoplay) {
             id = id + "?autoplay=1";
         }
-        var $play = $('<embed type="application/x-shockwave-flash" src="http://www.youtube.com/v/' + id + '" />');
+        //var $play = $('<embed type="application/x-shockwave-flash" src="http://www.youtube.com/v/' + id + '" />');
+        
+        var $play = $('<iframe id="youtubeiFrame" class="youtube-player" type="text/html" src="http://www.youtube.com/embed/' + id + '" allowfullscreen frameborder="0"></iframe>');
+        
         this.$player.empty().append($play);
         
         var $a = $('<a class="button" />');

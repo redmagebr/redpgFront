@@ -23,3 +23,9 @@
     right: 0px;
     background-image: url('../img/buttonClose.png');
 }
+
+#youtubeiFrame {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
