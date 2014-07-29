@@ -7,6 +7,7 @@ function SheetController () {
     this.$import;
     this.$export;
     this.autoUpdate = false;
+    this.opening = false;
     
     
     this.$cleanhtml = $('<div />');
@@ -18,6 +19,8 @@ function SheetController () {
         this.$list = $('#sheetList').empty();
         this.$import = $('#sheetImportJSON');
         this.$export = $('#sheetExportJSON');
+        this.$importForm = $('#sheetImportForm');
+        this.$exportForm = $('#sheetExportForm');
         
         $('#sheetSaveSuccess').hide();
         $('#sheetSaveError').hide();
@@ -25,6 +28,15 @@ function SheetController () {
         $('#sheetImportForm').hide();
         $('#sheetExportForm').hide();
         
+        
+        this.$closeButton = $('#closeButton');
+        this.$importButton = $('#importButton');
+        this.$saveButton = $('#saveButton');
+        this.$editButton = $('#editButton');
+        this.$exportButton = $('#exportButton');
+        this.$automaticButton = $('#automaticButton');
+        this.$reloadButton = $('#reloadButton');
+        this.$fullReloadButton = $('#fullReloadButton');
         
         
         window.Style = {};
@@ -75,6 +87,15 @@ function SheetController () {
     
     this.toggleEdit = function () {
         this.styles[this.currentStyle].toggleEdit();
+        this.considerEditing();
+    };
+    
+    this.considerEditing = function () {
+        if (this.styles[this.currentStyle].editing) {
+            this.$editButton.addClass('toggled');
+        } else {
+            this.$editButton.removeClass('toggled');
+        }
     };
     
     this.callSelf = function () {
@@ -125,6 +146,15 @@ function SheetController () {
             return;
         }
         
+        this.$importForm.hide();
+        this.$exportForm.hide();
+        this.$importButton.removeClass('toggled');
+        this.$exportButton.removeClass('toggled');
+        
+        this.opening = true;
+        
+        var oldChanged = window.app.sheetdb.getSheet(sheetid).changed;
+        
         if (typeof this.$listed[sheetid] === 'undefined') {
             this.$listed[sheetid] = $('<a class="toggled" />');
             
@@ -143,7 +173,6 @@ function SheetController () {
         
         var oldInstance = this.currentInstance;
         this.currentInstance = sheetid;
-        this.updateCurrentButton();
         
         if (typeof this.styles[styleid] === 'undefined') {
             this.styles[styleid] = new window.Style[styleid](window.app.sheetdb.getSheet(sheetid));
@@ -161,6 +190,10 @@ function SheetController () {
                     window.app.ui.sheetui.controller.updateCurrentButton();
                 });
             }
+            
+            this.styles[styleid].mainSheet.$visible.on('hasChanged', function () {
+                window.app.ui.sheetui.controller.considerChanged();
+            });
         } else {
             if (window.app.sheetdb.getSheet(oldInstance) !== null) {
                 window.app.sheetdb.getSheet(oldInstance).values = this.styles[this.currentStyle].getObject();
@@ -184,21 +217,48 @@ function SheetController () {
         
         var sheet = window.app.sheetdb.getSheet(this.currentInstance);
         
+        sheet.changed = oldChanged;
+        
         if (sheet.editable) {
-            $('#saveButton').show();
-            $('#editButton').show();
-            $('#importButton').show();
+            this.$saveButton.show();
+            this.$editButton.show();
+            this.$importButton.show();
         } else {
-            $('#saveButton').hide();
-            $('#editButton').hide();
-            $('#importButton').hide();
+            this.$saveButton.hide();
+            this.$editButton.hide();
+            this.$importButton.hide();
             if (this.styles[this.currentStyle].editing) {
-                this.styles[this.currentStyle].toggleEdit();
+                this.toggleEdit();
             }
+        }
+        this.opening = false;
+        
+        this.$reloadButton.show();
+        this.$fullReloadButton.show();
+        this.$automaticButton.show();
+        this.$closeButton.show();
+        this.$exportButton.show();
+        this.considerChanged();
+        this.considerEditing();
+        this.updateCurrentButton();
+    };
+    
+    this.considerChanged = function () {
+        if (this.opening) {
+            return;
+        }
+        var sheet = window.app.sheetdb.getSheet(this.currentInstance);
+        if (sheet.changed) {
+            this.$saveButton.addClass('toggled');
+        } else {
+            this.$saveButton.removeClass('toggled');
         }
     };
     
     this.updateCurrentButton = function () {
+        if (this.opening) {
+            return;
+        }
         this.$listed[this.currentInstance].removeClass('character nonplayer');
         
         if (typeof this.styles[this.currentStyle] !== 'undefined') {
@@ -249,6 +309,15 @@ function SheetController () {
         
         this.currentStyle = 0;
         this.currentInstance = 0;
+        
+        this.$reloadButton.hide();
+        this.$fullReloadButton.hide();
+        this.$automaticButton.hide();
+        this.$closeButton.hide();
+        this.$exportButton.hide();
+        this.$editButton.hide();
+        this.$importButton.hide();
+        this.$saveButton.hide();
     };
     
     this.importValues = function () {
@@ -278,6 +347,7 @@ function SheetController () {
         var $form = $('#sheetImportForm');
         if ($form.is(':visible')) {
             $form.finish().fadeOut();
+            this.$importButton.removeClass('toggled');
             return;
         }
         
@@ -285,13 +355,17 @@ function SheetController () {
         this.$import.val('');
         
         $form.finish().fadeIn();
+        this.$importButton.addClass('toggled');
+        this.$exportButton.removeClass('toggled');
     };
     
     this.exportSheet = function () {
         $('#sheetImportForm').finish().fadeOut();
+        this.$importButton.removeClass('toggled');
         var $form = $('#sheetExportForm');
         if ($form.is(':visible')) {
             $form.finish().fadeOut();
+            this.$exportButton.removeClass('toggled');
             return;
         }
         
@@ -302,6 +376,7 @@ function SheetController () {
         );
         
         $form.finish().fadeIn();
+        this.$exportButton.addClass('toggled');
     };
     
     this.saveSheet = function () {
@@ -312,6 +387,9 @@ function SheetController () {
             $('#sheetSaveError').finish().hide();
             window.app.ui.unblockRight();
             window.app.ui.sheetui.controller.considerWarning();
+            var sheet = window.app.sheetdb.getSheet(window.app.ui.sheetui.controller.currentInstance);
+            sheet.changed = false;
+            window.app.ui.sheetui.controller.considerChanged();
         };
         var cbe = function () {
             $('#sheetSaveSuccess').finish().hide();

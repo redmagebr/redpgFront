@@ -63,46 +63,41 @@
 
 #sheetButtons > a {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-#sheetButtons > a.toggled {
-    background-color: rgba(0,255,0,.5);
+    width: 40px;
+    height: 40px;
+    margin: 0px;
 }
 
 #saveButton {
-    background-image: url('../img/sheet/iconSave.png');
+    background-image: url('../img/sheet/iconSave2.png');
 }
 
 #editButton {
-    background-image: url('../img/sheet/iconEdit.png');
+    background-image: url('../img/sheet/iconEdit2.png');
 }
 
 #exportButton {
-    background-image: url('../img/sheet/iconOutbox.png');
+    background-image: url('../img/sheet/iconOutbox2.png');
 }
 
 #importButton {
-    background-image: url('../img/sheet/iconInbox.png');
+    background-image: url('../img/sheet/iconInbox2.png');
 }
 
 #automaticButton {
-    background-image: url('../img/sheet/iconAutomatic.png');
+    background-image: url('../img/sheet/iconAutomatic2.png');
 }
 
 #closeButton {
-    background-image: url('../img/sheet/iconClose.png');
+    background-image: url('../img/sheet/iconClose2.png');
 }
 
 #reloadButton {
-    background-image: url('../img/sheet/iconReload.png');
+    background-image: url('../img/sheet/iconReload2.png');
 }
 
 #fullReloadButton {
-    background-image: url('../img/sheet/iconFullReload.png');
+    background-image: url('../img/sheet/iconFullReload2.png');
 }
 
 #sheetListContainer {
@@ -230,9 +225,9 @@
 
 #sheetButtons {
     position: absolute;
-    bottom: 10px;
-    height: 20px;
-    left: 10px;
-    right: 10px;
+    bottom: 0px;
+    height: 40px;
+    left: 0px;
+    right: 0px;
     text-align: center;
 }
