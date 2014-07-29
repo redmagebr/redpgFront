@@ -128,16 +128,14 @@ window.chatModules.push({
 
             $msg.append($('<a class="equals" />').text('='));
             $msg.append($('<span class="box square sum" />').text(sum));
-
-
-            if (msg.msg !== null && msg.msg !== '') {
-                var $reason = $('<span class="reason" />');
-                $reason.append($('<b class="language" data-langhtml="_DICEREASON_" />'));
-                $reason.append($('<p />').text(msg.msg).html());
-
-                $msg.append($reason);
-            }
+        }
         
+        if (msg.msg !== null && msg.msg !== '') {
+            var $reason = $('<span class="reason" />');
+            $reason.append($('<b class="language" data-langhtml="_DICEREASON_" />'));
+            $reason.append($('<p />').text(msg.msg).html());
+
+            $msg.append($reason);
         }
         
         if (user === null) {
