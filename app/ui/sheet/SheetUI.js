@@ -327,9 +327,14 @@ function SheetUI() {
         
         var $select = $('#sheetCreationGame').empty();
         var $option;
+        var name;
         
         for (var i = 0; i < data.length; i++) {
-            $option = $('<option value="' + data[i].id + '" />').text(data[i].name);
+            name = data[i].name;
+            if (name.charAt(0) === '_' && window.app.ui.language.getLingo(name) !== name) {
+                name = window.app.ui.language.getLingo(name);
+            }
+            $option = $('<option value="' + data[i].id + '" />').text(name);
             $select.append($option);
         }
     };

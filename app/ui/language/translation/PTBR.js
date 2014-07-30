@@ -367,5 +367,14 @@ window.lingo['pt_br'] = {
     _BACKWARDSCOMPATIBILITY_ : 'Compatibilidade com versões anteriores não é intencional. Não existem garantias de que versões desatualizadas funcionem e é recomendável sempre utilizar a versão mais recente do aplicativo.',
     _YOURVERSION_ : 'A sua versão é',
     _LASTVERSION_ : 'A versão mais recente é',
-    _CHANGELOGNOTLOADED_ : 'Não foi possível carregar a lista de atualizações.'
+    _CHANGELOGNOTLOADED_ : 'Não foi possível carregar a lista de atualizações.',
+    
+    
+    
+    
+    /* Game Control Sheet */
+    
+    _GCSTYLE_ : 'Controle de Jogo'
+    
+    
 };
