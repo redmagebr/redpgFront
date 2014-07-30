@@ -154,6 +154,7 @@
             <a id='callSheetWindowBt' class="button"><span class="language" data-langhtml="_SHEET_"></span></a>
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
         </div>
+        
         <div id="leftWindow">
             <div id="leftBlock">
                 <a></a>
@@ -503,6 +504,19 @@
                         </div>
                     </div>
                     <div id="dadosForm">
+                        <div id="musicPlayerWrapper">
+                            <div id="musicPlayerVolumeWrapper">
+                                <span id="musicPlayerCurrentVolume">
+
+                                </span>
+                            </div>
+                            <audio id="musicPlayerAudioBGM"></audio>
+                            <audio id="musicPlayerAudioSE"></audio>
+                            <audio id='diceRollAudio' src='img/chat/diceRolling.m4a' preload></audio>
+                            <progress value="0.5" max="1" id="musicPlayerProgressCurrent"></progress>
+                            <a id="musicPlayerActionButton" class="button"></a>
+                            <a id="musicPlayerRepeatButton" class="button"></a>
+                        </div>
                         <form id="chatDadosForm" onsubmit="return false;">
                             <a id="dadosFormQuantidadePrompt" class="prompt language" data-langtitle="_DICENUMBEREXPLAIN_"></a>
                             <a id="dadosFormFacesPrompt" class="prompt language" data-langtitle="_DICEFACESEXPLAIN_"></a>
