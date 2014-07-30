@@ -1,0 +1,187 @@
+/* On Fonts used:
+
+   All Fonts were taken from dafont.com
+   Whenever license wasn't included in font archive, it was assumed dafont.com's License on the font archive was accurate.
+   Only free license fonts were used and any and all licenses which were included with them are accessible here.
+   If your font was used and it wasn't free or you just want it out for any reason at all,
+   contact the administrator and it will be removed promptly.
+   
+*/
+
+/* Elven Common Speak by Nancy Lorenz - Free License */
+@font-face {
+    font-family: 'elvencommonspeak';
+    src: url('Elvish/elvencommonspeak-webfont.eot');
+    src: url('Elvish/elvencommonspeak-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Elvish/elvencommonspeak-webfont.woff') format('woff'),
+         url('Elvish/elvencommonspeak-webfont.ttf') format('truetype'),
+         url('Elvish/elvencommonspeak-webfont.svg#elvencommonspeakregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Hobbiton Brush Hand by Nancy Lorenz - Free License */
+@font-face {
+    font-family: 'hobbiton_brush_hand';
+    src: url('Draconic/hobbitonbrushhand-webfont.eot');
+    src: url('Draconic/hobbitonbrushhand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Draconic/hobbitonbrushhand-webfont.woff') format('woff'),
+         url('Draconic/hobbitonbrushhand-webfont.ttf') format('truetype'),
+         url('Draconic/hobbitonbrushhand-webfont.svg#hobbiton_brushhahobbitonbrush') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Alphabet of the Magi by Author Unknown - Free License */
+@font-face {
+    font-family: 'alphabet_of_the_magi';
+    src: url('Celestan/alpmagi-webfont.eot');
+    src: url('Celestan/alpmagi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Celestan/alpmagi-webfont.woff') format('woff'),
+         url('Celestan/alpmagi-webfont.ttf') format('truetype'),
+         url('Celestan/alpmagi-webfont.svg#alphabet_of_the_magiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Code 39 by Logitogo GmbH - Freeware License - License included in "/Binary/manual_and_license_V1.2.pdf" */
+@font-face {
+    font-family: 'code39';
+    src: url('Binary/code-39-logitogo-webfont.eot');
+    src: url('Binary/code-39-logitogo-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Binary/code-39-logitogo-webfont.woff') format('woff'),
+         url('Binary/code-39-logitogo-webfont.ttf') format('truetype'),
+         url('Binary/code-39-logitogo-webfont.svg#code-39-logitogoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Bhains by Simran Sahni - Free License */
+@font-face {
+    font-family: 'bhains';
+    src: url('Bestial Common/bhains-webfont.eot');
+    src: url('Bestial Common/bhains-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Bestial Common/bhains-webfont.woff') format('woff'),
+         url('Bestial Common/bhains-webfont.ttf') format('truetype'),
+         url('Bestial Common/bhains-webfont.svg#bhainsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Eladrin by Pixel Sagas - Freeware Font License - License included in "/Ancient Tech/Font License.txt" */
+@font-face {
+    font-family: 'eladrin';
+    src: url('Ancient Tech/eladrin-webfont.eot');
+    src: url('Ancient Tech/eladrin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ancient Tech/eladrin-webfont.woff') format('woff'),
+         url('Ancient Tech/eladrin-webfont.ttf') format('truetype'),
+         url('Ancient Tech/eladrin-webfont.svg#eladrinregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Moon Runes by Morten Bek - License included in "/Ancient Magic/MOONRUNE.txt" */
+@font-face {
+    font-family: 'moon_runes';
+    src: url('Ancient Magic/moonrune-webfont.eot');
+    src: url('Ancient Magic/moonrune-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ancient Magic/moonrune-webfont.woff') format('woff'),
+         url('Ancient Magic/moonrune-webfont.ttf') format('truetype'),
+         url('Ancient Magic/moonrune-webfont.svg#moon_runesregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Glagolitsa by Daniel Werneck - Free License */
+@font-face {
+    font-family: 'glagolitsa';
+    src: url('Ancient Dwarven/glagolitsa-webfont.eot');
+    src: url('Ancient Dwarven/glagolitsa-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ancient Dwarven/glagolitsa-webfont.woff') format('woff'),
+         url('Ancient Dwarven/glagolitsa-webfont.ttf') format('truetype'),
+         url('Ancient Dwarven/glagolitsa-webfont.svg#glagolitsaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* AA-Hansika by Shanwasantha Kumara - Free License */
+@font-face {
+    font-family: 'aa_hansika';
+    src: url('Alien/aa_han_1-webfont.eot');
+    src: url('Alien/aa_han_1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Alien/aa_han_1-webfont.woff') format('woff'),
+         url('Alien/aa_han_1-webfont.ttf') format('truetype'),
+         url('Alien/aa_han_1-webfont.svg#aa-hansika.plain.') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Destronic Graffiti by Pixel Sagas - Free License */
+@font-face {
+    font-family: 'destronic_grafitti';
+    src: url('Abyssal/destronic_grafitti-webfont.eot');
+    src: url('Abyssal/destronic_grafitti-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Abyssal/destronic_grafitti-webfont.woff') format('woff'),
+         url('Abyssal/destronic_grafitti-webfont.ttf') format('truetype'),
+         url('Abyssal/destronic_grafitti-webfont.svg#destronic_grafittiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Lassus by David Rakowski - Font Free License */
+@font-face {
+    font-family: 'lassus';
+    src: url('Musical/lassus-webfont.eot');
+    src: url('Musical/lassus-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Musical/lassus-webfont.woff') format('woff'),
+         url('Musical/lassus-webfont.ttf') format('truetype'),
+         url('Musical/lassus-webfont.svg#lassusregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/* Controlando o chat */
+
+#areaChatBox p.chatMensagem span.linguaAbyssal {
+    font-family: destronic_grafitti;
+}
+
+#areaChatBox p.chatMensagem span.linguaCelestan {
+    font-family: alphabet_of_the_magi;
+}
+
+#areaChatBox p.chatMensagem span.linguaAlien {
+    font-family: aa_hansika;
+}
+
+#areaChatBox p.chatMensagem span.linguaAncientMagi {
+    font-family: eladrin;
+}
+
+#areaChatBox p.chatMensagem span.linguaAncientTech {
+    font-family: glagolitsa;
+}
+
+#areaChatBox p.chatMensagem span.linguaBestialCommon {
+    font-family: bhains;
+}
+
+#areaChatBox p.chatMensagem span.linguaBinary {
+    font-family: code39;
+}
+
+#areaChatBox p.chatMensagem span.linguaDraconic {
+    font-family: hobbiton_brush_hand;
+}
+
+#areaChatBox p.chatMensagem span.linguaElvish {
+    font-family: elvencommonspeak;
+    line-height: 1.2em;
+}
+
+#areaChatBox p.chatMensagem span.linguaPadrao {
+    font-family: elvencommonspeak;
+    line-height: 1.2em;
+}

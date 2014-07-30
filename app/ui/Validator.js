@@ -30,6 +30,11 @@ function Validator () {
                 console.log('invalidNickname');
                 return false;
             }
+        } else if (valtype === 'language') {
+            if (!val.match('^[a-zA-Z]{3,12}$')) {
+                console.log('invalidLanguage');
+                return false;
+            }
         } else if (valtype === 'longname') {
             if (!val.match('^[a-zA-Z0-9 çÇéÉíÍóÓáÁàÀâÂÊêãÃõÕôÔ]{3,200}$') || val.charAt(0) === ' ') {
                 console.log('invalidLongName');

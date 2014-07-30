@@ -122,19 +122,6 @@
     color: #a81f24;
 }
 
-#chatMessages > p.chatNarrativa > span.important:before {
-    content: '[ ';
-}
-
-#chatMessages > p.chatNarrativa > span.important:after {
-    content: ' ]';
-}
-
-#chatMessages > p.chatNarrativa > span.important {
-    color: #a000b2;
-    font-weight: bold;
-}
-
 #chatMessages > p.chatNarrativa {
     color: #610c61;
     color: #6a6a6a;
@@ -268,17 +255,10 @@
     color: #9a0000;
 }
 
-#chatMessages > p.chatMensagem span.important:before {
-    content: '[ ';
-}
-
-#chatMessages > p.chatMensagem span.important:after {
-    content: ' ]';
-}
-
 #chatMessages > p.chatMensagem span.important {
     font-weight: bold;
     color: #001f8d;
+    display: inline-block;
 }
 
 #chatMessages > p.chatVote:before {

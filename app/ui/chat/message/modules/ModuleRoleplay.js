@@ -19,53 +19,139 @@ window.chatModules.push({
      */
     get$ : function (msg) {
         var user = msg.getUser();
+        var lingua = msg.getSpecial('lingua', 'Padrao');
+        var valid = new Validator();
+        if (!valid.validate(lingua, 'language')) {
+            lingua = 'Padrao';
+        }
+        
+        
         var $msg = $('<p class="chatMensagem" />');
         
         var $persona = $('<b />').text(msg.getSpecial('persona', '????'));
         var msgText = $('<p />').text(msg.msg).html();
         
-        msgText = msgText.split('*');
-        if (msgText.length === 1) {
-            msgText = msgText[0];
-        } else {
-            for (var i = 1; i < msgText.length; i += 2) {
-                msgText[i] = '<span class="action">*' + msgText[i] + '*</span>';
-            }
-            msgText = msgText.join('');
-        }
         
-        var go = true;
-        var idx1;
-        var idx2;
-        while (go) {
-            idx1 = msgText.indexOf('[');
-            idx2 = msgText.indexOf(']');
-            if (idx1 === -1 || idx2 === -1) {
-                go = false;
-            } else {
-                msgText = msgText.replace('[', '<span class="important">');
-                msgText = msgText.replace(']', '</span>');
-            }
-        }
+        var $spans = [];
+        var pmsg = '';
+        var open = null;
         
-        var newMsg = '';
-        var open = false;
+        var char;
+        var $span;
         for (var i = 0; i < msgText.length; i++) {
-            if (msgText.charAt(i) !== '(' && msgText.charAt(i) !== ')') {
-                newMsg += msgText.charAt(i);
-            } else if (msgText.charAt(i) === '(') {
-                newMsg += '<span class="thought">(';
-                open = true;
+            char = msgText.charAt(i);
+            if (char === '*') {
+                if (open === '*') {
+                    $span = $('<span class="action" />').text('*' + pmsg + '*');
+                    $spans.push($span);
+                    pmsg = '';
+                    open = null;
+                } else if (open === null) {
+                    open = '*';
+                    if (pmsg.length > 0) {
+                        $span = $('<span />').text(pmsg);
+                        $span.addClass('lingua' + lingua);
+                        $span.addClass()
+                        $spans.push($span);
+                    }
+                    pmsg = '';
+                } else {
+                    pmsg = pmsg + char;
+                }
+            } else if (['[', ']'].indexOf(char) !== -1) {
+                if (char === ']' && open === '[') {
+                    $span = $('<span class="important" />').text('[' + pmsg + ']');
+                    $spans.push($span);
+                    pmsg = '';
+                    open = null;
+                } else if (char === '[' && open === null) {
+                    open = '[';
+                    if (pmsg.length > 0) {
+                        $span = $('<span />').text(pmsg);
+                        $span.addClass('lingua' + lingua);
+                        $spans.push($span);
+                    }
+                    pmsg = '';
+                } else {
+                    pmsg = pmsg + char;
+                }
+            } else if (['(', ')'].indexOf(char) !== -1) {
+                if (char === ')' && open === '(') {
+                    $span = $('<span class="thought" />').text('(' + pmsg + ')');
+                    $spans.push($span);
+                    pmsg = '';
+                    open = null;
+                } else if (char === '(' && open === null) {
+                    open = '(';
+                    if (pmsg.length > 0) {
+                        $span = $('<span />').text(pmsg);
+                        $span.addClass('lingua' + lingua);
+                        $spans.push($span);
+                    }
+                    pmsg = '';
+                } else {
+                    pmsg = pmsg + char;
+                }
             } else {
-                newMsg += ')</span>';
-                open = false;
+                pmsg = pmsg + char;
             }
         }
-        if (open) newMsg += ")</span>";
+        if (open !== null) {
+            pmsg = open + pmsg;
+        }
         
-        msgText = newMsg;
+        if (pmsg.length > 0) {
+            $span = $('<span />').text(pmsg);
+            $span.addClass('lingua' + lingua);
+            $spans.push($span);
+        }
         
-        $msg.append($persona).append(': ' + msgText);
+        
+//        msgText = msgText.split('*');
+//        if (msgText.length === 1) {
+//            msgText = msgText[0];
+//        } else {
+//            for (var i = 1; i < msgText.length; i += 2) {
+//                msgText[i] = '<span class="action">*' + msgText[i] + '*</span>';
+//            }
+//            msgText = msgText.join('');
+//        }
+//        
+//        var go = true;
+//        var idx1;
+//        var idx2;
+//        while (go) {
+//            idx1 = msgText.indexOf('[');
+//            idx2 = msgText.indexOf(']');
+//            if (idx1 === -1 || idx2 === -1) {
+//                go = false;
+//            } else {
+//                msgText = msgText.replace('[', '<span class="important">');
+//                msgText = msgText.replace(']', '</span>');
+//            }
+//        }
+//        
+//        var newMsg = '';
+//        var open = false;
+//        for (var i = 0; i < msgText.length; i++) {
+//            if (msgText.charAt(i) !== '(' && msgText.charAt(i) !== ')') {
+//                newMsg += msgText.charAt(i);
+//            } else if (msgText.charAt(i) === '(') {
+//                newMsg += '<span class="thought">(';
+//                open = true;
+//            } else {
+//                newMsg += ')</span>';
+//                open = false;
+//            }
+//        }
+//        if (open) newMsg += ")</span>";
+//        
+//        msgText = newMsg;
+        
+        $msg.append($persona).append(': ');
+        for (i = 0; i < $spans.length; i++) {
+            $msg.append($spans[i]);
+        }
         
         if (user === null) {
             user = new User();
