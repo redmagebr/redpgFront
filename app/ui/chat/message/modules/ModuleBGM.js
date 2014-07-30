@@ -50,7 +50,7 @@ window.chatModules.push({
         var cleanMsg = msg.msg.trim();
         
         var $link = $('<a class="language" data-langhtml="_SOUNDLINK_" />');
-        $link.attr('href', cleanMsg);
+        //$link.attr('href', cleanMsg);
         $link.bind('click', window.app.emulateBind(
             function () {
                 window.app.ui.chat.audioc.play(this.link);
