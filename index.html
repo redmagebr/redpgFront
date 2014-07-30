@@ -24,6 +24,8 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/sheet.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/navigator.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/dicePanel.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/musicDock.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
@@ -517,19 +519,6 @@
                         </form>
                     </div>
                     <div id="dadosButtons">
-                        <div id="musicPlayerWrapper">
-                            <div id="musicPlayerVolumeWrapper">
-                                <span id="musicPlayerCurrentVolume">
-                                    
-                                </span>
-                            </div>
-                            <audio id="musicPlayerAudioBGM"></audio>
-                            <audio id="musicPlayerAudioSE"></audio>
-                            <audio id='diceRollAudio' src='img/chat/diceRolling.m4a' preload></audio>
-                            <progress value="0.5" max="1" id="musicPlayerProgressCurrent"></progress>
-                            <a id="musicPlayerActionButton" class="button"></a>
-                            <a id="musicPlayerRepeatButton" class="button"></a>
-                        </div>
                         <a id="d4Button" class="button language" data-langtitle="_ROLLD4_"></a>
                         <a id="d6Button" class="button language" data-langtitle="_ROLLD6_"></a>
                         <a id="d8Button" class="button language" data-langtitle="_ROLLD8_"></a>
@@ -732,7 +721,13 @@
         </div>
         <div id="messageBox"></div>
         <!-- jQuery and libraries -->
-            <script src="js/lib2.1.0.min.js"></script>
+            <script src="js/jquery-2.1.1.min.js"></script>
+            <script src="js/jquery-mobile-browser.js"></script>
+            <script src="js/jquery.mousewheel.js"></script>
+            <script src="js/imgLiquid-min.js"></script>
+            <script src="js/jquery.jscrollpane.min.js"></script>
+            <script src="js/jquery-ui.min.js"></script>
+            <script src="js/jQuery.jPlayer.2.6.0/jquery.jplayer.min.js"></script>
         <!-- End Fix -->
         <!-- Application! -->
             <script src="app/Application.js"></script>
@@ -824,6 +819,7 @@
         <!-- Application End -->
         <script type="text/javascript">
             window.app = new Application(true);
+            $('#musicDock').draggable();
         </script>
     </body>
 </html>

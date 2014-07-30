@@ -110,9 +110,11 @@ function Sheet ($list, style, baseSheet) {
         if (this.style.editing) {
             this.$visible.find('.addRow').show();
             this.$visible.find('.editOnly').show();
+            this.$visible.find('.viewOnly').hide();
         } else {
             this.$visible.find('.addRow').hide();
             this.$visible.find('.editOnly').hide();
+            this.$visible.find('.viewOnly').show();
         }
         
         if (!this.style.sheet.editable) {

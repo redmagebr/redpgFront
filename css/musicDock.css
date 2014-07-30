@@ -1,0 +1,9 @@
+#musicDock {
+    position: absolute;
+    bottom: 10px;
+    left: 110px;
+    height: 38px;
+    background-color: #4e4e4e;
+    padding-top: 10px;
+    z-index: 201;
+}
