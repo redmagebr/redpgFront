@@ -57,7 +57,7 @@ function Room () {
             description : 'description',
             private : 'privateRoom',
             logger : 'logger',
-            gameid : 'jogoid',
+            gameid : 'gameid',
             creatorid : 'creator',
             id : 'id',
             name :  'name'

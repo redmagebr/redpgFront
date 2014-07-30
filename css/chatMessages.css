@@ -134,6 +134,21 @@
     font-size: 1.2em;
 }
 
+#chatMessages > p.chatTurno {
+    color: #353535;
+    line-height: 1.6em;
+    font-size: 1.2em;
+}
+
+#chatMessages > p.chatTurno > span.turnIcon {
+    background-image: url('../img/sheet/iconFlag.png');
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
 #chatMessages > p.chatDano > span.damageAmount {
     display: inline-block;
     vertical-align: middle;
@@ -155,15 +170,6 @@
     width: 24px;
     height: 35px;
     margin-top: -7px;
-    vertical-align: middle;
-    margin-right: 20px;
-}
-
-#chatMessages > p.chatDano > span.turnicon {
-    background-image: url('../img/sheet/iconFlag.png');
-    display: inline-block;
-    width: 32px;
-    height: 32px;
     vertical-align: middle;
     margin-right: 20px;
 }

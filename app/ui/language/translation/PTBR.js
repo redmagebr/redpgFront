@@ -373,7 +373,15 @@ window.lingo['pt_br'] = {
     
     
     /* Game Control Sheet */
-    
+    _GCCOMBAT_ : 'Combate',
+    _GCEXPLAININITIATIVE_ : 'Personagens são ordenados da maior iniciativa para a menor',
+    _GCSHEETOPEN_ : 'Abrir Ficha',
+    _GCTURN_ : 'Passar Turno',
+    _GCSORTSHEETS_ : 'Ordenar',
+    _GCADD_ : '+ Adicionar',
+    _GCSHEETEXPLAIN_ : 'Escolha aqui a ficha para adicionar. Apenas fichas abertas podem ser adicionadas. Atualize a lista pelo botão à direita.',
+    _GCUPDATESHEETS_ : 'Atualizar',
+    _GCCLONE_ : 'Criar janela flutuante',
     _GCSTYLE_ : 'Controle de Jogo'
     
     

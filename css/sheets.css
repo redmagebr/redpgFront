@@ -230,3 +230,132 @@
     right: 0px;
     text-align: center;
 }
+
+
+#controleCombatList > p {
+    line-height: 60px;
+}
+
+#controleCombatList > p:hover {
+    background-color: #cbcbcb;
+}
+
+#controleCombatList > p.toggled {
+    background-color: #ffebeb;
+}
+
+#controleCombatList > p.toggled:hover {
+    background-color: #ffcece;
+}
+
+#controleCombatList > p > a.deleteButton {
+    height: 50px;
+    width: 35px;
+}
+
+#controleCombatList > p > span.charName {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#controleCombatList > p > span.charInitiative {
+    margin: 0px;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    border-radius: 10%;
+    background-color: #fff;
+    display: inline-block;
+    font-size: 2em;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    border: solid 1px #000;
+}
+
+#controleSheetList {
+    background-color: #fff;
+    border: solid 1px #000;
+    font-size: 1em;
+    outline: none;
+}
+
+#controleSheetList:hover {
+    color: #8a8a8a;
+    border-color: #8a8a8a;
+}
+
+#controleCombatList input {
+    width: 30px;
+    line-height: 20px;
+    height: 30px;
+    margin-top: -5px;
+    vertical-align: top;
+    font-size: 1em;
+    text-align: center;
+}
+
+#controleClone {
+    background-image: url('../img/dfs/newWindow.png');
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-top: 4px;
+    margin-right: 4px;
+    margin-left: -100px;
+}
+
+body > #combatTracker {
+    width: 700px;
+}
+
+body > #combatTracker p {
+    margin: 0px;
+}
+
+body > #combatTracker .floatRight {
+    float: right;
+}
+
+body > #combatTracker > .fullWidth {
+    width: 100%;
+}
+
+body > #combatTracker > .blueBG {
+    background-color: #333745;
+    color: #ffffff;
+}
+
+body > #combatTracker > .header {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+}
+
+body > #combatTracker > .whiteBG {
+    background-color: #fff;
+    color: #000;
+}
+
+body > #combatTracker .deleteButton {
+    background-image: url('../img/dfs/fechar1-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 19px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+body > #combatTracker .deleteButton:hover {
+    cursor: pointer;
+    background-image: url('../img/dfs/fechar2-icon.png');
+}

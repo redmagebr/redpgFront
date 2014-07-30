@@ -19,7 +19,7 @@ window.chatModules.push({
      */
     get$ : function (msg) {
         var user = msg.getUser();
-        var $msg = $('<p class="chatDano" />');
+        var $msg = $('<p class="chatTurno" />');
         
         var $persona = $('<b />').text(msg.getSpecial('sheetname', '????'));
         $msg.
