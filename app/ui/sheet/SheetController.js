@@ -106,7 +106,7 @@ function SheetController () {
         }
     };
     
-    this.openSheet = function (sheetid, styleid) {
+    this.openSheet = function (sheetid, styleid, gameid) {
         if (sheetid === this.currentInstance) {
             window.app.ui.callRightWindow('sheetWindow');
             return;
@@ -115,9 +115,9 @@ function SheetController () {
         if (typeof window.Style[styleid] === 'undefined') {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid);
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid);
                 window.app.ui.unblockRight();
-            }, {sheetid : sheetid, styleid : styleid});
+            }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
             
             var cbe = function () {
                 window.app.ui.unblockRight();
@@ -132,9 +132,9 @@ function SheetController () {
         if (window.app.sheetdb.getSheet(sheetid) === null) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid);
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid);
                 window.app.ui.unblockRight();
-            }, {sheetid : sheetid, styleid : styleid});
+            }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
             
             var cbe = function () {
                 window.app.ui.unblockRight();
@@ -216,6 +216,8 @@ function SheetController () {
         window.app.ui.callRightWindow('sheetWindow');
         
         var sheet = window.app.sheetdb.getSheet(this.currentInstance);
+        
+        sheet.gameid = gameid;
         
         sheet.changed = oldChanged;
         
@@ -480,6 +482,12 @@ function SheetController () {
         if (window.app.ui.chat.cc.room === null) {
             return false;
         }
+        var room = window.app.ui.chat.cc.room;
+        var sheet = window.app.sheetdb.getSheet(this.currentInstance);
+        if (room.gameid !== sheet.gameid) {
+            return false;
+        }
+        
         var message = new Message();
         message.setOrigin(window.app.loginapp.user.id);
         message.roomid = window.app.ui.chat.cc.room.id;

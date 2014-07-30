@@ -124,8 +124,8 @@ function SheetUI() {
                 
                 $name = $("<a class='sheetName language' data-langtitle='_SHEETSNAMETITLE_' />").text(data[i].sheets[j]["nome"]);
                 $name.on('click', window.app.emulateBind(function () {
-                    window.app.ui.sheetui.openSheet(this.id, this.idstyle);
-                }, {id : data[i].sheets[j]['id'], idstyle : data[i].sheets[j]['idstyle']}));
+                    window.app.ui.sheetui.openSheet(this.id, this.idstyle, this.gameid);
+                }, {id : data[i].sheets[j]['id'], idstyle : data[i].sheets[j]['idstyle'], gameid : data[i].id}));
                 $p.append($name);
             }
             
