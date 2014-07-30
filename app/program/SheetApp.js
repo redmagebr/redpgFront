@@ -2,9 +2,14 @@ function SheetApp () {
     this.loadStyle = function (styleid, cbs, cbe) {
         var ajax = new AjaxController();
         
+        cbs = window.app.emulateBind(function (data) {
+            eval(data);
+            this.cbs();
+        }, {cbs:cbs});
+        
         ajax.requestPage({
             url : 'StyleRequest',
-            dataType : 'script',
+            dataType : 'text',
             data : {id : styleid},
             success: cbs,
             error: cbe
