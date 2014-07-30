@@ -362,7 +362,7 @@ function SheetUI() {
     
     
     
-    this.openSheet = function (sheetid, styleid) {
-        this.controller.openSheet (sheetid, styleid);
+    this.openSheet = function (sheetid, styleid, gameid) {
+        this.controller.openSheet (sheetid, styleid, gameid);
     };
 }
