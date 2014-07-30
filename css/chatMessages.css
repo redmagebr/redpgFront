@@ -159,6 +159,15 @@
     margin-right: 20px;
 }
 
+#chatMessages > p.chatDano > span.turnicon {
+    background-image: url('../img/sheet/iconFlag.png');
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
 #chatMessages > p.chatDano > span.damageExplain {
     display: none;
 }

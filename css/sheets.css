@@ -210,7 +210,7 @@
 
 #sheetWindow {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 #sheetViewer {
@@ -220,7 +220,6 @@
     left: 10px;
     bottom: 40px;
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 #sheetButtons {
