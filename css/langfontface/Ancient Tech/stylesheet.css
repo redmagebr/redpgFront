@@ -1,0 +1,11 @@
+/* Eladrin Freeware Font License - License included in "/Ancient Tech/Font License.txt" */
+@font-face {
+    font-family: 'eladrin';
+    src: url('Ancient Tech/eladrin-webfont.eot');
+    src: url('Ancient Tech/eladrin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ancient Tech/eladrin-webfont.woff') format('woff'),
+         url('Ancient Tech/eladrin-webfont.ttf') format('truetype'),
+         url('Ancient Tech/eladrin-webfont.svg#eladrinregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

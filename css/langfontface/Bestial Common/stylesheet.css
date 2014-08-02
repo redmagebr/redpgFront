@@ -1,0 +1,11 @@
+/* Bhains Free License */
+@font-face {
+    font-family: 'bhains';
+    src: url('bhains-webfont.eot');
+    src: url('bhains-webfont.eot?#iefix') format('embedded-opentype'),
+         url('bhains-webfont.woff') format('woff'),
+         url('bhains-webfont.ttf') format('truetype'),
+         url('bhains-webfont.svg#bhainsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
