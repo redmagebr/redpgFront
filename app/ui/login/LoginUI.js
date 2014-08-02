@@ -238,6 +238,7 @@ function LoginUI () {
         
         var cbs = window.app.emulateBind(function () {
             window.app.ui.showUI();
+            localStorage.lastLogin = this.$input.val();
             this.$input.val('');
             this.$password.val('');
             this.$loginwindow.fadeOut(200);

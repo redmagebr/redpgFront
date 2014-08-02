@@ -118,7 +118,13 @@ function UI () {
         
         
         $('#nojs').remove();
-        $('#loginInput').focus();
+        
+        if (typeof localStorage.lastLogin !== 'undefined') {
+            $('#loginInput').val(localStorage.lastLogin);
+            $('#passwordInput').focus();
+        } else {
+            $('#loginInput').focus();
+        }
         
         this.callLeftWindow('changelogWindow');
         this.callRightWindow('oldRedpg');
