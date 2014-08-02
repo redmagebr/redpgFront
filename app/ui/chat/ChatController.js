@@ -50,6 +50,7 @@ function ChatController (chat) {
                 this.chat.$roomName.text(this.room.name);
                 this.chat.$roomDesc.text(this.room.description);
                 this.chat.pc.$container.empty();
+                this.chat.pc.restore();
                 if (this.room.persona !== null) {
                     window.app.ui.chat.pc.addPersona(this.room.persona, this.room.avatar, this.room.hidePersona);
                 }

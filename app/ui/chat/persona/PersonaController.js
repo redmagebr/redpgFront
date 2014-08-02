@@ -121,19 +121,21 @@ function PersonaController () {
         var $found = this.$container.find('a.toggled');
         if ($found.length > 0) {
             this.setPersona($($found[0]));
+            var nome = $($found[0]).attr('data-persona');
             $($found[0]).remove();
             window.app.ui.chat.cc.room.persona = null;
+            this.removeMemory(nome);
         }
     };
     
-    this.addPersona = function (persona, avatar, hidepers) {
+    this.addPersona = function (persona, avatar, hidepers, restoring) {
+        if (typeof restoring === 'undefined') restoring = false;
         var $found = this.$container.find('a');
         var $this;
         for (var i = 0; i < $found.length; i++) {
             $this = $($found[i]);
             if ($this.attr('data-persona') === persona) {
-                this.setPersona($this, true);
-                return true;
+                $this.remove();
             }
         }
         
@@ -151,8 +153,10 @@ function PersonaController () {
         this.$container.append($pers);
         
         this.considerScrollers();
-        
-        this.setPersona($pers);
+        if (!restoring) {
+            this.setPersona($pers);
+            this.addMemory(persona, avatar, hidepers);
+        }
     };
     
     this.setPersona = function ($persona, force) {
@@ -208,5 +212,41 @@ function PersonaController () {
         } else {
             this.openWindow();
         }
+    };
+    
+    this.restore = function () {
+        var personas = window.app.memory.getMemory("Personas", {});
+        if (typeof personas[window.app.ui.chat.cc.room.id] === 'undefined') {
+            personas[window.app.ui.chat.cc.room.id] = {};
+        }
+        
+        var persona;
+        for (var i in personas[window.app.ui.chat.cc.room.id]) {
+            persona = personas[window.app.ui.chat.cc.room.id][i];
+            this.addPersona(persona.persona, persona.avatar, persona.hidepers, true);
+        }
+    };
+    
+    this.addMemory = function (persona, avatar, hidepers) {
+        var personas = window.app.memory.getMemory("Personas", {});
+        if (typeof personas[window.app.ui.chat.cc.room.id] === 'undefined') {
+            personas[window.app.ui.chat.cc.room.id] = {};
+        }
+        personas[window.app.ui.chat.cc.room.id][persona] = {
+            persona : persona,
+            avatar : avatar,
+            hidepers : hidepers
+        };
+        
+        window.app.memory.saveMemory();
+    };
+    
+    this.removeMemory = function (persona) {
+        var personas = window.app.memory.getMemory("Personas", {});
+        if (typeof personas[window.app.ui.chat.cc.room.id] === 'undefined') {
+            personas[window.app.ui.chat.cc.room.id] = {};
+        }
+        delete personas[window.app.ui.chat.cc.room.id][persona];
+        window.app.memory.saveMemory();
     };
 }

@@ -28,7 +28,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 12, 8];
+    this.version = [0, 13, 0];
     
     /**
      * Databases
@@ -39,6 +39,7 @@ function Application (debug) {
     this.roomdb = new RoomDB();
     this.userdb = new UserDB();
     this.sheetdb = new SheetDB();
+    this.memory = new Memory();
     
     /**
      * Apps
@@ -53,6 +54,7 @@ function Application (debug) {
     
     this.updateConfig = function () {
         this.ui.updateConfig();
+        this.memory.init();
     };
     
     this.emulateBind = function (f, context) {
