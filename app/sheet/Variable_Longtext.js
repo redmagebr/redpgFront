@@ -37,6 +37,12 @@ function Variable_Longtext ($visible, style, missingid, parent) {
     } else {
         this.editable = true;
     }
+    
+    if (this.$visible.is('[data-autoresize]')) {
+        this.autoresize = this.$visible.attr('data-autoresize') === '1';
+    } else {
+        this.autoresize = false;
+    }
 
     this.update$ = function () {
         if (this.style.editing && this.editable) {
@@ -52,6 +58,16 @@ function Variable_Longtext ($visible, style, missingid, parent) {
                     this.variable.storeValue(this.$input.val());
                 }, {$input : $input, variable : this}
             ));
+    
+            if (this.autoresize) {
+                $input.on('keyup', function () {
+                    if (this.scrollHeight < 1) {
+                        $(this).css('height', '');
+                    } else {
+                        this.style.height = this.scrollHeight + 'px';
+                    }
+                });
+            }
 
             this.$visible.empty().append($input);
         } else {
