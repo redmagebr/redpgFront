@@ -1,12 +1,13 @@
 function LoginApp () {
     this.logged = false;
     this.user = new User();
-    this.jsessid = null;
+    this.jsessid = typeof localStorage.lastSession !== 'undefined' ? localStorage.lastSession : null;
     
     this.onLoggedout = function () {};
     
     this.setJsessid = function (id) {
         this.jsessid = id;
+        localStorage.lastSession = id;
     };
     
     this.getJsessid = function () {
@@ -22,6 +23,7 @@ function LoginApp () {
         window.app.configdb.updateFromJSON(json.user['config']);
         this.logged = true;
         this.jsessid = json['session'];
+        localStorage.lastSession = this.jsessid;
     };
     
     this.confirm = function (uuid, cbsuccess, cberror) {

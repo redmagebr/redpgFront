@@ -155,14 +155,14 @@ function UI () {
     };
     
     this.hideLoading = function () {
-        if (--this.loadingCount === 0) {
-            this.$loading.finish().fadeOut(200);
+        if (--this.loadingCount < 1) {
+            this.$loading.stop(true, true).fadeOut(200);
         }
     };
     
     this.showLoading = function () {
         if (++this.loadingCount > 0) {
-            this.$loading.finish().fadeIn(200);
+            this.$loading.stop(true, true).fadeIn(200);
         }
     };
     

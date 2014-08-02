@@ -60,7 +60,7 @@ function LoginUI () {
         this.considerConfirm();
         
         // If we have cookies, try to restore session first.
-        if (document.location.hostname !== '' && window.app.host.indexOf(document.location.hostname) !== -1) {
+        if (window.app.loginapp.hasJsessid()) {
             this.restoreSession();
         }
         
