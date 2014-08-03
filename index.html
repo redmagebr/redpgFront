@@ -338,6 +338,12 @@
             </div>
             
             <div id="chatWindow" class="window">
+                <div id="exportLogWindow" style="display:none">
+                    <textarea id="exportLogTextarea">
+                        
+                    </textarea>
+                    <a onclick="$(this).parent().stop(true, true).fadeOut();" class="textButton language" data-langhtml="_LOGCLICKCLOSE_"></a>
+                </div>
                 <div id="avatarWindowWrapper" style='display: none'>
                     <div id="avatarWindow">
                         <div class="centeredcell unselectable">

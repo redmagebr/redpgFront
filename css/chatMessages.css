@@ -276,12 +276,18 @@
     display: inline-block;
 }
 
+#chatMessages > p.chatNarrativa span.important {
+    color: #9a14ae;
+}
+
 #chatMessages > p.chatNarrativa span.important:before {
     content: '[ ';
+    color: #9a14ae;
 }
 
 #chatMessages > p.chatNarrativa span.important:after {
     content: ' ]';
+    color: #9a14ae;
 }
 
 #chatMessages > p.chatVote:before {

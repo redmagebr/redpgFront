@@ -28,7 +28,7 @@ window.chatModules.push({
      * @returns {jQuery || null}
      */
     get$ : function (msg, slashCMD, message) {
-        return $('<p class="chatSistema language" data-langhtml="_LOGGERSTARTED_" />');
+        return null;
     },
     
     /**
@@ -44,7 +44,17 @@ window.chatModules.push({
      * @param {String} message
      */
     getMsg : function (slashCMD, message) {
-        window.app.ui.chat.logger.begin();
+        var messages = [];
+        var $div = $('#chatMessages');
+        var $messages = $div.children();
+        var $message;
+        for (var i = 0; i < $messages.length; i++) {
+            $message = $($messages[i]);
+            messages.push($message.text());
+        }
+        messages = messages.join('\n');
+        $('#exportLogTextarea').val(messages);
+        $('#exportLogWindow').stop(true, true).fadeIn();
         return null;
     },
     
