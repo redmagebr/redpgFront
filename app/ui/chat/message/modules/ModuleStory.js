@@ -42,22 +42,22 @@ window.chatModules.push({
         
         var msgText = $('<p />').text(msg.msg).html();
         
+        var msgFinal = '';
         var go = true;
-        var idx1;
-        var idx2;
-        while (go) {
-            idx1 = msgText.indexOf('[');
-            idx2 = msgText.indexOf(']');
-            if (idx1 === -1 || idx2 === -1) {
-                go = false;
+        var open = false;
+        
+        for (var i = 0; i < msgText.length; i++) {
+            if (msgText.charAt(i) === '[' && !open) {
+                open = true;
+                msgFinal += "<span class='important'>";
+            } else if (msgText.charAt(i) === ']' && open) {
+                msgFinal += "</span>";
             } else {
-                msgText = msgText.replace('[', '<span class="important">');
-                msgText = msgText.replace(']', '</span>');
+                msgFinal += msgText.charAt(i);
             }
         }
         
-        
-        $msg.append('- ' + msgText);
+        $msg.append('- ' + msgFinal);
         
         var $tooltip = $('<span class="tooltip" />');
         if (user.isStoryteller()) {

@@ -270,10 +270,18 @@
     color: #9a0000;
 }
 
-#chatMessages > p.chatMensagem span.important {
+#chatMessages > p.chatMensagem span.important, #chatMessages > p.chatNarrativa span.important {
     font-weight: bold;
     color: #001f8d;
     display: inline-block;
+}
+
+#chatMessages > p.chatNarrativa span.important:before {
+    content: '[ ';
+}
+
+#chatMessages > p.chatNarrativa span.important:after {
+    content: ' ]';
 }
 
 #chatMessages > p.chatVote:before {
