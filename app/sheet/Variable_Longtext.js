@@ -66,8 +66,8 @@ function Variable_Longtext ($visible, style, missingid, parent) {
             if (this.autoresize) {
                 $input.css('overflow-y', 'hidden');
                 $input.css('min-height', '0px');
-                $input.on('keydown.resize keyup.resize', function () {
-                    this.style.height = '1px';
+                $input.on('keydown.resize keyup.resize click.resize', function () {
+                    this.style.height = 'auto';
                     if (this.scrollHeight < 20) {
                         this.style.height = '1em';
                     } else { 
