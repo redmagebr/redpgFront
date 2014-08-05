@@ -92,6 +92,7 @@ function ChatWsApp () {
                 if (typeof obj[1].localid === 'undefined') {
                     var message = new Message();
                     message.updateFromJSON(obj[1]);
+                    message.roomid = this.room.id;
                     window.app.ui.chat.cc.printMessage(message);
                 }
             } else {

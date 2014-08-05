@@ -47,6 +47,8 @@ window.chatModules.push({
             $msg.append($clickupdate);
         }
         
+        
+        console.log(msg.getUser());
         if (user === null) {
             user = new User();
             user.nickname = '?';
