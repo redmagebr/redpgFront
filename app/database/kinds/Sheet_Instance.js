@@ -24,7 +24,7 @@ function Sheet_Instance () {
         console.log("Updating Sheet from JSON");
         console.log(json);
         
-        var attributes = ['id', 'criador', 'segura', 'publica', 'visualizar', 'deletar', 'values'];
+        var attributes = ['id', 'criador', 'segura', 'publica', 'visualizar', 'deletar', 'values', 'gameid'];
         for (var i = 0; i < attributes.length; i++) {
             if (typeof json[attributes[i]] !== 'undefined') {
                 this[attributes[i]] = json[attributes[i]];

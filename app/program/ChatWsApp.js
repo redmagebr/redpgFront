@@ -56,6 +56,7 @@ function ChatWsApp () {
         $html.append(" ").append($a);
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
+        window.app.ui.chat.cc.firstPrint = false;
     };
     
     this.onclose = function (event) {
@@ -88,7 +89,7 @@ function ChatWsApp () {
             window.app.ui.chat.cc.pc.checkUsers();
         } else if (obj[0] === 'message') {
             if (obj[1].id < 0) {
-                if (obj[1].origin !== window.app.loginapp.user.id) {
+                if (typeof obj[1].localid === 'undefined') {
                     var message = new Message();
                     message.updateFromJSON(obj[1]);
                     window.app.ui.chat.cc.printMessage(message);
@@ -147,6 +148,8 @@ function ChatWsApp () {
     this.getAllMessages = function () {
         window.app.ui.chat.$chatMessages.empty();
         
+        window.app.ui.chat.cc.firstPrint = true;
+        
         var cbs = function (data) {
             window.app.chatapp.room.empty();
             window.app.chatapp.room.updateFromJSON(data, true);
@@ -154,6 +157,7 @@ function ChatWsApp () {
             window.app.ui.chat.cc.clearUsers();
             window.app.ui.chat.cc.checkUsers();
             window.app.ui.chat.cc.pc.checkUsers();
+            window.app.ui.chat.cc.firstPrint = false;
         };
         
         var cbe = function () {
