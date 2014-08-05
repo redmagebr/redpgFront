@@ -18,9 +18,8 @@ function Application (debug) {
      */
     //this.host = 'http://localhost:8080/RedPG/';
     this.host = 'http://redpg.com.br/service/';
-    this.host = 'http://redpg.com.br/wstest/';
     this.staticHost = 'http://redpg.com.br/';
-    this.wshost = 'ws://redpg.com.br:8080/wstest/';
+    this.wshost = 'ws://redpg.com.br:8080/service/';
     
     
     
