@@ -10,6 +10,7 @@ function User () {
     this.storyteller = false;
     this.lastrefresh = 0;
     this.lastupdate = 0;
+    this.online = false;
     
     this.focused = true;
     this.typing = false;
@@ -51,6 +52,7 @@ function User () {
     };
     
     this.isOffline = function (currenttime, afktime) {
+        return !this.online;
         return !(currenttime <= (this.lastrefresh + afktime));
     };
     

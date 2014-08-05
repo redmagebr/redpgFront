@@ -177,6 +177,13 @@ function PersonaController () {
             $html.attr("data-langp", persona);
         }
         
+        if (!window.app.ui.chat.cc.room.hidePersona) {
+            window.app.chatapp.sendAction("persona", JSON.stringify({
+                "persona" : window.app.ui.chat.cc.room.persona,
+                "avatar" : window.app.ui.chat.cc.room.avatar
+            }));
+        }
+        
         window.app.ui.language.applyLanguageTo($html);
         
         window.app.ui.chat.appendToMessages($html);

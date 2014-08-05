@@ -18,7 +18,9 @@ function Application (debug) {
      */
     //this.host = 'http://localhost:8080/RedPG/';
     this.host = 'http://redpg.com.br/service/';
+    this.host = 'http://redpg.com.br/wstest/';
     this.staticHost = 'http://redpg.com.br/';
+    this.wshost = 'ws://redpg.com.br:8080/wstest/';
     
     
     
@@ -28,7 +30,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 13, 0];
+    this.version = [0, 14, 0];
     
     /**
      * Databases
@@ -47,7 +49,7 @@ function Application (debug) {
     this.loginapp = new LoginApp();
     this.gameapp = new GameApp();
     this.roomapp = new RoomApp();
-    this.chatapp = new ChatApp();
+    this.chatapp = new ChatWsApp();
     this.sheetapp = new SheetApp();
     
     this.ui = new UI();

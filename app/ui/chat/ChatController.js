@@ -41,7 +41,6 @@ function ChatController (chat) {
         if (this.room === null) {
             window.app.ui.gameui.callSelf();
         } else {
-            window.app.chatapp.stop();
             if (clean) {
                 this.lastMessage = -1;
                 this.lastDate = '';
@@ -183,6 +182,50 @@ function ChatController (chat) {
             window.app.ui.chat.fixScrollpane();
         }
         this.firstPrint = false;
+    };
+    
+    this.printMessage = function (message) {
+        if (this.room === null) {
+            return false;
+        }
+        
+        /** @type Message */ var message;
+        var module;
+        /** @type User */ var user;
+        
+        var $target = this.chat.$chatMessages;
+        var $html;
+        if (this.lastDate !== message.date) {
+            $html = $('<p class="chatSistema language" data-langhtml="_CHATDATE_" />').attr('data-langp', message.date);
+            $target.append($html);
+            this.lastDate = message.date;
+        }
+        module = window.app.ui.chat.mc.getModule(message.module);
+        if (module === null) {
+            user = message.getUser();
+            $html = $('<p class="chatSistema language" data-langhtml="_INVALIDMODULE_" />');
+            $html.attr('data-langp', message.module);
+            if (user !== null) {
+                $html.attr('data-langd', user.nickname + '#' + user.nicknamesufix);
+            } else {
+                $html.attr('data-langd', "?????");
+            }
+            $target.append($html);
+        } else {
+            $target.append(module.get$(message, null, null));
+        }
+            
+        window.app.ui.language.applyLanguageOn($target);
+
+        if (!window.app.ui.hasFocus) {
+            window.app.ui.notifyMessages();
+        }
+            
+        window.app.ui.chat.fixScrollpane();
+    };
+    
+    this.clearUsers = function () {
+        this.onlineUsers = [];
     };
     
     this.checkUsers = function () {

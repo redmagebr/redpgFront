@@ -263,6 +263,10 @@ function Chat () {
         $('#modulesButton').bind('click', function () {
             alert("Não implementado");
         });
+        
+        this.$chatinput.bind('keydown keyup', function () {
+            window.app.chatapp.updateTyping ($(this).val() !== '');
+        });
     };
     
     /**

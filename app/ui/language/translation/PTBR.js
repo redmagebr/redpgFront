@@ -170,6 +170,10 @@ window.lingo['pt_br'] = {
 
 
     /* Room */
+    _CHATWSCONNECTED_ : 'Conectado. Mensagens antigas não foram impressas.',
+    _CHATWSGETOLDERMESSAGES_ : 'Clique aqui para carregar todas as mensagens dessa sala.',
+    _CHATWSDISCONNECTED_ : 'Desconectado do servidor.',
+    _CHATWSRECONNECT_ : 'Clique aqui para reconectar.',
     _BASICCOMMANDS_ : 'Comandos Básicos',
     _ACTIONSAMPLE_ : '"/me [mensagem]": Envia a mensagem como uma ação da persona escolhida.',
     _OFFSAMPLE_ : '"/off [mensagem]": Envia a mensagem como uma mensagem fora de jogo, falando como o jogador.',

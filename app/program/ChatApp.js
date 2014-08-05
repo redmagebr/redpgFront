@@ -3,7 +3,7 @@
  */
 function ChatApp () {
     this.timeout = null;
-    this.timeoutTime = 500;
+    this.timeoutTime = 7000;
     this.updating = false;
     this.running = false;
     
@@ -21,9 +21,9 @@ function ChatApp () {
     
     this.increaseTimeout = function () {
         if (window.app.ui.hasFocus) {
-            var limit = 700;
+            var limit = 7000;
         } else {
-            var limit = 1500;
+            var limit = 15000;
         }
         this.timeoutTime += 100;
         if (this.timeoutTime > limit) {
@@ -32,7 +32,7 @@ function ChatApp () {
     };
     
     this.defaultTimeout = function () {
-        this.timeoutTime = 300;
+        this.timeoutTime = 7000;
     };
     
     this.setRoom = function (room) {
