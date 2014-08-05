@@ -131,6 +131,8 @@ function ChatController (chat) {
             return false;
         }
         
+        var printedOne = false;
+        
         /** @type Message */ var message;
         var module;
         /** @type User */ var user;
@@ -148,6 +150,7 @@ function ChatController (chat) {
                     $html = $('<p class="chatSistema language" data-langhtml="_CHATDATE_" />').attr('data-langp', message.date);
                     $target.append($html);
                     this.lastDate = message.date;
+                    window.app.ui.language.applyLanguageOn($html);
                 }
                 module = window.app.ui.chat.mc.getModule(message.module);
                 if (module === null) {
@@ -159,15 +162,19 @@ function ChatController (chat) {
                     } else {
                         $html.attr('data-langd', "?????");
                     }
-                    $target.append($html);
                 } else {
-                    $target.append(module.get$(message, null, null));
+                    $html = module.get$(message, null, null);
+                    
                 }
+                if ($html !== null) {
+                    printedOne = true;
+                    window.app.ui.language.applyLanguageOn($html);
+                    $target.append($html);
+                }
+                
             }
             
-            window.app.ui.language.applyLanguageOn($target);
-            
-            if (!window.app.ui.hasFocus) {
+            if (!window.app.ui.hasFocus && printedOne) {
                 window.app.ui.notifyMessages();
             }
             
@@ -188,6 +195,7 @@ function ChatController (chat) {
         if (this.room === null) {
             return false;
         }
+        var printedOne = false;
         
         /** @type Message */ var message;
         var module;
@@ -199,7 +207,10 @@ function ChatController (chat) {
             $html = $('<p class="chatSistema language" data-langhtml="_CHATDATE_" />').attr('data-langp', message.date);
             $target.append($html);
             this.lastDate = message.date;
+            window.app.ui.language.applyLanguageOn($html);
         }
+        
+        
         module = window.app.ui.chat.mc.getModule(message.module);
         if (module === null) {
             user = message.getUser();
@@ -210,14 +221,16 @@ function ChatController (chat) {
             } else {
                 $html.attr('data-langd', "?????");
             }
-            $target.append($html);
         } else {
-            $target.append(module.get$(message, null, null));
+            $html = module.get$(message, null, null);
         }
-            
-        window.app.ui.language.applyLanguageOn($target);
+        if ($html !== null) {
+            printedOne = true;
+            $target.append($html);
+            window.app.ui.language.applyLanguageOn($html);
+        }
 
-        if (!window.app.ui.hasFocus) {
+        if (!window.app.ui.hasFocus && printedOne) {
             window.app.ui.notifyMessages();
         }
             

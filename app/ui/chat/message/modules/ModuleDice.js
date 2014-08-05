@@ -28,7 +28,9 @@ window.chatModules.push({
             var mod = window.app.ui.chat.mc.getModule(msg.module);
             var cbs = window.app.emulateBind(
                 function () {
-                    this.$msg.replaceWith(this.mod.get$(this.msg));
+                    var $html = this.mod.get$(this.msg);
+                    this.$msg.replaceWith($html);
+                    window.app.ui.language.applyLanguageOn($html);
                 }, {mod : mod, msg : msg, $msg : $msg}
             );
     

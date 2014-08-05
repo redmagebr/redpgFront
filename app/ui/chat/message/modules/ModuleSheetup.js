@@ -18,10 +18,6 @@ window.chatModules.push({
      * @returns {jQuery}
      */
     get$ : function (msg) {
-        if (window.app.ui.chat.cc.firstPrint) {
-            return null;
-        }
-        
         var sheetid = msg.getSpecial('sheetid', 0);
         if (typeof window.app.ui.sheetui.controller.$listed[sheetid] === 'undefined') {
             return null;
@@ -35,34 +31,21 @@ window.chatModules.push({
         $msg.text(sheet.name);
         $msg.append(' ');
         
-        $msg.append('<span class="language" data-langhtml="_SHEETWASUPDATED_" />');
-        $msg.append(' ');
-        
-        var $clickupdate = $('<a class="language" data-langhtml="_SHEETCLICKTOUPDATE_" />');
-        
-        $clickupdate.on('click', function () {
+        if (window.app.ui.sheetui.controller.autoUpdate && !sheet.changed) {
             window.app.ui.sheetui.controller.updateSpecificSheet(sheetid);
-        });
-        
-        $msg.append($clickupdate);
-        $msg.append(' ');
-        
-        if (window.app.ui.sheetui.controller.autoUpdate) {
-            window.app.ui.sheetui.controller.updateSpecificSheet(sheetid);
-            var $clickauto = $('<a class="language" data-langhtml="_SHEETCLICKAUTOUPDATEOFF_" />');
-            
-            $clickauto.on('click', function () {
-                window.app.ui.sheetui.controller.toggleAuto(false);
-            });
+            return null;
         } else {
-            var $clickauto = $('<a class="language" data-langhtml="_SHEETCLICKAUTOUPDATEON_" />');
-            
-            $clickauto.on('click', function () {
-                window.app.ui.sheetui.controller.toggleAuto(true);
+            $msg.append('<span class="language" data-langhtml="_SHEETWASUPDATED_" />');
+            $msg.append(' ');
+
+            var $clickupdate = $('<a class="language" data-langhtml="_SHEETCLICKTOUPDATE_" />');
+
+            $clickupdate.on('click', function () {
+                window.app.ui.sheetui.controller.updateSpecificSheet(sheetid);
             });
+
+            $msg.append($clickupdate);
         }
-        
-        $msg.append($clickauto);
         
         if (user === null) {
             user = new User();
