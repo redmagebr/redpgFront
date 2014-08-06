@@ -183,7 +183,9 @@ function ChatWsApp () {
     };
     
     this.stop = function () {
-        this.controller.closeConnection();
+        if (this.controller.connected) {
+            this.controller.closeConnection();
+        }
     };
     
     this.clear = function () {

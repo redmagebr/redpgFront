@@ -22,6 +22,8 @@ function SheetController () {
         this.$importForm = $('#sheetImportForm');
         this.$exportForm = $('#sheetExportForm');
         
+        this.$viewer = $('#sheetViewer');
+        
         $('#sheetSaveSuccess').hide();
         $('#sheetSaveError').hide();
         
@@ -117,6 +119,7 @@ function SheetController () {
             var cbs = window.app.emulateBind(function () {
                 window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid);
                 window.app.ui.unblockRight();
+                window.app.ui.sheetui.controller.$viewer.trigger('loadedSheet', [this.sheetid]);
             }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
             
             var cbe = function () {
@@ -137,6 +140,7 @@ function SheetController () {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
                 window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid);
+                window.app.ui.sheetui.controller.$viewer.trigger('loadedStyle', [this.styleid]);
                 window.app.ui.unblockRight();
             }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
             
@@ -210,7 +214,7 @@ function SheetController () {
             this.$html.detach();
             this.$html = this.styles[styleid].get$();
             this.$css = this.styles[styleid].get$css();
-            $('#sheetViewer').empty().append(this.$html);
+            this.$viewer.empty().append(this.$html);
             $('head').append(this.$css);
             this.currentStyle = styleid;
         } else {
