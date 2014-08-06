@@ -276,6 +276,11 @@
     display: inline-block;
 }
 
+#chatMessages > p.chatMensagem > span.langTranslation {
+    display: block;
+    color: #7f007f;
+}
+
 #chatMessages > p.chatNarrativa span.important {
     color: #9a14ae;
 }

@@ -1,10 +1,8 @@
 /* On Fonts used:
 
    All Fonts were taken from dafont.com
-   Whenever license wasn't included in font archive, it was assumed dafont.com's License on the font archive was accurate.
+   Whenever license wasn't included in font archive, it was assumed dafont.com's printed License on the font was accurate.
    Only free license fonts were used and any and all licenses which were included with them are accessible here.
-   If your font was used and it wasn't free or you just want it out for any reason at all,
-   contact the administrator and it will be removed promptly.
    
 */
 
@@ -172,11 +170,15 @@
     font-family: code39;
 }
 
+#areaChatBox p.chatMensagem span.linguaMusical {
+    font-family: lassus;
+}
+
 #areaChatBox p.chatMensagem span.linguaDraconic {
     font-family: hobbiton_brush_hand;
 }
 
 #areaChatBox p.chatMensagem span.linguaElvish {
     font-family: elvencommonspeak;
-    line-height: 1.2em;
+    line-height: 1.5em;
 }
