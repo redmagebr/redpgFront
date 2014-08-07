@@ -175,7 +175,7 @@ window.lingo['pt_br'] = {
     _CHATWSDISCONNECTED_ : 'Desconectado do servidor.',
     _CHATWSRECONNECT_ : 'Clique aqui para reconectar.',
     _CHATWSTAKINGLONG_ : 'Resposta do servidor não está sendo ouvida.',
-    _CHATWSTIMEOUT_ : 'Não recebendo mensagens do servidor. Desistindo.',
+    _CHATWSTIMEOUT_ : 'Não recebendo mensagens do servidor. Se esse problema persistir, alguns anti-virus podem acabar bloqueando mensagens do chat, verifique o seu.',
     _CHATTRANSLATEDAS_ : 'Tradução',
     _BASICCOMMANDS_ : 'Comandos Básicos',
     _ACTIONSAMPLE_ : '"/me [mensagem]": Envia a mensagem como uma ação da persona escolhida.',
