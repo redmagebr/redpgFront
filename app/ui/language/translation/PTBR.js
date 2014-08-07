@@ -174,6 +174,8 @@ window.lingo['pt_br'] = {
     _CHATWSGETOLDERMESSAGES_ : 'Clique aqui para carregar todas as mensagens dessa sala.',
     _CHATWSDISCONNECTED_ : 'Desconectado do servidor.',
     _CHATWSRECONNECT_ : 'Clique aqui para reconectar.',
+    _CHATWSTAKINGLONG_ : 'Resposta do servidor não está sendo ouvida.',
+    _CHATWSTIMEOUT_ : 'Não recebendo mensagens do servidor. Desistindo.',
     _CHATTRANSLATEDAS_ : 'Tradução',
     _BASICCOMMANDS_ : 'Comandos Básicos',
     _ACTIONSAMPLE_ : '"/me [mensagem]": Envia a mensagem como uma ação da persona escolhida.',
