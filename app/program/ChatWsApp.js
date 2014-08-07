@@ -48,17 +48,7 @@ function ChatWsApp () {
     this.onopen = function (event) {
         console.log("Connected - ");
         console.log(event);
-        this.timeout = setTimeout(function () {
-            var $html = $('<p class="chatSistema language" data-langhtml="_CHATWSTAKINGLONG_" />');
-            window.app.ui.language.applyLanguageOn($html);
-            window.app.ui.chat.appendToMessages($html);
-            window.app.chatapp.timeout = setTimeout(function () {
-                var $html = $('<p class="chatSistema language" data-langhtml="_CHATWSTIMEOUT_" />');
-                window.app.ui.language.applyLanguageOn($html);
-                window.app.ui.chat.appendToMessages($html);
-                window.app.chatapp.stop();
-            }, 10000);
-        }, 5000);
+        this.waitForAck();
         this.sendAction("room", this.room.id);
         var $html = $('<p class="chatSistema" />');
         $html.append($('<span class="language" data-langhtml="_CHATWSCONNECTED_" />'));
@@ -91,12 +81,14 @@ function ChatWsApp () {
     };
     
     this.onmessage = function (event) {
-        if (this.timeout !== null) {
-            clearTimeout(this.timeout);
-        }
+        this.clearAck();
         console.log("Message received:");
         console.log(event.data);
         console.log("Response time: " + ((new Date().getTime()) - this.lastMessage));
+        
+        if (event.data === "1") {
+            return;
+        }
         
         var obj = JSON.parse(event.data);
         if (obj[0] === 'typing') {
@@ -238,5 +230,32 @@ function ChatWsApp () {
         }
         
         console.log(this.typing);
+    };
+    
+    this.clearAck = function () {
+        if (this.timeout !== null) {
+            clearTimeout(this.timeout);
+            console.log("No longer waiting for server message.");
+        }
+    };
+    
+    this.waitForAck = function () {
+        console.log("Waiting for server message.");
+        this.timeout = setTimeout(function () {
+            var $html = $('<p class="chatSistema language" data-langhtml="_CHATWSTAKINGLONG_" />');
+            window.app.ui.language.applyLanguageOn($html);
+            window.app.ui.chat.appendToMessages($html);
+            window.app.chatapp.timeout = setTimeout(function () {
+                var $html = $('<p class="chatSistema language" data-langhtml="_CHATWSTIMEOUT_" />');
+                window.app.ui.language.applyLanguageOn($html);
+                window.app.ui.chat.appendToMessages($html);
+                window.app.chatapp.stop();
+            }, 10000);
+        }, 5000);
+    };
+    
+    this.ack = function () {
+       this.waitForAck();
+       this.controller.sendAck();
     };
 }

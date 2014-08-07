@@ -36,6 +36,14 @@ function WsController () {
         return true;
     };
     
+    this.sendAck = function () {
+        if (!this.connected) {
+            return false;
+        }
+        this.websocket.send("0");
+        return true;
+    };
+    
     this.closeConnection = function () {
         this.websocket.close();
         this.connected = false;
