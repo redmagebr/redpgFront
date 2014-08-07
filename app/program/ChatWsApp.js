@@ -92,7 +92,7 @@ function ChatWsApp () {
     
     this.onmessage = function (event) {
         if (this.timeout !== null) {
-            //clearTimeout(this.timeout);
+            clearTimeout(this.timeout);
         }
         console.log("Message received:");
         console.log(event.data);
