@@ -150,6 +150,7 @@ function ChatWsApp () {
         window.app.ui.chat.$chatMessages.empty();
         
         window.app.ui.chat.cc.firstPrint = true;
+        window.app.ui.chat.cc.lastMessage = -1;
         
         var cbs = function (data) {
             window.app.chatapp.room.empty();
