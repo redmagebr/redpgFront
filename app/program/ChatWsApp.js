@@ -248,19 +248,19 @@ function ChatWsApp () {
         this.ackTimeout = setTimeout(function () {
             window.app.chatapp.ack();
         }, 30000);
+        
+        $('#chatNotConnError').hide();
+        $('#chatNotLoad').hide();
     };
     
     this.waitForAck = function () {
         console.log("Waiting for server message.");
         this.timeout = setTimeout(function () {
-            var $html = $('<p class="chatSistema language" data-langhtml="_CHATWSTAKINGLONG_" />');
-            window.app.ui.language.applyLanguageOn($html);
-            window.app.ui.chat.appendToMessages($html);
+            $('#chatNotLoad').show();
+            $('#chatNotConnError').hide();
             window.app.chatapp.timeout = setTimeout(function () {
-                var $html = $('<p class="chatSistema language" data-langhtml="_CHATWSTIMEOUT_" />');
-                window.app.ui.language.applyLanguageOn($html);
-                window.app.ui.chat.appendToMessages($html);
-                window.app.chatapp.stop();
+                $('#chatNotConnError').show();
+                $('#chatNotLoad').hide();
             }, 10000);
         }, 5000);
     };
