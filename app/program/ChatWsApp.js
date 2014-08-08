@@ -4,6 +4,7 @@ function ChatWsApp () {
     this.typing = false;
     this.free = true;
     this.timeout = null;
+    this.ackTimeout = null;
     
     /**
      * 
@@ -194,6 +195,7 @@ function ChatWsApp () {
         if (this.controller.connected) {
             this.controller.closeConnection();
         }
+        this.clearAck();
     };
     
     this.clear = function () {
@@ -235,8 +237,17 @@ function ChatWsApp () {
     this.clearAck = function () {
         if (this.timeout !== null) {
             clearTimeout(this.timeout);
+            this.timeout = null;
             console.log("No longer waiting for server message.");
         }
+        if (this.ackTimeout !== null) {
+            clearTimeout(this.ackTimeout);
+            this.ackTimeout = null;
+        }
+        
+        this.ackTimeout = setTimeout(function () {
+            window.app.chatapp.ack();
+        }, 30000);
     };
     
     this.waitForAck = function () {
