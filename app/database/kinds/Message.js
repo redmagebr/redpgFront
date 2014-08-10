@@ -6,6 +6,7 @@ function Message () {
     this.id = null;
     this.localid = null;
     this.roomid = null;
+    this.timeout = null;
     
     /**
      * Actual message content.
@@ -67,8 +68,14 @@ function Message () {
         if (typeof json.localid !== 'undefined') {
             console.log("Running saved");
             console.log(this.onSaved);
+            
             for (var i = 0; i < this.onSaved.length; i++) {
                 this.onSaved[i](this);
+            }
+            
+            if (this.timeout !== null) {
+                window.clearTimeout(this.timeout);
+                this.timeout = null;
             }
         }
     };
@@ -161,6 +168,45 @@ function Message () {
         if (typeof this.destination === 'number')
             return window.app.roomdb.getRoom(this.roomid).getUser(this.destination);
         return window.app.roomdb.getRoom(this.roomid).getUser(this.destination[0]);
+    };
+    
+    this.set$ = function ($obj) {
+        $obj.addClass('sendInProgress');
+        
+        this.bindSaved(window.app.emulateBind(
+            function () {
+                $obj.removeClass('sendInProgress');
+            }, {$msg : $obj}
+        ));
+
+        this.bindError(window.app.emulateBind(
+            function() {
+                this.$message.removeClass('sendInProgress');
+                this.$message.addClass('sendError');
+
+                var $resend = $('<a class="retry language" data-langhtml="_CHATRESEND_" />');
+                $resend.bind('click', window.app.emulateBind(
+                    function () {
+                        window.app.chatapp.sendMessage(this.message);
+                        this.$message.removeClass('sendError').addClass('sendInProgress');
+                        this.$resend.remove();
+                    }, {message : this.message, $message : this.$message, $resend : $resend}
+                ));
+
+                window.app.ui.language.applyLanguageOn($resend);
+
+                this.$message.append(' ');
+                this.$message.append($resend);
+            }, {$message : $obj, message : this}
+        ));
+
+        this.timeout = window.setTimeout(window.app.emulateBind(function () {
+            var errors = this.message.onError;
+            
+            for (var i = 0; i < errors.length; i++) {
+                errors[i]();
+            }
+        }, {message : this}), 5000);
     };
     
 }

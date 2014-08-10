@@ -106,6 +106,9 @@ function DiceController () {
         
         var mod = window.app.ui.chat.mc.getModule('dice');
         var $html = mod.get$(message);
+        
+        message.set$($html);
+        
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
         

@@ -209,32 +209,7 @@ function MessageController () {
                 }
                 
                 if (msgObj !== null && $msg !== null) {
-                    $msg.addClass('sendInProgress');
-                    msgObj.bindSaved(window.app.emulateBind(
-                        function () {
-                            this.$msg.removeClass('sendInProgress');
-                        }, {$msg : $msg}
-                    ));
-                    msgObj.bindError(window.app.emulateBind(
-                        function(data, message) {
-                            this.$message.removeClass('sendInProgress');
-                            this.$message.addClass('sendError');
-                            
-                            var $resend = $('<a class="retry language" data-langhtml="_CHATRESEND_" />');
-                            $resend.bind('click', window.app.emulateBind(
-                                function () {
-                                    window.app.chatapp.sendMessage(this.message);
-                                    this.$message.removeClass('sendError').addClass('sendInProgress');
-                                    this.$resend.remove();
-                                }, {message : message, $message : this.$message, $resend : $resend}
-                            ));
-                    
-                            window.app.ui.language.applyLanguageOn($resend);
-                    
-                            this.$message.append(' ');
-                            this.$message.append($resend);
-                        }, {$message : $msg}
-                    ));
+                    msgObj.set$($msg);
                 }
             } else {
                 var $error = mod.get$error(slashCMD, msgOnly, window.app.loginapp.user.isStoryteller());

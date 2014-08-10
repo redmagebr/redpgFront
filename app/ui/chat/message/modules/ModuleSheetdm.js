@@ -54,6 +54,7 @@ window.chatModules.push({
             ));
         }
         
+        msg.set$($msg);
         return $msg;
     },
     

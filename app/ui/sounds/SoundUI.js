@@ -316,6 +316,7 @@ function SoundUI () {
         window.app.chatapp.sendMessage(message);
         var mod = window.app.ui.chat.mc.getModule(message.module);
         var $html = mod.get$(message);
+        message.set$($html);
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
     };
