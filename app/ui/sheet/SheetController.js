@@ -129,12 +129,10 @@ function SheetController () {
             };
             
             window.app.sheetapp.loadSheet(sheetid, cbs, cbe);
-            return;
+        } else {
+            styleid = window.app.sheetdb.getSheet(sheetid).system;
+            gameid = window.app.sheetdb.getSheet(sheetid).gameid;
         }
-        
-        styleid = window.app.sheetdb.getSheet(sheetid).system;
-        gameid = window.app.sheetdb.getSheet(sheetid).gameid;
-        
         
         if (typeof window.Style[styleid] === 'undefined') {
             window.app.ui.blockRight();
@@ -151,6 +149,10 @@ function SheetController () {
             };
             
             window.app.sheetapp.loadStyle(styleid, cbs, cbe);
+            return;
+        }
+        
+        if (window.app.sheetdb.getSheet(sheetid) === null) {
             return;
         }
         
