@@ -246,7 +246,7 @@ function UI () {
          * Left and Right handlers must move in and out as the mouse targets them.
          */
         this.$leftHandler.bind('mouseenter', function () {
-            window.app.ui.$leftHandler.animate({
+            window.app.ui.$leftHandler.stop(true, false).animate({
                 left: '0px'
             }, {
                 duration: 100
@@ -255,7 +255,7 @@ function UI () {
         
         this.$leftHandler.bind('mouseleave', function () {
             if (!window.app.ui.$leftHandler.hasClass('fullScreen'))
-            window.app.ui.$leftHandler.animate({
+            window.app.ui.$leftHandler.stop(true, false).animate({
                 left: '-100px'
             }, {
                 duration: 100
@@ -263,7 +263,7 @@ function UI () {
         });
         
         this.$rightHandler.bind('mouseenter', function () {
-            window.app.ui.$rightHandler.animate({
+            window.app.ui.$rightHandler.stop(true, false).animate({
                 right: '0px'
             }, {
                 duration: 100
@@ -272,7 +272,7 @@ function UI () {
         
         this.$rightHandler.bind('mouseleave', function () {
             if (!window.app.ui.$rightHandler.hasClass('fullScreen'))
-            window.app.ui.$rightHandler.animate({
+            window.app.ui.$rightHandler.stop(true, false).animate({
                 right: '-100px'
             }, {
                 duration: 100
