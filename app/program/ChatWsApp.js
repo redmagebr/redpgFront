@@ -20,9 +20,8 @@ function ChatWsApp () {
         
         if (this.controller.connected) {
            this.stop();
-           setTimeout(function () {
-               window.app.chatapp.connect();
-           }, 500);
+           this.controller.newConnection();
+           this.connect();
         } else {
             this.connect();
         }

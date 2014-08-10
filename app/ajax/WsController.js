@@ -25,6 +25,11 @@ function WsController () {
         
     };
     
+    this.newConnection = function () {
+        this.connected = false;
+        this.websocket = null;
+    };
+    
     this.sendMessage = function (action, message) {
         if (!this.connected) {
             return false;
