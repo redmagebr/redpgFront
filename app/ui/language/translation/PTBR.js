@@ -326,7 +326,10 @@ window.lingo['pt_br'] = {
     _NEWGAMEDESCRIPTION_ : 'Descrição do Jogo. Será visível na listagem de salas e quando o jogo for visualizado por alguém que deseja se inscrever.',
     _NEWGAMEFREEJOIN_ : 'Inscrição Livre (Não implementado)',
     _NEWGAMEFREEJOINEXP_ : 'Permite que jogadores procurando jogos visualizem esse jogo e se inscrevam nele. Usuários que entrarem no seu jogo dessa maneira não receberão permissão para utilizar nada que não seja livre dentro do jogo e você será informado da inscrição. Não está implementado e, portanto, não funciona, mas você pode marcar essa opção desde já, caso deseje.',
-    _SENDGAME_ : 'Confirmar criação',
+    _SENDNEWGAME_ : 'Confirmar criação',
+    _EDITGAMEHEADER_ : 'Alterar Jogo',
+    _SENDEDITGAME_ : 'Confirmar mudanças',
+    _INVALIDGAME_ : 'Jogo inválido ou inexistente',
     _NEWGAMEERROR_ : 'Houve um erro no envio da informação, tente novamente.',
     _GAMESDELETEERROR_ : 'Houve um erro. O pedido não foi executado.',
     

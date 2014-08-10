@@ -15,6 +15,8 @@ function Game () {
     this.promote = false;
     this.storyteller = false;
     
+    this.freejoin = false;
+    
     this.rooms = [];
     this.sheets = [];
     
@@ -36,7 +38,8 @@ function Game () {
             createRoom : 'storyteller',
             invite : 'inviter',
             promote : 'promoter',
-            storyteller : 'storyteller'
+            storyteller : 'storyteller',
+            freejoin : 'freejoin'
         };
         var i;
         for (i in attributes) {

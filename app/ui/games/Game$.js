@@ -17,9 +17,9 @@ function Game$ () {
             ));
             
             var $options = $('<a class="right button options language" data-langtitle="_GAMESOPTIONS_"></a>');
-            $options.bind('click', function () {
-                alert("Options - Not implemented");
-            });
+            $options.bind('click', window.app.emulateBind(function () {
+                window.app.ui.gameui.callEdit(this.id);
+            }, {id : game.id}));
             
             $game.append($deletebutton);
             $game.append($options);

@@ -18,12 +18,14 @@ function GameUI () {
     this.$formdesc;
     this.$formfreejoin;
     this.$formsubmit;
+    this.$header;
     
     this.init = function () {
         this.$nickobj = $('#gamesNickInformant');
         this.$list = $('#gamesList');
         this.$loading = $('#gamesWindowLoading');
         this.$createbutton = $('#gamesNewGameButton');
+        this.$header = $('#newgameHeader');
         
         this.$error = $('#newGameError');
         this.$deleteError = $('#gamesDeleteError');
@@ -32,6 +34,7 @@ function GameUI () {
         this.$formname = $('#CGName');
         this.$formdesc = $('#CGDesc');
         this.$formfreejoin = $('#CGFreejoin');
+        this.$formsubmit = $('#createGameSubmit');
         
         this.inviteui.init();
         this.roomui.init();
@@ -50,6 +53,10 @@ function GameUI () {
             window.app.ui.gameui.callCreation();
         });
         
+        this.bindForm();
+    };
+    
+    this.bindForm = function () {
         this.$form.bind('submit', window.app.emulateBind(function () {            
             this.$formname.removeClass('error');
             var Validation = new FormValidator(this.$form);
@@ -77,7 +84,7 @@ function GameUI () {
                     window.app.ui.unblockLeft();
                     this.$error.show();
                 }, {
-                    $error : this.$loadError
+                    $error : this.$error
                 }
             );
             
@@ -89,16 +96,45 @@ function GameUI () {
                 window.app.gameapp.createGame(obj, cbs, cbe);
             }
         }, {$formname : this.$formname, $form : this.$form, $formdesc : this.$formdesc,
-            $formfreejoin : this.$formfreejoin, $error : this.$error, base : this})
+            $formfreejoin : this.$formfreejoin, $error : this.$error, base : this,
+            $loadError : this.$loadError})
         );
     };
     
     this.callCreation = function () {
         // empty the form
+        this.edit = null;
+        this.$header.attr("data-langhtml", "_NEWGAMEHEADER_");
+        this.$formsubmit.attr("data-langvalue", "_SENDNEWGAME_");
+        window.app.ui.language.applyLanguageTo(this.$header);
+        window.app.ui.language.applyLanguageTo(this.$formsubmit);
         this.$error.hide();
         this.$formdesc.val('');
         this.$formname.val('');
         this.$formfreejoin.attr('checked', false);
+        // call window
+        window.app.ui.callLeftWindow('createGameWindow');
+    };
+    
+    this.callEdit = function (id) {
+        var game = window.app.gamedb.getGame(id);
+        
+        if (game === null) {
+            alert(window.app.ui.language.getLingo("_INVALIDGAME_"));
+            return;
+        }
+        
+        this.$error.hide();
+        
+        this.edit = id;
+        
+        this.$header.attr("data-langhtml", "_EDITGAMEHEADER_");
+        this.$formsubmit.attr("data-langvalue", "_SENDEDITGAME_");
+        window.app.ui.language.applyLanguageTo(this.$header);
+        window.app.ui.language.applyLanguageTo(this.$formsubmit);
+        this.$formdesc.val(game.description);
+        this.$formname.val(game.name);
+        this.$formfreejoin.attr('checked', game.freejoin);
         // call window
         window.app.ui.callLeftWindow('createGameWindow');
     };

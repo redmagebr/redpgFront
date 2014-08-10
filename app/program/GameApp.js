@@ -30,6 +30,19 @@ function GameApp () {
         ajax.requestPage(ajaxObj);
     };
     
+    this.editGame = function (obj, cbs, cbe) {
+        var ajaxObj = {
+            url : 'EditGame',
+            data : obj,
+            success: cbs,
+            error: cbe
+        };
+        
+        var ajax = new AjaxController();
+        
+        ajax.requestPage(ajaxObj);
+    };
+    
     this.createRoom = function (room, game, cbs, cbe) {
         var ajaxObj = {
             url : 'CreateRoom',
