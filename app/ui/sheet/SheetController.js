@@ -108,7 +108,8 @@ function SheetController () {
         }
     };
     
-    this.openSheet = function (sheetid, styleid, gameid) {
+    this.openSheet = function (sheetid, styleid, gameid, important) {
+        if (typeof important === 'undefined') important = true;
         if (sheetid === this.currentInstance) {
             window.app.ui.callRightWindow('sheetWindow');
             return;
@@ -117,7 +118,7 @@ function SheetController () {
         if (window.app.sheetdb.getSheet(sheetid) === null) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid);
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, false);
                 window.app.ui.unblockRight();
                 window.app.ui.sheetui.controller.$viewer.trigger('loadedSheet', [this.sheetid]);
             }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
@@ -134,10 +135,10 @@ function SheetController () {
             gameid = window.app.sheetdb.getSheet(sheetid).gameid;
         }
         
-        if (typeof window.Style[styleid] === 'undefined') {
+        if (typeof window.Style[styleid] === 'undefined' && important) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid);
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, false);
                 window.app.ui.sheetui.controller.$viewer.trigger('loadedStyle', [this.styleid]);
                 window.app.ui.unblockRight();
             }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
@@ -152,7 +153,7 @@ function SheetController () {
             return;
         }
         
-        if (window.app.sheetdb.getSheet(sheetid) === null) {
+        if (window.app.sheetdb.getSheet(sheetid) === null || typeof window.Style[styleid] === 'undefined') {
             return;
         }
         
