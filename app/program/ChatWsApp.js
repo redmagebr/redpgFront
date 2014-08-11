@@ -153,6 +153,20 @@ function ChatWsApp () {
         }));
     };
     
+    this.printAndSend = function (message, addlocal) {
+        var mod = window.app.ui.chat.mc.getModule(message.module);
+        if (mod === null) {
+            return;
+        }
+        if (addlocal) {
+            window.app.ui.chat.cc.room.addLocal(message);
+        }
+        var $html = mod.get$(message);
+        message.set$($html);
+        window.app.ui.language.applyLanguageOn($html);
+        window.app.ui.chat.appendToMessages($html);
+    };
+    
     this.getAllMessages = function () {
         window.app.ui.chat.$chatMessages.empty();
         

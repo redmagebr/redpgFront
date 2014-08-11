@@ -61,7 +61,6 @@ window.chatModules.push({
             audio.play();
         }
         
-        msg.set$($msg);
         
         return $msg;
     },
