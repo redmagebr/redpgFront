@@ -133,9 +133,7 @@ function Message () {
     };
     
     this.bindError = function (func) {
-        if (typeof func === 'function') {
-            this.onError.push(func);
-        }
+        this.onError.push(func);
     };
     
     /**
@@ -190,6 +188,7 @@ function Message () {
                         window.app.chatapp.sendMessage(this.message);
                         this.$message.removeClass('sendError').addClass('sendInProgress');
                         this.$resend.remove();
+                        this.message.setTimeout();
                     }, {message : this.message, $message : this.$message, $resend : $resend}
                 ));
 
@@ -200,6 +199,10 @@ function Message () {
             }, {$message : $obj, message : this}
         ));
 
+        this.setTimeout();
+    };
+    
+    this.setTimeout = function () {
         this.timeout = window.setTimeout(window.app.emulateBind(function () {
             var errors = this.message.onError;
             
