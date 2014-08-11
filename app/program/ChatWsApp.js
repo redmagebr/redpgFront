@@ -165,6 +165,7 @@ function ChatWsApp () {
         message.set$($html);
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
+        this.sendMessage(message);
     };
     
     this.getAllMessages = function () {
