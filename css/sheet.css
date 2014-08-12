@@ -1,7 +1,9 @@
 #sheetPermissionsList > p.permission {
     padding-left: 10px;
     padding-right: 10px;
-    height: 40px;
+    height: 36px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #sheetPermissionsList > p.permission:hover {
@@ -10,7 +12,7 @@
 
 #sheetPermissionsList > p.permission > span {
     font-size: 1.4em;
-    line-height: 40px;
+    line-height: 36px;
 }
 
 #sheetPermissionsList > p.permission > input, #sheetPermissionsList > p.permission > label {
@@ -18,8 +20,8 @@
 }
 
 #sheetPermissionsList > p.permission > input {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     margin-left: 20px;
     margin-top: 5px;
@@ -32,8 +34,8 @@
 
 #sheetPermissionsList > p.permission > label {
     display: block;
-    height: 40px;
-    line-height: 40px;
+    height: 36px;
+    line-height: 36px;
 }
 
 #sheetPermissionsList > p.permission > input:hover, #sheetPermissionsList > p.permission > label:hover {
@@ -84,8 +86,8 @@
 
 #sheetListDiv > div > p {
     display: none;
-    line-height: 60px;
-    height: 60px;
+    line-height: 50px;
+    height: 50px;
     padding-left: 10px;
     margin: 0px;
 }
@@ -94,9 +96,15 @@
     background-color: #dadada;
 }
 
+#sheetListDiv > div > p > .textButton {
+    height: 24px;
+    line-height: 24px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
 #sheetListDiv > div.open > p {
     display: block;
-    
 }
 
 #sheetListDiv > div > p > a.safeIcon {

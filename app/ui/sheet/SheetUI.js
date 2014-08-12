@@ -68,10 +68,12 @@ function SheetUI() {
         var $safe;
         var $name;
         data.sort(function (a, b) {
-            if (a.nome < b.nome) {
+            var nomea = a.nome.toUpperCase();
+            var nomeb = b.nome.toUpperCase();
+            if (nomea < nomeb) {
                 return -1;
             }
-            if (a.nome > b.nome) {
+            if (nomea > nomeb) {
                 return 1;
             }
             return 0;
@@ -86,10 +88,12 @@ function SheetUI() {
             }
             
             data[i].sheets.sort(function (a, b) {
-                if (a.nome < b.nome) {
+                var nomea = a.nome.toUpperCase();
+                var nomeb = b.nome.toUpperCase();
+                if (nomea < nomeb) {
                     return -1;
                 }
-                if (a.nome > b.nome) {
+                if (nomea > nomeb) {
                     return 1;
                 }
                 return 0;
@@ -107,7 +111,7 @@ function SheetUI() {
                     $p.append($del);
                 }
                 
-                if (data[i].sheets[j]['editar']) {
+                if (data[i].sheets[j]['promote']) {
                     $priv = $("<a class='floatRight textButton language' data-langhtml='_SHEETSPRIVILEGES_'>Permissoes</a>");
                     $priv.on('click', window.app.emulateBind(function () {
                         window.app.ui.sheetui.callPrivileges(this.id, this.name, this.gameid);
@@ -124,6 +128,7 @@ function SheetUI() {
                 
                 $name = $("<a class='sheetName language' data-langtitle='_SHEETSNAMETITLE_' />").text(data[i].sheets[j]["nome"]);
                 $name.on('click', window.app.emulateBind(function () {
+                    window.app.ui.sheetui.creating = this.gameid;
                     window.app.ui.sheetui.openSheet(this.id, this.idstyle, this.gameid);
                 }, {id : data[i].sheets[j]['id'], idstyle : data[i].sheets[j]['idstyle'], gameid : data[i].id}));
                 $p.append($name);
@@ -211,18 +216,15 @@ function SheetUI() {
         
         
         data.sort(function (a, b) {
-            if (a.nickuser < b.nickuser) {
+            var nicka = a.nickuser.toUpperCase() + '#' + a.nicksufixuser;
+            var nickb = b.nickuser.toUpperCase() + '#' + b.nicksufixuser;
+            if (nicka < nickb) {
                 return -1;
             }
-            if (a.nickuser > b.nickuser) {
+            if (nicka > nickb) {
                 return 1;
             }
-            if (a.nicksufixuser < b.nicksufixuser) {
-                return -1;
-            }
-            if (a.nicksufixuser > b.nicksufixuser) {
-                return 1;
-            }
+            return 0;
         });
         
         for (var i = 0; i < data.length; i++) {
@@ -232,6 +234,14 @@ function SheetUI() {
             );
             $p.append(
                 $('<span />').text(data[i].nickuser + '#' + data[i].nicksufixuser)
+            );
+    
+            $p.append(
+                $('<label for="promperm' + data[i].iduser + '" class="language" data-langtitle="_SHEETPERMISSIONPROMEXP_" data-langhtml="_SHEETPERMISSIONPROM_" />')
+            );
+    
+            $p.append(
+                $('<input id="promperm' + data[i].iduser + '" class="promPerm language"  data-langtitle="_SHEETPERMISSIONPROMEXP_" type="checkbox" ' + (data[i].promote ? 'checked' : '') + ' />')
             );
     
             $p.append(
@@ -289,7 +299,8 @@ function SheetUI() {
                 userid : $($permission.find('.idAccount')[0]).val(),
                 deletar : $permission.find('.deletePerm')[0].checked,
                 editar : $permission.find('.editPerm')[0].checked,
-                visualizar : $permission.find('.viewPerm')[0].checked
+                visualizar : $permission.find('.viewPerm')[0].checked,
+                promote : $permission.find('.promPerm')[0].checked
             };
             
             permissionArray.push(permission);

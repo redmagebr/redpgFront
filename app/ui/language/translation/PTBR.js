@@ -62,7 +62,9 @@ window.lingo['pt_br'] = {
     _SHEETPERMISSIONNHEADER_ : 'Permissões de Ficha',
     _SHEETPERMISSIONVIEW_ : 'Ver',
     _SHEETPERMISSIONEDIT_ : 'Editar',
-    _SHEETPERMISSIONDELETE_ : 'Deletar',
+    _SHEETPERMISSIONDELETE_ : 'Apagar',
+    _SHEETPERMISSIONPROM_ : 'Promover',
+    _SHEETPERMISSIONPROMEXP_ : 'Permite alterar permissões da ficha, permitindo que dê elas aos outros',
     _SHEETPERMISSIONSUBMIT_ : 'Enviar',
     
     _SHEETSAVE_ : 'Salvar',
