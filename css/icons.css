@@ -57,6 +57,14 @@
     background-image: url('../img/chat/buttonModules.png');
 }
 
+#languagesButton {
+    background-image: url('../img/chat/buttonLanguages.png');
+}
+
+#combatTrackerButton {
+    background-image: url('../img/chat/buttonCombat.png');
+}
+
 #chatSettings {
     background-image: url('../img/chat/buttonSettings.png');
 }
