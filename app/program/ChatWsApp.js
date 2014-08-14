@@ -5,6 +5,17 @@ function ChatWsApp () {
     this.free = true;
     this.timeout = null;
     this.ackTimeout = null;
+    this.focusFlag = true;
+    
+    $(window).bind('focus', function (e) {
+        window.app.chatapp.focusFlag = true;
+        window.app.chatapp.sendFocus();
+    });
+    
+    $(window).bind('blur', function (e) {
+        window.app.chatapp.focusFlag = false;
+        window.app.chatapp.sendFocus();
+    });
     
     /**
      * 
@@ -282,5 +293,9 @@ function ChatWsApp () {
     this.ack = function () {
        this.waitForAck();
        this.controller.sendAck();
+    };
+    
+    this.sendFocus = function () {
+        this.sendAction("focused", this.focusFlag ? '1' : '0');
     };
 }
