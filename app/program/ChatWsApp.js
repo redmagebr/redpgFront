@@ -296,6 +296,8 @@ function ChatWsApp () {
     };
     
     this.sendFocus = function () {
-        this.sendAction("focused", this.focusFlag ? '1' : '0');
+        if (this.controller.connected) {
+            this.sendAction("focused", this.focusFlag ? '1' : '0');
+        }
     };
 }
