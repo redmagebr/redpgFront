@@ -461,13 +461,32 @@ function UI () {
             this.callRightWindow('twitchChat');
             return;
         }
+        var src = 'http://twitch.tv/chat/embed?channel=' + channel + '&amp;popout_chat=true';
         var channel = prompt("Channel (Deixe em branco para reabrir o atual):");
-        if (channel !== '' && channel !== null && channel !== $('#twitchChatiFrame').attr('src')) {
+        if (channel !== '' && channel !== null && src !== $('#twitchChatiFrame').attr('src')) {
             $('#twitchChatiFrame').attr(
                 'src', 
-                'http://twitch.tv/chat/embed?channel=' + channel + '&amp;popout_chat=true'
+                src
             );
         }
         this.callRightWindow('twitchChat');
+    };
+    
+    
+    this.openHitbox = function () {
+        console.log("AAAAAAAA");
+        if ($('#hitboxChatiFrame').attr('src') !== null && !$('#hitboxChatiFrame').is(':visible')) {
+            this.callRightWindow('hitboxChat');
+            return;
+        }
+        var src = 'http://www.hitbox.tv/embedchat/' + channel;
+        var channel = prompt("Channel:");
+        if (channel !== '' && channel !== null && src !== $('#hitboxChatiFrame').attr('src')) {
+            $('#hitboxChatiFrame').attr(
+                'src', 
+                src
+            );
+        }
+        this.callRightWindow('hitboxChat');
     };
 }

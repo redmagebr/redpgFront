@@ -7,11 +7,11 @@ function Invite () {
     
     this.updateFromJSON = function (json) {
         var attributes = {
-            gameid : 'gameId',
-            gamename : 'gameName',
-            creatornick : 'creatorNick',
-            creatornicksufix : 'creatorNicksufix',
-            message : 'message'
+            gameid : 'id',
+            gamename : 'name',
+            creatornick : 'creatornick',
+            creatornicksufix : 'creatornicksufix',
+            message : 'MensagemConvite'
         };
         var i;
         for (i in attributes) {

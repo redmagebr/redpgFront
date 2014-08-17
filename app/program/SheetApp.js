@@ -8,9 +8,9 @@ function SheetApp () {
         }, {cbs:cbs});
         
         ajax.requestPage({
-            url : 'StyleRequest',
+            url : 'Style',
             dataType : 'text',
-            data : {id : styleid},
+            data : {id : styleid, action : 'request'},
             success: cbs,
             error: cbe
         });
@@ -25,8 +25,8 @@ function SheetApp () {
         }, {cbs : cbs});
         
         ajax.requestPage({
-            url : 'SheetRequest',
-            data : {id : sheetid},
+            url : 'Sheet',
+            data : {id : sheetid, action : 'request'},
             success: cbs,
             error: cbe
         });
@@ -36,8 +36,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'SheetUpdate',
-            data : {id : sheetid, values : values, name : name},
+            url : 'Sheet',
+            data : {id : sheetid, values : values, name : name, action : "update"},
             success: cbs,
             error: cbe
         });
@@ -51,7 +51,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'SheetList',
+            url : 'Sheet',
+            data : {action : 'list'},
             success: cbs,
             error: cbe
         });
@@ -61,8 +62,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'StyleList',
-            data: {id : gameid},
+            url : 'Style',
+            data: {id : gameid, action : 'list'},
             success: cbs,
             error: cbe
         });
@@ -72,8 +73,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'SheetCreateDelete',
-            data: {id : sheetid},
+            url : 'Sheet',
+            data: {id : sheetid, action : 'delete'},
             success: cbs,
             error: cbe
         });
@@ -83,8 +84,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'SheetCreateDelete',
-            data: {gameid : gameid, name : sheetname, idstyle : idstyle, publica : publica},
+            url : 'Sheet',
+            data: {gameid : gameid, name : sheetname, idstyle : idstyle, publica : publica, action : 'create'},
             success: cbs,
             error: cbe
         });
@@ -94,8 +95,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'SheetList',
-            data : {id : id},
+            url : 'Sheet',
+            data : {id : id, action : 'listPerm'},
             success: cbs,
             error: cbe
         });
@@ -105,8 +106,8 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'SheetUpdatePrivileges',
-            data : {id : idsheet, privileges : permissions},
+            url : 'Sheet',
+            data : {id : idsheet, privileges : permissions, action : 'updatePerm'},
             success: cbs,
             error: cbe
         });

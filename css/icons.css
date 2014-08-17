@@ -143,3 +143,13 @@
 .sp_Flag {
     background-image: url('../img/language/SP.png');
 }
+
+
+/* Menu Icons */
+#openTwitch {
+    background-image: url('../img/menu/twitchIcon.png');
+}
+
+#openHitbox {
+    background-image: url('../img/menu/hitboxIcon.png');
+}

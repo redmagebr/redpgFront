@@ -6,8 +6,9 @@ function GameApp () {
         }, {cbs : cbs});
         
         var ajaxObj = {
-            url : 'GameList',
+            url : 'Game',
             dataType : 'json',
+            data : {action : 'list'},
             success: cbs,
             error: cbe
         };
@@ -18,8 +19,9 @@ function GameApp () {
     };
     
     this.createGame = function (obj, cbs, cbe) {
+        obj.action = 'create';
         var ajaxObj = {
-            url : 'CreateGame',
+            url : 'Game',
             data : obj,
             success: cbs,
             error: cbe
@@ -31,21 +33,9 @@ function GameApp () {
     };
     
     this.editGame = function (obj, cbs, cbe) {
+        obj.action = 'edit';
         var ajaxObj = {
-            url : 'EditGame',
-            data : obj,
-            success: cbs,
-            error: cbe
-        };
-        
-        var ajax = new AjaxController();
-        
-        ajax.requestPage(ajaxObj);
-    };
-    
-    this.createRoom = function (room, game, cbs, cbe) {
-        var ajaxObj = {
-            url : 'CreateRoom',
+            url : 'Game',
             data : obj,
             success: cbs,
             error: cbe
@@ -73,8 +63,10 @@ function GameApp () {
             data.message = message;
         }
         
+        data.action = 'send';
+        
         var ajaxObj = {
-            url : 'SendInvite',
+            url : 'Invite',
             data : data,
             success: cbs,
             error: cbe
@@ -89,8 +81,9 @@ function GameApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'InviteList',
+            url : 'Invite',
             dataType : 'json',
+            data : {action : 'list'},
             success: cbs,
             error: cbe
         });
@@ -100,8 +93,8 @@ function GameApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'InviteAccept',
-            data : {'gameid' : gameid},
+            url : 'Invite',
+            data : {'gameid' : gameid, action : 'accept'},
             success: cbs,
             error: cbe
         });
@@ -111,8 +104,8 @@ function GameApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'InviteReject',
-            data : {'gameid' : gameid},
+            url : 'Invite',
+            data : {'gameid' : gameid, action : 'reject'},
             success: cbs,
             error: cbe
         });
@@ -122,8 +115,8 @@ function GameApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'DeleteGame',
-            data : {'id' : gameid},
+            url : 'Game',
+            data : {'id' : gameid, action : 'delete'},
             success: cbs,
             error: cbe
         });

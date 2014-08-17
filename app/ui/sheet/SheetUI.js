@@ -58,6 +58,7 @@ function SheetUI() {
     
     this.fillList = function (data) {
         //this.$list.text(JSON.stringify(data[0]));
+        console.log(data);
         this.$list.empty();
         
         var $div;
@@ -68,8 +69,8 @@ function SheetUI() {
         var $safe;
         var $name;
         data.sort(function (a, b) {
-            var nomea = a.nome.toUpperCase();
-            var nomeb = b.nome.toUpperCase();
+            var nomea = a.name.toUpperCase();
+            var nomeb = b.name.toUpperCase();
             if (nomea < nomeb) {
                 return -1;
             }
@@ -80,7 +81,7 @@ function SheetUI() {
         });
         for (var i = 0; i < data.length; i++) {
             $div = $('<div />');
-            $h1 = $("<h1 onclick='$(this).parent().toggleClass(\"open\");' class='language' data-langtitle='_SHEETSGAMETITLE_' />").text(data[i]["nome"]);
+            $h1 = $("<h1 onclick='$(this).parent().toggleClass(\"open\");' class='language' data-langtitle='_SHEETSGAMETITLE_' />").text(data[i]["name"]);
             $div.append($h1);
             
             if (data[i].id === this.creating) {
@@ -103,7 +104,7 @@ function SheetUI() {
                 $p = $('<p />');
                 $div.append($p);
                 
-                if (data[i].sheets[j]['deletar']) {
+                if (data[i].sheets[j]['deletar'] || data[i].deleteSheet) {
                     $del = $("<a class='floatRight textButton language' data-langhtml='_SHEETSDELETE_'>Deletar</a>");
                     $del.on('click', window.app.emulateBind(function () {
                         window.app.ui.sheetui.callDelete(this.id, this.nome, this.gameid);
@@ -111,7 +112,7 @@ function SheetUI() {
                     $p.append($del);
                 }
                 
-                if (data[i].sheets[j]['promote']) {
+                if (data[i].sheets[j]['promote'] || data[i].promote) {
                     $priv = $("<a class='floatRight textButton language' data-langhtml='_SHEETSPRIVILEGES_'>Permissoes</a>");
                     $priv.on('click', window.app.emulateBind(function () {
                         window.app.ui.sheetui.callPrivileges(this.id, this.name, this.gameid);
@@ -139,7 +140,7 @@ function SheetUI() {
                 $div.append($p);
             }
             
-            if (data[i].sheetCreator) {
+            if (data[i].createSheet) {
                 $p = $("<p />");
                 $name = $("<a class='sheetName language' data-langhtml='_SHEETSADD_' />");
                 $p.append($name);
@@ -216,8 +217,8 @@ function SheetUI() {
         
         
         data.sort(function (a, b) {
-            var nicka = a.nickuser.toUpperCase() + '#' + a.nicksufixuser;
-            var nickb = b.nickuser.toUpperCase() + '#' + b.nicksufixuser;
+            var nicka = a.nickname.toUpperCase() + '#' + a.nicknamesufix;
+            var nickb = b.nickname.toUpperCase() + '#' + b.nicknamesufix;
             if (nicka < nickb) {
                 return -1;
             }
@@ -230,42 +231,42 @@ function SheetUI() {
         for (var i = 0; i < data.length; i++) {
             $p = $('<p class="permission" />');
             $p.append(
-                $('<input type="hidden" class="idAccount" value="' + data[i].iduser + '" />')
+                $('<input type="hidden" class="idAccount" value="' + data[i].userid + '" />')
             );
             $p.append(
-                $('<span />').text(data[i].nickuser + '#' + data[i].nicksufixuser)
-            );
-    
-            $p.append(
-                $('<label for="promperm' + data[i].iduser + '" class="language" data-langtitle="_SHEETPERMISSIONPROMEXP_" data-langhtml="_SHEETPERMISSIONPROM_" />')
+                $('<span />').text(data[i].nickname + '#' + data[i].nicknamesufix)
             );
     
             $p.append(
-                $('<input id="promperm' + data[i].iduser + '" class="promPerm language"  data-langtitle="_SHEETPERMISSIONPROMEXP_" type="checkbox" ' + (data[i].promote ? 'checked' : '') + ' />')
+                $('<label for="promperm' + data[i].userid + '" class="language" data-langtitle="_SHEETPERMISSIONPROMEXP_" data-langhtml="_SHEETPERMISSIONPROM_" />')
             );
     
             $p.append(
-                $('<label for="delperm' + data[i].iduser + '" class="language" data-langhtml="_SHEETPERMISSIONDELETE_" />')
+                $('<input id="promperm' + data[i].userid + '" class="promPerm language"  data-langtitle="_SHEETPERMISSIONPROMEXP_" type="checkbox" ' + (data[i].promote ? 'checked' : '') + ' />')
             );
     
             $p.append(
-                $('<input id="delperm' + data[i].iduser + '" class="deletePerm" type="checkbox" ' + (data[i].delete ? 'checked' : '') + ' />')
+                $('<label for="delperm' + data[i].userid + '" class="language" data-langhtml="_SHEETPERMISSIONDELETE_" />')
             );
     
             $p.append(
-                $('<label for="editperm' + data[i].iduser + '" class="language" data-langhtml="_SHEETPERMISSIONEDIT_" />')
+                $('<input id="delperm' + data[i].userid + '" class="deletePerm" type="checkbox" ' + (data[i].deletar ? 'checked' : '') + ' />')
             );
     
             $p.append(
-                $('<input id="editperm' + data[i].iduser + '" class="editPerm" type="checkbox" ' + (data[i].edit ? 'checked' : '') + ' />')
+                $('<label for="editperm' + data[i].userid + '" class="language" data-langhtml="_SHEETPERMISSIONEDIT_" />')
             );
     
             $p.append(
-                $('<label for="viewperm' + data[i].iduser + '" class="language" data-langhtml="_SHEETPERMISSIONVIEW_" />')
+                $('<input id="editperm' + data[i].userid + '" class="editPerm" type="checkbox" ' + (data[i].editar ? 'checked' : '') + ' />')
             );
     
             $p.append(
-                $('<input id="viewperm' + data[i].iduser + '" class="viewPerm" type="checkbox" ' + (data[i].view ? 'checked' : '') + ' />')
+                $('<label for="viewperm' + data[i].userid + '" class="language" data-langhtml="_SHEETPERMISSIONVIEW_" />')
+            );
+    
+            $p.append(
+                $('<input id="viewperm' + data[i].userid + '" class="viewPerm" type="checkbox" ' + (data[i].visualizar ? 'checked' : '') + ' />')
             );
             
             $list.append($p);

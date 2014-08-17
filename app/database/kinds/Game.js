@@ -27,18 +27,18 @@ function Game () {
     this.updateFromJSON = function (json) {
         var attributes = {
             id : 'id',
-            name : 'nome',
+            name : 'name',
             description : 'descricao',
-            creatorid : 'creator',
-            creatornick : 'creatorNick',
-            creatorsufix : 'creatorSufix',
-            createSheet : 'sheetCreator',
-            editSheet : "sheetEditor",
-            deleteSheet : 'sheetDeleter',
-            createRoom : 'storyteller',
-            invite : 'inviter',
-            promote : 'promoter',
-            storyteller : 'storyteller',
+            creatorid : 'creatorid',
+            creatornick : 'creatornick',
+            creatorsufix : 'creatorsufix',
+            createSheet : 'createSheet',
+            editSheet : "editSheet",
+            deleteSheet : 'deleteSheet',
+            createRoom : 'createRoom',
+            invite : 'invite',
+            promote : 'promote',
+            storyteller : 'createRoom',
             freejoin : 'freejoin'
         };
         var i;
@@ -47,13 +47,13 @@ function Game () {
                 this[i] = json[attributes[i]];
             }
         }
-        if (typeof json.salas !== 'undefined') {
+        if (typeof json.rooms !== 'undefined') {
             this.rooms = [];
-            for (i = 0; i < json.salas.length; i++) {
-                this.rooms.push(json.salas[i].id);
-                json.salas[i].gameid = this.id;
+            for (i = 0; i < json.rooms.length; i++) {
+                this.rooms.push(json.rooms[i].id);
+                json.rooms[i].gameid = this.id;
             }
-            window.app.roomdb.updateFromJSON(json.salas);
+            window.app.roomdb.updateFromJSON(json.rooms);
             
             if (this.rooms.length > 0) {
                 var sortFunction = window.app.emulateBind(function (a, b) {

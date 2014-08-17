@@ -462,7 +462,9 @@ function SheetController () {
         }
         window.app.ui.blockRight();
         var cbs = window.app.emulateBind(function () {
-            window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid);
+            if (window.app.ui.sheetui.controller.currentInstance === this.sheetid) {
+                window.app.ui.sheetui.openSheet(this.sheetid);
+            }
             window.app.ui.unblockRight();
         }, {sheetid : sheetid, styleid : sheet.system});
 

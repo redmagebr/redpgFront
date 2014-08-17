@@ -195,7 +195,7 @@ function GameUI () {
         };
         
         var cbe = function () {
-            this.$error.show();
+            window.app.ui.gameui.$error.show();
             window.app.ui.unblockLeft();
         };
         

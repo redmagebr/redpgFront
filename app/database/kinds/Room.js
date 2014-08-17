@@ -57,10 +57,10 @@ function Room () {
             description : 'description',
             private : 'privateRoom',
             logger : 'logger',
-            gameid : 'gameid',
-            creatorid : 'creator',
+            creatorid : 'creatorid',
             id : 'id',
-            name :  'name'
+            name :  'name',
+            gameid :  'gameid'
         };
         var i;
         for (i in attributes) {

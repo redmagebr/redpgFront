@@ -146,7 +146,8 @@ window.lingo['pt_br'] = {
     _NAVIGATOR_ : 'Comunidade',
     _LOGOUT_ : 'Logout',
     _OPENOLDSYSTEM_ : "Sistema Antigo",
-    _OPENTWITCH_ : 'Twitch Chat!',
+    _OPENTWITCH_ : 'Twitch Chat...',
+    _OPENTHITBOX_ : 'Hitbox Chat!',
     
     /* Picture Show */
     _CLOSEIMAGE_ : 'Clique aqui para fechar a imagem.',

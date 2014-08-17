@@ -15,15 +15,12 @@ function UserDB () {
         }
     };
     
-    this.updateFromJSONObject = function (json, onlineonly) {
+    this.updateFromJSONObject = function (json) {
         for (var i in json) {
             if (typeof this.users[i] === 'undefined') {
                 this.users[i] = new User();
             }
             this.users[i].updateFromJSON(json[i]);
-            if (onlineonly) {
-                this.users[i].online = true;
-            }
         }
     };
     

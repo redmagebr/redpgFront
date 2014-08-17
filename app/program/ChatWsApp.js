@@ -32,13 +32,16 @@ function ChatWsApp () {
         if (this.controller.connected) {
            this.stop();
            this.controller.newConnection();
-           this.connect();
+           window.setTimeout(window.app.emulateBind(function () {
+               window.app.chatapp.start(this.room, this.cbs, this.cbe);
+           }, {room : room, cbs : cbs, cbe : cbe}), 100);
         } else {
             this.connect();
         }
     };
     
     this.connect = function () {
+        this.clearAck();
         var onopen = function (event) {
             window.app.chatapp.onopen(event);
         };
@@ -53,10 +56,11 @@ function ChatWsApp () {
         };
         
         
-        this.controller.connect("roomapp", onopen, onclose, onmessage, onerror);
+        this.controller.connect("Chat", onopen, onclose, onmessage, onerror);
     };
     
     this.onopen = function (event) {
+        this.clearAck();
         console.log("Connected - ");
         console.log(event);
         this.waitForAck();
@@ -84,11 +88,16 @@ function ChatWsApp () {
         $html.append(" ").append($a);
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
+        this.clearAck();
+        
+        window.app.loginapp.checkLogin();
     };
     
     this.onerror = function (event) {
         console.log("Error - ");
         console.log(event);
+        this.clearAck();
+        window.app.loginapp.checkLogin();
     };
     
     this.onmessage = function (event) {
@@ -104,6 +113,9 @@ function ChatWsApp () {
         var obj = JSON.parse(event.data);
         if (obj[0] === 'typing') {
             this.room.users.getUser(obj[1]).typing = (obj[2] === 1);
+            window.app.ui.chat.cc.pc.checkUsers();
+        } else if (obj[0] === 'focused') {
+            this.room.users.getUser(obj[1]).focused = (obj[2] === 1);
             window.app.ui.chat.cc.pc.checkUsers();
         } else if (obj[0] === 'message') {
             if (obj[1].id < 0) {
@@ -187,7 +199,7 @@ function ChatWsApp () {
         
         var cbs = function (data) {
             window.app.chatapp.room.empty();
-            window.app.chatapp.room.updateFromJSON(data, true);
+            window.app.chatapp.room.updateFromJSON({messages : data}, true);
             window.app.ui.chat.cc.printMessages();
             window.app.ui.chat.cc.clearUsers();
             window.app.ui.chat.cc.checkUsers();
@@ -203,13 +215,11 @@ function ChatWsApp () {
         
         var data = {
             roomid : this.room.id,
-            requireUsers : this.room.requiresUsers,
-            userTime : 0,
-            lastMessage : 0
+            action : 'messages'
         };
         
         ajax.requestPage({
-            url : 'ChatFetcher',
+            url : 'Room',
             data : data,
             success: cbs,
             error: cbe
@@ -241,9 +251,10 @@ function ChatWsApp () {
         
         var ajax = new AjaxController();
         ajax.requestPage({
-            url : 'ClearChat',
+            url : 'Room',
             data : {
-                'roomid' : this.room.id
+                'roomid' : this.room.id,
+                action : 'clear'
             },
             error: cbe,
             success: cbs
@@ -254,6 +265,10 @@ function ChatWsApp () {
         if (typing !== this.typing) {
             this.typing = typing;
             this.sendAction("typing", this.typing ? '1' : '0');
+            var user = this.room.getUser(window.app.loginapp.user.id);
+            if (user != null && user.focused != this.focusFlag) {
+                this.sendFocus();
+            }
         }
         
         console.log(this.typing);
@@ -283,6 +298,7 @@ function ChatWsApp () {
         this.timeout = setTimeout(function () {
             $('#chatNotLoad').show();
             $('#chatNotConnError').hide();
+            window.app.chatapp.controller.sendAck();
             window.app.chatapp.timeout = setTimeout(function () {
                 $('#chatNotConnError').show();
                 $('#chatNotLoad').hide();

@@ -1,9 +1,9 @@
 function RoomApp () {
     this.createRoom = function (obj, cbs, cbe) {
         var ajax = new AjaxController();
-        
+        obj.action = 'create';
         ajax.requestPage({
-            url : 'CreateRoom',
+            url : 'Room',
             data: obj,
             success: cbs,
             error: cbe
@@ -14,8 +14,8 @@ function RoomApp () {
         var ajax = new AjaxController();
         
         ajax.requestPage({
-            url : 'DeleteRoom',
-            data : {'id' : roomid},
+            url : 'Room',
+            data : {'id' : roomid, action : 'delete'},
             success: cbs,
             error: cbe
         });
