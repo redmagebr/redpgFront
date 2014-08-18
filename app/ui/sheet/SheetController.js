@@ -319,6 +319,7 @@ function SheetController () {
         this.$html.detach();
         
         window.app.sheetdb.deleteSheet(this.currentInstance);
+        this.$viewer.trigger("closedSheet", [this.currentInstance]);
         
         this.currentStyle = 0;
         this.currentInstance = 0;
