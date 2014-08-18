@@ -1,3 +1,7 @@
+body {
+    min-height: 800px;
+}
+
 #stream {
     display: block;
     position: fixed;
