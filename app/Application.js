@@ -16,7 +16,7 @@ function Application (debug) {
      * Host must point to the server we're using.
      * It will be prepended to every AJAX url.
      */
-    this.host = 'http://redpg.com.br:8080/service/';
+    this.host = 'http://redpg.com.br/service/';
     this.staticHost = 'http://redpg.com.br/';
     this.wshost = 'ws://redpg.com.br:8080/service/';
     
