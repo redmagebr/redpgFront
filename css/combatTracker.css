@@ -1,0 +1,136 @@
+#combatTracker {
+    display: block;
+    top: 20px;
+    left: 100px;
+    width: 400px;
+    position: absolute;
+    z-index: 301;
+    font-family: alegreya;
+    background-color: #fff;
+    pointer-events: auto;
+}
+
+#combatTrackerHandle {
+    display: block;
+    width: 100%;
+    background-color: #333745;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+#combatTrackerHandle:hover {
+    cursor: move;
+}
+
+#combatTrackerHide {
+    float: left;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    margin-right: -40px;
+    width: 40px;
+    font-size: 2em;
+    text-align: center;
+}
+
+#combatTrackerHide:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,.2);
+}
+
+#combatTrackerHide:active {
+    background-color: rgba(255,255,255,.1);
+}
+
+#combatTrackerBody {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 400px;
+}
+
+#combatTrackerBody a.deleteRow {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    margin-left: 3px;
+    background-color: #000;
+    vertical-align: top;
+}
+
+#combatTrackerBody > p {
+    margin: 0px;
+    line-height: 30px;
+}
+
+#combatTrackerBody > p:hover {
+    background-color: #e6e6e6;
+}
+
+#combatTrackerBody > p.target {
+    border: solid 2px #f00;
+    border-left: none;
+    border-right: none;
+}
+
+#combatTrackerBody > p > span.personagem {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#combatTrackerBody > p > span.floatRight {
+    float: right;
+    margin-right: 3px;
+}
+
+#combatTrackerBody > p > span > input {
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    display: inline-block;
+    font-family: alegreya;
+    text-align: center;
+    font-size: 1em;
+}
+
+#combatTrackerBody > p > span > a {
+    display: inline-block;
+    margin-left: 3px;
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    vertical-align: top;
+    background-color: #000;
+}
+
+#combatTrackerFooter {
+    height: 30px;
+    display: block;
+}
+
+#combatTracketFooterRight {
+    float: right;
+    margin-right: 3px;
+}
+
+#combatTrackerFooter > select {
+    vertical-align: top;
+    height: 24px;
+    margin-top: 3px;
+    display: inline-block;
+    font-family: alegreya;
+}
+
+#combatTrackerFooter > a, #combatTracketFooterRight > a {
+    display: inline-block;
+    vertical-align: top;
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    margin-left: 3px;
+    background-color: #000;
+}

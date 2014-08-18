@@ -8,7 +8,8 @@
 function Chat () {
     this.usePrompt = 'auto'; // 'auto' || '0' || '1'
     
-    
+    this.tracker = new CombatTracker();
+    this.langtab = new LanguageTracker();
     this.mc = new MessageController();
     this.pc = new PersonaController();
     this.ac = new AvatarController();
@@ -131,6 +132,8 @@ function Chat () {
         this.cc.init();
         this.dc.init();
         this.logger.init();
+        this.tracker.init();
+        this.langtab.init();
     };
     
     /**

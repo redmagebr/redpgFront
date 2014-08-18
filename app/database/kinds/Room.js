@@ -1,5 +1,6 @@
 function Room () {
     this.users = new UserDB();
+    this.memory = new Room_Memory();
     this.gameid = null;
     this.id = null;
     this.name = null;

@@ -157,6 +157,8 @@ function ChatWsApp () {
             this.room.users.updateFromJSONObject(obj[1], true);
             window.app.ui.chat.cc.checkUsers();
             window.app.ui.chat.cc.pc.checkUsers();
+        } else if (obj[0] === 'memory') {
+            window.app.roomdb.getRoom(obj[1]).memory.updateFromJSON(obj[2]);
         }
     };
     
@@ -315,5 +317,9 @@ function ChatWsApp () {
         if (this.controller.connected) {
             this.sendAction("focused", this.focusFlag ? '1' : '0');
         }
+    };
+    
+    this.saveMemory = function () {
+        this.sendAction("memory", JSON.stringify(this.room.memory.memory));
     };
 }

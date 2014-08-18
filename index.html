@@ -25,7 +25,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/navigator.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/dicePanel.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/musicDock.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
@@ -91,7 +91,7 @@
                     <p id="caEmailError"><a id="emailErrorA" class="language button" data-langhtml="_CAEMAILERROR_"></a></p>
                     <p>
                         <a class="language" data-langtitle="_CANAMEHELP_">?</a>
-                        <input id="caInputName" type="text" id="createAccountName" class="validate language" data-validationtype="longname" data-langplaceholder="_CANAME_"/>
+                        <input id="caInputName" type="text" class="validate language" data-validationtype="longname" data-langplaceholder="_CANAME_"/>
                         <span class="language" data-langhtml="_CANAMEEXPLAIN_"></span>
                     </p>
                     <p>
@@ -154,6 +154,45 @@
             <a id='callSheetWindowBt' class="button"><span class="language" data-langhtml="_SHEET_"></span></a>
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
             <a id='openTwitch' onclick="window.app.ui.openTwitch();" class="button"><span class="language" data-langhtml="_OPENTWITCH_"></span></a>
+        </div>
+        
+        <div id="combatTracker">
+            <div id="combatTrackerHandle">
+                <a id="combatTrackerHide" class="language" data-langtitle="_COMBATTRACKERMINIMIZE_">-</a>
+                <span class="language" data-langhtml="_COMBATTRACKER_"></span>
+            </div>
+            <div id="combatTrackerBody">
+                <p>
+                    <a class="deleteRow button language" data-langtitle="_COMBATTRACKERDELETEROW_"></a>
+                    <span class="personagem">Lessien Tonerre</span>
+                    <span class="floatRight">
+                        <input type="text" class="language" data-langtitle="_COMBATTRACKERINITIATIVE_" />
+                        <a class="setTarget button language" data-langtitle="_COMBATTRACKERSETTARGET_"></a>
+                        <a class="openSheet button language" data-langtitle="_COMBATTRACKEROPENSHEET_"></a>
+                    </span>
+                </p>
+                <p class="target">
+                    <a class="deleteRow button language" data-langtitle="_COMBATTRACKERDELETEROW_"></a>
+                    <span class="personagem">Lessien Tonerre</span>
+                    <span class="floatRight">
+                        <input type="text" class="language" data-langtitle="_COMBATTRACKERINITIATIVE_" />
+                        <a class="setTarget button language" data-langtitle="_COMBATTRACKERSETTARGET_"></a>
+                        <a class="openSheet button language" data-langtitle="_COMBATTRACKEROPENSHEET_"></a>
+                    </span>
+                </p>
+            </div>
+            <div id="combatTrackerFooter">
+                <a id="combatTrackerAddSheet" class="button language" data-langtitle="_COMBATTRACKERADDSHEET_"></a>
+                <select id="combatTrackerSheet" class="language" data-langtitle="_COMBATTRACKERSHEETSELECT_">
+                    <option>ASD</option>
+                </select>
+                <a id="combatTrackerRefreshSheet" class="button language" data-langtitle="_COMBATTRACKERREFRESH_"></a>
+                <span id="combatTracketFooterRight">
+                    <a id="combatTrackerSort" class="button language" data-langtitle="_COMBATTRACKERSORT_"></a>
+                    <a id="combatTrackerTurn" class="button language" data-langtitle="_COMBATTRACKERTURN_"></a>
+                    <a id="combatTrackerNewRound" class="button language" data-langtitle="_COMBATTRACKERNEWROUND_"></a>
+                </span>
+            </div>
         </div>
         
         <div id="leftWindow">
@@ -788,6 +827,7 @@
             <script src="app/database/kinds/Message.js"></script>
             <script src="app/database/kinds/User.js"></script>
             <script src="app/database/kinds/Room.js"></script>
+            <script src="app/database/kinds/Room_Memory.js"></script>
             <script src="app/database/kinds/Invite.js"></script>
             <script src="app/database/kinds/Game.js"></script>
             <script type="text/javascript" src="app/database/kinds/Sheet_Instance.js"></script>
@@ -811,6 +851,8 @@
             <script src="app/ui/FormValidator.js"></script>
             <script src="app/ui/Validator.js"></script>
             <script src="app/ui/chat/Chat.js"></script>
+            <script src="app/ui/chat/combat/CombatTracker.js"></script>
+            <script src="app/ui/chat/language/LanguageTracker.js"></script>
             <script src="app/ui/chat/ChatController.js"></script>
             <script src="app/ui/chat/Logger.js"></script>
             <script src="app/ui/chat/PlayerController.js"></script>
