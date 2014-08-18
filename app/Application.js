@@ -16,9 +16,9 @@ function Application (debug) {
      * Host must point to the server we're using.
      * It will be prepended to every AJAX url.
      */
-    this.host = 'http://localhost:8080/RedPG/';
+    this.host = 'http://redpg.com.br/service/';
     this.staticHost = 'http://redpg.com.br/';
-    this.wshost = 'ws://localhost:8080/RedPG/';
+    this.wshost = 'ws://redpg.com.br:8080/service/';
     
     
     
@@ -28,7 +28,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 15, 0];
+    this.version = [0, 16, 0];
     
     /**
      * Databases

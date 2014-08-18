@@ -461,8 +461,8 @@ function UI () {
             this.callRightWindow('twitchChat');
             return;
         }
-        var src = 'http://twitch.tv/chat/embed?channel=' + channel + '&amp;popout_chat=true';
         var channel = prompt("Channel (Deixe em branco para reabrir o atual):");
+        var src = 'http://twitch.tv/chat/embed?channel=' + channel + '&amp;popout_chat=true';
         if (channel !== '' && channel !== null && src !== $('#twitchChatiFrame').attr('src')) {
             $('#twitchChatiFrame').attr(
                 'src', 
@@ -474,13 +474,12 @@ function UI () {
     
     
     this.openHitbox = function () {
-        console.log("AAAAAAAA");
         if ($('#hitboxChatiFrame').attr('src') !== null && !$('#hitboxChatiFrame').is(':visible')) {
             this.callRightWindow('hitboxChat');
             return;
         }
-        var src = 'http://www.hitbox.tv/embedchat/' + channel;
         var channel = prompt("Channel:");
+        var src = 'http://www.hitbox.tv/embedchat/' + channel;
         if (channel !== '' && channel !== null && src !== $('#hitboxChatiFrame').attr('src')) {
             $('#hitboxChatiFrame').attr(
                 'src', 
