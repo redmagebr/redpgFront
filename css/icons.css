@@ -153,3 +153,41 @@
 #openHitbox {
     background-image: url('../img/menu/hitboxIcon.png');
 }
+
+
+/* Combat Tracker */
+#combatTrackerBody > p span.hp {
+    background-image: url('../img/chat/trackerHP.png');
+}
+
+#combatTrackerBody > p span.mp {
+    background-image: url('../img/chat/trackerMP.png');
+}
+
+#combatTrackerBody > p > a.deleteRow {
+    background-image: url('../img/chat/trackerDelete.png');
+}
+
+#combatTrackerBody a.setTarget {
+    background-image: url('../img/chat/trackerTarget.png');
+}
+
+#combatTrackerBody a.setTurn {
+    background-image: url('../img/chat/trackerSetTurn.png');
+}
+
+#combatTrackerBody a.openSheet {
+    background-image: url('../img/chat/trackerSheet.png');
+}
+
+#combatTrackerAddSheet {
+    background-image: url('../img/chat/trackerAdd.png');
+}
+
+#combatTrackerTurn {
+    background-image: url('../img/chat/trackerNextTurn.png');
+}
+
+#combatTrackerNewRound {
+    background-image: url('../img/chat/trackerNewRound.png');
+}

@@ -117,10 +117,12 @@ function CombatTracker () {
             this.updateUserList();
             this.$body.find('input').prop('disabled', false);
             this.$body.find('a.deleteRow').show();
+            this.$body.find('a.setTurn').show();
         } else {
             this.$footer.hide();
             this.$body.find('input').prop('disabled', true);
             this.$body.find('a.deleteRow').hide();
+            this.$body.find('a.setTurn').hide();
         }
         this.$tracker.css('height', '');
     };
