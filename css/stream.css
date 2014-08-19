@@ -117,7 +117,7 @@ div.avatarWrapper {
 
 #areaChatButtons {
     position: fixed;
-    left: 10px;
+    right: 10px;
     top: 10px;
 }
 
@@ -125,4 +125,23 @@ div.avatarWrapper {
     position: fixed;
     left: 10px;
     top: 400px;
+}
+
+/* Smaller Tracker */
+body #combatTracker {
+    width: 344px;
+}
+
+body #combatTrackerBody {
+    max-height: 280px;
+}
+
+body #combatTracker a.deleteRow, body #combatTracker a.openSheet, body #combatTracker a.setTurn, body #combatTracker a.setTarget, body #combatTrackerFooter {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    display: block;
 }
