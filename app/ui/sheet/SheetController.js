@@ -108,7 +108,8 @@ function SheetController () {
         }
     };
     
-    this.openSheet = function (sheetid, styleid, gameid, important) {
+    this.openSheet = function (sheetid, styleid, gameid, important, dontcallwindow) {
+        if (typeof dontcallwindow === 'undefined') dontcallwindow = false;
         if (typeof important === 'undefined') important = true;
         if (sheetid === this.currentInstance) {
             window.app.ui.callRightWindow('sheetWindow');
@@ -118,10 +119,10 @@ function SheetController () {
         if (window.app.sheetdb.getSheet(sheetid) === null) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, (typeof styleid === 'undefined'));
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, (typeof styleid === 'undefined'), this.dontcallwindow);
                 window.app.ui.unblockRight();
                 window.app.ui.sheetui.controller.$viewer.trigger('loadedSheet', [this.sheetid]);
-            }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
+            }, {sheetid : sheetid, styleid : styleid, gameid : gameid, dontcallwindow : dontcallwindow});
             
             var cbe = function () {
                 window.app.ui.unblockRight();
@@ -142,10 +143,10 @@ function SheetController () {
         if (typeof window.Style[styleid] === 'undefined' && important) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, false);
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, false, this.dontcallwindow);
                 window.app.ui.sheetui.controller.$viewer.trigger('loadedStyle', [this.styleid]);
                 window.app.ui.unblockRight();
-            }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
+            }, {sheetid : sheetid, styleid : styleid, gameid : gameid, dontcallwindow : dontcallwindow});
             
             var cbe = function () {
                 window.app.ui.unblockRight();
@@ -228,7 +229,9 @@ function SheetController () {
             this.currentStyle = styleid;
         }
         
-        window.app.ui.callRightWindow('sheetWindow');
+        if (!dontcallwindow) {
+            window.app.ui.callRightWindow('sheetWindow');
+        }
         
         var sheet = window.app.sheetdb.getSheet(this.currentInstance);
         
@@ -453,7 +456,7 @@ function SheetController () {
             this.currentInstance = 0;
         }
         
-        this.openSheet(oldInstance, oldStyle);
+        this.openSheet(oldInstance, oldStyle, null, null, true);
     };
     
     this.updateSpecificSheet = function (sheetid) {
@@ -468,7 +471,7 @@ function SheetController () {
         window.app.ui.blockRight();
         var cbs = window.app.emulateBind(function () {
             if (window.app.ui.sheetui.controller.currentInstance === this.sheetid) {
-                window.app.ui.sheetui.openSheet(this.sheetid);
+                window.app.ui.sheetui.reload();
             }
             window.app.ui.unblockRight();
         }, {sheetid : sheetid, styleid : sheet.system});
