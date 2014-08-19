@@ -181,7 +181,8 @@ function ChatWsApp () {
             destination : message.destination,
             message : message.msg,
             module : message.module,
-            special : message.special
+            special : message.special,
+            clone : message.clone
         }));
     };
     

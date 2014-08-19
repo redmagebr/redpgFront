@@ -106,51 +106,19 @@ window.chatModules.push({
             $spans.push($span);
         }
         
-        
-//        msgText = msgText.split('*');
-//        if (msgText.length === 1) {
-//            msgText = msgText[0];
-//        } else {
-//            for (var i = 1; i < msgText.length; i += 2) {
-//                msgText[i] = '<span class="action">*' + msgText[i] + '*</span>';
-//            }
-//            msgText = msgText.join('');
-//        }
-//        
-//        var go = true;
-//        var idx1;
-//        var idx2;
-//        while (go) {
-//            idx1 = msgText.indexOf('[');
-//            idx2 = msgText.indexOf(']');
-//            if (idx1 === -1 || idx2 === -1) {
-//                go = false;
-//            } else {
-//                msgText = msgText.replace('[', '<span class="important">');
-//                msgText = msgText.replace(']', '</span>');
-//            }
-//        }
-//        
-//        var newMsg = '';
-//        var open = false;
-//        for (var i = 0; i < msgText.length; i++) {
-//            if (msgText.charAt(i) !== '(' && msgText.charAt(i) !== ')') {
-//                newMsg += msgText.charAt(i);
-//            } else if (msgText.charAt(i) === '(') {
-//                newMsg += '<span class="thought">(';
-//                open = true;
-//            } else {
-//                newMsg += ')</span>';
-//                open = false;
-//            }
-//        }
-//        if (open) newMsg += ")</span>";
-//        
-//        msgText = newMsg;
-        
         $msg.append($persona).append(': ');
         for (i = 0; i < $spans.length; i++) {
             $msg.append($spans[i]);
+        }
+        
+        var translation = msg.getSpecial('translation', null);
+        if (translation !== null) {
+            $msg.append(
+                    $('<span class="langTranslation" />')
+                            .append($('<b class="language" data-langhtml="_CHATTRANSLATEDAS_" />'))
+                        .append(": ")
+                        .append(translation)
+            );
         }
         
         if (user === null) {

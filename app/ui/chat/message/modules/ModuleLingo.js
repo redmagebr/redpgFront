@@ -1,14 +1,12 @@
-/**
- * 
- * If not making a Module for personal use, consider using the Language module to print any messages the module has.
- */
+window.AvailableLanguages = ['Elvish', 'Musical', 'Abyssal', 'Celestan', 'Alien', 'AncientMagi', 'AncientTech', 'BestialCommon', 'Binary', 'Draconic'];
+window.AvailableLanguages = ['Elvish'];
 window.chatModules.push({
 
     ID : 'lingo',
     
     Slash : ['/lang', '/language', '/lingo', '/lingua', '/ling'],
     
-    linguas : ['Elvish', 'Musical', 'Abyssal', 'Celestan', 'Alien', 'AncientMagi', 'AncientTech', 'BestialCommon', 'Binary', 'Draconic'],
+    linguas : window.AvailableLanguages,
     
     isValid : function (slashCMD, message) {
         var lingua = message.substring(0, message.indexOf(','));
@@ -39,11 +37,14 @@ window.chatModules.push({
         var exclamation = word.indexOf('!') !== -1;
         var interrobang = word.indexOf('?') !== -1;
         var finish = word.indexOf('.') !== -1;
+        var trespontos = word.indexOf('...') !== -1;
         var doispontos = word.indexOf(':') !== -1;
+        var virgula = word.indexOf(',') !== -1;
         word = word.replace(/\!/g, '');
         word = word.replace(/\?/g, '');
         word = word.replace(/\./g, '');
         word = word.replace(/\:/g, '');
+        word = word.replace(/\,/g, '');
         var words;
         var knownWords;
         var uppercase = false;
@@ -98,8 +99,14 @@ window.chatModules.push({
             var newWord = selected;
         } else {
             var newWord = '';
+            var char;
             for (var i = 0; i < selected.length; i++) {
-                if (word.charAt(i) !== '' && word.charAt(i) === word.charAt(i).toUpperCase()) {
+                if (i > (word.length - 1)) {
+                    char = word.charAt(word.length - 1);
+                } else {
+                    char = word.charAt(i);
+                }
+                if (char === char.toUpperCase()) {
                     newWord += selected.charAt(i).toUpperCase();
                 } else {
                     newWord += selected.charAt(i);
@@ -109,13 +116,26 @@ window.chatModules.push({
         
         if (allowpoints) {
             newWord = newWord +
+                    (virgula ? ',' : '') +
+                    (doispontos ? ':' : '') +
                     (exclamation ? '!' : '') +
                     (interrobang ? '?' : '') +
                     (finish ? '.' : '') +
-                    (doispontos ? ':' : '');
+                    (trespontos ? '..' : '');
         }
         
         return newWord;
+    },
+    
+    translatePhrase : function (phrase, language) {
+        phrase = phrase.split(' ');
+        for (var i = 0; i < phrase.length; i++) {
+            if (phrase[i].length > 0) {
+                phrase[i] = this.translate(phrase[i], language);
+            }
+        }
+        phrase = phrase.join(' ');
+        return phrase;
     },
 
     /**
@@ -123,164 +143,84 @@ window.chatModules.push({
      * @returns {jQuery}
      */
     get$ : function (msg) {
-        var user = msg.getUser();
-        var lingua = msg.getSpecial('lingua', 'Padrao');
-        var valid = new Validator();
-        if (!valid.validate(lingua, 'language')) {
-            lingua = 'Padrao';
-        }
-        
-        
-        var $msg = $('<p class="chatMensagem" />');
-        
-        var $persona = $('<b />').text(msg.getSpecial('persona', '????'));
-        var msgText = $('<p />').text(msg.msg).html();
-        
-        
-        var $spans = [];
-        var pmsg = '';
-        var open = null;
-        
-        var char;
-        var $span;
-        for (var i = 0; i < msgText.length; i++) {
-            char = msgText.charAt(i);
-            if (char === '*') {
-                if (open === '*') {
-                    $span = $('<span class="action" />').text('*' + pmsg + '*');
-                    $spans.push($span);
-                    pmsg = '';
-                    open = null;
-                } else if (open === null) {
-                    open = '*';
-                    if (pmsg.length > 0) {
-                        $span = $('<span />').text(this.translate(pmsg, lingua));
-                        $span.addClass('lingua' + lingua);
-                        $span.addClass();
-                        $spans.push($span);
-                    }
-                    pmsg = '';
-                } else {
-                    pmsg = pmsg + char;
-                }
-            } else if (['[', ']'].indexOf(char) !== -1) {
-                if (char === ']' && open === '[') {
-                    $span = $('<span class="important" />').text('[' + pmsg + ']');
-                    $spans.push($span);
-                    pmsg = '';
-                    open = null;
-                } else if (char === '[' && open === null) {
-                    open = '[';
-                    if (pmsg.length > 0) {
-                        $span = $('<span />').text(this.translate(pmsg, lingua));
-                        $span.addClass('lingua' + lingua);
-                        $spans.push($span);
-                    }
-                    pmsg = '';
-                } else {
-                    pmsg = pmsg + char;
-                }
-            } else if (['(', ')'].indexOf(char) !== -1) {
-                if (char === ')' && open === '(') {
-                    $span = $('<span class="thought" />').text('(' + pmsg + ')');
-                    $spans.push($span);
-                    pmsg = '';
-                    open = null;
-                } else if (char === '(' && open === null) {
-                    open = '(';
-                    if (pmsg.length > 0) {
-                        $span = $('<span />').text(this.translate(pmsg, lingua));
-                        $span.addClass('lingua' + lingua);
-                        $spans.push($span);
-                    }
-                    pmsg = '';
-                } else {
-                    pmsg = pmsg + char;
-                }
-            } else if (char === ' ' && open === null) {
-                if (pmsg.length > 0) {
-                    $span = $('<span />').text(this.translate(pmsg, lingua));
-                    $span.addClass('lingua' + lingua);
-                    $spans.push($span);
-                }
-                pmsg = '';
-            } else {
-                pmsg = pmsg + char;
-            }
-        }
-        if (open !== null) {
-            pmsg = open + pmsg;
-        }
-        
-        if (pmsg.length > 0) {
-            pmsg = pmsg.split(' ');
-            for (i = 0; i < pmsg.length; i++) {
-                $span = $('<span />').text(this.translate(pmsg[i], lingua));
-                $span.addClass('lingua' + lingua);
-                $spans.push($span);
-            }
-        }
-        
-               
-        $msg.append($persona).append(': ');
-        for (i = 0; i < $spans.length; i++) {
-            $msg.append($spans[i]);
-            $msg.append(' ');
-        }
-        if (this.doISpeak(lingua)) {
-            $msg.append(
-                    $('<span class="langTranslation" />')
-                            .append($('<b class="language" data-langhtml="_CHATTRANSLATEDAS_" />'))
-                        .append(": ")
-                        .append(msg.getMessage())
-            );
-        }
-        
-        if (user === null) {
-            user = new User();
-            user.nickname = '?';
-            user.nicknamesufix = '?';
-        }
-        var $tooltip = $('<span class="tooltip" />');
-        if (user.isStoryteller()) {
-            $tooltip.append($('<b class="language" data-langhtml="_STORYTELLERTOOLTIP_" />'));
-        } else {
-            $tooltip.append($('<b class="language" data-langhtml="_PLAYERTOOLTIP_" />'));
-        }
-
-        $tooltip.append(': ' + user.nickname + '#' + user.nicknamesufix);
-
-        $msg.append($tooltip);
-        
-        if (msg.id !== null) {
-            $msg.attr('data-msgid', msg.id);
-        } else {
-            msg.bindSaved(window.app.emulateBind(
-                function () {
-                    this.$msg.attr('data-msgid', this.msg.id);
-                }, {$msg : $msg, msg : msg}
-            ));
-        }
-        
-        return $msg;
+        return null;
     },
     
     getMsg : function (slashCMD, message) {
-        var cc = window.app.ui.chat.cc;
-        var room = cc.room;
+        var room = window.app.chatapp.room;
         var msg = new Message();
+        msg.module = 'roleplay';
+        msg.roomid = room.id;
+        msg.origin = window.app.loginapp.user.id;
         
         if (room.persona === null) {
             msg.setSpecial('persona', '?????');
         } else {
             msg.setSpecial('persona', room.persona);
         }
+        var lingua = message.substring(0, message.indexOf(','));
+        msg.setSpecial('lingua', lingua);
         
-        msg.setSpecial('lingua', message.substring(0, message.indexOf(',')));
-        msg.msg = message.substring(message.indexOf(',') + 1, message.length).trim();
+        var cleanMsg = message.substring(message.indexOf(',') + 1, message.length).trim();
         
+        var pseudo = '';
+        var sentence = '';
+        var skipfor = null;
+        var char;
+        for (var i = 0; i < cleanMsg.length; i++) {
+            char = cleanMsg.charAt(i);
+            if (skipfor === null) {
+                if (['*', '[', '('].indexOf(char) === -1) {
+                    sentence += char;
+                } else {
+                    if (char === '*') {
+                        skipfor = '*';
+                    } else if (char === '[') {
+                        skipfor = ']';
+                    } else if (char === '(') {
+                        skipfor = ')';
+                    }
+                    if (sentence.length > 0) {
+                        pseudo += this.translatePhrase(sentence, lingua);
+                    }
+                    sentence = char;
+                }
+            } else {
+                sentence += char;
+                if (char === skipfor) {
+                    pseudo += sentence;
+                    sentence = '';
+                    skipfor = null;
+                }
+            }
+            
+        };
         
-        return msg;
+        if (sentence.length > 0) {
+            pseudo += this.translatePhrase(sentence, lingua);
+        }
+        
+        msg.setMessage(pseudo);
+        msg.setSpecial('translation', cleanMsg);
+        
+        var speakers = this.whoSpeaks(lingua);
+        var plebs = [];
+        for (var i in room.users.users) {
+            if (speakers.indexOf(room.users.users[i].id) === -1) {
+                plebs.push(room.users.users[i].id);
+            }
+        }
+        
+        msg.setDestination(speakers);
+        window.app.chatapp.printAndSend(msg, true);
+        if (plebs.length > 0) {
+            msg.unsetSpecial('translation');
+            msg.setDestination(plebs);
+            msg.clone = true;
+            window.app.chatapp.sendMessage(msg);
+        }
+        
+        return null;
     },
     
     get$error : function (slash, msg, storyteller) {

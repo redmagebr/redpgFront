@@ -26,6 +26,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/navigator.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/dicePanel.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery.jscrollpane.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
@@ -152,6 +153,26 @@
             <a id='callSheetWindowBt' class="button"><span class="language" data-langhtml="_SHEET_"></span></a>
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
             <a id='openTwitch' onclick="window.app.ui.openTwitch();" class="button"><span class="language" data-langhtml="_OPENTWITCH_"></span></a>
+        </div>
+        
+        <div id="languageTracker">
+            <div id="languageTrackerHandle">
+                <a id="languageTrackerHide" class="language" data-langtitle="_LANGUAGETRACKERMINIMIZE_">-</a>
+                <span class="language" data-langhtml="_LANGUAGETRACKER_"></span>
+            </div>
+            <div id="languageTrackerBody">
+                <p>
+                    <span class="player">Reddo#0001:</span>
+                    <span class="languages">
+                        <a class="deleteLanguage">(X)</a>
+                        Élfico
+                    </span>
+                    <select>
+                        <option>Élfico</option>
+                    </select>
+                    <a class="addLanguage">(+)</a>
+                </p>
+            </div>
         </div>
         
         <div id="combatTracker">

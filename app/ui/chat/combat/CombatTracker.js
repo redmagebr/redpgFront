@@ -351,7 +351,8 @@ function CombatTracker () {
         var message = new Message();
         message.module = "sheettr";
         message.setSpecial('sheetname', this.myStuff.ordered[this.myStuff.turn].name);
-        message.origin = window.app.loginapp.user.id;
+        message.setOrigin(window.app.loginapp.user.id);
+        message.roomid = window.app.ui.chat.cc.room.id;
         message.setSpecial('player', this.myStuff.ordered[this.myStuff.turn].player);
         window.app.chatapp.printAndSend(message, true);
     };

@@ -21,6 +21,12 @@ function Message () {
     this.special = {};
     
     /**
+     * Cloned messages do not get sent back to the sender.
+     * If destination is an array, messages after the first one do not get sent back to the sender.
+     */
+    this.clone = false;
+    
+    /**
      * Sender ID in the relational database.
      * @type int
      */
@@ -91,6 +97,10 @@ function Message () {
     this.setSpecial = function (index, value) {
         this.special[index] = value;
     };
+    
+    this.unsetSpecial = function (index) {
+        delete this.special[index];
+    },
     
     /**
      * Getters and Setters
