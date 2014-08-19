@@ -118,7 +118,7 @@ function SheetController () {
         if (window.app.sheetdb.getSheet(sheetid) === null) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
-                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, false);
+                window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, (typeof styleid === 'undefined'));
                 window.app.ui.unblockRight();
                 window.app.ui.sheetui.controller.$viewer.trigger('loadedSheet', [this.sheetid]);
             }, {sheetid : sheetid, styleid : styleid, gameid : gameid});
@@ -133,6 +133,10 @@ function SheetController () {
         } else {
             styleid = window.app.sheetdb.getSheet(sheetid).system;
             gameid = window.app.sheetdb.getSheet(sheetid).gameid;
+        }
+        
+        if (typeof styleid === 'undefined') {
+            return;
         }
         
         if (typeof window.Style[styleid] === 'undefined' && important) {

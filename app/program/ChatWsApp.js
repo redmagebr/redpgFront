@@ -150,16 +150,23 @@ function ChatWsApp () {
             window.app.ui.chat.cc.checkUsers();
             window.app.ui.chat.cc.pc.checkUsers();
         } else if (obj[0] === "inroom") {
-            var users = this.room.users.users;
-            for (var index in users) {
-                users[index].online = false;
-            }
-            this.room.users.updateFromJSONObject(obj[1], true);
-            window.app.ui.chat.cc.checkUsers();
-            window.app.ui.chat.cc.pc.checkUsers();
+            this.updateUsers (obj[1]);
         } else if (obj[0] === 'memory') {
             window.app.roomdb.getRoom(obj[1]).memory.updateFromJSON(obj[2]);
+        } else if (obj[0] === 'getroom') {
+            this.updateUsers(obj[1]);
+            this.room.memory.updateFromJSON(obj[2]);
         }
+    };
+    
+    this.updateUsers = function (json) {
+        var users = this.room.users.users;
+        for (var index in users) {
+            users[index].online = false;
+        }
+        this.room.users.updateFromJSONObject(json, true);
+        window.app.ui.chat.cc.checkUsers();
+        window.app.ui.chat.cc.pc.checkUsers();
     };
     
     this.sendAction = function (action, message) {
@@ -320,6 +327,9 @@ function ChatWsApp () {
     };
     
     this.saveMemory = function () {
-        this.sendAction("memory", JSON.stringify(this.room.memory.memory));
+        console.log("GOTTA GO FAST");
+        if(this.room.getMe().isStoryteller()) {
+            this.sendAction("memory", JSON.stringify(this.room.memory.memory));
+        }
     };
 }

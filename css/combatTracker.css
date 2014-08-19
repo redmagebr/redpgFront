@@ -2,7 +2,7 @@
     display: block;
     top: 20px;
     left: 100px;
-    width: 400px;
+    width: 500px;
     position: absolute;
     z-index: 301;
     font-family: alegreya;
@@ -52,14 +52,36 @@
     max-height: 400px;
 }
 
+#combatTrackerBody > p > span.personagem {
+    margin-left: 5px;
+}
+
 #combatTrackerBody a.deleteRow {
     display: inline-block;
     width: 24px;
     height: 24px;
     margin-top: 3px;
+    margin-right: 3px;
     margin-left: 3px;
     background-color: #000;
     vertical-align: top;
+}
+
+#combatTrackerBody > p span.hp {
+    background-image: url('../img/chat/trackerHP.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    margin-right: 3px;
+    line-height: 30px;
+}
+
+#combatTrackerBody > p span.mp {
+    background-image: url('../img/chat/trackerMP.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    margin-right: 3px;
 }
 
 #combatTrackerBody > p {
@@ -75,6 +97,10 @@
     border: solid 2px #f00;
     border-left: none;
     border-right: none;
+}
+
+#combatTrackerBody > p.hisTurn {
+    border-left: 10px solid #000;
 }
 
 #combatTrackerBody > p > span.personagem {
@@ -130,7 +156,11 @@
     vertical-align: top;
     width: 24px;
     height: 24px;
+    margin-right: 0px;
     margin-top: 3px;
     margin-left: 3px;
     background-color: #000;
+}
+#combatTracketFooterRight > a {
+    float: left;
 }

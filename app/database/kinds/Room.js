@@ -1,6 +1,6 @@
 function Room () {
     this.users = new UserDB();
-    this.memory = new Room_Memory();
+    this.memory = new Room_Memory(this);
     this.gameid = null;
     this.id = null;
     this.name = null;
@@ -146,5 +146,14 @@ function Room () {
             }
         }
         return result;
+    };
+    
+    /**
+     * 
+     * @returns {User}
+     */
+    this.getMe = function () {
+        var userid = window.app.loginapp.user.id;
+        return this.users.getUser(userid);
     };
 }

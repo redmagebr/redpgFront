@@ -388,16 +388,18 @@ window.lingo['pt_br'] = {
     /* Combat Tracker */
     _COMBATTRACKER_ : "Gerenciador de Combate",
     _COMBATTRACKERMINIMIZE_ : "Minimizar",
-    _COMBATTRACKERDELETEROW_ : "Remover",
+    _COMBATTRACKERDELETEROW_ : "Remover do Combate",
     _COMBATTRACKERINITIATIVE_ : "Iniciativa",
     _COMBATTRACKERSETTARGET_ : "Selecionar como Alvo",
     _COMBATTRACKEROPENSHEET_ : "Abrir Ficha",
     _COMBATTRACKERADDSHEET_ : "Adicionar ao Combate",
-    _COMBATTRACKERSHEETSELECT_ : "Selecione a ficha para entrar no combate",
+    _COMBATTRACKERSHEETSELECT_ : "Selecione a ficha para entrar no combate. A ficha precisa estar aberta e ser do mesmo jogo que a sala para ser listada.",
     _COMBATTRACKERREFRESH_ : "Atualizar lista",
     _COMBATTRACKERSORT_ : "Ordenar por iniciativa",
     _COMBATTRACKERTURN_ : "Passar um turno",
-    _COMBATTRACKERNEWROUND_ : "Passar uma rodada"
+    _COMBATTRACKERSETTURN_ : 'Fazer ser o turno desse personagem',
+    _COMBATTRACKERNEWROUND_ : "Passar uma rodada",
+    _COMBATTRACKERPLAYERSELECT_ : 'Selecione um jogador (ou nenhum). Se um jogador for selecionado, ele é avisado quando seu turno chega.'
     
     
 };
