@@ -186,6 +186,7 @@ function MessageController () {
             var slashCMD = '';
             var msgOnly = msg;
         }
+        slashCMD = slashCMD.toLowerCase();
         msgOnly = msgOnly.trim();
         // Pass through module
         if (typeof this.slashToMod[slashCMD] !== 'undefined') {
@@ -214,7 +215,7 @@ function MessageController () {
             } else {
                 var $error = mod.get$error(slashCMD, msgOnly, window.app.loginapp.user.isStoryteller());
                 if ($error !== null) {
-                    window.app.ui.language.applyLanguageOn($error);
+                    window.app.ui.language.applyLanguageTo($error);
                     window.app.ui.chat.appendToMessages($error);
                 } else {
                     var cleanSlash = $('<div />').text(slashCMD).html();

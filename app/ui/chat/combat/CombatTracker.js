@@ -138,24 +138,24 @@ function CombatTracker () {
             participant = this.myStuff.ordered[i];
             if (participant instanceof Object && typeof participant.id === 'number' && typeof participant.name === 'string' && typeof participant.init === 'number' && typeof participant.player === 'number') {
                 messedup = false;
-                console.log(participant);
+                //console.log(participant);
                 for (var k in participant) {
                     if (['name', 'id', 'player', 'init'].indexOf(k) === -1) {
                         messedup = true;
                         break;
                     }
                 }
-                console.log(messedup);
+                //console.log(messedup);
                 if (!messedup) participants.push(participant);
             } else {
-                console.log("why");
-                console.log(participant);
+                //console.log("why");
+                //console.log(participant);
                 changed = true;
             }
         }
         
-        console.log(participants);
-        console.log(this.myStuff.ordered);
+        //console.log(participants);
+        //console.log(this.myStuff.ordered);
         
         participants.sort(function (a, b) {
             return b.init - a.init;

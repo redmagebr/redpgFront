@@ -297,7 +297,7 @@ function ChatWsApp () {
         
         this.ackTimeout = setTimeout(function () {
             window.app.chatapp.ack();
-        }, 30000);
+        }, 5000);
         
         $('#chatNotConnError').hide();
         $('#chatNotLoad').hide();

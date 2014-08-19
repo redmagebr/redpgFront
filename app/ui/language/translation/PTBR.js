@@ -189,6 +189,8 @@ window.lingo['pt_br'] = {
     _CLEARTIP_ : 'É recomendável executar "/clear 1" para limpar as mensagens no servidor de vez em quando, ou a sala ficará cada vez mais lenta.',
     _INVALIDSLASHCOMMAND_ : '"%p" não é um comando reconhecido.',
     _INVALIDSLASHMESSAGE_ : '"%d" não é um comando válido para "%p".',
+    _CHATLANGINVALID_ : 'O sistema não conhece essa língua.',
+    _CHATLANGUNKNOWN_ : 'Você não tem permissão para falar essa língua.',
     _INVALIDMODULE_ : 'Uma mensagem do módulo "%p" foi recebida, enviada por %d, mas você não possui esse módulo. A mensagem não foi exibida.',
     _INVALIDWHISPER_ : 'Um jogador para "%p" não foi encontrado.',
     _TOOMANYWHISPER_ : 'Encontrei muitos possíveis alvos! Encontrei:',
@@ -399,7 +401,13 @@ window.lingo['pt_br'] = {
     _COMBATTRACKERTURN_ : "Passar um turno",
     _COMBATTRACKERSETTURN_ : 'Fazer ser o turno desse personagem',
     _COMBATTRACKERNEWROUND_ : "Passar uma rodada",
-    _COMBATTRACKERPLAYERSELECT_ : 'Selecione um jogador (ou nenhum). Se um jogador for selecionado, ele é avisado quando seu turno chega.'
+    _COMBATTRACKERPLAYERSELECT_ : 'Selecione um jogador (ou nenhum). Se um jogador for selecionado, ele é avisado quando seu turno chega.',
+    
+    
+    /* Language Tracker */
+    
+    _LANGUAGETRACKER_ : 'Gerenciador de Línguas',
+    _LANGUAGETRACKERMINIMIZE_ : 'Minimizar'
     
     
 };

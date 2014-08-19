@@ -51,3 +51,38 @@
     overflow-x: hidden;
     max-height: 400px;
 }
+
+#languageTrackerBody > p {
+    padding-left: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 0px;
+}
+
+#languageTrackerBody > p:hover {
+    background-color: #e2e2e2;
+}
+
+#languageTrackerBody > p > span.player {
+    font-weight: bold;
+}
+
+#languageTrackerBody > p > span.languages > span {
+    border: solid 1px #000;
+    padding: 3px;
+    margin-right: 6px;
+}
+
+#languageTrackerBody a.deleteLanguage, #languageTrackerBody a.addLanguage {
+    color: #5140e5;
+    font-weight: bold;
+}
+
+#languageTrackerBody a.deleteLanguage:hover, #languageTrackerBody a.addLanguage:hover {
+    color: #1b00ff;
+    cursor: pointer;
+}
+
+#languageTrackerBody a.deleteLanguage:active, #languageTrackerBody a.addLanguage:active {
+    color: #0f0090;
+}

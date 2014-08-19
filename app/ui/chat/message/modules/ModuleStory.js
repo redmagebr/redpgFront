@@ -59,6 +59,16 @@ window.chatModules.push({
         
         $msg.append('- ' + msgFinal);
         
+        var translation = msg.getSpecial('translation', null);
+        if (translation !== null) {
+            $msg.append(
+                    $('<span class="langTranslation" />')
+                            .append($('<b class="language" data-langhtml="_CHATTRANSLATEDAS_" />'))
+                        .append(": ")
+                        .append(translation)
+            );
+        }
+        
         var $tooltip = $('<span class="tooltip" />');
         if (user.isStoryteller()) {
             $tooltip.append($('<b class="language" data-langhtml="_STORYTELLERTOOLTIP_" />'));
