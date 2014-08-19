@@ -161,6 +161,8 @@ function CombatTracker () {
             return b.init - a.init;
         });
         
+        this.myStuff.ordered = participants;
+        
         if (turn > participants.length - 1 && participants.length > 0) {
             turn = 0;
             changed = true;
