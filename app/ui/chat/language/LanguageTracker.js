@@ -87,9 +87,9 @@ function LanguageTracker() {
             if (changed) {
                 this.saveMemory();
             }
-            // Show GM buttons
+            this.$body.find('a.deleteLanguage, a.addLanguage, select').show();
         } else {
-            // Hide GM buttons
+            this.$body.find('a.deleteLanguage, a.addLanguage, select').hide();
         }
     };
     
