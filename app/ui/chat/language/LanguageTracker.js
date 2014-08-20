@@ -117,9 +117,11 @@ function LanguageTracker() {
         var $myselect;
         var $add;
         /** @type User */ var player;
+        var noplayers = true;
         for (var id in window.app.chatapp.room.users.users) {
             player = window.app.chatapp.room.users.users[id];
             if (player.isStoryteller()) continue;
+            noplayers = false;
             intid = player.id;
             $p = $('<p />');
             $player = $('<span class="player" />').text(player.nickname + '#' + player.nicknamesufix + ": ");
@@ -145,6 +147,11 @@ function LanguageTracker() {
             
             $p.append($player).append($languages).append("<br />").append($myselect).append($add);
             this.$body.append($p);
+        }
+        
+        if (noplayers) {
+            this.$body.append($('<p class="language" data-langhtml="_LANGUAGETRACKERNOPLAYERS_" />'));
+            window.app.ui.language.applyLanguageOn(this.$body);
         }
         
         this.$tracker.css('height', '');

@@ -403,12 +403,13 @@ window.lingo['pt_br'] = {
     _COMBATTRACKERSETTURN_ : 'Fazer ser o turno desse personagem',
     _COMBATTRACKERNEWROUND_ : "Passar uma rodada",
     _COMBATTRACKERPLAYERSELECT_ : 'Selecione um jogador (ou nenhum). Se um jogador for selecionado, ele é avisado quando seu turno chega.',
-    
+    _COMBATTRACKERNOPARTICIPANTS_ : 'Sem participantes em combate.',
     
     /* Language Tracker */
     
     _LANGUAGETRACKER_ : 'Gerenciador de Línguas',
-    _LANGUAGETRACKERMINIMIZE_ : 'Minimizar'
+    _LANGUAGETRACKERMINIMIZE_ : 'Minimizar',
+    _LANGUAGETRACKERNOPLAYERS_ : 'Sem jogadores para mostrar.'
     
     
 };

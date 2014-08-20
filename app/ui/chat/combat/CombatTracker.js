@@ -267,6 +267,10 @@ function CombatTracker () {
             this.$body.append($participant);
         }
         
+        if (participants.length === 0) {
+            this.$body.append($('<p class="language" data-langhtml="_COMBATTRACKERNOPARTICIPANTS_" />'));
+        }
+        
         window.app.ui.language.applyLanguageOn(this.$body);
         
         if (changed && user.isStoryteller()) {
