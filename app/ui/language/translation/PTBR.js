@@ -406,7 +406,6 @@ window.lingo['pt_br'] = {
     _COMBATTRACKERNOPARTICIPANTS_ : 'Sem participantes em combate.',
     
     /* Language Tracker */
-    
     _LANGUAGETRACKER_ : 'Gerenciador de Línguas',
     _LANGUAGETRACKERMINIMIZE_ : 'Minimizar',
     _LANGUAGETRACKERNOPLAYERS_ : 'Sem jogadores para mostrar.'

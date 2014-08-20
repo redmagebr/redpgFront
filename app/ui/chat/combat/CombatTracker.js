@@ -208,7 +208,9 @@ function CombatTracker () {
             $delete = $('<a class="deleteRow button language" data-langtitle="_COMBATTRACKERDELETEROW_" />');
             $delete.on('click', window.app.emulateBind(function () {
                 this.tracker.myStuff.ordered.splice(this.ordered, 1);
-                this.tracker.warnTurn();
+                if (this.tracker.myStuff.turn === this.ordered) {
+                    this.tracker.warnTurn();
+                }
                 this.tracker.memory.setMemory('combat', this.tracker.myStuff, false);
             }, {tracker : this, ordered : i}));
             
@@ -350,6 +352,9 @@ function CombatTracker () {
     this.warnTurn = function () {
         var room = window.app.chatapp.room;
         if (room === null) {
+            return;
+        }
+        if (typeof this.myStuff.ordered[this.myStuff.turn] === 'undefined') {
             return;
         }
         var message = new Message();
