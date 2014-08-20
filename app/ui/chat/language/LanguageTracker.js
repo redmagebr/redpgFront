@@ -146,6 +146,8 @@ function LanguageTracker() {
             $p.append($player).append($languages).append("<br />").append($myselect).append($add);
             this.$body.append($p);
         }
+        
+        this.$tracker.css('height', '');
     };
     
     this.removeLing = function (playerid, lingindex) {
