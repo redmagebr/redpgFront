@@ -19,7 +19,7 @@ function ChatWsApp () {
         window.app.chatapp.sendFocus();
     });
     
-    $(document).idle({
+    $(window).idle({
         onIdle : function () {
             window.app.chatapp.idleFlag = true;
             window.app.chatapp.sendIdle();
@@ -28,8 +28,9 @@ function ChatWsApp () {
             window.app.chatapp.idleFlag = false;
             window.app.chatapp.sendIdle();
         },
+        events : "mouseover mouseout click keypress mousedown mousemove blur focus",
         idle: 20000
-    })
+    });
     
     /**
      * 
