@@ -6,6 +6,7 @@ function ChatWsApp () {
     this.timeout = null;
     this.ackTimeout = null;
     this.focusFlag = true;
+    this.idleFlag = false;
     this.notConnected = false;
     
     $(window).bind('focus', function (e) {
@@ -17,6 +18,18 @@ function ChatWsApp () {
         window.app.chatapp.focusFlag = false;
         window.app.chatapp.sendFocus();
     });
+    
+    $(document).idle({
+        onIdle : function () {
+            window.app.chatapp.idleFlag = true;
+            window.app.chatapp.sendIdle();
+        },
+        onActive : function () {
+            window.app.chatapp.idleFlag = false;
+            window.app.chatapp.sendIdle();
+        },
+        idle: 20000
+    })
     
     /**
      * 
@@ -123,6 +136,9 @@ function ChatWsApp () {
                 this.room.updateFromJSON({'messages' : [obj[1]]});
                 window.app.ui.chat.cc.printMessages();
             }
+        } else if (obj[0] === 'idle') {
+            this.room.users.getUser(obj[1]).idle = (obj[2] === 1);
+            window.app.ui.chat.cc.pc.checkUsers();
         } else if (obj[0] === 'persona') {
             var user = this.room.users.getUser(obj[1]);
             if (typeof obj[2]['persona'] === 'undefined') {
@@ -273,6 +289,9 @@ function ChatWsApp () {
             if (user != null && user.focused != this.focusFlag) {
                 this.sendFocus();
             }
+            if (user != null && user.idle != this.idleFlag) {
+                this.sendIdle();
+            }
         }
         
         console.log(this.typing);
@@ -330,6 +349,12 @@ function ChatWsApp () {
     this.sendFocus = function () {
         if (this.controller.connected) {
             this.sendAction("focused", this.focusFlag ? '1' : '0');
+        }
+    };
+    
+    this.sendIdle = function () {
+        if (this.controller.connected) {
+            this.sendAction("idle", this.idleFlag ? '1' : '0');
         }
     };
     

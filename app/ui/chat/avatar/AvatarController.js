@@ -139,6 +139,12 @@ function AvatarController () {
             userState.typing = user.typing;
         }
         
+        if (user.idle === userState.idle) {
+            callIgnore.push('idle');
+        } else {
+            userState.idle = user.idle;
+        }
+        
         if (callIgnore.indexOf('persona') === -1) {
             if (user.personaS === null || user.personaS === '') {
                 $user.children('span').text(user.nickname + '#' + user.nicknamesufix);
@@ -161,6 +167,15 @@ function AvatarController () {
                 $typing.show();
             } else {
                 $typing.hide();
+            }
+        }
+        
+        if (callIgnore.indexOf('idle') === -1 ) {
+            var $idle = $user.children('a.idle');
+            if (user.idle) {
+                $idle.show();
+            } else {
+                $idle.hide();
             }
         }
         
@@ -207,6 +222,15 @@ function AvatarController () {
         }
         
         $html.append($typing);
+        
+        var $idle = $('<a class="idle" />');
+        if (user.idle) {
+            $idle.show();
+        } else {
+            $idle.hide();
+        }
+        
+        $html.append($idle);
         
         if (avatar !== null && avatar !== '') {
             $html.append($('<img />').attr('src', avatar));

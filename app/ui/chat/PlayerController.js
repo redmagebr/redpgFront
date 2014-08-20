@@ -42,7 +42,8 @@ function PlayerController() {
                         'nick' : users[index].nickname + '#' + users[index].nicknamesufix,
                         'typing' : users[index].typing,
                         'avatar' : users[index].avatarS,
-                        'persona' : users[index].personaS
+                        'persona' : users[index].personaS,
+                        'idle' : users[index].idle
                     };
                     this.userState[users[index].id] = userState;
                 } else {

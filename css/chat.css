@@ -104,6 +104,16 @@ div.avatarWrapper a.typing {
     background-image: url('../img/chat/iconTypingBalloon.png');
 }
 
+div.avatarWrapper a.idle {
+    display: block;
+    position: absolute;
+    bottom: 14px;
+    left: 0px;
+    width: 24px;
+    height: 24px;
+    background-image: url('../img/chat/iconIdle.png');
+}
+
 div.avatarWrapper img {
     width: 80px;
     height: 80px;

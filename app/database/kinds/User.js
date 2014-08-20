@@ -11,6 +11,7 @@ function User () {
     this.lastrefresh = 0;
     this.lastupdate = 0;
     this.online = false;
+    this.idle = false;
     
     this.focused = true;
     this.typing = false;
