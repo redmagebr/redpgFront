@@ -174,6 +174,7 @@ window.lingo['pt_br'] = {
 
     /* Room */
     _CHATWSCONNECTED_ : 'Conectado. Mensagens antigas não foram impressas.',
+    _CHATWSCONNECTING_ : 'Conectando...',
     _CHATWSGETOLDERMESSAGES_ : 'Clique aqui para carregar todas as mensagens dessa sala.',
     _CHATWSDISCONNECTED_ : 'Desconectado do servidor.',
     _CHATWSRECONNECT_ : 'Clique aqui para reconectar.',

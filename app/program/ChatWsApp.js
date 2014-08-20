@@ -6,6 +6,7 @@ function ChatWsApp () {
     this.timeout = null;
     this.ackTimeout = null;
     this.focusFlag = true;
+    this.notConnected = false;
     
     $(window).bind('focus', function (e) {
         window.app.chatapp.focusFlag = true;
@@ -30,11 +31,7 @@ function ChatWsApp () {
         this.cbe = cbe;
         
         if (this.controller.connected) {
-           this.stop();
-           this.controller.newConnection();
-           window.setTimeout(window.app.emulateBind(function () {
-               window.app.chatapp.start(this.room, this.cbs, this.cbe);
-           }, {room : room, cbs : cbs, cbe : cbe}), 100);
+            this.onopen();
         } else {
             this.connect();
         }
@@ -63,17 +60,14 @@ function ChatWsApp () {
         this.clearAck();
         console.log("Connected - ");
         console.log(event);
+        this.notConnected = true;
         this.waitForAck();
         this.sendAction("room", this.room.id);
+        window.app.ui.chat.cc.firstPrint = false;
         var $html = $('<p class="chatSistema" />');
-        $html.append($('<span class="language" data-langhtml="_CHATWSCONNECTED_" />'));
-        var $a = $('<a class="language" data-langhtml="_CHATWSGETOLDERMESSAGES_" />').on('click', function () {
-            window.app.chatapp.getAllMessages();
-        });
-        $html.append(" ").append($a);
+        $html.append($('<span class="language" data-langhtml="_CHATWSCONNECTING_" />'));
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
-        window.app.ui.chat.cc.firstPrint = false;
     };
     
     this.onclose = function (event) {
@@ -293,6 +287,18 @@ function ChatWsApp () {
         if (this.ackTimeout !== null) {
             clearTimeout(this.ackTimeout);
             this.ackTimeout = null;
+        }
+        
+        if (this.notConnected) {
+            var $html = $('<p class="chatSistema" />');
+            $html.append($('<span class="language" data-langhtml="_CHATWSCONNECTED_" />'));
+            var $a = $('<a class="language" data-langhtml="_CHATWSGETOLDERMESSAGES_" />').on('click', function () {
+                window.app.chatapp.getAllMessages();
+            });
+            $html.append(" ").append($a);
+            window.app.ui.language.applyLanguageOn($html);
+            window.app.ui.chat.appendToMessages($html);
+            this.notConnected = false;
         }
         
         this.ackTimeout = setTimeout(function () {

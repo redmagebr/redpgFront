@@ -1,5 +1,6 @@
-window.AvailableLanguages = ['Elvish', 'Abyssal', 'Celestan', 'Alien', 'AncientMagi', 'AncientTech', 'BestialCommon', 'Binary', 'Draconic'];
-window.AvailableLanguages = ['Elvish', 'Binary'];
+window.AvailableLanguages = ['Abyssal', 'Celestan', 'Alien', 'AncientMagi', 'AncientTech', 
+    'BestialCommon', 'Draconic'];
+window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish'];
 window.chatModules.push({
 
     ID : 'lingo',
@@ -13,16 +14,18 @@ window.chatModules.push({
         Elvish : {
             words : {
                 1 : ['a', 'i', 'e'],
-                2 : ['ae', 'ea', 'lae', 'lea', 'mia', 'thal', 'maae', 'leah', 'tea'],
-                3 : ['laeu', 'maari', 'eaat', 'tenlar', 'umil', 'malas', 'nilas'],
-                4 : ['lussia', 'tamila', 'lavia', 'mera', 'liaah', 'paalvas'],
-                5 : ['tolelstraz', 'awynn', 'lissanas', 'olaamiss', 'tovalsar'],
+                2 : ['ae', 'ea', 'lae', 'lea', 'mia', 'thal', 'maae', 'leah', 'tea', 'ma', 'da', 'le', 'li', 'ta', 'te', 'ia', 'io'],
+                3 : ["a'la", 'eu', 'maari', 'eaat', 'tenlar', 'umil', 'malas', 'nilas', 'vaala', 'miu', 'thea', 'thao', 'bae', 'dia'],
+                4 : ["e'lud", "mi'tael", 'lussia', 'tamila', 'lavia', 'mera', 'liaah', 'paalvas', 'mala', 'thala', 'tooa', 'theia'],
+                5 : ["lu'thanis", "to'meera", "tha'valsar", 'tolelstraz', 'awynn', 'lissanas', 'olaamiss', 'tovalsar', 'malaasa', 'tholad'],
+                6 : ["thaliassu", "leeramas", "su'diel", "mi'dhanas", "thashama", "liriana", "luinassa"],
+                7 : ["lae'missa", "thol'vana", "sahmila", "mitrusala", "loriema", "tolisava"],
                 Bigger : ['lamiaala', 'elatria', 'mialita', 'talvalbas', 'miraala', 'estraalas', 'teleerals',
-                          'misalutia', 'lithusoh'],
+                          'misalutia', 'lithusoh', "diel'thanas", "mil'dahni"],
                 Numbers : ['o', 'u', 'uli', 'lia', 'sa', 'mi', 'ola', 'su', 'kaala', 'thus']
             },
             knownWords : {
-                'uroloki' : ['CALOR','QUENTE','FOGO','CHAMA','FLAMEJANTE','CHAMAS','FOGOS'],
+                'uloloki' : ['CALOR','QUENTE','FOGO','CHAMA','FLAMEJANTE','CHAMAS','FOGOS'],
                 'tenwar' : ['LETRA', 'LETRAS', 'LETTER', 'LETTERS'],
                 'thalias' : ['CORAGEM', 'CONFIANÇA', 'CONFIANCA', 'BRAVERY'],
                 'laer' : ['VERAO', 'VERÃO', 'SUMMER'],
@@ -30,7 +33,10 @@ window.chatModules.push({
                 'mellon' : ['AMIGO', 'COMPADRE', 'CAMARADA', "AMIGOS", "CAMARADAS", "COMPADRES", "ALIADO", "ALIADOS"],
                 'zallon' : ['INIMIGO', "INIMIGOS", "ADVERSÁRIO", "ADVERSÁRIOS", "ADVERSARIO", "ADVERSARIOS"],
                 'luin' : ['AZUL', 'AZULADO'],
-                'hehe' : ['HA', "HAH", "HE", "HEH", "HEHE", "HAHA", "HEHEH", "HAHAH", "HEHEHE", "HAHAHA"]
+                'hehe' : ['HA', "HAH", "HE", "HEH", "HEHE", "HAHA", "HEHEH", "HAHAH", "HEHEHE", "HAHAHA"],
+                "el'um" : ['ELF', 'ELFO', 'ELFA'],
+                "el'ar" : ['ELFOS', "ELFAS", "ELVES"],
+                "el'zel" : ['FALSO', "FAKE", "FALSOS", "FAKES"]
             },
             uppercase : true,
             allowpoints : true
@@ -44,6 +50,29 @@ window.chatModules.push({
             },
             uppercase : false,
             allowpoints : false
+        },
+        Orcish : {
+            words : {
+                1 : ['a', 'u', 'k', 'c', 'e'],
+                2 : ['ek', 'uk', 'tu', 'ob', 'zug', 'va'],
+                3 : ['ruk', 'gra', 'mog', 'zuk', 'xar'],
+                4 : ['zaga', 'garo', 'xhok', 'teba', 'nogu', 'uruk'],
+                Bigger : ['arukzuk', 'nogugaro', 'tovosh', 'thromka', 'makogg']
+            },
+            knownWords : {
+                'khazzog' : ['MATAR', 'MATE', 'MASSACRE', 'DEATH'],
+                'mogtuban' : ['AMIGO', 'COMPADRE', 'CAMARADA'],
+                'loktorok' : ['OI', 'OLÁ', 'OLA', 'HELLO'],
+                'maguna' : ['ATACAR', 'ATAQUE', 'DESTRUIR', 'DESTRUA', 'ATTACK'],
+                'grom' : ['HEROI', 'HERÓI', 'SALVADOR','HERO'],
+                'kek' : ['HEHE', "HE", "HEH", "HA", "HAHA", "HAH", 'LOL', 'LMAO', 'ROFL', 'ROFLMAO'],
+                'kekek' : ["HEHEHE", "HAHAHA", "HAHAH", 'HEHEH', "HAHAHAH", "HEHEHEH"],
+                'bubu' : ['ORC', 'ORK'],
+                'bubus' : ['ORCS', 'ORKS'],
+                'bubugo' : ['ORCISH', 'ORKISH', 'ORQISH', 'ORQUES', "ORQUÊS", "ORKES", "ORKÊS"]
+            },
+            uppercase : true,
+            allowpoints : true
         }
     },
     
@@ -103,6 +132,15 @@ window.chatModules.push({
             var result = '';
             for (var i = 0; i < word.length; i++) {
                 result += words['Numbers'][parseInt(word.charAt(i))];
+            }
+            if (allowpoints) {
+                result +=
+                    (virgula ? ',' : '') +
+                    (doispontos ? ':' : '') +
+                    (exclamation ? '!' : '') +
+                    (interrobang ? '?' : '') +
+                    (finish ? '.' : '') +
+                    (trespontos ? '..' : '');
             }
             return result;
         }
