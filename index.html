@@ -918,7 +918,8 @@
             <!-- Sheet Application End -->
         <!-- Application End -->
         <script type="text/javascript">
-            window.app = new Application(true);
+            var debug = window.location.hash.substr(1);
+            window.app = new Application(debug === 'debug');
         </script>
     </body>
 </html>

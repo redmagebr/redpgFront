@@ -29,7 +29,8 @@ function User () {
             'lastupdate',
             'focused',
             'typing',
-            'online'
+            'online',
+            'idle'
         ];
         for (var i = 0; i < attributes.length; i++) {
             if (typeof json[attributes[i]] !== 'undefined') {
