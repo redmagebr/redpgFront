@@ -146,12 +146,58 @@
 
 
 /* Menu Icons */
-#openTwitch {
-    background-image: url('../img/menu/twitchIcon.png');
+
+#callChatWindowBt {
+    background-image: url('../img/menu/chatIcon.png');
+}
+
+#callGamesWindowBt {
+    background-image: url('../img/menu/gamesIcon.png');
+}
+
+#callSettingsWindowBt {
+    background-image: url('../img/menu/configIcon.png');
+}
+
+#navigationBt {
+    background-image: url('../img/menu/communityIcon.png');
+}
+
+#logoutBt {
+    background-image: url('../img/menu/logoutIcon.png');
+}
+
+
+#hideRightWindowsBt {
+    background-image: url('../img/menu/hideWindows.png');
 }
 
 #openHitbox {
     background-image: url('../img/menu/hitboxIcon.png');
+}
+
+#callSheetsWindowBt {
+    background-image: url('../img/menu/fichasIcon.png');
+}
+
+#callSheetWindowBt {
+    background-image: url('../img/menu/fichaIcon.png');
+}
+
+#openSounds {
+    background-image: url('../img/menu/soundIcon.png');
+}
+
+#openImagesBt {
+    background-image: url('../img/menu/imagemIcon.png');
+}
+
+#myAccountBt {
+    background-image: url('../img/menu/accountIcon.png');
+}
+
+#openYoutube {
+    background-image: url('../img/menu/videoIcon.png');
 }
 
 

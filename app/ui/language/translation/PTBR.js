@@ -148,6 +148,8 @@ window.lingo['pt_br'] = {
     _OPENOLDSYSTEM_ : "Sistema Antigo",
     _OPENTWITCH_ : 'Twitch Chat...',
     _OPENTHITBOX_ : 'Hitbox Chat!',
+    _OPENYOUTUBE_ : 'Video Player',
+    _OPENIMAGES_ : 'Imagens',
     
     /* Picture Show */
     _CLOSEIMAGE_ : 'Clique aqui para fechar a imagem.',

@@ -455,24 +455,6 @@ function UI () {
         document.title = this.title;
     };
     
-    
-    this.openTwitch = function () {
-        if ($('#twitchChatiFrame').attr('src') !== null && !$('#twitchChatiFrame').is(':visible')) {
-            this.callRightWindow('twitchChat');
-            return;
-        }
-        var channel = prompt("Channel (Deixe em branco para reabrir o atual):");
-        var src = 'http://twitch.tv/chat/embed?channel=' + channel + '&amp;popout_chat=true';
-        if (channel !== '' && channel !== null && src !== $('#twitchChatiFrame').attr('src')) {
-            $('#twitchChatiFrame').attr(
-                'src', 
-                src
-            );
-        }
-        this.callRightWindow('twitchChat');
-    };
-    
-    
     this.openHitbox = function () {
         if ($('#hitboxChatiFrame').attr('src') !== null && !$('#hitboxChatiFrame').is(':visible')) {
             this.callRightWindow('hitboxChat');

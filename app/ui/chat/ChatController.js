@@ -95,7 +95,11 @@ function ChatController (chat) {
         });
         
         $('#callChatWindowBt').bind('click', function () {
-            window.app.ui.chat.cc.callSelf(false);
+            if (window.app.chatapp.room !== null) {
+                window.app.ui.callLeftWindow('chatWindow');
+            } else {
+                window.app.ui.gameui.callSelf();
+            }
         });
     };
     

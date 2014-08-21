@@ -5,6 +5,10 @@ function YoutubeUI () {
     
     this.init = function () {
         this.$player = $('#youtubePlayer');
+        this.$button = $('<a id="openYoutube" class="button"><span class="language" data-langhtml="_OPENYOUTUBE_"></span></a>');
+        this.$button.on('click', function () {
+            window.app.ui.callRightWindow("youtubeWindow");
+        });
     };
     
     this.parseUrl = function (url) {
@@ -17,14 +21,24 @@ function YoutubeUI () {
         }
     };
     
-    this.play = function (id, autoplay) {
+    this.play = function (id, autoplay, repeat) {
         //https://www.youtube.com/v/ID?autoplay=1&loop=1&playlist=ID
         //Autoplay loop
         //But no good, won't be added.
-        if (typeof autoplay === 'undefined') autoplay = false;
-        id.replace(/"/g, '');
+        if (typeof autoplay === 'undefined') var autoplay = false;
+        if (typeof repeat === 'undefined') var repeat = false;
+        id = id.replace(/"/g, '');
+        var initialid = id;
         if (autoplay) {
             id = id + "?autoplay=1";
+        }
+        if (repeat) {
+            if (autoplay) {
+                id = id + '&';
+            } else {
+                id = id + '?';
+            }
+            id = id + "loop=1&playlist=" + initialid;
         }
         //var $play = $('<embed type="application/x-shockwave-flash" src="http://www.youtube.com/v/' + id + '" />');
         
@@ -37,12 +51,15 @@ function YoutubeUI () {
         $a.bind('click', function () {
             window.app.ui.hideRightWindows(function () {
                 window.app.ui.youtubeui.$player.empty();
+                window.app.ui.youtubeui.$button.detach();
             });
         });
         
         this.$player.append($a);
         
         window.app.ui.callRightWindow('youtubeWindow');
+        window.app.ui.$rightHandler.append(this.$button);
+        window.app.ui.language.applyLanguageOn(this.$button);
     };
     
     

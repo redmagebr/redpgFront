@@ -162,7 +162,7 @@ function LoginApp () {
         this.clearTimeout();
         this.timeout = setTimeout(function () {
             window.app.loginapp.silentlyCheckLogin();
-        }, 60000);
+        }, 180000);
     };
     
     this.clearTimeout = function () {
