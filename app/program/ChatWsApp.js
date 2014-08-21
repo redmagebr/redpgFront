@@ -29,7 +29,7 @@ function ChatWsApp () {
             window.app.chatapp.sendIdle();
         },
         events : "mouseover mouseout click keypress mousedown mousemove blur focus",
-        idle: 20000
+        idle: 40000
     });
     
     /**
