@@ -456,7 +456,7 @@ function SheetController () {
             this.currentInstance = 0;
         }
         
-        this.openSheet(oldInstance, oldStyle, null, null, true);
+        this.openSheet(oldInstance, oldStyle, undefined, true, true);
     };
     
     this.updateSpecificSheet = function (sheetid) {
