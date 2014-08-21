@@ -8,6 +8,7 @@ function ChatWsApp () {
     this.focusFlag = true;
     this.idleFlag = false;
     this.notConnected = false;
+    this.room = null;
     
     $(window).bind('focus', function (e) {
         window.app.chatapp.focusFlag = true;
@@ -49,6 +50,10 @@ function ChatWsApp () {
         } else {
             this.connect();
         }
+        var $html = $('<p class="chatSistema" />');
+        $html.append($('<span class="language" data-langhtml="_CHATWSCONNECTING_" />'));
+        window.app.ui.language.applyLanguageOn($html);
+        window.app.ui.chat.appendToMessages($html);
     };
     
     this.connect = function () {
@@ -78,10 +83,6 @@ function ChatWsApp () {
         this.waitForAck();
         this.sendAction("room", this.room.id);
         window.app.ui.chat.cc.firstPrint = false;
-        var $html = $('<p class="chatSistema" />');
-        $html.append($('<span class="language" data-langhtml="_CHATWSCONNECTING_" />'));
-        window.app.ui.language.applyLanguageOn($html);
-        window.app.ui.chat.appendToMessages($html);
     };
     
     this.onclose = function (event) {
