@@ -120,11 +120,11 @@ function ChatWsApp () {
         }
         
         var obj = JSON.parse(event.data);
-        if (obj[0] === 'typing') {
-            this.room.users.getUser(obj[1]).typing = (obj[2] === 1);
-            window.app.ui.chat.cc.pc.checkUsers();
-        } else if (obj[0] === 'focused') {
-            this.room.users.getUser(obj[1]).focused = (obj[2] === 1);
+        if (obj[0] === 'status') {
+            /** @type User */ var user = this.room.users.getUser(obj[1]);
+            user.typing = obj[2] === 1;
+            user.idle = obj[3] === 1;
+            user.focused = obj[4] === 1;
             window.app.ui.chat.cc.pc.checkUsers();
         } else if (obj[0] === 'message') {
             if (obj[1].id < 0) {
@@ -138,9 +138,6 @@ function ChatWsApp () {
                 this.room.updateFromJSON({'messages' : [obj[1]]});
                 window.app.ui.chat.cc.printMessages();
             }
-        } else if (obj[0] === 'idle') {
-            this.room.users.getUser(obj[1]).idle = (obj[2] === 1);
-            window.app.ui.chat.cc.pc.checkUsers();
         } else if (obj[0] === 'persona') {
             var user = this.room.users.getUser(obj[1]);
             if (typeof obj[2]['persona'] === 'undefined') {
@@ -283,20 +280,29 @@ function ChatWsApp () {
         });
     };
     
+    this.sendStatus = function () {
+        if (this.controller.connected) {
+            var status = [];
+            status.push(this.typing ? '1' : '0');
+            status.push(this.idleFlag ? '1' : '0');
+            status.push(this.focusFlag ? '1' : '0');
+            this.sendAction("status", status.join(','));
+        }
+    };
+    
     this.updateTyping = function (typing) {
         if (typing !== this.typing) {
             this.typing = typing;
-            this.sendAction("typing", this.typing ? '1' : '0');
-            var user = this.room.getUser(window.app.loginapp.user.id);
-            if (user != null && user.focused != this.focusFlag) {
-                this.sendFocus();
-            }
-            if (user != null && user.idle != this.idleFlag) {
-                this.sendIdle();
-            }
+            this.sendStatus();
         }
-        
-        console.log(this.typing);
+    };
+    
+    this.sendFocus = function () {
+        this.sendStatus();
+    };
+    
+    this.sendIdle = function () {
+        this.sendStatus();
     };
     
     this.clearAck = function () {
@@ -346,18 +352,6 @@ function ChatWsApp () {
     this.ack = function () {
        this.waitForAck();
        this.controller.sendAck();
-    };
-    
-    this.sendFocus = function () {
-        if (this.controller.connected) {
-            this.sendAction("focused", this.focusFlag ? '1' : '0');
-        }
-    };
-    
-    this.sendIdle = function () {
-        if (this.controller.connected) {
-            this.sendAction("idle", this.idleFlag ? '1' : '0');
-        }
     };
     
     this.saveMemory = function () {

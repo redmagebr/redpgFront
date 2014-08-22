@@ -121,4 +121,26 @@ function GameApp () {
             error: cbe
         });
     };
+    
+    this.getPrivileges = function (gameid, cbs, cbe) {
+        var ajax = new AjaxController();
+        
+        ajax.requestPage({
+            url : 'Game',
+            data : {'id' : gameid, action : 'privileges'},
+            success: cbs,
+            error: cbe
+        });
+    };
+    
+    this.sendPrivileges = function (gameid, permissions, cbs, cbe) {
+        var ajax = new AjaxController();
+        
+        ajax.requestPage({
+            url : 'Game',
+            data : {id : gameid, privileges : permissions, action : 'setPrivileges'},
+            success: cbs,
+            error: cbe
+        });
+    };
 }
