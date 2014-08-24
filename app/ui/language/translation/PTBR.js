@@ -398,7 +398,7 @@ window.lingo['pt_br'] = {
     _COMBATTRACKERSETTARGET_ : "Selecionar como Alvo",
     _COMBATTRACKEROPENSHEET_ : "Abrir Ficha",
     _COMBATTRACKERADDSHEET_ : "Adicionar ao Combate",
-    _COMBATTRACKERSHEETSELECT_ : "Selecione a ficha para entrar no combate. A ficha precisa estar aberta e ser do mesmo jogo que a sala para ser listada.",
+    _COMBATTRACKERSHEETSELECT_ : "Selecione a ficha para entrar no combate. Apenas fichas do mesmo jogo que essa sala serão listadas e você precisa ter acessado a lista de fichas alguma vez.",
     _COMBATTRACKERREFRESH_ : "Atualizar lista",
     _COMBATTRACKERSORT_ : "Ordenar por iniciativa",
     _COMBATTRACKERTURN_ : "Passar um turno",

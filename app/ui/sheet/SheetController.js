@@ -116,7 +116,7 @@ function SheetController () {
             return;
         }
         
-        if (window.app.sheetdb.getSheet(sheetid) === null) {
+        if (!window.app.sheetdb.isLoaded(sheetid)) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
                 window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, (typeof styleid === 'undefined'), this.dontcallwindow);
@@ -158,7 +158,7 @@ function SheetController () {
             return;
         }
         
-        if (window.app.sheetdb.getSheet(sheetid) === null || typeof window.Style[styleid] === 'undefined') {
+        if (!window.app.sheetdb.isLoaded(sheetid) || typeof window.Style[styleid] === 'undefined') {
             return;
         }
         

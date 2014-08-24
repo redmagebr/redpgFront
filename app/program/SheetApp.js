@@ -50,6 +50,11 @@ function SheetApp () {
     this.callList = function (cbs, cbe) {
         var ajax = new AjaxController();
         
+        cbs = window.app.emulateBind(function (data) {
+            window.app.gamedb.updateFromJSON(data, true);
+            this.cbs(data);
+        }, {cbs : cbs});
+        
         ajax.requestPage({
             url : 'Sheet',
             data : {action : 'list'},

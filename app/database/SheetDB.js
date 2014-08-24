@@ -26,12 +26,21 @@ function SheetDB () {
     };
     
     
-    this.updateFromJSON = function (json) {
+    this.updateFromJSON = function (json, clean) {
+        if (clean === undefined) var clean = false;
+        if (clean) {
+            this.empty();
+        }
         for (var i = 0; i < json.length; i++) {
             if (typeof this.sheets[json[i].id] === 'undefined') {
                 this.sheets[json[i].id] = new Sheet_Instance();
             }
             this.sheets[json[i].id].updateFromJSON(json[i]);
         }
+    };
+    
+    this.isLoaded = function (id) {
+        var sheet = this.getSheet(id);
+        return (sheet !== null) && (sheet.values !== null);
     };
 }

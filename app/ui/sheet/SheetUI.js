@@ -51,6 +51,7 @@ function SheetUI() {
             window.app.ui.unblockRight();
             window.app.ui.sheetui.$error.finish().fadeOut();
             window.app.ui.sheetui.$list.show();
+            window.app.ui.sheetui.controller.$viewer.trigger('loadedSheet');
         };
 
         window.app.sheetapp.callList(cbs, cbe);

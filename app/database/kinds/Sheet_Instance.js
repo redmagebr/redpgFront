@@ -12,7 +12,7 @@ function Sheet_Instance () {
     this.deletar;
     
     this.name;
-    this.values;
+    this.values = null;
     
     this.changed = false;
     

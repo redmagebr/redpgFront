@@ -1,4 +1,6 @@
 function CombatTracker () {
+    this.roomid = 0;
+    
     this.$tracker = $('#combatTracker').draggable({
         containment : 'window',
         handle : '#combatTrackerHandle'
@@ -108,6 +110,11 @@ function CombatTracker () {
         var user = this.getUser();
         this.memory = memory;
         this.myStuff = memory.getMemory('combat', {ordered : [], turn : 0});
+        
+        if (this.roomid !== window.app.chatapp.room.id) {
+            this.roomid = window.app.chatapp.room.id;
+            this.updateSheetList();
+        }
         
         
         this.updateParticipants();
@@ -233,10 +240,10 @@ function CombatTracker () {
                 this.tracker.saveMemory();
             }, {order : i, tracker : this}));
             
-            sheet = window.app.sheetdb.getSheet(participant.id);
             hp = '';
             mp = '';
-            if (sheet !== null) {
+            if (window.app.sheetdb.isLoaded(participant.id)) {
+                sheet = window.app.sheetdb.getSheet(participant.id);
                 if (typeof sheet.values['HPAtual'] !== 'undefined' && typeof sheet.values['HPMaximo'] !== 'undefined') {
                     hp = sheet.values['HPAtual'] + '/' + sheet.values['HPMaximo'];
                 }
@@ -332,6 +339,7 @@ function CombatTracker () {
                 $sheet.push($('<option />').val(sheet.id).text(sheet.name));
             }
         }
+        console.log(sheets);
         $sheet.sort(function ($a,$b) {
             var na = $a.text().toUpperCase();
             var nb = $b.text().toUpperCase();
