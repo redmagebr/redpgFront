@@ -8,6 +8,7 @@ window.chatModules.push({
     
     Slash : [''],
     
+    showHelp : false,
     
     isValid : function (slashCMD, message) {
         return true;

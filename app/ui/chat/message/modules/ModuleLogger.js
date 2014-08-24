@@ -9,6 +9,8 @@ window.chatModules.push({
      */
     ID : 'Logger',
     
+    showHelp : false,
+    
     
     /**
      * Defines the slash command that calls this module.

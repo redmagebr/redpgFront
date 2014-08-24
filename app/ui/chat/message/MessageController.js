@@ -52,8 +52,17 @@ function MessageController () {
     
     
     this.getModule = function (id) {
+        id = id.toLowerCase();
         if (typeof this.idToMod[id] !== 'undefined') {
             return this.idToMod[id];
+        }
+        return null;
+    };
+    
+    this.getModuleFromSlash = function (slash) {
+        slash = slash.toLowerCase();
+        if (typeof this.slashToMod[slash] !== 'undefined') {
+            return this.slashToMod[slash];
         }
         return null;
     };
@@ -72,10 +81,10 @@ function MessageController () {
             * @type Module
             */
             module = window.chatModules[i];
-            this.idToMod[module.ID] = module;
+            this.idToMod[module.ID.toLowerCase()] = module;
             
             for (var v = 0; v < module.Slash.length; v++) {
-                this.slashToMod[module.Slash[v]] = module;
+                this.slashToMod[module.Slash[v].toLowerCase()] = module;
             }
         };
     };
@@ -216,6 +225,7 @@ function MessageController () {
                 var $error = mod.get$error(slashCMD, msgOnly, window.app.loginapp.user.isStoryteller());
                 if ($error !== null) {
                     window.app.ui.language.applyLanguageTo($error);
+                    window.app.ui.language.applyLanguageOn($error);
                     window.app.ui.chat.appendToMessages($error);
                 } else {
                     var cleanSlash = $('<div />').text(slashCMD).html();

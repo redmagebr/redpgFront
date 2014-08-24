@@ -9,6 +9,8 @@ window.chatModules.push({
      */
     ID : 'Persona',
     
+    showHelp : false,
+    
     
     /**
      * Defines the slash command that calls this module.

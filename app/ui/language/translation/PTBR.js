@@ -293,6 +293,32 @@ window.lingo['pt_br'] = {
     _LONGLOAD_ : 'O servidor está demorando a responder...',
     _CONNECTIONERROR_ : 'Houve um erro na conexão com o servidor.',
     
+    /* Chat Module Help */
+    
+    _HELPINVALIDMODULE_ : 'Módulo desconhecido. Digite "/comandos" para ver uma lista completa de módulos.',
+    _MODULENOHELP_ : 'Módulo %p não possui explicação.',
+    _MODULELIST_ : 'Módulos',
+    _HELPSHORTHELP_ : 'Digite "/help [comando]" para receber informações extras sobre algum comando. Exemplo: /h /h',
+    _HELPLONGHELP_ : 'Digite "/help" para uma listagem completa de comandos. Digite "/help [comando]" para receber informações especiais sobre um comando em específico.',
+    _COUNTDOWNSHORTHELP_ : 'Faz uma contagem em segundos. Exemplo: /timer 10',
+    _VOTESHORTHELP_ : 'Cria uma votação. Exemplo: /vote Ir pela esquerda',
+    _BGMPLAYSHORTHELP_ : 'Toca um link de música. Uso: /bgmplay http://linkdamusica.mp3',
+    _SEPLAYSHORTHELP_ : 'Toca um link de efeito sonoro. Uso: /seplay http://linkdamusica.mp3',
+    _ACTIONSHORTHELP_ : 'Imprime a mensagem como uma ação com a persona atual. Exemplo: /me pula no lugar',
+    _CLEARSHORTHELP_ : 'Limpa a tela da sala. Exemplo: /clear. Pode-se adicionar "1" ao comando para também apagar as mensagens antigas do servidor, exemplo: /clear 1',
+    _NOTIFICATIONSHORTHELP_ : 'Ativa/Desativa o aviso de mensagens novas no nome da janela.',
+    _NOWHISPERSHORTHELP_ : 'Ativa/Desativa a impressão de whispers enviados.',
+    _NOSESHORTHELP_ : 'Ativa/Desativa efeitos sonoros.',
+    _STREAMSHORTHELP_ : 'Ativa/Desativa modo stream. "/h stream" para conseguir mais informações.',
+    _STREAMLONGHELP_ : '"/stream" Ativa/Desativa modo Stream. Durante o modo stream, "/stream LINK" em uma outra janela irá trocar o background da stream. "/stream PICTURE" irá fechar qualquer imagem aberta. "/stream YOUTUBE" irá fechar vídeos na stream.',
+    _TITLESHORTHELP_ : 'Troca o título da janela. Exemplo: /title Camera',
+    _STORYSHORTHELP_ : 'Imprime a mensagem como narrativa. Apenas narradores podem utilizar esse módulo. Exemplo: /story Enquanto isso, no castelo...',
+    _ZEBRASHORTHELP_ : 'Ativa/Desativa listras nas mensagens impressas.',
+    _OFFGAMESHORTHELP_ : 'Imprime a mensagem como algo fora-de-jogo. Exemplo: /off vou comer pizza, já volto',
+    _WHISPERSHORTHELP_ : 'Envia a mensagem como uma mensagem privada para um jogador. Uso: /whisper [jogador], [mensagem]. Exemplo: /whisper Reddo#0001, Olá',
+    _WHISPERLONGHELP_ : 'Envia a mensagem como mensagem privada para um jogador. Pressione TAB para completar o nome do jogador automaticamente. Exemplo: /w Red[TAB]. /w [tab] irá mostrar uma lista de todos os jogadores para que escolha.',
+    _LINGOSHORTHELP_ : 'Envia a mensagem como uma mensagem de língua. Exemplo: "/lang Elvish, Olá" irá codificar Olá na língua Elvish. Adicionar "sto" no comando irá codificar com a língua na história. Exemplo: /langsto Elvish, Algo escrito em um livro',
+    
     
     /* Config */
     _SYSTEMCONFIGHEADER_ : 'Configurações',

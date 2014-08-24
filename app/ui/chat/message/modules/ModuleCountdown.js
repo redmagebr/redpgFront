@@ -18,7 +18,7 @@ window.chatModules.push({
     Slash : ['/countdown', '/count', '/timer', '/stoptimer'],
     
     isValid : function (slashCMD, msg) {
-        return !isNaN(msg) || slashCMD === '/stoptimer';
+        return !isNaN(msg, 10) || slashCMD === '/stoptimer';
     },
     
     /**

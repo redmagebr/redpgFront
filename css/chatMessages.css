@@ -95,6 +95,16 @@
     background-color: #949494;
 }
 
+#chatMessages > p.chatSistema > span.module > span.name {
+    font-weight: bold;
+}
+
+#chatMessages > p.chatSistema > span.module > span.miniHelp {
+    margin-left: 5px;
+    color: #9f00b3;
+    font-weight: normal;
+}
+
 #chatMessages > p.chatSistema {
     color: #0a1a48;
 }
