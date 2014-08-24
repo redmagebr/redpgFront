@@ -296,7 +296,7 @@ window.lingo['pt_br'] = {
     /* Chat Module Help */
     
     _HELPINVALIDMODULE_ : 'Módulo desconhecido. Digite "/comandos" para ver uma lista completa de módulos.',
-    _MODULENOHELP_ : 'Módulo %p não possui explicação.',
+    _MODULENOHELP_ : 'Módulo "%p" não possui explicações adicionais.',
     _MODULELIST_ : 'Módulos',
     _HELPSHORTHELP_ : 'Digite "/help [comando]" para receber informações extras sobre algum comando. Exemplo: /h /h',
     _HELPLONGHELP_ : 'Digite "/help" para uma listagem completa de comandos. Digite "/help [comando]" para receber informações especiais sobre um comando em específico.',
