@@ -1,14 +1,19 @@
 function LoginApp () {
     this.logged = false;
     this.user = new User();
-    this.jsessid = typeof localStorage.lastSession !== 'undefined' ? localStorage.lastSession : null;
+    this.jsessid = null;
     this.timeout = null;
+    
+    if (localStorage.lastSession !== undefined && localStorage.lastSessionTime !== undefined && !isNaN(localStorage.lastSessionTime, 10) && (new Date().valueOf() - parseInt(localStorage.lastSessionTime)) < 108000) {
+        this.jsessid = localStorage.lastSession;
+    }
     
     this.onLoggedout = function () {};
     
     this.setJsessid = function (id) {
         this.jsessid = id;
         localStorage.lastSession = id;
+        localStorage.lastSessionTime = new Date().valueOf();
     };
     
     this.getJsessid = function () {
@@ -25,6 +30,7 @@ function LoginApp () {
         this.logged = true;
         this.jsessid = json['session'];
         localStorage.lastSession = this.jsessid;
+        localStorage.lastSessionTime = new Date().valueOf();
         this.setTimeout();
     };
     
@@ -100,6 +106,8 @@ function LoginApp () {
         
         cbs = window.app.emulateBind(function (data) {
             window.app.loginapp.clearTimeout();
+            delete localStorage.lastSession;
+            delete localStorage.lastSessionTime;
             this.cbs(data);
         }, {cbs : cbs});
         
@@ -127,6 +135,8 @@ function LoginApp () {
                         this.loginapp.user = new User();
                         this.loginapp.jsessid = json.session;
                         this.loginapp.onLoggedout();
+                    } else {
+                        localStorage.lastSessionTime = new Date().valueOf();
                     }
                 }, {loginapp : this}
             ),
@@ -151,6 +161,8 @@ function LoginApp () {
                         this.loginapp.jsessid = json.session;
                         this.loginapp.onLoggedout();
                         return;
+                    } else {
+                        localStorage.lastSessionTime = new Date().valueOf();
                     }
                     window.app.loginapp.setTimeout();
                 }, {loginapp : this}
