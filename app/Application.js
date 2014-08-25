@@ -24,6 +24,9 @@ function Application (debug) {
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
     
+    this.host = 'http://198.58.104.132:8080/service/';
+    this.wshost = 'ws://198.58.104.132:8080/service/';
+    this.staticHost = 'http://198.58.104.132/';
     
     
     /**
