@@ -5,11 +5,7 @@
 
 @font-face {
     font-family: 'caudex';
-    src: url('caudex/caudex-bold-webfont.eot');
-    src: url('caudex/caudex-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('caudex/caudex-bold-webfont.woff') format('woff'),
-         url('caudex/caudex-bold-webfont.ttf') format('truetype'),
-         url('caudex/caudex-bold-webfont.svg#caudexbold') format('svg');
+    src: url('file/caudex-bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 
@@ -20,11 +16,7 @@
 
 @font-face {
     font-family: 'caudex';
-    src: url('caudex/caudex-bolditalic-webfont.eot');
-    src: url('caudex/caudex-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('caudex/caudex-bolditalic-webfont.woff') format('woff'),
-         url('caudex/caudex-bolditalic-webfont.ttf') format('truetype'),
-         url('caudex/caudex-bolditalic-webfont.svg#caudexbold') format('svg');
+    src: url('file/caudex-bolditalic-webfont.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 
@@ -35,11 +27,7 @@
 
 @font-face {
     font-family: 'caudex';
-    src: url('caudex/caudex-italic-webfont.eot');
-    src: url('caudex/caudex-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('caudex/caudex-italic-webfont.woff') format('woff'),
-         url('caudex/caudex-italic-webfont.ttf') format('truetype'),
-         url('caudex/caudex-italic-webfont.svg#caudexitalic') format('svg');
+    src: url('file/caudex-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 
@@ -50,11 +38,7 @@
 
 @font-face {
     font-family: 'caudex';
-    src: url('caudex/caudex-regular-webfont.eot');
-    src: url('caudex/caudex-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('caudex/caudex-regular-webfont.woff') format('woff'),
-         url('caudex/caudex-regular-webfont.ttf') format('truetype'),
-         url('caudex/caudex-regular-webfont.svg#caudexregular') format('svg');
+    src: url('file/caudex-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

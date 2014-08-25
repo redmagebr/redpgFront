@@ -3,11 +3,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-bolditalic-webfont.eot');
-    src: url('file/alegreya-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/alegreya-bolditalic-webfont.woff') format('woff'),
-         url('file/alegreya-bolditalic-webfont.ttf') format('truetype'),
-         url('file/alegreya-bolditalic-webfont.svg#alegreyabold_italic') format('svg');
+    src: url('file/alegreya-bolditalic-webfont.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 
@@ -18,11 +14,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-italic-webfont.eot');
-    src: url('file/alegreya-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/alegreya-italic-webfont.woff') format('woff'),
-         url('file/alegreya-italic-webfont.ttf') format('truetype'),
-         url('file/alegreya-italic-webfont.svg#alegreyaitalic') format('svg');
+    src: url('file/alegreya-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 
@@ -33,11 +25,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-bold-webfont.eot');
-    src: url('file/alegreya-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/alegreya-bold-webfont.woff') format('woff'),
-         url('file/alegreya-bold-webfont.ttf') format('truetype'),
-         url('file/alegreya-bold-webfont.svg#alegreyabold') format('svg');
+    src: url('file/alegreya-bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 
@@ -48,11 +36,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-regular-webfont.eot');
-    src: url('file/alegreya-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/alegreya-regular-webfont.woff') format('woff'),
-         url('file/alegreya-regular-webfont.ttf') format('truetype'),
-         url('file/alegreya-regular-webfont.svg#alegreyaregular') format('svg');
+    src: url('file/alegreya-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

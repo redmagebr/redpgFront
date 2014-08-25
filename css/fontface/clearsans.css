@@ -2,11 +2,7 @@
 /* Licensed under Apache License. Local copy found at "Apache License.txt". */
 @font-face {
     font-family: 'clear_sans';
-    src: url('file/clearsans-bold-webfont.eot');
-    src: url('file/clearsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/clearsans-bold-webfont.woff') format('woff'),
-         url('file/clearsans-bold-webfont.ttf') format('truetype'),
-         url('file/clearsans-bold-webfont.svg#clear_sansbold') format('svg');
+    src: url('file/clearsans-bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 
@@ -17,11 +13,7 @@
 
 @font-face {
     font-family: 'clear_sans';
-    src: url('file/clearsans-bolditalic-webfont.eot');
-    src: url('file/clearsans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/clearsans-bolditalic-webfont.woff') format('woff'),
-         url('file/clearsans-bolditalic-webfont.ttf') format('truetype'),
-         url('file/clearsans-bolditalic-webfont.svg#clear_sansbold_italic') format('svg');
+    src: url('file/clearsans-bolditalic-webfont.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 
@@ -32,11 +24,7 @@
 
 @font-face {
     font-family: 'clear_sans';
-    src: url('file/clearsans-italic-webfont.eot');
-    src: url('file/clearsans-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/clearsans-italic-webfont.woff') format('woff'),
-         url('file/clearsans-italic-webfont.ttf') format('truetype'),
-         url('file/clearsans-italic-webfont.svg#clear_sansitalic') format('svg');
+    src: url('file/clearsans-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 
@@ -47,11 +35,7 @@
 
 @font-face {
     font-family: 'clear_sans';
-    src: url('file/clearsans-regular-webfont.eot');
-    src: url('file/clearsans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('file/clearsans-regular-webfont.woff') format('woff'),
-         url('file/clearsans-regular-webfont.ttf') format('truetype'),
-         url('file/clearsans-regular-webfont.svg#clear_sansregular') format('svg');
+    src: url('file/clearsans-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
