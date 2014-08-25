@@ -1,3 +1,21 @@
+(function addXhrProgressEvent($) {
+    var originalXhr = $.ajaxSettings.xhr;
+    $.ajaxSetup({
+        xhr: function() {
+            var req = originalXhr(), that = this;
+            if (req) {
+                if (that.progress !== undefined) {
+                    req.onprogress = that.progress;
+                }
+                if (typeof req.upload == "object" && that.progressUpload !== undefined) {
+                    req.upload.onprogress = that.progressUpload;
+                }
+            }
+            return req;
+        }
+    });
+})(jQuery);
+
 /**
  * @constructor
  * @returns {AjaxController}
@@ -39,9 +57,8 @@ function AjaxController () {
         }
         
         if (typeof object.timeout === 'undefined') {
-            object.timeout = 10000;
-        }
-        
+            object.timeout = 30000;
+        } 
         
         $.ajax(object).done(function( data ) {
             if (typeof data === 'string')
