@@ -127,8 +127,8 @@ window.lingo['pt_br'] = {
     _CAAGEHELP_ : 'Em alguns países é ilegal guardar quaisquer informações sobre menores de idade. Marcando essa caixa, você afirma ser velho o suficiente para ter as informações providas acima guardadas no nosso sistema.',
     
     _CASUC1_ : 'Obrigado por criar uma conta.',
-    _CASUC2_ : 'Sua conta foi ativada e você já pode utilizar o sistema.',
-    _CASUC3_ : 'Clique aqui para voltar ao Login.',
+    _CASUC2_ : 'Um e-mail foi enviado com instruções para ativar sua conta. Você não poderá utilizar o sistema até verificar o seu e-mail.',
+    _CASUC3_ : 'Caso já tenha ativado sua conta, clique aqui para fazer o login.',
     
     /* Menu */
     _HIDELEFTWINDOWS_ : 'Esconder Janelas',

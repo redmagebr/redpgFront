@@ -28,7 +28,6 @@ function Application (debug) {
     this.wshost = 'ws://198.58.104.132:8080/service/';
     this.staticHost = 'http://198.58.104.132/';
     
-    
     /**
      * Major, Minor, Release
      * Major covers breakpoints.
