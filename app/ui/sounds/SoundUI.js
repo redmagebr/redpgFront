@@ -262,6 +262,17 @@ function SoundUI () {
         $html.append($title);
         
         var $sl = $('<div class="folderSounds" />');
+        folder.sounds.sort(function (a, b) {
+            var na = a.name.toUpperCase();
+            var nb = b.name.toUpperCase();
+            if (na < nb) {
+                return -1;
+            }
+            if (na > nb) {
+                return 1;
+            }
+            return 0;
+        });
         for (var i = 0; i < folder.sounds.length; i++) {
             folder.sounds[i].index = i;
             folder.sounds[i].folderIndex = folder.index;
