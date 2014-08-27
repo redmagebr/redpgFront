@@ -1,6 +1,6 @@
 window.AvailableLanguages = ['Celestan', 'Alien', 'AncientMagi', 'AncientTech', 
     'BestialCommon'];
-window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal', 'Draconic'];
+window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal', 'Draconic', 'Aquon'];
 window.chatModules.push({
 
     ID : 'lingo',
@@ -113,6 +113,31 @@ window.chatModules.push({
                 "l'gra" : ['MEDO','PAVOR','TEMOR','HORROR','FEAR'],
                 "munthrek" : ['HUMANO','HUMANOS','HUMAN','HUMANS'],
                 "arthonath" : ['HUMANIDADE','HUMANITY']
+            },
+            uppercase : true,
+            allowpoints : true
+        },
+        Aquon : {
+            words : {
+                1 : ['le', 'li', 'la', 'a', 'e', 'i'],
+                2 : ['laren', 'sare', 'elane', 'alena', 'leair'],
+                3 : ['lessa', 'saril ', 'quissa', 'sarte', 'tassi', 'selasse'],
+                4 : ['atoloran', 'tiran', 'quilara', 'assiassi'],
+                Bigger : ['sildorine', "salen'aran", "arase'asionan", 'asurannale', 'illiarine'],
+                Numbers : ['on', 'liss', 'diss', 'tiss', 'quass', 'ciss', 'siss', 'sess', 'oiss', 'niss']
+            },
+            knownWords : {
+                "tassela" : ['TERRA', 'PISO', 'CHÃO', 'SUPERFICIE'],
+                "tasselarane" : ['TERRESTRE', 'INIMIGO', 'ADVERSARIO', 'OPONENTE', 'INIMIGOS', 'ADVERSARIOS', 'OPONENTES'],
+                "quill" : ['RIO', 'MAR', 'OCEANO'],
+                "quillarine" : ['AQUATICO', 'AMIGO', 'COMPANHEIRO', 'ALIADO', 'AMIGOS', 'COMPANHEIROS', 'ALIADOS'],
+                "quell" : ['AGUA', 'SAGRADO'],
+                "sir" : ['AMANTE', 'ADORADOR'],
+                "salara" : ['GLÓRIA', 'HONRA', 'AUTORIDADE', 'VIRTUDE'],
+                "quellsalara" : ['REI', 'SOBERANO', 'MONARCA'],
+                "selarane" : ["EL'ZEL"],
+                "setarane" : ['ELFO'],
+                "talarane" : ['HUMANO']
             },
             uppercase : true,
             allowpoints : true
