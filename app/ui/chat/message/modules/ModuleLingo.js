@@ -1,6 +1,6 @@
-window.AvailableLanguages = ['Abyssal', 'Celestan', 'Alien', 'AncientMagi', 'AncientTech', 
+window.AvailableLanguages = ['Celestan', 'Alien', 'AncientMagi', 'AncientTech', 
     'BestialCommon', 'Draconic'];
-window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish'];
+window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal'];
 window.chatModules.push({
 
     ID : 'lingo',
@@ -70,6 +70,26 @@ window.chatModules.push({
                 'bubu' : ['ORC', 'ORK'],
                 'bubus' : ['ORCS', 'ORKS'],
                 'bubugo' : ['ORCISH', 'ORKISH', 'ORQISH', 'ORQUES', "ORQUÊS", "ORKES", "ORKÊS"]
+            },
+            uppercase : true,
+            allowpoints : true
+        },
+        Abyssal : {
+            words : {
+                1 : ['x', 'y', 'e', 'a', 'g', 'o'],
+                2 : ['za', 'xy', 'go', 'ua', 'ka', 're', 'te', 'la', 'az'],
+                3 : ['rruk', 'kar', 'mra', 'gak', 'zar', 'tra', 'maz'],
+                4 : ['okra', 'zzar', 'kada', 'zaxy', 'drab', 'rikk'],
+                5 : ['belam', 'rraka', 'ashaj', 'zannk', 'xalah'],
+                Bigger : ['ratalaz', 'melalorah', 'trizzkarah', 'arkalada', 'karken'],
+                Numbers : ['ia', 'ori', 'eri', 'dara', 'iru', 'taro', 'cace', 'zori', 'xash', 'rura']
+            },
+            knownWords : {
+                "soran" : ['ANJO', 'YUQUN', 'ANGEL'],
+                "gakzakada" : ['SACRIFICIO', 'SACRIFÍCIO', 'SACRIFICE'],
+                "burah" : ['CALOR','QUENTE','FOGO','CHAMA','FLAMEJANTE','CHAMAS','FOGOS'],
+                "aman" : ['HUMANO', 'HUMANA', 'HUMAN'],
+                "zennshinagas" : ['INFERNO', 'INFERNAL', 'HELL']
             },
             uppercase : true,
             allowpoints : true
