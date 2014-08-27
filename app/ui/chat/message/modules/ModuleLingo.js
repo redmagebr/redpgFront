@@ -1,6 +1,6 @@
 window.AvailableLanguages = ['Celestan', 'Alien', 'AncientMagi', 'AncientTech', 
-    'BestialCommon', 'Draconic'];
-window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal'];
+    'BestialCommon'];
+window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal', 'Draconic'];
 window.chatModules.push({
 
     ID : 'lingo',
@@ -90,6 +90,29 @@ window.chatModules.push({
                 "burah" : ['CALOR','QUENTE','FOGO','CHAMA','FLAMEJANTE','CHAMAS','FOGOS'],
                 "aman" : ['HUMANO', 'HUMANA', 'HUMAN'],
                 "zennshinagas" : ['INFERNO', 'INFERNAL', 'HELL']
+            },
+            uppercase : true,
+            allowpoints : true
+        },
+        Draconic : {
+            words : {
+                1 : ['vi', 'si', 'fe', 'sh', 'ix', 'ur'],
+                2 : ['wux ', 'vah', 'veh', 'vee', 'ios', 'irsa'],
+                3 : ['rerk', 'xsio ', 'axun', 'yrev', 'ithil', 'creic'],
+                4 : ["e'cer", 'direx', 'dout', 'yrev'],
+                5 : ['ibleuailt ', 'virax', 'mrrandiina ', 'whedab ', 'bekisnhlekil '],
+                Bigger : ['ilthyeora', 'kallyadranoch', 'yarchonis', 'yarchonis', 'jorethnobiounir '],
+                Numbers : ['zero', 'ir', 'jiil', 'fogah', 'vrrar', 'jlatak', 'jiko', 'vakil', 'supri', 'wlekjr']
+            },
+            knownWords : {
+                "darastrix " : ['DRAGÃO', 'DRAGON', 'DRAGAO', 'DRAGOES', 'DRAGÕES'],
+                "thurirl" : ['COMPANHEIRO','AMIGO','PARCEIRO','FRIEND','PARTNER','ALIADO'],
+                "ternocki" : ['ESCAMAS', 'SCALES', 'ESCAMA', 'SCALE'],
+                "molik" : ['PELE', 'SKIN'],
+                "seltur" : ['MOLE','MACIA','SOFT'],
+                "l'gra" : ['MEDO','PAVOR','TEMOR','HORROR','FEAR'],
+                "munthrek" : ['HUMANO','HUMANOS','HUMAN','HUMANS'],
+                "arthonath" : ['HUMANIDADE','HUMANITY']
             },
             uppercase : true,
             allowpoints : true
