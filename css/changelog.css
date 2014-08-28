@@ -1,3 +1,19 @@
+#changelogLoadFully {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: #0016d2;
+    font-weight: bold;
+}
+
+#changelogLoadFully:hover {
+    color: #5467ff;
+    cursor: pointer;
+}
+
+#changelogLoadFully:active {
+    color: #000d81;
+}
+
 #changelogWindow {
     font-family: alegreya;
 }

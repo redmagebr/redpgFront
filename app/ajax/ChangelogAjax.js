@@ -12,4 +12,18 @@ function ChangelogAjax () {
             }
         });
     };
+    
+    this.getFullLog = function () {
+        var ajax = new AjaxController();
+        ajax.requestPage({
+            url: window.app.staticHost + 'app/ChangelogOld.html',
+            dataType: 'html',
+            success : function (data) {
+                window.app.ui.changelogui.attach(data);
+            },
+            error : function (data) {
+                window.app.ui.changelogui.attachError(data);
+            }
+        });
+    };
 }

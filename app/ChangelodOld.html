@@ -1,0 +1,341 @@
+<div data-major='0' data-minor='19' data-release='3'>
+    <h1>0.19.3</h1>
+    <p>Changed how user status gets sent in chat. Older versions will neither update status nor send it correctly. (IMPORTANT)</p>
+</div>
+
+<div data-major='0' data-minor='19' data-release='2'>
+    <h1>0.19.2</h1>
+    <p>Debug console has been deactivated by default! It can be reactivated on request by appending #debug to the url.</p>
+    <p>Example: http://redpg.com.br/#debug</p>
+</div>
+
+<div data-major='0' data-minor='19' data-release='1'>
+    <h1>0.19.1</h1>
+    <p>Sheet Full Reload now works again.</p>
+    <p>Improved "Open Chat" button behavior.</p>
+    <p>Menu Icons. A few of the new buttons are not implemented.</p>
+    <p>A Video Player icon shows up at the right side when a video is open.</p>
+</div>
+
+<div data-major='0' data-minor='19' data-release='0'>
+    <h1>0.19.0</h1>
+    <p>Users in chat that remain idle for 20 seconds will be considered AFK.</p>
+    <p>Older versions of RedPG client might have issue with receiving "Idle" messages. Please update. (Important)</p>
+</div>
+
+
+<div data-major='0' data-minor='18' data-release='2'>
+    <h1>0.18.2</h1>
+    <p>Connection is maintained when switching rooms, avoiding the errors we were getting from creating a new connection too fast.</p>
+    <p>Language Tracker no longer bugs it's height when switching rooms or getting sudden new rows.</p>
+</div>
+
+<div data-major='0' data-minor='18' data-release='1'>
+    <h1>0.18.1</h1>
+    <p>Fixes automatic sheet reloading. Will no longer switch sheets after updating nor will it call the sheet window after updating.</p>
+</div>
+
+<div data-major='0' data-minor='18' data-release='0'>
+    <h1>0.18.0</h1>
+    <p>Language Tracker added. Only Elvish and Binary are done, though.</p>
+    <p>Players can speak in languages they know through:</p>
+    <p>/ling [Language], Message</p>
+    <p>Storytellers can also use languages as narrative through:</p>
+    <p>/lingsto [Language], Message</p>
+    <p>Special codes (Action, Thoughts, Important) will result in parts of the message not being translated (Working as intended)</p>
+    <p>-----------</p>
+    <p>Examples:</p>
+    <p>/ling Elvish, My character speaks Elvish! Do you, [John]?</p>
+    <p>/lingsto Elvish, [The group arrives at the market place. You see a board which reads:] FOREIGNERS LEAVE!</p>
+</div>
+
+<div data-major='0' data-minor='17' data-release='0'>
+    <h1>0.17.0</h1>
+    <p>Combat Tracker added.</p>
+    <p>----------------------------</p>
+    <p>Some older versions have Incomplete Room memory support and might have issues with the Chat.</p>
+    <p>----------------------------</p>
+</div>
+
+<div data-major='0' data-minor='16' data-release='0'>
+    <h1>0.16.0</h1>
+    <p>Room memory support. This will allow for modules such as Languages and Combat Tracker.</p>
+    <p>To do: Room-Player Memory for Personas and such.</p>
+    <p>Fixed: Twitch and Hitbox chats. Oops.</p>
+</div>
+
+<div data-major='0' data-minor='15' data-release='0'>
+    <h1>0.15.0</h1>
+    <p>-------------------</p>
+    <p>Server code was completely redone. (IMPORTANT)</p>
+    <p>Massive changes to server code: old Client versions are no longer compatible. You MUST update. (IMPORTANT)</p>
+    <p>-------------------</p>
+</div>
+
+<div data-major='0' data-minor='14' data-release='2'>
+    <h1>0.14.2</h1>
+    <p>Messages now timeout at 5 seconds and will allow users to attempt to resend them.</p>
+    <p>Improvements to Websocket disconnect and reconnect in another room.</p>
+    <p>-------------------</p>
+    <p>favicon.ico was moved into "css/" folder and can be replaced there.</p>
+    <p>-------------------</p>
+</div>
+
+<div data-major='0' data-minor='14' data-release='1'>
+    <h1>0.14.1</h1>
+    <p>Automatic Sheet updates now only happens if you did not change the Sheet locally.</p>
+    <p>Regardless of having automatic sheet updates on, you will be warned when a sheet you have open was changed by someone else.</p>
+    <p>A few fixes with regards to chat and messages.</p>
+</div>
+
+<div data-major='0' data-minor='14' data-release='0'>
+    <h1>0.14.0</h1>
+    <p>Initial Websocket release! Chat now uses Websocket to do things.</p>
+    <p>Seems stable enough, but can't be sure! Old chat is still functional, so use older version in case any problems arise.</p>
+</div>
+
+<div data-major='0' data-minor='13' data-release='0'>
+    <h1>0.13.0</h1>
+    <p>Last valid e-mail will be stored in localStorage and remembered for next sessions.</p>
+    <p>If last Session is still valid, it will be used from Offline mode.</p>
+    <p>Personas should be stored in localStorage per Room and User.</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='8'>
+    <h1>0.12.8</h1>
+    <p>Auto resize. (Important: Without this update, sheets will be broken while editing)</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='7'>
+    <h1>0.12.7</h1>
+    <p>Smarter Sheet Buttons.</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='6'>
+    <h1>0.12.6</h1>
+    <p>Youtube player should now use HTML5 when possible and Flash as a last resort. This should increase compatibility across browsers.</p>
+    <p>New tool: Navigator. Navigator will allow pages to be open on the left side.</p>
+    <p>Currently has a link to the Forums.</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='5'>
+    <h1>0.12.5</h1>
+    <p>Sheets you can't edit won't open in Edit Mode if your last sheet in the same Style was in edit mode.</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='4'>
+    <h1>0.12.4</h1>
+    <p>Fix a serious issue that would result with a Sheet from Style 1 getting the values from a Sheet from Style 2 on switch. (IMPORTANT)</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='3'>
+    <h1>0.12.3</h1>
+    <p>Switching a sheet from Style 1 to a sheet from Style 2 no longer results in both sheets no longer working. (IMPORTANT)</p>
+</div>
+    
+<div data-major='0' data-minor='12' data-release='2'>
+    <h1>0.12.2</h1>
+    <p>Sheets are able to auto-update by using the chat. Any time a Sheet is saved, an invisible message is sent in chat. Anyone with the sheet open will have it auto-update by then.</p>
+    <p>Music and Sound now have extra information when their links are right clicked.</p>
+    <p>Nick Sufix (the number) is no longer printed in chat unless needed. For it to be needed, you need two players with the same Nickname.</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='1'>
+    <h1>0.12.1</h1>
+    <p>Lots of fixes to Sheets (IMPORTANT).</p>
+    <p>Added Reload and Full Reload buttons to Sheets (IMPORTANT).</p>
+</div>
+
+<div data-major='0' data-minor='12' data-release='0'>
+    <h1>0.12.0</h1>
+    <p>Sheets are now available.</p>
+</div>
+
+<div data-major='0' data-minor='11' data-release='0'>
+    <h1>0.11.0</h1>
+    <p>Messages are always sent as soon as possible.</p>
+    <p>Language now defaults to browser default.</p>
+</div>
+
+<div data-major='0' data-minor='10' data-release='7'>
+    <h1>0.10.7</h1>
+    <p>/nose command added to chat. It toggles the automatic playing of Sound Effects. Saves in config.</p>
+    <p>Image and Video links can now be right clicked to have their links copied.</p>
+    <p>Control + V correctly redirects input focus to chat input if no input is currently focused. Input.</p>
+</div>
+
+<div data-major='0' data-minor='10' data-release='4'>
+    <h1>0.10.4</h1>
+    <p>Many flaws in the code were fixed.</p>
+    <p>Static files were split from dynamic server. So now static files are accessed on a different server and accessing them will never harm the dynamic server's performance.</p>
+    <p>This also speeds up development by reducing the size of uploads both ways.</p>
+</div>
+
+
+<div data-major='0' data-minor='10' data-release='2'>
+    <h1>0.10.2</h1>
+    <p>Message dates are now stored. Date they were sent will be printed in chat.</p>
+</div>
+    
+
+<div data-major='0' data-minor='10' data-release='1'>
+    <h1>0.10.1</h1>
+    <p>Changes to how things are animated will make the application feel less sluggish when rooms have far too many messages. Clearing the screen is still advisable, as message prints will only get slower and slower.</p>
+</div>
+    
+<div data-major='0' data-minor='10' data-release='0'>
+    <h1>0.10.0</h1>
+    <p>When /nowhispers is turned on, player connected/disconnected messages will no longer be printed in chat.</p>
+    <p>When /nowhispers is turned on, current Avatar and Persona information will no longer be sent to the server.</p>
+    <p>-----</p>
+    <p>Games should now be able to be "deleted".</p>
+    <p>- Games are not actually deleted immediately - they'll be put on a dormant state for a while longer.</p>
+    <p>- Right now it isn't possible, but it will be possible to restore a "deleted" game up to a week after the deletion. After the week is gone, the game will be deleted for real and lost forever.</p>
+    <p>-----</p>
+    <p>Mid-phrase function characters!</p>
+    <p>- In a roleplay message, text between two * will be turned into actions!</p>
+    <p>- In both roleplay and story messages, text between [ and ] will be turned into Important text.</p>
+    <p>- In roleplay messages, text between parentheses, ( and ), will be turned into thoughts!</p>
+    <p>-----</p>
+    <p>Youtube support!</p>
+    <p>- Share youtube links as /youtube LINK</p>
+    <p>- Any youtube link should work! Please inform me if any doesn't!</p>
+</div>
+
+<div data-major='0' data-minor='9' data-release='0'>
+    <h1>0.9.0</h1>
+    <p>Vote added to chat!</p>
+    <p>Type /vote "message" to start a vote! Just like this:</p>
+    <p>/vote Let's go left.</p>
+    <p>You can cast votes by clicking the numerical box!</p>
+</div>
+
+<div data-major='0' data-minor='8' data-release='0'>
+    <h1>0.8.0</h1>
+    <p>Sound window is ready! Design will be updated eventually to be more pleasing.</p>
+    <p>Sound Effects will not play as we do not have a volume slider for them yet.</p>
+</div>
+
+<div data-major='0' data-minor='7' data-release='1'>
+    <h1>0.7.1</h1>
+    <p>User tooltips in chat are no longer selectable and are pass-through, which means they won't annoy you when you need to copy something again.</p>
+</div>
+    
+    
+<div data-major='0' data-minor='7' data-release='0'>
+    <h1>0.7.0</h1>
+    <p>Improvements on new user detection. null#null should occur only once or twice now, and that's assuming the user only got invited to the room after you got in.</p>
+    <p>User icons are now clickable for extra info!</p>
+    <p>Whispers!!!!</p>
+    <p>- /whisper (and alias /w) allows one to whisper another player. One can press tab to auto-complete.</p>
+    <p>- /reply (and alias /r) allows one to reply to the last player to whisp you. If no one whispered you, it will do nothing.</p>
+    <p>---------</p>
+    <p>The addition of whispers allow new things. Secret rolls added! Secret rolls are a whisper between you and the Storyteller!</p>
+</div>
+    
+    
+    
+<div data-major='0' data-minor='6' data-release='2'>
+    <h1>0.6.2</h1>
+    <p>Time between chat updates reduced even more.</p>
+    <p>Time between chat updates increased while window has no focus.</p>
+    <p>Update of user status in chat improved as to increase performance.</p>
+    <p>Add of messages improved as to increase performance. It is still advisable to /clear often.</p>
+    <p>PERSONA CREATION!!!</p>
+    <p>The "+" button for personas now works! They are still not stored in the server, though.</p>
+    <p>The /nick command has remained for convenience. A /nickhidden command was also added, as a easy way to create a hidden persona.</p>
+</div>    
+    
+
+<div data-major='0' data-minor='6' data-release='1'>
+    <h1>0.6.1</h1>
+    <p>Twitch chat improved.</p>
+    <p>Time between chat updates reduced.</p>
+</div>
+
+<div data-major='0' data-minor='6' data-release='0'>
+    <h1>0.6.0</h1>
+    <p>Twitch chat added to right window.</p>
+    <p>Tab and Shift tab inverted on chat input to make more sense.</p>
+    <p>Rooms now know when an user is Online or Offline.</p>
+    <p>Rooms now show user icons at top.</p>
+    <p>Other notifications there:</p>
+    <p>- Balloon icon: User is typing.</p>
+    <p>- Transparent icon: User does not have the application focused.</p>
+    <p>- No icon at all: User is not connected.</p>
+    <p>Users can change their icon.</p>
+    <p>When actual persona creation comes, we won't need this, but until then:</p>
+    <p>- /hidepersona : Toggles. Persona and avatar changes will NOT be published to the room.</p>
+    <p>- /nick : Changes the current persona and publishes it to the room so others can see.</p>
+    <p>- /avatar LINK : Changes the current persona picture and publishes it to the room so others can see.</p>
+</div>
+
+<div data-major='0' data-minor='5' data-release='4'>
+    <h1>0.5.4</h1>
+    <p>/title command added to change the window title.</p>
+    <p>New shortcut: pressing tab on an empty chat message changes focus to dice reason.</p>
+    <p>New shortcut: pressing Shift + Tab on an empty chat message changes focus to dice quantity.</p>
+    <p>New shortcut: pressing tab on dice reason changes focus back to chat message.</p>
+</div>
+
+<div data-major='0' data-minor='5' data-release='3'>
+    <h1>0.5.3</h1>
+    <p>To disable notification on new messages, type /nonot</p>
+    <p>This is mandatory if using a recording application which sticks to Window names.</p>
+</div>
+
+<div data-major='0' data-minor='5' data-release='2'>
+    <h1>0.5.2</h1>
+    <p>Sharing sounds automatically plays them for the sender, always.</p>
+    <p>New messages add notification to Window title when it has no focus.</p>
+</div>
+
+<div data-major='0' data-minor='5' data-release='1'>
+    <h1>0.5.1</h1>
+    <p>Chat now allows the use of Alt button combinations, while still ignoring Alt pressed on its own.</p>
+    <p>Chat is slighty less of a attention hogger and will ignore keys that aren't characters when considering to grab them.</p>
+    <p>Clicking the dice buttons should now correctly set the minimum amount of rolls to 1.</p>
+    <p>When the storyteller shares images, they should correctly auto-open for players.</p>
+    <p>When the storyteller shares sounds, they should correctly auto-play for players.</p>
+</div>
+
+
+<div data-major='0' data-minor='5' data-release='0'>
+    <h1>0.5.0</h1>
+    <p>Basic chat!</p>
+    <p>- Roleplay</p>
+    <p>- Action</p>
+    <p>- Off</p>
+    <p>- Story</p>
+    <p>- Images</p>
+    <p>- Sounds</p>
+    <p>- DICE!!!</p>
+    <p>Other functions to come.</p>
+</div>
+
+<div data-major='0' data-minor='4' data-release='0'>
+    <h1>0.4.0</h1>
+    <p>Room creation!</p>
+</div>
+
+<div data-major='0' data-minor='3' data-release='0'>
+    <h1>0.3.0</h1>
+    <p>Logout.</p>
+    <p>Automatic login when on the web.</p>
+    <p>Game creation.</p>
+    <p>Game listing. Room listing.</p>
+    <p>Game invites.</p>
+</div>
+
+
+<div data-major='0' data-minor='2' data-release='0'>
+    <h1>0.2.0</h1>
+    <p>Account creation.</p>
+    <p>Login.</p>
+</div>
+
+
+<div data-major='0' data-minor='1' data-release='0'>
+    <h1>0.1.0</h1>
+    <p>Interface is ready.</p>
+</div>

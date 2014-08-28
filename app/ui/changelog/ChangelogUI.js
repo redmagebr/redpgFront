@@ -10,7 +10,11 @@ function ChangelogUI () {
         var ajax = new ChangelogAjax();
         ajax.updateChangelog();
         
-        
+        $('#changelogLoadFully').on('click', function () {
+            var ajax = new ChangelogAjax();
+            ajax.getFullLog();
+            window.app.ui.blockLeft();
+        });
     };
     
     this.compareVersions = function (v1, v2) {
@@ -60,6 +64,18 @@ function ChangelogUI () {
         $('#updatedVersion').html(this.newestVersion[0] +
                                   '.' + this.newestVersion[1] +
                                   '.' + this.newestVersion[2]);
+    };
+    
+    this.attach = function (data) {
+        window.app.ui.unblockLeft();
+        this.$updatetarget.append(data);
+        $('#changelogLoadFully').hide();
+    };
+    
+    this.attachError = function (data) {
+        window.app.ui.unblockLeft();
+        this.processError(data);
+        $('#changelogLoadFully').hide();
     };
     
     this.processError = function (data) {

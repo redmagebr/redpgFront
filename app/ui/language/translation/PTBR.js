@@ -412,6 +412,7 @@ window.lingo['pt_br'] = {
     _YOURVERSION_ : 'A sua versão é',
     _LASTVERSION_ : 'A versão mais recente é',
     _CHANGELOGNOTLOADED_ : 'Não foi possível carregar a lista de atualizações.',
+    _CHANGELOGLOADALL_ : 'Carregar Changelog completo',
     
     
     
