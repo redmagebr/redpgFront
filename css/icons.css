@@ -237,3 +237,18 @@
 #combatTrackerNewRound {
     background-image: url('../img/chat/trackerNewRound.png');
 }
+
+
+#sheetSaveSuccess {
+    background-image: url('../img/sheet/successImage.png');
+    background-repeat: no-repeat;
+    background-position-x: 20px;
+    background-position-y: center;
+}
+
+#sheetSaveError {
+    background-image: url('../img/sheet/errorImage.png');
+    background-repeat: no-repeat;
+    background-position-x: 20px;
+    background-position-y: center;
+}
