@@ -1,0 +1,16 @@
+{
+    "name": "Blublu",
+    "description": "Application for playing Tabletop Role-Playing Games over the web.",
+    "version": "0.20.0",
+    "manifest_version": 2,
+    "icons": {
+        "128": "css/icon_128.png"
+    },
+    "app": {
+        "launch": {
+            "local_path": "index.html"
+        }
+    },
+    "author" : "Red"
+    
+ }

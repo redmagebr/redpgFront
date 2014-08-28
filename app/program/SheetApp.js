@@ -3,13 +3,13 @@ function SheetApp () {
         var ajax = new AjaxController();
         
         cbs = window.app.emulateBind(function (data) {
-            eval(data);
+            window.app.styledb.updateFromJSON([data]);
             this.cbs();
         }, {cbs:cbs});
         
         ajax.requestPage({
             url : 'Style',
-            dataType : 'text',
+            dataType : 'json',
             data : {id : styleid, action : 'request'},
             success: cbs,
             error: cbe
@@ -65,6 +65,11 @@ function SheetApp () {
     
     this.callCreation = function (gameid, cbs, cbe) {
         var ajax = new AjaxController();
+        
+        cbs = window.app.emulateBind(function (data) {
+            window.app.styledb.updateFromJSON(data);
+            this.cbs(data);
+        }, {cbs : cbs});
         
         ajax.requestPage({
             url : 'Style',

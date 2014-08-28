@@ -39,9 +39,6 @@ function SheetController () {
         this.$automaticButton = $('#automaticButton');
         this.$reloadButton = $('#reloadButton');
         this.$fullReloadButton = $('#fullReloadButton');
-        
-        
-        window.Style = {};
         this.setBindings();
     };
     
@@ -140,7 +137,7 @@ function SheetController () {
             return;
         }
         
-        if (typeof window.Style[styleid] === 'undefined' && important) {
+        if (!window.app.styledb.isLoaded(styleid) && important) {
             window.app.ui.blockRight();
             var cbs = window.app.emulateBind(function () {
                 window.app.ui.sheetui.controller.openSheet(this.sheetid, this.styleid, this.gameid, false, this.dontcallwindow);
@@ -158,7 +155,7 @@ function SheetController () {
             return;
         }
         
-        if (!window.app.sheetdb.isLoaded(sheetid) || typeof window.Style[styleid] === 'undefined') {
+        if (!window.app.sheetdb.isLoaded(sheetid) || !window.app.styledb.isLoaded(styleid)) {
             return;
         }
         
@@ -191,7 +188,15 @@ function SheetController () {
         this.currentInstance = sheetid;
         
         if (typeof this.styles[styleid] === 'undefined') {
-            this.styles[styleid] = new window.Style[styleid](window.app.sheetdb.getSheet(sheetid));
+            console.log("CREATING STYLE");
+            console.log("CREATING STYLE");
+            console.log("CREATING STYLE");
+            console.log("CREATING STYLE");
+            console.log("CREATING STYLE");
+            console.log("CREATING STYLE");
+            var lesheet = window.app.sheetdb.getSheet(sheetid);
+            var lestyle = window.app.styledb.getStyle(styleid);
+            this.styles[styleid] = new Style (lesheet, lestyle);
             this.styles[styleid].process();
             this.styles[styleid].setValues();
             
@@ -442,7 +447,7 @@ function SheetController () {
             this.$html = this.$cleanhtml;
             style.seppuku();
             delete this.styles[this.currentStyle];
-            delete window.Style[this.currentStyle];
+            window.app.styledb.deleteStyle(this.currentStyle);
             
             this.currentStyle = 0;
         }

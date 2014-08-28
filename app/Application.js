@@ -34,7 +34,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 20, 0];
+    this.version = [0, 21, 0];
     
     /**
      * Databases
@@ -45,6 +45,7 @@ function Application (debug) {
     this.roomdb = new RoomDB();
     this.userdb = new UserDB();
     this.sheetdb = new SheetDB();
+    this.styledb = new StyleDB();
     this.memory = new Memory();
     
     /**
