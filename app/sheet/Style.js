@@ -42,7 +42,7 @@ function Style (sheet, styleInstance) {
         try {
             eval(this.style.beforeProcess);
         } catch (err) {
-            console.log("Before process error: ");
+            console.log("Before process error for " + this.style.name + ": ");
             console.log(err);
             var errmsg = window.app.ui.language.getLingoOn("_STYLEBEFOREERROR_", this.style.name);
             alert(errmsg + ":\n" + err.message);
@@ -53,7 +53,7 @@ function Style (sheet, styleInstance) {
         try {
             eval(this.style.afterProcess);
         } catch (err) {
-            console.log("After process error: ");
+            console.log("After process error for " + this.style.name + ": ");
             console.log(err);
             var errmsg = window.app.ui.language.getLingoOn("_STYLEAFTERERROR_", this.style.name);
             alert(errmsg + ":\n" + err.message);
