@@ -39,11 +39,25 @@ function Style (sheet, styleInstance) {
     };
     
     this.beforeProcess = function (sheet, instance, style) {
-        eval(this.style.beforeProcess);
+        try {
+            eval(this.style.beforeProcess);
+        } catch (err) {
+            console.log("Before process error: ");
+            console.log(err);
+            var errmsg = window.app.ui.language.getLingoOn("_STYLEBEFOREERROR_", this.style.name);
+            alert(errmsg + ":\n" + err.message);
+        }
     };
     
     this.afterProcess = function (sheet, instance, style) {
-        eval(this.style.afterProcess);
+        try {
+            eval(this.style.afterProcess);
+        } catch (err) {
+            console.log("After process error: ");
+            console.log(err);
+            var errmsg = window.app.ui.language.getLingoOn("_STYLEAFTERERROR_", this.style.name);
+            alert(errmsg + ":\n" + err.message);
+        }
     };
     
     this.process = function () {
