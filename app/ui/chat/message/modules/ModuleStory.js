@@ -25,6 +25,12 @@ window.chatModules.push({
      */
     get$ : function (msg) {
         var user = msg.getUser();
+        var lingua = msg.getSpecial('lingua', 'Padrao');
+        var valid = new Validator();
+        if (!valid.validate(lingua, 'language')) {
+            lingua = 'Padrao';
+        }
+        
         
         if (user === null) {
             user = new User();
@@ -46,18 +52,33 @@ window.chatModules.push({
         var go = true;
         var open = false;
         
+        var $spans = [];
+        var $span = null;
         for (var i = 0; i < msgText.length; i++) {
             if (msgText.charAt(i) === '[' && !open) {
                 open = true;
-                msgFinal += "<span class='important'>";
+                $span = $('<span class="lingua' + lingua + '" />').html(msgFinal);
+                $spans.push($span);
             } else if (msgText.charAt(i) === ']' && open) {
-                msgFinal += "</span>";
+                $span = $('<span class="important" />').html(msgFinal);
+                $spans.push($span);
+                msgFinal = '';
+                open = false;
             } else {
                 msgFinal += msgText.charAt(i);
             }
         }
         
-        $msg.append('- ' + msgFinal);
+        if (msgFinal.length > 0) {
+            $span = $('<span class="lingua' + lingua + '" />').html(msgFinal);
+            $spans.push($span);
+        }
+        
+        $msg.append('- ');
+        
+        for (var i = 0; i < $spans.length; i++) {
+            $msg.append($spans[i]);
+        }
         
         var translation = msg.getSpecial('translation', null);
         if (translation !== null) {

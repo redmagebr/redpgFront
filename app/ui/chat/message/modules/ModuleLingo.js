@@ -1,6 +1,16 @@
-window.AvailableLanguages = ['Celestan', 'Alien', 'AncientMagi', 'AncientTech', 
-    'BestialCommon'];
-window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal', 'Draconic', 'Aquon'];
+window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal', 'Draconic', 'Aquon',
+                             'Celestan', 'Fayri', 'Arcana', 'Tech', 'Bestial', 'Ellum'];
+window.AvailableLanguages.sort(function (a, b) {
+    var na = a.toUpperCase();
+    var nb = b.toUpperCase();
+    if (na < nb) {
+        return -1;
+    }
+    if (na > nb) {
+        return 1;
+    }
+    return 0;
+});
 window.chatModules.push({
 
     ID : 'lingo',
@@ -170,6 +180,10 @@ window.chatModules.push({
      * @returns {String}
      */
     translate : function (word, language) {
+        if (this.lingua[language] === undefined) {
+            return word;
+        }
+        
         var exclamation = word.indexOf('!') !== -1;
         var interrobang = word.indexOf('?') !== -1;
         var finish = word.indexOf('.') !== -1;

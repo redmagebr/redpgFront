@@ -31,7 +31,7 @@ function Validator () {
                 return false;
             }
         } else if (valtype === 'language') {
-            if (!val.match('^[a-zA-Z]{3,12}$')) {
+            if (!val.match('^[a-zA-Z]{3,30}$')) {
                 console.log('invalidLanguage');
                 return false;
             }
