@@ -43,14 +43,14 @@ window.chatModules.push({
             char = msgText.charAt(i);
             if (char === '*') {
                 if (open === '*') {
-                    $span = $('<span class="action" />').text('*' + pmsg + '*');
+                    $span = $('<span class="action" />').html('*' + pmsg + '*');
                     $spans.push($span);
                     pmsg = '';
                     open = null;
                 } else if (open === null) {
                     open = '*';
                     if (pmsg.length > 0) {
-                        $span = $('<span />').text(pmsg);
+                        $span = $('<span />').html(pmsg);
                         $span.addClass('lingua' + lingua);
                         $span.addClass()
                         $spans.push($span);
@@ -61,14 +61,14 @@ window.chatModules.push({
                 }
             } else if (['[', ']'].indexOf(char) !== -1) {
                 if (char === ']' && open === '[') {
-                    $span = $('<span class="important" />').text('[' + pmsg + ']');
+                    $span = $('<span class="important" />').html('[' + pmsg + ']');
                     $spans.push($span);
                     pmsg = '';
                     open = null;
                 } else if (char === '[' && open === null) {
                     open = '[';
                     if (pmsg.length > 0) {
-                        $span = $('<span />').text(pmsg);
+                        $span = $('<span />').html(pmsg);
                         $span.addClass('lingua' + lingua);
                         $spans.push($span);
                     }
@@ -78,14 +78,14 @@ window.chatModules.push({
                 }
             } else if (['(', ')'].indexOf(char) !== -1) {
                 if (char === ')' && open === '(') {
-                    $span = $('<span class="thought" />').text('(' + pmsg + ')');
+                    $span = $('<span class="thought" />').html('(' + pmsg + ')');
                     $spans.push($span);
                     pmsg = '';
                     open = null;
                 } else if (char === '(' && open === null) {
                     open = '(';
                     if (pmsg.length > 0) {
-                        $span = $('<span />').text(pmsg);
+                        $span = $('<span />').html(pmsg);
                         $span.addClass('lingua' + lingua);
                         $spans.push($span);
                     }
@@ -102,7 +102,7 @@ window.chatModules.push({
         }
         
         if (pmsg.length > 0) {
-            $span = $('<span />').text(pmsg);
+            $span = $('<span />').html(pmsg);
             $span.addClass('lingua' + lingua);
             $spans.push($span);
         }

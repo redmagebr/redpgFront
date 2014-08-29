@@ -24,17 +24,13 @@ function Application (debug) {
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
     
-    this.host = 'http://198.58.104.132/service/';
-    this.wshost = 'ws://198.58.104.132:8080/service/';
-    this.staticHost = 'http://198.58.104.132/';
-    
     /**
      * Major, Minor, Release
      * Major covers breakpoints.
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 21, 0];
+    this.version = [0, 21, 1];
     
     /**
      * Databases
