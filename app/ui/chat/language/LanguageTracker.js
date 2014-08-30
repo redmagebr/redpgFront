@@ -132,9 +132,15 @@ function LanguageTracker() {
                     var $language = $('<span class="language" />').text(memory[id][i]);
                     $language.prepend($remove);
                     $languages.append($language);
-                    
-                    $remove.on('click', window.app.emulateBind(function () {
+                    if (player.id === window.app.loginapp.user.id || window.app.chatapp.room.getMe().isStoryteller()) {
+                        $language.addClass('mine');
+                        $language.on('click', window.app.emulateBind(function () {
+                            window.app.ui.chat.langtab.startTyping(this.lingo);
+                        }, {lingo : memory[id][i]}));
+                    }
+                    $remove.on('click', window.app.emulateBind(function (e) {
                         window.app.ui.chat.langtab.removeLing(this.player, this.ling);
+                        e.stopPropagation();
                     }, {player : intid, ling : i, $lang : $language}));
                 }
             }
@@ -145,13 +151,31 @@ function LanguageTracker() {
                 window.app.ui.chat.langtab.addLing(this.player, this.$select.val());
             }, {player : intid, $select : $myselect}));
             
-            $p.append($player).append($languages).append("<br />").append($myselect).append($add);
+            $p.append($player).append($languages.append('<br />').append($myselect).append($add));
             this.$body.append($p);
         }
         
         if (noplayers) {
             this.$body.append($('<p class="language" data-langhtml="_LANGUAGETRACKERNOPLAYERS_" />'));
             window.app.ui.language.applyLanguageOn(this.$body);
+        }
+        
+        if (window.app.chatapp.room.getMe().isStoryteller()) {
+            $p = $('<p />');
+            player = window.app.chatapp.room.getMe();
+            $player = $('<span class="player" />').text(player.nickname + '#' + player.nicknamesufix + ": ");
+            $languages = $('<span class="languages" />');
+            for (i = 0; i < window.AvailableLanguages.length; i++) {
+                $language = $('<span class="language" />').text(window.AvailableLanguages[i]);
+                $language.addClass('mine');
+                $language.on('click', window.app.emulateBind(function () {
+                    window.app.ui.chat.langtab.startTyping(this.lingo);
+                }, {lingo : window.AvailableLanguages[i]}));
+                $languages.append($language);
+            }
+            $languages.append("<a style='clear: both; display: block'></a>");
+            $p.append($player).append($languages);
+            this.$body.append($p);
         }
         
         this.$tracker.css('height', '');
@@ -194,5 +218,9 @@ function LanguageTracker() {
             }
         }
         return speakers;
+    };
+    
+    this.startTyping = function (lingo) {
+        window.app.ui.chat.$chatinput.val("/ling " + lingo + ", ").focus();
     };
 }
