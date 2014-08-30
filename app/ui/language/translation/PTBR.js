@@ -118,7 +118,7 @@ window.lingo['pt_br'] = {
     _CASUBMIT_ : 'Criar conta',
     _CANAMEEXPLAIN_ : '3-200 caracteres. Apenas caracteres Portugueses.',
     _CANAMEHELP_ : 'O nome que será anexado à conta. Essa informação será privada.',
-    _CAEMAILHELP_ : 'Seu e-mail será seu login no sistema. Um e-mail de confirmação será enviado para a criação da conta.',
+    _CAEMAILHELP_ : 'Seu e-mail será seu login no sistema.',
     _CAEMAILEXPLAIN_ : "O e-mail deve ser válido.",
     _CANICKEXPLAIN_ : "3-12 caracteres. Apenas letras e números.",
     _CANICKHELP_ : 'Seu apelido será o nome que aparecerá para outros usuários do sistema.',
@@ -130,8 +130,8 @@ window.lingo['pt_br'] = {
     _CAAGEHELP_ : 'Em alguns países é ilegal guardar quaisquer informações sobre menores de idade. Marcando essa caixa, você afirma ser velho o suficiente para ter as informações providas acima guardadas no nosso sistema.',
     
     _CASUC1_ : 'Obrigado por criar uma conta.',
-    _CASUC2_ : 'Um e-mail foi enviado com instruções para ativar sua conta. Você não poderá utilizar o sistema até verificar o seu e-mail.',
-    _CASUC3_ : 'Caso já tenha ativado sua conta, clique aqui para fazer o login.',
+    _CASUC2_ : 'Sua conta foi ativada automaticamente.',
+    _CASUC3_ : 'Clique aqui para fazer o login.',
     
     /* Menu */
     _HIDELEFTWINDOWS_ : 'Esconder Janelas',
