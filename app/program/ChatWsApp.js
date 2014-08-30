@@ -355,9 +355,9 @@ function ChatWsApp () {
     };
     
     this.saveMemory = function () {
-        console.log("GOTTA GO FAST");
         if(this.room.getMe().isStoryteller()) {
             this.sendAction("memory", JSON.stringify(this.room.memory.memory));
+            this.room.memory.updateFromJSON(this.room.memory.memory);
         }
     };
 }
