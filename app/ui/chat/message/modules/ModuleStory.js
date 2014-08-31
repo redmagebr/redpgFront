@@ -59,6 +59,7 @@ window.chatModules.push({
                 open = true;
                 $span = $('<span class="lingua' + lingua + '" />').html(msgFinal);
                 $spans.push($span);
+                msgFinal = '';
             } else if (msgText.charAt(i) === ']' && open) {
                 $span = $('<span class="important" />').html(msgFinal);
                 $spans.push($span);
