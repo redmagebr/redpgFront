@@ -1,5 +1,6 @@
-window.AvailableLanguages = ['Elvish', 'Binary', 'Orcish', 'Abyssal', 'Draconic', 'Aquon',
-                             'Celestan', 'Fayri', 'Arcana', 'Tech', 'Bestial', 'Ellum'];
+window.AvailableLanguages = ['Elvish', 'Binary', 'Magraki', 'Abyssal', 'Draconic', 'Aquon',
+                             'Celestan', 'Technum', 'Arcana', 'Ancient', 'Natrum', 'Ellum',
+                             'Animal', 'Auran', 'Davek', 'Glamour'];
 window.AvailableLanguages.sort(function (a, b) {
     var na = a.toUpperCase();
     var nb = b.toUpperCase();
@@ -61,7 +62,7 @@ window.chatModules.push({
             uppercase : false,
             allowpoints : false
         },
-        Orcish : {
+        Magraki : {
             words : {
                 1 : ['a', 'u', 'k', 'c', 'e'],
                 2 : ['ek', 'uk', 'tu', 'ob', 'zug', 'va'],

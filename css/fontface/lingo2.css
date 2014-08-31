@@ -39,14 +39,6 @@
     font-style: normal;
 }
 
-/** Michroma */
-/** License - SIL OPEN FONT LICENSE VERSION 1.1. Local copy: Lingo/Michroma.txt */
-@font-face {
-    font-family: 'michroma';
-    src: url('Lingo/Michroma.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 
 /**
@@ -77,12 +69,61 @@
     font-style: normal;
 }
 
-/** AonCariCeltic by Cari Buziak
-  * Author's Readme can be found in Lingo/AonCariCeltic.pdf
-  */
+@font-face {
+    font-family: 'Oxford';
+    src: url('Lingo/Oxford.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AnalSatisfaction';
+    src: url('Lingo/Analsatisfaction.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Achafexp';
+    src: url('Lingo/Achafexp.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/** Savage por Roozbeh Ebadi (ReSkull) */
+/** Free License - Author's notes can be found at Lingo/Savage.txt */
+@font-face {
+    font-family: 'Savage';
+    src: url('Lingo/Savage.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** Argor Man Scaqh by Argor
+  * Free License */
+@font-face {
+    font-family: 'Argmansc';
+    src: url('Lingo/Argmansc.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** AonCariCeltic
+  * Free License - Author's notes can be found at Lingo/AonCariCeltic.pdf */
 @font-face {
     font-family: 'AonCariCeltic';
     src: url('Lingo/AonCariCeltic.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** Havlova Font */
+/** Free License - Author's notes can be found at Lingo/Havlova.txt */
+@font-face {
+    font-family: 'Havlova';
+    src: url('Lingo/Havlova.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -114,6 +155,15 @@
     font-style: normal;
 }
 
+/** Tulisan Tanganku by Azwar Rakhman */
+/** Free License - Author's Notes: truslah kreatif anak bangsa indonesiya...' */
+@font-face {
+    font-family: 'Tulisan';
+    src: url('Lingo/Tulisan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 /** Use fonts in chat */
 
@@ -137,15 +187,15 @@
     font-size: 1.2em;
 }
 
-/** Bestial */
-#chatMessages > p.chatMensagem > span.linguaBestial, #chatMessages > p.chatNarrativa > span.linguaBestial {
+/** Natrum */
+#chatMessages > p.chatMensagem > span.linguaNatrum, #chatMessages > p.chatNarrativa > span.linguaNatrum {
     font-family: Lycanthrope;
 }
 
-/** Orcish */
-#chatMessages > p.chatMensagem > span.linguaOrcish, #chatMessages > p.chatNarrativa > span.linguaOrcish {
+/** Magraki */
+#chatMessages > p.chatMensagem > span.linguaMagraki, #chatMessages > p.chatNarrativa > span.linguaMagraki {
     font-family: rocksalt;
-    font-size: 0.75em;
+    font-size: 0.85em;
 }
 
 /** Celestan */
@@ -157,7 +207,7 @@
 /** Abyssal */
 #chatMessages > p.chatMensagem > span.linguaAbyssal, #chatMessages > p.chatNarrativa > span.linguaAbyssal {
     font-family: AonCariCeltic;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 /** Draconic */
@@ -166,23 +216,46 @@
     font-size: 1.2em;
 }
 
-/** Tech */
-#chatMessages > p.chatMensagem > span.linguaTech, #chatMessages > p.chatNarrativa > span.linguaTech {
-    font-family: michroma;
-    font-size: 0.8em;
+/** Auran */
+#chatMessages > p.chatMensagem > span.linguaAuran, #chatMessages > p.chatNarrativa > span.linguaAuran {
+    font-family: Argmansc;
+    font-size: 0.9em;
+}
+
+/** Ancient */
+#chatMessages > p.chatMensagem > span.linguaAncient, #chatMessages > p.chatNarrativa > span.linguaAncient {
+    font-family: Oxford;
+    font-size: 1.65em;
 }
 
 
-/** Fayri */
-#chatMessages > p.chatMensagem > span.linguaFayri, #chatMessages > p.chatNarrativa > span.linguaFayri {
+/** Technum */
+#chatMessages > p.chatMensagem > span.linguaTechnum, #chatMessages > p.chatNarrativa > span.linguaTechnum {
     font-family: Calligraffitti;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 /** Arcana */
 #chatMessages > p.chatMensagem > span.linguaArcana, #chatMessages > p.chatNarrativa > span.linguaArcana {
-    font-family: DancingScript;
-    font-size: 1.2em;
+    font-family: Havlova;
+    font-size: 1.55em;
 }
 
 
+/** Davek */
+#chatMessages > p.chatMensagem > span.linguaDavek, #chatMessages > p.chatNarrativa > span.linguaDavek {
+    font-family: Tulisan;
+    font-size: 1.1em;
+}
+
+/** Animal */
+#chatMessages > p.chatMensagem > span.linguaAnimal, #chatMessages > p.chatNarrativa > span.linguaAnimal {
+    font-family: Achafexp;
+    font-size: 1.4em;
+}
+
+/** Glamour */
+#chatMessages > p.chatMensagem > span.linguaGlamour, #chatMessages > p.chatNarrativa > span.linguaGlamour {
+    font-family: AnalSatisfaction;
+    font-size: 0.85em;
+}
