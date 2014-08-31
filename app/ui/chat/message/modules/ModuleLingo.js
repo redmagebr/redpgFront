@@ -1,6 +1,6 @@
 window.AvailableLanguages = ['Elvish', 'Binary', 'Magraki', 'Abyssal', 'Draconic', 'Aquon',
                              'Celestan', 'Technum', 'Arcana', 'Ancient', 'Natrum', 'Ellum',
-                             'Animal', 'Auran', 'Davek', 'Glamour'];
+                             'Animal', 'Auran', 'Davek', 'Arkadium'];
 window.AvailableLanguages.sort(function (a, b) {
     var na = a.toUpperCase();
     var nb = b.toUpperCase();

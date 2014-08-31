@@ -255,7 +255,7 @@
 }
 
 /** Glamour */
-#chatMessages > p.chatMensagem > span.linguaGlamour, #chatMessages > p.chatNarrativa > span.linguaGlamour {
+#chatMessages > p.chatMensagem > span.linguaArkadium, #chatMessages > p.chatNarrativa > span.linguaArkadium {
     font-family: AnalSatisfaction;
     font-size: 0.85em;
 }
