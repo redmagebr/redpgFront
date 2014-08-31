@@ -438,9 +438,9 @@ function UI () {
     };
     
     /**
-     * Init UI once window is fully loaded.
+     * Init UI once document is loaded. Fully loaded is overkill
      */
-    $(window).bind('load', function () {
+    $(document).ready(function () {
         window.app.ui.init();
     });
     
