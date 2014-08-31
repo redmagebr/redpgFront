@@ -152,6 +152,26 @@ window.chatModules.push({
             },
             uppercase : true,
             allowpoints : true
+        },
+        Arcana : {
+            words : {
+                1 : ['a', 'o', 'z', 'c'],
+                3 : ['xie', 'uru', 'ara', 'naa', 'ean', 'zha', 'zhi', 'xin', 'xan', 'chu', 'ran', 'nan', 'zan', 'ron'],
+                4 : ['wanv', 'haov', 'chan', 'chun', 'chen', 'zhen', 'zhan', 'shie', 'yong', 'xing', 'kafe'],
+                6 : ['zazado', 'kafel', 'xinzhao', 'mengtah', 'mengzha', 'lenshi', 'qibong', 'qubhan', 'quzhan', 'qizhao'],
+                Bigger : ['jianzai', 'limcai', 'xenbhin', 'zhanmana', 'shizhan', 'qishin', 'mingzhan', 'xingqi', 'qienzhan', 'endaqin', 'shengri', 'chunra'],
+                numbers : ['lin', 'i', 'e', 'sa', 'si', 'wu', 'liu', 'qi', 'ba', 'ju']
+            },
+            knownWords : {
+                "yu mo" : ['COISA', 'BAD', 'COISAS', 'TRECO', 'TRECOS'],
+                'gui gwai' : ['RUIM', 'THING', 'RUINS'],
+                'fai' : ['VAI', 'GO', 'CAI', 'VA', 'VÁ'],
+                'di zao' : ['EMBORA', 'AWAY', 'FORA'],
+                'lai' : ['WATER', 'ÁGUA', 'AGUA', 'OCCUR'],
+                'shui zai' : ['ACONTEÇA', 'COME', 'HAPPEN', 'FLOOD']
+            },
+            uppercase : true,
+            allowpoints : true
         }
     },
     
