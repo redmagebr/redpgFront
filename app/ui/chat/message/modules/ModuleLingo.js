@@ -172,6 +172,53 @@ window.chatModules.push({
             },
             uppercase : true,
             allowpoints : true
+        },
+        Natrum : {
+            words : {
+                1 : ['en', 'er', 'i', 'ir', 'j', 'na', 'ma', 'ur', 'yl'],
+                2 : ['aiga', 'draum', 'gaf', 'gorak', 'hennar', 'ormar', 'saman', 'warin'],
+                3 : ['barmjor', 'eltzi', 'gunronir', 'thalandor', 'yirindir'],
+                4 : ['iemnarar', 'normnundor', 'melgandark', 'sunnarsta', 'villnorer', 'znorud'],
+                Bigger : ['gunnfjaunar', 'harlihheten', 'thassandanorm', 'tilkommender', 'volnushrindir'],
+                Numbers : ['ein', 'tvein', 'trir', 'fjor', 'fimm', 'seks', 'syv', 'otte', 'niu', 'tiu']
+            },
+            knownWords : {
+                'jotun' : ['ALTO', 'COLOSSAL', 'TITÃ', 'ROCHEDO'],
+                'gutland' : ['TERRA', 'TERRITÓRIO', 'LUGAR', 'PAÍS', 'REGIÃO'],
+                'jormungandr' : ['TERRA NATAL', 'MONTANHA', 'ORIGEM', 'FAMÍLIA', 'PÁTRIA', 'GELEIRA', 'POLAR'],
+                'yggdrasil' : ['ÁRVORE', 'MUNDO', 'NATUREZA', 'ESSÊNCIA', 'ESPERANÇA'],
+                'ragnarokkr' : ['FIM', 'DESTRUIÇÃO', 'ANIQUILAÇÃO', 'EXTERMÍNIO', 'RUÍNA', 'DECADÊNCIA'],
+                'vollusp' : ['INICIO', 'PASSADO', 'ANTIGO', 'ANCIÃO'],
+                'bifrost' : ['CÉU', 'CELESTE', 'SOL', 'NUVEM', 'AURORA', 'FIRMAMENTO', 'ESTELAR', 'ASTRAL'],
+                'garm' : ['IRA', 'RAIVA', 'FOME', 'PERIGOSO', 'IRRACIONAL', 'AMEAÇA', 'INVEJA'],
+                'hel' : ['MORTE', 'CEMITÉRIO', 'TÚMULO', 'TORMENTO', 'ESCURIDÃO', 'TREVAS', 'NEVOA'],
+                'gagap' : ['VAZIO', 'ABISMO', 'FISSURA', 'FANTASMAGÓRICO', 'NADA', 'ESPAÇO', 'CAOS'],
+                'surt' : ['CALOR','PODER', 'FORÇA', 'FÚRIA', 'FOGO', 'JUIZ', 'ACUSADOR'],
+                'ymir' : ['FRIO', 'GELADO', 'PAREDE', 'MURALHA', 'GUARDIÃO', 'TEMPESTADE'],
+                'hrimthur' : ['TRAIDOR', 'PÁLIDO', 'INIMIGO', 'COVARDE', 'FRACO'],
+                'jormum' : ['PAI', 'PATERNO', 'PATERNAL'],
+                'angrboda' : ['MÃE', 'MATERNAL', 'AMOR', 'AFETO', 'PAIXÃO'],
+                'alvo' : ['COMPANHEIRO', 'IRMÃO', 'AMIGO'],
+                'elain' : ['ANIMAL', 'FERA', 'SELVAGEM', 'BICHO', 'CRIATURA'],
+                'alfir' : ['RESPEITOSO', 'DILIGENTE', 'ALIADO', 'PROTETOR'],
+                'aesir' : ['LÍDER', 'GENERAL', 'GUERREIRO', 'HERÓI', 'CORAJOSO', 'DIVINO', 'IMORTAL'],
+                'alfheim' : ['FLORESTA', 'SELVA', 'BOSQUE', 'FAUNA', 'FLORA', 'ARVOREDO'],
+                'nidavel' : ['DESERTO', 'PLANÍCIE', 'ERMO', 'CAMPO'],
+                'nidavemnir' : ['TRIBO', 'NOMADE', 'COLONIA', 'ACAMPAMENTO', 'ESTADIA'],
+                'valtamer' : ['OCEANO', 'ÁGUA', 'LAGO', 'RIO', 'CORREGO', 'CHUVA'],
+                'niohoggr' : ['MAU', 'MALIGNO', 'PESTE', 'DOENÇA', 'TIRANO'],
+                'valhana' : ['SONHO', 'VISÃO', 'ESPIRITO', 'MÍSTICO', 'SOBRENATURAL', 'SÁBIO']
+            },
+            uppercase : true,
+            allowpoints : true
+        },
+        Animal : {
+            words : {
+                1 : ['u', 'r', 'a', 'n', 'w'],
+                Bigger : ['grr!', 'rarr!', 'rawr', 'mmf', 'pamf', 'pant', 'rrrr', 'rrrrrrr', 'eeep', 'uk', 'karr!', 'uff', 'off', 'aff', 'snif', 'puff', 'roar!', 'raar', 'mmmm', 'ghhh', 'kak', 'kok', 'grr', 'year', 'yor', 'caaaar', 'urr', 'uru!', 'muu', 'up', 'uup', 'oap', 'rrrraawr', 'mip', 'iap', 'ap']
+            },
+            uppercase: true,
+            allowpoints : false
         }
     },
     

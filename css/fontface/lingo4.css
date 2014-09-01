@@ -119,11 +119,11 @@
     font-style: normal;
 }
 
-/** Havlova Font */
-/** Free License - Author's notes can be found at Lingo/Havlova.txt */
+/** Mystic Prophet Font */
+/** Free License - Author's notes can be found at Lingo/MysticProphet.pdf */
 @font-face {
-    font-family: 'Havlova';
-    src: url('Lingo/Havlova.ttf') format('truetype');
+    font-family: 'MysticProphet';
+    src: url('Lingo/MysticProphet.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -190,6 +190,8 @@
 /** Natrum */
 #chatMessages > p.chatMensagem > span.linguaNatrum, #chatMessages > p.chatNarrativa > span.linguaNatrum {
     font-family: Lycanthrope;
+    font-size: 1.05em;
+    font-variant: small-caps;
 }
 
 /** Magraki */
@@ -237,8 +239,9 @@
 
 /** Arcana */
 #chatMessages > p.chatMensagem > span.linguaArcana, #chatMessages > p.chatNarrativa > span.linguaArcana {
-    font-family: Havlova;
-    font-size: 1.55em;
+    font-family: MysticProphet;
+    font-size: 0.9em;
+    font-variant: small-caps;
 }
 
 
@@ -251,7 +254,7 @@
 /** Animal */
 #chatMessages > p.chatMensagem > span.linguaAnimal, #chatMessages > p.chatNarrativa > span.linguaAnimal {
     font-family: Achafexp;
-    font-size: 1.4em;
+    font-size: 1.7em;
 }
 
 /** Glamour */
