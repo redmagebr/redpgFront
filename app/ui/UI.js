@@ -116,9 +116,6 @@ function UI () {
         this.$leftBlocker = $('#leftBlock');
         this.$rightBlocker = $('#rightBlock');
         
-        
-        $('#nojs').remove();
-        
         if (typeof localStorage.lastLogin !== 'undefined') {
             $('#loginInput').val(localStorage.lastLogin);
             $('#passwordInput').focus();
@@ -127,7 +124,7 @@ function UI () {
         }
         
         this.callLeftWindow('changelogWindow');
-        this.callRightWindow('oldRedpg');
+        this.callRightWindow('homeWindow');
     };
     
     this.unblockLeft = function () {

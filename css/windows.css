@@ -1,0 +1,50 @@
+#rightWindow > div.window > div.basicWindow {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: solid 2px #000;
+    background-color: #fff;
+    font-family: alegreya;
+}
+
+#rightWindow > div.window > div.basicWindow > h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rightWindow > div.window > div.basicWindow > p {
+    padding: 10px;
+    margin: 0px;
+    text-align: justify;
+    text-indent: 1em;
+}
+
+#rightWindow > div.window > div.basicWindow > p.hoverable:hover {
+    background-color: #eeeeee;
+}
+
+#rightWindow > div.window > div.basicWindow .textLink {
+    color: #000bab;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#rightWindow > div.window > div.basicWindow .textLink:hover {
+    color: #4f5aff;
+    cursor: pointer;
+}
+
+#rightWindow > div.window > div.basicWindow .textLink:active {
+    color: #000cc8
+}
+
+#rightWindow > div.window > div.basicWindow > h2 {
+    text-align: left;
+    margin: 0px;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 1.4em;
+    font-weight:bold;
+}

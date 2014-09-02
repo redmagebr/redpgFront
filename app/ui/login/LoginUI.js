@@ -285,7 +285,7 @@ function LoginUI () {
                 this.ui.callWindow('loginFormWindow');
                 window.app.ui.chat.cc.exit();
                 window.app.ui.callLeftWindow('changelogWindow');
-                window.app.ui.callRightWindow('oldRedpg');
+                window.app.ui.callRightWindow('homeWindow');
                 window.app.ui.hideLoading();
             }, {$loginwindow : this.$loginwindow, ui : this}
         );
