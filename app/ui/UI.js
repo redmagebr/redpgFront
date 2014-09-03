@@ -227,7 +227,7 @@ function UI () {
             var available = this.lastWidth - 720;
             if (available <= 600) {
                 this.$leftWindow.css('right', '720px');
-                this.$rightWindow.css('width', '720px');
+                this.$rightWindow.css('width', '700px');
             } else {
                 available -= 600;
                 var right = 700 + (available / 2);
