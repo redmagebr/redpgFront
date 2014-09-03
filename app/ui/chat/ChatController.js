@@ -18,6 +18,7 @@ function ChatController (chat) {
     this.clearInformed = false;
     this.lastDate = '';
     
+    this.ignoreTooMany = false;
     
     this.onlineUsers = [];
     
@@ -183,11 +184,20 @@ function ChatController (chat) {
             }
             
             this.printed += messages.length;
-            if (this.printed > 500 && !this.clearInformed) {
-                var $information = $('<p class="chatSistema language" data-langhtml="_CLEARREMINDER_" />');
-                window.app.ui.language.applyLanguageTo($information);
-                window.app.ui.chat.$chatMessages.append($information);
-                this.clearInformed = true;
+            if (this.printed > 100 && !this.ignoreTooMany) {
+                var $children = window.app.ui.chat.$chatMessages.children('p');
+                this.printed = $children.length;
+                if (this.printed > 100) {
+                    $children.slice(0, this.printed - 50).remove();
+                    var $html = $('<p class="chatSistema" />');
+                    $html.append("<span class='language' data-langhtml='_CHATWSNOTALL_'></span>");
+                    var $a = $('<a class="language" data-langhtml="_CHATWSGETOLDERMESSAGES_" />').on('click', function () {
+                        window.app.chatapp.getAllMessages();
+                    });
+                    $html.append(' ').append($a);
+                    window.app.ui.language.applyLanguageOn($html);
+                    window.app.ui.chat.$chatMessages.prepend($html);
+                }
             }
             
             window.app.ui.chat.fixScrollpane();
