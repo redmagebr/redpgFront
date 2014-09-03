@@ -214,14 +214,27 @@ function UI () {
             this.$rightHandler.addClass('fullScreen');
             this.$rightHandler.removeAttr('style');
             this.$pictureContainer.addClass('fullScreen');
+            this.$rightWindow.css('width', '');
+            this.$leftWindow.css('right', '');
         } else {
             this.$leftWindow.removeClass('fullScreen');
             this.$rightWindow.removeClass('fullScreen');
             this.$leftHandler.removeClass('fullScreen');
-            this.$leftHandler.css('left', '-100px');
             this.$rightHandler.removeClass('fullScreen');
-            this.$rightHandler.css('right', '-100px');
             this.$pictureContainer.removeClass('fullScreen');
+            this.$leftHandler.css('left', '-100px');
+            this.$rightHandler.css('right', '-100px');
+            var available = this.lastWidth - 720;
+            if (available <= 600) {
+                this.$leftWindow.css('right', '720px');
+                this.$rightWindow.css('width', '720px');
+            } else {
+                available -= 600;
+                var right = 700 + (available / 2);
+                right = parseInt (right);
+                this.$leftWindow.css('right', (right + 20) + 'px');
+                this.$rightWindow.css('width', right + 'px');
+            }
         }
     };
     
