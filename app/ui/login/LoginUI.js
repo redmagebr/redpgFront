@@ -141,7 +141,9 @@ function LoginUI () {
         });
         
         $('#logoutBt').bind('click', function () {
-            window.app.ui.loginui.logout();
+            if (confirm(window.app.ui.language.getLingo("_CONFIRMLOGOUT_"))) {
+                window.app.ui.loginui.logout();
+            }
         });
     };
     

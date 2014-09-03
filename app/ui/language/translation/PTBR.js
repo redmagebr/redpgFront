@@ -4,6 +4,7 @@ window.lingo['pt_br'] = {
     _NEWMESSAGES_ : 'Mensagens',
     
     _LEAVING_ : 'Tem certeza que deseja sair?',
+    _CONFIRMLOGOUT_ : 'Tem certeza que deseja fazer logout?',
     
     /* Home */
     _HOMETITLE_ : '%p RedPG',
