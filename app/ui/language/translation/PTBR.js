@@ -10,7 +10,7 @@ window.lingo['pt_br'] = {
     _HOMETITLE_ : '%p RedPG',
     _HOMEEXPLAIN1_ : 'RedPG é um sistema para facilitar RPGs de Mesa através da internet. Funções do sistema incluem o compartilhamento de Imagens, Sons, Fichas de Personagens, uma sala para troca de mensagens com suporte a dados e muito mais, com novas funções sempre sendo adicionadas.',
     _HOMEEXPLAIN2_ : 'Todos os aspectos do sistema existem e estão presos aos Jogos, que ele enxerga como uma Mesa de RPG. Então para criar qualquer coisa ou utilizar o sistema de qualquer maneira, você precisa criar ou ser convidado a um jogo. Isso é feito na seção "Jogos", no menu à esquerda.',
-    _HOMELINKS_ : "Links importantes:",
+    _HOMELINKS_ : "Links úteis:",
     _HOMEFRONTGITHUB_ : 'RedPG Front on GitHub',
     _HOMEFRONTGITHUBBALL_ : 'RedPG Front on GitHub - Download direto',
     _HOMESERVERGITHUB_ : 'RedPG Server on GitHub',
