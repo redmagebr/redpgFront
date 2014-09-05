@@ -63,6 +63,8 @@ function UI () {
     
     this.widthInterval;
     this.lastWidth;
+    this.lastHeight = 0;
+    this.$singletonCss = $('<style type="text/css" />');
     
     /**
      * Initializes User Interface. Applies bindings and such.
@@ -70,6 +72,8 @@ function UI () {
      * @returns {void}
      */
     this.init = function () {
+        $('head').append(this.$singletonCss);
+        
         if (jQuery.browser.mobile) {
             $('body').addClass('mobile');
             
@@ -198,6 +202,12 @@ function UI () {
         console.log('Handling resize');
         this.checkWidth(); 
        this.chat.handleResize();
+       var height = window.app.ui.$window.height();
+       if (height !== this.lastHeight) {
+           this.lastHeight = height;
+           height -= 60;
+           this.$singletonCss.empty().append("div.styledWindow > div.singleton { max-height: " + height + "px; }");
+       }
     };
     
     /**

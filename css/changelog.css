@@ -1,45 +1,9 @@
-#changelogLoadFully {
-    margin-left: 10px;
-    margin-bottom: 20px;
-    color: #0016d2;
-    font-weight: bold;
-}
-
-#changelogLoadFully:hover {
-    color: #5467ff;
-    cursor: pointer;
-}
-
-#changelogLoadFully:active {
-    color: #000d81;
-}
-
-#changelogWindow {
-    font-family: alegreya;
-}
-
-#changelogWindow > div {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    bottom: 10px;
-    right: 10px;
-    background-color: #fff;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border: solid 2px #000;
-}
-
-#changelogWindow > div > h1 {
-    margin-left: 10px;
-}
-
-#changelogAjaxTarget > div h1 {
+#changelogAjaxTarget > div > h1 {
     font-size: 1.2em;
     margin: 0px;
 }
 
-#changelogAjaxTarget > div p {
+#changelogAjaxTarget > div > p {
     margin: 0px;
     text-indent: 2em;
 }
@@ -65,10 +29,6 @@
     margin: 15px;
 }
 
-#changelogUpdateNotice p {
+#changelogUpdateNotice > p {
     margin: 0px;
-}
-
-#changelogWindow > div > p {
-    margin-left: 10px;
 }

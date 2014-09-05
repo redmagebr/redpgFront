@@ -8,9 +8,9 @@
         <!-- CSS Geral -->
             <link rel="stylesheet" type="text/css" media="all" href="css/geral.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sounds.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/games.css">
@@ -124,15 +124,6 @@
                 <p>
                     <a id="emailConfirmationReturnLink" class="language" data-langhtml="_CASUC3_"></a>
                 </p>
-            </div>
-        </div>
-        <div id="alertWindow">
-            <div id="alertBox">
-                <div class="tiny">
-                    <p>Oi</p>
-                    <a class="button">Ok</a>
-                    <a class="button">Cancelar</a>
-                </div>
             </div>
         </div>
         <div id="leftHandler">
@@ -357,21 +348,18 @@
                     <p id="gamesNewGameButton"><a class="language" data-langhtml="_GAMESNEWGAME_"></a></p>
                 </div>
             </div>
-            <div id='changelogWindow' class='window'>
-                <div class='selectable shadow'>
-                    <h1>Changelog</h1>
-                    <div id='changelogUpdateNotice'>
-                        <p class='language' data-langhtml='_REDUPDATES_'></p>
-                        <p class='language' data-langhtml='_BACKWARDSCOMPATIBILITY_'></p>
-                        <p>&nbsp;</p>
-                    </div>
+            <div id='changelogWindow' class='styledWindow window'>
+                <h1>Changelog</h1>
+                <div class='selectable singleton'>
+                    <p class='language' data-langhtml='_REDUPDATES_'></p>
+                    <p class='language' data-langhtml='_BACKWARDSCOMPATIBILITY_'></p>
                     <p><span class='language' data-langhtml='_YOURVERSION_'></span> <b id='currentVersion'></b>.</p>
                     <p><span class='language' data-langhtml='_LASTVERSION_'></span> <b id='updatedVersion'></b>.</p>
                     <div id='changelogAjaxTarget'>
                         
                     </div>
                     <p id="changelogAjaxError" class="language" data-langhtml="_CHANGELOGNOTLOADED_"></p>
-                    <a id="changelogLoadFully" class="language" data-langhtml="_CHANGELOGLOADALL_"></a>
+                    <a id="changelogLoadFully" class="language textLink" data-langhtml="_CHANGELOGLOADALL_"></a>
                 </div>
             </div>
             

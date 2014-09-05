@@ -1,6 +1,8 @@
 div.styledWindow {
     overflow-x: visible;
     overflow-y: auto;
+    font-family: alegreya;
+    max-height: 100%;
 }
 
 div.styledWindow > h1 {
@@ -11,7 +13,7 @@ div.styledWindow > h1 {
     margin-left: 1%;
     margin-top: 10px;
     background-color: #333745;
-    color: #00ffea;
+    color: #fff;
     max-height: 100px;
     font-size: 1.4em;
     font-weight: bold;
@@ -46,6 +48,10 @@ div.styledWindow > div > p.centered {
 
 div.styledWindow > div > p.hoverable:hover {
     background-color: #eeeeee;
+}
+
+div.styledWindow > div > p.error {
+    color: #b10000;
 }
 
 div.styledWindow > div > h2 {
