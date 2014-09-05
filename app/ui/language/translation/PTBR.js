@@ -23,10 +23,9 @@ window.lingo['pt_br'] = {
     
     /* Sounds */
     _OPENSOUNDS_ : 'Sons',
-    _SOUNDSHEADER_ : 'Lista de Sons',
+    _SOUNDSHEADER_ : 'Sons',
     _SOUNDSEXPLAIN_ : 'O sistema sempre irá buscar arquivos de sons na pasta "/Sons". Você precisa estar usando o website de forma offline para colocar sons nessa pasta.',
     _SOUNDSEXPLAIN2_ : 'Caso você esteja adicionando um link completo para o som em algum servidor, o sistema irá poder tocar esse som de qualquer lugar, tanto online quanto offline.',
-    _SOUNDSEXPLAIN3_ : 'Você também pode baixar uma versão especial do Nginx clicando aqui e montar um servidor na sua própria máquina ao executar ele. Recomenda-se usar o Hamachi e apontar o adicionador de sites para "http://SEUIP:8081/Sons", nesse caso.',
     _SOUNDSPICKONE_ : 'Escolha uma pasta',
     _SOUNDSFOLDERS_ : 'Folders',
     _SOUNDSNEWFOLDER_ : 'Nova Pasta',

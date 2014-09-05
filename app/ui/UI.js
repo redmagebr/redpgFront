@@ -206,7 +206,7 @@ function UI () {
        if (height !== this.lastHeight) {
            this.lastHeight = height;
            height -= 50;
-           this.$singletonCss.empty().append("div.styledWindow > div.singleton { max-height: " + height + "px; }");
+           this.$singletonCss.empty().append("div.styledWindow > div.singleton { height: " + height + "px; }");
        }
     };
     
@@ -234,13 +234,13 @@ function UI () {
             this.$pictureContainer.removeClass('fullScreen');
             this.$leftHandler.css('left', '-100px');
             this.$rightHandler.css('right', '-100px');
-            var available = this.lastWidth - 720;
+            var available = this.lastWidth - 750;
             if (available <= 600) {
-                this.$leftWindow.css('right', '720px');
-                this.$rightWindow.css('width', '700px');
+                this.$leftWindow.css('right', '750px');
+                this.$rightWindow.css('width', '730px');
             } else {
                 available -= 600;
-                var right = 700 + (available / 2);
+                var right = 730 + (available / 2);
                 right = parseInt (right);
                 this.$leftWindow.css('right', (right + 20) + 'px');
                 this.$rightWindow.css('width', right + 'px');
