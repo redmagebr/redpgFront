@@ -7,8 +7,7 @@
         <link id="favicon" rel="shortcut icon" type="image/x-icon" href="css/favicon.ico"/>
         <!-- CSS Geral -->
             <link rel="stylesheet" type="text/css" media="all" href="css/geral.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/home.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/windows.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sounds.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
@@ -660,12 +659,14 @@
                 <a></a>
             </div>
             
-            <div id="homeWindow" class="window">
-                <div class="shadow basicWindow selectable">
-                    <h1 id='homeTitle' class="language" data-langhtml="_HOMETITLE_" data-langp="<img src='img/home/icon.png' />"></h1>
+            <div id="homeWindow" class="styledWindow window">
+                <h1 id='homeTitle' class="language" data-langhtml="_HOMETITLE_" data-langp=""></h1>
+                <div class="selectable">
                     <p class="language" data-langhtml="_HOMEEXPLAIN1_"></p>
                     <p class="language" data-langhtml="_HOMEEXPLAIN2_"></p>
-                    <h2 class="language" data-langhtml="_HOMELINKS_"></h2>
+                </div>
+                <h1 class="language" data-langhtml="_HOMELINKS_"></h1>
+                <div class="selectable">
                     <p class='hoverable'><a href="https://github.com/redmagebr/redpgFront" target="_blank" class="language textLink" data-langhtml="_HOMEFRONTGITHUB_"></a>:
                         <span class="language" data-langhtml="_HOMEFRONTGITHUBEXPLAIN_"></span></p>
                     <p class='hoverable'><a href="https://github.com/redmagebr/redpgServer" target="_blank" class="language textLink" data-langhtml="_HOMESERVERGITHUB_"></a>:

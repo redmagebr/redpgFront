@@ -1,0 +1,58 @@
+div.styledWindow {
+    overflow-x: visible;
+    overflow-y: auto;
+}
+
+div.styledWindow > h1 {
+    display: block;
+    height: 30px;
+    width: 98%;
+    margin: 0px;
+    margin-left: 1%;
+    margin-top: 10px;
+    background-color: #333745;
+    color: #00ffea;
+    max-height: 100px;
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: 30px;
+    text-indent: 1em;
+}
+
+div.styledWindow > div {
+    width: 98%;
+    margin: 0px;
+    margin-bottom: 20px;
+    margin-left: 1%;
+    display: block;
+    background-color: white;
+}
+
+div.styledWindow > div.singleton {
+    overflow-y: auto;
+}
+
+div.styledWindow > div > p {
+    margin: 0px;
+    padding: 10px;
+    text-indent: 1em;
+    text-align: justify;
+}
+
+div.styledWindow > div > p.centered {
+    text-indent: 0px;
+    text-align: center;
+}
+
+div.styledWindow > div > p.hoverable:hover {
+    background-color: #eeeeee;
+}
+
+div.styledWindow > div > h2 {
+    text-align: left;
+    margin: 0px;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 1.4em;
+    font-weight:bold;
+}
