@@ -10,9 +10,6 @@ function Navigator () {
     };
     
     this.setBindings = function () {
-        $('#navigationBt').on('click', function () {
-            window.app.ui.callLeftWindow('navigationLinksWindow');
-        });
     };
     
     this.navigate = function (url) {
