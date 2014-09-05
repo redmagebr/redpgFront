@@ -32,6 +32,7 @@ div.styledWindow > div {
 
 div.styledWindow > div.singleton {
     overflow-y: auto;
+    margin-bottom: 10px;
 }
 
 div.styledWindow > div > p {

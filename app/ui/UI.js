@@ -205,7 +205,7 @@ function UI () {
        var height = window.app.ui.$window.height();
        if (height !== this.lastHeight) {
            this.lastHeight = height;
-           height -= 60;
+           height -= 50;
            this.$singletonCss.empty().append("div.styledWindow > div.singleton { max-height: " + height + "px; }");
        }
     };
