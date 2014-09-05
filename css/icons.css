@@ -252,3 +252,10 @@
     background-position-x: 20px;
     background-position-y: center;
 }
+
+
+/* Styled Window */
+
+div.styledWindow > h1 > a.closeWindow {
+    background-image: url('../img/closeButton.png');
+}

@@ -63,3 +63,10 @@ div.styledWindow > div > h2 {
     font-size: 1.4em;
     font-weight:bold;
 }
+
+div.styledWindow > h1 > a.closeWindow {
+    display: block;
+    float: right;
+    width: 30px;
+    height: 30px;
+}
