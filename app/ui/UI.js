@@ -365,6 +365,16 @@ function UI () {
         }
     };
     
+    this.closeLeftWindow = function () {
+        this.$leftWindow.children('div.window').animate(
+            {   
+                right: '100%'
+            }, 300, function () {
+                $(this).css('visibility', 'hidden');
+            }
+        );
+    };
+    
     
     this.callRightWindow = function (windowid) {
         var $target = $('#'+windowid);
@@ -382,6 +392,16 @@ function UI () {
             {   
                 left: '0px'
             }, 300
+        );
+    };
+    
+    this.closeRightWindow = function () {
+        this.$rightWindow.children('div.window').animate(
+            {   
+                left: '100%'
+            }, 300, function () {
+                $(this).css('visibility', 'hidden');
+            }
         );
     };
     
@@ -450,7 +470,6 @@ function UI () {
         this.language.updateConfig();
         this.gameui.updateConfig();
         this.soundui.updateConfig();
-        this.imageui.updateConfig();
         this.youtubeui.updateConfig();
         this.sheetui.updateConfig();
         

@@ -384,12 +384,12 @@ function SoundUI () {
             if (typeof $file.attr('href') === 'undefined' || $file.attr('href') === null || $file.attr('href') === '../' && $file.attr('href') === '/') continue;
             split = [$file.attr('href').substr(0, $file.attr('href').lastIndexOf('.')), $file.attr('href').substr($file.attr('href').lastIndexOf('.') + 1)];
             if (split.length === 2) {
-                split[1] = split[1].replace("?dl=0", "");
+                split[1] = split[1].replace("?dl=0", "").replace("?dl=1", "");
             }
             if (split.length !== 2 || (['SPC', 'MP3', 'MP4', 'M4A', 'AAC', 'OGG', 'WAV', 'WAVE', 'OPUS']).indexOf(split[1].toUpperCase()) === -1) {
                 continue;
             }
-            names.push(split);
+            if (names.indexOf(split) === -1) names.push(split);
         }
         
         var cleanNames = [];

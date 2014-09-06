@@ -21,6 +21,13 @@ window.lingo['pt_br'] = {
     _HOMEDBEXPLAIN_ : 'Dump do banco de dados do servidor RedPG, necessário para executar o servidor RedPG. Indisponível no momento.',
     
     
+    /* Images */
+    
+    _IMAGESHEADER_ : 'Imagens',
+    _IMAGESEXPLAIN1_ : 'Imagens ficam anexadas à sua conta ao invés de a algum jogo em específico. O espaço que cada conta possui para imagens é finito e deve-se tomar cuidado com o tamanho das imagens que se guarda aqui.',
+    _IMAGESEXPLAIN2_ : 'Você pode aumentar seu espaço para imagens através de doações que ajudam a pagar o servidor do RedPG. Se seu espaço para imagens diminuir além do seu espaço gasto com imagens, suas imagens não serão apagadas, mas você não poderá enviar novas imagens até reduzir o uso de espaço.',
+    
+    
     /* Sounds */
     _OPENSOUNDS_ : 'Sons',
     _SOUNDSHEADER_ : 'Sons',

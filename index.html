@@ -347,7 +347,7 @@
                 </div>
             </div>
             <div id='changelogWindow' class='styledWindow window'>
-                <h1>Changelog <a class="closeWindow button" onclick="window.app.ui.callLeftWindow('none');"></a></h1>
+                <h1>Changelog <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a></h1>
                 <div class='selectable singleton'>
                     <p class='language' data-langhtml='_REDUPDATES_'></p>
                     <p class='language' data-langhtml='_BACKWARDSCOMPATIBILITY_'></p>
@@ -659,6 +659,18 @@
                 </div>
             </div>
             
+            
+            <div id="imagesWindow" class="styledWindow window">
+                <h1>
+                    <span class="language" data-langhtml="_IMAGESHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeRightWindow();"></a>
+                </h1>
+                <div>
+                    <p class="language selectable" data-langhtml="_IMAGESEXPLAIN1_"></p>
+                    <p class="language selectable" data-langhtml="_IMAGESEXPLAIN2_"></p>
+                </div>
+            </div>
+            
             <div id='sheetListWindow' class="window">
                 <div class="shadow">
                     <h1 class="language" data-langhtml="_SHEETSHEADER_"></h1>
@@ -749,9 +761,14 @@
                     </iframe>
                 </div>
             </div>
-            <div id="imageWindow" class="window">
-                <div class="shadow">
-                    
+            <div id="imageWindow" class="window styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_IMAGESHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeRightWindow();"></a>
+                </h1>
+                <div>
+                    <p class="language" data-langhtml="_IMAGESEXPLAIN1_"></p>
+                    <p class="language" data-langhtml="_IMAGESEXPLAIN2_"></p>
                 </div>
             </div>
             <div id="soundWindow" class="window">
