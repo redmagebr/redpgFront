@@ -76,7 +76,6 @@ function ChatController (chat) {
             };
             
             window.app.chatapp.start(this.room, cbs, cbe);
-            this.chat.fixScrollpane();
             window.app.ui.callLeftWindow('chatWindow');
         }
     };
@@ -199,8 +198,6 @@ function ChatController (chat) {
                     window.app.ui.chat.$chatMessages.prepend($html);
                 }
             }
-            
-            window.app.ui.chat.fixScrollpane();
         }
         this.firstPrint = false;
     };

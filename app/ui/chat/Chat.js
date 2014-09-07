@@ -17,7 +17,6 @@ function Chat () {
     this.cc = new ChatController(this);
     this.audioc = new AudioController();
     this.logger = new Logger();
-    this.chatPane;
     
     // Elements
     this.$chatbox;
@@ -51,7 +50,7 @@ function Chat () {
      * @type Number
      */
     this.fontSize = 0.95;
-    this.alwaysBottom = false;
+    this.alwaysBottom = true;
     
     this.updateConfig = function () {
         this.fontSize = window.app.configdb.get('chatfontsize', 0.95);
@@ -72,9 +71,6 @@ function Chat () {
     this.changeChatFont = function (diff) {
         this.fontSize += diff;
         this.$chatbox.css({'font-size' : this.fontSize + 'em'});
-        
-        this.fixScrollpane();
-        
         window.app.configdb.store('chatfontsize', this.fontSize);
     };
     
@@ -109,18 +105,6 @@ function Chat () {
         this.$longloadicon.hide();
         this.$connectionerroricon.hide();
         
-        // Initialize jScrollpane on chatbox.
-        this.chatPane = this.$chatbox.jScrollPane({
-            'showArrows':false,
-            'autoReinitialize':true,
-            'maintainPosition':true,
-            'stickToBottom':true,
-            'animateScroll':true,
-            'animateDuration':300
-        }).data('jsp');
-        this.changeChatFont(0);
-        this.fixScrollpane();
-        
         // Bind stuff
         this.setBindings();
         this.considerPrompts();
@@ -141,22 +125,19 @@ function Chat () {
      * @returns {undefined}
      */
     this.clearInformation = false;
-    this.fixScrollpane = function () {
-        this.chatPane.reinitialise();
-        console.log("Reinitialised chatpane");
-        if (window.app.ui.chat.alwaysBottom) {
-            window.app.ui.chat.chatPane.scrollToBottom();
-        }
-    };
     
     this.appendToHeader = function ($html) {
         this.$chatHeader.append($html);
-        this.fixScrollpane();
+        if (this.alwaysBottom) {
+            this.scrollToBottom();
+        }
     };
     
     this.appendToMessages = function ($html) {
         this.$chatMessages.append($html);
-        this.fixScrollpane();
+        if (this.alwaysBottom) {
+            this.scrollToBottom();
+        }
     };
     
     /**
@@ -164,8 +145,7 @@ function Chat () {
      * @returns {undefined}
      */
     this.clear = function () {
-        this.chatPane.getContentPane().html('');
-        this.fixScrollpane();
+        this.$chatMessages.empty();
     };
     
     /**
@@ -209,10 +189,20 @@ function Chat () {
      */
     this.setBindings = function () {
         this.setChatInputBindings();
-        this.setScrollpaneBindings();
+        
+        this.$chatbox.on('scroll', function (e) {
+            var $this = $(this);
+            var scrolled = this.scrollTop + $this.height();
+            scrolled = this.scrollHeight - scrolled;
+            if (scrolled > 0) {
+                window.app.ui.chat.notAtBottom();
+            } else {
+                window.app.ui.chat.atBottom();
+            }
+        });
         
         this.$chatscrolltobottom.bind('click', function () {
-            window.app.ui.chat.chatPane.scrollToBottom();
+            window.app.ui.chat.scrollToBottom();
         });
         
         $('#changeFontBig').bind('click', function () {
@@ -404,26 +394,28 @@ function Chat () {
     };
     
     /**
-     * Sets scrollpane-specific bindings.
-     * @returns {void}
-     */
-    this.setScrollpaneBindings = function () {
-        this.$chatbox.bind('jsp-scroll-y', function (event, posy, isAtTop, isAtBottom) {
-            if (isAtBottom) {
-                window.app.ui.chat.$chatscrolltobottom.stop().fadeOut(100);
-            } else {
-                window.app.ui.chat.$chatscrolltobottom.stop().fadeIn(100);
-            }
-        });
-        this.$chatscrolltobottom.hide();
-    };
-    
-    /**
      * Updates window sizes to resizes.
      * @returns {void}
      */
     this.handleResize = function () {
-        this.fixScrollpane();
         this.ac.handleResize();
+    };
+    
+    
+    this.scrollToBottom = function () {
+        this.$chatbox.stop(true, false).animate({
+            scrollTop : this.$chatbox[0].scrollHeight - this.$chatbox.height()
+        }, 200);
+        this.atBottom();
+    };
+    
+    this.notAtBottom = function () {
+        this.alwaysBottom = false;
+        this.$chatscrolltobottom.stop(true, false).fadeIn(200);
+    };
+    
+    this.atBottom = function () {
+        this.alwaysBottom = true;
+        this.$chatscrolltobottom.stop(true, false).fadeOut(200);
     };
 }
