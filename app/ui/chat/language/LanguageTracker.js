@@ -42,8 +42,8 @@ function LanguageTracker() {
             var width = this.$tracker.width();
             this.$tracker.css('height', '0px').css('width', '0px');
             this.$tracker.stop(true,false).animate({
-                top : offset.top - 100,
-                left: offset.left - 20 - width,
+                top : 10,
+                left: 110,
                 height: height + 'px',
                 width: width + 'px'
             });
