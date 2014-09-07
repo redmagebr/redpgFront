@@ -37,17 +37,13 @@ html {
 
 body {
     position: relative;
-    min-height: 500px;
+    min-height: 400px;
     min-width: 800px;
     height: 100%;
     width: 100%;
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-}
-
-body.mobile {
-    height: 570px;
 }
 
 /* Janela Esquerda */

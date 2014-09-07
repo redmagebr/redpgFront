@@ -64,7 +64,9 @@ function UI () {
     this.widthInterval;
     this.lastWidth;
     this.lastHeight = 0;
+    this.lastWidth = 0;
     this.$singletonCss = $('<style type="text/css" />');
+    this.$removeAvatarCss = $('<style type="text/css" />');
     
     /**
      * Initializes User Interface. Applies bindings and such.
@@ -72,7 +74,8 @@ function UI () {
      * @returns {void}
      */
     this.init = function () {
-        $('head').append(this.$singletonCss);
+        $('head').append(this.$singletonCss)
+                 .append(this.$removeAvatarCss);
         
         if (jQuery.browser.mobile) {
             $('body').addClass('mobile');
@@ -200,14 +203,23 @@ function UI () {
      */
     this.handleResize = function () {
         console.log('Handling resize');
-        this.checkWidth(); 
-       this.chat.handleResize();
-       var height = window.app.ui.$window.height();
-       if (height !== this.lastHeight) {
-           this.lastHeight = height;
-           height -= 50;
-           this.$singletonCss.empty().append("div.styledWindow > div.singleton { height: " + height + "px; }");
-       }
+        var height = window.app.ui.$window.height();
+        if (height !== this.lastHeight) {
+            this.lastHeight = height;
+            height -= 50;
+            this.$singletonCss.empty().append("div.styledWindow > div.singleton { height: " + height + "px; }");
+            
+            if (this.lastHeight < 500) {
+                this.$removeAvatarCss.empty().append("#avatarContainer { display: none; } #areaChat { top: 10px; }");
+            } else {
+                this.$removeAvatarCss.empty();
+            }
+        }
+        var width = window.app.ui.$window.width();
+        if (width !== this.lastWidth) {
+            this.checkWidth();
+        }
+        this.chat.handleResize();
     };
     
     /**
@@ -215,7 +227,6 @@ function UI () {
      * @returns {void}
      */
     this.checkWidth = function () {
-        this.lastWidth = this.$window.width();
         if (window.app.configdb.get('fullscreenmode', 'auto') === 'on' || this.lastWidth < 1240) {
             this.$leftWindow.addClass('fullScreen');
             this.$rightWindow.addClass('fullScreen');
