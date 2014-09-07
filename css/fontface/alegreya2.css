@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-bolditalic-webfont.woff') format('woff');
+    src: url('file/Alegreya-BoldItalic.otf') format('opentype');
     font-weight: bold;
     font-style: italic;
 
@@ -14,7 +14,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-italic-webfont.woff') format('woff');
+    src: url('file/Alegreya-Italic.otf') format('opentype');
     font-weight: normal;
     font-style: italic;
 
@@ -25,7 +25,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-bold-webfont.woff') format('woff');
+    src: url('file/Alegreya-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 
@@ -36,7 +36,7 @@
 
 @font-face {
     font-family: 'alegreya';
-    src: url('file/alegreya-regular-webfont.woff') format('woff');
+    src: url('file/Alegreya-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 
