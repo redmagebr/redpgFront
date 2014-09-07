@@ -6,7 +6,13 @@
     src: url('file/Caudex-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'caudex';
+    src: url('file/Caudex-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
 
