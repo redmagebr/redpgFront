@@ -14,37 +14,3 @@
     <p>Dropped jScrollPane dependency in Chat. Now using a pure HTML and Javascript solution to scroll.</p>
     <p>This shouldn't bring major problems, but please report any issues.</p>
 </div>
-
-<div data-major='0' data-minor='25' data-release='4'>
-    <h1>0.25.4</h1>
-    <p>
-        <a onclick="$('#changelogDivTest').stop(true, true).animate({scrollTop : $('#changelogDivTest')[0].scrollHeight - $('#changelogDivTest').height()}, 200);">
-            Switched
-        </a> 
-        to the unmangled original font files of Alegreya (Whole app) and Caudex (Chat messages). Things may look weird at first, but that is because the font is now showing properly.</p>
-</div>
-
-<div data-major='0' data-minor='25' data-release='3'>
-    <h1>0.25.3</h1>
-    <p>Right Window minimum size reduced to 720px.</p>
-    <p>Left Window will grow first until it is 600px wide.</p>
-    <p>Beyond that, Left and Right window will mostly share the remaining space 1:1, however:</p>
-    <p>Left Window size will grow beyond 600px in increments of 90px. Meaning that all growths it has will mean a new avatar space in chat.</p>
-</div>
-
-<div data-major='0' data-minor='25' data-release='1'>
-    <h1>0.25.1</h1>
-    <p>Adding external links as sounds will no longer allow duplicates.</p>
-</div>
-
-<div data-major='0' data-minor='25' data-release='0'>
-    <h1>0.25.0</h1>
-    <p>New window style will be applied application-wide.</p>
-    <p>Games are renamed to Tables.</p>
-</div>
-
-<div data-major='0' data-minor='24' data-release='0'>
-    <h1>0.24.0</h1>
-    <p>Chat will auto-prune older messages when there are too many. This should improve performance of long-lasting rooms on slower hardware.</p>
-    <p>Automatic pruning of messages will not happen any time the "Show older messages" button is clicked.</p>
-</div>
