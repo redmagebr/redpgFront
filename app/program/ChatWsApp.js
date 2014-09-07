@@ -134,6 +134,7 @@ function ChatWsApp () {
                     message.updateFromJSON(obj[1]);
                     message.roomid = this.room.id;
                     window.app.ui.chat.cc.printMessage(message);
+                    window.app.ui.chat.considerBottoming();
                 }
             } else {
                 this.room.updateFromJSON({'messages' : [obj[1]]});

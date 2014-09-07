@@ -198,6 +198,8 @@ function ChatController (chat) {
                     window.app.ui.chat.$chatMessages.prepend($html);
                 }
             }
+            
+            window.app.ui.chat.considerBottoming();
         }
         this.firstPrint = false;
     };

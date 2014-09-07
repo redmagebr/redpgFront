@@ -428,4 +428,10 @@ function Chat () {
         this.alwaysBottom = true;
         this.$chatscrolltobottom.stop(true, true).fadeOut(200);
     };
+    
+    this.considerBottoming = function () {
+        if (this.alwaysBottom) {
+            this.scrollToBottom(true);
+        }
+    };
 }
