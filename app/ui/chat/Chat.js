@@ -129,14 +129,14 @@ function Chat () {
     this.appendToHeader = function ($html) {
         this.$chatHeader.append($html);
         if (this.alwaysBottom) {
-            this.scrollToBottom();
+            this.scrollToBottom(true);
         }
     };
     
     this.appendToMessages = function ($html) {
         this.$chatMessages.append($html);
         if (this.alwaysBottom) {
-            this.scrollToBottom();
+            this.scrollToBottom(true);
         }
     };
     
@@ -202,7 +202,7 @@ function Chat () {
         });
         
         this.$chatscrolltobottom.bind('click', function () {
-            window.app.ui.chat.scrollToBottom();
+            window.app.ui.chat.scrollToBottom(false);
         });
         
         $('#changeFontBig').bind('click', function () {
@@ -402,20 +402,30 @@ function Chat () {
     };
     
     
-    this.scrollToBottom = function () {
+    this.scrollToBottom = function (instant) {
+        var scrolltop = this.$chatbox[0].scrollHeight - this.$chatbox.height();
+        if (instant) {
+            this.$chatbox.stop(true, false).scrollTop(scrolltop);
+            return;
+        }
         this.$chatbox.stop(true, false).animate({
-            scrollTop : this.$chatbox[0].scrollHeight - this.$chatbox.height()
-        }, 200);
+            scrollTop : scrolltop
+        }, 300, function () {
+            window.app.ui.chat.animating = false;
+        });
+        this.animating = true;
         this.atBottom();
     };
     
     this.notAtBottom = function () {
+        if (this.animating) return;
         this.alwaysBottom = false;
-        this.$chatscrolltobottom.stop(true, false).fadeIn(200);
+        this.$chatscrolltobottom.stop(true, true).fadeIn(200);
     };
     
     this.atBottom = function () {
+        if (this.animating) return;
         this.alwaysBottom = true;
-        this.$chatscrolltobottom.stop(true, false).fadeOut(200);
+        this.$chatscrolltobottom.stop(true, true).fadeOut(200);
     };
 }
