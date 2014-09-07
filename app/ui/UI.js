@@ -242,10 +242,11 @@ function UI () {
                 available -= 600;
                 var right = 720 + (available / 2);
                 right = parseInt (right);
-                var avatarRoom = this.lastWidth - right - 20 - 60;
+                /* Right - Margin center - avatar buttons - margin left - margin right of window */
+                var avatarRoom = this.lastWidth - right - 20 - 60 - 10 - 10 - 8;
                 var avatarAmount = 1;
-                var avatarSize = 82;
-                while (avatarAmount * avatarSize < avatarRoom) { avatarAmount++; }
+                var avatarSize = 90;
+                while (avatarAmount * avatarSize <= avatarRoom) { avatarAmount++; }
                 var giveBack = avatarRoom - (--avatarAmount * avatarSize);
                 right += giveBack;
                 this.$leftWindow.css('right', (right + 20) + 'px');
