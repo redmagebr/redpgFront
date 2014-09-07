@@ -71,9 +71,6 @@ function LoginUI () {
                 this.$loginwindow.show();
                 this.ui.callWindow('loginFormWindow');
                 window.app.ui.hideUI();
-                if ($.browser.mobile && screenfull.enabled) {
-                    screenfull.exit();
-                }
             }, {$loginwindow : this.$loginwindow, ui : this}
         );
     };
@@ -248,9 +245,6 @@ function LoginUI () {
             this.$password.val('');
             this.$loginwindow.fadeOut(200);
             window.app.ui.hideLoading();
-            if ($.browser.mobile && screenfull.enabled && window.confirm(window.app.ui.language.getLingo("_GOFULL_"))) {
-                screenfull.request();
-            }
         }, {$loginwindow : this.$loginwindow,
             $input : this.$logininput,
             $password : this.$loginpasswordinput});
