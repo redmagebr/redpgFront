@@ -217,6 +217,7 @@ function UI () {
         }
         var width = window.app.ui.$window.width();
         if (width !== this.lastWidth) {
+            this.lastWidth = width;
             this.checkWidth();
         }
         this.chat.handleResize();
