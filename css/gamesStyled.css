@@ -1,0 +1,150 @@
+#gamesList .button {
+    width: 30px;
+    height: 30px;
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
+
+#gamesList > div > div {
+    display: none;
+}
+
+#gamesList > div.toggled > div {
+    display: block;
+}
+
+#gamesList p.gameTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-left: 10px;
+    margin: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    line-height: 30px;
+}
+
+#gamesList p.gameTitle:hover {
+    color: #676767;
+    cursor: pointer;
+    background-color: #e2e2e2;
+}
+
+#gamesList > div.toggled > p.gameTitle {
+    background-color: #a3a3a3;
+}
+
+#gamesList p.creator {
+    padding-left: 30px;
+    margin: 0px;
+    line-height: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#gamesList p.creator > span {
+    font-weight: bold;
+}
+
+#gamesList p.roomLink {
+    line-height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+}
+
+#gamesList p.roomLink:hover {
+    background-color: #e2e2e2;
+}
+
+#gamesList a.roomLink {
+    padding-left: 20px;
+    display: inline-block;
+    width: 300px;
+    font-weight: bold;
+}
+
+#gamesList a.roomLink:hover {
+    color: #535353;
+    cursor: pointer;
+}
+
+#gamesList hr {
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+#gamesList p.bottomLinks {
+    padding-left: 20px;
+    margin: 0px;
+    line-height: 25px;
+}
+
+/* Game Creation */
+#createGameForm {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#createGameForm > p {
+    margin: 0px;
+    text-align: center;
+}
+
+#createGameForm input[type=text] + label {
+    display: block;
+}
+
+#createGameForm textarea, #createGameForm label {
+    margin-bottom: 20px;
+}
+
+#createGameForm input.error + label {
+    color: #ce0000;
+    font-weight: bold;
+}
+
+/* Form invite */
+
+#gamesInviteForm > p {
+    text-align: center;
+}
+
+/* Form Room */
+#createRoomForm > p {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#createRoomForm > p.justified {
+    text-align: justify;
+    text-indent: 1em;
+}
+
+#createRoomForm input[type=text] + label {
+    display: block;
+}
+
+#createRoomForm input.error + label {
+    color: #ce0000;
+    font-weight: bold;
+}
+
+/* My Invites */
+
+#gamesMyInvitesList > p {
+    text-indent: 1em;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+#gamesMyInvitesList > div {
+    padding: 10px;
+}
+
+#gamesMyInvitesList > div:hover {
+    background-color: #eeeeee;
+}

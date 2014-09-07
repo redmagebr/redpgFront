@@ -6,7 +6,6 @@ function GameUI () {
     this.edit = null;
     
     this.$nickobj;
-    this.$loading;
     this.$list;
     this.$createbutton;
     
@@ -23,7 +22,6 @@ function GameUI () {
     this.init = function () {
         this.$nickobj = $('#gamesNickInformant');
         this.$list = $('#gamesList');
-        this.$loading = $('#gamesWindowLoading');
         this.$createbutton = $('#gamesNewGameButton');
         this.$header = $('#newgameHeader');
         
@@ -142,35 +140,26 @@ function GameUI () {
     this.callSelf = function () {
         this.$loadError.hide();
         this.$list.finish().fadeOut(100);
-        this.$createbutton.finish().fadeOut(100, window.app.emulateBind(
-            function () {
-                this.$loading.finish().fadeIn(200);
-            }, {$loading : this.$loading})
-        );
+        this.$createbutton.finish().fadeOut(100);
         var cbs = function () {
+            window.app.ui.unblockLeft();
             window.app.ui.gameui.refreshWindow();
         };
         var cbe = function () {
-            window.app.ui.gameui.$loading.finish().fadeOut(200, function () {
-                window.app.ui.gameui.$loadError.show();
-            });
+            window.app.ui.unblockLeft();
+            window.app.ui.gameui.$loadError.show();
         };
         window.app.gameapp.updateLists(cbs, cbe);
+        window.app.ui.blockLeft();
         window.app.ui.callLeftWindow("gamesWindow");
     };
     
     this.refreshWindow = function () {
         this.$list.finish();
         this.$createbutton.finish();
-        this.$loading.finish().fadeOut(100,
-            window.app.emulateBind(function () {
-                this.Game$.createList(this.$list);
-                this.$list.finish().fadeIn(200);
-                this.$createbutton.finish().fadeIn(200);
-            }, {$list : this.$list,
-                $createbutton : this.$createbutton,
-                Game$ : this.$})
-        );
+        this.$.createList(this.$list);
+        this.$list.finish().fadeIn(200);
+        this.$createbutton.finish().fadeIn(200);
     };
     
     this.deleteGame = function (id) {

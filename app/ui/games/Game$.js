@@ -5,59 +5,60 @@ function Game$ () {
      * @returns {jQuery}
      */
     this.createGame = function (game) {
-        var $game = $('<div id="game' + game.id + '" class="gameDiv" />');
+        var $game = $('<div />');
+        
+        var $nameline = $('<p class="language gameTitle" data-langtitle="_GAMESOPENCLOSE_">').text(game.name);
+        $nameline.bind("click", window.app.emulateBind(function () {
+            this.$div.toggleClass('toggled');
+        }, {$div : $game}));
+        
+        $game.append($nameline);
+        
         if (game.isOwner()) {
-            var $deletebutton = $('<a class="right button delete language" data-langtitle="_GAMESDELETE_"></a>');
+            var $deletebutton = $('<a class="button delete language" data-langtitle="_GAMESDELETE_"></a>');
             $deletebutton.bind('click', window.app.emulateBind(
-                function () {
+                function (e) {
                     if (confirm(window.app.ui.language.getLingoOn('_GAMESCONFIRMDELETE_', this.gamename))) {
                         window.app.ui.gameui.deleteGame(this.gameid);
                     }
+                    e.stopPropagation();
                 }, {gamename : game.name, gameid : game.id}
             ));
             
-            var $options = $('<a class="right button options language" data-langtitle="_GAMESOPTIONS_"></a>');
-            $options.bind('click', window.app.emulateBind(function () {
+            var $options = $('<a class="button options language" data-langtitle="_GAMESOPTIONS_"></a>');
+            $options.bind('click', window.app.emulateBind(function (e) {
                 window.app.ui.gameui.callEdit(this.id);
+                e.stopPropagation();
             }, {id : game.id}));
             
-            $game.append($deletebutton);
-            $game.append($options);
+            $nameline.append($deletebutton).append($options);
         } else {
             var $leavebutton = $('<a class="right button leave language" data-langtitle="_GAMESLEAVE_"></a>');
-            $leavebutton.bind('click', function () {
-                alert("Leave - Not Implemented");
-            });
-            $game.append($leavebutton);
+            $leavebutton.bind('click', window.app.emulateBind(function (e) {
+                if (confirm(window.app.ui.language.getLingoOn('_GAMESCONFIRMLEAVE_', this.gamename))) {
+                    window.app.ui.gameui.leaveGame(this.gameid);
+                }
+                e.stopPropagation();
+            }, {gamename : game.name, gameid : game.id}));
+            $nameline.append($leavebutton);
         }
         
         if (game.promote) {
             var $permissions = $('<a class="right button permissions language" data-langtitle="_GAMESPERMISSIONS_"></a>');
-            $permissions.bind("click", function () {
+            $permissions.bind("click", function (e) {
                 alert("Permissions - Not implemented");
+                e.stopPropagation();
             });
             
-            $game.append($permissions);
+            $nameline.append($permissions);
         }
-        
-        var $nameline = $('<span class="button paraButton language unselectable" data-langtitle="_GAMESOPENCLOSE_">');
-        $nameline.bind("click", function () {
-            $(this).toggleClass('toggled');
-        });
-        
-        $nameline.append($('<a class="left button openclose"></a>'));
-        $nameline.append($('<span />').text(game.name));
-        
-        $game.append($nameline);
         
         var $rooms = $('<div />');
         
-        if (game.isOwner()) {
-            var $creatorline = $('<p class="creatorP" />');
-            $creatorline.append($("<span class='language' data-langhtml='_GAMESCREATORTOOLTIP_' />"));
-            $creatorline.append(": " + game.creatornick + '#' + game.creatorsufix);
-            $rooms.append($creatorline);
-        }
+        var $creatorline = $('<p class="creator" />');
+        $creatorline.append($("<span class='language' data-langhtml='_GAMESCREATORTOOLTIP_' />"));
+        $creatorline.append(": " + game.creatornick + '#' + game.creatorsufix);
+        $rooms.append($creatorline);
         
         if (game.rooms.length === 0) {
             $rooms.append('<p class="language noRooms" data-langhtml="_GAMESNOROOMS_"></p>');
@@ -75,9 +76,9 @@ function Game$ () {
             
             for (var i = 0; i < game.rooms.length; i++) {
                 room = window.app.roomdb.getRoom(game.rooms[i]);
-                $room = $('<p class="selectable hoverMark" />');
+                $room = $('<p class="selectable roomLink" />');
                 
-                $rooma = $('<a class="language" data-langtitle="_GAMESJOINROOM_" />');
+                $rooma = $('<a class="language roomLink" data-langtitle="_GAMESJOINROOM_" />');
                 $rooma.append(room.name);
                 $rooma.bind('click', window.app.emulateBind(
                     function () {
@@ -116,9 +117,9 @@ function Game$ () {
         
         if (game.storyteller) {
             
-            var $newroomp = $('<p />');
+            var $newroomp = $('<p class="bottomLinks" />');
             
-            var $newrooma = $('<a class="language" data-langhtml="_GAMESNEWROOM_" />');
+            var $newrooma = $('<a class="language textLink" data-langhtml="_GAMESNEWROOM_" />');
             $newrooma.bind("click", window.app.emulateBind(
                 function () {
                     window.app.ui.gameui.roomui.openCreation(this.gameid);
@@ -131,9 +132,9 @@ function Game$ () {
         }
         
         if (game.invite) {
-            var $newplayerp = $('<p />');
+            var $newplayerp = $('<p class="bottomLinks" />');
             
-            var $newplayera = $('<a class="language" data-langhtml="_GAMESINVITE_" />');
+            var $newplayera = $('<a class="language textLink" data-langhtml="_GAMESINVITE_" />');
             $newplayera.bind("click", window.app.emulateBind(
                 function () {
                     window.app.ui.gameui.inviteui.openForm(this.gameid);

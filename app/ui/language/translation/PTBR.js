@@ -356,7 +356,7 @@ window.lingo['pt_br'] = {
     /* Games */
     _GAMESHEADER_ : 'Mesas',
     _GAMESNICK_ : 'Caso precise informar seu identificador para alguém, ele é "%p", sem as aspas.',
-    _GAMESEXPLAIN1_ : 'Aqui você pode administrar as mesas dos quais você participa. Para convidar jogadores à sua mesa, você irá precisar do identificador deles.',
+    _GAMESEXPLAIN1_ : 'Aqui você pode administrar as mesas das quais você participa. Para convidar jogadores à sua mesa, você irá precisar do identificador deles.',
     _GAMESEXPLAIN2_ : 'Uma mesa nesse sistema é o lugar no qual todas as outras partes do sistema se conectam. As salas, o ambiente no qual as partidas são jogadas, ficam anexadas à uma mesa. As fichas de personagens ficam anexadas à uma mesa.',
     _GAMESEXPLAIN3_ : 'No momento não é possível pedir uma lista de mesas de livre entrada (não implementados).',
     _GAMESOPENCLOSE_ : 'Clique aqui para mostrar ou esconder o conteúdo dessa mesa.',
@@ -403,6 +403,8 @@ window.lingo['pt_br'] = {
     _GAMESINVITE200_ : 'Convite enviado! Agora é só aguardar até o jogador aceitar.',
     _GAMESINVITEDEF_ : 'Houve um erro no processamento do pedido. Tente novamente.',
     _GAMESINVITEINPUT_ : 'Identificador#',
+    _INVITESNOINVITES_ : 'Nenhum convite recebido.',
+    _INVITESGAME_ : 'Jogo',
     _GAMESINVITEMESSAGE_ : 'Mensagem de convite. Apresente-se e explique o motivo de estar convidando o jogador à sua mesa.',
     _GAMESINVITESUBMIT_ : 'Enviar convite',
     _GAMESINVITEKEEPGOING_ : 'Convidar mais jogadores ao enviar',

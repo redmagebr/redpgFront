@@ -374,3 +374,23 @@ body {
     from {-webkit-transform: rotate(0deg);}
     to   {-webkit-transform: rotate(359deg);}
 }
+
+/* Forms */
+.leftWindowInput {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1.1em;
+    width: 350px;
+    text-align: center;
+    font-family: alegreya;
+}
+
+.leftWindowTextArea {
+    display: inline-block;
+    height: 120px;
+    font-size: 1em;
+    width: 450px;
+    text-align: justify;
+    font-family: alegreya;
+}

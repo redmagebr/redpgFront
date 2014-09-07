@@ -8,32 +8,34 @@ function GameInvite$ () {
         var $invite = $('<div />');
         
         var $nameline = $('<p class="nameLine" />');
-        $nameline.append(
+        $nameline.append("<strong class='language' data-langhtml='_INVITESGAME_'></strong>")
+                 .append(": ")
+                 .append(
             $('<span />').text(invite.gamename)
         );
 
-        var $aaccept = $('<a class="language" data-langhtml="_GAMESMYINVITESACCEPT_" />');
+        var $aaccept = $('<a class="language textLink" data-langhtml="_GAMESMYINVITESACCEPT_" />');
         $aaccept.bind('click', window.app.emulateBind(
             function () {
                 window.app.ui.gameui.inviteui.acceptInvite(this.gameid, this.$div);
             }, {gameid : invite.gameid, $div : $invite}
         ));
 
-        var $areject = $('<a class="language" data-langhtml="_GAMESMYINVITESREJECT_" />');
+        var $areject = $('<a class="language textLink" data-langhtml="_GAMESMYINVITESREJECT_" />');
         $areject.bind('click', window.app.emulateBind(
             function () {
                 window.app.ui.gameui.inviteui.rejectInvite(this.gameid, this.$div);
             }, {gameid : invite.gameid, $div : $invite}
         ));
 
-        $nameline.append($aaccept).append($areject);
+        $nameline.append(" - ").append($aaccept).append(" | ").append($areject);
         
         $invite.append($nameline);
         
         
         var $creatorline = $('<p />');
         //<p><span class="language" data-langhtml="_GAMESMYINVITESCREATOR_"></span>: Nome#Sufix</p>
-        $creatorline.append($('<span class="language" data-langhtml="_GAMESMYINVITESCREATOR_" />'));
+        $creatorline.append($('<strong class="language" data-langhtml="_GAMESMYINVITESCREATOR_" />'));
         $creatorline.append(': ' + invite.creatornick + '#' + invite.creatornicksufix);
         
         $invite.append($creatorline);
@@ -57,6 +59,9 @@ function GameInvite$ () {
         $list.empty();
         for (var i = 0; i < inviteList.length; i++) {
             $list.append(this.$createInvite(inviteList[i]));
+        }
+        if (inviteList.length === 0) {
+            $list.append("<p class='language' data-langhtml='_INVITESNOINVITES_'></p>");
         }
         window.app.ui.language.applyLanguageOn($list);
     };

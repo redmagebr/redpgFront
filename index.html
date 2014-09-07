@@ -12,9 +12,6 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/sounds.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/games.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/rooms.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/gamesinvites.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/alert.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/icons.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/handlers.css">
@@ -27,6 +24,10 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/dicePanel.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
+            <!--
+            <link rel="stylesheet" type="text/css" media="all" href="css/gamesinvites.css">
+            -->
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
             <link rel="stylesheet" type="text/css" media="all" href="css/fontface/alegreya2.css">
@@ -210,52 +211,55 @@
             <div id="leftBlock">
                 <a></a>
             </div>
-            <div id="createRoomWindow" class="window unselectable">
-                <div class="shadow">
-                    <h1 class="language" data-langhtml="_NEWROOMHEADER_"></h1>
+            <div id="createRoomWindow" class="window unselectable styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_NEWROOMHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
+                </h1>
+                <div>
                     <p class="language" data-langhtml="_NEWROOMEXPLAIN_"></p>
                     <p id='CRCurrentGame' class="language" data-langhtml="_NEWROOMCURRENTGAME_" data-langp="??"></p>
                     <p id="newRoomError" class="language selectable" data-langhtml="_NEWROOMERROR_"></p>
                     <form id="createRoomForm" onsubmit="return false;">
                         <p>
-                            <input type="text" id="NRName" class="language validate" data-validationtype="name" data-langplaceholder="_NEWROOMNAME_" />
+                            <input type="text" id="NRName" class="language validate leftWindowInput" data-validationtype="name" data-langplaceholder="_NEWROOMNAME_" />
                             <label for="NRName" class="language" data-langhtml="_NEWROOMNAMEERROR_"></label>
                         </p>
                         <p>
-                            <textarea id="NRDesc" class="language" data-langplaceholder="_NEWROOMDESCRIPTION_"></textarea>
+                            <textarea id="NRDesc" class="language leftWindowTextArea" data-langplaceholder="_NEWROOMDESCRIPTION_"></textarea>
                         </p>
                         <p>
                             <input id="NRPrivate" type="checkbox" />
                             <label for="NRPrivate" class="language" data-langhtml="_NEWROOMPRIVATE_"></label>
-                            <span class="language" data-langhtml="_NEWROOMPRIVATEEXPLAIN_"></span>
                         </p>
+                        <p class="language justified" data-langhtml="_NEWROOMPRIVATEEXPLAIN_"></p>
                         <p>
                             <input id="NRStreamable" type="checkbox" />
                             <label for="NRStreamable" class="language" data-langhtml="_NEWROOMSTREAMABLE_"></label>
-                            <span class="language" data-langhtml="_NEWROOMSTREAMABLEEXPLAIN_"></span>
                         </p>
+                        <p class="language justified" data-langhtml="_NEWROOMSTREAMABLEEXPLAIN_"></p>
                         <p>
                             <input id="NRPBP" type="checkbox" />
                             <label for="NRPBP" class="language" data-langhtml="_NEWROOMPBP_"></label>
-                            <span class="language" data-langhtml="_NEWROOMPBPEXPLAIN_"></span>
                         </p>
+                        <p class="language justified" data-langhtml="_NEWROOMPBPEXPLAIN_"></p>
                         <p id="createRoomSubmitP">
                             <input id="createRoomSubmit" type="submit" class="language textButton" data-langvalue="_SENDROOM_" />
                         </p>
                     </form>
                 </div>
             </div>
-            <div id="createGameWindow" class="window unselectable">
-                <div class="shadow selectable">
-                    <h1 id="newgameHeader" class="language" data-langhtml="_NEWGAMEHEADER_"></h1>
-                    <p id="newGameError" class="language" data-langhtml="_NEWGAMEERROR_"></p>
+            <div id="createGameWindow" class="window unselectable styledWindow">
+                <h1 id="newgameHeader" class="language" data-langhtml="_NEWGAMEHEADER_"><a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a></h1>
+                <div class="selectable">
+                    <p id="newGameError" class="language error" data-langhtml="_NEWGAMEERROR_"></p>
                     <form id="createGameForm" onsubmit="return false;">
                         <p>
-                            <input type="text" id="CGName" class="language validate" data-validationtype="name" data-langplaceholder="_NEWGAMENAME_" />
+                            <input type="text" id="CGName" class="language validate leftWindowInput" data-validationtype="name" data-langplaceholder="_NEWGAMENAME_" />
                             <label for="CGName" class="language" data-langhtml="_NEWGAMENAMEERROR_"></label>
                         </p>
                         <p>
-                            <textarea id="CGDesc" class="language" data-langplaceholder="_NEWGAMEDESCRIPTION_"></textarea>
+                            <textarea id="CGDesc" class="language leftWindowTextArea" data-langplaceholder="_NEWGAMEDESCRIPTION_"></textarea>
                         </p>
                         <p>
                             <input id="CGFreejoin" type="checkbox" />
@@ -263,14 +267,17 @@
                             <span class="language" data-langhtml="_NEWGAMEFREEJOINEXP_"></span>
                         </p>
                         <p id="createGameSubmitP">
-                            <input id="createGameSubmit" type="submit" class="language" data-langvalue="_SENDGAME_" />
+                            <input id="createGameSubmit" type="submit" class="language textButton" data-langvalue="_SENDGAME_" />
                         </p>
                     </form>
                 </div>
             </div>
-            <div id="gamesMyInvitesWindow" class="window selectable">
-                <div class="shadow">
-                    <h1 class="language" data-langhtml="_GAMESMYINVITESHEADER_"></h1>
+            <div id="gamesMyInvitesWindow" class="window selectable styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_GAMESMYINVITESHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
+                </h1>
+                <div>
                     <p class="language" data-langhtml="_GAMESMYINVITESEXPLAIN_"></p>
                     <p id="gamesMyInvitesIdentifier" class="language" data-langhtml="_GAMESMYINVITESMYIDENTIFIER_" data-langp="?#????" />
                     <div id="gamesMyInvitesList">
@@ -278,9 +285,12 @@
                     </div>
                 </div>
             </div>
-            <div id="gamesInviteWindow" class="window unselectable">
-                <div class="shadow">
-                    <h1 class="language" data-langhtml="_GAMESINVITEHEADER_"></h1>
+            <div id="gamesInviteWindow" class="window unselectable styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_GAMESINVITEHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
+                </h1>
+                <div>
                     <p class="language justify" data-langhtml="_GAMESINVITEEXPLAIN_"></p>
                     <p id="gamesInviteCurrentGame" class="language justify" data-langhtml="_GAMESINVITECURRENTGAME_" data-langp="????"></p>
                     <p id="inviteError401" class="language error selectable" data-langhtml="_GAMESINVITE401_"></p>
@@ -289,24 +299,26 @@
                     <p id="inviteSuccess200" class="language success selectable" data-langhtml="_GAMESINVITE200_"></p>
                     <p id="inviteErrorDef" class="language error selectable" data-langhtml="_GAMESINVITEDEF_"></p>
                     <form id="gamesInviteForm" onsubmit="return false;">
-                        <p><input id="gamesInviteInput" type="text" class="language" data-langplaceholder="_GAMESINVITEINPUT_" /></p>
-                        <p><textarea id="gamesInviteMessage" class="language" data-langplaceholder="_GAMESINVITEMESSAGE_"></textarea></p>
-                        <p><input id="gamesInviteSubmit" type="submit" class="language" data-langvalue="_GAMESINVITESUBMIT_" /></p>
+                        <p><input id="gamesInviteInput" type="text" class="language leftWindowInput" data-langplaceholder="_GAMESINVITEINPUT_" /></p>
+                        <p><textarea id="gamesInviteMessage" class="language leftWindowTextArea" data-langplaceholder="_GAMESINVITEMESSAGE_"></textarea></p>
+                        <p><input id="gamesInviteSubmit" type="submit" class="language textButton" data-langvalue="_GAMESINVITESUBMIT_" /></p>
                         <p><input id="gamesInviteKeepGoing" type="checkbox" /><label for="gamesInviteKeepGoing" class="language" data-langhtml="_GAMESINVITEKEEPGOING_"></label></p>
                     </form>
                 </div>
             </div>
-            <div id="gamesWindow" class="window selectable">
-                <div class="shadow">
-                    <h1 class="language" data-langhtml="_GAMESHEADER_"></h1>
-                    <p id="gamesNickInformant" class="language" data-langhtml="_GAMESNICK_" data-langp="????"></p>
-                    <p class="language" data-langhtml="_GAMESEXPLAIN1_"></p>
-                    <p class="language" data-langhtml="_GAMESEXPLAIN2_"></p>
-                    <p class="language" data-langhtml="_GAMESEXPLAIN3_"></p>
+            <div id="gamesWindow" class="window styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_GAMESHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
+                </h1>
+                <div class="singleton">
+                    <p id="gamesNickInformant" class="language selectable" data-langhtml="_GAMESNICK_" data-langp="????"></p>
+                    <p class="language selectable" data-langhtml="_GAMESEXPLAIN1_"></p>
+                    <p class="language selectable" data-langhtml="_GAMESEXPLAIN2_"></p>
+                    <p class="language selectable" data-langhtml="_GAMESEXPLAIN3_"></p>
                     <p id="gamesDeleteError" class="language error" data-langhtml="_GAMESDELETEERROR_"></p>
                     <p id="gamesLoadError" class="language error" data-langhtml="_GAMESLOADERROR_"></p>
-                    <p id="gamesWindowLoading"><a></a></p>
-                    <p><a id="gamesInviteListButton" class="language" data-langhtml="_GAMESMYINVITESBUTTON_"></a></p>
+                    <p><a id="gamesInviteListButton" class="language textLink" data-langhtml="_GAMESMYINVITESBUTTON_"></a></p>
                     <div id="gamesList">
                         <div id="gameID" class="gameDiv">
                             <a class="right button delete language" data-langtitle="_GAMESDELETE_"></a>
@@ -345,7 +357,7 @@
                             </div>
                         </div>
                     </div>
-                    <p id="gamesNewGameButton"><a class="language" data-langhtml="_GAMESNEWGAME_"></a></p>
+                    <p id="gamesNewGameButton"><a class="language textLink" data-langhtml="_GAMESNEWGAME_"></a></p>
                 </div>
             </div>
             <div id='changelogWindow' class='styledWindow window'>

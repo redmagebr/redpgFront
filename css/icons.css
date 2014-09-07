@@ -259,3 +259,18 @@
 div.styledWindow > h1 > a.closeWindow {
     background-image: url('../img/closeButton.png');
 }
+
+/* Games */
+#gamesList a.delete {
+    background-image: url('../img/games/buttonDelete.png');
+}
+#gamesList a.leave {
+    background-image: url('../img/games/buttonDelete.png');
+}
+#gamesList a.options {
+    background-image: url('../img/games/buttonOptions.png');
+}
+
+#gamesList a.permissions {
+    background-image: url('../img/games/buttonOptions.png');
+}
