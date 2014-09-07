@@ -216,7 +216,7 @@
                     <span class="language" data-langhtml="_NEWROOMHEADER_"></span>
                     <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
                 </h1>
-                <div>
+                <div class="singleton">
                     <p class="language" data-langhtml="_NEWROOMEXPLAIN_"></p>
                     <p id='CRCurrentGame' class="language" data-langhtml="_NEWROOMCURRENTGAME_" data-langp="??"></p>
                     <p id="newRoomError" class="language selectable" data-langhtml="_NEWROOMERROR_"></p>
@@ -251,7 +251,7 @@
             </div>
             <div id="createGameWindow" class="window unselectable styledWindow">
                 <h1 id="newgameHeader" class="language" data-langhtml="_NEWGAMEHEADER_"><a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a></h1>
-                <div class="selectable">
+                <div class="selectable singleton">
                     <p id="newGameError" class="language error" data-langhtml="_NEWGAMEERROR_"></p>
                     <form id="createGameForm" onsubmit="return false;">
                         <p>
@@ -277,7 +277,7 @@
                     <span class="language" data-langhtml="_GAMESMYINVITESHEADER_"></span>
                     <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
                 </h1>
-                <div>
+                <div class="singleton">
                     <p class="language" data-langhtml="_GAMESMYINVITESEXPLAIN_"></p>
                     <p id="gamesMyInvitesIdentifier" class="language" data-langhtml="_GAMESMYINVITESMYIDENTIFIER_" data-langp="?#????" />
                     <div id="gamesMyInvitesList">
@@ -290,7 +290,7 @@
                     <span class="language" data-langhtml="_GAMESINVITEHEADER_"></span>
                     <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
                 </h1>
-                <div>
+                <div class="singleton">
                     <p class="language justify" data-langhtml="_GAMESINVITEEXPLAIN_"></p>
                     <p id="gamesInviteCurrentGame" class="language justify" data-langhtml="_GAMESINVITECURRENTGAME_" data-langp="????"></p>
                     <p id="inviteError401" class="language error selectable" data-langhtml="_GAMESINVITE401_"></p>

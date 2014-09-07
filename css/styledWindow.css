@@ -30,8 +30,6 @@ div.styledWindow > div {
     margin-bottom: 20px;
     display: block;
     background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 div.styledWindow > div.singleton {
