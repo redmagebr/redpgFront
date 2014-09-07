@@ -5,15 +5,13 @@ div.styledWindow {
     max-height: 100%;
 }
 
-#leftWindow > div.styledWindow > h1, #leftWindow > div.styledWindow > div {
-    margin-left: 1.5%;
-}
-
 div.styledWindow > h1 {
     display: block;
     height: 30px;
-    width: 98.5%;
+    width: 96%;
     margin: 0px;
+    margin-left: 2%;
+    margin-right: 2%;
     margin-top: 10px;
     background-color: #333745;
     color: #fff;
@@ -25,8 +23,10 @@ div.styledWindow > h1 {
 }
 
 div.styledWindow > div {
-    width: 98.5%;
+    width: 96%;
     margin: 0px;
+    margin-left: 2%;
+    margin-right: 2%;
     margin-bottom: 20px;
     display: block;
     background-color: white;

@@ -236,20 +236,20 @@ function UI () {
             this.$rightHandler.css('right', '-100px');
             var available = this.lastWidth - 720;
             if (available <= 600) {
-                this.$leftWindow.css('right', '740px');
+                this.$leftWindow.css('right', '720px');
                 this.$rightWindow.css('width', '720px');
             } else {
                 available -= 600;
                 var right = 720 + (available / 2);
                 right = parseInt (right);
                 /* Right - Margin center - avatar buttons - margin left - margin right of window */
-                var avatarRoom = this.lastWidth - right - 20 - 60 - 10 - 10 - 8;
+                var avatarRoom = this.lastWidth - right - 60 - 10 - 10 - 8;
                 var avatarAmount = 1;
                 var avatarSize = 90;
                 while (avatarAmount * avatarSize <= avatarRoom) { avatarAmount++; }
                 var giveBack = avatarRoom - (--avatarAmount * avatarSize);
                 right += giveBack;
-                this.$leftWindow.css('right', (right + 20) + 'px');
+                this.$leftWindow.css('right', (right) + 'px');
                 this.$rightWindow.css('width', right + 'px');
             }
         }
