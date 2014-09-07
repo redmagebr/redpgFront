@@ -234,13 +234,13 @@ function UI () {
             this.$pictureContainer.removeClass('fullScreen');
             this.$leftHandler.css('left', '-100px');
             this.$rightHandler.css('right', '-100px');
-            var available = this.lastWidth - 750;
+            var available = this.lastWidth - 720;
             if (available <= 600) {
-                this.$leftWindow.css('right', '750px');
-                this.$rightWindow.css('width', '730px');
+                this.$leftWindow.css('right', '740px');
+                this.$rightWindow.css('width', '720px');
             } else {
                 available -= 600;
-                var right = 730 + (available / 2);
+                var right = 720 + (available / 2);
                 right = parseInt (right);
                 this.$leftWindow.css('right', (right + 20) + 'px');
                 this.$rightWindow.css('width', right + 'px');
