@@ -5,6 +5,7 @@ window.lingo['pt_br'] = {
     
     _LEAVING_ : 'Tem certeza que deseja sair?',
     _CONFIRMLOGOUT_ : 'Tem certeza que deseja fazer logout?',
+    _GOFULL_ : 'Utilizar o aplicativo em tela cheia?',
     
     /* Home */
     _HOMETITLE_ : 'RedPG',
