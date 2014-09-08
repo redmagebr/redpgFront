@@ -77,16 +77,13 @@ function Game () {
             window.app.sheetdb.updateFromJSON(json.sheets);
             
             if (this.sheets.length > 0) {
-                var sortFunction = window.app.emulateBind(function (a, b) {
-                    var oa = this.sheetdb.getSheet(a);
-                    var ob = this.sheetdb.getSheet(b);
-                    if (oa.name < ob.name)
-                        return -1;
-                    if (oa.name > ob.name)
-                        return 1;
+                this.sheets.sort(function (a,b) {
+                    var na = window.app.sheetdb.getSheet(a).name.toUpperCase();
+                    var nb = window.app.sheetdb.getSheet(b).name.toUpperCase();
+                    if (na < nb) return -1;
+                    if (na > nb) return 1;
                     return 0;
-                }, {sheetdb : window.app.sheetdb});
-                this.sheets.sort(sortFunction);
+                });
             }
         }
     };

@@ -7,6 +7,9 @@ function SheetUI() {
     
     this.controller = new SheetController();
     
+    this.creating = 0;
+    this.currentFolder = -1;
+    
     this.init = function () {
         this.$openBt = $('#callSheetsWindowBt');
         this.$error = $('#sheetListLoadError').hide();
@@ -36,7 +39,8 @@ function SheetUI() {
     this.$createFolder = function (name) {
         var folder = {
             $p : $('<p class="folder" />'),
-            $div : $('<div class="folder" />')
+            $div : $('<div class="folder" />'),
+            name : name
         };
         
         folder.$p.append("<a class='icon folderIcon'></a>");
@@ -171,6 +175,9 @@ function SheetUI() {
                 for (k = 0; k < folderList.length; k++) {
                     $div.append(folders[folderList[k]].$p);
                     $div.append(folders[folderList[k]].$div);
+                    if (folders[folderList[k]].name === this.currentFolder) {
+                        folders[folderList[k]].$p.addClass("open");
+                    }
                 }
             }
             
@@ -210,6 +217,9 @@ function SheetUI() {
             window.app.ui.unblockRight();
             window.app.ui.sheetui.$error.show();
         };
+        
+        this.creating = gameid;
+        this.currentFolder = window.app.sheetdb.getSheet(sheetid).folder;
         
         window.app.sheetapp.sendFolder(sheetid, folder, cbs, cbe);
     };
