@@ -33,6 +33,27 @@ function SheetUI() {
         });
     };
     
+    this.$createFolder = function (name) {
+        var folder = {
+            $p : $('<p class="folder" />'),
+            $div : $('<div class="folder" />')
+        };
+        
+        folder.$p.append("<a class='icon folderIcon'></a>");
+        
+        if (name === '') {
+            folder.$p.append("<span class='language' data-langhtml='_SHEETSNOFOLDER_'></span>");
+        } else {
+            folder.$p.append($('<span />').text(name));
+        }
+        
+        folder.$p.on('click', function () {
+            $(this).toggleClass('open');
+        });
+        
+        return folder;
+    };
+    
     this.callSelf = function () {
         window.app.ui.callRightWindow('sheetListWindow');
         window.app.ui.blockRight();
@@ -47,115 +68,127 @@ function SheetUI() {
         };
         
         var cbs = function (data) {
-            window.app.ui.sheetui.fillList(data);
             window.app.ui.unblockRight();
             window.app.ui.sheetui.$error.finish().fadeOut();
             window.app.ui.sheetui.$list.show();
             window.app.ui.sheetui.controller.$viewer.trigger('loadedSheet');
+            window.app.ui.sheetui.fillList(data);
         };
 
         window.app.sheetapp.callList(cbs, cbe);
     };
     
-    this.fillList = function (data) {
-        //this.$list.text(JSON.stringify(data[0]));
-        console.log(data);
-        this.$list.empty();
-        
+    this.fillList = function () {
         var $div;
         var $h1;
         var $p;
         var $del;
+        var $fold;
         var $priv;
         var $safe;
         var $name;
-        data.sort(function (a, b) {
-            var nomea = a.name.toUpperCase();
-            var nomeb = b.name.toUpperCase();
-            if (nomea < nomeb) {
-                return -1;
-            }
-            if (nomea > nomeb) {
-                return 1;
-            }
-            return 0;
-        });
-        for (var i = 0; i < data.length; i++) {
+        var gameList = window.app.gamedb.gamelist;
+        var game = window.app.gamedb.getGame(10);
+        var sheet = window.app.sheetdb.getSheet(10);
+        var folders;
+        var folderList;
+        var k;
+        this.$list.empty();
+        for (var i = 0; i < gameList.length; i++) {
+            game = window.app.gamedb.getGame(gameList[i]);
             $div = $('<div />');
-            $h1 = $("<h1 onclick='$(this).parent().toggleClass(\"open\");' class='language' data-langtitle='_SHEETSGAMETITLE_' />").text(data[i]["name"]);
+            $h1 = $("<h2 onclick='$(this).parent().toggleClass(\"open\");' class='language' data-langtitle='_SHEETSGAMETITLE_' />").text(game.name);
             $div.append($h1);
             
-            if (data[i].id === this.creating) {
+            if (game.id === this.creating) {
                 $div.addClass("open");
             }
             
-            data[i].sheets.sort(function (a, b) {
-                var nomea = a.nome.toUpperCase();
-                var nomeb = b.nome.toUpperCase();
-                if (nomea < nomeb) {
-                    return -1;
-                }
-                if (nomea > nomeb) {
-                    return 1;
-                }
-                return 0;
-            });
+            folders = {};
+            folderList = [];
             
-            for (var j = 0; j < data[i].sheets.length; j++) {
-                $p = $('<p />');
+            for (var j = 0; j < game.sheets.length; j++) {
+                sheet = window.app.sheetdb.getSheet(game.sheets[j]);
+                $p = $('<p class="sheet" />');
                 $div.append($p);
                 
-                if (data[i].sheets[j]['deletar'] || data[i].deleteSheet) {
-                    $del = $("<a class='floatRight textButton language' data-langhtml='_SHEETSDELETE_'>Deletar</a>");
+                if (sheet.deletar || game.deleteSheet) {
+                    $del = $("<a class='floatRight textButton language' data-langhtml='_SHEETSDELETE_' />");
                     $del.on('click', window.app.emulateBind(function () {
-                        window.app.ui.sheetui.callDelete(this.id, this.nome, this.gameid);
-                    }, {id : data[i].sheets[j]['id'], nome : data[i].sheets[j]['nome'], gameid : data[i].id}));
+                        window.app.ui.sheetui.callDelete(this.id, this.name, this.gameid);
+                    }, {id : sheet.id, name : sheet.name, gameid : game.id}));
                     $p.append($del);
                 }
                 
-                if (data[i].sheets[j]['promote'] || data[i].promote) {
+                if (sheet.promote || game.promote) {
                     $priv = $("<a class='floatRight textButton language' data-langhtml='_SHEETSPRIVILEGES_'>Permissoes</a>");
                     $priv.on('click', window.app.emulateBind(function () {
                         window.app.ui.sheetui.callPrivileges(this.id, this.name, this.gameid);
-                    }, {id : data[i].sheets[j]['id'], name : data[i].sheets[j]['nome'], gameid : data[i].id}));
+                    }, {id : sheet.id, name : sheet.name, gameid : game.id}));
                     $p.append($priv);
                 }
                 
-                if (data[i].sheets[j].segura) {
-                    $safe = $("<a class='safeIcon language' data-langtitle='_SHEETSAFE_'></a>");
+                if (sheet.editable || game.editSheet) {
+                    $fold = $('<a class="floatRight textButton language" data-langhtml="_SHEETSSETFOLDER_" />');
+                    $fold.on("click", window.app.emulateBind(function () {
+                        window.app.ui.sheetui.changeFolder(this.id, this.name, this.gameid);
+                    }, {id : sheet.id, name : sheet.name, gameid : game.id}));
+                    $p.append($fold);
+                }
+                
+                if (sheet.segura) {
+                    $safe = $("<a class='safeIcon icon language' data-langtitle='_SHEETSAFE_'></a>");
                 } else {
-                    $safe = $("<a class='unsafeIcon language' data-langtitle='_SHEETUNSAFE_'></a>");
+                    $safe = $("<a class='unsafeIcon icon language' data-langtitle='_SHEETUNSAFE_'></a>");
                 }
                 $p.append($safe);
                 
-                $name = $("<a class='sheetName language' data-langtitle='_SHEETSNAMETITLE_' />").text(data[i].sheets[j]["nome"]);
+                $name = $("<a class='sheetName language' data-langtitle='_SHEETSNAMETITLE_' />").text(sheet.name);
                 $name.on('click', window.app.emulateBind(function () {
                     window.app.ui.sheetui.creating = this.gameid;
                     window.app.ui.sheetui.openSheet(this.id, this.idstyle, this.gameid);
-                }, {id : data[i].sheets[j]['id'], idstyle : data[i].sheets[j]['idstyle'], gameid : data[i].id}));
+                }, {id : sheet.id, idstyle : sheet.system, gameid : game.id}));
                 $p.append($name);
+                
+                if (folders[sheet.folder] === undefined) {
+                    folders[sheet.folder] = this.$createFolder(sheet.folder);
+                    folderList.push(sheet.folder);
+                }
+                folders[sheet.folder].$div.append($p);
             }
             
-            if (data[i].sheets.length === 0) {
+            if (game.sheets.length === 0) {
                 $p = $('<p class="language" data-langhtml="_SHEETSNOSHEETS_" />');
                 $div.append($p);
+            } else {
+                folderList.sort(function (a, b) {
+                    a = a.toUpperCase();
+                    b = b.toUpperCase();
+                    if (a < b) return -1;
+                    if (a > b) return 1;
+                    return 0;
+                });
+                for (k = 0; k < folderList.length; k++) {
+                    $div.append(folders[folderList[k]].$p);
+                    $div.append(folders[folderList[k]].$div);
+                }
             }
             
-            if (data[i].createSheet) {
-                $p = $("<p />");
-                $name = $("<a class='sheetName language' data-langhtml='_SHEETSADD_' />");
+            if (game.createSheet) {
+                $p = $("<p class='createP' />");
+                $name = $("<a class='textLink language' data-langhtml='_SHEETSADD_' />");
                 $p.append($name);
                 
                 $name.on('click', window.app.emulateBind(function () {
                     window.app.ui.sheetui.callCreation(this.id, this.gamename);
-                }, {id : data[i].id, gamename : data[i]["nome"]}));
+                }, {id : game.id, gamename : game.name}));
 
                 $div.append($p);
             }
             
             this.$list.append($div);
         }
-        if (data.length === 0) {
+        if (gameList.length === 0) {
             $p = $("<p class='language' data-langhtml='_SHEETSNOGAMES_' />");
             this.$list.append($p);
         }
@@ -163,6 +196,22 @@ function SheetUI() {
         window.app.ui.language.applyLanguageOn(this.$list);
         
         this.creating = 0;
+    };
+    
+    this.changeFolder = function (sheetid, name, gameid) {
+        var folder = window.prompt(window.app.ui.language.getLingoOn("_SHEETCHANGEFOLDER_", name));
+        window.app.ui.blockRight();
+        var cbs = function () {
+            window.app.ui.sheetui.callSelf();
+            window.app.ui.unblockRight();
+        };
+        
+        var cbe = function () {
+            window.app.ui.unblockRight();
+            window.app.ui.sheetui.$error.show();
+        };
+        
+        window.app.sheetapp.sendFolder(sheetid, folder, cbs, cbe);
     };
     
     this.callDelete = function (sheetid, nome, gameid) {

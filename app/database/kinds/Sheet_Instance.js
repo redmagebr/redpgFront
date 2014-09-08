@@ -1,6 +1,8 @@
 function Sheet_Instance () {
     this.gameid;
     
+    this.folder = '';
+    
     this.id;
     this.criador;
     this.system;
@@ -10,6 +12,7 @@ function Sheet_Instance () {
     this.visualizar;
     this.editable;
     this.deletar;
+    this.promote;
     
     this.name;
     this.values = null;
@@ -24,7 +27,7 @@ function Sheet_Instance () {
         console.log("Updating Sheet from JSON");
         console.log(json);
         
-        var attributes = ['id', 'criador', 'segura', 'publica', 'visualizar', 'deletar', 'values', 'gameid'];
+        var attributes = ['folder', 'id', 'criador', 'segura', 'publica', 'visualizar', 'deletar', 'values', 'gameid', 'promote'];
         for (var i = 0; i < attributes.length; i++) {
             if (typeof json[attributes[i]] !== 'undefined') {
                 this[attributes[i]] = json[attributes[i]];

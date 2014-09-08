@@ -69,38 +69,6 @@
     margin: 0px;
 }
 
-#saveButton {
-    background-image: url('../img/sheet/iconSave2.png');
-}
-
-#editButton {
-    background-image: url('../img/sheet/iconEdit2.png');
-}
-
-#exportButton {
-    background-image: url('../img/sheet/iconOutbox2.png');
-}
-
-#importButton {
-    background-image: url('../img/sheet/iconInbox2.png');
-}
-
-#automaticButton {
-    background-image: url('../img/sheet/iconAutomatic2.png');
-}
-
-#closeButton {
-    background-image: url('../img/sheet/iconClose2.png');
-}
-
-#reloadButton {
-    background-image: url('../img/sheet/iconReload2.png');
-}
-
-#fullReloadButton {
-    background-image: url('../img/sheet/iconFullReload2.png');
-}
-
 #sheetListContainer {
     position: absolute;
     right: 6px;

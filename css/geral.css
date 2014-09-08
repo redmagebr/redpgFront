@@ -394,3 +394,12 @@ body {
     text-align: justify;
     font-family: alegreya;
 }
+
+/* Geral */
+.floatRight {
+    float: right;
+}
+
+.floatLeft {
+    float: left;
+}

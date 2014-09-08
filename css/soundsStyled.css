@@ -1,0 +1,81 @@
+#soundList > div.folder > div.folderSounds {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#soundList > div.folder > div.folderSounds > span {
+    min-width: 150px;
+    display: inline-block;
+}
+
+#soundList > div.folder > div.folderTitle {
+    position: relative;
+}
+
+#soundList > div.folder > div.folderTitle:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+}
+
+#soundList > div.folder > div.folderTitle > a {
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+#soundList > div.folder > div.folderTitle > a.melded {
+    background-position: left top;
+}
+
+#soundList > div.folder > div.folderTitle:hover > a.melded {
+    background-position: right top;
+}
+
+#soundList > div.folder > div.folderTitle:active > a.melded {
+    background-position: left center;
+}
+
+#soundList > div.folder > div.folderTitle.toggled > a.melded {
+    background-position: right center;
+}
+
+#soundList > div.folder > div.folderTitle.toggled:hover > a.melded {
+    background-position: left bottom;
+}
+
+#soundList > div.folder > div.folderTitle.toggled:active > a.melded {
+    background-position: right bottom;
+}
+
+#soundList > div.folder > div.folderTitle > a.left {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#soundList > div.folder > div.folderTitle > a.right {
+    float: right;
+    margin-right: 10px;
+}
+
+#soundList > div.folder > div.folderTitle > p {
+    line-height: 30px;
+    font-size: 1.1em;
+}
+
+#soundList > div.folder > div.folderTitle + div.folderSounds {
+    display: none;
+}
+
+#soundList > div.folder > div.folderTitle.toggled + div.folderSounds {
+    display: block;
+}
+
+#soundLinkForm, #soundLinkDropbox, #soundsMethodForm {
+    text-align: center;
+}
+
+#soundDropbox {
+    width: 500px;
+    height: 100px;
+}

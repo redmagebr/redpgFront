@@ -43,6 +43,17 @@ function SheetApp () {
         });
     };
     
+    this.sendFolder = function (sheetid, folder, cbs, cbe) {
+        var ajax = new AjaxController();
+        
+        ajax.requestPage({
+            url : 'Sheet',
+            data : {id : sheetid, folder : folder, action : 'folder'},
+            success: cbs,
+            error: cbe
+        });
+    }
+    
     
     
     

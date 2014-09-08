@@ -9,7 +9,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/sounds.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/soundsStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/alert.css">
@@ -18,13 +18,13 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/chat.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/sheet.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/navigator.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/dicePanel.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/sheetStyled.css">
             <!--
             <link rel="stylesheet" type="text/css" media="all" href="css/gamesinvites.css">
             -->
@@ -685,9 +685,12 @@
                 </div>
             </div>
             
-            <div id='sheetListWindow' class="window">
-                <div class="shadow">
-                    <h1 class="language" data-langhtml="_SHEETSHEADER_"></h1>
+            <div id='sheetListWindow' class="window styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_SHEETSHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeRightWindow();"></a>
+                </h1>
+                <div class="singleton">
                     <p class="language" data-langhtml="_SHEETSEXPLAIN_"></p>
                     <p class="language" data-langhtml="_SHEETSEXPLAIN2_"></p>
                     <p class="language" data-langhtml="_SHEETSEXPLAIN3_"></p>
@@ -757,6 +760,7 @@
                     <a id="exportButton" class="language button" data-langtitle="_SHEETEXPORT_"></a>
                     <a id="automaticButton" class="language button" data-langtitle="_SHEETAUTO_"></a>
                     <a id="closeButton" class="language button" data-langtitle="_SHEETCLOSE_"></a>
+                    <a id="closeWindowButton" onclick="window.app.ui.closeRightWindow();" class="language button" data-langtitle="_SHEETHIDEWINDOW_"></a>
                 </div>
             </div>
             
@@ -785,15 +789,15 @@
                     <p class="language" data-langhtml="_IMAGESEXPLAIN2_"></p>
                 </div>
             </div>
-            <div id="soundWindow" class="window">
-                <div class="shadow">
-                    <h1 class="language" data-langhtml="_SOUNDSHEADER_"></h1>
+            <div id="soundWindow" class="window styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_SOUNDSHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeRightWindow();"></a>
+                </h1>
+                <div class="singleton">
                     <p class="language" data-langhtml="_SOUNDSEXPLAIN_"></p>
                     <p class="language" data-langhtml="_SOUNDSEXPLAIN2_"></p>
                     <div id="soundList">
-                        
-                        
-                        
                         <div class="folder">
                             <div class="folderTitle">
                                 <a class="left melded openIcon"></a>
@@ -818,7 +822,7 @@
                     
                     <p class='centered'><a id='soundSaveButton' class='textButton language' data-langhtml='_SOUNDSSAVESOUNDS_'></a></p>
                     
-                    <h1 class='language' data-langhtml='_SOUNDSNEWSOUNDS_'></h1>
+                    <h2 class='language centered' data-langhtml='_SOUNDSNEWSOUNDS_'></h2>
                     
                     
                     <p id='soundFolderError' class='language' data-langhtml='_SOUNDFOLDERERROR_'></p>

@@ -274,3 +274,78 @@ div.styledWindow > h1 > a.closeWindow {
 #gamesList a.permissions {
     background-image: url('../img/games/buttonOptions.png');
 }
+
+
+/* Sheets */
+#sheetListDiv .safeIcon {
+    background-image: url('../img/sheet/sistemaSafe.png');
+}
+
+#sheetListDiv .unsafeIcon {
+    background-image: url('../img/sheet/sistemaUnsafe.png');
+}
+
+#sheetListDiv > div.open > p.folder > a.icon {
+    background-image: url('../img/sheet/iconFolder.png');
+    background-position: left;
+}
+
+#sheetListDiv > div.open > p.folder.open > a.icon {
+    background-position: right;
+}
+
+/* Sounds */
+
+#soundList > div.folder > div.folderTitle > a.openIcon {
+    background-image: url('../img/sounds/openButton.png');
+}
+
+#soundList > div.folder > div.folderTitle > a.upIcon {
+    background-image: url('../img/sounds/upButton.png');
+}
+
+#soundList > div.folder > div.folderTitle > a.downIcon {
+    background-image: url('../img/sounds/downButton.png');
+}
+
+#soundList > div.folder > div.folderTitle > a.delIcon {
+    background-image: url('../img/sounds/deleteButton.png');
+}
+
+
+/* Sheets */
+#closeWindowButton {
+    background-image: url('../img/sheet/iconHideWindow.png');
+}
+
+#saveButton {
+    background-image: url('../img/sheet/iconSave2.png');
+}
+
+#editButton {
+    background-image: url('../img/sheet/iconEdit2.png');
+}
+
+#exportButton {
+    background-image: url('../img/sheet/iconOutbox2.png');
+}
+
+#importButton {
+    background-image: url('../img/sheet/iconInbox2.png');
+}
+
+#automaticButton {
+    background-image: url('../img/sheet/iconAutomatic2.png');
+}
+
+#closeButton {
+    background-image: url('../img/sheet/iconClose2.png');
+}
+
+#reloadButton {
+    background-image: url('../img/sheet/iconReload2.png');
+}
+
+#fullReloadButton {
+    background-image: url('../img/sheet/iconFullReload2.png');
+}

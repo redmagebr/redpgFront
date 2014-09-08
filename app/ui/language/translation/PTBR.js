@@ -68,6 +68,9 @@ window.lingo['pt_br'] = {
     _SHEETSEXPLAIN2_ : 'Normalmente são usadas para guardar as informações de personagens, mas têm o potencial para guardar qualquer tipo de informação.',
     _SHEETSEXPLAIN3_ : 'Cada ficha utiliza um "Estilo", que define a aparência dela e os valores que ela precisa guardar. Como alguns estilos não são criados por um administrador, tome cuidado ao abrir fichas que utilizem estilos criados por alguém em quem você não confia. Apenas os estilos criados por um administrador são considerados seguros.',
     _SHEETSERROR_ : 'Houve um erro no processamento. Tente novamente.',
+    _SHEETSNOFOLDER_ : 'Sem pasta',
+    _SHEETSSETFOLDER_ : 'Pasta',
+    _SHEETCHANGEFOLDER_ : 'Nova pasta para "%p":',
 
     _SHEETSDELETE_ : 'Deletar',
     _SHEETSPRIVILEGES_ : 'Permissões',
@@ -101,6 +104,7 @@ window.lingo['pt_br'] = {
     _SHEETEXPORT_ : 'Exportar JSON com Valores',
     _SHEETAUTO_ : 'Atualizar Automaticamente (Não implementado)',
     _SHEETCLOSE_ : 'Fechar a ficha (Mudanças não salvas serão perdidas)',
+    _SHEETHIDEWINDOW_ : 'Esconder a Janela',
     _SHEETIMPORTEXPLAIN_ : 'Cole aqui o código JSON da ficha que deseja importar.',
     _SHEETIMPORTSEND_ : 'Assumir nova forma',
     _SHEETEXPORTEXPLAIN_ : 'Código JSON dos valores da ficha',
@@ -164,8 +168,8 @@ window.lingo['pt_br'] = {
     _MODULES_ : 'Addons',
 
     _HIDERIGHTWINDOWS_ : 'Esconder Janelas',
-    _SHEETS_ : 'Listar Fichas',
-    _SHEET_ : 'Fichas',
+    _SHEETS_ : 'Lista de Fichas',
+    _SHEET_ : 'Fichas Abertas',
     _STYLES_ : 'Estilos',
     _MYACCOUNT_ : 'Minha Conta',
     _RULES_ : 'Regras DFS',
