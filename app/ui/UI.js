@@ -250,6 +250,7 @@ function UI () {
             if (available <= 636) {
                 this.$leftWindow.css('right', '720px');
                 this.$rightWindow.css('width', '720px');
+                this.$pictureContainer.css("width", "720px");
             } else {
                 var avatarSize = 90;
                 available -= 636;
@@ -268,6 +269,7 @@ function UI () {
                 right += giveBack;
                 this.$leftWindow.css('right', (right) + 'px');
                 this.$rightWindow.css('width', right + 'px');
+                this.$pictureContainer.css("width", (right - 10) + "px");
             }
         }
     };
