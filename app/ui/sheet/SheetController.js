@@ -187,13 +187,11 @@ function SheetController () {
         var oldInstance = this.currentInstance;
         this.currentInstance = sheetid;
         
+        if (window.app.sheetdb.getSheet(oldInstance) !== null) {
+            window.app.sheetdb.getSheet(oldInstance).values = this.styles[this.currentStyle].getObject();
+        }
+        
         if (typeof this.styles[styleid] === 'undefined') {
-            console.log("CREATING STYLE");
-            console.log("CREATING STYLE");
-            console.log("CREATING STYLE");
-            console.log("CREATING STYLE");
-            console.log("CREATING STYLE");
-            console.log("CREATING STYLE");
             var lesheet = window.app.sheetdb.getSheet(sheetid);
             var lestyle = window.app.styledb.getStyle(styleid);
             this.styles[styleid] = new Style (lesheet, lestyle);
@@ -216,11 +214,9 @@ function SheetController () {
                 window.app.ui.sheetui.controller.considerChanged();
             });
         } else {
-            if (window.app.sheetdb.getSheet(oldInstance) !== null) {
-                window.app.sheetdb.getSheet(oldInstance).values = this.styles[this.currentStyle].getObject();
-            }
             this.styles[styleid].switchInstance(window.app.sheetdb.getSheet(sheetid));
         }
+        
         
         if (this.currentStyle !== styleid) {
             this.$css.detach();
