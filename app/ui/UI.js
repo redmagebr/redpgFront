@@ -247,17 +247,22 @@ function UI () {
             this.$leftHandler.css('left', '-100px');
             this.$rightHandler.css('right', '-100px');
             var available = this.lastWidth - 720;
-            if (available <= 600) {
+            if (available <= 636) {
                 this.$leftWindow.css('right', '720px');
                 this.$rightWindow.css('width', '720px');
             } else {
-                available -= 600;
-                var right = 720 + (available / 2);
+                var avatarSize = 90;
+                available -= 636;
+                var right = 720;
+                if (available > (avatarSize * 3)) {
+                    right += available/2;
+                } else if (available > (avatarSize * 2)) {
+                    right += available/4;
+                }
                 right = parseInt (right);
                 /* Right - Margin center - avatar buttons - margin left - margin right of window */
                 var avatarRoom = this.lastWidth - right - 60 - 10 - 10 - 8;
                 var avatarAmount = 1;
-                var avatarSize = 90;
                 while (avatarAmount * avatarSize <= avatarRoom) { avatarAmount++; }
                 var giveBack = avatarRoom - (--avatarAmount * avatarSize);
                 right += giveBack;
