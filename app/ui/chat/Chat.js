@@ -195,7 +195,7 @@ function Chat () {
             var $this = $(this);
             var scrolled = this.scrollTop + $this.height();
             scrolled = this.scrollHeight - scrolled;
-            if (scrolled > 0) {
+            if (scrolled > 2) {
                 window.app.ui.chat.notAtBottom();
             } else {
                 window.app.ui.chat.atBottom();
