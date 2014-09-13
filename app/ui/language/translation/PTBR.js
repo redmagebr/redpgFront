@@ -20,7 +20,10 @@ window.lingo['pt_br'] = {
     _HOMEFRONTGITHUBBALLEXPLAIN_ : 'O mesmo do de cima, mas como um link direto ao download.',
     _HOMESERVERGITHUBEXPLAIN_ : 'Código-fonte do servidor RedPG. Pessoas interessadas em ver como o código funciona podem acessá-lo por ali.',
     _HOMEDBEXPLAIN_ : 'Dump do banco de dados do servidor RedPG, necessário para executar o servidor RedPG. Indisponível no momento.',
-    
+    _HOMERULESNAVIGATION_ : 'Regras DFS',
+    _HOMERULESNAVIGATIONEXPLAIN_ : 'Navegar no site de regras para o Dragon Fantasy Saga.',
+    _HOMERULESGITHUB_ : 'Regras DFS (Offline)',
+    _HOMERULESGITHUBEXPLAIN_ : 'Versão Offline do site de regras para o Dragon Fantasy Saga.',
     
     /* Images */
     
