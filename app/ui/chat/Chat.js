@@ -51,6 +51,7 @@ function Chat () {
      */
     this.fontSize = 0.95;
     this.alwaysBottom = true;
+    this.powerBottom;
     
     this.updateConfig = function () {
         this.fontSize = window.app.configdb.get('chatfontsize', 0.95);
@@ -419,6 +420,7 @@ function Chat () {
     
     this.notAtBottom = function () {
         if (this.animating) return;
+        if (this.powerBottom) return this.atBottom();
         this.alwaysBottom = false;
         this.$chatscrolltobottom.stop(true, true).fadeIn(200);
     };
@@ -430,7 +432,7 @@ function Chat () {
     };
     
     this.considerBottoming = function () {
-        if (this.alwaysBottom) {
+        if (this.alwaysBottom || this.powerBottom) {
             this.scrollToBottom(true);
         }
     };

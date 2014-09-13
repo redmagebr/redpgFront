@@ -256,6 +256,9 @@ window.lingo['pt_br'] = {
     _PCFAVATAR_ : 'Avatar (Link)',
     _PCFHIDE_ : 'Não revelar persona',
     _PCFSEND_ : 'Criar a persona',
+    
+    _POWERBOTTON_ : 'O chat ficará em baixo não importa o que aconteça.',
+    _POWERBOTTOFF_ : "Comportamento do scorll automático retornado ao padrão.",
 
     _HASCONNECTED_ : '%p se conectou.',
     _HASDISCONNECTED_ : '%p se desconectou.',
