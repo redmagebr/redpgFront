@@ -40,6 +40,8 @@ function UI () {
     
     this.navigator = new Navigator();
     
+    this.addonui = new AddonUI();
+    
     /**
      * Only call element once.
      */

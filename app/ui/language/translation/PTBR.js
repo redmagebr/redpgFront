@@ -476,7 +476,17 @@ window.lingo['pt_br'] = {
     /* Language Tracker */
     _LANGUAGETRACKER_ : 'Gerenciador de Línguas',
     _LANGUAGETRACKERMINIMIZE_ : 'Minimizar',
-    _LANGUAGETRACKERNOPLAYERS_ : 'Sem jogadores para mostrar.'
+    _LANGUAGETRACKERNOPLAYERS_ : 'Sem jogadores para mostrar.',
+    
+    /* Addon Box */
+    _ADDONBOXLOADING_ : 'Carregando...',
+    _ADDONBOXLOADINGEXPLAIN_ : "Lista de addons está sendo carregada.",
+    _ADDONBOXLOADINGERROR_ : "Erro ao carregar addons",
+    _ADDONBOXLOADINGERROREXPLAIN_ : "Não foi possível carregar a lista de addons.",
+    _ADDONBOXLOADEDERROR_ : 'Erro',
+    _ADDONBOXLOADEDERROREXPLAIN_ : 'Lista de addons foi carregada, mas é inválida.',
+    _ADDONBOXNOTFOUND_ : 'Desconhecido',
+    _ADDONBOXNOTFOUNDEXPLAIN_ : 'Esse addon não foi encontrado.'
     
     
 };

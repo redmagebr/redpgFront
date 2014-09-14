@@ -17,6 +17,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/chat.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/addonBox.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/navigatorStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
@@ -139,6 +140,19 @@
             -->
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
             <a id='openHitbox' onclick="window.app.ui.openHitbox();" class="button"><span class="language" data-langhtml="_OPENTHITBOX_"></span></a>
+        </div>
+        
+        <div id="addonBox">
+            <h1 id="addonBoxHandle">
+                <img id="addonBoxIcon" src="http://rules.redpg.com.br/img/icon/All%20I%20have.png" />
+                All I have
+            </h1>
+            <ul id="addonBoxUL">
+                <li>Aumenta o custo da técnica em 1 MP.</li>
+                <li>Quando essa técnica é utilizada, pague um múltiplo de 5 como um custo extra de MP. Esse custo extra não pode ser reduzido de nenhuma maneira. Você não pode escolher custos extras que fossem te deixar com MP inferior a -10.</li>
+                <li>Para cada 5 MPs pagos dessa maneira, aumente o dano do ataque em +1.</li>
+                <li>O gasto extra de MP acontece junto da ação de iniciar o ataque, antes do oponente escolher uma defesa.</li>
+            </ul>
         </div>
         
         <div id="languageTracker">
@@ -876,6 +890,7 @@
             <script src="app/program/LoginApp.js"></script>
             <script src="app/program/GameApp.js"></script>
             <script src="app/program/ChatApp.js"></script>
+            <script src="app/program/AddonApp.js"></script>
             <script src="app/program/ChatWsApp.js"></script>
             <script src="app/program/RoomApp.js"></script>
             <script src="app/program/Memory.js"></script>
@@ -900,6 +915,7 @@
             <script src="app/ui/language/Language.js"></script>
             <script src="app/ui/language/translation/PTBR.js"></script>
             <script src="app/ui/UI.js"></script>
+            <script src="app/ui/addon/AddonUI.js"></script>
             <script src="app/ui/sounds/SoundUI.js"></script>
             <script src="app/ui/images/ImageUI.js"></script>
             <script src="app/ui/youtube/YoutubeUI.js"></script>

@@ -30,7 +30,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 29, 0];
+    this.version = [0, 30, 0];
     
     /**
      * Databases
@@ -52,6 +52,7 @@ function Application (debug) {
     this.roomapp = new RoomApp();
     this.chatapp = new ChatWsApp();
     this.sheetapp = new SheetApp();
+    this.addonapp = new AddonApp();
     
     this.ui = new UI();
     
