@@ -1,6 +1,6 @@
 #addonBox {
     position: absolute;
-    width: 500px;
+    width: 600px;
     pointer-events: auto;
     z-index: 301;
     font-family: alegreya;
@@ -30,9 +30,7 @@
 
 #addonBoxUL {
     margin: 0px;
-    max-height: 300px;
     background-color: white;
-    overflow: auto;
     list-style-position: inside;
     padding: 0px;
 }
