@@ -98,9 +98,15 @@ function AddonUI () {
      * @returns {undefined}
      */
     this.moveAddonBox = function (event) {
+        var top = event.pageY - this.$box.height() - 10;
+        var left = event.pageX;
+        if (left + this.$box.width() >= $(window).width() || top <= 0) {
+            left = 110;
+            top = 10;
+        }
         this.$box.css({
-            left : event.pageX,
-            top : event.pageY - this.$box.height() - 10
+            left : left,
+            top : top
         });
     };
 }
