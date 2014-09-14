@@ -20,6 +20,7 @@ div.styledWindow > h1 {
     font-weight: bold;
     line-height: 30px;
     text-indent: 1em;
+    overflow: hidden;
 }
 
 div.styledWindow > div {
