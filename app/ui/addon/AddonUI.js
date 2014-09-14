@@ -13,6 +13,8 @@ function AddonUI () {
      * @returns {$dom}
      */
     this.addonize = function ($dom, addon) {
+        console.log("ADDONIZING FOR " + addon);
+        console.log($dom);
         $dom.off('.addon').on('mouseenter.addon', function (e) {
             window.app.ui.addonui.showAddonBox($(this), e);
         }).on('mouseleave.addon', function () {
@@ -23,6 +25,8 @@ function AddonUI () {
     };
     
     this.unAddonize = function ($dom) {
+        console.log("UNADDONIZING");
+        console.log($dom);
         $dom.off('.addon').attr('data-addon', '');
     };
     

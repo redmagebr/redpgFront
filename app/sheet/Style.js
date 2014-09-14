@@ -36,6 +36,7 @@ function Style (sheet, styleInstance) {
         this.mainSheet.update(this.sheet.values);
         this.nameField.update();
         this.mainSheet.update$();
+        this.mainSheet.$visible.trigger("loaded");
     };
     
     this.beforeProcess = function (sheet, instance, style) {
@@ -52,7 +53,7 @@ function Style (sheet, styleInstance) {
     this.afterProcess = function (sheet, instance, style) {
         try {
             eval(this.style.afterProcess);
-        } catch (err) {
+        } catch (err) {loaded
             console.log("After process error for " + this.style.name + ": ");
             console.log(err);
             var errmsg = window.app.ui.language.getLingoOn("_STYLEAFTERERROR_", this.style.name);
@@ -93,6 +94,11 @@ function Style (sheet, styleInstance) {
         }
         this.mainSheet.update$();
         this.nameField.update$();
+        if (this.editing) {
+            this.mainSheet.$visible.trigger("editing");
+        } else {
+            this.mainSheet.$visible.trigger("viewing");
+        }
     };
     
     this.getField = function (id) {
