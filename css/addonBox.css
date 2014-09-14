@@ -1,6 +1,6 @@
 #addonBox {
     position: absolute;
-    width: 500px;
+    width: 600px;
     pointer-events: auto;
     z-index: 301;
     font-family: alegreya;
@@ -40,4 +40,6 @@
     padding-right: 10px;
     padding-top: 3px;
     padding-bottom: 3px;
+    text-align: justify;
+    font-size: 0.9em;
 }
