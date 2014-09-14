@@ -480,13 +480,13 @@ window.lingo['pt_br'] = {
     
     /* Addon Box */
     _ADDONBOXLOADING_ : 'Carregando...',
-    _ADDONBOXLOADINGEXPLAIN_ : "Lista de addons está sendo carregada.",
-    _ADDONBOXLOADINGERROR_ : "Erro ao carregar addons",
-    _ADDONBOXLOADINGERROREXPLAIN_ : "Não foi possível carregar a lista de addons.",
+    _ADDONBOXLOADINGEXPLAIN_ : "Lista está sendo carregada.",
+    _ADDONBOXLOADINGERROR_ : "Erro ao carregar lista",
+    _ADDONBOXLOADINGERROREXPLAIN_ : "Não foi possível carregar a lista.",
     _ADDONBOXLOADEDERROR_ : 'Erro',
-    _ADDONBOXLOADEDERROREXPLAIN_ : 'Lista de addons foi carregada, mas é inválida.',
+    _ADDONBOXLOADEDERROREXPLAIN_ : 'Lista foi carregada, mas é inválida.',
     _ADDONBOXNOTFOUND_ : 'Desconhecido',
-    _ADDONBOXNOTFOUNDEXPLAIN_ : 'Esse addon não foi encontrado.'
+    _ADDONBOXNOTFOUNDEXPLAIN_ : 'Item não encontrado.'
     
     
 };
