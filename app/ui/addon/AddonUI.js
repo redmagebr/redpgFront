@@ -31,7 +31,7 @@ function AddonUI () {
     };
     
     this.showAddonBox = function ($dom, e) {
-        this.currentAddon = $dom.attr("data-addon");
+        this.currentAddon = $dom.attr("data-addon").toUpperCase();
         if (window.techAddonsHash === undefined) {
             var cbs = function () {
                 window.app.ui.addonui.updateAddonBox(2);
