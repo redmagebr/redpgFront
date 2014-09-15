@@ -158,11 +158,10 @@ function AddonUI () {
      * @returns {undefined}
      */
     this.moveAddonBox = function (event) {
-        var top = event.pageY - this.$box.height() - 10;
-        var left = event.pageX;
+        var top = event.pageY - this.$box.height() - 20;
+        var left = event.pageX + 20;
         if (top < 10) {
             top = 10;
-            left += 20;
         }
         if (left + this.$box.width() + 10 > $(window).width()) {
             left = ($(window).width() - this.$box.width() - 10);
