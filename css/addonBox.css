@@ -1,7 +1,7 @@
 #addonBox {
     position: absolute;
     width: 500px;
-    pointer-events: auto;
+    pointer-events: none;
     z-index: 301;
     font-family: alegreya;
 }
