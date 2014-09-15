@@ -114,6 +114,7 @@ function SheetUI() {
             for (var j = 0; j < game.sheets.length; j++) {
                 sheet = window.app.sheetdb.getSheet(game.sheets[j]);
                 $p = $('<p class="sheet" />');
+                this.hoverize($p, sheet);
                 $div.append($p);
                 
                 if (sheet.deletar || game.deleteSheet) {
@@ -437,9 +438,37 @@ function SheetUI() {
         
     };
     
-    
-    
     this.openSheet = function (sheetid, styleid, gameid) {
         this.controller.openSheet (sheetid, styleid, gameid);
+    };
+    
+    /**
+     * 
+     * @param {jQuery} $dom
+     * @param {Sheet_Instance} sheet
+     * @returns {undefined}
+     */
+    this.hoverize = function ($dom, sheet) {
+        $dom.on('mouseenter', window.app.emulateBind(function (e) {
+            window.app.ui.addonui.$handle.text(sheet.name);
+            var $ul = window.app.ui.addonui.$ul.empty();
+            $ul.append(
+                $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERCREATOR_") + ": </strong>"
+                                 + sheet.criadorNick + '#' + sheet.criadorNickSufix)
+            ).append(
+                $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERSTYLE_") + ": </strong>"
+                                 + sheet.styleName)
+            ).append(
+                $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERSTYLECREATOR_") + ": </strong>"
+                                 + sheet.nickStyleCreator + '#' + sheet.nicksufixStyleCreator)
+            );
+            window.app.ui.addonui.$box.stop(true, false).fadeIn(100);
+            window.app.ui.addonui.moveAddonBox(e);
+        }, {sheet : sheet}))
+        .on('mouseleave', function () {
+            window.app.ui.addonui.$box.stop(true, false).fadeOut(100);
+        }).on('mousemove', function(e) {
+            window.app.ui.addonui.moveAddonBox(e);
+        });
     };
 }

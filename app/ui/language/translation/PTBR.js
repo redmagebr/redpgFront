@@ -74,6 +74,10 @@ window.lingo['pt_br'] = {
     _SHEETSNOFOLDER_ : 'Sem pasta',
     _SHEETSSETFOLDER_ : 'Pasta',
     _SHEETCHANGEFOLDER_ : 'Nova pasta para "%p":',
+    _SHEETHOVERCREATOR_ : 'Criador',
+    _SHEETHOVERSTYLECREATOR_ : 'Criador do Estilo usado',
+    _SHEETHOVERSTYLE_ : 'Estilo',
+    
 
     _SHEETSDELETE_ : 'Deletar',
     _SHEETSPRIVILEGES_ : 'Permissões',

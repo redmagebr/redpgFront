@@ -165,7 +165,7 @@ function AddonUI () {
             left += 20;
         }
         if (left + this.$box.width() + 10 > $(window).width()) {
-            left = $(window.width() - this.$box.width() - 10);
+            left = ($(window).width() - this.$box.width() - 10);
         }
         this.$box.css({
             left : left,

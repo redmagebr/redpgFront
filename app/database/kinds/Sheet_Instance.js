@@ -5,9 +5,16 @@ function Sheet_Instance () {
     
     this.id;
     this.criador;
+    this.criadorNick;
+    this.criadorNickSufix;
     this.system;
     this.segura;
     this.publica;
+    
+    this.idStyleCreator;
+    this.nickStyleCreator;
+    this.nicksufixStyleCreator;
+    this.styleName;
     
     this.visualizar;
     this.editable;
@@ -27,7 +34,11 @@ function Sheet_Instance () {
         console.log("Updating Sheet from JSON");
         console.log(json);
         
-        var attributes = ['folder', 'id', 'criador', 'segura', 'publica', 'visualizar', 'deletar', 'values', 'gameid', 'promote'];
+        var attributes = [
+            'folder', 'id', 'criador', 'segura', 'publica', 'visualizar', 'deletar', 
+            'values', 'gameid', 'promote', 'criadorNick', 'criadorNickSufix',
+            'idStyleCreator', 'nickStyleCreator', 'nicksufixStyleCreator', 'styleName'
+        ];
         for (var i = 0; i < attributes.length; i++) {
             if (typeof json[attributes[i]] !== 'undefined') {
                 this[attributes[i]] = json[attributes[i]];
