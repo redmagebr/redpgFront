@@ -42,6 +42,9 @@ function UI () {
     
     this.addonui = new AddonUI();
     
+    
+    this.simplefloater = new SimpleFloater();
+    
     /**
      * Only call element once.
      */

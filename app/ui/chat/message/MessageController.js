@@ -211,6 +211,9 @@ function MessageController () {
                 var $msg = mod.get$(msgObj, slashCMD, msgOnly);
                 if ($msg !== null) {
                     window.app.ui.language.applyLanguageOn($msg);
+                    if (msgObj !== null) {
+                        window.app.ui.chat.cc.hoverizeSender($msg, msgObj);
+                    }
                     window.app.ui.chat.appendToMessages($msg);
                 }
                 if (msgObj !== null) {

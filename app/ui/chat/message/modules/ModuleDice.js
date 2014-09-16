@@ -140,22 +140,6 @@ window.chatModules.push({
             $msg.append($reason);
         }
         
-        if (user === null) {
-            user = new User();
-            user.nickname = '?';
-            user.nicknamesufix = '?';
-        }
-        var $tooltip = $('<span class="tooltip" />');
-        if (user.isStoryteller()) {
-            $tooltip.append($('<b class="language" data-langhtml="_STORYTELLERTOOLTIP_" />'));
-        } else {
-            $tooltip.append($('<b class="language" data-langhtml="_PLAYERTOOLTIP_" />'));
-        }
-
-        $tooltip.append(': ' + user.nickname + '#' + user.nicknamesufix);
-
-        $msg.append($tooltip);
-        
         return $msg;
     },
     

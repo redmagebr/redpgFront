@@ -32,25 +32,10 @@ window.chatModules.push({
         if (msg === null) {
             return null;
         }
-        var user = msg.getUser();
-        if (user === null || !user.isStoryteller()) {
-            return null;
-        }
         
         var $msg = $('<p class="chatNarrativa" />');
         
-        $msg.text('----- ' + msg.msg);
-        
-        var $tooltip = $('<span class="tooltip" />');
-        if (user.isStoryteller()) {
-            $tooltip.append($('<b class="language" data-langhtml="_STORYTELLERTOOLTIP_" />'));
-        } else {
-            $tooltip.append($('<b class="language" data-langhtml="_PLAYERTOOLTIP_" />'));
-        }
-
-        $tooltip.append(': ' + user.nickname + '#' + user.nicknamesufix);
-
-        $msg.append($tooltip);
+        $msg.text(msg.msg);
         
         return $msg;
     },

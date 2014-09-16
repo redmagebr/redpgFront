@@ -1,0 +1,29 @@
+#simpleFloater {
+    width: auto;
+    max-width: 400px;
+    height: auto;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    left: 100px;
+    top: 20px;
+    pointer-events: none;
+    border: #000 3px solid;
+    border-radius: 5px;
+}
+
+#simpleFloater > p {
+    margin: 0px;
+    padding: 3px;
+    font-size: 0.9em;
+}
+
+#simpleFloater:before {
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0px 0px;
+    bottom: -6px;
+    content: "";
+    left: 10px;
+    position: absolute;
+}

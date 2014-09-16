@@ -172,6 +172,7 @@ function ChatController (chat) {
                 }
                 if ($html !== null) {
                     printedOne = true;
+                    this.hoverizeSender($html, message);
                     window.app.ui.language.applyLanguageOn($html);
                     $target.append($html);
                 }
@@ -239,6 +240,7 @@ function ChatController (chat) {
         }
         if ($html !== null) {
             printedOne = true;
+            this.hoverizeSender($html, message);
             $target.append($html);
             window.app.ui.language.applyLanguageOn($html);
         }
@@ -283,5 +285,45 @@ function ChatController (chat) {
                 }
             }
         }
+    };
+    
+    /**
+     * 
+     * @param {jQuery} $dom
+     * @param {Message} message
+     * @returns {undefined}
+     */
+    this.hoverizeSender = function ($dom, message) {
+        $dom.on('mouseenter', window.app.emulateBind(function () {
+            window.app.ui.chat.cc.showFloater(this.$dom, this.message);
+        }, {$dom : $dom, message : message}));
+        
+        $dom.on('mouseleave', function () {
+            window.app.ui.simplefloater.hideFloater();
+        }).on('mousemove', function () {
+            window.app.ui.simplefloater.moveFloaterToElement();
+        });
+    };
+    
+    /**
+     * 
+     * @param {jQuery} $dom
+     * @param {Message} message
+     * @returns {undefined}
+     */
+    this.showFloater = function ($dom, message) {
+        var sender = message.getUser();
+        if (sender === null) sender = new User();
+        
+        var $p = $('<p />');
+        var $b = $('<b />');
+        if (sender.isStoryteller()) {
+            $b.text(window.app.ui.language.getLingo("_STORYTELLERTOOLTIP_") + ': ');
+        } else {
+            $b.text(window.app.ui.language.getLingo("_PLAYERTOOLTIP_") + ': ');
+        }
+        $p.text(sender.nickname + '#' + sender.nicknamesufix).prepend($b);
+        
+        window.app.ui.simplefloater.showFloaterAtElement($p, $dom);
     };
 }
