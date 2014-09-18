@@ -394,7 +394,7 @@ function SheetController () {
         var style = this.styles[this.currentStyle];
         
         this.$export.val(
-            JSON.stringify(style.getObject())
+            JSON.stringify(style.getObject(), undefined, 4)
         );
         
         $form.finish().fadeIn();
