@@ -93,6 +93,7 @@ window.chatModules.push({
                 window.app.ui.language.applyLanguageTo($notification);
                 window.app.ui.chat.appendToMessages($notification);
                 $('#favicon').attr('href', 'favicon.ico');
+                window.app.ui.handleResize();
             } else {
                 this.isStream = true;
                 window.app.configdb.store('showWhispers', false);
@@ -103,6 +104,7 @@ window.chatModules.push({
                 window.app.ui.chat.cc.room.hidePersona = true;
                 window.app.ui.title = "RedPGCamera";
                 window.app.ui.removeNotifications();
+                window.app.ui.$pictureContainer.css({width : ''});
                 $('#favicon').attr('href', 'img/favicon.ico');
                 var $notification = $('<p class="chatSistema language" data-langhtml="_STREAMON_" />');
                 window.app.ui.language.applyLanguageTo($notification);

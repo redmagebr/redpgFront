@@ -19,6 +19,10 @@ window.chatModules.push({
      * @returns {jQuery}
      */
     get$ : function (msg) {
+        var ignoreFor = msg.getSpecial("ignoreFor", []);
+        if (ignoreFor.indexOf(window.app.loginapp.user.id) !== -1) {
+            return null;
+        }
         var user = msg.getUser();
         var lingua = msg.getSpecial('lingua', 'Padrao');
         var valid = new Validator();

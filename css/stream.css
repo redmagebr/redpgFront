@@ -100,8 +100,10 @@ div.avatarWrapper {
     position: fixed;
     left: 610px;
     border-left: solid 5px #000;
-    width: 339px;
     top: 10px;
+    right: initial;
+    bottom: initial;
+    width: 339px;
     height: 480px;
     z-index: 45;
     overflow: hidden;

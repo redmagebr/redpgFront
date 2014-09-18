@@ -206,9 +206,12 @@ function ChatWsApp () {
             window.app.ui.chat.cc.room.addLocal(message);
         }
         var $html = mod.get$(message);
+        if ($html !== null) {
         message.set$($html);
-        window.app.ui.language.applyLanguageOn($html);
-        window.app.ui.chat.appendToMessages($html);
+            window.app.ui.language.applyLanguageOn($html);
+            window.app.ui.chat.cc.hoverizeSender($html, message);
+            window.app.ui.chat.appendToMessages($html);
+        }
         this.sendMessage(message);
     };
     

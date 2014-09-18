@@ -241,6 +241,7 @@ function UI () {
             this.$rightHandler.addClass('fullScreen');
             this.$rightHandler.removeAttr('style');
             this.$pictureContainer.addClass('fullScreen');
+            this.$pictureContainer.css('width', '');
             this.$rightWindow.css('width', '');
             this.$leftWindow.css('right', '');
         } else {
@@ -274,7 +275,9 @@ function UI () {
                 right += giveBack;
                 this.$leftWindow.css('right', (right) + 'px');
                 this.$rightWindow.css('width', right + 'px');
-                this.$pictureContainer.css("width", (right - 10) + "px");
+                if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
+                    this.$pictureContainer.css({"width" : (right - 10)});
+                }
             }
         }
     };

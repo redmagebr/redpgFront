@@ -419,21 +419,16 @@ window.chatModules.push({
         msg.setSpecial('translation', cleanMsg);
         
         var speakers = this.whoSpeaks(lingua);
-        var plebs = [];
-        for (var i in room.users.users) {
-            if (speakers.indexOf(room.users.users[i].id) === -1) {
-                plebs.push(room.users.users[i].id);
-            }
-        }
         
         msg.setDestination(speakers);
         window.app.chatapp.printAndSend(msg, true);
-        if (plebs.length > 0) {
-            msg.unsetSpecial('translation');
-            msg.setDestination(plebs);
-            msg.clone = true;
-            window.app.chatapp.sendMessage(msg);
-        }
+        
+        msg.unsetSpecial('translation');
+        msg.setDestination(null);
+        msg.clone = false;
+        msg.setSpecial("ignoreFor", speakers);
+        window.app.chatapp.sendMessage(msg);
+
         
         return null;
     },
