@@ -23,39 +23,6 @@
     background-color: #cbcbcb;
 }
 
-#chatMessages > p span.tooltip {
-    display: none;
-}
-
-#chatMessages > p:hover span.tooltip {
-    display: block;
-    position: absolute;
-    bottom: 100%;
-    padding: 3px;
-    height: 1em;
-    line-height: 1em;
-    background-color: #fff;
-    color: #000;
-    border: #000 3px solid;
-    border-radius: 5px;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    pointer-events: none;
-}
-
-#chatMessages > p:hover span.tooltip:before {
-    border: solid;
-    border-color: #333 transparent;
-    border-width: 6px 6px 0 0px;
-    bottom: -6px;
-    content: "";
-    left: 10px;
-    position: absolute;
-}
-
 #chatMessages > p.sendError {
     background-color: #efc9c9 !important;
 }
@@ -421,3 +388,38 @@
     content: '-';
     margin-right: 3px;
 }
+
+/*
+#chatMessages > p span.tooltip {
+    display: none;
+}
+
+#chatMessages > p:hover span.tooltip {
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    padding: 3px;
+    height: 1em;
+    line-height: 1em;
+    background-color: #fff;
+    color: #000;
+    border: #000 3px solid;
+    border-radius: 5px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+#chatMessages > p:hover span.tooltip:before {
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0 0px;
+    bottom: -6px;
+    content: "";
+    left: 10px;
+    position: absolute;
+}
+*/
