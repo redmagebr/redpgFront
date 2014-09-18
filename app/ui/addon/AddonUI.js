@@ -70,7 +70,7 @@ function AddonUI () {
             this.listType = 'desvantagem';
             this.currentList = window.desvantagensHash;
         }
-        this.currentAddon = $dom.attr("data-listid").toUpperCase();
+        this.currentAddon = $dom.attr("data-listid").toUpperCase().replace(/ *\([^)]*\) */, '').trim();
         if (this.currentList === undefined) {
             var cbs = function () {
                 window.app.ui.addonui.updateAddonBox(2);
