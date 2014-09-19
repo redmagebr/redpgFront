@@ -147,7 +147,7 @@ function AddonUI () {
                 this.$ul.append($li);
             }
             if (addon.requisitos !== undefined) {
-                $li = $('<li />').text(addon.requisitos);
+                $li = $('<li />').text(addon.requisitos).prepend("<b>Requisitos: </b>");
                 this.$ul.append($li);
             }
         }
