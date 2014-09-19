@@ -146,6 +146,10 @@ function AddonUI () {
                 $li = $('<li />').text(addon.descricao[i]);
                 this.$ul.append($li);
             }
+            if (addon.requisitos !== undefined) {
+                $li = $('<li />').text(addon.requisitos);
+                this.$ul.append($li);
+            }
         }
         
         var newTop = oldHeight - this.$box.height();

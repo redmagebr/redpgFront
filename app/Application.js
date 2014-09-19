@@ -33,6 +33,11 @@ function Application (debug) {
     this.version = [0, 32, 4];
     
     /**
+     * Settings
+     */
+    this.settings = new UserSettings();
+    
+    /**
      * Databases
      */
     this.configdb = new ConfigDB();
