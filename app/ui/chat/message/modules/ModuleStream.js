@@ -93,7 +93,7 @@ window.chatModules.push({
                 window.app.ui.language.applyLanguageTo($notification);
                 window.app.ui.chat.appendToMessages($notification);
                 $('#favicon').attr('href', 'favicon.ico');
-                window.app.ui.handleResize();
+                window.app.ui.checkWidth();
             } else {
                 this.isStream = true;
                 window.app.configdb.store('showWhispers', false);
