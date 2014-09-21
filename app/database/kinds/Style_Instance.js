@@ -8,6 +8,9 @@ function Style_Instance () {
     this.beforeProcess = null;
     this.afterProcess = null;
     
+    this.public = false;
+    this.gameid = null;
+    
     this.idCreator = 0;
     this.nickCreator = null;
     this.nicksufixCreator = null;

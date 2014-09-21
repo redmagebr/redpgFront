@@ -13,6 +13,13 @@ function Application (debug) {
     }
     
     /**
+     * Is it Chrome?
+     */
+    this.isChrome = function () {
+        return Boolean(window.chrome);
+    };
+    
+    /**
      * Host must point to the server we're using.
      * It will be prepended to every AJAX url.
      */

@@ -16,6 +16,23 @@ function SheetApp () {
         });
     };
     
+    this.loadMyStyles = function (cbs, cbe) {
+        var ajax = new AjaxController();
+        
+        cbs = window.app.emulateBind(function (data) {
+            window.app.styledb.updateFromJSON(data);
+            this.cbs();
+        }, {cbs:cbs});
+        
+        ajax.requestPage({
+            url : 'Style',
+            dataType : 'json',
+            data : {action : 'listMine'},
+            success: cbs,
+            error: cbe
+        });
+    };
+    
     this.loadSheet = function (sheetid, cbs, cbe) {
         var ajax = new AjaxController();
         
@@ -52,10 +69,29 @@ function SheetApp () {
             success: cbs,
             error: cbe
         });
-    }
+    };
     
     
-    
+    this.sendStyleUpdate = function (style, cbs, cbe) {
+        var ajax = new AjaxController();
+        
+        ajax.requestPage({
+            url : 'Style',
+            data : {
+                action : 'editAdvanced',
+                name : style.name,
+                id : style.id,
+                public : style.public ? '1' : '0',
+                html : style.html,
+                css : style.css,
+                afterProcess : style.afterProcess,
+                beforeProcess : style.beforeProcess,
+                gameid : style.gameid
+            },
+            success: cbs,
+            error: cbe
+        });
+    };
     
     
     this.callList = function (cbs, cbe) {

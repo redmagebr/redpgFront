@@ -226,6 +226,51 @@
             <div id="leftBlock">
                 <a></a>
             </div>
+            
+            <div id="styleWindow" class="window unselectable styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_STYLESHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
+                </h1>
+                <div class="singleton">
+                    <div id="styleList"></div>
+                    <form id="styleEditCreate">
+                        <input id="styleIdInput" type="hidden" />
+                        <p id="formError"></p>
+                        <p>
+                            <input id="styleNameInput" type="text" class="language leftWindowInput" data-langplaceholder="_STYLENAME_" />
+                        </p>
+                        <p>
+                            <input id="stylePublicInput" type="checkbox" />
+                            <label for="stylePublicInput" class="language" data-langhtml="_STYLEPUBLIC_"></label>
+                        </p>
+                        <p>
+                            After Process: <br />
+                            <textarea id="styleAfterInput" class="language" data-langplaceholder="_STYLEAFTER_"></textarea>
+                        </p>
+                        <p>
+                            Html: <br />
+                            <textarea id="styleHtmlInput" class="language" data-langplaceholder="_STYLEHTML_"></textarea>
+                        </p>
+                        <p>
+                            Css: <br />
+                            <textarea id="styleCssInput" class="language" data-langplaceholder="_STYLECSS_"></textarea>
+                        </p>
+                        <p>
+                            Before : <br />
+                            <textarea id="styleBeforeInput" class="language" data-langplaceholder="_STYLEBEFORE_"></textarea>
+                        </p>
+                        <p>
+                            <input type="submit" class="language textButton" data-langvalue="_STYLESUBMIT_" />
+                        </p>
+                        <p>
+                            <input id="styleStayInput" type="checkbox" />
+                            <label for="styleStayInput" class="language" data-langhtml="_STYLESTAYHERE_"></label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
             <div id="createRoomWindow" class="window unselectable styledWindow">
                 <h1>
                     <span class="language" data-langhtml="_NEWROOMHEADER_"></span>
@@ -716,6 +761,7 @@
                     <div id="sheetListLoadError">
                         <p class="language" data-langhtml="_SHEETSERROR_"></p>
                     </div>
+                    <p class="hoverable textLink language" data-langhtml="_STYLEWINDOW_" onclick="window.app.ui.styleui.callSelf();"></p>
                     <div id="sheetListDiv">
                         
                     </div>
@@ -951,6 +997,7 @@
             <script src="app/ui/games/GameInvite$.js"></script>
             <script src="app/ui/login/LoginUI.js"></script>
             <script src="app/ui/navigator/Navigator.js"></script>
+            <script src="app/ui/style/StyleUI.js"></script>
             <!-- Chat Modules -->
                 <script src="app/ui/chat/message/modules/ModuleRoleplay.js"></script>
                 <script src="app/ui/chat/message/modules/ModuleYoutube.js"></script>
@@ -995,11 +1042,15 @@
             <!-- Sheet Application End -->
         <!-- Application End -->
         <script type="text/javascript">
-            var debug = window.location.hash.substr(1).toUpperCase();
-            window.app = new Application(debug.indexOf('DEBUG') !== -1);
-            if (debug.indexOf('OFF') !== -1) {
-                window.app.host = 'http://localhost:8080/RedPG/';
-                window.app.wshost = 'ws://localhost:8080/RedPG/';
+            try {
+                var debug = window.location.hash.substr(1).toUpperCase();
+                window.app = new Application(debug.indexOf('DEBUG') !== -1);
+                if (debug.indexOf('OFF') !== -1) {
+                    window.app.host = 'http://localhost:8080/RedPG/';
+                    window.app.wshost = 'ws://localhost:8080/RedPG/';
+                }
+            } catch (e) {
+                alert(e.message);
             }
         </script>
     </body>

@@ -6,7 +6,7 @@ function StyleDB () {
     
     /**
      * 
-     * @param {type} id
+     * @param {number} id
      * @returns {Style_Instance}
      */
     this.getStyle = function (id) {

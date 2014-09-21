@@ -54,7 +54,6 @@ window.chatModules.push({
         
         if (message === '1') {
             window.app.chatapp.clear();
-            window.app.ui.chat.fixScrollpane();
         }
         return null;
     },

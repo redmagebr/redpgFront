@@ -42,6 +42,8 @@ function UI () {
     
     this.addonui = new AddonUI();
     
+    this.styleui = new StyleUI();
+    
     
     this.simplefloater = new SimpleFloater();
     

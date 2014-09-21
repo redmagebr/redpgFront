@@ -490,7 +490,24 @@ window.lingo['pt_br'] = {
     _ADDONBOXLOADEDERROR_ : 'Erro',
     _ADDONBOXLOADEDERROREXPLAIN_ : 'Lista foi carregada, mas é inválida.',
     _ADDONBOXNOTFOUND_ : 'Desconhecido',
-    _ADDONBOXNOTFOUNDEXPLAIN_ : 'Item não encontrado.'
+    _ADDONBOXNOTFOUNDEXPLAIN_ : 'Item não encontrado.',
     
+    /* Styles */
+    _STYLEWINDOW_ : "Gerenciar estilos de ficha",
+    _STYLESHEADER_ : "Estilos",
+    _STYLEPUBLIC_ : "Estilo público",
+    _STYLENAME_ : "Nome",
+    _STYLEAFTER_ : "JS pós-processo",
+    _STYLEBEFORE_ : "JS pré-processo",
+    _STYLECSS_ : "CSS",
+    _STYLEHTML_ : "HTML",
+    _STYLESUBMIT_ : "Enviar",
+    _STYLESTAYHERE_ : "Continuar nessa página após envio",
+    _STYLECREATE_ : "Criar estilo (não implementado)",
     
+    /* CHrome */
+    
+    _CHROME1_ : 'Esse aplicativo é testado para o navegador Google Chrome e, por consequência, Chromium.',
+    _CHROME2_ : 'Compatbilidade com outros browsers é desejável, mas incidental. Utilizar Chrome ou Chromium junto desse aplicativo é recomendado.',
+    _CHROME3_ : 'Clique aqui para esconder essa mensagem.'
 };
