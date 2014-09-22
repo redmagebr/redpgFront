@@ -31,7 +31,7 @@ function StyleDB () {
     
     this.isLoaded = function (id) {
         var style = this.getStyle(id);
-        return (style !== null && style.html !== null);
+        return (style !== null && style.isLoaded());
     };
     
     this.updateFromJSON = function (json, clean) {

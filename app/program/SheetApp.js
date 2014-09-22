@@ -75,10 +75,12 @@ function SheetApp () {
     this.sendStyleUpdate = function (style, cbs, cbe) {
         var ajax = new AjaxController();
         
+        var action = style.id !== 0 ? 'editAdvanced' : 'createAdvanced';
+        
         ajax.requestPage({
             url : 'Style',
             data : {
-                action : 'editAdvanced',
+                action : action,
                 name : style.name,
                 id : style.id,
                 public : style.public ? '1' : '0',

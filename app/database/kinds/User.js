@@ -12,6 +12,7 @@ function User () {
     this.lastupdate = 0;
     this.online = false;
     this.idle = false;
+    this.level = 0;
     
     this.focused = true;
     this.typing = false;
@@ -30,7 +31,8 @@ function User () {
             'focused',
             'typing',
             'online',
-            'idle'
+            'idle',
+            'level'
         ];
         for (var i = 0; i < attributes.length; i++) {
             if (typeof json[attributes[i]] !== 'undefined') {

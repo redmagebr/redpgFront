@@ -20,12 +20,16 @@ function Style_Instance () {
         console.log(json);
         var attributes = [
             "id", "name", "html", "css", "beforeProcess", "afterProcess", 
-            'idCreator', 'nickCreator', 'nicksufixCreator'
+            'idCreator', 'nickCreator', 'nicksufixCreator', 'gameid'
         ];
         for (var i = 0; i < attributes.length; i++) {
             if (json[attributes[i]] !== undefined) {
                 this[attributes[i]] = json[attributes[i]];
             }
         }
+    };
+    
+    this.isLoaded = function () {
+        return this.html !== null;
     };
 }

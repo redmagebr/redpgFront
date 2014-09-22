@@ -8,6 +8,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/styleui.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/soundsStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
@@ -242,7 +243,15 @@
                         </p>
                         <p>
                             <input id="stylePublicInput" type="checkbox" />
-                            <label for="stylePublicInput" class="language" data-langhtml="_STYLEPUBLIC_"></label>
+                            <label id="stylePublicLabel" for="stylePublicInput" class="language" data-langhtml="_STYLEPUBLIC_"></label>
+                            <span id="styleNotPublic">
+                                <label for="styleForGame" class="language" data-langhtml="_STYLEFORGAME_"></label>:
+                                <select id="styleForGame"></select>
+                            </span>
+                        </p>
+                        <p>
+                            <select id="styleCopyId"></select>
+                            <a id="styleCopyBt" class="textButton language" data-langhtml="_STYLECOPY_"></a>
                         </p>
                         <p>
                             After Process: <br />

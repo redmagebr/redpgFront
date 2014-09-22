@@ -1,0 +1,24 @@
+#styleEditCreate {
+    text-align: center;
+}
+
+#styleEditCreate textarea {
+    width: 400px;
+    height: 100px;
+    resize: vertical;
+}
+
+#styleList > p {
+    text-indent: 1em;
+    line-height: 40px;
+    margin: 0px;
+}
+
+#styleList > p:hover {
+    background-color: #e9e9e9;
+}
+
+#styleNotPublic {
+    display: block;
+    margin: auto;
+}

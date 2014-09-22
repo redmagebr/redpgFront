@@ -9,13 +9,26 @@ function StyleUI () {
     
     this.$idinput = $('#styleIdInput');
     this.$nameinput = $('#styleNameInput');
-    this.$publicinput = $('#stylePublicInput');
+    this.$publicinput = $('#stylePublicInput').on('change', function () {
+        if (this.checked) {
+            window.app.ui.styleui.$notPublic.hide();
+        } else {
+            window.app.ui.styleui.$notPublic.show();
+        }
+    });
     this.$afterinput = $('#styleAfterInput');
     this.$htmlinput = $('#styleHtmlInput');
     this.$cssinput = $('#styleCssInput');
     this.$beforeinput = $('#styleBeforeInput');
     this.$stayinput = $('#styleStayInput');
+    this.$gameSelect = $('#styleForGame');
     this.$formError = $('#formError').empty();
+    this.$notPublic = $('#styleNotPublic');
+    
+    this.$copyInput = $('#styleCopyId');
+    this.$copyBt = $('#styleCopyBt').on('click', function () {
+        window.app.ui.styleui.copyStyle();
+    });
     
     this.callSelf = function () {
         this.$form.hide();
@@ -63,6 +76,7 @@ function StyleUI () {
         this.$idinput.val(id);
         this.$stylelist.hide();
         window.app.ui.blockLeft();
+        this.$gameSelect.empty().append("<option disabled>Loading...</option>");
         
         var cbs = function () {
             window.app.ui.styleui.fillEdit();
@@ -73,16 +87,78 @@ function StyleUI () {
             alert('erro');
             window.app.ui.unblockLeft();
         };
-        if (id != 0) {
+        if (id !== 0) {
             window.app.sheetapp.loadStyle(id, cbs, cbe);
         } else {
             cbs();
+        }
+        
+        cbs = function () {
+            window.app.ui.styleui.fillGames();
+        };
+        
+        cbe = function () {
+            alert("Error loading games");
+        };
+        
+        window.app.gameapp.updateLists(cbs, cbe);
+    };
+    
+    this.fillGames = function () {
+        this.$gameSelect.empty();
+        
+        var $option;
+        var game;
+        
+        var id = parseInt(this.$idinput.val());
+        var style = window.app.styledb.getStyle(id);
+        if (style === null) style = new Style_Instance();
+        
+        for (var id in window.app.gamedb.games) {
+            game = window.app.gamedb.getGame(id);
+            if (game.creatorid !== window.app.loginapp.user.id) continue;
+            
+            $option = $('<option ' + (game.id === style.gameid ? 'selected' : '') + '/>').val(game.id).text(game.name);
+            this.$gameSelect.append($option);
         }
     };
     
     this.fillEdit = function () {
         this.$form.show();
         var id = parseInt(this.$idinput.val());
+        this.fillEditWith(id);
+        
+        this.$copyInput.empty();
+        
+        var $select;
+        var style;
+        var none = true;
+        for (var id in window.app.styledb.styles) {
+            style = window.app.styledb.getStyle(id);
+            if (style === null || parseInt(id) === parseInt(this.$idinput.val()) || !style.isLoaded()) continue;
+            $select = $('<option />').val(id).text(style.name);
+            this.$copyInput.append($select);
+            none = false;
+        }
+        
+        if (none) {
+            this.$copyBt.hide();
+            this.$copyInput.hide();
+        } else {
+            this.$copyBt.show();
+            this.$copyInput.show();
+        }
+        
+        if (window.app.loginapp.user.level < 9) {
+            this.$publicinput.hide();
+            $('#stylePublicLabel').hide();
+        } else {
+            $('#stylePublicLabel').show();
+            this.$publicinput.show();
+        }
+    };
+    
+    this.fillEditWith = function (id) {
         var style = window.app.styledb.getStyle(id);
         if (style === null) style = new Style_Instance();
         
@@ -91,6 +167,14 @@ function StyleUI () {
         this.$cssinput.val(style.css);
         this.$htmlinput.val(style.html);
         this.$nameinput.val(style.name);
+        if (window.app.loginapp.user.level >= 9) {
+            this.$publicinput[0].checked = style.public;
+        }
+    };
+    
+    this.copyStyle = function () {
+        var id = parseInt(this.$copyInput.val());
+        this.fillEditWith(id);
     };
     
     this.submitForm = function () {
@@ -102,6 +186,7 @@ function StyleUI () {
         style.id = parseInt(this.$idinput.val());
         style.name = this.$nameinput.val();
         style.public = this.$publicinput[0].checked;
+        style.gameid = this.$gameSelect.val();
         
         var cbs = function () {
             window.app.ui.styleui.$formError.hide();

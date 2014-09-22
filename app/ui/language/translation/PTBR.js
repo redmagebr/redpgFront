@@ -497,6 +497,7 @@ window.lingo['pt_br'] = {
     _STYLEWINDOW_ : "Gerenciar estilos de ficha",
     _STYLESHEADER_ : "Estilos",
     _STYLEPUBLIC_ : "Estilo público",
+    _STYLEFORGAME_ : "Estilo apenas para a mesa",
     _STYLENAME_ : "Nome",
     _STYLEAFTER_ : "JS pós-processo",
     _STYLEBEFORE_ : "JS pré-processo",
@@ -504,7 +505,9 @@ window.lingo['pt_br'] = {
     _STYLEHTML_ : "HTML",
     _STYLESUBMIT_ : "Enviar",
     _STYLESTAYHERE_ : "Continuar nessa página após envio",
-    _STYLECREATE_ : "Criar estilo (não implementado)",
+    _STYLECREATE_ : "Criar estilo",
+    _STYLECOPY_ : 'Copiar estilo',
+    _STYLENOSTYLES_ : "Sem estilos carregados. Abra uma ficha.",
     
     /* CHrome */
     
