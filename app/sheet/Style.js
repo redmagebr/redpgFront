@@ -17,7 +17,8 @@ function Style (sheet, styleInstance) {
         'integer' : window.Variable_Integer,
         'longtext' : window.Variable_Longtext,
         'picture' : window.Variable_Picture,
-        'select' : window.Variable_Select
+        'select' : window.Variable_Select,
+        'boolean' : window.Variable_Boolean
     };
     
     this.emulateBind = function (f, context) {
