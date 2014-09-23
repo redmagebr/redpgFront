@@ -73,7 +73,7 @@ function Sheet ($list, style, baseSheet) {
             if (!this.style.editing) {
                 $found.hide();
             } else {
-                $found.show();
+                $found.unhide();
             }
             if (!$found.is('[data-for]')) continue;
             listName = $found.attr('data-for');
@@ -142,19 +142,19 @@ function Sheet ($list, style, baseSheet) {
         
         
         if (this.style.editing) {
-            this.$visible.find('.addRow').show();
-            this.$visible.find('.editOnly').show();
+            this.$visible.find('.addRow').unhide();
+            this.$visible.find('.editOnly').unhide();
             this.$visible.find('.viewOnly').hide();
         } else {
             this.$visible.find('.addRow').hide();
             this.$visible.find('.editOnly').hide();
-            this.$visible.find('.viewOnly').show();
+            this.$visible.find('.viewOnly').unhide();
         }
         
         if (!this.style.sheet.editable) {
             this.$visible.find('.editableOnly').hide();
         } else {
-            this.$visible.find('.editableOnly').show();
+            this.$visible.find('.editableOnly').unhide();
         }
         
         

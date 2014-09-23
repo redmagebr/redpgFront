@@ -147,7 +147,7 @@ function Sheet_List ($visible, style, missingId, parent) {
         }
         
         if (this.style.editing) {
-            this.$visible.find('.deleteRow').show();
+            this.$visible.find('.deleteRow').unhide();
         } else {
             this.$visible.find('.deleteRow').hide();
         }

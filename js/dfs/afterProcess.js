@@ -316,7 +316,12 @@ sheet.$visible.find('#dfsCalculadoraDano').on('submit', calculadora);
             newHistory.fields['Motivo'].storeValue(
                 motivo + ' (MP Antigo: ' + oldMP + ' - Novo MP: ' + newMP + ')'
             );
-        }, {sheet : sheet}
+    
+            // Salvar?
+            if (this.checkboxes['Save'][0].checked) {
+                window.app.ui.sheetui.controller.saveSheet();
+            }
+        }, {sheet : sheet, checkboxes : checkboxes}
         );
 
         sheet.$visible.find('#dfsCalculadoraMP').on('submit', calcMPF);
@@ -348,7 +353,11 @@ sheet.$visible.find('#dfsCalculadoraDano').on('submit', calculadora);
             newHistory.fields['Motivo'].storeValue(
                 motivo + ' (Antiga Exp: ' + oldExp + ' - Nova Exp: ' + newExp + ')'
             );
-        }, {sheet : sheet}
+            // Salvar?
+            if (this.checkboxes['Save'][0].checked) {
+                window.app.ui.sheetui.controller.saveSheet();
+            }
+        }, {sheet : sheet, checkboxes : checkboxes}
         );
 
         sheet.$visible.find('#dfsCalculadoraExp').on('submit', calcExpF);
@@ -360,7 +369,12 @@ sheet.$visible.find('#dfsCalculadoraDano').on('submit', calculadora);
             this.sheet.fields['MPAtual'].storeValue(this.sheet.fields['MPMaximo'].getObject());
             this.sheet.fields['CombatLog'].update([]);
             this.sheet.fields['MPLog'].update([]);
-        }, {sheet:sheet});
+            // Salvar?
+            if (this.checkboxes['Save'][0].checked) {
+                window.app.ui.sheetui.controller.saveSheet();
+            }
+            
+        }, {sheet:sheet, checkboxes : checkboxes});
         
         var healFAll = this.emulateBind(function () {
             var stamina = parseInt($(this.sheet.$visible.find('#dfsStaminaMaxima')[0]).text());
@@ -369,7 +383,11 @@ sheet.$visible.find('#dfsCalculadoraDano').on('submit', calculadora);
             this.sheet.fields['MPAtual'].storeValue(this.sheet.fields['MPMaximo'].getObject());
             this.sheet.fields['CombatLog'].update([]);
             this.sheet.fields['MPLog'].update([]);
-        }, {sheet:sheet});
+            // Salvar?
+            if (this.checkboxes['Save'][0].checked) {
+                window.app.ui.sheetui.controller.saveSheet();
+            }
+        }, {sheet:sheet, checkboxes : checkboxes});
         
         sheet.$visible.find('#dfsHealAll').on('click', healFAll);
         sheet.$visible.find('#dfsHealButton').on('click', healF);
