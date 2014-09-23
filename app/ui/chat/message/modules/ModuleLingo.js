@@ -264,6 +264,25 @@ window.chatModules.push({
                 'purechi' : ['AMIGO', 'COMPANHEIRO', 'IRMÃO', 'COLEGA'],
                 'pukapuka' : ['CALMO', 'LENTO', 'TRANQUILO', 'AMIGÁVEL']
             }
+        },
+        Auran : {
+            uppercase: true,
+            allowpoints: true,
+            words: {
+                1 : ['o', 'k', 's', 'i', 'a', 'm'],
+                2 : ['me', 'ra', 'lo', 'fu', 'je'],
+                3 : ['kin', 'zoh', 'jao', 'nen', 'has'],
+                4 : ['mewa', 'waon', 'kerl', 'nomu', 'qolt'],
+                Bigger : ['hwajeh', 'moliken', 'zaohik', 'jehanos', 'gihazan']
+            },
+            knownWords : {
+                'makonah' : ['PAZ', 'CALMARIA', 'CALMO', 'TRANQUILO'],
+                'falnafu' : ['FOGO', 'CALOR', 'QUENTE', 'SOL'],
+                'komuona' : ['MENINA', 'MULHER', 'FEMININO'],
+                'zasujoh' : ['MÁQUINA', 'MAGIA', 'ELETRICIDADE'],
+                'omuzah' : ['COMEÇO', 'INÍCIO', 'CRIAÇÃO'],
+                'miwonih' : ['FIM', 'FINAL', 'DESTRUIÇÃO']
+            }
         }
     },
     
