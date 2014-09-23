@@ -164,7 +164,9 @@ function AvatarController () {
                         url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
                     }
                 }
-                $user.children('img').attr('src', url);
+                $user.children('img').attr('src', url).off('error.badUrl').on('error.badUrl', function () {
+                    $(this).off('error.badUrl').attr('src', 'img/chat/iconAnonError.jpg');
+                });
             }
         }
         
@@ -240,7 +242,9 @@ function AvatarController () {
         $html.append($idle);
         
         if (avatar !== null && avatar !== '') {
-            $html.append($('<img />').attr('src', avatar));
+            $html.append($('<img />').attr('src', avatar).off('error.badUrl').on('error.badUrl', function () {
+                    $(this).off('error.badUrl').attr('src', 'img/chat/iconAnonError.jpg');
+                }));
         } else {
             $html.append($('<img />').attr('src', "img/chat/iconAnon.jpg"));
         }

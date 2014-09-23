@@ -454,7 +454,10 @@ function UI () {
                 url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
             }
         }
-        var $pic = $('<div id="pictureShow" />').append($('<img />').attr('src', url));
+        
+        var $img = $('<img />').attr('src', url);
+        
+        var $pic = $('<div id="pictureShow" />').append($img);
         console.log($pic);
         this.$pictureContainer.empty().append($pic);
         $pic.imgLiquid({fill:false});
