@@ -47,7 +47,14 @@ window.chatModules.push({
                 'hehe' : ['HA', "HAH", "HE", "HEH", "HEHE", "HAHA", "HEHEH", "HAHAH", "HEHEHE", "HAHAHA"],
                 "el'um" : ['ELF', 'ELFO', 'ELFA'],
                 "el'ar" : ['ELFOS', "ELFAS", "ELVES"],
-                "el'zel" : ['FALSO', "FAKE", "FALSOS", "FAKES"]
+                "el'zel" : ['FALSO', "FAKE", "FALSOS", "FAKES"],
+                'elain' : ['ESPERANÇA', 'HOPE'],
+                'luria' : ['ALEGRIA', 'FELICIDADE', 'JOY', 'HAPPINESS'],
+                'lerast' : ['RÁPIDO', 'VELOZ', 'VELOCIDADE', 'FAST', 'SPEEDY', 'SPEED'],
+                'vehal' : ['LAMA', 'BARRO', 'MUD', 'CLAY'],
+                'simuh' : ['PÁSSARO', 'AVE', 'PASSARINHO', 'BIRD'],
+                'fahin' : ['CURAR', 'SARAR', 'HEAL'],
+                'amuhn' : ['BRUXA', 'FEITICEIRA', 'MAGA', 'WITCH', 'WIZARD', 'MAGE']
             },
             uppercase : true,
             allowpoints : true
@@ -219,6 +226,44 @@ window.chatModules.push({
             },
             uppercase: true,
             allowpoints : false
+        },
+        Technum : {
+            uppercase : true,
+            allowpoints : true,
+            words : {
+                1 : ['n', 'e', 'i', 'k', 'a'],
+                2 : ['ok', 'un', 'ac', 'hal', 'sub', 'fyi', 'hym', 'cmp'],
+                3 : ['vaal', 'hyss', 'lrok', 'gfun', 'jyin'],
+                4 : ['netak', 'urmin', 'kvyan', 'trekt', 'pvnum'],
+                Bigger: ['tkmkrok', 'ncallat', 'khstrat', 'meknym', 'snwyhok']
+            },
+            knownWords : {
+                'lwyhak' : ['ESPADA', 'LÂMINA', 'AÇO', 'METAL'],
+                'vclloc' : ['VENTO', 'BRISA', 'VENTANIA', 'SOPRO'],
+                'vwynm' : ['AMIGO', 'AMIZADE', 'COMPANHEIRO'],
+                'klumiun' : ['ÁGUA', 'GELO', 'LÍQUIDO'],
+                'kramik' : ['CÉU', 'PARAÍSO', 'NUVEM', 'ANJO', 'DIVINO'],
+                'mnyacc' : ['MORTE', 'TREVAS', 'DEMÔNIO', 'ESCURIDÃO']
+            }
+        },
+        Arkadium : {
+            uppercase : true,
+            allowpoints : true,
+            words : {
+                1 : ['h', 'a', 'n', 'i', 'e'],
+                2 : ['no', 'ko', 'ta', 'ain', 'nah', 'roi', 'shu', 'kon'],
+                3 : ['ishi', 'temi', 'poto', 'taan', 'kain'],
+                4 : ['treja', 'nizui', 'boron', 'hazoi', 'lamaf'],
+                Bigger: ['tatoru', 'paketo', 'rikuku', 'sanami']
+            },
+            knownWords : {
+                'saldine' : ['ILHA', 'ISTMO', 'DERIVA'],
+                'kairu' : ['EDUCAÇÃO', 'ENSINO', 'ESCOLA', 'CONHECIMENTO'],
+                'sazuina' : ['MAR', 'OCEANO', 'PRAIA'],
+                'tenozesa' : ['ESTRANGEIRO', 'ESTRANHO', 'DESCONHECIDO'],
+                'purechi' : ['AMIGO', 'COMPANHEIRO', 'IRMÃO', 'COLEGA'],
+                'pukapuka' : ['CALMO', 'LENTO', 'TRANQUILO', 'AMIGÁVEL']
+            }
         }
     },
     
@@ -450,5 +495,3 @@ window.chatModules.push({
         return $error;
     }
 });
-
-

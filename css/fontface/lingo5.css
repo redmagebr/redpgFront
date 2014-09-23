@@ -21,6 +21,15 @@
     font-style: normal;
 }
 
+/** Calligraffitti */
+/** License - Apache License. Local copy: Lingo/Calligraffitti-Regular.txt */
+@font-face {
+    font-family: 'Nazcaan';
+    src: url('Lingo/Nazcaan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /** Tangerine Font */
 /** License - SIL OPEN FONT LICENSE VERSION 1.1. Local copy: Lingo/Tangerine_Bold.txt */
 @font-face {
