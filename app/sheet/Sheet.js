@@ -15,6 +15,23 @@ function Sheet ($list, style, baseSheet) {
     this.listCount = 0;
     this.varCount = 0;
     
+    /**
+     * Gets the Sheet Element for id.
+     * @param {string} id
+     * @returns {Variable_Template|Sheet_List}
+     */
+    this.getField = function (id) {
+        if (this.fields[id] === undefined) {
+            alert(window.app.ui.language.getLingoOn("_STYLEINVALIDID_", id));
+            return null;
+        }
+        return this.fields[id];
+    };
+    
+    /**
+     * Returns an Object representing the whole sheet
+     * @returns {Object}
+     */
     this.getObject = function () {
         var obj = {};
         for (var idx in this.fields) {
@@ -26,6 +43,10 @@ function Sheet ($list, style, baseSheet) {
         return obj;
     };
     
+    /**
+     * Processes the HTML to find every sheet element.
+     * @returns {undefined}
+     */
     this.process = function () {
         var i;
         var search;
@@ -87,12 +108,21 @@ function Sheet ($list, style, baseSheet) {
         }
     };
     
+    /**
+     * Sets every field to its default values
+     * @returns {undefined}
+     */
     this.setDefault = function () {
         for (var i in this.fields) {
             this.fields[i].setDefault();
         }
     };
     
+    /**
+     * Updates sheet from JSON
+     * @param {JSON} obj
+     * @returns {undefined}
+     */
     this.update = function (obj) {
         for (var i in obj) {
             if (typeof this.fields[i] !== 'undefined') {
@@ -101,6 +131,10 @@ function Sheet ($list, style, baseSheet) {
         }
     };
     
+    /**
+     * Updates every $dom element
+     * @returns {undefined}
+     */
     this.update$ = function () {
         for (var i in this.fields) {
             this.fields[i].update$();
@@ -127,10 +161,18 @@ function Sheet ($list, style, baseSheet) {
         this.$visible.trigger('updated$', [this]);
     };
     
+    /**
+     * Gets the $dom for the whole sheet.
+     * @returns {jQuery}
+     */
     this.get$ = function () {
         return this.$visible;
     };
     
+    /**
+     * Destroys the whole sheet
+     * @returns {undefined}
+     */
     this.seppuku = function () {
         this.$visible.remove();
         this.$visible = null;
