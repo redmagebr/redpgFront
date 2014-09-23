@@ -32,7 +32,7 @@ window.lingo['pt_br'] = {
     _IMAGESEXPLAIN2_ : 'Você pode aumentar seu espaço para imagens através de doações que ajudam a pagar o servidor do RedPG. Se seu espaço para imagens diminuir além do seu espaço gasto com imagens, suas imagens não serão apagadas, mas você não poderá enviar novas imagens até reduzir o uso de espaço.',
     _IMAGESEXPLAIN3_ : 'Nos nomes das imagens, qualquer coisa entre parênteses será ignorada na hora de imprimir seu nome, tanto quando usada como Persona quanto quando enviada para o chat.',
     _IMAGESUPLOADED_ : 'Imagens Salvas (Não implementadas)',
-    _IMAGESUPLOADEDEXPLAIN_ : 'Imagens salvas no servidor não serão perdidas entre sessões. Caso vocẽ tenha mais imagens do que seu espaço total, elas não serão deletadas, mas vocẽ não poderá enviar mais imagens até remover o suficiente.',
+    _IMAGESUPLOADEDEXPLAIN_ : 'Imagens salvas no servidor não serão perdidas entre sessões. Caso você tenha mais imagens do que seu espaço total, elas não serão deletadas, mas você não poderá enviar mais imagens até remover o suficiente.',
     _IMAGESLINKED_ : 'Imagens Linkadas',
     _IMAGESLINKEDEXPLAIN_ : 'Essas são imagens salvas na forma de um Link. Elas são salvas na Local Storage de seu Browser, o que significa que serão perdidas no momento em que seu Browser apagar essas informações. Elas devem se manter entre sessões diferentes no mesmo Browser e computador, mas em computadores diferentes seriam ignoradas.',
     _IMAGESUPLOAD_ : 'Novo Upload',
