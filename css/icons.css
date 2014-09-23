@@ -364,3 +364,7 @@ div.styledWindow > h1 > a.closeWindow {
 .uiconDelete {
     background-image: url('../img/icon/Delete.png');
 }
+
+.uiconPerson {
+    background-image: url('../img/icon/Persona.png');
+}

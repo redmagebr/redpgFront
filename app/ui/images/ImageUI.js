@@ -79,20 +79,30 @@ function ImageUI () {
      */
     this.$createImage = function (image) {
         var $image = $("<p class='image' />").text(image.name);
-        var $share = $('<a class="uiconShare button language" data-langtitle="_IMAGESSHARE_" />').on('click', window.app.emulateBind(function () {
+        
+        // Visualizar
+        var $view = $('<a class="iconOpen floatLeft button language" data-langtitle="_IMAGESOPEN_" />').on('click', window.app.emulateBind(function () {
+            window.app.ui.showPicture(this.url);
+        }, {url : image.getUrl()}));
+        $image.append($view);
+        
+        // Compartilhar
+        var $share = $('<a class="uiconShare floatLeft button language" data-langtitle="_IMAGESSHARE_" />').on('click', window.app.emulateBind(function () {
             window.app.ui.imageui.shareImage(this.id);
         }, {id : image.id}));
         $image.append($share);
         
-        var $delete = $('<a class="uiconDelete button language" data-langtitle="_IMAGESDELETE_" />').on('click', window.app.emulateBind(function () {
+        // Persona
+        var $persona = $('<a class="uiconPerson floatLeft button language" data-langtitle="_IMAGESPERSONA_" />').on('click', window.app.emulateBind(function () {
+            window.app.ui.imageui.personaImage(this.id);
+        }, {id : image.id}));
+        $image.append($persona);
+        
+        // Deletar
+        var $delete = $('<a class="uiconDelete floatRight button language" data-langtitle="_IMAGESDELETE_" />').on('click', window.app.emulateBind(function () {
             window.app.ui.imageui.deleteImage(this.id);
         }, {id : image.id}));
         $image.append($delete);
-        
-        var $share = $('<a class="iconOpen button language" data-langtitle="_IMAGESOPEN_" />').on('click', window.app.emulateBind(function () {
-            window.app.ui.showPicture(this.url);
-        }, {url : image.getUrl()}));
-        $image.append($share);
         
         return $image;
     };
@@ -133,7 +143,14 @@ function ImageUI () {
         var message = new Message();
         message.module = 'image';
         message.msg = image.getUrl();
-        message.setSpecial('name', image.name);
+        message.setSpecial('name', image.name.replace(/ *\([^)]*\) */, '').trim());
         window.app.chatapp.fixPrintAndSend(message, true);
+    };
+    
+    this.personaImage = function (id) {
+        var image = window.app.imagedb.getImage(id);
+        if (image === null) alert("Invalid image");
+        
+        window.app.ui.chat.pc.addPersona(image.getName().replace(/ *\([^)]*\) */, '').trim(), image.getUrl(), false);
     };
 }

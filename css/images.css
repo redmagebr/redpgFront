@@ -15,12 +15,12 @@
     margin-top: 2px;
 }
 
-#imageLinkList .button:nth-child(2), #imageList .button:nth-child(2) {
+#imageLinkList .floatRight, #imageList .floatRight {
     float: right;
     margin-left: 5px;
 }
 
-#imageLinkList .button:nth-child(2n-1), #imageList .button:nth-child(2n-1) {
+#imageLinkList .floatLeft, #imageList .floatLeft {
     float: left;
     margin-right: 5px;
 }

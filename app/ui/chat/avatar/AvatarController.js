@@ -157,7 +157,14 @@ function AvatarController () {
             if (user.avatarS === null || user.avatarS === '') {
                 $user.children('img').attr('src', "img/chat/iconAnon.jpg");
             } else {
-                $user.children('img').attr('src', user.avatar);
+                var url = user.avatar;
+                if (url.indexOf('dropbox.com') !== -1) {
+                    url = url.replace('dl=0', 'dl=1');
+                    if (url.indexOf('dl=1') === -1) {
+                        url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
+                    }
+                }
+                $user.children('img').attr('src', url);
             }
         }
         

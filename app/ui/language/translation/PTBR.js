@@ -30,7 +30,8 @@ window.lingo['pt_br'] = {
     _IMAGESHEADER_ : 'Imagens',
     _IMAGESEXPLAIN1_ : 'Imagens ficam anexadas à sua conta ao invés de a algum jogo em específico. O espaço que cada conta possui para imagens é finito e deve-se tomar cuidado com o tamanho das imagens que se guarda aqui.',
     _IMAGESEXPLAIN2_ : 'Você pode aumentar seu espaço para imagens através de doações que ajudam a pagar o servidor do RedPG. Se seu espaço para imagens diminuir além do seu espaço gasto com imagens, suas imagens não serão apagadas, mas você não poderá enviar novas imagens até reduzir o uso de espaço.',
-    _IMAGESUPLOADED_ : 'Imagens Salvas',
+    _IMAGESEXPLAIN3_ : 'Nos nomes das imagens, qualquer coisa entre parênteses será ignorada na hora de imprimir seu nome, tanto quando usada como Persona quanto quando enviada para o chat.',
+    _IMAGESUPLOADED_ : 'Imagens Salvas (Não implementadas)',
     _IMAGESUPLOADEDEXPLAIN_ : 'Imagens salvas no servidor não serão perdidas entre sessões. Caso vocẽ tenha mais imagens do que seu espaço total, elas não serão deletadas, mas vocẽ não poderá enviar mais imagens até remover o suficiente.',
     _IMAGESLINKED_ : 'Imagens Linkadas',
     _IMAGESLINKEDEXPLAIN_ : 'Essas são imagens salvas na forma de um Link. Elas são salvas na Local Storage de seu Browser, o que significa que serão perdidas no momento em que seu Browser apagar essas informações. Elas devem se manter entre sessões diferentes no mesmo Browser e computador, mas em computadores diferentes seriam ignoradas.',
@@ -41,6 +42,7 @@ window.lingo['pt_br'] = {
     _IMAGESUPLOADSUBMIT_ : 'Enviar',
     _IMAGESDELETE_ : 'Deletar',
     _IMAGESSHARE_ : "Compartilhar no chat atual",
+    _IMAGESPERSONA_ : "Usar como persona",
     _IMAGESOPEN_ : 'Visualizar imagem',
     
     /* Sounds */
