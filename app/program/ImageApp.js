@@ -1,5 +1,10 @@
 function ImageApp () {
     this.updateDB = function (cbs, cbe) {
+        
+        // Disabled until implemented
+        return cbs(null);
+        
+        
         cbs = window.app.emulateBind(function (data) {
             window.app.imagedb.updateFromJSON(data['images'], true);
             this.cbs(data['space']);
@@ -38,5 +43,25 @@ function ImageApp () {
             contentType: false,
             processData: false
         };
+    };
+    
+    this.updateFromLocal = function () {
+        var imageJSON = window.app.memory.getMemory('imageLinks', []);
+        window.app.imagedb.updateFromJSON(imageJSON, false);
+    };
+    
+    this.saveToLocal = function () {
+        var images = window.app.imagedb.images;
+        var toSave = [];
+        for (var id in images) {
+            if (images[id].id < 0) {
+                toSave.push({
+                    id : images[id].id,
+                    name : images[id].name,
+                    url : images[id].url
+                });
+            }
+        }
+        window.app.memory.setMemory('imageLinks', toSave);
     };
 }

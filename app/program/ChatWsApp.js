@@ -197,6 +197,14 @@ function ChatWsApp () {
         }));
     };
     
+    this.fixPrintAndSend = function (message, addlocal) {
+        if (this.room !== null) {
+            message.roomid = this.room.id;
+            message.origin = window.app.loginapp.user.id;
+            this.printAndSend(message, addlocal);
+        }
+    };
+    
     this.printAndSend = function (message, addlocal) {
         var mod = window.app.ui.chat.mc.getModule(message.module);
         if (mod === null) {

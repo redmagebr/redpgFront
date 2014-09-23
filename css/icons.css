@@ -349,3 +349,18 @@ div.styledWindow > h1 > a.closeWindow {
 #fullReloadButton {
     background-image: url('../img/sheet/iconFullReload2.png');
 }
+
+/* Imagens */
+#imageWindow .iconOpen {
+    background-image: url('../img/icon/View.png');
+}
+
+
+/* Icones Universais */
+.uiconShare {
+    background-image: url('../img/icon/Share.png');
+}
+
+.uiconDelete {
+    background-image: url('../img/icon/Delete.png');
+}

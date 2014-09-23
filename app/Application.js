@@ -37,7 +37,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 33, 2];
+    this.version = [0, 34, 0];
     
     /**
      * Settings
@@ -54,6 +54,7 @@ function Application (debug) {
     this.userdb = new UserDB();
     this.sheetdb = new SheetDB();
     this.styledb = new StyleDB();
+    this.imagedb = new ImageDB();
     this.memory = new Memory();
     
     /**
@@ -65,6 +66,7 @@ function Application (debug) {
     this.chatapp = new ChatWsApp();
     this.sheetapp = new SheetApp();
     this.addonapp = new AddonApp();
+    this.imageapp = new ImageApp();
     
     this.ui = new UI();
     

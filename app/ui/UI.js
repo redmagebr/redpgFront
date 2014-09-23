@@ -120,7 +120,6 @@ function UI () {
         this.changelogui.init();
         this.gameui.init();
         this.soundui.init();
-        this.imageui.init();
         this.loginui.init();
         this.youtubeui.init();
         this.sheetui.init();
@@ -449,8 +448,11 @@ function UI () {
         } catch (e) {
             
         }
-        if (url.indexOf('dropbox.com') !== -1 && url.indexOf('?dl=1') === -1) {
-            url = url + '?dl=1';
+        if (url.indexOf('dropbox.com') !== -1) {
+            url = url.replace('dl=0', 'dl=1');
+            if (url.indexOf('dl=1') === -1) {
+                url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
+            }
         }
         var $pic = $('<div id="pictureShow" />').append($('<img />').attr('src', url));
         console.log($pic);

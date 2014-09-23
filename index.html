@@ -21,6 +21,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/addonBox.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/simpleFloater.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/images.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/navigatorStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
@@ -137,9 +138,7 @@
         <div id="rightHandler">
             <a id='callSheetsWindowBt' class="button"><span class="language" data-langhtml="_SHEETS_"></span></a>
             <a id='callSheetWindowBt' class="button"><span class="language" data-langhtml="_SHEET_"></span></a>
-            <!--
             <a id='openImagesBt' class="button"><span class="language" data-langhtml="_OPENIMAGES_"></span></a>
-            -->
             <a id='openSounds' class="button"><span class="language" data-langhtml="_OPENSOUNDS_"></span></a>
             <a id='openHitbox' onclick="window.app.ui.openHitbox();" class="button"><span class="language" data-langhtml="_OPENTHITBOX_"></span></a>
         </div>
@@ -858,9 +857,37 @@
                     <span class="language" data-langhtml="_IMAGESHEADER_"></span>
                     <a class="closeWindow button" onclick="window.app.ui.closeRightWindow();"></a>
                 </h1>
-                <div>
-                    <p class="language" data-langhtml="_IMAGESEXPLAIN1_"></p>
-                    <p class="language" data-langhtml="_IMAGESEXPLAIN2_"></p>
+                <div class='singleton'>
+                    <!--
+                    <p class="language selectable" data-langhtml="_IMAGESEXPLAIN1_"></p>
+                    <p class="language selectable" data-langhtml="_IMAGESEXPLAIN2_"></p>
+                    <h2 class='language' data-langhtml='_IMAGESUPLOADED_'></h2>
+                    <p class='language' data-langhtml='_IMAGESUPLOADEDEXPLAIN_'></p>
+                    <div id='imageList'></div>
+                    -->
+                    <h2 class='language' data-langhtml='_IMAGESLINKED_'></h2>
+                    <p class='language' data-langhtml='_IMAGESLINKEDEXPLAIN_'></p>
+                    <div id='imageLinkList'></div>
+                    <form id='imageUpload'>
+                        <label>
+                            <input id='imageRadioUpload' type='radio' name='imageKind' />
+                            <span class='language' data-langhtml='_IMAGESUPLOAD_'></span>
+                        </label>
+                        -
+                        
+                        <label>
+                            <input id='imageRadioLink' type='radio' name='imageKind' checked />
+                            <span class='language' data-langhtml='_IMAGESLINK_'></span>
+                        </label>
+                        <div id='imagesUpload'>
+                            Not implemented
+                        </div>
+                        <div id='imagesLink'>
+                            <input id='imagesLinkName' type='text' class='language' data-langplaceholder='_IMAGESNAME_' />
+                            <input id='imagesLinkLink' type='text' class='language' data-langplaceholder='_IMAGESLINKADDRESS_' />
+                        </div>
+                        <input type='submit' class='language textButton' data-langvalue='_IMAGESUPLOADSUBMIT_' />
+                    </form>
                 </div>
             </div>
             <div id="soundWindow" class="window styledWindow">
@@ -950,6 +977,7 @@
             <script src="app/program/LoginApp.js"></script>
             <script src="app/program/GameApp.js"></script>
             <script src="app/program/ChatApp.js"></script>
+            <script src="app/program/ImageApp.js"></script>
             <script src="app/program/AddonApp.js"></script>
             <script src="app/program/ChatWsApp.js"></script>
             <script src="app/program/RoomApp.js"></script>
@@ -966,11 +994,14 @@
             <script src="app/database/kinds/Style_Instance.js"></script>
             <script src="app/database/kinds/Invite.js"></script>
             <script src="app/database/kinds/Game.js"></script>
+            <script src="app/database/kinds/Image.js"></script>
+            <script src="app/database/kinds/Image_Link.js"></script>
             <script type="text/javascript" src="app/database/kinds/Sheet_Instance.js"></script>
             <script src="app/database/ConfigDB.js"></script>
             <script src="app/database/GameDB.js"></script>
             <script src="app/database/RoomDB.js"></script>
             <script src="app/database/StyleDB.js"></script>
+            <script src="app/database/ImageDB.js"></script>
             <script src="app/database/UserDB.js"></script>
             <script src="app/database/SheetDB.js"></script>
             <script src="app/ui/language/Language.js"></script>
