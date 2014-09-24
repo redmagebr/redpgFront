@@ -14,7 +14,7 @@ function PictureUI () {
     this.stream = false;
     
     this.handleResize = function () {
-        if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
+        if (window.app.ui.chat.mc.getModule('stream') === null || !window.app.ui.chat.mc.getModule('stream').isStream) {
             this.$window.css({"width" : window.app.ui.$rightWindow.width()});
         } else {
             this.$window.css('width', '');
@@ -24,7 +24,7 @@ function PictureUI () {
     
     this.fullscreen = function (full) {
         var right = full ? 100 : 10;
-        if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
+        if (window.app.ui.chat.mc.getModule('stream') === null || !window.app.ui.chat.mc.getModule('stream').isStream) {
             this.$window.css('right', right + 'px');
         } else {
             this.$window.css('right', '');
@@ -91,11 +91,12 @@ function PictureUI () {
     };
     
     this.streaming = function (streaming) {
+        this.stream = streaming;
         if (streaming) {
             this.$window.css('width', '');
             this.$window.css('right', '');
         }
-        this.stream = streaming;
+        this.handleResize();
         this.updatePicture();
     };
 }
