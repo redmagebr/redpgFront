@@ -176,3 +176,7 @@ body #pictureElement {
 body #picturePaint {
     display: none;
 }
+
+body #pictureWindowClose {
+    display: none;
+}

@@ -167,7 +167,7 @@ function PictureUI () {
     };
     
     this.showPainting = function () {
-        this.$paintingTools.stop(true,false).fadeIn(100);
+        this.$paintingTools.stop(true,false).unhide();
     };
     
     this.updateCanvas = function (updateValues) {
