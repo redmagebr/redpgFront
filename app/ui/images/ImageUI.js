@@ -138,10 +138,7 @@ function ImageUI () {
         window.app.ui.language.applyLanguageOn(this.$imageList);
     };
     
-    this.shareImage = function (id) {
-        var image = window.app.imagedb.getImage(id);
-        if (image === null) alert("Invalid image");
-        
+    this.shareImage = function (image) {
         var message = new Message();
         message.module = 'image';
         message.msg = image.getUrl();
