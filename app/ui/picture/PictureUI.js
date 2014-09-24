@@ -276,6 +276,7 @@ function PictureUI () {
     this.mouseup = function (e) {
         this.painting = false;
         // send art through chat
+        if (this.myArt[this.src].length === 0) return;
         var message = new Message();
         message.module = 'pica';
         message.setSpecial('art', this.myArt[this.src]);
