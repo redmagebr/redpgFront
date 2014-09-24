@@ -16,13 +16,19 @@ function PictureUI () {
     this.handleResize = function () {
         if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
             this.$window.css({"width" : window.app.ui.$rightWindow.width()});
+        } else {
+            this.$window.css('width', '');
         }
         this.updatePicture();
     };
     
     this.fullscreen = function (full) {
         var right = full ? 100 : 10;
-        this.$window.css('right', right + 'px');
+        if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
+            this.$window.css('right', right + 'px');
+        } else {
+            this.$window.css('right', '');
+        }
         this.updatePicture();
     };
     
