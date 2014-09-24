@@ -63,7 +63,7 @@ window.chatModules.push({
         var $link = $('<a class="language" data-langhtml="_IMAGELINK_" />');
         $link.bind('click', window.app.emulateBind(
             function (event) {
-                window.app.ui.showPicture(this.link);
+                window.app.ui.pictureui.open(this.link);
                 event.preventDefault();
             }, {link : cleanMsg}
         ));
@@ -71,7 +71,7 @@ window.chatModules.push({
         $link.attr('target', '_blank');
         
         if ((typeof slashCMD === 'undefined' || slashCMD === null) && !window.app.ui.chat.cc.firstPrint && user.isStoryteller() && window.app.configdb.get("autoImage", true)) {
-            window.app.ui.showPicture(cleanMsg);
+            window.app.ui.pictureui.open(cleanMsg);
         }
 
         $msg.append($link);

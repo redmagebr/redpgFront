@@ -44,6 +44,8 @@ function UI () {
     
     this.styleui = new StyleUI();
     
+    this.pictureui = new PictureUI();
+    
     
     this.simplefloater = new SimpleFloater();
     
@@ -227,6 +229,7 @@ function UI () {
             this.checkWidth();
         }
         this.chat.handleResize();
+        this.pictureui.handleResize();
     };
     
     /**
@@ -242,6 +245,7 @@ function UI () {
             this.$rightHandler.addClass('fullScreen');
             this.$rightHandler.removeAttr('style');
             this.$pictureContainer.addClass('fullScreen');
+            this.pictureui.fullscreen(true);
             this.$pictureContainer.css('width', '');
             this.$rightWindow.css('width', '');
             this.$leftWindow.css('right', '');
@@ -251,6 +255,7 @@ function UI () {
             this.$leftHandler.removeClass('fullScreen');
             this.$rightHandler.removeClass('fullScreen');
             this.$pictureContainer.removeClass('fullScreen');
+            this.pictureui.fullscreen(false);
             this.$leftHandler.css('left', '-100px');
             this.$rightHandler.css('right', '-100px');
             var available = this.lastWidth - 720;
@@ -438,33 +443,6 @@ function UI () {
                 $(this).css('visibility', 'hidden');
             }
         );
-    };
-    
-    
-    this.showPicture = function (url) {
-        //url = decodeURIComponent(url);
-        try {
-            url = decodeURIComponent(url);
-        } catch (e) {
-            
-        }
-        if (url.indexOf('dropbox.com') !== -1) {
-            url = url.replace('dl=0', 'dl=1');
-            if (url.indexOf('dl=1') === -1) {
-                url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
-            }
-        }
-        
-        var $img = $('<img />').attr('src', url);
-        
-        var $pic = $('<div id="pictureShow" />').append($img);
-        console.log($pic);
-        this.$pictureContainer.empty().append($pic);
-        $pic.imgLiquid({fill:false});
-        this.$pictureContainer.css('visibility', 'visible');
-        this.$pictureContainer.animate({
-            'opacity' : 1
-        }, 200);
     };
     
     this.updateConfig = function () {

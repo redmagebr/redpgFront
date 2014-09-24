@@ -8,6 +8,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/picture.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/styleui.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/soundsStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
@@ -220,6 +221,11 @@
                     <a id="combatTrackerNewRound" class="button language" data-langtitle="_COMBATTRACKERNEWROUND_"></a>
                 </span>
             </div>
+        </div>
+        
+        <div id='pictureWindow'>
+            <img id="pictureElement" />
+            <a id="pictureLoading" class="loadingAnchor"></a>
         </div>
         
         <div id="leftWindow">
@@ -711,12 +717,6 @@
             </div>
             
         </div>
-        <div id="pictureContainer" class="unselectable">
-            <div id="pictureShow">
-                <img id='pictureShown' />
-            </div>
-            <a class="language" data-langhtml="_CLOSEIMAGE_"></a>
-        </div>
         <div id="rightWindow" class="unselectable">
             <div id="rightBlock">
                 <a></a>
@@ -967,7 +967,6 @@
             <script src="js/jquery-2.1.1.min.js"></script>
             <script src="js/jQueryExt.js"></script>
             <script src="js/jquery-mobile-browser.js"></script>
-            <script src="js/imgLiquid-min.js"></script>
             <script src="js/jquery-ui.min.js"></script>
             <script src="js/jquery.idle.min.js"></script>
             <script src="js/seedrandom.min.js"></script>
@@ -1007,6 +1006,7 @@
             <script src="app/ui/language/translation/PTBR.js"></script>
             <script src="app/ui/UI.js"></script>
             <script src="app/ui/addon/AddonUI.js"></script>
+            <script src="app/ui/picture/PictureUI.js"></script>
             <script src="app/ui/sounds/SoundUI.js"></script>
             <script src="app/ui/images/ImageUI.js"></script>
             <script src="app/ui/youtube/YoutubeUI.js"></script>

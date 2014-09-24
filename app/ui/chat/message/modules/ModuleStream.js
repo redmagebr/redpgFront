@@ -30,7 +30,7 @@ window.chatModules.push({
      * @returns {jQuery || null}
      */
     get$ : function (msg, slashCMD, message) {
-        if (msg === null || msg.msg === null || (typeof message !== 'undefined' && message !== null && message !== '')) {
+        if (msg === null || msg.msg === null) {
             return null;
         }
         
@@ -41,11 +41,7 @@ window.chatModules.push({
         var clean = msg.msg.toUpperCase();
         
         if (clean === 'CLOSEPICTURE' || clean === 'PICTURE') {
-            window.app.ui.$pictureContainer.animate({
-                'opacity' : 0
-            }, 200, function () {
-                $(this).css('visibility', 'hidden');
-            });
+            window.app.ui.pictureui.close();
         } else if (clean === 'CLOSEYOUTUBE' || clean === 'YOUTUBE') {
             window.app.ui.hideRightWindows(function () {
                 window.app.ui.youtubeui.$player.empty();
@@ -53,9 +49,20 @@ window.chatModules.push({
         } else if (clean === 'CLEAR') {
             window.app.ui.chat.$chatHeader.hide();
             window.app.ui.chat.$chatMessages.empty();
-            window.app.ui.chat.fixScrollpane();
         } else if (msg.msg.indexOf('://') !== -1) {
-            $('#stream').empty().append($('<img />').attr('src', msg.msg));
+            var url = msg.msg;
+            try {
+                url = decodeURIComponent(url);
+            } catch (e) {
+
+            }
+            if (url.indexOf('dropbox.com') !== -1) {
+                url = url.replace('dl=0', 'dl=1');
+                if (url.indexOf('dl=1') === -1) {
+                    url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
+                }
+            }
+            $('#stream').empty().append($('<img />').attr('src', url));
         }
         
         
@@ -93,6 +100,7 @@ window.chatModules.push({
                 window.app.ui.language.applyLanguageTo($notification);
                 window.app.ui.chat.appendToMessages($notification);
                 $('#favicon').attr('href', 'favicon.ico');
+                window.app.ui.pictureui.streaming(false);
                 window.app.ui.checkWidth();
             } else {
                 this.isStream = true;
@@ -104,17 +112,18 @@ window.chatModules.push({
                 window.app.ui.chat.cc.room.hidePersona = true;
                 window.app.ui.title = "RedPGCamera";
                 window.app.ui.removeNotifications();
-                window.app.ui.$pictureContainer.css({width : ''});
+                window.app.ui.pictureui.streaming(true);
                 $('#favicon').attr('href', 'img/favicon.ico');
                 var $notification = $('<p class="chatSistema language" data-langhtml="_STREAMON_" />');
                 window.app.ui.language.applyLanguageTo($notification);
                 window.app.ui.chat.appendToMessages($notification);
-                this.$css = $('<link rel="stylesheet" href="css/stream.css" type="text/css" />');
-                $('head').append(this.$css);
-                this.$css.bind('load', function (){
-                    window.app.ui.chat.fixScrollpane();
-                    window.app.ui.hideRightWindows();
+                window.app.ui.hideRightWindows();
+                this.$css = $('<link rel="stylesheet" href="css/stream.css" type="text/css" />').on('load', function () {
+                    window.app.ui.checkWidth();
+                    window.app.ui.chat.scrollToBottom(true);
+                    window.app.ui.chat.alwaysBottom = true;
                 });
+                $('head').append(this.$css);
             }
         } else {
             msg = new Message();

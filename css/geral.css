@@ -357,7 +357,7 @@ body {
     z-index: 1001;
 }
 
-#loadingIcon, #leftBlock > a, #rightBlock > a {
+#loadingIcon, #leftBlock > a, #rightBlock > a, .loadingAnchor{
     position: absolute;
     width: 64px;
     height: 64px;

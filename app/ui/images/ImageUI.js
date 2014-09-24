@@ -82,7 +82,7 @@ function ImageUI () {
         
         // Visualizar
         var $view = $('<a class="iconOpen floatLeft button language" data-langtitle="_IMAGESOPEN_" />').on('click', window.app.emulateBind(function () {
-            window.app.ui.showPicture(this.url);
+            window.app.ui.pictureui.open(this.url);
         }, {url : image.getUrl()}));
         $image.append($view);
         

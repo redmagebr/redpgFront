@@ -1,0 +1,32 @@
+#pictureWindow {
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    z-index: 301;
+}
+
+#pictureWindow:hover {
+    cursor: pointer;
+    background-color: rgba(40,40,40,.5);
+}
+
+#pictureWindow:active {
+    cursor: pointer;
+    background-color: rgba(20,20,20,.6);
+}
+
+#pictureElement {
+    position: absolute;
+    border: solid 3px #000;
+    z-index: 302;
+    -webkit-filter: brightness(0.95);
+}
+
+#pictureWindow:hover #pictureElement {
+    -webkit-filter: brightness(1);
+}
+
+#pictureLoading {
+    z-index: 303;
+}
