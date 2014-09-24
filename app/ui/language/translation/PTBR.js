@@ -531,6 +531,7 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSNEWIMAGE_ : 'Adicionar Imagem',
     _IMAGEARCHIVE_ : 'Banco de Imagens',
     _SHEETCOMMONSTYPE_ : 'Tipo',
+    _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
     
     /* CHrome */
     

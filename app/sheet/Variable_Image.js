@@ -33,8 +33,10 @@ function Variable_Image ($visible, style, missingid, parent) {
             var $option;
             if (this.value[0] !== null && this.value[1] !== null) {
                 $option = $('<option selected />').val(this.value[0]).text(this.value[1]);
-                $select.append($option);
+            } else {
+                $option = $('<option selected disabled class="language" data-langhtml="_SHEETCOMMONSPICKIMAGE_" />').text(window.app.ui.language.getLingo("_SHEETCOMMONSPICKIMAGE_"));
             }
+            $select.append($option);
             for (var i = 0; i < window.app.imagedb.imagesOrdered.length; i++) {
                 image = window.app.imagedb.imagesOrdered[i];
                 $option = $('<option />').val(image.getUrl()).text(image.getName());
