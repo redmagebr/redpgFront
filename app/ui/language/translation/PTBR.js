@@ -374,7 +374,7 @@ window.lingo['pt_br'] = {
     _WHISPERLONGHELP_ : 'Envia a mensagem como mensagem privada para um jogador. Pressione TAB para completar o nome do jogador automaticamente. Exemplo: /w Red[TAB]. /w [tab] irá mostrar uma lista de todos os jogadores para que escolha.',
     _LINGOSHORTHELP_ : 'Envia a mensagem como uma mensagem de língua. Exemplo: "/lang Elvish, Olá" irá codificar Olá na língua Elvish. Adicionar "sto" no comando irá codificar com a língua na história. Exemplo: /langsto Elvish, Algo escrito em um livro',
     _YOUTUBESHORTHELP_ : 'Envia um link de youtube como vídeo. Exemplo: /youtube https://www.youtube.com/watch?v=moSFlvxnbgk',
-    _PICASHORTHELP_ : 'Abre uma tela em branca para todos desenharem. Texto digitado se torna o nome da imagem.',
+    _PICASHORTHELP_ : 'Abre uma tela em branca para todos desenharem. Texto digitado se torna o nome da imagem. Usar o mesmo texto mais de uma vez na mesma sala faz a mesma imagem abrir. Caso contrário, imagens diferentes serão abertas para cada comando executado.',
     
     /* Config */
     _SYSTEMCONFIGHEADER_ : 'Configurações',
