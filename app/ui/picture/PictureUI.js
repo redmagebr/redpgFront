@@ -93,6 +93,7 @@ function PictureUI () {
     this.streaming = function (streaming) {
         if (streaming) {
             this.$window.css('width', '');
+            this.$window.css('right', '');
         }
         this.stream = streaming;
         this.updatePicture();
