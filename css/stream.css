@@ -172,3 +172,7 @@ body #pictureElement {
     border: none;
     -webkit-filter: brightness(1);
 }
+
+body #picturePaint {
+    display: none;
+}

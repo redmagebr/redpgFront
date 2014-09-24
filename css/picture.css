@@ -1,27 +1,81 @@
 #pictureWindow {
     background-color: rgba(0,0,0,.5);
     position: absolute;
+    overflow: hidden;
     top: 0px;
     bottom: 0px;
     z-index: 301;
 }
 
-#pictureWindow:hover {
-    cursor: pointer;
-    background-color: rgba(40,40,40,.5);
-}
-
 #pictureElement {
     position: absolute;
     border: solid 3px #000;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
     z-index: 302;
-    -webkit-filter: brightness(0.95);
 }
 
-#pictureWindow:hover #pictureElement {
-    -webkit-filter: brightness(1);
+#pictureCanvas {
+    position: absolute;
+    z-index: 303;
+}
+
+#pictureCanvas:hover {
+    cursor: pointer;
 }
 
 #pictureLoading {
     z-index: 303;
+}
+
+#picturePaint {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    top: 5px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    z-index: 305;
+}
+
+#picturePaint > hr {
+    height: 20px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    border-right: solid 1px #000;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#picturePaint a > div {
+    position: absolute;
+}
+
+#picturePaint a {
+    position: relative;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-right: 5px;
+    border: solid 1px #000;
+    overflow: visible;
+    vertical-align: top;
+}
+
+#picturePaint a:hover {
+    cursor: pointer;
+    border-color: #4e4e4e;
+}
+
+#pictureWindowClose {
+    position: absolute;
+    z-index: 304;
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+    -webkit-filter: brightness(1.5);
 }

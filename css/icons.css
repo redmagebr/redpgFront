@@ -350,6 +350,23 @@ div.styledWindow > h1 > a.closeWindow {
     background-image: url('../img/sheet/iconFullReload2.png');
 }
 
+/* Painting */
+.paintIconSmall {
+    background-image: url('../img/paint/Small.png');
+}
+
+.paintIconMedium {
+    background-image: url('../img/paint/Medium.png');
+}
+
+.paintIconClear {
+    background-image: url('../img/paint/Clear.png');
+}
+
+.paintIconLock {
+    background-image: url('../img/paint/Lock.png');
+}
+
 /* Icones Universais */
 .uiconShare {
     background-image: url('../img/icon/Share.png');
@@ -365,4 +382,8 @@ div.styledWindow > h1 > a.closeWindow {
 
 .uiconView {
     background-image: url('../img/icon/View.png');
+}
+
+.uiconClose {
+    background-image: url('../img/closeButton.png');
 }

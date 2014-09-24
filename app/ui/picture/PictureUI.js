@@ -1,14 +1,59 @@
 function PictureUI () {
-    this.$window = $('#pictureWindow').on('click', function () {
-        window.app.ui.pictureui.close();
-    }).hide();
+    this.$window = $('#pictureWindow').hide();
     this.$element = $('#pictureElement').hide();
     this.$loading = $('#pictureLoading');
+    this.$currentSize = $('<a class="paintIconSmall language button" data-langtitle="_DRAWINGSIZE_" />');
+    this.$currentColor = $('<a class="language button" data-langtitle="_DRAWINGCOLOR_" style="background-color: #CC0000" />').append('<a></a>');
+    
+    this.$clear = $('<a class="paintIconClear language button" data-langtitle="_DRAWINGCLEAR_" style="background-color: #ffffff" />').on('click', function () {
+        window.app.ui.pictureui.sendClear();
+    });
+    
+    this.$lock = $('<a class="paintIconLock language button" data-langtitle="_DRAWINGLOCK_" />').on('click', function () {
+        window.app.ui.pictureui.locked = !window.app.ui.pictureui.locked;
+        if (window.app.ui.pictureui.locked) {
+            $(this).addClass('toggled');
+        } else {
+            $(this).removeClass('toggled');
+        }
+    });
+    
+    this.$paintingTools = $('#picturePaint').append(this.$currentSize).append(this.$currentColor)
+            .append(this.$clear);
+    
+    this.locked = false;
+    
+    this.color = '#CC0000';
+    
+    this.drawings = {};
+    this.myArt = {};
+    
+    this.$canvas = null;
+    
+    
+    this.$currentColor.colpick({
+        flat: true,
+	layout:'hex',
+	submit:1,
+        color : 'CC0000',
+        onSubmit : function (hsb, hex, rgb, el, bySetColor) {
+            $(el).css('background-color', '#' + hex).children('div').stop(true,false).fadeOut(200);
+            window.app.ui.pictureui.color = '#' + hex;
+        }
+    }).children('div').hide();
+            
+    this.$currentColor.children('a').on('click', function () {
+        $(this).parent().children('div').stop(true, false).fadeIn(200);
+    });
+    
+    this.link404 = 'img/404.png';
+    
+    this.$close = $('#pictureWindowClose').on('click', function () {
+        window.app.ui.pictureui.close();
+    });
     
     this.$element.on('load', function () {
         window.app.ui.pictureui.updatePicture();
-    }).on('error', function () {
-        window.app.ui.pictureui.invalidPicture();
     });
     
     this.stream = false;
@@ -45,19 +90,26 @@ function PictureUI () {
             }
         }
         
-        this.$element.attr('src', url).css({
+        this.$element.off('error').on('error', function () {
+            window.app.ui.pictureui.invalidPicture();
+        }).attr('src', url).css({
             width: 0, height: 0
         });
         this.$window.stop(true,false).fadeIn(200);
         this.$loading.stop(true,true).show();
+        this.$paintingTools.stop(true, false).hide();
+        if (window.app.ui.pictureui.$canvas !== null) {
+            window.app.ui.pictureui.$canvas.remove();
+            window.app.ui.pictureui.$canvas = null;
+        }
     };
     
     this.updatePicture = function () {
         if (this.$element.attr('src') === undefined) return;
         this.$element.css('width', '').css('height', '');
         this.$loading.stop(true,false).fadeOut(200);
-        var oHeight = this.$element.height();
-        var oWidth = this.$element.width();
+        var oHeight = this.$element[0].naturalHeight;
+        var oWidth = this.$element[0].naturalWidth;
         // Anti loop
         if (oHeight === 0 || oWidth === 0) return;
         var margin = this.stream ? 0 : 40;
@@ -65,8 +117,15 @@ function PictureUI () {
         var maxWidth = this.$window.width() - margin;
         var factorW = maxWidth / oWidth;
         var factorH = maxHeight / oHeight;
-        var factor = factorW < factorH ? factorW : factorH;
+        if (this.stream) {
+            var factor = factorW < factorH ? factorH : factorW;
+        } else {
+            var factor = factorW < factorH ? factorW : factorH;
+        }
         var top = (this.$window.height() - (oHeight * factor))/2;
+        if (!this.stream && top < 30 && this.$element.attr('src') !== this.link404) {
+            top = 30;
+        }
         var left = (this.$window.width() - (oWidth * factor))/2;
         this.$element.css({
             width: oWidth * factor,
@@ -75,6 +134,152 @@ function PictureUI () {
             left: left
         });
         this.$element.show();
+        
+        this.src = this.$element.attr('src');
+        
+        if (this.$element.attr('src') !== this.link404) {
+            this.showPainting();
+            this.updateCanvas(true);
+        }
+    };
+    
+    this.addDrawings = function (src, array) {
+        if (this.drawings[src] === undefined) this.drawings[src] = [];
+        this.drawings[src] = this.drawings[src].concat(array);
+        if (src === this.src) {
+            this.updateCanvas();
+        }
+    };
+    
+    this.clearDrawings = function (src) {
+        this.drawings[src] = [];
+        if (src === this.src) {
+            this.updateCanvas();
+        }
+    };
+    
+    this.sendClear = function () {
+        var message = new Message();
+        message.module = 'pica';
+        message.setSpecial('clear', true);
+        message.msg = this.src;
+        window.app.chatapp.fixPrintAndSend(message, false);
+    };
+    
+    this.showPainting = function () {
+        this.$paintingTools.stop(true,false).fadeIn(100);
+    };
+    
+    this.updateCanvas = function (updateValues) {
+        if (this.$canvas === null) {
+            updateValues = true;
+            var oWidth = this.$element[0].naturalWidth;
+            var oHeight = this.$element[0].naturalHeight;
+            this.$canvas = $('<canvas id="pictureCanvas" width="' + oWidth + '" height="' + oHeight + '" />');
+            this.$window.append(this.$canvas);
+            this.canvasContext = this.$canvas[0].getContext('2d');
+            this.$canvas.on('mousedown', function (e) {
+                window.app.ui.pictureui.mousedown(e);
+                $(window).on('mouseup.canvasDrawing', function (e) {
+                    $(this).off('mouseup.canvasDrawing');
+                    window.app.ui.pictureui.mouseup(e);
+                });
+            }).on('mousemove', function (e) {
+                window.app.ui.pictureui.mousemove(e);
+            });
+            this.oWidth = oWidth;
+            this.oHeight = oHeight;
+        }
+        if (updateValues) {
+            this.$canvas.css({
+                top : this.$element.css('top'),
+                left : this.$element.css('left'),
+                height : this.$element.css('height'),
+                width : this.$element.css('width')
+            });
+            this.width = this.$canvas.width();
+            this.height = this.$canvas.height();
+            this.offset = this.$canvas.offset();
+        }
+        
+        if (this.drawings[this.src] === undefined) this.drawings[this.src] = [];
+        
+        this.canvasContext.clearRect(0,0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
+        var drawing;
+        this.canvasContext.beginPath();
+        for (var i = 0; i < this.drawings[this.src].length; i++) {
+            var drawing = this.drawings[this.src][i];
+            if (drawing.length === 3) {
+                this.canvasContext.stroke();
+                this.canvasContext.closePath();
+                this.canvasContext.beginPath();
+                this.canvasContext.moveTo(drawing[0], drawing[1]);
+                this.canvasContext.strokeStyle = drawing[2];
+                continue;
+            }
+            this.canvasContext.lineTo(drawing[0], drawing[1]);
+            this.canvasContext.moveTo(drawing[0], drawing[1]);
+        }
+        this.canvasContext.stroke();
+        this.canvasContext.closePath();
+    };
+    
+    /**
+     * 
+     * @param {MouseEvent} e
+     * @returns {undefined}
+     */
+    this.mousedown = function (e) {
+        this.painting = true;
+        this.myArt[this.src] = [];
+        if (this.locked) {
+            if (!window.app.chatapp.room.getMe().isStoryteller()) {
+                this.painting = false;
+            }
+        }
+        this.mousemove(e, 1);
+    };
+    
+    /**
+     * 
+     * @param {MouseEvent} e
+     * @returns {undefined}
+     */
+    this.mouseup = function (e) {
+        this.painting = false;
+        // send art through chat
+        var message = new Message();
+        message.module = 'pica';
+        message.setSpecial('art', this.myArt[this.src]);
+        message.msg = this.src;
+        window.app.chatapp.fixPrintAndSend(message, true);
+    };
+    
+    /**
+     * 
+     * @param {MouseEvent} e
+     * @returns {undefined}
+     */
+    this.mousemove = function (e, newOne) {
+        if (newOne === undefined) newOne = 0;
+        if (this.painting) {
+            var relX = e.pageX - this.offset.left;
+            var relY = e.pageY - this.offset.top;
+            var finalX = parseInt((relX/this.width) * this.oWidth);
+            var finalY = parseInt((relY/this.height) * this.oHeight);
+            var array = [];
+            
+            array.push(finalX);
+            array.push(finalY);
+            
+            if (newOne) {
+                array.push(this.color);
+            }
+            
+            this.drawings[this.src].push(array);
+            this.myArt[this.src].push(array);
+            this.updateCanvas();
+        }
     };
     
     this.close = function () {
@@ -82,12 +287,17 @@ function PictureUI () {
             if (!window.app.ui.pictureui.$window.is(':visible')) {
                 window.app.ui.pictureui.$element.removeAttr('src');
             }
+            if (window.app.ui.pictureui.$canvas !== null) {
+                window.app.ui.pictureui.$canvas.remove();
+                window.app.ui.pictureui.$canvas = null;
+            }
         });
     };
     
     this.invalidPicture = function () {
         this.$element.css('width', '').css('height', '');
-        this.$element.attr('src', 'img/404.png');
+        this.$element.attr('src', this.link404);
+        this.$element.off('error');
     };
     
     this.streaming = function (streaming) {

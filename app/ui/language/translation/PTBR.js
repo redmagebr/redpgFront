@@ -523,6 +523,12 @@ window.lingo['pt_br'] = {
     _STYLECOPY_ : 'Copiar estilo',
     _STYLENOSTYLES_ : "Sem estilos carregados. Abra uma ficha.",
     
+    /* Picture UI */
+    _DRAWINGSIZE_ : 'Tamanho do pincel (Não implementado)',
+    _DRAWINGCOLOR_ : 'Cor do pincel',
+    _DRAWINGCLEAR_ : 'Apagar desenhos',
+    _DRAWINGLOCK_ : 'Trancar desenho para o mestre',
+    
     /* Sheet Commons */
     _SHEETSLOADIMAGES_ : 'Lista de imagens ainda não foi aberta',
     _SHEETCOMMONSPLAYER_ : 'Jogador',
