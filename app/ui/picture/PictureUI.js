@@ -2,8 +2,16 @@ function PictureUI () {
     this.$window = $('#pictureWindow').hide();
     this.$element = $('#pictureElement').hide();
     this.$loading = $('#pictureLoading');
-    this.$currentSize = $('<a class="paintIconSmall language button" data-langtitle="_DRAWINGSIZE_" />');
+    this.$currentSize = $('<a class="paintIconSmall language button" data-langtitle="_DRAWINGSIZE_" />').on('click', function () {
+        window.app.ui.pictureui.changeSize();
+    });
     this.$currentColor = $('<a class="language button" data-langtitle="_DRAWINGCOLOR_" style="background-color: #CC0000" />').append('<a></a>');
+    this.$eraser = $('<a class="language button paintIconEraser" data-langtitle="_DRAWINGERASER_" />').on('click', function () {
+        window.app.ui.pictureui.color = "none";
+        window.app.ui.pictureui.size = 10;
+        window.app.ui.pictureui.$currentColor.css('background-color', 'transparent');
+    });
+    
     
     this.$clear = $('<a class="paintIconClear language button" data-langtitle="_DRAWINGCLEAR_" style="background-color: #ffffff" />').on('click', function () {
         window.app.ui.pictureui.sendClear();
@@ -19,11 +27,12 @@ function PictureUI () {
     });
     
     this.$paintingTools = $('#picturePaint').append(this.$currentSize).append(this.$currentColor)
-            .append(this.$clear);
+            .append(this.$clear).append(this.$eraser);
     
     this.locked = false;
     
     this.color = '#CC0000';
+    this.size = 1;
     
     this.drawings = {};
     this.myArt = {};
@@ -159,6 +168,10 @@ function PictureUI () {
     };
     
     this.sendClear = function () {
+        if (window.app.chatapp.room === null) {
+            this.drawings[this.src] = [];
+            return;
+        }
         var message = new Message();
         message.module = 'pica';
         message.setSpecial('clear', true);
@@ -209,13 +222,28 @@ function PictureUI () {
         this.canvasContext.beginPath();
         for (var i = 0; i < this.drawings[this.src].length; i++) {
             var drawing = this.drawings[this.src][i];
-            if (drawing.length === 3) {
-                this.canvasContext.stroke();
-                this.canvasContext.closePath();
-                this.canvasContext.beginPath();
-                this.canvasContext.moveTo(drawing[0], drawing[1]);
-                this.canvasContext.strokeStyle = drawing[2];
-                continue;
+            if (drawing.length >= 4) {
+                if (drawing.length === 4 || drawing[4] === 1) {
+                    this.canvasContext.stroke();
+                    this.canvasContext.closePath();
+                    this.canvasContext.beginPath();
+                    this.canvasContext.lineWidth = 2;
+                    this.canvasContext.moveTo(drawing[0], drawing[1]);
+                }
+                
+                if (!isNaN(drawing[2], 10)) {
+                    this.canvasContext.lineWidth = parseInt(drawing[2]);
+                }
+                
+                if (drawing[3].indexOf('#') !== -1) {
+                    this.canvasContext.globalCompositeOperation="source-over";
+                    this.canvasContext.strokeStyle = drawing[3];
+                } else {
+                    this.canvasContext.globalCompositeOperation="destination-out";
+                }
+                if (drawing.length === 3 || drawing[3] === 1) {
+                    continue;
+                }
             }
             this.canvasContext.lineTo(drawing[0], drawing[1]);
             this.canvasContext.moveTo(drawing[0], drawing[1]);
@@ -268,16 +296,23 @@ function PictureUI () {
             var finalX = parseInt((relX/this.width) * this.oWidth);
             var finalY = parseInt((relY/this.height) * this.oHeight);
             var array = [];
+            var arrayThis = [];
             
             array.push(finalX);
             array.push(finalY);
+            arrayThis.push(finalX);
+            arrayThis.push(finalY);
             
+            arrayThis.push(this.size);
+            arrayThis.push(this.color);
             if (newOne) {
+                array.push(this.size);
                 array.push(this.color);
+                arrayThis.push(1);
             }
             
-            this.drawings[this.src].push(array);
             this.myArt[this.src].push(array);
+            this.drawings[this.src].push(array);
             this.updateCanvas();
         }
     };
@@ -308,5 +343,19 @@ function PictureUI () {
         }
         this.handleResize();
         this.updatePicture();
+    };
+    
+    this.changeSize = function () {
+        this.$currentSize.removeClass("paintIconSmall paintIconMedium paintIconLarge");
+        if (this.size === 1) {
+            this.size = 3;
+            this.$currentSize.addClass("paintIconMedium");
+        } else if (this.size === 3) {
+            this.size = 6;
+            this.$currentSize.addClass("paintIconLarge");
+        } else {
+            this.size = 1;
+            this.$currentSize.addClass("paintIconSmall");
+        }
     };
 }

@@ -14,7 +14,7 @@ window.chatModules.push({
      * Defines the slash command that calls this module.
      * @type Array of Strings
      */
-    Slash : ['/quadro', '/board', '/canvas'],
+    Slash : ['/quadro', '/board', '/canvas', '/pica'],
     
     isValid : function (slashCMD, msg) {
         return true;
@@ -84,6 +84,18 @@ window.chatModules.push({
      */
     getMsg : function (slashCMD, message) {
         // Open empty picture
+        var msg = new Message();
+        msg.module = 'image';
+        var id;
+        if (message !== null && message !== '') {
+            msg.setSpecial('name', message);
+            id = window.app.chatapp.room.id + '-' + message;
+        } else {
+            id = (Math.random() * 100000000000000000);
+        }
+        msg.msg = 'img/WhiteBoard.png?id=' + id;
+        
+        window.app.chatapp.fixPrintAndSend(msg, true);
         
         return null;
     },

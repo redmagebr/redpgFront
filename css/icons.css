@@ -359,12 +359,20 @@ div.styledWindow > h1 > a.closeWindow {
     background-image: url('../img/paint/Medium.png');
 }
 
+.paintIconLarge {
+    background-image: url('../img/paint/Large.png');
+}
+
 .paintIconClear {
     background-image: url('../img/paint/Clear.png');
 }
 
 .paintIconLock {
     background-image: url('../img/paint/Lock.png');
+}
+
+.paintIconEraser {
+    background-image: url('../img/paint/Eraser.png');
 }
 
 /* Icones Universais */

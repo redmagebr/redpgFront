@@ -60,14 +60,14 @@
     width: 19px;
     height: 19px;
     margin-right: 5px;
-    border: solid 1px #000;
+    border: solid 1px #fff;
     overflow: visible;
     vertical-align: top;
 }
 
 #picturePaint a:hover {
     cursor: pointer;
-    border-color: #4e4e4e;
+    border-color: #aba8ff;
 }
 
 #pictureWindowClose {
