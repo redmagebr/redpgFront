@@ -1,7 +1,7 @@
 /**
  * 
  * @param {jQuery} $visible
- * @param {Style_00} style
+ * @param {Style} style
  * @param {number} missingid
  * @param {Sheet} parent
  * @returns {Variable_Template}
@@ -13,11 +13,22 @@ function Variable_Template ($visible, style, missingid, parent) {
     this.parent = parent;
     this.value = null; // Should be the default value for the variable
    
-    this.id = 'Variable' + missingid; // if the variable has an id field, use it instead for posterity
+    if (this.$visible.is('[data-id]') && this.$visible.attr("data-id").length > 0) {
+        this.id = this.$visible.attr('data-id');
+    } else {
+        this.id = 'Variable' + missingid;
+    }
    
     this.update$ = function () {
-       // if this is editable, consider this.style.editing;
-       this.$visible.text(this.value);
+        // if this is editable, consider this.style.editing;
+        if (this.style.editing) {
+            var $input = $('<input type="text" />').val(this.value).on('change', this.style.emulateBind(function () {
+                this.variable.storeValue(this.$this.val());
+            }, {variable : this, $this : $input}));
+            this.$visible.empty().append($input);
+        } else {
+            this.$visible.text(this.value);
+        }
        // if making an input field, consider binding storeValue on change!
     };
    
@@ -25,7 +36,7 @@ function Variable_Template ($visible, style, missingid, parent) {
         // Check if value is valid.
         // Consider converting the value in case it isn't, as in String -> Int
         // It's acceptable to not store an invalid value.
-        // It's even better to store the default value when an invalid value is attempted.
+        // It might be even better to store the default value when there's an attempt to store an invalid value.
         if (value !== this.value) {
             this.value = value;
             this.update$();

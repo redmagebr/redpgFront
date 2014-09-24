@@ -18,7 +18,8 @@ function Style (sheet, styleInstance) {
         'longtext' : window.Variable_Longtext,
         'picture' : window.Variable_Picture,
         'select' : window.Variable_Select,
-        'boolean' : window.Variable_Boolean
+        'boolean' : window.Variable_Boolean,
+        'image' : window.Variable_Image
     };
     
     this.emulateBind = function (f, context) {
@@ -30,6 +31,7 @@ function Style (sheet, styleInstance) {
     this.switchInstance = function (sheet) {
         this.sheet = sheet;
         this.setValues();
+        this.setNpcPlayer();
     };
     
     this.setValues = function () {
@@ -81,6 +83,21 @@ function Style (sheet, styleInstance) {
             }, {style : this}
         );
 
+        var playerField = this.mainSheet.getField('Player');
+        if (playerField !== null) {
+            console.log("Player field is not null");
+            playerField.$visible.on('changedVariable', this.emulateBind(function () {
+                console.log("Player field was changed");
+                console.log(this.variable.getObject());
+                console.log(this.style);
+                console.log(this.variable);
+                this.style.setNpcPlayer(this.variable.getObject() === 'NPC');
+            }, {style : this, variable : playerField}));
+        } else {
+            console.log("Player field was null?");
+        }
+        this.setNpcPlayer();
+
         this.mainSheet.$visible.on('changedVariable', setChanged);
         this.mainSheet.$visible.on('changedRows', setChanged);
         
@@ -128,5 +145,23 @@ function Style (sheet, styleInstance) {
         this.$css = null;
         this.mainSheet.seppuku();
         this.mainSheet = null;
+    };
+    
+    this.setNpcPlayer = function (npc) {
+        console.log("Setting npc player");
+        console.log(npc);
+        if (this.sheet.values !== undefined && typeof npc === undefined) {
+            if (this.sheet.values['Player'] !== undefined) {
+                npc = this.sheet.values['Player'] === 'NPC';
+            }
+        }
+        if (npc === undefined) npc = false;
+        
+        console.log(npc);
+        if (!npc) {
+            this.$html.addClass('character').removeClass('nonplayer');
+        } else {
+            this.$html.addClass('nonplayer').removeClass('character');
+        }
     };
 }

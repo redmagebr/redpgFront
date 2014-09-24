@@ -210,6 +210,12 @@ function SheetController () {
                 });
             }
             
+            if (typeof this.styles[styleid].mainSheet.fields['Player'] !== 'undefined') {
+                this.styles[styleid].mainSheet.fields['Player'].$visible.on('changedVariable', function () {
+                    window.app.ui.sheetui.controller.updateCurrentButton();
+                });
+            }
+            
             this.styles[styleid].mainSheet.$visible.on('hasChanged', function () {
                 window.app.ui.sheetui.controller.considerChanged();
             });
@@ -286,11 +292,15 @@ function SheetController () {
             var style = this.styles[this.currentStyle];
             if (typeof style.mainSheet.fields['Jogador'] !== 'undefined') {
                 var jogador = style.mainSheet.fields['Jogador'].getObject();
+            } else if (typeof style.mainSheet.fields['Player'] !== 'undefined') {
+                var jogador = style.mainSheet.fields['Player'].getObject();
             }
         } else {
             var sheet = window.app.sheetdb.getSheet(this.currentInstance);
             if (typeof sheet.values['Jogador'] !== 'undefined') {
                 var jogador = sheet.values['Jogador'];
+            } else if (typeof sheet.values['Player'] !== 'undefined') {
+                var jogador = sheet.values['Player'];
             }
         }
         

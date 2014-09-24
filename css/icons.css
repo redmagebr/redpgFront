@@ -350,12 +350,6 @@ div.styledWindow > h1 > a.closeWindow {
     background-image: url('../img/sheet/iconFullReload2.png');
 }
 
-/* Imagens */
-#imageWindow .iconOpen {
-    background-image: url('../img/icon/View.png');
-}
-
-
 /* Icones Universais */
 .uiconShare {
     background-image: url('../img/icon/Share.png');
@@ -367,4 +361,8 @@ div.styledWindow > h1 > a.closeWindow {
 
 .uiconPerson {
     background-image: url('../img/icon/Persona.png');
+}
+
+.uiconView {
+    background-image: url('../img/icon/View.png');
 }

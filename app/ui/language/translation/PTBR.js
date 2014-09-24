@@ -523,6 +523,15 @@ window.lingo['pt_br'] = {
     _STYLECOPY_ : 'Copiar estilo',
     _STYLENOSTYLES_ : "Sem estilos carregados. Abra uma ficha.",
     
+    /* Sheet Commons */
+    _SHEETSLOADIMAGES_ : 'Lista de imagens ainda não foi aberta',
+    _SHEETCOMMONSPLAYER_ : 'Jogador',
+    _SHEETCOMMONSOPEN_ : 'Abrir/Fechar',
+    _SHEETCOMMONSNEWCATEGORY_ : 'Nova Categoria',
+    _SHEETCOMMONSNEWIMAGE_ : 'Adicionar Imagem',
+    _IMAGEARCHIVE_ : 'Banco de Imagens',
+    _SHEETCOMMONSTYPE_ : 'Tipo',
+    
     /* CHrome */
     
     _CHROME1_ : 'Esse aplicativo é testado para o navegador Google Chrome e, por consequência, Chromium.',

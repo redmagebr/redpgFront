@@ -81,28 +81,30 @@ function ImageUI () {
         var $image = $("<p class='image' />").text(image.name);
         
         // Visualizar
-        var $view = $('<a class="iconOpen floatLeft button language" data-langtitle="_IMAGESOPEN_" />').on('click', window.app.emulateBind(function () {
+        var $view = $('<a class="uiconView floatLeft button language" data-langtitle="_IMAGESOPEN_" />').on('click', window.app.emulateBind(function () {
             window.app.ui.pictureui.open(this.url);
         }, {url : image.getUrl()}));
         $image.append($view);
         
         // Compartilhar
         var $share = $('<a class="uiconShare floatLeft button language" data-langtitle="_IMAGESSHARE_" />').on('click', window.app.emulateBind(function () {
-            window.app.ui.imageui.shareImage(this.id);
-        }, {id : image.id}));
+            window.app.ui.imageui.shareImage(this.image);
+        }, {image : image}));
         $image.append($share);
         
         // Persona
         var $persona = $('<a class="uiconPerson floatLeft button language" data-langtitle="_IMAGESPERSONA_" />').on('click', window.app.emulateBind(function () {
-            window.app.ui.imageui.personaImage(this.id);
-        }, {id : image.id}));
+            window.app.ui.imageui.personaImage(this.image);
+        }, {image : image}));
         $image.append($persona);
         
-        // Deletar
-        var $delete = $('<a class="uiconDelete floatRight button language" data-langtitle="_IMAGESDELETE_" />').on('click', window.app.emulateBind(function () {
-            window.app.ui.imageui.deleteImage(this.id);
-        }, {id : image.id}));
-        $image.append($delete);
+        if (image.id !== null) {
+            // Deletar
+            var $delete = $('<a class="uiconDelete floatRight button language" data-langtitle="_IMAGESDELETE_" />').on('click', window.app.emulateBind(function () {
+                window.app.ui.imageui.deleteImage(this.id);
+            }, {id : image.id}));
+            $image.append($delete);
+        }
         
         return $image;
     };
@@ -147,10 +149,7 @@ function ImageUI () {
         window.app.chatapp.fixPrintAndSend(message, true);
     };
     
-    this.personaImage = function (id) {
-        var image = window.app.imagedb.getImage(id);
-        if (image === null) alert("Invalid image");
-        
+    this.personaImage = function (image) {
         window.app.ui.chat.pc.addPersona(image.getName().replace(/ *\([^)]*\) */, '').trim(), image.getUrl(), false);
     };
 }

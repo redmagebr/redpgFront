@@ -22,7 +22,6 @@ function Sheet ($list, style, baseSheet) {
      */
     this.getField = function (id) {
         if (this.fields[id] === undefined) {
-            alert(window.app.ui.language.getLingoOn("_STYLEINVALIDID_", id));
             return null;
         }
         return this.fields[id];
