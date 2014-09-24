@@ -261,8 +261,7 @@ function UI () {
             var available = this.lastWidth - 720;
             if (available <= 636) {
                 this.$leftWindow.css('right', '720px');
-                this.$rightWindow.css('width', '720px');
-                this.$pictureContainer.css("width", "720px");
+                this.$rightWindow.css('width', '715px');
             } else {
                 var avatarSize = 90;
                 available -= 636;
@@ -280,7 +279,7 @@ function UI () {
                 var giveBack = avatarRoom - (--avatarAmount * avatarSize);
                 right += giveBack;
                 this.$leftWindow.css('right', (right) + 'px');
-                this.$rightWindow.css('width', right + 'px');
+                this.$rightWindow.css('width', (right - 5) + 'px');
                 if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
                     this.$pictureContainer.css({"width" : (right - 10)});
                 }
