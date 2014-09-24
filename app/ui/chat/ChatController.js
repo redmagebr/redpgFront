@@ -248,8 +248,6 @@ function ChatController (chat) {
         if (!window.app.ui.hasFocus && printedOne) {
             window.app.ui.notifyMessages();
         }
-            
-        window.app.ui.chat.fixScrollpane();
     };
     
     this.clearUsers = function () {
