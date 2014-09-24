@@ -291,7 +291,7 @@ window.lingo['pt_br'] = {
     _VOTECREATED_ : 'criou uma votação',
     _HASTHROWN_ : 'mostra',
     _SHAREDIMAGE_ : '%p enviou uma imagem',
-    _SHAREDTHEIMAGE_ : '%p enviou a imagem',
+    _SHAREDTHEIMAGE_ : '%p enviou uma imagem',
     _SHAREDSOUND_ : '%p enviou uma música:',
     _SHAREDSOUNDEFFECT_ : '%p enviou um som:',
     _SOUNDSTOP_ : 'Pausar.',
