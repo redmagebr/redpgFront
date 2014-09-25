@@ -18,6 +18,10 @@
 
 #pictureCanvas {
     position: absolute;
+    border: solid 3px #000;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
     z-index: 303;
 }
 

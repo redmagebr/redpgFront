@@ -82,7 +82,7 @@ div.avatarWrapper {
     position: fixed;
     left: 100px;
     top: 10px;
-    width: 510px;
+    width: 549px;
     height: 378px;
     z-index: 100;
     border: none;
@@ -98,12 +98,12 @@ div.avatarWrapper {
 
 #pictureContainer {
     position: fixed;
-    left: 610px;
+    left: 626px;
     border-left: solid 5px #000;
     top: 10px;
     right: initial;
     bottom: initial;
-    width: 339px;
+    width: 323px;
     height: 480px;
     z-index: 45;
     overflow: hidden;
@@ -156,12 +156,13 @@ body #combatTracker a.deleteRow, body #combatTracker a.openSheet, body #combatTr
 /* New Picture */
 body #pictureWindow {
     position: fixed;
-    left: 610px;
+    left: 649px;
+    border: none;
     border-left: solid 5px #000;
     top: 10px;
     right: initial;
     bottom: initial;
-    width: 339px;
+    width: 300px;
     height: 480px;
     z-index: 45;
     overflow: hidden;
@@ -173,8 +174,18 @@ body #pictureElement {
     -webkit-filter: brightness(1);
 }
 
+body #pictureCanvas {
+    border: none;
+}
+
 body #picturePaint {
-    display: none;
+    position: fixed;
+    right: 60px;
+    top: 10px;
+    left: initial;
+    bottom: initial;
+    height: 100px;
+    width: 40px;
 }
 
 body #pictureWindowClose {

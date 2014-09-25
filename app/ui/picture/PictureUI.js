@@ -170,6 +170,7 @@ function PictureUI () {
     this.sendClear = function () {
         if (window.app.chatapp.room === null) {
             this.drawings[this.src] = [];
+            this.updateCanvas();
             return;
         }
         var message = new Message();
@@ -218,10 +219,23 @@ function PictureUI () {
         if (this.drawings[this.src] === undefined) this.drawings[this.src] = [];
         
         this.canvasContext.clearRect(0,0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
-        var drawing;
+        this.canvasContext.drawImage(this.$element[0],0,0);
         this.canvasContext.beginPath();
-        for (var i = 0; i < this.drawings[this.src].length; i++) {
-            var drawing = this.drawings[this.src][i];
+        
+        if (this.drawings[this.src] !== undefined) {
+            this.drawArray(this.drawings[this.src]);
+        }
+        if (this.myArt[this.src] !== undefined) {
+            this.drawArray(this.myArt[this.src]);
+        }
+        
+        this.canvasContext.stroke();
+        this.canvasContext.closePath();
+    };
+    
+    this.drawArray = function (drawings) {
+        for (var i = 0; i < drawings.length; i++) {
+            var drawing = drawings[i];
             if (drawing.length >= 4) {
                 if (drawing.length === 4 || drawing[4] === 1) {
                     this.canvasContext.stroke();
@@ -248,8 +262,6 @@ function PictureUI () {
             this.canvasContext.lineTo(drawing[0], drawing[1]);
             this.canvasContext.moveTo(drawing[0], drawing[1]);
         }
-        this.canvasContext.stroke();
-        this.canvasContext.closePath();
     };
     
     /**
@@ -277,11 +289,13 @@ function PictureUI () {
         this.painting = false;
         // send art through chat
         if (this.myArt[this.src].length === 0) return;
+        this.drawings[this.src] = this.drawings[this.src].concat(this.myArt[this.src]);
         var message = new Message();
         message.module = 'pica';
         message.setSpecial('art', this.myArt[this.src]);
         message.msg = this.src;
         window.app.chatapp.fixPrintAndSend(message, true);
+        this.myArt[this.src] = [];
     };
     
     /**
@@ -297,23 +311,15 @@ function PictureUI () {
             var finalX = parseInt((relX/this.width) * this.oWidth);
             var finalY = parseInt((relY/this.height) * this.oHeight);
             var array = [];
-            var arrayThis = [];
             
             array.push(finalX);
             array.push(finalY);
-            arrayThis.push(finalX);
-            arrayThis.push(finalY);
-            
-            arrayThis.push(this.size);
-            arrayThis.push(this.color);
             if (newOne) {
                 array.push(this.size);
                 array.push(this.color);
-                arrayThis.push(1);
             }
             
             this.myArt[this.src].push(array);
-            this.drawings[this.src].push(array);
             this.updateCanvas();
         }
     };
