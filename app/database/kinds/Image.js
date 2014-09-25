@@ -2,8 +2,8 @@ function Image () {
     this.id = null;
     /** @type String */ this.uuid;
     /** @type String */ this.ext;
-    /** @type String */ this.name;
-    /** @type String */ this.folder;
+    /** @type String */ this.name = '';
+    /** @type String */ this.folder = '';
     /** @type number */ this.size;
     /** @type number */ this.uploader;
     

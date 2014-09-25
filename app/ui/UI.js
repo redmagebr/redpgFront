@@ -384,11 +384,11 @@ function UI () {
      */
     this.callLeftWindow = function (windowid) {
         var $target = $('#'+windowid);
-        this.$leftWindow.children('div.window').not($target).animate(
+        this.$leftWindow.children('div.window:visible').not($target).trigger('beforeUnload.UI').animate(
             {   
                 right: '100%'
             }, 300, function () {
-                $(this).css('visibility', 'hidden');
+                $(this).css('visibility', 'hidden').trigger('hidden.UI');
             }
         );
 
@@ -397,7 +397,9 @@ function UI () {
         $target.animate(
             {   
                 right: '0px'
-            }, 300
+            }, 300, function () {
+                $(this).trigger('shown.UI');
+            }
         );
         if (this.isFullscreen()) {
             this.hideRightWindows();
@@ -405,23 +407,28 @@ function UI () {
     };
     
     this.closeLeftWindow = function () {
-        this.$leftWindow.children('div.window').animate(
+        this.$leftWindow.children('div.window:visible').animate(
             {   
                 right: '100%'
             }, 300, function () {
-                $(this).css('visibility', 'hidden');
+                $(this).css('visibility', 'hidden').trigger('hidden.UI');
             }
         );
     };
     
-    
+    this.stopRightUnload = false;
     this.callRightWindow = function (windowid) {
         var $target = $('#'+windowid);
-        this.$rightWindow.children('div.window').not($target).animate(
+        this.stopRightUnload = false;
+        var $windows = this.$rightWindow.children('div.window:visible').not($target).trigger('beforeUnload.UI');
+        if (this.stopRightUnload) {
+            return;
+        }
+        $windows.animate(
             {   
                 left: '100%'
             }, 300, function () {
-                $(this).css('visibility', 'hidden');
+                $(this).css('visibility', 'hidden').trigger('hidden.UI');
             }
         );
 
@@ -430,12 +437,17 @@ function UI () {
         $target.animate(
             {   
                 left: '0px'
-            }, 300
+            }, 300, function () {
+                $(this).trigger('shown.UI');
+            }
         );
     };
     
     this.closeRightWindow = function () {
-        this.$rightWindow.children('div.window').animate(
+        this.stopRightUnload = false;
+        var $windows = this.$rightWindow.children('div.window');
+        if (this.stopRightUnload) return;
+        $windows.animate(
             {   
                 left: '100%'
             }, 300, function () {

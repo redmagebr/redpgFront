@@ -872,6 +872,7 @@
                     <h2 class='language' data-langhtml='_IMAGESLINKED_'></h2>
                     <p class='language' data-langhtml='_IMAGESLINKEDEXPLAIN_'></p>
                     <div id='imageLinkList'></div>
+                    <p id='imageLinkSave' class='centered language textLink' data-langhtml='_IMAGESLINKEDSAVE_'></p>
                     <form id='imageUpload'>
                         <label>
                             <input id='imageRadioUpload' type='radio' name='imageKind' />
@@ -889,6 +890,7 @@
                         <div id='imagesLink'>
                             <input id='imagesLinkName' type='text' class='language' data-langplaceholder='_IMAGESNAME_' />
                             <input id='imagesLinkLink' type='text' class='language' data-langplaceholder='_IMAGESLINKADDRESS_' />
+                            <input id='imagesLinkFolder' type='text' class='language' data-langplaceholder='_IMAGESFOLDER_' />
                         </div>
                         <input type='submit' class='language textButton' data-langvalue='_IMAGESUPLOADSUBMIT_' />
                     </form>
@@ -983,6 +985,7 @@
             <script src="app/program/GameApp.js"></script>
             <script src="app/program/ChatApp.js"></script>
             <script src="app/program/ImageApp.js"></script>
+            <script src="app/program/StorageApp.js"></script>
             <script src="app/program/AddonApp.js"></script>
             <script src="app/program/ChatWsApp.js"></script>
             <script src="app/program/RoomApp.js"></script>
@@ -1009,8 +1012,10 @@
             <script src="app/database/ImageDB.js"></script>
             <script src="app/database/UserDB.js"></script>
             <script src="app/database/SheetDB.js"></script>
+            <script src="app/database/Storage.js"></script>
             <script src="app/ui/language/Language.js"></script>
             <script src="app/ui/language/translation/PTBR.js"></script>
+            <script src="app/ui/language/translation/EN.js"></script>
             <script src="app/ui/UI.js"></script>
             <script src="app/ui/addon/AddonUI.js"></script>
             <script src="app/ui/picture/PictureUI.js"></script>

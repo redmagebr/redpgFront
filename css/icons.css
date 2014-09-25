@@ -395,3 +395,11 @@ div.styledWindow > h1 > a.closeWindow {
 .uiconClose {
     background-image: url('../img/closeButton.png');
 }
+
+.uiconFolder {
+    background-image: url('../img/icon/Folder.png');
+}
+
+.uiconFolderButton {
+    background-image: url('../img/icon/FolderButton.png');
+}

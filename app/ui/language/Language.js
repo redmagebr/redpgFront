@@ -8,7 +8,11 @@ function Language () {
      * Not implemented. This needs to be stored and retrieved from database object.
      * @type String|String
      */
-    this.currentlang = 'pt_br';
+    if (localStorage.lastLang !== undefined) {
+        this.currentlang = localStorage.lastLang;
+    } else {
+        this.currentlang = navigator.language;
+    }
     
     /**
      * Generates clickable flags to change language.
@@ -34,6 +38,7 @@ function Language () {
      * @returns {void}
      */
     this.init = function () {
+        this.updateConfig();
         this.applyLanguage();
     };
     
@@ -68,6 +73,7 @@ function Language () {
      */
     this.changeLanguage = function (lang) {
         this.currentlang = lang;
+        localStorage.lastLang = lang;
         window.app.configdb.store("language", lang);
         this.applyLanguage();
     };
@@ -168,17 +174,17 @@ function Language () {
     
     
     this.updateConfig = function () {
-        var language = window.app.configdb.get("language", navigator.language);
-        language.replace('-', '_');
+        var language = window.app.configdb.get("language", this.currentlang);
+        language = language.replace('-', '_');
         if (typeof window.lingo[language] === 'undefined' && language.indexOf('_') !== -1) {
             language = language.split('_')[0];
         }
         if (language !== this.currentlang && typeof window.lingo[language] !== 'undefined') {
             this.currentlang = language;
-            this.applyLanguage();
-        } else {
-            this.applyLanguage();
+        } else if (window.lingo[this.currentlang] === undefined) {
+            this.currentlang = 'pt_br';
         }
+        this.applyLanguage();
     };
 }
 

@@ -9,6 +9,10 @@ function ImageUI () {
         window.app.ui.imageui.submitUpload();
     });
     
+    this.$imageLinkSave = $('#imageLinkSave').on('click', function () {
+        window.app.ui.imageui.saveStorage();
+    });
+    
     this.$imageList = $('#imageList');
     this.$linkList = $('#imageLinkList');
     
@@ -25,6 +29,9 @@ function ImageUI () {
     
     this.$linkName = $('#imagesLinkName');
     this.$linkLink = $('#imagesLinkLink');
+    this.$linkFolder = $('#imagesLinkFolder');
+    
+    this.lastFolder = null;
     
     this.updateForm = function () {
         if (this.$imageLink[0].checked) {
@@ -41,10 +48,11 @@ function ImageUI () {
             var imagem = window.app.imagedb.createLink();
             imagem.name = this.$linkName.val().trim();
             imagem.url = this.$linkLink.val().trim();
+            imagem.folder = this.$linkFolder.val().trim();
             
             window.app.imagedb.addImage(imagem);
-            window.app.imageapp.saveToLocal();
-            this.fillLists();
+            window.app.imagedb.saveToStorage();
+            this.fillLists(true);
             this.$linkName.val('').focus();
             this.$linkLink.val('');
         } else {
@@ -56,8 +64,9 @@ function ImageUI () {
         window.app.ui.callRightWindow('imageWindow');
         window.app.imagedb.empty();
         
+        this.loaded = 0;
+        
         var cbs = function () {
-            window.app.imageapp.updateFromLocal();
             window.app.ui.imageui.fillLists();
             window.app.ui.unblockRight();
         };
@@ -68,8 +77,10 @@ function ImageUI () {
         };
         
         window.app.ui.blockRight();
+        window.app.ui.blockRight();
         
         window.app.imageapp.updateDB(cbs, cbe);
+        window.app.imagedb.updateStorage(cbs, cbe);
     };
     
     /**
@@ -104,33 +115,92 @@ function ImageUI () {
                 window.app.ui.imageui.deleteImage(this.id);
             }, {id : image.id}));
             $image.append($delete);
+            
+            // Folder
+            var $folder = $('<a class="uiconFolder floatRight button language" data-langtitle="_IMAGESFOLDER_" />').on('click', window.app.emulateBind(function () {
+                window.app.ui.imageui.editFolder(this.id, window.prompt(window.app.ui.language.getLingo("_IMAGESFOLDERPROMPT_" + ":")));
+            }, {id : image.id}));
+            $image.append($folder);
         }
         
         return $image;
     };
     
+    this.editFolder = function (id, folder) {
+        if (id < 0) {
+            window.app.imagedb.getImage(id).folder = folder;
+            window.app.imagedb.saveToStorage();
+            this.fillLists(true);
+        } else {
+            // not implemented
+        }
+    };
+    
     this.deleteImage = function (id) {
         if (id < 0) {
+            var image = window.app.imagedb.getImage(id);
+            this.lastFolder = image.folder;
             window.app.imagedb.deleteImage(id);
-            window.app.imageapp.saveToLocal();
-            this.fillLists();
+            window.app.imagedb.saveToStorage();
+            this.fillLists(true);
         } else {
             alert ("Not implemented");
         }
     };
     
-    this.fillLists = function () {
+    this.saveStorage = function () {
+        var cbs = function () {
+            window.app.ui.unblockRight();
+        };
+        
+        var cbe = function () {
+            window.app.ui.unblockRight();
+            alert("Error");
+        };
+        
+        window.app.ui.blockRight();
+        
+        window.app.imagedb.saveStorage(cbs, cbe);
+    };
+    
+    this.fillLists = function (force) {
+        if (++this.loaded !== 2 && force !== true) return;
         this.$linkList.empty();
         this.$imageList.empty();
         
+        var $foldersLink = {};
+        var $foldersUpload = {};
+        
         var images = window.app.imagedb.imagesOrdered;
+        var $folderLink;
         var $image;
+        var folder;
         for (var i = 0; i < images.length; i++) {
             $image = this.$createImage(images[i]);
+            folder = images[i].folder;
+            if (folder === '') folder = window.app.ui.language.getLingo('_IMAGESNOFOLDER_');
             if (images[i].id < 0) {
-                this.$linkList.append($image);
+                if ($foldersLink[images[i].folder] === undefined) {
+                    $folderLink = $("<p class='folder' />").text(folder).on('click', function () {
+                        $(this).toggleClass('toggled');
+                    }).append($("<a />").addClass('uiconFolderButton'));
+                    if (folder === this.lastFolder) {
+                        $folderLink.addClass('toggled');
+                    }
+                    $foldersLink[images[i].folder] = $('<div />');
+                    this.$linkList.append($folderLink).append($foldersLink[images[i].folder]);
+                }
+                $foldersLink[images[i].folder].append($image);
             } else {
-                this.$imageList.append($image);
+                if ($foldersUpload[images[i].folder] === undefined) {
+                    $folderLink = $("<p class='folder' />").text(folder).append($("<a />").addClass('uiconFolderButton'));
+                    if (folder === this.lastFolder) {
+                        $folderLink.addClass('toggled');
+                    }
+                    $foldersUpload[images[i].folder] = $('<div />');
+                    this.$imageList.append($folderLink).append($foldersUpload[images[i].folder]);
+                }
+                $foldersUpload[images[i].folder].append($image);
             }
         }
         

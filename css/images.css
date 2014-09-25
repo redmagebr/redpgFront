@@ -26,12 +26,50 @@
 }
 
 
-#imageLinkList > p, #imageList > p {
-    line-height: 34px;
-    font-weight: bold;
-    min-height: 34px;
+#imageLinkList > div {
+    display: none;
 }
 
-#imageLinkList > p:hover, #imageList > p:hover {
+#imageLinkList > p {
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin: 0px;
+}
+
+#imageLinkList > p:hover {
+    background-color: #d7d7d7;
+    cursor: pointer;
+}
+
+#imageLinkList > p.toggled {
+    background-color: #bfbfbf;
+}
+
+#imageLinkList > p.toggled + div {
+    display: block;
+}
+
+#imageLinkList > p > a {
+    display: block;
+    float: left;
+    width: 20px;
+    margin-top: 10px;
+    height: 20px;
+    background-position: left top;
+}
+
+#imageLinkList > p.toggled > a {
+    background-position: right top;
+}
+
+#imageLinkList > div > p, #imageList > div > p {
+    line-height: 40px;
+    font-weight: bold;
+    min-height: 40px;
+    margin: 0px;
+}
+
+#imageLinkList > div > p:hover, #imageList > div > p:hover {
     background-color: #e3e3e3;
 }

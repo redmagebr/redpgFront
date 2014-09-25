@@ -37,7 +37,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 37, 2];
+    this.version = [0, 38, 0];
     
     /**
      * Settings
@@ -48,13 +48,14 @@ function Application (debug) {
      * Databases
      */
     this.configdb = new ConfigDB();
+    this.storage = new Storage(this);
     this.sheetdb = new SheetDB();
     this.gamedb = new GameDB();
     this.roomdb = new RoomDB();
     this.userdb = new UserDB();
     this.sheetdb = new SheetDB();
     this.styledb = new StyleDB();
-    this.imagedb = new ImageDB();
+    this.imagedb = new ImageDB(this);
     this.memory = new Memory();
     
     /**
@@ -67,6 +68,7 @@ function Application (debug) {
     this.sheetapp = new SheetApp();
     this.addonapp = new AddonApp();
     this.imageapp = new ImageApp();
+    this.storageapp = new StorageApp(this);
     
     this.ui = new UI();
     

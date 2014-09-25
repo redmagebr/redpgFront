@@ -1,6 +1,16 @@
-function ImageDB () {
+/**
+ * 
+ * @param {Application} app
+ * @returns {ImageDB}
+ */
+function ImageDB (app) {
+    this.app = app;
+    
+    this.storageId = 'images';
+    
     this.images = {};
     this.imagesOrdered = [];
+    this.changedStorage = false;
     
     this.empty = function () {
         this.images = {};
@@ -53,10 +63,11 @@ function ImageDB () {
     };
     
     this.sort = function () {
-        console.log("Sorting");
         this.imagesOrdered.sort(function (a,b) {
-            console.log(a);
-            console.log(b);
+            var fa = a.folder.toUpperCase();
+            var fb = b.folder.toUpperCase();
+            if (fa < fb) return -1;
+            if (fa > fb) return 1;
             var na = a.name.toUpperCase();
             var nb = b.name.toUpperCase();
             if (na < nb) return -1;
@@ -89,4 +100,68 @@ function ImageDB () {
         image.id = this.getFakeId();
         return image;
     };
+    
+    this.updateStorage = function (cbs, cbe) {
+        this.app.storageapp.updateStorage(this.storageId, cbs, cbe);
+    };
+    
+    this.saveStorage = function (cbs, cbe) {
+        this.app.storageapp.sendStorage(this.storageId, cbs, cbe);
+    };
+    
+    this.saveToStorage = function () {
+        var fakeImages = [];
+        //var attr = ['id', 'name', 'url', 'folder'];
+        for (var id in this.images) {
+            if (parseInt(id) > 0) continue;
+            fakeImages.push({
+                id : this.images[id].id,
+                name : this.images[id].name,
+                url : this.images[id].url,
+                folder : this.images[id].folder
+            });
+        }
+        this.app.storage.store(this.storageId, fakeImages);
+    };
+    
+    /**
+     * Storage Requester Interface
+     */
+    
+    /**
+     * 
+     * @returns {undefined}
+     */
+    this.storageChanged = function () {
+        for (var id in this.images) {
+            if (parseInt(id, 10) > 0) continue;
+            console.log("Deleting " + id);
+            this.deleteImage(id);
+        }
+        this.updateFromJSON(this.app.storage.get(this.storageId));
+        this.changedStorage = true;
+    };
+    
+    this.storageDefault = function () {
+        return [];
+    };
+    
+    this.storageValidation = function (list) {
+        if (!(list instanceof Array)) return false;
+        var attr = ['id', 'name', 'url', 'folder'];
+        var types = ['number', 'string', 'string', 'string'];
+        for (var i = 0; i < list.length; i++) {
+            if (typeof list[i] !== 'object') return false;
+            for (var id in list[i]) {
+                if (attr.indexOf(id) === -1) return false;
+                if (typeof list[i][id] !== types[attr.indexOf(id)]) return false;
+            }
+        }
+        return true;
+    };
+    
+    /**
+     * Register itself as storage
+     */
+    this.app.storage.registerStorage(this.storageId, this);
 }
