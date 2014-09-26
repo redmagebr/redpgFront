@@ -52,14 +52,18 @@ function ImageUI () {
             if (this.$linkisList[0].checked) {
                 var ajax = new ImageAjax();
                 var cbs = function () {
+                    window.app.ui.unblockRight();
                     window.app.ui.imageui.$linkLink.val('');
                     window.app.ui.imageui.$corsError.hide();
                     window.app.ui.imageui.fillLists(true);
                     window.app.ui.imageui.$linkName.val('').focus();
                 };
                 var cbe = function () {
+                    window.app.ui.unblockRight();
                     window.app.ui.imageui.$corsError.unhide();
                 };
+                
+                window.app.ui.blockRight();
                 ajax.grabLinks(this.$linkLink.val().trim(), this.$linkFolder.val().trim(), cbs, cbe);
                 return;
             }

@@ -219,7 +219,10 @@ function PictureUI () {
         if (this.drawings[this.src] === undefined) this.drawings[this.src] = [];
         
         this.canvasContext.clearRect(0,0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
-        this.canvasContext.drawImage(this.$element[0],0,0);
+        
+        if (this.src.toUpperCase().indexOf('.GIF') === -1) {
+            this.canvasContext.drawImage(this.$element[0],0,0);
+        }
         this.canvasContext.beginPath();
         
         if (this.drawings[this.src] !== undefined) {
