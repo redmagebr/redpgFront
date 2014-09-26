@@ -39,6 +39,7 @@ function PictureUI () {
     
     this.$canvas = null;
     
+    this.touchTimeout = null;
     
     this.$currentColor.colpick({
         flat: true,
@@ -208,7 +209,7 @@ function PictureUI () {
             }).on('touchmove', function (e) {
                 window.app.ui.pictureui.touchmove(e);
             }).on('touchend touchcancel', function (e) {
-                window.app.ui.pictureui.touchcancel();
+                window.app.ui.pictureui.touchcancel(e);
             });
             this.oWidth = oWidth;
             this.oHeight = oHeight;
@@ -288,12 +289,19 @@ function PictureUI () {
     
     this.touchmove = function (e) {
         e.preventDefault();
+        if (this.touchTimeout !== null) {
+            window.clearTimeout(this.touchTimeout);
+        }
+        this.touchTimeout = window.setTimeout(200, function () {
+            window.app.ui.pictureui.touchTimeout = null;
+            window.app.ui.pictureui.mouseup();
+        });
         this.mousemove(this.touchtomouse(e));
     };
     
     this.touchcancel = function (e) {
         e.preventDefault();
-        this.mouseup(this.touchtomouse(e));
+        this.mouseup();
     };
     
     /**
@@ -317,8 +325,12 @@ function PictureUI () {
      * @param {MouseEvent} e
      * @returns {undefined}
      */
-    this.mouseup = function (e) {
+    this.mouseup = function () {
         this.painting = false;
+        if (this.touchTimeout !== null) {
+            window.clearTimeout(this.touchTimeout);
+            this.touchTimeout = null;
+        }
         // send art through chat
         if (this.myArt[this.src].length === 0) return;
         this.drawings[this.src] = this.drawings[this.src].concat(this.myArt[this.src]);
