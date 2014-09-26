@@ -255,6 +255,7 @@ function PictureUI () {
                     this.canvasContext.closePath();
                     this.canvasContext.beginPath();
                     this.canvasContext.lineWidth = 2;
+                    this.canvasContext.lineCap = "round";
                     this.canvasContext.moveTo(drawing[0], drawing[1]);
                 }
                 
