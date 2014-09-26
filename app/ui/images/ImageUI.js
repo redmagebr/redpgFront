@@ -13,6 +13,8 @@ function ImageUI () {
         window.app.ui.imageui.saveStorage();
     });
     
+    this.$corsError = $('#imageCorsError').hide();
+    
     this.$imageList = $('#imageList');
     this.$linkList = $('#imageLinkList');
     
@@ -30,6 +32,7 @@ function ImageUI () {
     this.$linkName = $('#imagesLinkName');
     this.$linkLink = $('#imagesLinkLink');
     this.$linkFolder = $('#imagesLinkFolder');
+    this.$linkisList = $('#imagesLinkList');
     
     this.lastFolder = null;
     
@@ -44,11 +47,28 @@ function ImageUI () {
     };
     
     this.submitUpload = function () {
+        this.$corsError.hide();
         if (this.$imageLink[0].checked) {
+            if (this.$linkisList[0].checked) {
+                var ajax = new ImageAjax();
+                var cbs = function () {
+                    window.app.ui.imageui.$linkLink.val('');
+                    window.app.ui.imageui.$corsError.hide();
+                    window.app.ui.imageui.fillLists(true);
+                    window.app.ui.imageui.$linkName.val('').focus();
+                };
+                var cbe = function () {
+                    window.app.ui.imageui.$corsError.unhide();
+                };
+                ajax.grabLinks(this.$linkLink.val().trim(), this.$linkFolder.val().trim(), cbs, cbe);
+                return;
+            }
             var imagem = window.app.imagedb.createLink();
             imagem.name = this.$linkName.val().trim();
             imagem.url = this.$linkLink.val().trim();
             imagem.folder = this.$linkFolder.val().trim();
+            
+            if (imagem.name === '' || imagem.url === '') return false;
             
             window.app.imagedb.addImage(imagem);
             window.app.imagedb.saveToStorage();
@@ -86,7 +106,7 @@ function ImageUI () {
     /**
      * 
      * @param {Image|Image_Link} image
-     * @returns {undefined}
+     * @returns {undefined}https://www.dropbox.com/sh/po2ei0qatw6y0ds/AACGl-Cmdh4UCSGWnZu5p5PSa?dl=0
      */
     this.$createImage = function (image) {
         var $image = $("<p class='image' />").text(image.name);
@@ -179,6 +199,7 @@ function ImageUI () {
             $image = this.$createImage(images[i]);
             folder = images[i].folder;
             if (folder === '') folder = window.app.ui.language.getLingo('_IMAGESNOFOLDER_');
+            if (this.lastFolder === '') this.lastFolder = window.app.ui.language.getLingo('_IMAGESNOFOLDER_');
             if (images[i].id < 0) {
                 if ($foldersLink[images[i].folder] === undefined) {
                     $folderLink = $("<p class='folder' />").text(folder).on('click', function () {
