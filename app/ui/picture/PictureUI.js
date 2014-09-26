@@ -277,21 +277,22 @@ function PictureUI () {
     };
     
     this.touchtomouse = function (e) {
-        return {
-            pageX : e.touches[0].pageX,
-            pageY : e.touches[1].pageY
-        };
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        return touch;
     };
     
     this.touchstart = function (e) {
+        e.preventDefault();
         this.mousedown(this.touchtomouse(e));
     };
     
     this.touchmove = function (e) {
+        e.preventDefault();
         this.mousemove(this.touchtomouse(e));
     };
     
     this.touchcancel = function (e) {
+        e.preventDefault();
         this.mouseup(this.touchtomouse(e));
     };
     
