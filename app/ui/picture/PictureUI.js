@@ -200,6 +200,15 @@ function PictureUI () {
                 });
             }).on('mousemove', function (e) {
                 window.app.ui.pictureui.mousemove(e);
+            }).on('mouseup', function (e) {
+                window.app.ui.pictureui.mouseup(e);
+                $(window).off('mouseup.canvasDrawing');
+            }).on('touchstart', function (e) {
+                window.app.ui.pictureui.touchstart(e);
+            }).on('touchmove', function (e) {
+                window.app.ui.pictureui.touchmove(e);
+            }).on('touchend touchcancel', function (e) {
+                window.app.ui.pictureui.touchcancel();
             });
             this.oWidth = oWidth;
             this.oHeight = oHeight;
@@ -265,6 +274,25 @@ function PictureUI () {
             this.canvasContext.lineTo(drawing[0], drawing[1]);
             this.canvasContext.moveTo(drawing[0], drawing[1]);
         }
+    };
+    
+    this.touchtomouse = function (e) {
+        return {
+            pageX : e.touches[0].pageX,
+            pageY : e.touches[1].pageY
+        };
+    };
+    
+    this.touchstart = function (e) {
+        this.mousedown(this.touchtomouse(e));
+    };
+    
+    this.touchmove = function (e) {
+        this.mousemove(this.touchtomouse(e));
+    };
+    
+    this.touchcancel = function (e) {
+        this.mouseup(this.touchtomouse(e));
     };
     
     /**
