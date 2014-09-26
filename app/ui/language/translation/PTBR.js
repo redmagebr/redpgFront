@@ -41,6 +41,7 @@ window.lingo['pt_br'] = {
     _IMAGESFOLDERPROMPT_ : 'Pasta',
     _IMAGESNOFOLDER_ : 'Sem pasta',
     _IMAGESLINK_ : 'Novo Link',
+    _IMAGESLINKISLIST_ : 'Possui imagens dentro',
     _IMAGESNAME_ : 'Nome da Imagem',
     _IMAGESLINKADDRESS_ : 'Endereço da Imagem',
     _IMAGESUPLOADSUBMIT_ : 'Enviar',

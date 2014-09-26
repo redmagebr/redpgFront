@@ -41,6 +41,7 @@ window.lingo['en'] = {
     _IMAGESNOFOLDER_ : 'No folder',
     _IMAGESUPLOAD_ : 'New Upload',
     _IMAGESLINK_ : 'New Link',
+    _IMAGESLINKISLIST_ : 'Is a list of images',
     _IMAGESNAME_ : 'Image Name',
     _IMAGESLINKADDRESS_ : 'Image Address',
     _IMAGESUPLOADSUBMIT_ : 'Send',
