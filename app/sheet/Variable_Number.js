@@ -60,7 +60,9 @@ function Variable_Number ($visible, style, missingid, parent) {
     };
 
     this.storeValue = function (value) {
-        value = value.replace(/,/g, '.');
+        if (typeof value === 'string') {
+            value = value.replace(/,/g, '.');
+        }
         if (value === null || !(!isNaN(parseFloat(value)) && isFinite(value))) {
             value = this.value;
         } else {
