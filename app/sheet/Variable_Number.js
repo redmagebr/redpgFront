@@ -60,10 +60,10 @@ function Variable_Number ($visible, style, missingid, parent) {
     };
 
     this.storeValue = function (value) {
-        if (value === null || isNaN(value, 10)) {
+        if (value === null || !(!isNaN(parseFloat(value)) && isFinite(value))) {
             value = this.value;
         } else {
-            value = parseFloat(value, 10);
+            value = parseFloat(value);
         }
         if (value !== this.value) {
             this.value = value;
