@@ -547,6 +547,9 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSTYPE_ : 'Tipo',
     _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
     
+    /* Video Player */
+    _VIDEOPLAYER_ : 'Video Player',
+    
     /* CHrome */
     
     _CHROME1_ : 'Esse aplicativo é testado para o navegador Google Chrome e, por consequência, Chromium.',

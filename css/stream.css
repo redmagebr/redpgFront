@@ -13,20 +13,24 @@ body {
     top: 10px;
 }
 
-#youtubePlayer {
+#youtubeiFrame {
     position: fixed;
     display: block;
     width: 854px;
     height: 480px;
     left: 100px;
     top: 10px;
+    right: initial;
+    bottom: initial;
     z-index: 200;
     border: none;
-    pointer-events: none;
+    pointer-events: auto;
 }
 
-#youtubePlayer > iframe, #youtubePlayer > a {
-    pointer-events: auto;
+#youtubeWindow > h1 > a {
+    position: fixed;
+    left: 955px;
+    top: 10px;
 }
 
 #rightWindow, #youtubeWindow {

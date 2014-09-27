@@ -46,20 +46,14 @@ function YoutubeUI () {
         
         this.$player.empty().append($play);
         
-        var $a = $('<a class="button" />');
-        
-        $a.bind('click', function () {
-            window.app.ui.hideRightWindows(function () {
-                window.app.ui.youtubeui.$player.empty();
-                window.app.ui.youtubeui.$button.detach();
-            });
-        });
-        
-        this.$player.append($a);
-        
         window.app.ui.callRightWindow('youtubeWindow');
         window.app.ui.$rightHandler.append(this.$button);
         window.app.ui.language.applyLanguageOn(this.$button);
+    };
+    
+    this.close = function () {
+        this.$player.empty();
+        window.app.ui.closeRightWindow();
     };
     
     

@@ -842,8 +842,12 @@
                 </div>
             </div>
             
-            <div id="youtubeWindow" class="window">
-                <div class="shadow" id="youtubePlayer"></div>
+            <div id="youtubeWindow" class="window styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_VIDEOPLAYER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.youtubeui.close();"></a>
+                </h1>
+                <div class="singleton" id="youtubePlayer"></div>
             </div>
             <div id="hitboxChat" class="window styledWindow">
                 <h1>

@@ -537,6 +537,10 @@ window.lingo['en'] = {
     _SHEETCOMMONSTYPE_ : 'Type',
     _SHEETCOMMONSPICKIMAGE_ : 'Choose a picture',
     
+    
+    /* Video Player */
+    _VIDEOPLAYER_ : 'Video Player',
+    
     /* CHrome */
     
     _CHROME1_ : 'This application is made for and tested in Google Chrome, being also compatible with Chromium.',
