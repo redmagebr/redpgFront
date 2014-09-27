@@ -77,6 +77,9 @@ function UI () {
     this.$singletonCss = $('<style type="text/css" />');
     this.$removeAvatarCss = $('<style type="text/css" />');
     
+    this.lastLeft = '';
+    this.lastRight = '';
+    
     /**
      * Initializes User Interface. Applies bindings and such.
      * Also calls init on every child.
@@ -338,18 +341,6 @@ function UI () {
             });
         });
         
-        
-        /**
-         * "Hide every window" buttons.
-         */
-        $('#hideLeftWindowsBt').bind('click', function () {
-            $('#leftWindow div.window').addClass('hidden', 100);
-        });
-        
-        $('#hideRightWindowsBt').bind('click', function () {
-            window.app.ui.hideRightWindows();
-        });
-        
         /**
          * Keep track of window resizes.
          */
@@ -370,6 +361,8 @@ function UI () {
                     this.cbs();
                 }, {cbs : cbs})
         );
+
+        this.lastRight = '';
     };
     
     this.isFullscreen = function () {
@@ -382,9 +375,17 @@ function UI () {
      * @param {String} windowid div.window ID
      * @returns {void}
      */
-    this.callLeftWindow = function (windowid) {
+    this.callLeftWindow = function (windowid, history) {
+        if (history === undefined) history = true;
+        if (windowid === this.lastLeft) return;
+        if (history && windowid !== this.lastLeft) {
+            this.lastLeft = windowid;
+            this.addHistory(windowid);
+        } else {
+            this.lastLeft = windowid;
+        }
         var $target = $('#'+windowid);
-        this.$leftWindow.children('div.window:visible').not($target).trigger('beforeUnload.UI').animate(
+        this.$leftWindow.children('div.window:visible').not($target).trigger('beforeUnload.UI').stop(true, false).animate(
             {   
                 right: '100%'
             }, 300, function () {
@@ -394,7 +395,7 @@ function UI () {
 
         $target.css('visibility', 'visible');
         
-        $target.animate(
+        $target.stop(true, false).animate(
             {   
                 right: '0px'
             }, 300, function () {
@@ -407,24 +408,34 @@ function UI () {
     };
     
     this.closeLeftWindow = function () {
-        this.$leftWindow.children('div.window:visible').animate(
+        this.$leftWindow.children('div.window:visible').stop(true, false).animate(
             {   
                 right: '100%'
             }, 300, function () {
                 $(this).css('visibility', 'hidden').trigger('hidden.UI');
             }
         );
+
+        this.lastLeft = '';
     };
     
     this.stopRightUnload = false;
-    this.callRightWindow = function (windowid) {
+    this.callRightWindow = function (windowid, history) {
+        if (history === undefined) history = true;
+        if (windowid === this.lastRight) return;
+        if (history && windowid !== this.lastRight) {
+            this.lastRight = windowid;
+            this.addHistory();
+        } else {
+            this.lastRight = windowid;
+        }
         var $target = $('#'+windowid);
         this.stopRightUnload = false;
         var $windows = this.$rightWindow.children('div.window:visible').not($target).trigger('beforeUnload.UI');
         if (this.stopRightUnload) {
             return;
         }
-        $windows.animate(
+        $windows.stop(true, false).animate(
             {   
                 left: '100%'
             }, 300, function () {
@@ -434,7 +445,7 @@ function UI () {
 
         $target.css('visibility', 'visible');
         
-        $target.animate(
+        $target.stop(true, false).animate(
             {   
                 left: '0px'
             }, 300, function () {
@@ -447,13 +458,14 @@ function UI () {
         this.stopRightUnload = false;
         var $windows = this.$rightWindow.children('div.window');
         if (this.stopRightUnload) return;
-        $windows.animate(
+        $windows.stop(true, false).animate(
             {   
                 left: '100%'
             }, 300, function () {
                 $(this).css('visibility', 'hidden');
             }
         );
+        this.lastRight = '';
     };
     
     this.updateConfig = function () {
@@ -525,7 +537,8 @@ function UI () {
     };
     
     this.openHitbox = function () {
-        if ($('#hitboxChatiFrame').attr('src') !== null && !$('#hitboxChatiFrame').is(':visible')) {
+        var lastsrc = $('#hitboxChatiFrame').attr('src');
+        if (lastsrc !== undefined && lastsrc !== null && lastsrc !== '') {
             this.callRightWindow('hitboxChat');
             return;
         }
@@ -538,5 +551,25 @@ function UI () {
             );
         }
         this.callRightWindow('hitboxChat');
+    };
+    
+    this.closeHitbox = function () {
+        $('#hitboxChatiFrame').attr('src', '');
+        this.closeRightWindow();
+    };
+    
+    this.addHistory = function (id) {
+        history.pushState({left : this.lastLeft, right: this.lastRight}, '', window.location);
+    };
+    
+    window.onpopstate = function (e) {
+        if (typeof e === 'object' && e.state !== undefined) {
+            if (e.state.left !== undefined) {
+                window.app.ui.callLeftWindow(e.state.left, false);
+                window.app.ui.callRightWindow(e.state.right, false);
+            } else if (e.state.sheetid !== undefined) {
+                window.app.ui.sheetui.controller.openSheet(e.state.sheetid, undefined, undefined, undefined, undefined, false);
+            }
+        }
     };
 }

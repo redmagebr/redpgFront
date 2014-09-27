@@ -105,9 +105,10 @@ function SheetController () {
         }
     };
     
-    this.openSheet = function (sheetid, styleid, gameid, important, dontcallwindow) {
+    this.openSheet = function (sheetid, styleid, gameid, important, dontcallwindow, history) {
         if (typeof dontcallwindow === 'undefined') dontcallwindow = false;
         if (typeof important === 'undefined') important = true;
+        if (history === undefined) history = true;
         if (sheetid === this.currentInstance) {
             window.app.ui.callRightWindow('sheetWindow');
             return;
@@ -184,6 +185,10 @@ function SheetController () {
             this.$listed[this.currentInstance].removeClass('toggled');
         }
         
+        if (history && sheetid !== this.currentInstance) {
+            window.history.pushState({sheetid : sheetid}, '', window.location);
+        }
+        
         var oldInstance = this.currentInstance;
         this.currentInstance = sheetid;
         
@@ -237,7 +242,7 @@ function SheetController () {
         }
         
         if (!dontcallwindow) {
-            window.app.ui.callRightWindow('sheetWindow');
+            window.app.ui.callRightWindow('sheetWindow', false);
         }
         
         var sheet = window.app.sheetdb.getSheet(this.currentInstance);

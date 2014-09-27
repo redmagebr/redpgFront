@@ -845,14 +845,12 @@
             <div id="youtubeWindow" class="window">
                 <div class="shadow" id="youtubePlayer"></div>
             </div>
-            <div id="twitchChat" class="window">
-                <div class="shadow">
-                    <iframe id="twitchChatiFrame" frameborder="0" scrolling="no">
-                    </iframe>
-                </div>
-            </div>
-            <div id="hitboxChat" class="window">
-                <div class="shadow">
+            <div id="hitboxChat" class="window styledWindow">
+                <h1>
+                    Hitbox
+                    <a class="closeWindow button" onclick="window.app.ui.closeHitbox();"></a>
+                </h1>
+                <div class="singleton">
                     <iframe id="hitboxChatiFrame" frameborder="0" scrolling="no">
                     </iframe>
                 </div>
