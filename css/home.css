@@ -1,3 +1,10 @@
-#homeTitle > img {
-    vertical-align: middle;
+#formPagseguroDon > input, #formPaypalDon > input {
+    display: block;
+    margin: auto;
+}
+
+#formPagseguroDon, #formPaypalDon {
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }

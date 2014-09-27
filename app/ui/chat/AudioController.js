@@ -136,7 +136,7 @@ function AudioController () {
     
     this.playse = function (filename) {
         if (filename.indexOf('://') === -1) {
-            filename = 'Sons/' + filename;
+            filename = 'Sounds/' + filename;
         }
         this.se.setAttribute('src', filename);
         this.se.play();
@@ -150,7 +150,7 @@ function AudioController () {
         this.lastFilename = filename;
         this.$player.addClass('shown');
         if (filename.indexOf('://') === -1) {
-            filename = 'Sons/' + filename;
+            filename = 'Sounds/' + filename;
         }
         this.bgm.setAttribute('src', filename);
         this.bgm.play();

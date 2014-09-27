@@ -537,6 +537,13 @@ window.lingo['en'] = {
     _SHEETCOMMONSTYPE_ : 'Type',
     _SHEETCOMMONSPICKIMAGE_ : 'Choose a picture',
     
+    /* Donations */
+    _HOMEDONATIONS_ : 'Donations',
+    _HOMEDONATIONSEXPLAIN1_ : 'RedPG is freeware and will remain so for as long as possible. However, it still has costs and someone has to pay for them.',
+    _HOMEDONATIONSEXPLAIN2_ : 'Through donations, you fund development and help cover monthly fees the servers incur. If everyone helps, RedPG may remain freeware forever!',
+    _HOMEDONATIONSEXPLAIN3_ : 'Every time you donate, please try to do so from an account made from the same e-mail your RedPG account was made from. That way, in the future we may have the donations count for your account on RedPG!',
+    
+    
     
     /* Video Player */
     _VIDEOPLAYER_ : 'Video Player',

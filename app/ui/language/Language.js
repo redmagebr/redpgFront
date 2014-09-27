@@ -88,6 +88,10 @@ function Language () {
             var $this = $(this);
             window.app.ui.language.applyLanguageTo($this);
         });
+        
+        $('#formPaypalButton').attr('src', 'img/home/paypal_' + this.currentlang + '.gif').off('error.Language').on('error.Language', function () {
+            $(this).attr('src', 'https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif').off('error.Language');
+        });
     };
     
     this.replaceOnString = function (string) {

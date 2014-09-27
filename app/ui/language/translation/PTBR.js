@@ -547,6 +547,13 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSTYPE_ : 'Tipo',
     _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
     
+    /* Donations */
+    _HOMEDONATIONS_ : 'Doações',
+    _HOMEDONATIONSEXPLAIN1_ : 'RedPG é um sistema gratuito e permanecerá gratuito enquanto isso for possível. Mas o servidor possui um custo e alguém precisa pagar.',
+    _HOMEDONATIONSEXPLAIN2_ : 'Através de doações, você funda o desenvolvimento do sistema e ajuda a pagar as mensalidades do servidor. Com a ajuda de todos, RedPG poderá ser grátis para sempre!',
+    _HOMEDONATIONSEXPLAIN3_ : 'Sempre que fizer uma doação, tente realizar ela a partir de uma conta registrada no mesmo e-mail registrado no RedPG. Assim, no futuro suas doações poderão ser contabilizadas pelo sistema do RedPG!',
+    
+    
     /* Video Player */
     _VIDEOPLAYER_ : 'Video Player',
     

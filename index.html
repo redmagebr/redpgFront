@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <!-- CSS Geral -->
             <link rel="stylesheet" type="text/css" media="all" href="css/geral.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/home.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
@@ -733,6 +734,28 @@
                     <p class="language" data-langhtml="_HOMEEXPLAIN1_"></p>
                     <p class="language" data-langhtml="_HOMEEXPLAIN2_"></p>
                 </div>
+                
+                <h1 class="language" data-langhtml="_HOMEDONATIONS_"></h1>
+                <div class="selectable">
+                    <p class="language" data-langhtml="_HOMEDONATIONSEXPLAIN1_"></p>
+                    <p class="language" data-langhtml="_HOMEDONATIONSEXPLAIN2_"></p>
+                    <p class="language" data-langhtml="_HOMEDONATIONSEXPLAIN3_"></p>
+                    <form id="formPagseguroDon" action="https://pagseguro.uol.com.br/checkout/v2/donation.html" method="post" target="_BLANK">
+                        <input type="hidden" name="currency" value="BRL" />
+                        <input type="hidden" name="receiverEmail" value="sistemaredpg@gmail.com" />
+                        <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/doacoes/205x30-doar-azul.gif"
+                               name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+                    </form>
+                    <form id="formPaypalDon" target="_BLANK" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="AYURJY8GD52NE">
+                        <input id="formPaypalButton" type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal – The safer, easier way to pay online." style="border: none">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+
+                </div>
+                
+                
                 <h1 class="language" data-langhtml="_HOMELINKS_"></h1>
                 <div class="selectable">
                     <p class='hoverable'><a href="https://github.com/redmagebr/redpgFront" target="_blank" class="language textLink" data-langhtml="_HOMEFRONTGITHUB_"></a>:
@@ -866,11 +889,7 @@
                 </h1>
                 <div class='singleton'>
                     <p class="language selectable" data-langhtml="_IMAGESEXPLAIN1_"></p>
-                    <p class="language selectable" data-langhtml="_IMAGESEXPLAIN2_"></p>
                     <p class="language selectable" data-langhtml="_IMAGESEXPLAIN3_"></p>
-                    <h2 class='language' data-langhtml='_IMAGESUPLOADED_'></h2>
-                    <p class='language' data-langhtml='_IMAGESUPLOADEDEXPLAIN_'></p>
-                    <div id='imageList'></div>
                     <h2 class='language' data-langhtml='_IMAGESLINKED_'></h2>
                     <p class='language' data-langhtml='_IMAGESLINKEDEXPLAIN_'></p>
                     <div id='imageLinkList'></div>
