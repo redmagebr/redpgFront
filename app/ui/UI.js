@@ -407,7 +407,8 @@ function UI () {
         }
     };
     
-    this.closeLeftWindow = function () {
+    this.closeLeftWindow = function (history) {
+        if (history === undefined) history = true;
         this.$leftWindow.children('div.window:visible').stop(true, false).animate(
             {   
                 right: '100%'
@@ -417,6 +418,9 @@ function UI () {
         );
 
         this.lastLeft = '';
+        if (history) {
+            this.addHistory();
+        }
     };
     
     this.stopRightUnload = false;
@@ -454,7 +458,8 @@ function UI () {
         );
     };
     
-    this.closeRightWindow = function () {
+    this.closeRightWindow = function (history) {
+        if (history === undefined) history = true;
         this.stopRightUnload = false;
         var $windows = this.$rightWindow.children('div.window');
         if (this.stopRightUnload) return;
@@ -466,6 +471,7 @@ function UI () {
             }
         );
         this.lastRight = '';
+        this.addHistory();
     };
     
     this.updateConfig = function () {
@@ -525,6 +531,10 @@ function UI () {
         window.app.ui.init();
     });
     
+    /**
+     * For some reason chrome randomly places the scroll of the singleton divs outside their boxes, resulting in shamefur dispray
+     * And for some reason, that disappears once content reflows... So we force a reflow.
+     */
     $(window).load(function () {
         $('body').css('height', '100px');
         window.setTimeout(function () {
@@ -565,15 +575,17 @@ function UI () {
         this.closeRightWindow();
     };
     
-    this.addHistory = function (id) {
+    this.addHistory = function () {
         history.pushState({left : this.lastLeft, right: this.lastRight}, '', window.location);
     };
     
     window.onpopstate = function (e) {
         if (typeof e === 'object' && e.state !== undefined) {
             if (e.state.left !== undefined) {
-                window.app.ui.callLeftWindow(e.state.left, false);
-                window.app.ui.callRightWindow(e.state.right, false);
+                if (e.state.left !== '') window.app.ui.callLeftWindow(e.state.left, false);
+                else window.app.ui.closeLeftWindow(false);
+                if (e.state.right !== '') window.app.ui.callRightWindow(e.state.right, false);
+                else window.app.ui.closeRightWindow(false);
             } else if (e.state.sheetid !== undefined) {
                 window.app.ui.sheetui.controller.openSheet(e.state.sheetid, undefined, undefined, undefined, undefined, false);
             }
