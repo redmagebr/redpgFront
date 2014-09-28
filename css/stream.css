@@ -67,22 +67,12 @@ div.avatarWrapper {
     right: 0px;
 }
 
-.jspTrack
-{
-    background: #7e7e7e;
-}
-
-.jspDrag
-{
-    background: #4e4e4e;
-}
-
 #avatarButtons {
     display: none;
     margin-right: 7px;
 }
 
-#areaChatBox {
+body #leftWindow #areaChat {
     position: fixed;
     left: 100px;
     top: 10px;
@@ -92,12 +82,24 @@ div.avatarWrapper {
     border: none;
     border-right: 5px #000 solid;
 }
+
 #areaChat {
     border: none;
 }
 
+#areaChatBox {
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    border: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 #leftWindow, #chatWindow, #areaChat {
-    z-index: 100;
+    z-index: 400;
     overflow: visible;
 }
 
