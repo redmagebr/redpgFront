@@ -49,11 +49,12 @@ window.lingo['pt_br'] = {
     _IMAGESSHARE_ : "Compartilhar no chat atual",
     _IMAGESPERSONA_ : "Usar como persona",
     _IMAGESOPEN_ : 'Visualizar imagem',
+    _IMAGESLINKLISTEXPLAIN_ : 'Sem marcar essa caixa, o sistema vai adicionar o link digitado como um link de imagem. Marcando essa caixa, o sistema irá abrir o link digitado e varrer ele atrás de links de imagens, adicionando cada uma delas.',
     
     /* Sounds */
     _OPENSOUNDS_ : 'Sons',
     _SOUNDSHEADER_ : 'Sons',
-    _SOUNDSEXPLAIN_ : 'O sistema sempre irá buscar arquivos de sons na pasta "/Sons". Você precisa estar usando o website de forma offline para colocar sons nessa pasta.',
+    _SOUNDSEXPLAIN_ : 'O sistema sempre irá buscar arquivos de sons na pasta "/Sounds". Você precisa estar usando o website de forma offline para colocar sons nessa pasta.',
     _SOUNDSEXPLAIN2_ : 'Caso você esteja adicionando um link completo para o som em algum servidor, o sistema irá poder tocar esse som de qualquer lugar, tanto online quanto offline.',
     _SOUNDSPICKONE_ : 'Escolha uma pasta',
     _SOUNDSFOLDERS_ : 'Folders',
@@ -72,7 +73,7 @@ window.lingo['pt_br'] = {
     _PLAYMUSIC_ : 'Tocar',
     _TRYCORS_ : 'Não foi possível acessar o servidor. Seu servidor provavelmente não está configurado corretamente para receber pedidos. Clique aqui para baixar uma extensão para Google Chrome que fará o acesso funcionar assim mesmo. Lembre-se de, depois de instalar, ativar a extensão por clicar no ícone vermelho CORS ao lado direito da barra de endereços. Lembre-se de desativar o CORS após importar o link!',
     _DELETEMUSIC_ : 'Deletar',
-    _SOUNDSUSEFILES_ : 'Escolher arquivos em "/Sons"',
+    _SOUNDSUSEFILES_ : 'Escolher arquivos em "Sounds/"',
     _SOUNDSUSELINK_ : 'Adicionar links de músicas em um link.',
     _SOUNDSISBGM_ : 'BGM? É Sound Effect se não for.',
     _SOUNDFOLDERERROR_ : 'Para adicionar sons, é necessário escolher uma pasta para colocá-las.',
@@ -546,6 +547,10 @@ window.lingo['pt_br'] = {
     _IMAGEARCHIVE_ : 'Banco de Imagens',
     _SHEETCOMMONSTYPE_ : 'Tipo',
     _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
+    _SHEETCOMMONSNEWDUAL_ : 'Nova lista dupla',
+    _SHEETCOMMONSNEWLINE_ : 'Novo campo',
+    _SHEETCOMMONSNEWSINGLE_ : 'Nova lista',
+    _GENERICSHEET_ : 'Ficha Genérica',
     
     /* Donations */
     _HOMEDONATIONS_ : 'Doações',

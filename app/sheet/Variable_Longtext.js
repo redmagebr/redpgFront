@@ -43,6 +43,12 @@ function Variable_Longtext ($visible, style, missingid, parent) {
     } else {
         this.autoresize = false;
     }
+    
+    if (this.$visible.is('[data-paragraph]')) {
+        this.paragraph = this.$visible.attr('data-paragraph') === '1';
+    } else {
+        this.paragraph = false;
+    }
 
     this.update$ = function () {
         if (this.style.editing && this.editable) {
@@ -77,9 +83,20 @@ function Variable_Longtext ($visible, style, missingid, parent) {
                 $input.trigger('keyup.resize', [false]);
             }
         } else {
-            var html = $("<p />").text(this.value).html();
-            html = html.replace(/\r\n|\r|\n/g,"<br />");
-            this.$visible.html(html);
+            if (!this.paragraph) {
+                var html = $("<p />").text(this.value).html();
+                html = html.replace(/\r\n|\r|\n/g,"<br />");
+                this.$visible.html(html);
+            } else {
+                var $p;
+                var lines = this.value.split(/\r\n|\r|\n/);
+                this.$visible.empty();
+                for (var i = 0; i < lines.length; i++) {
+                    $p = $('<p />').text(lines[i].trim());
+                    if ($p.text() === '') $p.html('&nbsp;');
+                    this.$visible.append($p);
+                }
+            }
         }
     };
 

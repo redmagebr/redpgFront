@@ -16,7 +16,7 @@ window.lingo['en'] = {
     _HOMEFRONTGITHUBBALL_ : 'RedPG Front on GitHub - Direct download',
     _HOMESERVERGITHUB_ : 'RedPG Server on GitHub',
     _HOMEDB_ : 'RedPG.sql',
-    _HOMEFRONTGITHUBEXPLAIN_ : 'Offline version of RedPG Front. Users who wish to run the client from their hard drive need to download this. The offline version also allows a group to share and play sounds inside the "Sons" folder, not requiring an external server for them.',
+    _HOMEFRONTGITHUBEXPLAIN_ : 'Offline version of RedPG Front. Users who wish to run the client from their hard drive need to download this. The offline version also allows a group to share and play sounds inside the "Sounds" folder, not requiring an external server for them.',
     _HOMEFRONTGITHUBBALLEXPLAIN_ : 'Same as the one above, just a direct download link.',
     _HOMESERVERGITHUBEXPLAIN_ : 'RedPG Server Source Code. Those interested in seeing how it works can grab it here.',
     _HOMEDBEXPLAIN_ : 'Empty database dump. Unavailable at the moment.',
@@ -49,11 +49,12 @@ window.lingo['en'] = {
     _IMAGESSHARE_ : "Share in the current chat",
     _IMAGESPERSONA_ : "Use as Persona",
     _IMAGESOPEN_ : 'Open Image',
+    _IMAGESLINKLISTEXPLAIN_ : 'Without checking this, the system will add the address as a single picture. If you check this box, the system will access the address and add every image address it finds there.',
     
     /* Sounds */
     _OPENSOUNDS_ : 'Sounds',
     _SOUNDSHEADER_ : 'Sounds',
-    _SOUNDSEXPLAIN_ : 'The application will look for sound files in the "Sons/" folder. You must be using the offline version of the application for it to be able to access them.',
+    _SOUNDSEXPLAIN_ : 'The application will look for sound files in the "Sounds/" folder. You must be using the offline version of the application for it to be able to access them.',
     _SOUNDSEXPLAIN2_ : 'When adding links from another server, the application will be able to play them both from the Offline version and the Online version.',
     _SOUNDSPICKONE_ : 'Choose a folder',
     _SOUNDSFOLDERS_ : 'Folders',
@@ -69,8 +70,8 @@ window.lingo['en'] = {
     _PLAYMUSIC_ : 'Play',
     _TRYCORS_ : 'We weren\'t able to access the link provided. The server might not have been configured properly. You can click here and install an extension that will bypass this error. Remember to activate it before trying again and remember to deactivate it when done.',
     _DELETEMUSIC_ : 'Delete',
-    _SOUNDSUSEFILES_ : 'Pick files in "/Sons"',
-    _SOUNDSUSELINK_ : 'Add all links in a link',
+    _SOUNDSUSEFILES_ : 'Pick files in "Sounds/"',
+    _SOUNDSUSELINK_ : 'Add all sound links in a link',
     _SOUNDSISBGM_ : 'BGM? It\'s a Sound Effect otherwise',
     _SOUNDFOLDERERROR_ : 'To add sounds, you need to specify a folder.',
     
@@ -536,6 +537,10 @@ window.lingo['en'] = {
     _IMAGEARCHIVE_ : 'Image Bank',
     _SHEETCOMMONSTYPE_ : 'Type',
     _SHEETCOMMONSPICKIMAGE_ : 'Choose a picture',
+    _SHEETCOMMONSNEWDUAL_ : 'New double list',
+    _SHEETCOMMONSNEWLINE_ : 'New field',
+    _SHEETCOMMONSNEWSINGLE_ : 'New single list',
+    _GENERICSHEET_ : 'Generic Sheet',
     
     /* Donations */
     _HOMEDONATIONS_ : 'Donations',

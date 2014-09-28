@@ -172,11 +172,15 @@
     text-align: justify;
 }
 
+#sheetDiv .centered {
+    text-align: center;
+}
+
 #sheetDiv .pnoMargin p {
     margin: 0px;
 }
 
-#sheetDiv p.noMargin {
+#sheetDiv .noMargin {
     margin: 0px;
 }
 
@@ -187,6 +191,7 @@
 /* Sizes */
 #sheetDiv .headerSize {
     font-size: 1.2em;
+    font-weight: bold;
     line-height: 35px;
 }
 

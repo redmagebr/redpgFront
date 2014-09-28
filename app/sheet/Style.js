@@ -73,8 +73,10 @@ function Style (sheet, styleInstance) {
         var $nameField = this.mainSheet.$visible.find('.sheetName');
         if ($nameField.length > 0) {
             this.nameField = new Variable_Name($($nameField[0]), this, 0, this.mainSheet);
-            this.nameField.setDefault();
+        } else {
+            this.nameField = new Variable_Name($('<p class="sheetName" />'), this, 0, this.mainSheet);
         }
+        this.nameField.setDefault();
         
         var setChanged = this.emulateBind(
             function () {
