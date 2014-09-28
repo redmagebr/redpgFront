@@ -525,6 +525,13 @@ function UI () {
         window.app.ui.init();
     });
     
+    $(window).load(function () {
+        $('body').css('height', '100px');
+        window.setTimeout(function () {
+            $('body').css('height', '');
+        }, 5);
+    });
+    
     this.notifyMessages = function () {
         if (this.nonotifications) {
             return false;
