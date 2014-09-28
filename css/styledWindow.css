@@ -8,10 +8,6 @@ div.styledWindow {
 div.styledWindow > h1 {
     display: block;
     height: 30px;
-    width: 96%;
-    margin: 0px;
-    margin-left: 2%;
-    margin-right: 2%;
     margin-top: 10px;
     background-color: #333745;
     color: #fff;
@@ -21,13 +17,15 @@ div.styledWindow > h1 {
     line-height: 30px;
     text-indent: 1em;
     overflow: hidden;
+    width: 96%;
+    margin: 0px;
+    margin-left: 10px;
 }
 
 div.styledWindow > div {
     width: 96%;
     margin: 0px;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 10px;
     margin-bottom: 20px;
     display: block;
     background-color: white;
@@ -36,6 +34,7 @@ div.styledWindow > div {
 div.styledWindow > div.singleton {
     overflow-y: auto;
     margin-bottom: 10px;
+    background-clip: content-box;
 }
 
 div.styledWindow > div > p {
