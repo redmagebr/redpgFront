@@ -55,7 +55,7 @@ body {
     height: 98px;
     z-index: 50;
     background-color: rgba(0,0,0,.5);
-    border-top: 5px solid #000;
+    border-top: 3px solid #000;
 }
 
 div.avatarWrapper {
@@ -76,11 +76,11 @@ body #leftWindow #areaChat {
     position: fixed;
     left: 100px;
     top: 10px;
-    width: 549px;
+    width: 552px;
     height: 378px;
     z-index: 100;
     border: none;
-    border-right: 5px #000 solid;
+    border-right: 3px #000 solid;
 }
 
 #areaChat {
@@ -98,6 +98,10 @@ body #leftWindow #areaChat {
     box-shadow: none;
 }
 
+#areaChatBox::-webkit-scrollbar {
+    width: 2px;
+}
+
 #leftWindow, #chatWindow, #areaChat {
     z-index: 400;
     overflow: visible;
@@ -106,7 +110,7 @@ body #leftWindow #areaChat {
 #pictureContainer {
     position: fixed;
     left: 626px;
-    border-left: solid 5px #000;
+    border-left: solid 3px #000;
     top: 10px;
     right: initial;
     bottom: initial;
@@ -163,9 +167,9 @@ body #combatTracker a.deleteRow, body #combatTracker a.openSheet, body #combatTr
 /* New Picture */
 body #pictureWindow {
     position: fixed;
-    left: 649px;
+    left: 652px;
     border: none;
-    border-left: solid 5px #000;
+    border-left: solid 3px #000;
     top: 10px;
     right: initial;
     bottom: initial;
