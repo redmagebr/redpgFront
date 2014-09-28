@@ -24,7 +24,7 @@ div.styledWindow > h1 {
 div.styledWindow > div {
     width: 98%;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: block;
     background-color: white;
 }
