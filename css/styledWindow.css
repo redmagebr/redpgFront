@@ -16,13 +16,13 @@ div.styledWindow > h1 {
     line-height: 30px;
     text-indent: 1em;
     overflow: hidden;
-    width: 96%;
+    width: 98%;
     margin: auto;
     margin-top: 10px;
 }
 
 div.styledWindow > div {
-    width: 96%;
+    width: 98%;
     margin: auto;
     margin-bottom: 20px;
     display: block;
