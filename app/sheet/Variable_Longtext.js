@@ -49,6 +49,12 @@ function Variable_Longtext ($visible, style, missingid, parent) {
     } else {
         this.paragraph = false;
     }
+    
+    if (this.$visible.is('[data-paragraph]')) {
+        this.emptyParagraph = this.$visible.attr('data-emptyparagraph') === '1';
+    } else {
+        this.emptyParagraph = true;
+    }
 
     this.update$ = function () {
         if (this.style.editing && this.editable) {
@@ -93,7 +99,12 @@ function Variable_Longtext ($visible, style, missingid, parent) {
                 this.$visible.empty();
                 for (var i = 0; i < lines.length; i++) {
                     $p = $('<p />').text(lines[i].trim());
-                    if ($p.text() === '') $p.html('&nbsp;');
+                    if ($p.text() === '') {
+                        if (!this.emptyParagraph) {
+                            continue;
+                        }
+                        $p.html('&nbsp;');
+                    }
                     this.$visible.append($p);
                 }
             }
