@@ -218,7 +218,7 @@ function UI () {
         if (height !== this.lastHeight) {
             this.lastHeight = height;
             height -= 50;
-            this.$singletonCss.empty().append("div.styledWindow > div.singleton { height: " + height + "px; }");
+            this.$singletonCss.empty().append("div.styledWindow > div.singleton { height: " + parseInt(height) + "px; }");
             
             if (this.lastHeight < 500) {
                 this.$removeAvatarCss.empty().append("#avatarContainer { display: none; } #areaChat { top: 10px; }");
