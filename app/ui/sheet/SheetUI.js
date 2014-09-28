@@ -402,12 +402,27 @@ function SheetUI() {
         var $option;
         var name;
         
+        data.sort(function (a,b) {
+            var na = a.name;
+            if (na.charAt(0) === '_') na = window.app.ui.language.getLingo(na);
+            na = na.toUpperCase();
+            var nb = b.name;
+            if (nb.charAt(0) === '_') nb = window.app.ui.language.getLingo(nb);
+            nb = nb.toUpperCase();
+            if (na < nb) return -1;
+            if (na > nb) return 1;
+            return 0;
+        });
+        
         for (var i = 0; i < data.length; i++) {
             name = data[i].name;
-            if (name.charAt(0) === '_' && window.app.ui.language.getLingo(name) !== name) {
+            if (name.charAt(0) === '_') {
                 name = window.app.ui.language.getLingo(name);
             }
             $option = $('<option value="' + data[i].id + '" />').text(name);
+            if (data[i].id === 1) {
+                $option[0].selected = true;
+            }
             $select.append($option);
         }
     };
