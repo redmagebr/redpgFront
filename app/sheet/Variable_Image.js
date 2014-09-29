@@ -43,11 +43,20 @@ function Variable_Image ($visible, style, missingid, parent) {
                 $option = $('<option selected disabled class="language" data-langhtml="_SHEETCOMMONSPICKIMAGE_" />').text(window.app.ui.language.getLingo("_SHEETCOMMONSPICKIMAGE_"));
             }
             $select.append($option);
+            
+            var $optgroups = {};
+                        
             for (var i = 0; i < window.app.imagedb.imagesOrdered.length; i++) {
                 image = window.app.imagedb.imagesOrdered[i];
+                if ($optgroups[image.folder] === undefined) {
+                    $optgroups[image.folder] = $('<optgroup />').attr('label', $('<a />').text(image.folder).html());
+                    $select.append($optgroups[image.folder]);
+                }
                 $option = $('<option />').val(image.getUrl()).text(image.getName());
-                $select.append($option);
+                $optgroups[image.folder].append($option);
             }
+            
+
             
             if (i === 0) {
                 $option = $('<option class="language" data-langhtml="_SHEETSLOADIMAGES_" disabled />').text(window.app.ui.language.getLingo("_SHEETSLOADIMAGES_"));
