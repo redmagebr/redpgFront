@@ -153,26 +153,40 @@ function PictureUI () {
     };
     
     this.addDrawings = function (src, array) {
-        if (this.drawings[src] === undefined) this.drawings[src] = [];
-        this.drawings[src] = this.drawings[src].concat(array);
+        var correctedLink = window.app.chatapp.room !== null ? window.app.chatapp.room.id : '0';
+        correctedLink = correctedLink + src;
+        if (this.drawings[correctedLink] === undefined) {
+            var oldDrawings = window.app.memory.getMemory('draw' + correctedLink, null);
+            if (oldDrawings !== null) {
+                try {
+                    this.drawings[correctedLink] = JSON.parse(oldDrawings);
+                } catch (e) {
+                    this.drawings[correctedLink] = [];
+                }
+            } else {
+                this.drawings[correctedLink] = [];
+            }
+        }
+        this.drawings[correctedLink] = this.drawings[correctedLink].concat(array);
+        
+        window.app.memory.setMemory('draw' + correctedLink, JSON.stringify(this.drawings[correctedLink]));
+        
         if (src === this.src) {
             this.updateCanvas();
         }
     };
     
     this.clearDrawings = function (src) {
-        this.drawings[src] = [];
+        var correctedLink = window.app.chatapp.room !== null ? window.app.chatapp.room.id : '0';
+        correctedLink = correctedLink + src;
+        this.drawings[correctedLink] = [];
+        window.app.memory.setMemory('draw' + correctedLink, JSON.stringify(this.drawings[correctedLink]));
         if (src === this.src) {
             this.updateCanvas();
         }
     };
     
     this.sendClear = function () {
-        if (window.app.chatapp.room === null) {
-            this.drawings[this.src] = [];
-            this.updateCanvas();
-            return;
-        }
         var message = new Message();
         message.module = 'pica';
         message.setSpecial('clear', true);
@@ -185,9 +199,12 @@ function PictureUI () {
     };
     
     this.updateCanvas = function (updateValues) {
-        if (window.app.chatapp.room === null || !window.app.chatapp.room.getMe().isStoryteller()) {
+        if (window.app.chatapp.room === null) {
+            this.$paintingTools.hide();
+        } else if (!window.app.chatapp.room.getMe().isStoryteller()) {
             this.$lock.detach();
             this.$clear.detach();
+            this.$paintingTools.unhide();
         } else {
             this.$paintingTools.append(this.$clear).append(this.$lock);
             if (this.isLocked()) {
@@ -195,6 +212,7 @@ function PictureUI () {
             } else {
                 this.$lock.removeClass('toggled');
             }
+            this.$paintingTools.unhide();
         }
         if (this.$canvas === null) {
             updateValues = true;
@@ -236,7 +254,11 @@ function PictureUI () {
             this.offset = this.$canvas.offset();
         }
         
-        if (this.drawings[this.src] === undefined) this.drawings[this.src] = [];
+        var correctedLink = window.app.chatapp.room !== null ? window.app.chatapp.room.id : '0';
+        correctedLink = correctedLink + this.src;
+        if (this.drawings[correctedLink] === undefined) {
+            this.addDrawings(this.src, []);
+        }
         
         this.canvasContext.clearRect(0,0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
         
@@ -245,11 +267,11 @@ function PictureUI () {
         }
         this.canvasContext.beginPath();
         
-        if (this.drawings[this.src] !== undefined) {
-            this.drawArray(this.drawings[this.src]);
-        }
-        if (this.myArt[this.src] !== undefined) {
-            this.drawArray(this.myArt[this.src]);
+        
+        this.drawArray(this.drawings[correctedLink]);
+        
+        if (this.myArt[correctedLink] !== undefined) {
+            this.drawArray(this.myArt[correctedLink]);
         }
         
         this.canvasContext.stroke();
@@ -322,7 +344,9 @@ function PictureUI () {
      */
     this.mousedown = function (e) {
         this.painting = true;
-        this.myArt[this.src] = [];
+        var correctedLink = window.app.chatapp.room !== null ? window.app.chatapp.room.id : '0';
+        correctedLink = correctedLink + this.src;
+        this.myArt[correctedLink] = [];
         if (this.isLocked()) {
             if (!window.app.chatapp.room.getMe().isStoryteller()) {
                 this.painting = false;
@@ -342,15 +366,19 @@ function PictureUI () {
             window.clearTimeout(this.touchTimeout);
             this.touchTimeout = null;
         }
+        
+        var correctedLink = window.app.chatapp.room !== null ? window.app.chatapp.room.id : '0';
+        correctedLink = correctedLink + this.src;
+        
         // send art through chat
-        if (this.myArt[this.src].length === 0) return;
-        this.drawings[this.src] = this.drawings[this.src].concat(this.myArt[this.src]);
+        if (this.myArt[correctedLink].length === 0) return;
+        this.drawings[correctedLink] = this.drawings[correctedLink].concat(this.myArt[correctedLink]);
         var message = new Message();
         message.module = 'pica';
-        message.setSpecial('art', this.myArt[this.src]);
+        message.setSpecial('art', this.myArt[correctedLink]);
         message.msg = this.src;
         window.app.chatapp.fixPrintAndSend(message, true);
-        this.myArt[this.src] = [];
+        this.myArt[correctedLink] = [];
     };
     
     /**
@@ -360,7 +388,7 @@ function PictureUI () {
      */
     this.mousemove = function (e, newOne) {
         if (newOne === undefined) newOne = 0;
-        if (this.painting) {
+        if (this.painting && window.app.chatapp.room !== null) {
             var relX = e.pageX - this.offset.left;
             var relY = e.pageY - this.offset.top;
             var finalX = parseInt((relX/this.width) * this.oWidth);
@@ -374,7 +402,10 @@ function PictureUI () {
                 array.push(this.color);
             }
             
-            this.myArt[this.src].push(array);
+            var correctedLink = window.app.chatapp.room !== null ? window.app.chatapp.room.id : '0';
+            correctedLink = correctedLink + this.src;
+            
+            this.myArt[correctedLink].push(array);
             this.updateCanvas();
         }
     };
