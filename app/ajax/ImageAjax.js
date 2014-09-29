@@ -24,9 +24,6 @@ function ImageAjax () {
             for (var i = 0; i < $data.length; i++) {
                 $el = $($data[i]);
                 link = $el.attr('href');
-                at = link.lastIndexOf('?');
-                at = at === -1 ? link.length : at;
-                link = link.substring(0, at);
                 if (link.indexOf('://') === -1) {
                     link = url + link;
                 }
@@ -74,7 +71,7 @@ function ImageAjax () {
             for (var i = 0; i < $data.length; i++) {
                 $el = $($data[i]);
                 link = $el.attr('href');
-                link = link.substring(0, link.lastIndexOf('?'));
+                link = window.app.imageapp.prepareUrl(link);
                 if (found.indexOf(link) === -1) found.push(link);
             }
             

@@ -70,6 +70,7 @@ function ImageUI () {
             var imagem = window.app.imagedb.createLink();
             imagem.name = this.$linkName.val().trim();
             imagem.url = this.$linkLink.val().trim();
+            imagem.url = window.app.imageapp.prepareUrl(imagem.url);
             imagem.folder = this.$linkFolder.val().trim();
             
             if (imagem.name === '' || imagem.url === '') return false;

@@ -64,4 +64,18 @@ function ImageApp () {
         }
         window.app.memory.setMemory('imageLinks', toSave);
     };
+    
+    this.prepareUrl = function (url) {
+        if (url.indexOf('dropbox.com') !== -1) {
+            if (url.indexOf('?dl=1') !== -1) {
+                return url;
+            }
+            var at = url.lastIndexOf('?');
+            at = at === -1 ? url.length : at;
+            url = url.substring(0, at) + '?dl=1';
+            return url;
+        } else {
+            return url;
+        }
+    };
 }

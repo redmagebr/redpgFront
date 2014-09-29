@@ -24,6 +24,12 @@ function Variable_Image ($visible, style, missingid, parent) {
     } else {
         this.empty = null;
     }
+    
+    if (this.$visible.is('[data-img]') && this.$visible.attr("data-img").length > 0) {
+        this.isImg = this.$visible.attr('data-img') === '1';
+    } else {
+        this.isImg = false;
+    }
    
     this.update$ = function () {
         if (this.style.editing) {
@@ -46,6 +52,9 @@ function Variable_Image ($visible, style, missingid, parent) {
             if (i === 0) {
                 $option = $('<option class="language" data-langhtml="_SHEETSLOADIMAGES_" disabled />').text(window.app.ui.language.getLingo("_SHEETSLOADIMAGES_"));
                 $select.append($option);
+                $('#pictureTrigger').on('loaded', this.style.emulateBind(function () {
+                    this.variable.update$();
+                }, {variable:this}));
             }
             
             $select.on('change', this.style.emulateBind(function () {
@@ -55,24 +64,36 @@ function Variable_Image ($visible, style, missingid, parent) {
             this.$visible.empty().append($select);
         } else {
             if (this.value[0] !== null && this.value[1] !== null) {
-                var image = new Image_Link();
-                image.name = this.value[1];
-                image.url = this.value[0];
-                var $image = window.app.ui.imageui.$createImage(image);
-                
-                $image.css({
-                    'line-height': '30px'
-                });
-                
-                $image.find('.button').css({
-                    width: '30px',
-                    height: '30px',
-                    'margin-right': '6px',
-                    display: 'inline-block',
-                    float: 'left'
-                });
-                window.app.ui.language.applyLanguageOn($image);
-                this.$visible.empty().append($image);
+                if (!this.isImg) {
+                    var image = new Image_Link();
+                    image.name = this.value[1];
+                    image.url = this.value[0];
+                    var $image = window.app.ui.imageui.$createImage(image);
+
+                    $image.css({
+                        'line-height': '30px'
+                    });
+
+                    $image.find('.button').css({
+                        width: '30px',
+                        height: '30px',
+                        'margin-right': '6px',
+                        display: 'inline-block',
+                        float: 'left'
+                    });
+                    window.app.ui.language.applyLanguageOn($image);
+                    this.$visible.empty().append($image);
+                } else {
+                    var url = this.value[0];
+                    if (url.indexOf('dropbox.com') !== -1 && url.indexOf('?dl=1') === -1) {
+                        url = url + '?dl=1';
+                    }
+                    var $img = $('<img />').attr('src', url).on('error', function () {
+                        $(this).off('error').attr('src', 'img/404.png');
+                    });
+                    
+                    this.$visible.empty().append($img);
+                }
             } else {
                 this.$visible.text(this.empty);
             }

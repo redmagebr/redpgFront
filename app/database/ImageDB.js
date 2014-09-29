@@ -8,6 +8,8 @@ function ImageDB (app) {
     
     this.storageId = 'images';
     
+    this.$trigger = $('#pictureTrigger');
+    
     this.images = {};
     this.imagesOrdered = [];
     this.changedStorage = false;
@@ -60,6 +62,7 @@ function ImageDB (app) {
         }
         
         this.sort();
+        this.$trigger.trigger('loaded').off('loaded');
     };
     
     this.sort = function () {
