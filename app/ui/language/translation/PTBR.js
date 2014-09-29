@@ -540,6 +540,7 @@ window.lingo['pt_br'] = {
     
     /* Sheet Commons */
     _SHEETSLOADIMAGES_ : 'Lista de imagens ainda não foi aberta',
+    _SHEETSLOADSHEETS_ : 'Lista de fichas ainda não foi aberta',
     _SHEETCOMMONSPLAYER_ : 'Jogador',
     _SHEETCOMMONSOPEN_ : 'Abrir/Fechar',
     _SHEETCOMMONSNEWCATEGORY_ : 'Nova Categoria',
@@ -547,10 +548,16 @@ window.lingo['pt_br'] = {
     _IMAGEARCHIVE_ : 'Banco de Imagens',
     _SHEETCOMMONSTYPE_ : 'Tipo',
     _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
+    _SHEETCOMMONSPICKSHEET_ : 'Escolha uma ficha',
     _SHEETCOMMONSNEWDUAL_ : 'Nova lista dupla',
     _SHEETCOMMONSNEWLINE_ : 'Novo campo',
     _SHEETCOMMONSNEWSINGLE_ : 'Nova lista',
     _GENERICSHEET_ : 'Ficha Genérica',
+    _SHEETCOMMONSMAPINFO_ : 'Configuração do Mapa',
+    _SHEETMAP_ : 'Mapa',
+    _SHEETCOMMONSADDTOKEN_ : 'Adicionar token',
+    _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+    
     
     /* Donations */
     _HOMEDONATIONS_ : 'Doações',

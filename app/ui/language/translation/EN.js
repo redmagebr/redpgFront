@@ -530,6 +530,7 @@ window.lingo['en'] = {
     
     /* Sheet Commons */
     _SHEETSLOADIMAGES_ : 'Image list was not yet loaded',
+    _SHEETSLOADSHEETS_ : 'Sheet list was not yet loaded',
     _SHEETCOMMONSPLAYER_ : 'Player',
     _SHEETCOMMONSOPEN_ : 'Open/Close',
     _SHEETCOMMONSNEWCATEGORY_ : 'New Category',
@@ -537,11 +538,15 @@ window.lingo['en'] = {
     _IMAGEARCHIVE_ : 'Image Bank',
     _SHEETCOMMONSTYPE_ : 'Type',
     _SHEETCOMMONSPICKIMAGE_ : 'Choose a picture',
+    _SHEETCOMMONSPICKSHEET_ : 'Choose a sheet',
     _SHEETCOMMONSNEWDUAL_ : 'New double list',
     _SHEETCOMMONSNEWLINE_ : 'New field',
     _SHEETCOMMONSNEWSINGLE_ : 'New single list',
     _GENERICSHEET_ : 'Generic Sheet',
-    
+    _SHEETCOMMONSMAPINFO_ : 'Map Settings',
+    _SHEETMAP_ : 'Map',
+    _SHEETCOMMONSADDTOKEN_ : 'Add new token',
+    _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
     /* Donations */
     _HOMEDONATIONS_ : 'Donations',
     _HOMEDONATIONSEXPLAIN1_ : 'RedPG is freeware and will remain so for as long as possible. However, it still has costs and someone has to pay for them.',

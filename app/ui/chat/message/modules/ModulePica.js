@@ -34,7 +34,12 @@ window.chatModules.push({
             return null;
         }
         
-        if (window.app.ui.pictureui.locked) {
+        var lock = msg.getSpecial('lock', null);
+        if (lock !== null && msg.getUser().isStoryteller()) {
+            window.app.ui.pictureui.lock(window.app.chatapp.room.id, lock === true);
+        }
+        
+        if (window.app.ui.pictureui.isLocked()) {
             var user = msg.getUser();
             if (!user.isStoryteller()) {
                 return null;

@@ -69,6 +69,10 @@
     vertical-align: top;
 }
 
+#picturePaint a.toggled {
+    border-color: #74e64e;
+}
+
 #picturePaint a:hover {
     cursor: pointer;
     border-color: #aba8ff;

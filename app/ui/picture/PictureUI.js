@@ -18,18 +18,17 @@ function PictureUI () {
     });
     
     this.$lock = $('<a class="paintIconLock language button" data-langtitle="_DRAWINGLOCK_" />').on('click', function () {
-        window.app.ui.pictureui.locked = !window.app.ui.pictureui.locked;
-        if (window.app.ui.pictureui.locked) {
-            $(this).addClass('toggled');
-        } else {
-            $(this).removeClass('toggled');
-        }
+        var message = new Message();
+        message.module = 'pica';
+        message.setSpecial('lock', !window.app.ui.pictureui.isLocked());
+        message.msg = "lock";
+        window.app.chatapp.fixPrintAndSend(message, true);
     });
     
     this.$paintingTools = $('#picturePaint').append(this.$currentSize).append(this.$currentColor)
-            .append(this.$clear).append(this.$eraser);
+            .append(this.$clear).append(this.$eraser).append(this.$lock);
     
-    this.locked = false;
+    this.locked = {};
     
     this.color = '#CC0000';
     this.size = 1;
@@ -186,6 +185,17 @@ function PictureUI () {
     };
     
     this.updateCanvas = function (updateValues) {
+        if (window.app.chatapp.room === null || !window.app.chatapp.room.getMe().isStoryteller()) {
+            this.$lock.detach();
+            this.$clear.detach();
+        } else {
+            this.$paintingTools.append(this.$clear).append(this.$lock);
+            if (this.isLocked()) {
+                this.$lock.addClass('toggled');
+            } else {
+                this.$lock.removeClass('toggled');
+            }
+        }
         if (this.$canvas === null) {
             updateValues = true;
             var oWidth = this.$element[0].naturalWidth;
@@ -313,7 +323,7 @@ function PictureUI () {
     this.mousedown = function (e) {
         this.painting = true;
         this.myArt[this.src] = [];
-        if (this.locked) {
+        if (this.isLocked()) {
             if (!window.app.chatapp.room.getMe().isStoryteller()) {
                 this.painting = false;
             }
@@ -408,6 +418,20 @@ function PictureUI () {
         } else {
             this.size = 1;
             this.$currentSize.addClass("paintIconSmall");
+        }
+    };
+    
+    this.isLocked = function () {
+        var id = window.app.chatapp.room !== null ? window.app.chatapp.room.id : 0;
+        return this.locked[id] === true;
+    };
+    
+    this.lock = function (id, which) {
+        this.locked[id] = which;
+        if (which) {
+            this.$lock.addClass('toggled');
+        } else {
+            this.$lock.removeClass('toggled');
         }
     };
 }
