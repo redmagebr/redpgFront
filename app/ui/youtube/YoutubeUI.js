@@ -29,17 +29,16 @@ function YoutubeUI () {
         if (typeof repeat === 'undefined') var repeat = false;
         id = id.replace(/"/g, '');
         var initialid = id;
+        
+        id = id + '?iv_load_policy=3';
+        
         if (autoplay) {
-            id = id + "?autoplay=1";
+            id = id + "&autoplay=1";
         }
         if (repeat) {
-            if (autoplay) {
-                id = id + '&';
-            } else {
-                id = id + '?';
-            }
-            id = id + "loop=1&playlist=" + initialid;
+            id = id + "&loop=1&playlist=" + initialid;
         }
+        
         //var $play = $('<embed type="application/x-shockwave-flash" src="http://www.youtube.com/v/' + id + '" />');
         
         var $play = $('<iframe id="youtubeiFrame" class="youtube-player" type="text/html" src="http://www.youtube.com/embed/' + id + '" allowfullscreen frameborder="0"></iframe>');

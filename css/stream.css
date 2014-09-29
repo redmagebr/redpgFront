@@ -22,7 +22,6 @@ body {
     top: 10px;
     right: initial;
     bottom: initial;
-    z-index: 200;
     border: none;
     pointer-events: auto;
 }
@@ -38,8 +37,12 @@ body {
     border: none;
 }
 
+#youtubeWindow > h1, #youtubeWindow > div.singleton {
+    background: none transparent;
+}
+
 #youtubeWindow, #rightWindow {
-    z-index: 200;
+    z-index: 400;
 }
 
 #stream > img {
