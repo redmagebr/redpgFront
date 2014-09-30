@@ -57,7 +57,7 @@ function Style (sheet, styleInstance) {
     this.afterProcess = function (sheet, instance, style) {
         try {
             eval(this.style.afterProcess);
-        } catch (err) {loaded
+        } catch (err) {
             console.log("After process error for " + this.style.name + ": ");
             console.log(err);
             var errmsg = window.app.ui.language.getLingoOn("_STYLEAFTERERROR_", this.style.name);
@@ -138,7 +138,9 @@ function Style (sheet, styleInstance) {
     };
     
     this.getObject = function () {
-        return this.mainSheet.getObject();
+        var obj = this.mainSheet.getObject();
+        this.sheet.values = obj;
+        return obj;
     };
     
     this.seppuku = function () {

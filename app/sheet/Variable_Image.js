@@ -13,6 +13,8 @@ function Variable_Image ($visible, style, missingid, parent) {
     this.parent = parent;
     this.value = [null, null]; // id , link , name
    
+    this.personalid = missingid;
+   
     if (this.$visible.is('[data-id]') && this.$visible.attr("data-id").length > 0) {
         this.id = this.$visible.attr('data-id');
     } else {
@@ -61,7 +63,7 @@ function Variable_Image ($visible, style, missingid, parent) {
             if (i === 0) {
                 $option = $('<option class="language" data-langhtml="_SHEETSLOADIMAGES_" disabled />').text(window.app.ui.language.getLingo("_SHEETSLOADIMAGES_"));
                 $select.append($option);
-                $('#pictureTrigger').on('loaded', this.style.emulateBind(function () {
+                $('#pictureTrigger').on('loaded.var' + this.personalid, this.style.emulateBind(function () {
                     this.variable.update$();
                 }, {variable:this}));
             }
@@ -142,6 +144,7 @@ function Variable_Image ($visible, style, missingid, parent) {
    
    this.seppuku = function () {
         this.$visible.remove();
+        $('#pictureTrigger').off('loaded.var' + this.personalid);
         this.$visible = null;
         this.style = null;
         this.parent = null;
