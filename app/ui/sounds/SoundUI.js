@@ -191,19 +191,17 @@ function SoundUI () {
         );
         
         $html.append(
-            $("<a class='button shareIcon language' data-langhtml='_PLAYMUSIC_' />").bind('click', playFunc)
+            $("<a class='button textLink language' data-langhtml='_PLAYMUSIC_' />").bind('click', playFunc)
         );
 
         $html.append(' - ');
         
         $html.append(
-            $("<a class='button shareIcon language' data-langhtml='_SHAREMUSIC_' />").bind('click', shareFunc)
+            $("<a class='button textLink language' data-langhtml='_SHAREMUSIC_' />").bind('click', shareFunc)
         );
         
-        $html.append(' - ');
-        
         $html.append(
-            $("<a class='button deleteIcon language' data-langhtml='_DELETEMUSIC_' />").bind('click', deleteFunc)
+            $("<a class='button textLink language floatRight' data-langhtml='_DELETEMUSIC_' />").bind('click', deleteFunc)
         );
 
         $html.append(' - ');
