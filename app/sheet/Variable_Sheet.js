@@ -87,6 +87,7 @@ function Variable_Sheet ($visible, style, missingid, parent) {
         if (value === undefined || value === null || !value instanceof Array || value.length !== 2 || value[0] === null || value[0] === undefined || value[1] === undefined || value[1] === null) {
             return;
         }
+        value[0] = parseInt(value[0]);
         if (value[0] !== this.value[0] || value[1] !== this.value[1]) {
             this.value = value;
             this.update$();

@@ -559,6 +559,10 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
     
     
+    /* Map */
+    _MAPCURRENTTURN_ : 'Turno Atual',
+    _MAPTARGET_ : 'Seu alvo',
+    
     /* Donations */
     _HOMEDONATIONS_ : 'Doações',
     _HOMEDONATIONSEXPLAIN1_ : 'RedPG é um sistema gratuito e permanecerá gratuito enquanto isso for possível. Mas o servidor possui um custo e alguém precisa pagar.',

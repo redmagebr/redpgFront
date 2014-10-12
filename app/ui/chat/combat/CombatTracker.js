@@ -373,4 +373,18 @@ function CombatTracker () {
         message.setSpecial('player', this.myStuff.ordered[this.myStuff.turn].player);
         window.app.chatapp.printAndSend(message, true);
     };
+    
+    this.getCurrentTurn = function () {
+        if (typeof this.myStuff.ordered === 'undefined' || this.myStuff.turn === undefined || typeof this.myStuff.ordered[this.myStuff.turn] === 'undefined') {
+            return -1;
+        }
+        return this.myStuff.ordered[this.myStuff.turn].id;
+    };
+    
+    this.getTarget = function () {
+       if (this.target === undefined || this.myStuff.ordered === undefined || typeof this.myStuff.ordered[this.target] === 'undefined') {
+            return -1;
+        }
+        return this.myStuff.ordered[this.target].id;
+    };
 }
