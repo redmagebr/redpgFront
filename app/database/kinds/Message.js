@@ -190,7 +190,7 @@ function Message () {
             var $next = this.$msg.next();
             var $last = null;
             while ($next.length > 0) {
-                if ($next.attr('data-msgid') === undefined && parseInt($next.attr('data-msgid')) < this.message.id) {
+                if ($next.attr('data-msgid') === undefined || parseInt($next.attr('data-msgid')) < this.message.id) {
                     $last = $next;
                 }
                 $next = $next.next();
