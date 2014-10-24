@@ -29,6 +29,7 @@ window.chatModules.push({
             var cbs = window.app.emulateBind(
                 function () {
                     var $html = this.mod.get$(this.msg);
+                    $html.attr('data-msgid', this.msg.id);
                     this.$msg.replaceWith($html);
                     window.app.ui.language.applyLanguageOn($html);
                 }, {mod : mod, msg : msg, $msg : $msg}

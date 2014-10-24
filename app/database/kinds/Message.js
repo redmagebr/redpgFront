@@ -181,6 +181,25 @@ function Message () {
     this.set$ = function ($obj) {
         $obj.addClass('sendInProgress');
         
+        if (this.id !== null) {
+            $obj.attr('data-msgid', this.id);
+        }
+        
+        this.bindSaved(window.app.emulateBind(function () {
+            this.$msg.attr('data-msgid', this.message.id);
+            var $next = this.$msg.next();
+            var $last = null;
+            while ($next.length > 0) {
+                if ($next.attr('data-msgid') === undefined && parseInt($next.attr('data-msgid')) < this.message.id) {
+                    $last = $next;
+                }
+                $next = $next.next();
+            }
+            if ($last !== null) {
+                this.$msg.insertAfter($last);
+            }
+        }, {$msg : $obj, message : this}));
+        
         this.bindSaved(window.app.emulateBind(
             function () {
                 $obj.removeClass('sendInProgress');
@@ -208,6 +227,8 @@ function Message () {
                 this.$message.append($resend);
             }, {$message : $obj, message : this}
         ));
+
+        
 
         this.setTimeout();
     };

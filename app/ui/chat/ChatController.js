@@ -175,6 +175,9 @@ function ChatController (chat) {
                     this.hoverizeSender($html, message);
                     window.app.ui.language.applyLanguageOn($html);
                     $target.append($html);
+                    if (message.id !== null) {
+                        $html.attr('data-msgid', message.id);
+                    }
                 }
                 
             }

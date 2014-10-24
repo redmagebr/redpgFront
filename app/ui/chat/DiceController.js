@@ -97,11 +97,7 @@ function DiceController () {
         message.setSpecial('mod', mod);
         message.setSpecial('persona', window.app.ui.chat.cc.room.persona);
         
-        window.app.ui.chat.cc.room.addLocal(message);
         
-
-        
-        window.app.chatapp.sendMessage(message);
         this.$dicereason.val('');
         
         var mod = window.app.ui.chat.mc.getModule('dice');
@@ -110,7 +106,9 @@ function DiceController () {
         message.set$($html);
         
         window.app.ui.language.applyLanguageOn($html);
-        window.app.ui.chat.appendToMessages($html);
+        
+        window.app.chatapp.printAndSend(message, true);
+        
         
         this.dicese.currentTime = 0;
         this.dicese.volume = 0.3;
