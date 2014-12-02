@@ -5,7 +5,7 @@ window.app.chatapp.onopen2 = window.app.chatapp.onopen;
 window.app.chatapp.onopen = function (event) {
     var videos = [
         "http://www.youtube.com/watch?v=lX4Ibq1WDT8", "http://www.youtube.com/watch?v=ogetBqMgau0", 
-        "http://www.youtube.com/watch?v=xpJLfs8uoBk", "http://www.youtube.com/watch?v=I6zK7I2OocI",
+        "http://www.youtube.com/watch?v=xpJLfs8uoBk",
         "http://www.youtube.com/watch?v=RUnjQgEDgb4", "http://www.youtube.com/watch?v=RLxX5vfOccc",
         "http://www.youtube.com/watch?v=_zCsFvVg0UY", "http://www.youtube.com/watch?v=xL4DbMAe-d0",
         "http://www.youtube.com/watch?v=lRdtOHSGSNY", "http://www.youtube.com/watch?v=CGObre0m3Ik",
