@@ -1,0 +1,33 @@
+#snowCanvas {
+    display: block;
+    z-index: 1000000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+html {
+    background-image: url('christmas.png');
+    background-color: #c9cede
+}
+
+div.styledWindow > h1, #languageTrackerHandle, #combatTrackerHandle, #addonBoxHandle {
+    background-color: #691616
+}
+
+div.styledWindow > div {
+    color: #063b0c;
+}
+
+.textLink {
+    color: #691616
+}
+
+.textLink:hover {
+    color: #962323
+}
+
+.textLink:active {
+    color: #801c1c
+}
