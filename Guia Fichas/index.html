@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Hello SyntaxHighlighter</title>
+	<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+        <link type="text/css" rel="stylesheet" href="../css/geral.css"/>
+        <link type="text/css" rel="stylesheet" href="../css/fontface/alegreya2.css"/>
+        <link type="text/css" rel="stylesheet" href="../css/styledWindow.css"/>
+        <style type="text/css">
+            #janela {
+                max-width: 1000px;
+                margin: auto;
+            }
+            
+            pre {
+                display: block;
+                max-width: 80%;
+                margin: auto;
+                background-color: #ebe4e4;
+                border: solid 1px #000;
+                padding: 10px;
+            }
+            
+            pre > b {
+                color: #d20000;
+            }
+            
+            pre > i {
+                color: #138b00;
+            }
+            
+            #conteudo > h1 {
+                text-indent: 1em;
+                margin: 0px;
+                margin-top: 20px;
+            }
+        </style>
+</head>
+
+<body>
+    
+    <div id="janela" class="styledWindow" style="height: 100%">
+        <h1>Tutorial para fichas personalizadas</h1>
+        <div id="conteudo" class="singleton" style="height: 92%">
+            <p>Esse guia visa explicar apenas as particularidades do sistema RedPG e assume conhecimento pleno das linguagens relacionadas. Ainda assim, conhecimento básico das linguagens já seria adequado para produzir uma ficha personalizada de qualidade.</p>
+            <p>As fichas do RedPG são compostas de três partes: o código HTML que define seus elementos e campos, um código CSS opcional para definir o estilo e aparência da ficha e, por fim, código Javascript opcional que pode ser utilizado para implementar automatizações e também fazer a ficha funcionar junto do restante do RedPG.</p>
+            
+            <h1>Definindo Campos</h1>
+            
+            <p>Por padrão, uma ficha não possui nenhum campo. Para adicionar campos, é necessário escolher um elemento HTML que possa possuir Texto E um elemento Input de texto (para o modo Edição). Com o elemento escolhido, só é necessário marcá-lo para que o RedPG saiba que se trata de um campo da ficha. Exemplo:</p>
+            
+            <pre>&lt;p <b>class=&quot;sheetVariable&quot;</b> <i>data-id=&quot;Campo Exemplo&quot; data-type=&quot;text&quot; data-default=&quot;Em branco&quot;</i>&gt;
+    Segundo Exemplo
+&lt;/p&gt;</pre>
+            
+            <p>A classe "sheetVariable" informa o RedPG de que esse elemento é um campo variável da ficha. Note os atributos "data" que existem no elemento - eles são utilizados para explicar ao RedPG as peculiaridades desse campo. "data-id" define o nome da variável dentro da ficha e pode ser qualquer texto, "data-type" define o tipo da variável e "data-default" define o valor inicial da variável.</p>
+            <p>Os tipos que existem atualmente no RedPG são "text" para valores em forma de texto, "number" para números de qualquer tipo, "integer" para números inteiros, "longtext" para uma caixa de texto com múltiplas linhas, "image" para trazer uma imagem da lista de imagens, "select" para criar um campo com várias seleções e "boolean" para criar uma caixa de seleção sim/não. Novos tipos de variável são adicionados conforme sua necessidade surge em alguma das fichas oficiais.</p>
+            <p>Cada um dos tipos de variável possui atributos próprios que devem ser verificados na sua documentação (que atualmente não existe, mas pode-se abrir seus arquivos de código fonte diretamente para lê-los). Esses atributos podem, por exemplo, definir quais opções a ficha possui em uma variável "select" ou se um campo "longtext" cria parágrafos ao invés de quebras de linha.</p>
+            <p>Note também o conteúdo da variável como "Segundo Exemplo". Esse conteúdo nunca será exibido, pois será apagado e substituído pelo valor da variável (quando visualizando) ou pelo formulário (quando editando).</p>
+            
+            <h1>O campo nome</h1>
+            
+            <p>Todas as fichas precisam possuir um elemento marcado com a classe "sheetName". Esse elemento funcionará como um elemento do tipo texto, podendo receber um texto direto dentro de si ou um input de texto para formulários. Esse será uma variável especial que será o NOME da ficha. Esse elemento não possui atributos extras a serem definidos.</p>
+
+
+            <h1>Listas</h1>
+
+            <p>Caso uma quantidade de informação possa vir a se repetir várias vezes, como uma lista de itens, é necessário avisar o RedPG de que aquilo se trata de uma lista. Isso é feito através de uma nova classe, exemplo:</p>
+
+            <pre>&lt;div <b>class=&quot;sheetList&quot; data-id=&quot;Conhecidos&quot;</b>&gt;
+   &lt;p&gt;
+      <i>&lt;span <b>class=&quot;sheetVariable&quot;</b> data-id=&quot;Nome&quot; data-default=&quot;Desconhecido&quot;&gt;&lt;/span&gt;
+	  -
+      &lt;span class=&quot;sheetVariable&quot; data-id=&quot;Reputa&#231;&#227;o&quot; data-type=&quot;integer&quot;&gt;&lt;/span&gt;</i>
+   &lt;/p&gt;
+&lt;/div&gt;</pre>
+
+            <p>Listas devem possuir exatamente um elemento diretamente dentro de si. Apenas um elemento. Nesse caso, o parágrafo "p" é o único elemento dentro da lista e ele será repetido para cada uma das "linhas" da lista. É necessário que seja apenas um elemento pois a lista se transformará em um único objeto jQuery dentro do sistema RedPG.</p>
+            <p>Dentro desse elemento, podemos ter quantos elementos desejarmos e quantas variáveis quisermos. Inclusive, é possível adicionar listas dentro de listas infinitamente quantas vezes forem necessárias. O RedPG enxerga a ficha inteira da mesma forma que ele enxerga cada linha de uma lista.</p>
+
+
+            <h1>Adicionando e removendo elementos de uma lista</h1>
+
+            <p>Por adicionar um elemento com a classe "addRow" e o atributo "data-for" contendo o id da lista a receber linhas, é possível se criar um botão que adicionará linhas a ela. Exemplo:</p>
+            <pre>&lt;a <b>class=&quot;addRow&quot; data-for=&quot;Conhecidos&quot;</b>&gt;
+    + Adicionar novo conhecido
+&lt;/a&gt;</pre>
+
+            <p>Esse elemento precisa estar no mesmo nível que a lista em si. Se a lista estiver na ficha base, o botão precisa estar na ficha base. Se a lista estiver dentro de uma outra lista, o botão precisa existir dentro da mesma lista. Caso contrário, o RedPG não tem como ter certeza de para qual lista ele foi feito.</p>
+            <p>Para remover linhas, pode-se adicionar um elemento com a classe "deleteRow" DENTRO da própria lista. Clicar nesse botão removerá a linha na qual ele está, exemplo:</p>
+            
+            <pre>&lt;div class=&quot;sheetList&quot; data-id=&quot;Conhecidos&quot;&gt;
+   &lt;p&gt;
+      &lt;span class=&quot;sheetVariable&quot; data-id=&quot;Nome&quot; data-default=&quot;Desconhecido&quot;&gt;&lt;/span&gt;
+	  -
+	  &lt;span class=&quot;sheetVariable&quot; data-id=&quot;Reputa&#231;&#227;o&quot; data-type=&quot;integer&quot;&gt;&lt;/span&gt;
+	  |
+	  &lt;a <b>class=&quot;deleteRow&quot;</b>&gt;(X) Perder amizade&lt;/a&gt;
+   &lt;/p&gt;
+&lt;/div&gt;</pre>
+
+            <p>O RedPG irá transformar ambos em botões automaticamente, porém estilos CSS ainda podem ser adicionados para deixá-los mais agradáveis.</p>
+
+
+            <h1>Cascading Style Sheets (CSS)</h1>
+
+            <p>O RedPG permite que cada ficha possua um código CSS pessoal que é adicionado à página quando ela é carregada. Não existe nada específico do RedPG nessa parte e CSS pode ser criada como qualquer outra CSS, com as seguintes observações:</p>
+            <p>Todas as fichas existem dentro de um "div" com o id "sheetViewer", que tem posição absoluta e um tamanho pré-definido, gerando Scroll caso o conteúdo interno ultrapasse seu tamanho atual. Além disso, o código HTML da ficha será adicionado a uma div com o id "sheetDiv" dentro da sheetViewer.</p>
+            <p>Regras especiais foram criadas para adicionar classes que diminuem o trabalho na hora de desenvolver fichas. Essas classes podem ser <a href="http://redpg.com.br/css/sheetCommons.css" target="_BLANK">visualizadas aqui</a>. Elas permitem criar uma ficha com aparência similar às fichas oficiais sem a necessidade de se incluir um código CSS (ou pelo menos incluindo menos código CSS específico). Várias das fichas oficiais utilizam essas classes e podem ser estudadas.</p>
+
+            <h1>Outras funcionalidades</h1>
+
+            <p>Explicar absolutamente tudo que é possível pelo sistema de fichas é algo que terá de vir aos poucos, por existir muitas funcionalidade "escondidas", de certa forma. Mas algumas interessantes:</p>
+            
+            <ul>
+                <li>Elementos com a classe "viewOnly" desaparecerão quando a ficha estiver sendo editada.</li>
+                <li>Elementos com a classe "editOnly" desaparecerão quando a ficha estiver sendo visualizada.</li>
+            </ul>
+            
+            
+            <h1>Javascript</h1>
+            
+            <p>Para explicar o código Javascript, será necessário ler e compreender a documentação dos objetos que existem dentro do Style. Essa documentação ainda não existe, mas pode-se checar o código fonte deles diretamente para compreendê-los.</p>
+            <p>O RedPG faz três coisas quando está entendendo uma ficha: ele executa o código Before Process do estilo de ficha, ele estuda o HTML da ficha e gera todos os campos e então ele vai rodar o código After Process da ficha.</p>
+            <p>Em geral, qualquer código que vá trabalhar em cima dos campos da ficha deve ser executado na parte After Process. Códigos mais simples podem ser executados na Before Process (ou também códigos que podem vir a alterar algo antes do RedPG olhar o HTML da ficha). Você tem acesso a três variáveis dentro do seu código:</p>
+
+            <ul>
+                <li>"sheet" - Um objeto do tipo "Sheet" que contém todos os campos da ficha. Uma função importante desse objeto é a função "getField", que retorna um objeto de variável para um campo da ficha. Como um exemplo, sheet.getField("Força") retornaria a variável com o id "Força". Esse objeto também possui uma variável interessante em sheet.$visible , que é o objeto jQuery que representa a ficha inteira. Todos os objetos de ficha possuem a variável $visible para seu próprio jQuery.</li>
+                <li>"instance" - Um objeto de "SheetInstance" que pode ser ignorado. Ele contém os valores brutos da ficha que está sendo carregada.</li>
+                <li>"style" - O objeto Style que está sendo processando tudo isso para entender a ficha. Alternativamente, pode-se usar "this" para referenciá-lo.</li>
+            </ul>
+            
+            <p>Quanto aos outros objetos:</p>
+            
+            <ul>
+                <li>Objetos de Variáveis - Por mais que objetos de cada tipo tenham suas próprias funções, TODOS os objetos de variáveis implementam a função "getObject", que retorna seu próprio valor da forma que ele será salvo, e a função "setValue", que pode ser usada para se alterar o valor de uma variável.</li>
+                <li>Objetos de Lista - Também podem ser lidos através do getField de uma sheet. Possui uma variável chamada "list" que contém um conjunto de todas as Sheet que existem dentro da lista em questão, com tamanho 0 quando criada. Possui várias funções dentro de si, mas iria muito além do que falaremos aqui, então checar documentação (quando ela existir) ou olhar o código fonte para vê-las.</li>
+            </ul>
+            
+            <p>Os elementos jQuery $visible são importantes também pela existência de Triggers. Quando uma variável é alterada, ela solta o trigger changedVariable no seu $visible e então esse trigger é repassado de pai para pai da ficha até chegar no topo. Então é possível fazer algo para atualizar um campo da ficha da seguinte forma:</p>
+
+            <pre>this.updateForcaAgilidade = function () {
+	var $forcamaisagilidade = <b>sheet.$visible.find(&quot;#forcamaisagilidade&quot;)</b>;
+        <i>// ir&#225; encontrar o elemento de id &quot;forcamaisagilidade&quot; e transform&#225;-lo num elemento jQuery</i>
+	var forca = <b>sheet.getField(&quot;For&#231;a&quot;)</b>;
+	var agilidade = sheet.getField(&quot;Agilidade&quot;);
+	$forcamaisagilidade.text(<b>forca.getObject() + agilidade.getObject()</b>);
+};</pre>
+
+            <p>Possuímos a função "emulateBind" para prender valores a uma função que será repassada para outro lugar, então podemos usá-la aqui, da seguinte maneira:</p>
+
+            <pre>var boundUpdate = <b>this.emulateBind</b>(function () {
+	<i>this.style.updateForcaAgilidade()</i>;
+}, { style : style});
+
+var forca = sheet.getField(&quot;For&#231;a&quot;);
+<b>forca.$visible.on(&quot;changedVariable&quot;, boundUpdate)</b>;
+
+var agilidade = sheet.getField(&quot;Agilidade&quot;);
+<b>agilidade.$visible.on(&quot;changedVariable&quot;, boundUpdate)</b>;</pre>
+
+            <p>Dessa forma, boundUpdate nunca se esquecerá de qual é o estilo sendo usado, e com eles estando presos direto nas variáveis, a função para atualizar a somatória de Agilidade e Força só precisará ser executada quando um desses dois campos for alterado. É recomendável rodar a função ao término do process para colocar o valor inicial:</p>
+
+
+            <pre><b>this.updateForcaAgilidade();</b></pre>
+            
+            <h1>Considerações Finais</h1>
+            
+            <p>Por mais que eu tenha criado todo esse sistema, ele é algo extremamente complexo por possuir tantos lados diferentes e ainda estou aprendendo as melhores formas de se fazer as coisas nele. Com certeza existem formas mais adequadas de realizar os trabalhos descritos nesse guia, então não considere o guia como algo fixo para sempre.</p>
+            <p>As funcionalidades de adicionar mensagens ao chat e lidar com outras partes do sistema serão explicadas em algum outro dia, por lidarem com uma quantidade ainda mais massiva de objetos diferentes. Como sempre, é possível de se compreender o sistema estudando o seu código-fonte, mas isso também é bem complicado de se fazer.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
