@@ -7,7 +7,7 @@ window.chatModules.push({
      * Defines the ID this module will have. It must not be the same as any other module ID.
      * @type String
      */
-    ID : 'nose',
+    ID : 'grinch',
     
     
     /**
