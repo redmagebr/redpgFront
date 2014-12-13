@@ -106,4 +106,4 @@ function update()
 }
 
 //animation loop
-setInterval(draw, 33);
+window.christmasInterval = setInterval(draw, 33);
