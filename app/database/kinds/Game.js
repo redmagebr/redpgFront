@@ -56,15 +56,15 @@ function Game () {
             window.app.roomdb.updateFromJSON(json.rooms);
             
             if (this.rooms.length > 0) {
-                var sortFunction = window.app.emulateBind(function (a, b) {
-                    var oa = this.roomdb.getRoom(a);
-                    var ob = this.roomdb.getRoom(b);
+                var sortFunction = function (a, b) {
+                    var oa = window.app.roomdb.getRoom(a);
+                    var ob = window.app.roomdb.getRoom(b);
                     if (oa.name < ob.name)
                         return -1;
                     if (oa.name > ob.name)
                         return 1;
                     return 0;
-                }, {roomdb : window.app.roomdb});
+                };
                 this.rooms.sort(sortFunction);
             }
         }

@@ -33,15 +33,15 @@ function GameDB () {
             this.gamelist = ids;
         }
         if (json.length > 0) {
-            var sortFunction = window.app.emulateBind(function (a, b) {
-                var oa = this.gamedb.getGame(a);
-                var ob = this.gamedb.getGame(b);
+            var sortFunction = function (a, b) {
+                var oa = window.app.gamedb.getGame(a);
+                var ob = window.app.gamedb.getGame(b);
                 if (oa.name < ob.name)
                     return -1;
                 if (oa.name > ob.name)
                     return 1;
                 return 0;
-            }, {gamedb : this});
+            };
             this.gamelist.sort(sortFunction);
         }
     };
