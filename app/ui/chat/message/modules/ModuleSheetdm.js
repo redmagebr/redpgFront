@@ -21,22 +21,30 @@ window.chatModules.push({
         var user = msg.getUser();
         var $msg = $('<p class="chatDano" />');
         
+        var tipo = msg.getSpecial('type', "HP");
+        
+//        if (tipo !== "HP" && tipo !== "Exp" && tipo !== "MP") {
+//            tipo = "HP";
+//        }
+        
+        $msg.addClass("tipo" + tipo);
+        
         var $persona = $('<b />').text(msg.getSpecial('sheetname', '????'));
         $msg.
-            append($('<span class="damageIcon" />')).
+            append($('<span class="changeIcon" />')).
             append($persona).
             append(": ").
-            append($('<span class="damageAmount" />').text(msg.getSpecial('amount', '0?') + ' HP'));
+            append($('<span class="changeAmount" />').text(msg.getSpecial('amount', '0?') + ' ' + tipo));
         
-        if (msg.id !== null) {
-            $msg.attr('data-msgid', msg.id);
-        } else {
-            msg.bindSaved(window.app.emulateBind(
-                function () {
-                    this.$msg.attr('data-msgid', this.msg.id);
-                }, {$msg : $msg, msg : msg}
-            ));
-        }
+//        if (msg.id !== null) {
+//            $msg.attr('data-msgid', msg.id);
+//        } else {
+//            msg.bindSaved(window.app.emulateBind(
+//                function () {
+//                    this.$msg.attr('data-msgid', this.msg.id);
+//                }, {$msg : $msg, msg : msg}
+//            ));
+//        }
         
         return $msg;
     },
