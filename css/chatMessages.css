@@ -176,7 +176,7 @@
 }
 
 #chatMessages > p.chatDano.tipoExp > span.changeIcon {
-    background-color: #3a3da3;
+    background-image: url('../img/sheet/iconBExp.png');
     display: inline-block;
     width: 24px;
     height: 35px;
@@ -186,7 +186,7 @@
 }
 
 #chatMessages > p.chatDano.tipoMP > span.changeIcon {
-    background-color: #0108ff;
+    background-image: url('../img/sheet/iconBMana.png');
     display: inline-block;
     width: 24px;
     height: 35px;
