@@ -275,6 +275,9 @@ window.lingo['en'] = {
     _PCFAVATAR_ : 'Avatar (Link)',
     _PCFHIDE_ : 'Do not reveal this persona',
     _PCFSEND_ : 'Create Persona',
+    _BUFFAPPLYINGBUFF_ : 'wishes to apply the condition',
+    _BUFFAPPLYINGTO_ : "to character",
+    _BUFFAPPLYLINK_ : 'Click here to accept.',
     
     _POWERBOTTON_ : 'Chat will always scroll to bottom.',
     _POWERBOTTOFF_ : "Chat scrolling returned to default.",

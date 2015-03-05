@@ -283,6 +283,9 @@ window.lingo['pt_br'] = {
     _PCFAVATAR_ : 'Avatar (Link)',
     _PCFHIDE_ : 'Não revelar persona',
     _PCFSEND_ : 'Criar a persona',
+    _BUFFAPPLYINGBUFF_ : 'deseja aplicar a condição',
+    _BUFFAPPLYINGTO_ : "no personagem",
+    _BUFFAPPLYLINK_ : 'Clique aqui para aceitar.',
     
     _POWERBOTTON_ : 'O chat ficará em baixo não importa o que aconteça.',
     _POWERBOTTOFF_ : "Comportamento do scorll automático retornado ao padrão.",
@@ -568,6 +571,8 @@ window.lingo['pt_br'] = {
     _HOMEDONATIONSEXPLAIN1_ : 'RedPG é um sistema gratuito e permanecerá gratuito enquanto isso for possível. Mas o servidor possui um custo e alguém precisa pagar.',
     _HOMEDONATIONSEXPLAIN2_ : 'Através de doações, você funda o desenvolvimento do sistema e ajuda a pagar as mensalidades do servidor. Com a ajuda de todos, RedPG poderá ser grátis para sempre!',
     _HOMEDONATIONSEXPLAIN3_ : 'Sempre que fizer uma doação, tente realizar ela a partir de uma conta registrada no mesmo nome registrado no RedPG. Assim, no futuro suas doações poderão ser contabilizadas pelo sistema do RedPG!',
+    
+    
     
     
     /* Video Player */
