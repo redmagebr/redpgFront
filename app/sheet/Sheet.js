@@ -101,10 +101,12 @@ function Sheet ($list, style, baseSheet) {
             this.fields[variable.id] = variable;
         }
         
-        for (i = 0; i < this.fields.length; i++) {
-            console.log("Updating " + this.fields[i].id + ' - go go go');
-            this.fields[i].update$();
-        }
+        this.update$();
+        
+//        for (i = 0; i < this.fields.length; i++) {
+//            console.log("Updating " + this.fields[i].id + ' - go go go');
+//            this.fields[i].update$();
+//        }
     };
     
     /**

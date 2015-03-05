@@ -141,6 +141,25 @@ window.chatModules.push({
             $msg.append($reason);
         }
         
+        
+        // Strictly for Dragon Fantasy Saga, ignore
+        var extra = msg.getSpecial("extra", null);
+        if (extra !== null && typeof extra === 'object' && (extra.type === "Dano" || extra.type === "Cura")) {
+            if (typeof window.app.ui.chat.tracker.myStuff.ordered[extra.target] !== 'undefined') {
+                var mine = window.app.ui.chat.tracker.myStuff.ordered[extra.target];
+                if (mine.id === extra.id && mine.name === extra.name && typeof window.app.ui.sheetui.controller.$listed[extra.id] !== "undefined" && window.app.sheetdb.getSheet(extra.id).editable) {
+                    // we have everything to do it
+                    msg.setSpecial("sum", sum);
+                    var $a = $("<a />").addClass("textLink").text("Essa rolagem é de " + extra.type + " e teve " + mine.name + " como alvo. Clique aqui para aplicar automaticamente.");
+                    $a.on('click', window.app.emulateBind(function () {
+                        window.dfsDice(this.msg);
+                    }, {msg : msg}));
+                    $msg.append($a);
+                }
+            }
+        }
+        
+        // Back to default dice behavior
         return $msg;
     },
     
