@@ -150,11 +150,25 @@ window.chatModules.push({
                 if (mine.id === extra.id && mine.name === extra.name && typeof window.app.ui.sheetui.controller.$listed[extra.id] !== "undefined" && window.app.sheetdb.getSheet(extra.id).editable) {
                     // we have everything to do it
                     msg.setSpecial("sum", sum);
-                    var $a = $("<a />").addClass("textLink").text("Essa rolagem é de " + extra.type + " e teve " + mine.name + " como alvo. Clique aqui para aplicar automaticamente.");
+                    var tiposDano = "";
+                    if (extra.type === "Dano") {
+                        var atributos = ['Artes Marciais', 'Arma', 'Tecnologia', 'Elemento', 'Magia', 'Liderança'];
+                        tiposDano = [];
+                        for (var id in extra.damageType) {
+                            tiposDano.push(atributos[extra.damageType[id]]);
+                        }
+                        if (tiposDano.length === 0) {
+                            tiposDano = "Sem Tipo";
+                        } else {
+                            tiposDano = tiposDano.join(", ");
+                        }
+                        tiposDano = " (" + tiposDano + ")";
+                    }
+                    var $a = $("<a class='automaticButton button' />").attr("title", "Essa rolagem é de " + extra.type + tiposDano + " e teve " + mine.name + " como alvo. Clique aqui para aplicar automaticamente.");
                     $a.on('click', window.app.emulateBind(function () {
                         window.dfsDice(this.msg);
                     }, {msg : msg}));
-                    $msg.append($a);
+                    $reason.append($a);
                 }
             }
         }
