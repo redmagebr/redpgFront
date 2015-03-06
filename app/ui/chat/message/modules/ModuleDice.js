@@ -154,8 +154,9 @@ window.chatModules.push({
                     if (extra.type === "Dano") {
                         var atributos = ['Artes Marciais', 'Arma', 'Tecnologia', 'Elemento', 'Magia', 'Liderança'];
                         tiposDano = [];
-                        for (var id in extra.damageType) {
-                            tiposDano.push(atributos[extra.damageType[id]]);
+                        for (var id = 0; id < atributos.length; id++) {
+                            if (extra.damageType.indexOf(id) === -1) continue;
+                            tiposDano.push(atributos[id]);
                         }
                         if (tiposDano.length === 0) {
                             tiposDano = "Sem Tipo";
