@@ -10,6 +10,7 @@ function AudioController () {
     this.$volup;
     this.$voldown;
     this.$volumeslider;
+    this.permittedFiles = $('#chatSounds')[0];
     
     this.init = function () {
         this.bgm = document.getElementById('musicPlayerAudioBGM');
@@ -135,8 +136,14 @@ function AudioController () {
     };
     
     this.playse = function (filename) {
+        var foundPerfect = false;
         if (filename.indexOf('://') === -1) {
-            filename = 'Sounds/' + filename;
+            foundPerfect = this.setPermittedSource(false, filename);
+            if (!foundPerfect) {
+                filename = 'Sounds/' + filename;
+            } else {
+                return;
+            }
         }
         this.se.setAttribute('src', filename);
         this.se.play();
@@ -149,16 +156,45 @@ function AudioController () {
     this.play = function (filename) {
         this.lastFilename = filename;
         this.$player.addClass('shown');
+        var foundPerfect = false;
         if (filename.indexOf('://') === -1) {
-            filename = 'Sounds/' + filename;
+            foundPerfect = this.setPermittedSource(true, filename);
+            if (!foundPerfect) {
+                filename = 'Sounds/' + filename;
+            }
         }
-        this.bgm.setAttribute('src', filename);
+        if (!foundPerfect) {
+            this.bgm.setAttribute('src', filename);
+            this.justPlayBGM();
+        }
+    };
+    
+    this.justPlayBGM = function () {  
         this.bgm.play();
         this.$playpause.addClass('toggled');
         this.changeVolumeTo(this.bgm.volume);
     };
     
-    
+    this.setPermittedSource = function (bgm, filename) {
+        for (i = 0; i < this.permittedFiles.files.length; i++) {
+            if (this.permittedFiles.files[i].name === filename) {
+                var reader = new FileReader();
+                if (bgm) {
+                    reader.onload = function (e) {
+                        window.app.ui.chat.audioc.bgm.setAttribute('src', e.target.result);
+                        window.app.ui.chat.audioc.justPlayBGM();
+                    };
+                } else {
+                    reader.onload = function (e) {
+                        window.app.ui.chat.audioc.se.setAttribute('src', e.target.result);
+                        window.app.ui.chat.audioc.se.play();
+                    };
+                }
+                reader.readAsDataURL(this.permittedFiles.files[i]);
+                return true;
+            }
+        }
+    };
     
     
     this.updateConfig = function () {

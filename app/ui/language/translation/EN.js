@@ -241,6 +241,7 @@ window.lingo['en'] = {
     _SHORTCUTS_ : 'Alternatively, you can hold Alt, Shift or Control while sending the message with Enter.',
     _MORECOMMANDS_ : 'To see the full listing of commands, type "/help".',
     _CLEARTIP_ : 'It is possible to use "/clear 1" to delete messages from the server.',
+    _SELECTSOUNDS_ : "If you'd like to play Offline music files while still using the Online RedPG, click the form input below and select all the music files you'd like available. This will give RedPG temporary access to the selected files.",
     _INVALIDSLASHCOMMAND_ : '"%p" is not a recognized slash command.',
     _INVALIDSLASHMESSAGE_ : '"%d" is not a valid command for "%p".',
     _CHATLANGINVALID_ : 'The system does not know this language.',

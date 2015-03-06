@@ -248,6 +248,7 @@ window.lingo['pt_br'] = {
     _SHORTCUTS_ : 'Alternativamente, segure Alt, Control ou Shift quando for enviar a mensagem.',
     _MORECOMMANDS_ : 'Caso precise de uma listagem completa dos comandos, digite "/comandos".',
     _CLEARTIP_ : 'É recomendável executar "/clear 1" para limpar as mensagens no servidor de vez em quando, ou a sala ficará cada vez mais lenta.',
+    _SELECTSOUNDS_ : "Caso deseje usar as músicas em modo offline, mas o RedPG em modo online, clique no formulário abaixo e escolha suas músicas: você estará dando permissão temporária para o RedPG acessá-las.",
     _INVALIDSLASHCOMMAND_ : '"%p" não é um comando reconhecido.',
     _INVALIDSLASHMESSAGE_ : '"%d" não é um comando válido para "%p".',
     _CHATLANGINVALID_ : 'O sistema não conhece essa língua.',
