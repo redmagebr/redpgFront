@@ -1,0 +1,22 @@
+html {
+    background-image: url("febBG.jpg");
+    background-position: top center;
+}
+
+div.styledWindow > div {
+    background-color: rgba(255,255,255,.9);
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: #ffe0f6;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: #7b0078;
+}
+
+
+div.styledWindow > h1 {
+    background-color: #9f169b;
+}
