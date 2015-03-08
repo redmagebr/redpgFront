@@ -50,7 +50,7 @@ function Variable_Longtext ($visible, style, missingid, parent) {
         this.paragraph = false;
     }
     
-    if (this.$visible.is('[data-paragraph]')) {
+    if (this.$visible.is('[data-emptyparagraph]')) {
         this.emptyParagraph = this.$visible.attr('data-emptyparagraph') === '1';
     } else {
         this.emptyParagraph = true;
