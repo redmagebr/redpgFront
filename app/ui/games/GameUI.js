@@ -201,4 +201,19 @@ function GameUI () {
     this.invitePlayers = function (gameId) {
         alert("Invite for gameId");
     };
+    
+    this.leaveGame = function (gameId) {
+        var cbs = function () {
+            window.app.ui.unblockLeft();
+            window.app.ui.gameui.callSelf();
+        };
+        
+        var cbe = function () {
+            window.app.ui.gameui.$error.show();
+            window.app.ui.unblockLeft();
+        };
+        
+        window.app.ui.blockLeft();
+        window.app.gameapp.leaveGame(gameId, cbs, cbe);
+    };
 }

@@ -390,7 +390,7 @@ window.lingo['en'] = {
     
     
     /* Games */
-    _GAMESCONFIRMLEAVE_ : 'Are you sure you wish to leave "%p"? There is no turning back. (Not implemented)',
+    _GAMESCONFIRMLEAVE_ : 'Are you sure you wish to leave "%p"? There is no turning back.',
     _GAMESHEADER_ : 'Tables',
     _GAMESNICK_ : 'If you need your identifier for someone, it is "%p", with no quotes.',
     _GAMESEXPLAIN1_ : 'You may manage your tables here. To invite someone to your table, you will need their identifier.',

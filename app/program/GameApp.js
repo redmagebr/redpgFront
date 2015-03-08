@@ -122,6 +122,17 @@ function GameApp () {
         });
     };
     
+    this.leaveGame = function (gameid, cbs, cbe) {
+        var ajax = new AjaxController();
+        
+        ajax.requestPage({
+            url : 'Game',
+            data : {'id' : gameid, action : 'leave'},
+            success: cbs,
+            error: cbe
+        });
+    };
+    
     this.getPrivileges = function (gameid, cbs, cbe) {
         var ajax = new AjaxController();
         

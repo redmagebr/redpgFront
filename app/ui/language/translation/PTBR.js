@@ -400,7 +400,7 @@ window.lingo['pt_br'] = {
     
     
     /* Games */
-    _GAMESCONFIRMLEAVE_ : 'Tem certeza que deseja sair do jogo "%p"? Isso é irreversível. (Não implementado)',
+    _GAMESCONFIRMLEAVE_ : 'Tem certeza que deseja sair do jogo "%p"? Isso é irreversível.',
     _GAMESHEADER_ : 'Mesas',
     _GAMESNICK_ : 'Caso precise informar seu identificador para alguém, ele é "%p", sem as aspas.',
     _GAMESEXPLAIN1_ : 'Aqui você pode administrar as mesas das quais você participa. Para convidar jogadores à sua mesa, você irá precisar do identificador deles.',
