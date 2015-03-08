@@ -358,8 +358,8 @@ function ChatWsApp () {
             window.app.chatapp.timeout = setTimeout(function () {
                 $('#chatNotConnError').show();
                 $('#chatNotLoad').hide();
-            }, 10000);
-        }, 5000);
+            }, 30000);
+        }, 15000);
     };
     
     this.ack = function () {

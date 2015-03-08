@@ -240,7 +240,7 @@ function Message () {
             for (var i = 0; i < errors.length; i++) {
                 errors[i]();
             }
-        }, {message : this}), 5000);
+        }, {message : this}), 15000);
     };
     
 }
