@@ -58,7 +58,7 @@ window.chatModules.push({
         
         if (!snowflake) $html.append(user.nickname + "#" + user.nicknamesufix);
         else $html.append(user.nickname);
-        
+
         var $a = $("<a class='language textLink' data-langhtml='_BUFFAPPLYLINK_'></a>");
         $a.on("click", window.app.emulateBind(function () {
             window.app.ui.chat.tracker.bufftracker.addBuff(this.applier, this.target, 1, this.nome, this.iniciofim);
@@ -76,6 +76,9 @@ window.chatModules.push({
                 .append(" <span class='language' data-langhtml='_BUFFAPPLYINGFROM_'></span> " + applierName + ". ")
                 .append($a);
         
+        if (!window.app.chatapp.room.getMe().isStoryteller()) {
+            $a.remove();
+        }
         
         window.app.ui.language.applyLanguageOn($html);
         return $html;
