@@ -221,6 +221,6 @@ function LanguageTracker() {
     };
     
     this.startTyping = function (lingo) {
-        window.app.ui.chat.$chatinput.val("/ling " + lingo + ", ").focus();
+        window.app.ui.chat.$chatinput.val("/ling " + lingo + ", " + window.app.ui.chat.$chatinput.val()).focus();
     };
 }

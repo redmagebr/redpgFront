@@ -29,6 +29,22 @@ window.chatModules.push({
      */
     get$ : function (msg, slashCMD, message) {
         var $html = $('<p class="chatSistema" />');
+        var targetId = msg.getSpecial("target", -1);
+        var targetName;
+        var applierName;
+        var applierId = msg.getSpecial("applier", -1);
+        var ordered = window.app.ui.chat.tracker.myStuff.ordered;
+        for (var i = 0; i < ordered.length; i++) {
+            if (ordered[i].id === targetId) {
+                targetName = ordered[i].name;
+            }
+            if (ordered[i].id === applierId) {
+                applierName = ordered[i].name;
+            }
+        }
+        if (targetName === undefined || applierName === undefined) {
+            return null;
+        }
         
         var user = msg.getUser();
         if (user === null) {
@@ -43,9 +59,22 @@ window.chatModules.push({
         if (!snowflake) $html.append(user.nickname + "#" + user.nicknamesufix);
         else $html.append(user.nickname);
         
-        $html.append(" <span class='language' data-langhtml='_BUFFAPPLYINGBUFF_'></span> \"Teste\"")
-                .append(" <span class='language' data-langhtml='_BUFFAPPLYINGTO_'></span> José.")
-                .append(" <a class='language textLink' data-langhtml='_BUFFAPPLYLINK_'></a>");
+        var $a = $("<a class='language textLink' data-langhtml='_BUFFAPPLYLINK_'></a>");
+        $a.on("click", window.app.emulateBind(function () {
+            window.app.ui.chat.tracker.bufftracker.addBuff(this.applier, this.target, 1, this.nome, this.iniciofim);
+            this.$a.remove();
+        }, {
+            applier : applierId,
+            target : targetId,
+            nome : msg.getMessage(),
+            iniciofim : msg.getSpecial("eot", 0) === 1,
+            $a : $a
+        }));
+        
+        $html.append(" <span class='language' data-langhtml='_BUFFAPPLYINGBUFF_'></span> \"" + msg.getMessage() + "\"")
+                .append(" <span class='language' data-langhtml='_BUFFAPPLYINGTO_'></span> " + targetName + ", ")
+                .append(" <span class='language' data-langhtml='_BUFFAPPLYINGFROM_'></span> " + applierName + ". ")
+                .append($a);
         
         
         window.app.ui.language.applyLanguageOn($html);

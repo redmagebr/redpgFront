@@ -364,6 +364,7 @@ function ChatWsApp () {
     
     this.ack = function () {
        this.waitForAck();
+       this.lastMessage = new Date().getTime();
        this.controller.sendAck();
     };
     

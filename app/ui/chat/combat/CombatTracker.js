@@ -1,4 +1,6 @@
 function CombatTracker () {
+    this.bufftracker = new BuffTracker(this);
+    
     this.roomid = 0;
     
     this.$tracker = $('#combatTracker').draggable({
@@ -20,6 +22,7 @@ function CombatTracker () {
     
     this.init = function () {
         window.registerRoomMemory('combat', this);
+        this.bufftracker.init();
         
         this.setBindings();
     };
@@ -55,19 +58,28 @@ function CombatTracker () {
         });
         
         $('#combatTrackerTurn').on('click', function () {
-            window.app.ui.chat.tracker.myStuff.turn++;
-            if (window.app.ui.chat.tracker.myStuff.turn > (window.app.ui.chat.tracker.myStuff.ordered.length - 1)) {
-                window.app.ui.chat.tracker.myStuff.turn = 0;
-            }
+            window.app.ui.chat.tracker.passTurn();
             window.app.ui.chat.tracker.saveMemory();
             window.app.ui.chat.tracker.warnTurn();
         });
         
         $('#combatTrackerNewRound').on('click', function () {
-            window.app.ui.chat.tracker.myStuff.turn = 0;
+            window.app.ui.chat.tracker.passTurn();
+            while (window.app.ui.chat.tracker.myStuff.turn !== 0) {
+                window.app.ui.chat.tracker.passTurn();
+            }
             window.app.ui.chat.tracker.saveMemory();
             window.app.ui.chat.tracker.warnTurn();
         });
+    };
+    
+    this.passTurn = function () {
+        var cTurn = this.myStuff.turn;
+        this.myStuff.turn++;
+        if (this.myStuff.turn > (this.myStuff.ordered.length - 1)) {
+            this.myStuff.turn = 0;
+        }
+        this.bufftracker.moveTurns(cTurn, this.myStuff.turn);
     };
     
     this.saveMemory = function () {
@@ -214,6 +226,7 @@ function CombatTracker () {
             
             $delete = $('<a class="deleteRow button language" data-langtitle="_COMBATTRACKERDELETEROW_" />');
             $delete.on('click', window.app.emulateBind(function () {
+                this.tracker.bufftracker.deleteApplier(this.ordered);
                 this.tracker.myStuff.ordered.splice(this.ordered, 1);
                 if (this.tracker.myStuff.turn === this.ordered) {
                     this.tracker.warnTurn();
@@ -235,7 +248,10 @@ function CombatTracker () {
             
             $setturn = $('<a class="setTurn button language" data-langtitle="_COMBATTRACKERSETTURN_" />');
             $setturn.on('click', window.app.emulateBind(function () {
-                this.tracker.myStuff.turn = this.order;
+                if (this.tracker.myStuff.turn !== this.order) {
+                    this.tracker.bufftracker.moveTurns(this.tracker.myStuff.turn, this.order);
+                    this.tracker.myStuff.turn = this.order;
+                }
                 this.tracker.warnTurn();
                 this.tracker.saveMemory();
             }, {order : i, tracker : this}));
@@ -372,6 +388,8 @@ function CombatTracker () {
         message.roomid = window.app.ui.chat.cc.room.id;
         message.setSpecial('player', this.myStuff.ordered[this.myStuff.turn].player);
         window.app.chatapp.printAndSend(message, true);
+        
+        this.bufftracker.printBuffs(this.myStuff.ordered[this.myStuff.turn].id);
     };
     
     this.getCurrentTurn = function () {
