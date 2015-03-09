@@ -1,6 +1,6 @@
 // <![CDATA[
 var colour="#ff00f0";
-var sparkles=120;
+var sparkles=70;
 
 /****************************
 *  Tinkerbell Magic Sparkle *
@@ -66,7 +66,7 @@ function sparkle() {
     if (starv[c]) update_star(c);
     if (tinyv[c]) update_tiny(c);
   }
-  setTimeout("sparkle()", 30);
+  setTimeout("sparkle()", 50);
 }
 
 function update_star(i) {
@@ -164,8 +164,13 @@ function createDiv(height, width) {
   div.style.height=height+"px";
   div.style.width=width+"px";
   div.style.overflow="hidden";
-  div.style.backgroundColor=colour;
+  div.style.backgroundColor=getSparkleColor();
   div.style.pointerEvents = "none";
   return (div);
+}
+
+function getSparkleColor () {
+    var colors = ["#ff0000", "#ff00f0", "#ffff00", "#00ffff", "#00ff00", "#ff00ff"];
+    return colors[Math.floor(Math.random() * colors.length)];
 }
 // ]]>
