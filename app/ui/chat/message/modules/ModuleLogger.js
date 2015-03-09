@@ -46,17 +46,20 @@ window.chatModules.push({
      * @param {String} message
      */
     getMsg : function (slashCMD, message) {
-        var messages = [];
-        var $div = $('#chatMessages');
-        var $messages = $div.children();
-        var $message;
-        for (var i = 0; i < $messages.length; i++) {
-            $message = $($messages[i]);
-            messages.push($message.text());
-        }
-        messages = messages.join('\n');
-        $('#exportLogTextarea').val(messages);
-        $('#exportLogWindow').stop(true, true).fadeIn();
+        window.app.ui.chat.cc.exit();
+        window.app.chatapp.room = new Room();
+        window.app.ui.chat.cc.room = window.app.chatapp.room;
+        window.app.ui.chat.cc.pc.room = window.app.chatapp.room;
+//        window.app.chatapp.room.updateFromJSON(window.prompt("JSON:"), true);
+        window.app.ui.chat.$chatMessages.empty();
+        window.app.ui.chat.cc.firstPrint = true;
+        window.app.ui.chat.cc.ignoreTooMany = true;
+        window.app.ui.chat.cc.lastMessage = -1;
+        window.app.ui.chat.cc.printMessages();
+        window.app.ui.chat.cc.clearUsers();
+        window.app.ui.chat.cc.checkUsers();
+        window.app.ui.chat.cc.pc.checkUsers();
+        window.app.ui.chat.cc.firstPrint = false;
         return null;
     },
     
