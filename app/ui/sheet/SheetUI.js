@@ -149,9 +149,9 @@ function SheetUI() {
                 $p.append($safe);
                 
                 $name = $("<a class='sheetName language' data-langtitle='_SHEETSNAMETITLE_' />").text(sheet.name);
-                $name.on('click', window.app.emulateBind(function () {
+                $name.on('click', window.app.emulateBind(function (/** Event */ e) {
                     window.app.ui.sheetui.creating = this.gameid;
-                    window.app.ui.sheetui.openSheet(this.id, this.idstyle, this.gameid);
+                    window.app.ui.sheetui.openSheet(this.id, this.idstyle, this.gameid, e.ctrlKey);
                 }, {id : sheet.id, idstyle : sheet.system, gameid : game.id}));
                 $p.append($name);
                 
@@ -453,8 +453,8 @@ function SheetUI() {
         
     };
     
-    this.openSheet = function (sheetid, styleid, gameid) {
-        this.controller.openSheet (sheetid, styleid, gameid);
+    this.openSheet = function (sheetid, styleid, gameid, ctrlKey) {
+        this.controller.openSheet (sheetid, styleid, gameid, undefined, ctrlKey);
     };
     
     /**
