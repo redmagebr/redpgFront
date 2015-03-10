@@ -47,6 +47,7 @@ window.chatModules.push({
      */
     getMsg : function (slashCMD, message) {
         window.app.ui.chat.cc.exit();
+        window.app.chatapp.clearAck();
         window.app.chatapp.room = new Room();
         window.app.ui.chat.cc.room = window.app.chatapp.room;
         window.app.ui.chat.cc.pc.room = window.app.chatapp.room;
@@ -56,9 +57,7 @@ window.chatModules.push({
         window.app.ui.chat.cc.ignoreTooMany = true;
         window.app.ui.chat.cc.lastMessage = -1;
         window.app.ui.chat.cc.printMessages();
-        window.app.ui.chat.cc.clearUsers();
-        window.app.ui.chat.cc.checkUsers();
-        window.app.ui.chat.cc.pc.checkUsers();
+        window.app.ui.chat.cc.pc.clear();
         window.app.ui.chat.cc.firstPrint = false;
         return null;
     },
