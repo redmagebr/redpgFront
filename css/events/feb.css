@@ -1,19 +1,12 @@
-html {
-    background-image: url("febBG.jpg");
-    background-position: top center;
-}
-
-div.styledWindow > div {
-    background-color: rgba(255,255,255,.9);
-}
-
-
-::-webkit-scrollbar-track {
-    background-color: #ffe0f6;
-}
- 
-::-webkit-scrollbar-thumb {
-    background-color: #7b0078;
+#loginWindow, #loading {
+    background: -webkit-gradient(linear,  left top,  right bottom, 
+        color-stop(0%, rgba(255, 0, 0, 1)), 
+        color-stop(15%, rgba(255, 255, 0, 1)),
+        color-stop(30%, rgba(0, 255, 0, 1)),
+        color-stop(50%, rgba(0, 255, 255, 1)),
+        color-stop(65%, rgba(0, 0, 255, 1)),
+        color-stop(80%, rgba(255, 0, 255, 1)),
+        color-stop(100%, rgba(255, 0, 0, 1)));
 }
 
 
@@ -26,30 +19,4 @@ div.styledWindow > h1 {
         color-stop(65%, rgba(0, 0, 140, 1)),
         color-stop(80%, rgba(140, 0, 140, 1)),
         color-stop(100%, rgba(140, 0, 0, 1)));
-}
-
-#loginWindow, #loading {
-    background: -webkit-gradient(linear,  left top,  right bottom, 
-        color-stop(0%, rgba(255, 0, 0, 1)), 
-        color-stop(15%, rgba(255, 255, 0, 1)),
-        color-stop(30%, rgba(0, 255, 0, 1)),
-        color-stop(50%, rgba(0, 255, 255, 1)),
-        color-stop(65%, rgba(0, 0, 255, 1)),
-        color-stop(80%, rgba(255, 0, 255, 1)),
-        color-stop(100%, rgba(255, 0, 0, 1)));
-}
-
-div.styledWindow > div > p {
-    font-weight: bold;
-    background: -webkit-gradient(linear,  left top,  right top, 
-        color-stop(0%, rgba(140, 0, 0, 1)), 
-        color-stop(15%, rgba(140, 140, 0, 1)),
-        color-stop(30%, rgba(0, 140, 0, 1)),
-        color-stop(50%, rgba(0, 140, 140, 1)),
-        color-stop(65%, rgba(0, 0, 140, 1)),
-        color-stop(80%, rgba(140, 0, 140, 1)),
-        color-stop(100%, rgba(140, 0, 0, 1)));
-    color:transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
 }
