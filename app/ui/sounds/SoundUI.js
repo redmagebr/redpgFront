@@ -313,7 +313,6 @@ function SoundUI () {
         
         var message = new Message();
         message.setOrigin(window.app.loginapp.user.id);
-        message.roomid = window.app.ui.chat.cc.room.id;
         if (sound.bgm) {
             message.module = 'bgmplay';
         } else {
@@ -321,13 +320,8 @@ function SoundUI () {
         }
         message.setMessage(sound.link);
         message.setSpecial('name', sound.name);
-        window.app.ui.chat.cc.room.addLocal(message);
-        window.app.chatapp.sendMessage(message);
-        var mod = window.app.ui.chat.mc.getModule(message.module);
-        var $html = mod.get$(message);
-        message.set$($html);
-        window.app.ui.language.applyLanguageOn($html);
-        window.app.ui.chat.appendToMessages($html);
+        
+        window.app.chatapp.fixPrintAndSend(message, true);
     };
     
     this.fetchLink = function () {
