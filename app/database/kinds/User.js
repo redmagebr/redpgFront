@@ -44,6 +44,33 @@ function User () {
         this.avatarS = this.avatar;
     };
     
+    this.export = function () {
+        var result = {};
+        var attributes = [
+            'id',
+            'nickname', 
+            'nicknamesufix', 
+            'name', 
+            'avatar', 
+            'persona', 
+            'storyteller', 
+            'lastrefresh',
+            'lastupdate',
+            'focused',
+            'typing',
+            'online',
+            'idle',
+            'level'
+        ];
+        for (var i = 0; i < attributes.length; i++) {
+            if (this[attributes[i]] !== undefined && this[attributes[i]] !== null) {
+                result[attributes[i]] = this[attributes[i]];
+            }
+        }
+        
+        return result;
+    };
+    
     this.hasAvatar = function () {
         return this.avatar !== null;
     };
@@ -70,5 +97,9 @@ function User () {
             }
         }
         return true;
+    };
+    
+    this.getFullName = function () {
+        return this.nickname + "#" + this.nicknamesufix;
     };
 }

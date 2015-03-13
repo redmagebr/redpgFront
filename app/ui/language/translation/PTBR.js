@@ -490,8 +490,13 @@ window.lingo['pt_br'] = {
     _CHANGELOGNOTLOADED_ : 'Não foi possível carregar a lista de atualizações.',
     _CHANGELOGLOADALL_ : 'Carregar Changelog completo',
     
-    
-    
+    /* CHAT LOGGER */
+    _LOGGERMESSAGEEXPLAIN_ : "O excerto a seguir representa as primeiras e as últimas mensagens que irão fazer parte deste log. Você pode alterar o slider abaixo para definir onde começar o log e onde terminar o log. Apenas mensagens públicas (não enviadas a uma pessoa específica) serão guardadas no JSON.",
+    _LOGGERGENERATEJSON_ : "Criar JSON",
+    _LOGGERTYPESEXPLAIN_ : "Aqui você pode definir quais tipos de mensagens não serão salvas. Lembrando que apenas mensagens públicas (visível a todos) serão salvas no log. Você pode mover com as setas do teclado após clicar.",
+    _LOGGERMSGBY_ : 'por',
+    _LOGGERNOTTYPE_ : "Não é possível mostrar os conteúdos dessa mensagem, mas ela pode ser salva.",
+    _LOGGERRESULTEXPLANATION_ : "Copie o código acima em um arquivo .txt. O código acima pode ser utilizdo por se digitar '/log import' em alguma sala.",
     
     /* Combat Tracker */
     _COMBATTRACKER_ : "Gerenciador de Combate",

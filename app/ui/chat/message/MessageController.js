@@ -204,6 +204,7 @@ function MessageController () {
                 var msgObj = mod.getMsg(slashCMD, msgOnly);
                 if (msgObj !== null) {
                     msgObj.roomid = window.app.ui.chat.cc.room.id;
+                    msgObj.room = window.app.ui.chat.cc.room;
                     msgObj.origin = window.app.loginapp.user.id;
                     msgObj.module = mod.ID;
                     console.log(msgObj);

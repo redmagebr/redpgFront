@@ -10,6 +10,8 @@ function ChatWsApp () {
     this.notConnected = false;
     this.room = null;
     
+    this.disconnectisExpected = false;
+    
     $(window).bind('focus', function (e) {
         window.app.chatapp.focusFlag = true;
         window.app.chatapp.sendFocus();
@@ -57,6 +59,7 @@ function ChatWsApp () {
     };
     
     this.connect = function () {
+        this.disconnectisExpected = false;
         this.clearAck();
         var onopen = function (event) {
             window.app.chatapp.onopen(event);
@@ -73,6 +76,7 @@ function ChatWsApp () {
         
         
         this.controller.connect("Chat", onopen, onclose, onmessage, onerror);
+        window.app.ui.chat.showEverything();
     };
     
     this.onopen = function (event) {
@@ -90,6 +94,8 @@ function ChatWsApp () {
         console.log("Disconnected - ");
         console.log(event);
         
+        if (this.disconnectisExpected) return;
+        
         var $html = $('<p class="chatSistema" />');
         $html.append($('<span class="language" data-langhtml="_CHATWSDISCONNECTED_" />'));
         var $a = $('<a class="language" data-langhtml="_CHATWSRECONNECT_" />').on('click', function () {
@@ -106,6 +112,9 @@ function ChatWsApp () {
     this.onerror = function (event) {
         console.log("Error - ");
         console.log(event);
+        
+        if (this.disconnectisExpected) return;
+        
         this.clearAck();
         window.app.loginapp.checkLogin();
     };
@@ -199,6 +208,7 @@ function ChatWsApp () {
     
     this.fixPrintAndSend = function (message, addlocal) {
         if (this.room !== null) {
+            message.room = this.room;
             message.roomid = this.room.id;
             message.origin = window.app.loginapp.user.id;
             this.printAndSend(message, addlocal);
@@ -259,6 +269,7 @@ function ChatWsApp () {
     };
     
     this.stop = function () {
+        this.disconnectisExpected = true;
         if (this.controller.connected) {
             this.controller.closeConnection();
         }
@@ -363,7 +374,7 @@ function ChatWsApp () {
     };
     
     this.ack = function () {
-       this.waitForAck();
+       //this.waitForAck();
        this.lastMessage = new Date().getTime();
        this.controller.sendAck();
     };

@@ -31,8 +31,10 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheetStyled.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/logger.css">
         <!-- Required for Library -->
             <link rel="stylesheet" type="text/css" media="all" href="js/colpick.css">
+            <link rel="stylesheet" type="text/css" media="all" href="js/jquery-ui.min.css">
         <!-- Fonts Begin -->
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
             <link rel="stylesheet" type="text/css" media="all" href="css/fontface/alegreya2.css">
@@ -233,6 +235,29 @@
             <img id="pictureElement" />
             <a id="pictureLoading" class="loadingAnchor"></a>
             <div id="picturePaint"></div>
+        </div>
+        
+        <div id="loggerWindow" style="display: none">
+            <div>
+                <a class="closeWindow button" onclick="window.app.ui.chat.logger.closeSelf();"></a>
+                <p class="language" data-langhtml="_LOGGERMESSAGEEXPLAIN_"></p>
+                <div id="loggerSlider"></div>
+                <div id="loggerMessages">
+                    <p>Roleplay por Reddo#0001: Vamos lá então.</p>
+                    <p>Off por Reddo#0001: Ops.</p>
+                    <p>...</p>
+                    <p>...</p>
+                    <p>Story por Kronos#2555: Fim do episódio.</p>
+                    <p>Story por Kronos#2555: +5 Exp para todos.</p>
+                </div>
+                <p class="language" data-langhtml="_LOGGERTYPESEXPLAIN_"></p>
+                <div id="loggerTypes">
+                    <input type="checkbox" id="loggerRoleplay" /><label for="loggerRoleplay">Roleplay</label>
+                    <input type="checkbox" id="loggerRoleplay" /><label for="loggerRoleplay">Roleplay</label>
+                    <input type="checkbox" id="loggerRoleplay" /><label for="loggerRoleplay">Roleplay</label>
+                </div>
+                <a id="loggerCreateJSON" class="textButton language" data-langhtml="_LOGGERGENERATEJSON_"></a>
+            </div>
         </div>
         
         <div id="leftWindow">
@@ -1010,6 +1035,7 @@
             <script src="js/colpick.js"></script>
             <script src="js/jquery.idle.min.js"></script>
             <script src="js/seedrandom.min.js"></script>
+            <script src="js/FileSaver.min.js"></script>
         <!-- Application! -->
             <script src="app/Application.js"></script>
             <script src="app/program/LoginApp.js"></script>

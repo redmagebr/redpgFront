@@ -8,6 +8,8 @@ function Message () {
     this.roomid = null;
     this.timeout = null;
     
+    this.room = null;
+    
     /**
      * Actual message content.
      * @type String
@@ -55,6 +57,21 @@ function Message () {
     
     this.isWhisp = function () {
         return (this.destination !== null && this.destination.length > 0);
+    };
+    
+    this.export = function () {
+        var result = {};
+        var attributes = [
+            'destination', 'id', 'module', 'msg', 'origin', 'roomid', 'date'
+        ];
+        for (var i = 0; i < attributes.length; i++) {
+            if (this[attributes[i]] !== undefined && this[attributes[i]] !== null) {
+                result[attributes[i]] = this[attributes[i]];
+            }
+        }
+        
+        result.special = JSON.stringify(this.special);
+        return result;
     };
     
     this.updateFromJSON = function (json) {
@@ -154,11 +171,11 @@ function Message () {
         if (this.origin === null) {
             return null;
         }
-        if (this.roomid === null) {
+        if (this.room === null) {
             return null;
         }
         
-        return window.app.roomdb.getRoom(this.roomid).getUser(this.origin);
+        return this.room.getUser(this.origin);
     };
     
     /**
@@ -169,13 +186,13 @@ function Message () {
         if (this.destination === null) {
             return null;
         }
-        if (this.roomid === null) {
+        if (this.room === null) {
             return null;
         }
         
         if (typeof this.destination === 'number')
-            return window.app.roomdb.getRoom(this.roomid).getUser(this.destination);
-        return window.app.roomdb.getRoom(this.roomid).getUser(this.destination[0]);
+            return this.room.getUser(this.destination);
+        return this.room.getUser(this.destination[0]);
     };
     
     this.set$ = function ($obj) {

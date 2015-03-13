@@ -1,0 +1,70 @@
+#loggerWindow, #loggerResultWindow {
+    position: absolute;
+    display: block;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 300;
+    background-color: rgba(0,0,0,.5);
+}
+
+#loggerWindow > div, #loggerResultWindow > div {
+    position: absolute;
+    left: 50%;
+    margin-left: -402px;
+    width: 800px;
+    top: 10px;
+    background-color: white;
+    border: solid 2px #000;
+}
+
+#loggerWindow > div > a.closeWindow, #loggerResultWindow > div > a.closeWindow {
+    background-image: url('../img/closeButton.png');
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#loggerResultTextarea {
+    width: 700px;
+    margin: 20px;
+    margin: auto;
+    display: block;
+    height: 500px;
+}
+
+
+#loggerWindow > div > p, #loggerResultWindow > div > p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#loggerWindow > div {
+    text-align: center;
+}
+
+#loggerMessages {
+    display: block;
+    width: 80%;
+    border: solid 1px #000;
+    margin: auto;
+    min-height: 30px;
+}
+
+#loggerMessages > p {
+    margin: 0px;
+    padding: 4px;
+}
+
+#loggerTypes > label {
+    margin-right: 20px;
+}
+
+#loggerSlider {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}

@@ -38,29 +38,38 @@ function ChatController (chat) {
         }
     };
     
+    this.cleanSelf = function () {
+        this.lastMessage = -1;
+        this.lastDate = '';
+        this.chat.$chatMessages.empty();
+        this.pc.clear();
+        this.chat.$roomName.text(this.room.name);
+        this.chat.$roomDesc.text(this.room.description);
+        this.chat.pc.$container.empty();
+        this.chat.pc.restore();
+        if (this.room.persona !== null) {
+            window.app.ui.chat.pc.addPersona(this.room.persona, this.room.avatar, this.room.hidePersona);
+        }
+        this.room.emptyLocal();
+        this.printed = 0;
+        this.clearInformed = false;
+    };
+    
+    this.printAllMessages = function () {
+        this.firstPrint = true;
+        this.printMessages();
+        this.firstPrint = true;
+    };
+    
     this.callSelf = function (clean) {
         if (this.room === null) {
             window.app.ui.gameui.callSelf();
         } else {
             if (clean) {
-                this.lastMessage = -1;
-                this.lastDate = '';
-                this.chat.$chatMessages.empty();
-                this.pc.clear();
-                this.chat.$roomName.text(this.room.name);
-                this.chat.$roomDesc.text(this.room.description);
-                this.chat.pc.$container.empty();
-                this.chat.pc.restore();
-                if (this.room.persona !== null) {
-                    window.app.ui.chat.pc.addPersona(this.room.persona, this.room.avatar, this.room.hidePersona);
-                }
-                this.room.emptyLocal();
-                this.printed = 0;
-                this.clearInformed = false;
+                this.cleanSelf()
             }
-            this.firstPrint = true;
-            this.printMessages();
-            this.firstPrint = true;
+            
+            this.printAllMessages();
             
             this.onlineUsers = [];
             this.room.requiresUsers = true;
@@ -168,7 +177,6 @@ function ChatController (chat) {
                     }
                 } else {
                     $html = module.get$(message, null, null);
-                    
                 }
                 if ($html !== null) {
                     printedOne = true;
@@ -251,6 +259,8 @@ function ChatController (chat) {
         if (!window.app.ui.hasFocus && printedOne) {
             window.app.ui.notifyMessages();
         }
+        
+        return $html;
     };
     
     this.clearUsers = function () {

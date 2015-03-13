@@ -81,6 +81,7 @@ function Room () {
                     } else {
                         message = new Message();
                         message.roomid = this.id;
+                        message.room = this;
                     }
                     message.updateFromJSON(json.messages[i]);
                     this.messageHash[message.getId()] = this.messages.push(message) - 1;
@@ -155,5 +156,35 @@ function Room () {
     this.getMe = function () {
         var userid = window.app.loginapp.user.id;
         return this.users.getUser(userid);
+    };
+    
+    /**
+     * Exports an object as expected by updateFromJSON.
+     * The Object does not contain messages.
+     * @returns {Object}
+     */
+    this.export = function () {
+        var result = {};
+        
+        var attributes = {
+            pbp : 'playByPost',
+            streamable : 'streamable',
+            description : 'description',
+            private : 'privateRoom',
+            logger : 'logger',
+            creatorid : 'creatorid',
+            id : 'id',
+            name :  'name',
+            gameid :  'gameid'
+        };
+        var i;
+        for (i in attributes) {
+            if (this[i] === undefined || this[i] === null) continue;
+            result[attributes[i]] = this[i];
+        }
+        
+        result.users = this.users.export();
+        
+        return result;
     };
 }

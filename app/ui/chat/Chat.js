@@ -6,6 +6,9 @@
  * @constructor
  */
 function Chat () {
+    this.$hidingCSS = $('<style type="text/css" />');
+    $('head').append(this.$hidingCSS);
+    
     this.usePrompt = 'auto'; // 'auto' || '0' || '1'
     
     this.tracker = new CombatTracker();
@@ -435,5 +438,13 @@ function Chat () {
         if (this.alwaysBottom || this.powerBottom) {
             this.scrollToBottom(true);
         }
+    };
+    
+    this.showEverything = function () {
+        this.$hidingCSS.empty();
+    };
+    
+    this.hideUnnecessary = function () {
+        this.$hidingCSS.append("#avatarContainer, #chatBarra, #personaBox, #dadosForm, #dadosButtons > a { display: none; } #areaChat { top: 10px; bottom: 60px; }");
     };
 }

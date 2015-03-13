@@ -5,6 +5,14 @@ function UserDB () {
         this.users = {};
     };
     
+    this.export = function () {
+        var result = [];
+        for (var id in this.users) {
+            result.push(this.users[id].export());
+        }
+        return result;
+    };
+    
     this.updateFromJSON = function (json) {
         for (var i = 0; i < json.length; i++) {
             if (typeof this.users[json[i].id] === 'undefined') {
