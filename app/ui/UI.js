@@ -25,6 +25,8 @@ function UI () {
      */
     this.changelogui = new ChangelogUI();
     
+    this.forumui = new ForumUI();
+    
     
     this.soundui = new SoundUI();
     

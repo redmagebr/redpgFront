@@ -1,0 +1,31 @@
+#forumRecent .imageset {
+    background-image: url("http://forum.redpg.com.br/styles/prosilver/theme/images/icon_post_target.gif");
+    width: 11px;
+    height: 9px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -5px;
+    overflow: hidden;
+}
+
+#forumRecent > p:hover {
+    background-color: #e5e5e5;
+}
+
+/*
+<p>
+    <a class="topictitle" href="http://forum.redpg.com.br/viewtopic.php?f=17&amp;p=4&amp;sid=56f28431b4fe86896216fa75972d72b9#p4" target="_BLANK">
+        <span class="imageset icon_post_target" title="Post">
+            Post
+        </span>
+        Regras para procurar membros
+    </a>
+    &nbsp;&nbsp;by 
+    <a href="http://forum.redpg.com.br/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=56f28431b4fe86896216fa75972d72b9" style="color: #AA0000;" 
+       class="username-coloured" target="_BLANK">
+        Raven
+    </a>
+    &nbsp;&nbsp;Fri Mar 13, 2015 6:14 pm
+</p>
+*/
+

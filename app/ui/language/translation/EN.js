@@ -565,6 +565,13 @@ window.lingo['en'] = {
     _SHEETMAP_ : 'Map',
     _SHEETCOMMONSADDTOKEN_ : 'Add new token',
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+    
+    
+    /* FOrum */
+    _HOMEFORUM_ : 'Active Topics on the Forums',
+    _HOMEFORUMERROR_ : "It was not possible to load the forum news. Note that the forum news can't be loaded from the offline version.",
+    _FORUMBY_ : 'by',
+    
     /* Donations */
     _HOMEDONATIONS_ : 'Donations',
     _HOMEDONATIONSEXPLAIN1_ : 'RedPG is freeware and will remain so for as long as possible. However, it still has costs and someone has to pay for them.',

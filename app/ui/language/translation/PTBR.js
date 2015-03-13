@@ -578,6 +578,12 @@ window.lingo['pt_br'] = {
     _MAPCURRENTTURN_ : 'Turno Atual',
     _MAPTARGET_ : 'Seu alvo',
     
+    
+    /* FOrum */
+    _HOMEFORUM_ : 'Tópicos ativos no fórum',
+    _HOMEFORUMERROR_ : "Não foi possível carregar o fórum. Note que a versão offline do RedPG não pode carregar o fórum.",
+    _FORUMBY_ : 'por',
+    
     /* Donations */
     _HOMEDONATIONS_ : 'Doações',
     _HOMEDONATIONSEXPLAIN1_ : 'RedPG é um sistema gratuito e permanecerá gratuito enquanto isso for possível. Mas o servidor possui um custo e alguém precisa pagar.',
