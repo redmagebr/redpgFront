@@ -481,6 +481,14 @@ window.lingo['en'] = {
     _CHANGELOGLOADALL_ : 'Load full changelog',
     
     
+    /* CHAT LOGGER */
+    _LOGGERMESSAGEEXPLAIN_ : "The following excerpt shows which will be the first messages and the last messages to be copied to the log. Any messages that were not sent to a public channel will not be copied to the log. After clicking a slider, it is possible to move it with the arrow keys.",
+    _LOGGERGENERATEJSON_ : "Generate JSON",
+    _LOGGERTYPESEXPLAIN_ : "You may select which types of messages will be copied to the log. Messages which are not sent to a public channel will not be copied regardless of their type being selected.",
+    _LOGGERMSGBY_ : 'by',
+    _LOGGERNOTTYPE_ : "This message can't be shown in this space, but it will be copied successfully.",
+    
+    
     
     
     /* Combat Tracker */
