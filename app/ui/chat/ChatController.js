@@ -29,6 +29,7 @@ function ChatController (chat) {
     };
     
     this.openRoom = function (id) {
+        this.ignoreTooMany = false;
         if (this.room === null || id !== this.room.id) {
             this.room = window.app.roomdb.getRoom(id);
             this.pc.room = this.room;

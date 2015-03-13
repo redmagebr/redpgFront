@@ -496,7 +496,7 @@ window.lingo['pt_br'] = {
     _LOGGERTYPESEXPLAIN_ : "Aqui você pode definir quais tipos de mensagens não serão salvas. Lembrando que apenas mensagens públicas (visível a todos) serão salvas no log.",
     _LOGGERMSGBY_ : 'por',
     _LOGGERNOTTYPE_ : "Não é possível mostrar os conteúdos dessa mensagem, mas ela pode ser salva.",
-    
+    _LOGGERLOADJSON_ : 'Carregar Log',
     
     /* Combat Tracker */
     _COMBATTRACKER_ : "Gerenciador de Combate",

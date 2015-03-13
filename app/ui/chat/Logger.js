@@ -5,6 +5,11 @@ function Logger () {
     this.$slider= $('#loggerSlider');
     this.$types = $("#loggerTypes");
     
+    this.$importBt = $("#logLoadButton").on('click', function () {
+        window.app.ui.chat.logger.loadLog();
+    });
+    this.$importForm = $("#logLoadFile");
+    
     this.$create = $("#loggerCreateJSON").on("click", function () {
         window.app.ui.chat.logger.createJSON();
     });
@@ -218,5 +223,45 @@ function Logger () {
     
     this.closeSelf = function () {
         this.$window.finish().fadeOut(500);
+    };
+    
+    this.loadLog = function () {
+        var f = this.$importForm[0].files[0];
+        
+        if (!f) { return; }
+        
+        window.app.ui.blockLeft();
+        
+        var r = new FileReader();
+        r.onload = function(e) {
+            window.app.ui.unblockLeft();
+            window.app.ui.chat.logger.openLog(e.target.result);
+        };
+        
+        r.onerror = function () {
+            window.app.ui.unblockLeft();
+            alert("Error reading the file.");
+        };
+        
+        r.readAsText(f);
+    };
+    
+    this.openLog = function (json) {
+        try {
+            json = JSON.parse(json);
+        } catch (e) {
+            alert("Not a valid JSON file.");
+        }
+        window.app.ui.chat.cc.exit();
+        window.app.chatapp.stop();
+        window.app.chatapp.room = new Room();
+        window.app.ui.chat.cc.room = window.app.chatapp.room;
+        window.app.ui.chat.cc.pc.room = window.app.chatapp.room;
+        window.app.chatapp.room.updateFromJSON(json);
+        window.app.ui.chat.cc.cleanSelf();
+        window.app.ui.chat.cc.ignoreTooMany = true;
+        window.app.ui.chat.cc.printAllMessages();
+        window.app.ui.callLeftWindow('chatWindow');
+        window.app.ui.chat.hideUnnecessary();
     };
 }

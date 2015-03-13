@@ -145,7 +145,9 @@ window.chatModules.push({
         // Strictly for Dragon Fantasy Saga, ignore
         var extra = msg.getSpecial("extra", null);
         if (extra !== null && typeof extra === 'object' && (extra.type === "Dano" || extra.type === "Cura")) {
-            if (typeof window.app.ui.chat.tracker.myStuff.ordered[extra.target] !== 'undefined') {
+            if (typeof window.app.ui.chat.tracker.myStuff !== 'undefined' &&
+                    typeof window.app.ui.chat.tracker.myStuff.ordered !== 'undefined' &&
+                    typeof window.app.ui.chat.tracker.myStuff.ordered[extra.target] !== 'undefined') {
                 var mine = window.app.ui.chat.tracker.myStuff.ordered[extra.target];
                 if (mine.id === extra.id && mine.name === extra.name && typeof window.app.ui.sheetui.controller.$listed[extra.id] !== "undefined" && window.app.sheetdb.getSheet(extra.id).editable) {
                     // we have everything to do it

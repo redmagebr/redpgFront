@@ -487,7 +487,7 @@ window.lingo['en'] = {
     _LOGGERTYPESEXPLAIN_ : "You may select which types of messages will be copied to the log. Messages which are not sent to a public channel will not be copied regardless of their type being selected.",
     _LOGGERMSGBY_ : 'by',
     _LOGGERNOTTYPE_ : "This message can't be shown in this space, but it will be copied successfully.",
-    
+    _LOGGERLOADJSON_ : "Load Log",
     
     
     

@@ -46,22 +46,7 @@ window.chatModules.push({
      * @param {String} message
      */
     getMsg : function (slashCMD, message) {
-        if (message.toUpperCase() === "EXPORT") {
-            window.app.ui.chat.logger.updateRoom();
-            return null;
-        }
-        
-        window.app.ui.chat.cc.exit();
-        window.app.chatapp.stop();
-        window.app.chatapp.room = new Room();
-        window.app.ui.chat.cc.room = window.app.chatapp.room;
-        window.app.ui.chat.cc.pc.room = window.app.chatapp.room;
-        window.app.chatapp.room.updateFromJSON(JSON.parse(window.prompt("JSON:")));
-        window.app.ui.chat.cc.cleanSelf();
-        window.app.ui.chat.cc.ignoreTooMany = true;
-        window.app.ui.chat.cc.printAllMessages();
-        
-        window.app.ui.chat.hideUnnecessary();
+        window.app.ui.chat.logger.updateRoom();
         return null;
     },
     
