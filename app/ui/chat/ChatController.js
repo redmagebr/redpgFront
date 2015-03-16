@@ -336,6 +336,10 @@ function ChatController (chat) {
         }
         $p.text(sender.nickname + '#' + sender.nicknamesufix).prepend($b);
         
+        if (message.getOrigin() === 0) {
+            $p.text(window.app.ui.language.getLingo("_CHATSYSTEMNICK_"));
+        }
+        
         window.app.ui.simplefloater.showFloaterAtElement($p, $dom);
     };
 }

@@ -232,6 +232,8 @@ window.lingo['pt_br'] = {
 
 
     /* Room */
+    _CHATSYSTEMMESSAGE_ : "Mensagem do Sistema",
+    _CHATSYSTEMNICK_ : "Sistema",
     _CHATWSCONNECTED_ : 'Conectado. Mensagens antigas não foram impressas.',
     _CHATWSNOTALL_ : 'Mensagens antigas foram escondidas.',
     _CHATWSCONNECTING_ : 'Conectando...',

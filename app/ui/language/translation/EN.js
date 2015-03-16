@@ -225,6 +225,8 @@ window.lingo['en'] = {
 
 
     /* Room */
+    _CHATSYSTEMMESSAGE_ : "System Message",
+    _CHATSYSTEMNICK_ : "System",
     _CHATWSCONNECTED_ : 'Connected. Old messages were not printed.',
     _CHATWSNOTALL_ : 'Old messages were hidden.',
     _CHATWSCONNECTING_ : 'Connecting...',
