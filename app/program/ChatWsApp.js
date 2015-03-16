@@ -144,6 +144,8 @@ function ChatWsApp () {
                     message.roomid = this.room.id;
                     window.app.ui.chat.cc.printMessage(message);
                     window.app.ui.chat.considerBottoming();
+                } else {
+                    this.room.updateFromJSON({'messages' : [obj[1]]});
                 }
             } else {
                 this.room.updateFromJSON({'messages' : [obj[1]]});
@@ -369,12 +371,12 @@ function ChatWsApp () {
             window.app.chatapp.timeout = setTimeout(function () {
                 $('#chatNotConnError').show();
                 $('#chatNotLoad').hide();
-            }, 30000);
-        }, 15000);
+            }, 5000);
+        }, 5000);
     };
     
     this.ack = function () {
-       //this.waitForAck();
+       this.waitForAck();
        this.lastMessage = new Date().getTime();
        this.controller.sendAck();
     };
