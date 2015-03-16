@@ -32,6 +32,7 @@ window.chatModules.push({
                     $html.attr('data-msgid', this.msg.id);
                     this.$msg.replaceWith($html);
                     window.app.ui.language.applyLanguageOn($html);
+                    window.app.ui.chat.cc.hoverizeSender($html, this.msg);
                 }, {mod : mod, msg : msg, $msg : $msg}
             );
     

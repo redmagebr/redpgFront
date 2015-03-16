@@ -52,8 +52,6 @@ function DiceController () {
     this.submit = function () {
         var message = new Message();
         message.setMessage(this.$dicereason.val());
-        message.setOrigin(window.app.loginapp.user.id);
-        message.roomid = window.app.ui.chat.cc.room.id;
         message.module = 'dice';
         
         if (this.$dicesecret.hasClass('toggled')) {
@@ -103,11 +101,7 @@ function DiceController () {
         var mod = window.app.ui.chat.mc.getModule('dice');
         var $html = mod.get$(message);
         
-        message.set$($html);
-        
-        window.app.ui.language.applyLanguageOn($html);
-        
-        window.app.chatapp.printAndSend(message, true);
+        window.app.chatapp.fixPrintAndSend(message, true);
         
         
         this.dicese.currentTime = 0;
