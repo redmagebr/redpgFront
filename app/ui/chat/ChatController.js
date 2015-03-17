@@ -155,7 +155,12 @@ function ChatController (chat) {
         var $html;
         if (messages.length > 0) {
             this.lastMessage = messages[messages.length - 1].id;
-            for (var i = 0; i < messages.length; i++) {
+            var start = 0;
+            // Lets print only the last 100 messages.
+            if (!this.ignoreTooMany && messages.length > 100) {
+                start = messages.length - 100;
+            }
+            for (var i = start; i < messages.length; i++) {
                 message = messages[i];
                 if (message.localid !== null) {
                     continue;
