@@ -28,6 +28,12 @@ function Application (debug) {
     this.imageHost = 'http://images.redpg.com.br/';
     this.wshost = 'ws://redpg.com.br:8080/service/';
     
+    // TEMPORARY DNS FIX
+    this.host = 'http://45.56.67.175/service/';
+    this.staticHost = 'http://45.56.67.175/';
+    this.imageHost = 'http://45.56.67.175/';
+    this.wshost = 'ws://45.56.67.175:8080/service/';
+    
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
     
@@ -37,7 +43,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 49, 3];
+    this.version = [0, 49, 4];
     
     /**
      * Settings
