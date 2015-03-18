@@ -7,6 +7,12 @@ window.lingo['pt_br'] = {
     _CONFIRMLOGOUT_ : 'Tem certeza que deseja fazer logout?',
     _GOFULL_ : 'Utilizar o aplicativo em tela cheia?',
     
+    
+    /* Intro */
+    _INTROEXPLANATION1_ : "Passe o mouse sobre os cantos da tela para acessar os menus.",
+    _INTROEXPLANATION2_ : "Clique em qualquer parte dessa tela para fechar essa mensagem.",
+    
+    
     /* Home */
     _HOMETITLE_ : 'RedPG',
     _HOMEEXPLAIN1_ : 'RedPG é um sistema para facilitar RPGs de Mesa através da internet. Funções do sistema incluem o compartilhamento de Imagens, Sons, Fichas de Personagens, uma sala para troca de mensagens com suporte a dados e muito mais, com novas funções sempre sendo adicionadas.',
@@ -565,6 +571,7 @@ window.lingo['pt_br'] = {
     _IMAGEARCHIVE_ : 'Banco de Imagens',
     _SHEETCOMMONSTYPE_ : 'Tipo',
     _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
+    _SHEETCOMMONSPICKIMAGENONE_ : 'Sem Imagem',
     _SHEETCOMMONSPICKSHEET_ : 'Escolha uma ficha',
     _SHEETCOMMONSNEWDUAL_ : 'Nova lista dupla',
     _SHEETCOMMONSNEWLINE_ : 'Novo campo',

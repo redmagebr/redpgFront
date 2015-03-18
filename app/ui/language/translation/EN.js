@@ -7,6 +7,10 @@ window.lingo['en'] = {
     _CONFIRMLOGOUT_ : 'Are you sure you want to logout?',
     _GOFULL_ : 'View application in full screen?',
     
+    /* Intro */
+    _INTROEXPLANATION1_ : "Move your mouse over the corners to bring up the menus.",
+    _INTROEXPLANATION2_ : "Click anywhere to close this message.",
+    
     /* Home */
     _HOMETITLE_ : 'RedPG',
     _HOMEEXPLAIN1_ : 'RedPG is meant to assist those wishing to play tabletop role-playing games over the internet. It is able to share Pictures, Sounds, Sheets, has rooms for everyone to talk, with dices and many more, with new functions always being added.',
@@ -558,6 +562,7 @@ window.lingo['en'] = {
     _IMAGEARCHIVE_ : 'Image Bank',
     _SHEETCOMMONSTYPE_ : 'Type',
     _SHEETCOMMONSPICKIMAGE_ : 'Choose a picture',
+    _SHEETCOMMONSPICKIMAGENONE_ : 'No picture',
     _SHEETCOMMONSPICKSHEET_ : 'Choose a sheet',
     _SHEETCOMMONSNEWDUAL_ : 'New double list',
     _SHEETCOMMONSNEWLINE_ : 'New field',

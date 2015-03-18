@@ -20,6 +20,8 @@ function UI () {
      */
     this.loginui = new LoginUI();
     
+    this.intro = new IntroUI();
+    
     /**
      * @type ChangelogUI
      */
@@ -128,6 +130,7 @@ function UI () {
         this.gameui.init();
         this.soundui.init();
         this.loginui.init();
+        this.intro.init();
         this.youtubeui.init();
         this.sheetui.init();
         this.navigator.init();

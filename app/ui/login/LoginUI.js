@@ -221,6 +221,7 @@ function LoginUI () {
             window.app.ui.showUI();
             this.$loginwindow.fadeOut(200);
             window.app.ui.hideLoading();
+            window.app.ui.loginui.onLogin(null);
         }, {$loginwindow : this.$loginwindow});
         
         var cbe = function () {
@@ -245,6 +246,7 @@ function LoginUI () {
             this.$password.val('');
             this.$loginwindow.fadeOut(200);
             window.app.ui.hideLoading();
+            window.app.ui.loginui.onLogin(null);
         }, {$loginwindow : this.$loginwindow,
             $input : this.$logininput,
             $password : this.$loginpasswordinput});
@@ -298,5 +300,17 @@ function LoginUI () {
         };
         
         window.app.loginapp.logout(cbs, cbe);
+    };
+    
+    this.loginFunc = [];
+    
+    this.onLogin = function (func) {
+        if (func === null) {
+            for (var i = 0; i < this.loginFunc.length; i++) {
+                this.loginFunc[i]();
+            }
+        } else if (typeof func === 'function') {
+            this.loginFunc.push(func);
+        }
     };
 }

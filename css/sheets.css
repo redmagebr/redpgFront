@@ -10,6 +10,7 @@
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    z-index: 199;
 }
 
 #sheetExportForm {

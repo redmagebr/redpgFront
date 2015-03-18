@@ -33,10 +33,13 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheetStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/logger.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/intro.css">
         <!-- Required for Library -->
             <link rel="stylesheet" type="text/css" media="all" href="js/colpick.css">
             <link rel="stylesheet" type="text/css" media="all" href="js/jquery-ui.min.css">
         <!-- Fonts Begin -->
+            <!-- Anudaw Font-Face Licensed under Nyek! License v1.00. License found in CSS. -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/fontface/anudaw.css">
             <!-- Alegreya Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
             <link rel="stylesheet" type="text/css" media="all" href="css/fontface/alegreya2.css">
             <!-- Caudex Font-Face Licensed under SIL Open Font License v1.10. License found in CSS. -->
@@ -69,7 +72,16 @@
         <div id="loading">
             <a id="loadingIcon"></a>
         </div>
-        
+        <div id="intro">
+            <img id="introLeft" src="img/intro/leftLinha.png" />
+            <img id="introRight" src="img/intro/rightLinha.png" />
+            <img id="introSetaRight" src="img/intro/setaRight.png" />
+            <img id="introSetaLeft" src="img/intro/setaLeft.png" />
+            <div id="introTexto">
+                <span class="language" data-langhtml="_INTROEXPLANATION1_"></span>
+                <span class="language" data-langhtml="_INTROEXPLANATION2_"></span>
+            </div>
+        </div>
         <div id="loginWindow">
             <div id="loginFormWindow" class="window">
                 <p id="loginInvalidError" class="error language" data-langhtml="_LOGININVALID_"></p>
@@ -431,6 +443,7 @@
                         <a id="logLoadButton" class="language textButton" data-langhtml="_LOGGERLOADJSON_" style="text-indent: 0px;"></a>
                     </p>
                     <p><a id="gamesInviteListButton" class="language textLink" data-langhtml="_GAMESMYINVITESBUTTON_"></a></p>
+                    <p id="gamesNewGameButton"><a class="language textLink" data-langhtml="_GAMESNEWGAME_"></a></p>
                     <div id="gamesList">
                         <div id="gameID" class="gameDiv">
                             <a class="right button delete language" data-langtitle="_GAMESDELETE_"></a>
@@ -469,7 +482,6 @@
                             </div>
                         </div>
                     </div>
-                    <p id="gamesNewGameButton"><a class="language textLink" data-langhtml="_GAMESNEWGAME_"></a></p>
                 </div>
             </div>
             <div id='changelogWindow' class='styledWindow window'>
@@ -1117,6 +1129,7 @@
             <script src="app/ui/games/GameInviteUI.js"></script>
             <script src="app/ui/games/GameInvite$.js"></script>
             <script src="app/ui/login/LoginUI.js"></script>
+            <script src="app/ui/intro/IntroUI.js"></script>
             <script src="app/ui/navigator/Navigator.js"></script>
             <script src="app/ui/style/StyleUI.js"></script>
             <!-- Chat Modules -->

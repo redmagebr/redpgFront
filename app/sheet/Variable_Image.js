@@ -41,10 +41,14 @@ function Variable_Image ($visible, style, missingid, parent) {
             var $option;
             if (this.value[0] !== null && this.value[1] !== null) {
                 $option = $('<option selected />').val(this.value[0]).text(this.value[1]);
+                $select.append($option);
+                $option = $('<option class="language" data-langhtml="_SHEETCOMMONSPICKIMAGENONE_" />').text(window.app.ui.language.getLingo("_SHEETCOMMONSPICKIMAGENONE_")).val("0");
+                $select.append($option);
             } else {
-                $option = $('<option selected disabled class="language" data-langhtml="_SHEETCOMMONSPICKIMAGE_" />').text(window.app.ui.language.getLingo("_SHEETCOMMONSPICKIMAGE_"));
+                $option = $('<option selected class="language" data-langhtml="_SHEETCOMMONSPICKIMAGENONE_" />').text(window.app.ui.language.getLingo("_SHEETCOMMONSPICKIMAGENONE_")).val("0");
+                $select.append($option);
             }
-            $select.append($option);
+            
             
             var $optgroups = {};
                         
@@ -120,6 +124,7 @@ function Variable_Image ($visible, style, missingid, parent) {
             return;
         }
         if (value[0] !== this.value[0] || value[1] !== this.value[1]) {
+            if (value[0] === "0") value[0] = null;
             this.value = value;
             this.update$();
             this.$visible.trigger('changedVariable', [this, this.$visible]);
@@ -128,6 +133,10 @@ function Variable_Image ($visible, style, missingid, parent) {
                 this.style.get$().trigger('changedVariable', [this, this.$visible]);
             }
         }
+    };
+    
+    this.getUrl = function () {
+        return this.value[0];
     };
    
     this.setDefault = function () {
