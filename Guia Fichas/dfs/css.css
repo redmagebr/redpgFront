@@ -1,0 +1,1662 @@
+/* Rolagens Especiais */
+#dfsRolagensEspeciaisList > p > span.sheetList > span:last-child > span.sumSymbol {
+    display: none;
+}
+
+#dfsRolagensEspeciaisList > p:hover {
+    background-color: #e7e7e7;
+}
+
+#dfsDiv #dfsRolagensEspeciaisList input[type=text] {
+    width: 110px;
+}
+
+#dfsDiv #dfsRolagensEspeciaisList > p > input[type=text] {
+    width: 140px;
+}
+
+#dfsDiv #dfsrolagensEspeciais > div a.addRow {
+    display: inline-block;
+    text-indent: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 30px;
+    text-align: center;
+}
+
+/* Debuffs */
+#dfsDebuffs > div:hover {
+    background-color: #e7e7e7;
+}
+
+#dfsDebuffs > div > b {
+    line-height: 30px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#dfsDebuffs > div > span {
+    float:right;
+    padding: 0px;
+    margin: 0px;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+#dfsDebuffs > div input[type=text] {
+    width: 200px;
+}
+
+/* Rolagens */
+#dfsDiv #dfsRolagensBonus input[type=text] {
+    width: 25px;
+    text-align: center;
+}
+
+#dfsRolagens > div:hover {
+    background-color: #e6e6e6;
+}
+
+#dfsDiv #dfsRolagens > div > span > span > input {
+    width: 30px;
+    text-align: center;
+}
+
+#dfsDiv #dfsRolagens > div > span:first-of-type > input {
+    width: 180px;
+    text-align: left;
+}
+
+/* Resto */
+
+#dfsDiv .sortButton {
+    background-image: url('img/dfs/sortIcon.png');
+	width: 21px;
+	height: 21px;
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+#dfsDiv .diceButton {
+    background-image: url('img/dfs/diceIcon.png');
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* Buff e Debuff */
+#dfsBuffs {
+    position: relative;
+}
+
+#dfsBuffs > div {
+    position: relative;
+}
+
+#dfsBuffs > div:hover {
+    background-color: #efefef;
+}
+
+#dfsBuffs div.buffEffect > textarea {
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+#dfsBuffs div.buffEffect {
+    display: block;
+    text-align: justify;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#dfsBuffs span.buffName {
+    margin-left: 5px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+#dfsBuffs span.buffName > input {
+    width: 200px;
+    margin-left: -5px;
+}
+
+#dfsBuffs span.buffQuantidade {
+    margin-right: 10px;
+}
+
+#dfsBuffs span.buffDuration {
+    margin-right: 10px;
+}
+
+#dfsBuffs span.buffDuration > input, #dfsBuffs span.buffQuantidade > input {
+    width: 20px;
+    text-align: center;
+    padding-bottom: 3px;
+    margin-top: -2px;
+}
+
+#dfsBuffs span.buffAtributo {
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+#dfsBuffs span.buffAtributo > input, #dfsBuffs span.buffTipo > input {
+    width: 120px;
+}
+
+/* Ferramentas e Log */
+
+#dfsDiv #dfsFerramentas input[type=text] {
+    width: 100px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+#dfsDiv #dfsFerramentas p {
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: justify;
+}
+
+#dfsDiv #dfsFerramentas p > b {
+    color: #000;
+}
+
+#proStyleButton {
+    color: #3a4bd6;
+}
+
+#proStyleButton:hover {
+    color: #707fff;
+    cursor: pointer;
+}
+
+#proStyleButton:active {
+    color: #4853a9;
+}
+
+#dfsDiv #dfsLogs input {
+    width: 100px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+}
+
+#dfsDiv #dfsLogs .bigInput input {
+    width: 400px;
+    text-align: left;
+}
+
+#dfsDiv #dfsLogs textarea {
+    margin-top: 10px;
+    width: 600px;
+}
+
+#dfsDiv #dfsLogs b {
+    color: #000;
+}
+
+#dfsDiv #dfsLogs p {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    border-bottom: solid 1px #fff;
+    background-color: #bcc3ff;
+}
+
+#dfsDiv #dfsLogs p:hover {
+    background-color: #8f99e8;
+}
+
+#rulesLink {
+    color: #9fb0ff;
+}
+
+#rulesLink:hover {
+    cursor: pointer;
+    color: #3b5eff;
+}
+
+#rulesLink:active {
+    color: #5f75d9;
+}
+
+#dfsLogs > a {
+    font-weight: bold;
+    color: #2737bd;
+    font-size: 1.2em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#dfsLogs > a:hover {
+    color: #394df2;
+    cursor: pointer;
+}
+
+#dfsLogs > a:active {
+    color: #0f1d96
+}
+
+#dfsLogs > a.active, #dfsLogs > a.active:hover, #dfsLogs > a.active:active {
+    color: #2737bd;
+    cursor: default;
+    background-color: #bcc3ff;
+}
+
+/* Ferramentas e Log */
+
+/* Edit Inputs */
+
+#dfsDiv #dfsCommonInfo input {
+    width: 60%;
+    vertical-align: top;
+    border-bottom: solid 1px #fff;
+}
+
+#dfsDiv #dfsExpTotal input {
+    position: absolute;
+    width: 20px;
+    height: 7px;
+    line-height: 7px;
+    font-size: 0.8em;
+    background-color: red;
+    top: 0px;
+    right: 0px;
+    vertical-align: top;
+    text-align: right;
+}
+
+#dfsDiv #dfsNome input {
+    vertical-align: top;
+    text-align: center;
+    font-size: 0.75em;
+    height: auto;
+    width: 80%;
+    margin-top: -3px;
+    cursor: auto;
+}
+
+#dfsDiv #dfsPicture input, #dfsDiv #dfsPicture select {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    color: #000;
+}
+
+#dfsDiv #dfsLongtexts textarea {
+    width: 370px;
+    margin-bottom: 10px;
+    resize: none;
+    border: solid 1px #000;
+    background-color: rgba(192,192,192,.5);
+}
+
+#dfsDiv #dfsLongtexts input {
+    border-bottom-color: #fff;
+    width: 30px;
+    text-align: center;
+}
+
+#dfsDiv #dfsLongtexts textarea::-webkit-input-placeholder {
+    color: #0b3949;
+}
+
+#dfsDiv #dfsInventario .dfsQuantidade > input, #dfsDiv #dfsInventario .innerColumn > input {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-top: -3px;
+}
+
+#dfsDiv #dfsInventario .dfsNomeItem > input {
+    width: 230px;
+}
+
+#dfsDiv #dfsInventarioHeader input {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom-color: #fff;
+    width: 20px;
+    margin-top: -6px;
+}
+
+#dfsDiv #dfsAnotacoes input {
+    width: 140px;
+}
+
+#dfsDiv #dfsAnotacoes textarea {
+    width: 460px;
+    resize: none;
+    border: solid 1px #000;
+    background-color: rgba(192, 192, 192, .5);
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+#dfsDiv #periciasLista select {
+    width: 45px;
+}
+
+#dfsDiv #periciasLista .deleteButton {
+    width: 20px;
+}
+
+#dfsDiv span.innerColumn input[type=text] {
+    text-align: center;
+    width: 20px;
+    color: inherit;
+    padding-bottom: 2px;
+}
+
+#dfsDiv #periciasLista > p > span.sheetVariable > input[type=text] {
+    width: 85px;
+    vertical-align: middle;
+    margin-top: 1px;
+}
+
+#dfsTecnicas .deleteButton {
+    position: absolute;
+    right: 0px;
+    background-color: rgba(255,255,255,.5);
+}
+
+#dfsTecnicas .techAddonsContainer .deleteButton {
+    background-color: initial;
+    right: initial;
+    left: 0px;
+    width: 30px;
+    margin: 0px;
+    background-position-x: center;
+}
+
+#dfsDiv #dfsTecnicas .techAddonsContainer input {
+    width: 100px;
+    height: 20px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+#dfsTecnicas input::-webkit-input-placeholder, #dfsTecnicas textarea::-webkit-input-placeholder {
+    color: #0b3949;
+}
+
+#dfsDiv #dfsTecnicas .techName input {
+    width: 90%;
+    height: 21px;
+    margin-bottom: 3px;
+    border-bottom: solid 2px #000;
+}
+
+#dfsDiv #dfsTecnicas textarea {
+    width: 400px;
+    margin-bottom: 10px;
+    resize: none;
+    vertical-align: top;
+    background-color: rgba(192,192,192,.5);
+}
+
+#dfsDiv #dfsTecnicas .techBar textarea {
+    margin-top: 6px;
+    width: 520px;
+}
+
+#dfsDiv #dfsVantDesv .smallInput input {
+    width: 15px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#dfsDiv #dfsVantDesv .bigInput input {
+    width: 70%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#dfsDiv input[type=text] {
+    display: inline-block;
+    width: 50px;
+    margin-top: -1px;
+    height: 18px;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    background: none;
+    vertical-align: middle;
+    font-family: alegreya;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+}
+
+#dfsDiv textarea {
+    display: inline-block;
+    width: 50px;
+    min-height: 10px;
+    overflow: hidden;
+    border: solid 1px #000;
+    background-color: #fff;
+    vertical-align: top;
+    outline: none;
+    font-family: alegreya;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    background: none;
+}
+
+#dfsDiv select {
+    font-family: alegreya;
+}
+
+#dfsDiv #combatStatList input, #dfsDiv #testeLista input {
+    text-align: center;
+    width: 20px;
+    color: inherit;
+}
+
+/* Edit Inputs */
+
+/* Vantagens e Desvantagens */
+
+#dfsVantDesv > div.vantList > div > p:hover {
+    background-color: #d9d9d9;
+}
+
+#dfsVantDesv > div.vantList > div > p > b {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    color: #000;
+    font-size: 1.2em;
+    line-height: 30px;
+}
+
+#dfsVantDesv > div.vantList > div > p > span {
+    font-size: 0.9em;
+    line-height: 30px;
+}
+
+#dfsVantDesv > div.vantList > div > p > a.deleteButton {
+    background-image: url('img/dfs/fechar1-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+}
+
+#dfsVantDesv > div.vantList > div > p > a.deleteButton:hover {
+    background-image: url('img/dfs/fechar2-icon.png');
+    cursor: pointer;
+}
+
+#dfsVantDesv > div.vantList > div > p > a.deleteButton:active {
+    background-image: url('img/dfs/fechar1-icon.png');
+}
+
+/* Vantagens e Desvantagens END */
+
+
+/* TECNICAS TEMPORARIAS */
+
+/* ATAQUE */
+
+#dfsTecnicas > div.techAtaque > span.techName {
+    background-color: #b11e3b;
+}
+
+#dfsTecnicas > div.techAtaque > div.techMiddle {
+    background-color: #f69693;
+}
+
+#dfsTecnicas > div.techAtaque > div.techCusto > b, #dfsTecnicas > div.techAtaque > div.techCusto > span, #dfsTecnicas > div.techAtaque > div.techCusto > div {
+    color: #9a1c1f;
+}
+
+#dfsTecnicas > div.techAtaque > div.techCusto {
+    background-color: #f2737a;
+}
+
+#dfsTecnicas > div.techAtaque > div.techCusto:hover {
+    background-color: #b11e3b;
+}
+
+#dfsTecnicas > div.techAtaque > div.techEfeito > b, #dfsTecnicas > div.techAtaque > div.techEfeito > span {
+    color: #9a1c1f;
+}
+
+#dfsTecnicas > div.techAtaque > div.techEfeito {
+    background-color: #f69693;
+}
+
+#dfsTecnicas > div.techAtaque > div.techEfeito:hover {
+    background-color: #ee304e;
+}
+
+/* PASSIVA */
+
+#dfsTecnicas > div.techPassiva > span.techName {
+    background-color: #03b19c;
+}
+
+#dfsTecnicas > div.techPassiva > div.techMiddle {
+    background-color: #9cd6c9;
+}
+
+#dfsTecnicas > div.techPassiva > div.techCusto > b, #dfsTecnicas > div.techPassiva > div.techCusto > span, #dfsTecnicas > div.techPassiva > div.techCusto > div {
+    color: #025a70;
+}
+
+#dfsTecnicas > div.techPassiva > div.techCusto {
+    background-color: #68c7bd;
+}
+
+#dfsTecnicas > div.techPassiva > div.techCusto:hover {
+    background-color: #007883;
+}
+
+#dfsTecnicas > div.techPassiva > div.techEfeito > b, #dfsTecnicas > div.techPassiva > div.techEfeito > span {
+    color: #025a70;
+}
+
+#dfsTecnicas > div.techPassiva > div.techEfeito {
+    background-color: #9cd6c9;
+}
+
+#dfsTecnicas > div.techPassiva > div.techEfeito:hover {
+    background-color: #03b19c;
+}
+
+/* Especial */
+
+#dfsTecnicas > div.techEspecial > span.techName {
+    background-color: #f47a24;
+}
+
+#dfsTecnicas > div.techEspecial > div.techMiddle {
+    background-color: #fee36d;
+}
+
+#dfsTecnicas > div.techEspecial > div.techCusto > b, #dfsTecnicas > div.techEspecial > div.techCusto > span, #dfsTecnicas > div.techEspecial > div.techCusto > div {
+    color: #e64f25;
+}
+
+#dfsTecnicas > div.techEspecial > div.techCusto {
+    background-color: #ffcd55;
+}
+
+#dfsTecnicas > div.techEspecial > div.techCusto:hover {
+    background-color: #e85725;
+}
+
+#dfsTecnicas > div.techEspecial > div.techEfeito > b, #dfsTecnicas > div.techEspecial > div.techEfeito > span {
+    color: #e64f25;
+}
+
+#dfsTecnicas > div.techEspecial > div.techEfeito {
+    background-color: #ffe46e;
+}
+
+#dfsTecnicas > div.techEspecial > div.techEfeito:hover {
+    background-color: #f79036;
+}
+
+/* Estilo de Luta */
+
+#dfsTecnicas > div.techEdL > span.techName {
+    background-color: #8254a2;
+}
+
+#dfsTecnicas > div.techEdL > div.techMiddle {
+    background-color: #caa9d0;
+}
+
+#dfsTecnicas > div.techEdL > div.techCusto > b, #dfsTecnicas > div.techEdL > div.techCusto > span, #dfsTecnicas > div.techEdL > div.techCusto > div {
+    color: #453386;
+}
+
+#dfsTecnicas > div.techEdL > div.techCusto {
+    background-color: #ac87bd;
+}
+
+#dfsTecnicas > div.techEdL > div.techCusto:hover {
+    background-color: #692d8a;
+}
+
+#dfsTecnicas > div.techEdL > div.techEfeito > b, #dfsTecnicas > div.techEdL > div.techEfeito > span {
+    color: #453386;
+}
+
+#dfsTecnicas > div.techEdL > div.techEfeito {
+    background-color: #c9a8d0;
+}
+
+#dfsTecnicas > div.techEdL > div.techEfeito:hover {
+    background-color: #8255a2;
+}
+
+/* Outras coisas tecnicas */
+
+#dfsTecnicas > div > span.techName {
+    display: block;
+    width: 100%;
+    text-indent: 5px;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #fff;
+    line-height: 30px;
+}
+
+#dfsTecnicas > div > div.techMiddle {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: #414242;
+}
+
+#dfsTecnicas > div > div.techMiddle > div.techAddonsContainer {
+    width: 170px;
+    //position: absolute;
+    //top: 0px;
+    //left: 0px;
+    //bottom: 0px;
+    float: left;
+    position: relative;
+}
+
+#dfsTecnicas > div > div.techMiddle > div.techAddonsContainer > div {
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 1.5em;
+}
+
+#dfsTecnicas > div > div.techMiddle > div.techDesc {
+    margin-left: 170px;
+    padding-top: 6px;
+    font-size: 0.8em;
+}
+
+#dfsTecnicas > div > div.techMiddle > div.techDesc > b {
+    color: #414242;
+    text-transform: uppercase;
+}
+
+#dfsDiv #dfsTecnicas .addRow {
+    color: #000f8d;
+}
+
+#dfsDiv #dfsTecnicas .addRow:hover {
+    background-color: rgba(255,255,255,.3);
+}
+
+#dfsDiv #dfsTecnicas .addRow:active {
+    background-color: rgba(255,255,255,.1);
+}
+
+#dfsTecnicas > div > div.techBar {
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    line-height: 28px;
+    margin: 0px;
+}
+
+#dfsTecnicas > div > div.techBar > a {
+    width: 40px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+}
+
+#dfsTecnicas > div > div.techBar > a.techEfeitoIcon {
+    background-image: url('img/dfs/bonus-icon.png');
+}
+
+#dfsTecnicas > div > div.techBar > a.techCustoIcon {
+    background-image: url('img/dfs/custo-icon.png');
+}
+
+#dfsTecnicas > div > div.techBar > b {
+    text-transform: uppercase;
+    display: inline-block;
+    width: 65px;
+}
+
+#dfsTecnicas > div > div.techBar:hover > span, #dfsTecnicas > div > div.techBar:hover > b, #dfsTecnicas > div > div.techBar:hover > div {
+    color: #fff;
+}
+
+
+
+/* TECNICAS TEMPORARIAS */
+
+
+/* Inventario */
+
+#dfsInventarioHeader > p > a.bagIcon {
+    background-image: url('img/dfs/bag-icon.png');
+    width: 28px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -10px;
+}
+
+#dfsInventarioHeader > p.headerArea {
+    overflow: hidden;
+}
+
+#dfsInventarioHeader > p > span.innerColumns > span.innerColumn {
+    font-size: 0.6em;
+    text-align: center;
+    width: 40px;
+    border-left: solid 1px #fff;
+    float: left;
+}
+
+#dfsInventario > div p {
+    border: none;
+    line-height: 28px;
+    height: 28px;
+    overflow: hidden;
+}
+
+#dfsInventario > div > p:nth-child(0n+1) {
+    border-top: solid 1px #000;
+}
+
+#dfsInventario > div > div > p > span.dfsQuantidade {
+    padding-left: 28px;
+}
+
+#dfsInventario > div p > span.dfsQuantidade {
+    display: inline-block;
+    width: 28px;
+    background-color: #ebeaf2;
+    text-align: center;
+}
+
+#dfsInventario > div p > span.dfsNomeItem {
+    font-size: 0.9em;
+    padding-left: 10px;
+    line-height: 28px;
+    font-weight: bold;
+}
+
+#dfsInventario > div p:hover {
+    background-color: #d9d9d9;
+}
+
+#dfsInventario > div p.noWeight > span.dfsNomeItem {
+    color: #691e23;
+}
+
+#dfsInventario > div p.weight > span.dfsNomeItem {
+    color: #265f56;
+}
+
+#dfsInventario > div p > span.innerColumns {
+    height: 28px;
+    background-color: #ebeaf2;
+}
+
+#dfsInventario > div p > span.innerColumns > span.innerColumn {
+    font-size: 0.8em;
+    float: left;
+    text-align: center;
+    width: 40px;
+    border-left: solid 1px #fff;
+}
+
+#dfsInventario > div > addRow {
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+
+/* Inventario */
+
+
+/* Anotações */
+
+#dfsDiv #dfsAnotacoes > p {
+    line-height: 30px;
+    color: #000;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#dfsAnotacoes > p:hover {
+    background-color: #e6e6e6;
+}
+
+#dfsAnotacoes > p > b {
+    color: #000;
+}
+
+#dfsAnotacoes > p > a.deleteButton {
+    background-image: url('img/dfs/fechar1-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    margin-left: -10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Anotações */
+
+#dfsDiv .openClose:hover {
+    background-color: rgba(255,255,255,.2);
+    cursor: pointer;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#dfsDiv .openClose:active {
+    background-color: rgba(255,255,255,.1);
+}
+
+#dfsExpDiv {
+    margin-top: 2px;
+}
+
+#dfsExpDiv > a {
+    float: left;
+    font-size: 0.7em;
+    font-weight: bold;
+    margin-top: -3px;
+    width: 20%;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    color: #fff;
+    text-transform: uppercase;
+}
+#dfsExpDiv > div {
+    display: block;
+    height: 12px;
+    float: right;
+    width: 80%;
+    margin-bottom: 2px;
+}
+
+#dfsExpDiv .dfsBar.tinyBar {
+    height: 100%;
+    width: 90%;
+    margin: 0px;
+    margin-left: 5%;
+    padding: 0px;
+}
+
+#dfsExpDiv .dfsBar.tinyBar > p {
+    font-size: 0.7em;
+    line-height: 100%;
+    color: #fff;
+}
+
+#dfsExpDiv .dfsBar.tinyBar > a {
+    color: #fff;
+    font-size: 0.65em;
+    line-height: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    z-index: 2;
+    left: 2px;
+}
+
+#dfsExpDiv > div > p {
+    line-height: 12px;
+    font-size: 0.7em;
+    color: #fff;
+    text-indent: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#dfsExpDiv > div > p > a {
+    float: right;
+    margin-right: 5px;
+    margin-left: -100px;
+}
+
+#dfsDiv .dfsBar {
+    width: 90%;
+    margin-left: 5%;
+    overflow: hidden;
+    height: 15px;
+    margin-top: 7px;
+    border: solid 1px;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 3px;
+}
+
+#dfsDiv .dfsBar > p > img {
+    vertical-align: middle;
+}
+
+#dfsDiv .dfsBar > p {
+    height: 100%;
+    position: absolute;
+    right: 5px;
+    left: 5px;
+    top: 0px;
+    line-height: 15px;
+    font-weight: bold;
+    text-align: right;
+    z-index: 2;
+}
+
+#dfsDiv .dfsBar.yellowBar {
+    border-color: #ebf304;
+}
+
+#dfsDiv .dfsBar.yellowBar > .barProgress {
+    background-color: #ff932f;
+}
+
+#dfsDiv .dfsBar.purpleBar {
+    border-color: #fd7ffc;
+}
+
+#dfsDiv .dfsBar.purpleBar > .barProgress {
+    background-color: #9b48fa;
+}
+
+#dfsDiv .dfsBar.redBar {
+    border-color: #ef494b;
+}
+
+#dfsDiv .dfsBar.redBar > .barProgress {
+    background-color: #db3136;
+}
+
+#dfsDiv .dfsBar.blueBar {
+    border-color: #00ffd8;
+}
+
+#dfsDiv .dfsBar.blueBar > .barProgress {
+    background-color: #00b2ca;
+}
+
+#dfsDiv .dfsBar > .barProgress {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    z-index: 1;
+}
+
+#dfsDiv .antiPaddingTop {
+    margin-top: -5px;
+}
+
+#dfsOpenClose {
+    width: 5%;
+    overflow: hidden;
+    height: 100%;
+    padding-top: 5px;
+    margin-top: -5px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    color: #FFF;
+    font-size: 1.2em;
+}
+
+#dfsOpenClose:hover {
+    cursor: pointer;
+    background-color: rgba(255,255,255,.20);
+}
+
+#dfsOpenClose:active {
+    background-color: rgba(255,255,255,.10);
+}
+
+#dfsCommonInfo {
+    margin-left: 5%;
+    width: 95%;
+    height: 40px;
+    line-height: 20px;
+}
+
+#dfsCommonInfo p {
+    overflow: hidden;
+    font-size: 0.9em;
+    height: 20px;
+    line-height: 20px;
+    color: #FFF;
+}
+
+#dfsExtraInfo p {
+    color: #FFF;
+    font-size: 0.9em;
+    line-height: 20px;
+}
+
+#dfsDiv .oneFourth {
+    float: left;
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+#dfsDiv .oneHalf {
+    float: left;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+
+#dfsDiv .threeFourths {
+    float: left;
+    display: inline-block;
+    width: 75%;
+    height: 100%;
+}
+
+#dfsExtraInfo {
+    margin-left: 5%;
+    width: 95%;
+    position: relative;
+}
+
+#dfsPicture {
+    min-height: 1px;
+}
+
+#dfsPicture > img {
+    max-width: 90%;
+    border: solid 1px #000;
+    height: auto;
+    width: auto;
+}
+
+#dfsPassRound {
+    float: right;
+    height: 26px;
+    padding-top: 4px;
+    width: 45px;
+    padding-right: 30px;
+    background-color: #843057;
+    overflow: hidden;
+    font-size: 0.6em;
+    line-height: 12px;
+    padding-left: 5px;
+    display: block;
+    background-image: url('img/dfs/ff-icon.png');
+    background-repeat: no-repeat;
+    background-position-x: 55px;
+    background-position-y: 6px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#dfsPassRound:hover {
+    cursor: pointer;
+    background-color: #b34176;
+}
+
+#dfsPassRound:active {
+    background-color: #9f3c6a;
+}
+
+#dfsDiv .addRow {
+    line-height: 30px;
+    display: block;
+    height: 30px;
+    width: 100%;
+    text-indent: 10px;
+    color: #006cff;
+}
+
+#dfsDiv .addRow:hover {
+    cursor: pointer;
+    background-color: #d1f5ea;
+}
+
+#dfsDiv .addRow:active {
+    background-color: #e0f8f1;
+}
+
+#dfsDiv div.marginTop {
+    margin-top: 7px;
+}
+
+#dfsDiv div.marginBottom {
+    margin-bottom: 7px;
+}
+
+#dfsDiv #dfsLastDiv {
+    display: block;
+    clear: both;
+    height: 40px;
+    width: 100px;
+}
+
+#dfsDiv {
+    width: 100%;
+    display: block;
+    font-family: alegreya;
+    padding-bottom: 100px;
+}
+
+#dfsDiv .paddingRight {
+    padding-right: 10px;
+}
+
+#dfsDiv .paddingTop {
+    padding-top: 5px;
+}
+
+#dfsDiv .paddingBottom {
+    padding-bottom: 5px;
+}
+
+#dfsDiv > div {
+    float: left;
+}
+
+#dfsDiv > div.clearLeft {
+    clear: left;
+}
+
+#dfsDiv > div.clearRight {
+    clear: right;
+}
+
+#dfsDiv > div.clearBoth {
+    clear: both;
+}
+
+#dfsDiv div.fullWidth {
+    width: 100%;
+    display: block;
+}
+
+#dfsDiv div.halfWidth {
+    width: 49%;
+    display: inline-block;
+}
+
+#dfsDiv div.thirdWidth {
+    width: 32%;
+    display: inline-block;
+}
+
+#dfsDiv div.thirdWidthComp {
+    width: 34%;
+    display: inline-block;
+}
+
+#dfsDiv div.thirdWidthNoMargin {
+    width: 33%;
+    display: inline-block;
+}
+
+#dfsDiv div.thirdWidthNoMarginComp {
+    width: 34%;
+    display: inline-block;
+}
+
+#dfsDiv div.twoThirdsWidth {
+    width: 67%;
+    display: inline-block;
+}
+
+#dfsDiv .thirdMargin {
+    width: 1%;
+    display: inline-block;
+    height: 1px;
+}
+
+#dfsDiv .halfMargin {
+    width: 2%;
+    display: inline-block;
+}
+
+#atributosTesteSum:before, #periciasSum:before {
+    content: '(';
+}
+#atributosTesteSum:after, #periciasSum:after {
+    content: ')';
+}
+
+#dfsDiv p {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#dfsTopThingy b {
+    color: #ccff32;
+}
+
+#combatStatList .hoverTooltip {
+    display: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.8em;
+    left: 0px;
+    top: 100%;
+    background-color: inherit;
+    text-align: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+#combatStatList > p:hover > .hoverTooltip {
+    display: block;
+}
+
+#combatStatList > p {
+    padding-left: 10px;
+    line-height: 30px;
+    height: 30px;
+    overflow: visible;
+    position: relative;
+}
+
+#combatStatList > p > span.floatRight > span.innerColumn:nth-child(2n), #combatStatList > p > span.floatRight > span.innerColumn.rd {
+    background-color: rgba(44,44,44,.25);
+}
+
+#dfsDiv .headerArea {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 30px;
+    height: 30px;
+    color: #FFF;
+    padding-left: 10px;
+}
+
+#dfsDiv .floatRight {
+    float: right;
+}
+#dfsDiv .floatLeft {
+    float: left;
+}
+
+#dfsDiv .innerColumns {
+    float: right;
+    height: 30px;
+    overflow: hidden;
+}
+
+#dfsDiv .innerColumn {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+}
+
+#dfsDiv .testeStamina .innerColumn {
+    width: auto;
+    margin-right: 5px;
+}
+
+#dfsDiv .innerColumn > img {
+    display: block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+}
+
+#dfsDiv .combatAM, #dfsDiv .testeFor {
+    color: #6b078d;
+}
+
+#dfsDiv .combatAM:hover, #dfsDiv .testeFor:hover {
+    background-color: #ebd9f1;
+}
+
+#dfsDiv .combatArma, #dfsDiv .testeCon, #dfsDiv .testeStamina {
+    color: #c71c19;
+}
+
+#dfsDiv .combatArma:hover, #dfsDiv .testeCon:hover, #dfsDiv .testeStamina:hover {
+    background-color: #f4bcbb;
+}
+
+#dfsDiv .combatTech, #dfsDiv .testeAgi {
+    color: #007d4c;
+}
+
+#dfsDiv .combatTech:hover, #dfsDiv .testeAgi:hover {
+    background-color: #cefbea;
+}
+
+#dfsDiv .combatEle, #dfsDiv .testeCar {
+    color: #9f4b01;
+}
+
+#dfsDiv .combatEle:hover, #dfsDiv .testeCar:hover {
+    background-color: #fde3b2;
+}
+
+#dfsDiv .combatMag, #dfsDiv .testeSab {
+    color: #1c2a8f;
+}
+
+#dfsDiv .combatMag:hover, #dfsDiv .testeSab:hover {
+    background-color: #d9dcf1;
+}
+
+#dfsDiv .combatLid, #dfsDiv .testeInt, #dfsDiv .testeCura {
+    color: #1f7001;
+}
+
+#dfsDiv .combatLid:hover, #dfsDiv .testeInt:hover, #dfsDiv .testeCura:hover {
+    background-color: #daf3d1;
+}
+
+#dfsDiv hr.tinyHR {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    border-bottom: #333745 solid 1px;
+}
+
+#dfsDiv .combatRDG, #dfsDiv .testeFdV {
+    color: #2a2a2a;
+}
+
+#dfsDiv .combatRDG:hover, #dfsDiv .testeFdV:hover {
+    background-color: #e3e3e3;
+}
+
+#dfsDiv .testeNA {
+    color: #656565;
+}
+
+#dfsDiv .testeNA:hover {
+    background-color: #c6c6c6;
+}
+
+#dfsDiv .combatSdC {
+    color: #863200;
+}
+
+#dfsDiv .combatSdC:hover {
+    background-color: #feffb7;
+}
+
+#dfsDiv #dfsSdCNivel, #dfsDiv #dfsResistenciaNivel {
+    text-align: center;
+    width: 60px;
+}
+
+#dfsDiv .combatRes {
+    color: #4b018a;
+}
+
+#dfsDiv .combatRes:hover {
+    background-color: #d5c6ff;
+}
+
+#dfsDiv .combatDef {
+    color: #0d7f76;
+}
+
+#dfsDiv .combatDef:hover {
+    background-color: #ccefec;
+}
+
+#dfsDiv .combatAtk {
+    color: #6d032b;
+}
+
+#dfsDiv .combatAtk:hover {
+    background-color: #eeccd5;
+}
+
+#dfsDiv .bgDefense {
+    background-color: #e2e5eb;
+}
+
+#testeLista > p {
+    line-height: 30px;
+    height: 30px;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+#testeLista > div.equipButton {
+    height: 30px;
+    overflow: hidden;
+}
+
+#testeLista > div.equipButton.toggled {
+    height: 40px;
+    margin-bottom: -10px;
+    background-color: #FFF;
+}
+
+#testeLista > div.equipButton > p {
+    line-height: 12px;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding: 3px;
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#testeLista > div.equipButton:hover {
+    cursor: pointer;
+}
+
+#testeLista > div.equipButton.toggled:hover {
+    cursor: default;
+}
+
+#testeLista > div.equipButton.arma.toggled + * + div.equipButton.used:hover {
+    cursor: default;
+}
+
+#testeLista > div.equipButton.armadura {
+    color: #00378a;
+}
+
+#testeLista > div.equipButton.armadura:hover, #testeLista > div.equipButton.armadura.toggled {
+    background-color: #9bf8c4;
+}
+
+#testeLista > div.equipButton.escudo {
+    color: #6809b8;
+}
+
+#testeLista > div.equipButton.escudo:hover, #testeLista > div.equipButton.escudo.toggled {
+    background-color: #c8b3fa;
+}
+
+#dfsDiv .escudoEquipBg {
+    background-color: #c8b3fa;
+    color: #6809b8;
+}
+
+#dfsDiv .escudoEquipBg > *:nth-child(2n) {
+    background-color: #d3c2fb;
+}
+
+#dfsDiv .armaduraEquipBg {
+    background-color: #9bf8c4;
+    color: #00378a;
+}
+
+#dfsDiv .armaduraEquipBg > *:nth-child(2n) {
+    background-color: #aff9d0;
+}
+
+#testeLista > div.equipButton.arma {
+    color: #8a0000;
+}
+
+#testeLista > div.equipButton.arma:hover, #testeLista > div.equipButton.arma.toggled {
+    background-color: #f6ce77;
+}
+
+#testeLista > div.equipButton.used {
+    color: #5d5d5d;
+}
+
+#testeLista > div.equipButton.used:hover, #testeLista > div.equipButton.arma.toggled + * + div.equipButton.used {
+    background-color: #c9c9c9;
+}
+
+
+
+#periciasLista > p, #periciasTD > p {
+    line-height: 30px;
+    height: 30px;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+#periciasLista .deleteButton, #dfsTecnicas .deleteButton, #dfsInventario .deleteButton {
+    background-image: url('img/dfs/fechar1-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 30px;
+    margin-left: -10px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#dfsInventario .deleteButton {
+    margin: 0px;
+}
+
+#periciasLista .deleteButton:hover, #dfsAnotacoes > p > a.deleteButton:hover, #dfsTecnicas .deleteButton:hover, #dfsInventario .deleteButton:hover {
+    background-image: url('img/dfs/fechar2-icon.png');
+    cursor: pointer;
+}
+
+#periciasLista .deleteButton:active, #dfsAnotacoes > p > a.deleteButton:active, #dfsTecnicas .deleteButton:active, #dfsInventario .deleteButton:active {
+    background-image: url('img/dfs/fechar1-icon.png');
+}
+
+#dfsDiv.character .typedBG {
+    background-color: #333745;
+}
+
+#dfsDiv.nonplayer .typedBG {
+    background-color: #734443;
+}
+
+#dfsDiv .typedHeader {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#dfsDiv.character .typedHeader {
+    color: #00ffea;
+}
+
+#dfsDiv.nonplayer .typedHeader {
+    color: #ffb500;
+}
+
+#dfsDiv .whiteBG {
+    background-color: #FFF;
+}
+
+#dfsDiv .centered {
+    text-align: center;
+}
+
+#dfsDiv #dfsEquipList > div {
+    padding: 5px;
+    border-top: solid 1px #000;
+}
+
+#dfsDiv #dfsEquipList > div:hover {
+    background-color: #dfdfdf;
+}
+
+#dfsDiv #dfsEquipList > div b {
+    color: #000;
+}
+
+#dfsDiv #dfsEquipList input {
+    width: 300px;
+}
+
+#dfsDiv #dfsEquipList textarea {
+    width: 400px;
+    margin-top: 8px;
+    resize: vertical;
+}
+
+#dfsDiv #dfsEquipList a.deleteButton {
+    float: left;
+}
+
+#dfsEquipList a.putonButton {
+    color: #4034d7;
+    font-weight: bold;
+}
+
+#dfsEquipList a.putonButton:hover {
+    cursor: pointer;
+    color: #574aff;
+}
+
+#dfsEquipList a.putonButton:active {
+    color:#3126ba;
+}
+
+
+
+
+
+
+
+#dfsDiv a.deleteButton {
+    background-image: url('img/dfs/fechar1-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#dfsDiv a.deleteButton:hover {
+    background-image: url('img/dfs/fechar2-icon.png');
+    cursor: pointer;
+}
+
+#dfsDiv a.deleteButton:active {
+    background-image: url('img/dfs/fechar1-icon.png');
+}

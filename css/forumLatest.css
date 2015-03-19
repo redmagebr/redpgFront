@@ -1,31 +1,43 @@
-#forumRecent .imageset {
-    background-image: url("http://forum.redpg.com.br/styles/prosilver/theme/images/icon_post_target.gif");
-    width: 11px;
-    height: 9px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: -5px;
-    overflow: hidden;
+#forumRecent > ul {
+    list-style-type: none;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-padding-start: 0px;
+    font-weight: bold;
 }
 
-#forumRecent > p:hover {
-    background-color: #e5e5e5;
+#forumRecent > ul > li {
+    padding: 5px;
+    border-bottom: 1px solid #000;
 }
 
-/*
-<p>
-    <a class="topictitle" href="http://forum.redpg.com.br/viewtopic.php?f=17&amp;p=4&amp;sid=56f28431b4fe86896216fa75972d72b9#p4" target="_BLANK">
-        <span class="imageset icon_post_target" title="Post">
-            Post
-        </span>
-        Regras para procurar membros
-    </a>
-    &nbsp;&nbsp;by 
-    <a href="http://forum.redpg.com.br/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=56f28431b4fe86896216fa75972d72b9" style="color: #AA0000;" 
-       class="username-coloured" target="_BLANK">
-        Raven
-    </a>
-    &nbsp;&nbsp;Fri Mar 13, 2015 6:14 pm
-</p>
-*/
+#forumRecent > ul > li:last-child {
+    border-bottom: none;
+}
 
+#forumRecent > ul > li:hover {
+    background-color: #e1e1e1;
+}
+
+/*<div class="selectable" id="forumRecent">
+    <ul class="DataList Discussions">
+        <li id="Discussion_3" class="Item Unread ItemDiscussion">
+           <span class="Options"></span>
+            <div class="ItemContent Discussion">
+                <div class="Title">
+                    <a href="http://forum.redpg.com.br/index.php?p=/discussion/3/segundo-teste">Segundo Teste</a>
+                </div>
+                <div class="Meta Meta-Discussion">
+                    <span class="MItem LastCommentBy">
+                        Started by
+                        <a href="/index.php?p=/profile/3/Raven">Raven</a>
+                    </span>
+                    <span> - </span>
+                    <span class="MItem Category Category-mesas">
+                        <a href="http://forum.redpg.com.br/index.php?p=/categories/mesas">Mesas (Português - Brasil)</a>
+                    </span>     
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>*/

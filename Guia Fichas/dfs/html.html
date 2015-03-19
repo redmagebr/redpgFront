@@ -1,0 +1,882 @@
+<div id="dfsDiv" class="character unselectable">
+    <div id="dfsTopThingy" class="typedBG fullWidth marginBottom paddingTop paddingBottom selectable" style="position: relative">
+
+        <a class="unselectable" id="dfsOpenClose" onclick="$('#dfsExtraInfo').toggle(); $(this).text($('#dfsExtraInfo').is(':visible') ? '(-)' : '(+)');">(+)</a>
+
+        <div id="dfsCommonInfo">
+            <div class="oneFourth centered selectable">
+                <p id='dfsNome' class="typedHeader sheetName">Nome</p>
+                <p><b>Nível <span id='NivelAtual'>3</span></b></p>
+            </div>
+            <div class="oneFourth selectable">
+                <p class='sheetVariable' data-type='text' data-id='Arquetipo' data-placeholder='Arquétipo'>Arquetipo</p>
+                <p>
+                    <b>Raça:</b>
+                    <span class="sheetVariable" data-type='text' data-id='Raca'>Raça</span>
+                </p>
+            </div>
+            <div class="oneFourth selectable">
+                <p>
+                    <b>Jogador: </b>
+                    <span class="sheetVariable" data-type='text' data-id='Jogador'>Jogador</span>
+                </p>
+                <p>
+                    <b>Idade: </b>
+                    <span class="sheetVariable" data-type='text' data-id='Idade'>Idade</span>
+                </p>
+            </div>
+            <div class="oneFourth unselectable">
+                <div id="dfsExpDiv" class="oneHalf">
+                    <a>XP</a>
+                    <div>
+                        <div class="dfsBar tinyBar yellowBar">
+                            <a>Atual</a>
+                            <p id='dfsExpAtual'>
+                                120
+                            </p>
+                            <span id="dfsExpAtualBar" class="barProgress" style="width: 40%;"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="dfsBar tinyBar purpleBar">
+                            <a>Total</a>
+                            <p id='dfsExpTotal'>
+                                300
+                            </p>
+                            <span id="dfsExpTotalBar" class="barProgress" style="width: 93.75%;"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            Lv up <a id="dfsLevelupXP">320</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="oneHalf antiPaddingTop">
+                    <div class="dfsBar redBar">
+                        <p>
+                            <img src="img/dfs/heart-icon.png" />
+                            <span id="dfsHPAtual">10</span>/<span id="dfsHPMaximo">10</span>
+                        </p>
+                        <span id="dfsHPBar" class="barProgress" style="width: 50%;"></span>
+                    </div>
+                    <div class="dfsBar blueBar">
+                        <p>
+                            <img src="img/dfs/energy-icon.png" />
+                            <span id="dfsMPAtual">40</span>/<span id="dfsMPMaximo">40</span>
+                        </p>
+                        <span id="dfsMPBar" class="barProgress" style="width: 75%;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dfsExtraInfo" class="paddingTop" style="display: none;">
+            <div id="dfsPicture" class="oneFourth centered unselectable sheetVariable" data-type="image" data-id="Avatar" data-img='1'>
+                Imagem
+            </div>
+            <div id="dfsLongtexts" class="threeFourths">
+                <p>
+                    <b>Objetivo:</b>
+                    <span class="sheetVariable" data-type="longtext" data-autoresize="1" data-id="Objetivo" data-placeholder="Objetivo atual do personagem">Objetivo</span>
+                </p>
+                <p>
+                    <b>Aparência: </b>
+                    <span class="sheetVariable" data-type="longtext" data-autoresize="1" data-id="Aparencia" data-placeholder="Aparência do personagem">Aparência</span>
+                </p>
+                <p>
+                    <b>Personalidade: </b>
+                <span class="sheetVariable" data-type="longtext" data-autoresize="1" data-id="Personalidade" data-placeholder="Personalidade do personagem">Personalidade</span>
+                </p>
+                <p>
+                    <b>HP:</b>
+                    <span class="sheetVariable" data-id="HPAtual" data-type="integer" data-default="10">Atual</span>/<span class="sheetVariable" data-id="HPMaximo" data-type="integer" data-default="10">Maximo</span>
+                    &nbsp; &nbsp;
+                    <b>MP:</b>
+                    <span class="sheetVariable" data-id="MPAtual" data-type="integer" data-default="40">Atual</span>/<span class="sheetVariable" data-id="MPMaximo" data-type="integer" data-default="40">Maximo</span>
+                    &nbsp; &nbsp;
+                    <b>Experiência:</b>
+                    <span class="sheetVariable" data-id="Exp" data-type="integer" data-default="20">Exp</span>
+                    &nbsp; &nbsp; &nbsp;
+                    <a id="rulesLink" onclick="window.app.ui.navigator.navigate('http://rules.redpg.com.br')">
+                        Abrir website de regras
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="editableOnly" style="position: relative; width: 100%">
+    
+        <div class="clearLeft fullWidth typedBG">
+            <p class="headerArea">
+                Ferramentas
+                <a id="dfsFerramentasOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsFerramentas').toggle(); $(this).text($('#dfsFerramentas').is(':visible') ? '(-)' : '(+)');">
+                    (+)
+                </a>
+            </p>
+        </div>
+
+        <div id="dfsFerramentas" class="clearLeft fullWidth whiteBG paddingBottom paddingTop" style="display: none">
+            <input type="button" id="dfsHealAll" value="Curar Completamente" class="floatRight" />
+            <form id='dfsCalculadoraMP' onsubmit='return false;'>
+                <p>
+                    <input id="dfsMPForm" type="text" placeholder="Alterar MP" />
+                    <input id="dfsMPMotivo" type="text" placeholder="Motivo" />
+                    <input type="submit" value='Somar ao MP'/>
+                </p>
+            </form>
+
+            <hr />
+            
+            <input type="button" id="dfsHealButton" value="Curar Completamente (Sem devolver Stamina)" class="floatRight" />
+            <form id='dfsCalculadoraExp' onsubmit='return false;'>
+                <p>
+                    <input id="dfsExpForm" type="text" placeholder="Alterar Exp" />
+                    <input id="dfsExpMotivo" type="text" placeholder="Motivo" />
+                    <input type="submit" value='Somar à Exp' />
+                </p>
+            </form>
+
+            <hr />
+            <form id='dfsCalculadoraDano' onsubmit="return false;">
+                <p>
+                    <input id="dfsDanoForm" type="text" placeholder="Dano" />
+                    <input id="dfsDanoMotivo" type="text" placeholder="Motivo" />
+                    <input id="dfsDanoPercent" type="text" placeholder="Dano %" />
+                    <input id="dfsDanoPenetration" type="text" placeholder="Penetração %" />
+                </p>
+                <p>
+                    <b>Tipo:</b>
+                    <input id="damageAM" type="checkbox" name="dfsDamageType" /><label for="damageAM">0 - Artes Marciais </label>
+                    <input id="damageAR" type="checkbox" name="dfsDamageType" /><label for="damageAR">1 - Arma </label>
+                    <input id="damageTC" type="checkbox" name="dfsDamageType" /><label for="damageTC">2 - Tecnologia </label>
+                    <input id="damageEL" type="checkbox" name="dfsDamageType" /><label for="damageEL">3 - Elemento </label>
+                    <input id="damageMG" type="checkbox" name="dfsDamageType" /><label for="damageMG">4 - Magia </label>
+                    <input id="damageLD" type="checkbox" name="dfsDamageType" /><label for="damageLD">5 - Liderança </label>
+                </p>
+                <p style='margin-left: 35px;'>
+                    <input id='damageDeal' type='radio' name='damageKind' checked /><label for='damageDeal'>Dano</label>
+                    <input id='damageHeal' type='radio' name='damageKind' /><label for='damageHeal'>Cura (H)</label>
+                    <input id='damageHealStamina' type='radio' name='damageKind' /><label for='damageHealStamina'>Cura e gasta stamina (HS)</label>
+                    <input id="damageClear" type="checkbox" name="damageClear" /><label for="damageClear">Limpar ao enviar</label>
+                    <input id="dfsSaveWhenDone" type="checkbox" checked /><label for="dfsSaveWhenDone">Salvar ao terminar</label>
+                </p>
+                <p style="margin-left: 35px">
+                    <input id="dfsAnnounceWhenDone" type="checkbox" checked /><label for="dfsAnnounceWhenDone">Anunciar mudança de HP no chat</label>
+                    <input type="submit" value='Causar dano' />
+                </p>
+            </form>
+
+            <p>
+                <a id='proStyleButton' onclick="$('#proStyle').toggle();">Mostrar dicas</a>
+            </p>
+
+            <p id='proStyle' style='display: none'>
+                <b>Pro Style:</b>
+                Adicionar números antes de um hífen  (como em 01-10) é eqivalente à marcar as caixas de tipo acima. A presença do hífen marca os números antes dele como tipos e faz o sistema ignorar os tipos marcados.<br />
+                Adicionar H no dano faz o número encontrado se tornar uma Cura. Adicionar S no dano faz ele retirar um ponto de Stamina. Então HS cura uma certa quantidade e tira um ponto de stamina no fim.
+            </p>
+        </div>
+    </div>
+
+    <div class="clearLeft thirdWidthComp typedBG marginTop">
+        <p class="headerArea">
+            Combate
+            <span class="innerColumns">
+                <span class="innerColumn">
+                    <img src="img/dfs/sword-icon.png" />
+                </span>
+                <span class="innerColumn">
+                    <img src="img/dfs/shield-icon.png" />
+                </span>
+            </span>
+        </p>
+    </div>
+
+    <div class="thirdMargin marginTop"></div>
+
+    <div class="thirdWidth typedBG marginTop" title="Considerando os iniciais de 2, todos os personagens possuem 18 pontos para dividir entre os atributos-teste. Bônus raciais acabam jogando a maioria do personagens para 20 pontos, com vantagens e desvantagens podendo alterar isso um pouco mais.">
+        <p class="headerArea">
+            Atributos-teste
+            <span class="floatRight paddingRight" id='sumAtributosTeste'>
+                (10)
+            </span>
+        </p>
+    </div>
+
+    <div class="thirdMargin marginTop"></div>
+
+    <div class="thirdWidth typedBG marginTop" title="No nível 1, personagens possuem 18 pontos para espalhar entre perícias. Isso pode ser alterado por outras coisas, como vantagens ou desvantagens.">
+        <p class="headerArea">
+            Perícias
+            <a id="dfsPericiasSort" class="sortButton button editOnly" title="Reordena a lista."></a>
+            <span id='SumPericias' class="floatRight paddingRight">
+                (0)
+            </span>
+        </p>
+    </div>
+
+    <div id="combatStatList" class="clearLeft thirdWidthComp whiteBG selectable">
+        <p class="combatAM">
+                Artes Marciais
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='ArtesMarciaisNivel' data-default='0'>
+                        1
+                    </span>
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='ArtesMarciaisRD' data-default='0'>
+                        2
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatArma">
+                Arma
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='ArmaNivel' data-default='0'>
+                        1
+                    </span>
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='ArmaRD' data-default='0'>
+                        2
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatTech">
+                Tecnologia
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='TecnologiaNivel' data-default='0'>
+                        1
+                    </span>
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='TecnologiaRD' data-default='0'>
+                        2
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatEle">
+                Elemento
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='ElementoNivel' data-default='0'>
+                        1
+                    </span>
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='ElementoRD' data-default='0'>
+                        2
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatMag">
+                Magia
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='MagiaNivel' data-default='0'>
+                        1
+                    </span>
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='MagiaRD' data-default='0'>
+                        2
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatLid">
+                Liderança
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='LiderancaNivel' data-default='0'>
+                        1
+                    </span>
+                    <span class="innerColumn sheetVariable" data-type='integer' data-id='LiderancaRD' data-default='0'>
+                        2
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatRDG">
+                Resistência Geral
+                <span class="innerColumns">
+                    <span class="innerColumn rd sheetVariable" data-id="GeralRD" data-type="integer" data-default="0">
+                        0
+                    </span>
+                </span>
+            </p>
+            <hr class="tinyHR" />
+            <p class="combatSdC" title="Sabedoria de Combate recebe metade de toda a experiência gasta em Atributos de Dano e também metade de toda a experiência não gasta.">
+                Sabedoria de Combate
+                <span id='dfsSdCNivel' class="innerColumns centered">
+                    4 (105 xp)
+                </span>
+                <span id='dfsSdCExp' class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatRes" title="Resistência é igual à metade da sua Sabedoria de Combate e é usada no lugar de atributos mais baixos do que ela como Redução de Dano.">
+                Resistência
+                <span id='dfsResistenciaNivel' class="innerColumns centered">
+                    0 (0.5)
+                </span>
+            </p>
+            <hr class="tinyHR" />
+            <p class="combatDef">
+                Defesa
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-id="DefesaNivel" data-type="integer" data-default="0">
+                        0
+                    </span>
+                    <span class="innerColumn" style="background: none;">
+                        <img src="img/dfs/def-icon.png" />
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+            <p class="combatAtk">
+                Ataque
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-id="AtaqueNivel" data-type="integer" data-default="0">
+                        0
+                    </span>
+                    <span class="innerColumn" style="background: none;">
+                        <img src="img/dfs/atk-icon.png" />
+                    </span>
+                </span>
+                <span class="hoverTooltip">
+                    0/10 Exp
+                </span>
+            </p>
+    </div>
+
+    <div class="thirdMargin"></div>
+
+    <div id="testeLista" class="thirdWidth whiteBG selectable">
+        <p class="testeFor">
+				<a class="diceButton button viewOnly"></a>
+                Força
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="Forca" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <p class="testeCon">
+				<a class="diceButton button viewOnly"></a>
+                Constituição
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="Constituicao" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <p class="testeAgi">
+				<a class="diceButton button viewOnly"></a>
+                Agilidade
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="Agilidade" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <p class="testeCar">
+				<a class="diceButton button viewOnly"></a>
+                Carisma
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="Carisma" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <p class="testeSab">
+				<a class="diceButton button viewOnly"></a>
+                Sabedoria
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="Sabedoria" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <p class="testeInt">
+				<a class="diceButton button viewOnly"></a>
+                Inteligência
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="Inteligencia" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <p class="testeFdV">
+				<a class="diceButton button viewOnly"></a>
+                Força de Vontade
+                <span class="floatRight">
+                    <span class="innerColumn sheetVariable" data-id="ForcaDeVontade" data-type="integer" data-default="2">
+                        0
+                    </span>
+                </span>
+            </p>
+            <hr class="tinyHR" />
+            <p class="testeStamina" title="A quantidade máxima de stamina de um personagem é (Sabedoria de Combate + 2). Esse limite pode ser ultrapassado por se alimentar bem.">
+                Stamina
+                <span class="floatRight">
+                    <span class="innerColumn">
+                        <span class="sheetVariable" data-id="StaminaAtual" data-type="integer" data-defaul="0">3</span>/<span id="dfsStaminaMaxima">3</span>
+                    </span>
+                </span>
+            </p>
+            <p class="testeCura" title="A quantidade que cada stamina cura é igual a (Sabedoria de Combate + 2)">
+                <a id="DFShealDiceButton" class="diceButton button viewOnly"></a>
+                Cura
+                <span class="floatRight">
+                    <span class="innerColumn" id="dfsCura">
+                        3
+                    </span>
+                </span>
+            </p>
+            <p class="testeAgi" title="A iniciativa é 1d10 + (Agilidade / 2) + Nível + Bônus especiais">
+                <a id="DFSIniciativaButton" class="diceButton button viewOnly"></a>
+                Iniciativa
+                <span class="floatRight">
+                    <span class="innerColumn" style="width: auto;margin-right: 2px;">
+                        <span id="dfsIniciativaValue">1</span>
+                        +
+                        <span class="sheetVariable" data-id="iniciativaBonus" data-type="integer" data-default="0"></span>
+                    </span>
+                </span>
+            </p>
+            
+            <p class="typedBG headerArea" style="display: none">
+                Equipamentos
+                <span class="innerColumns">
+                    <img style="margin-right: 3px;" src="img/dfs/equips-icon.png" />
+                </span>
+            </p>
+            <hr class="tinyHR"  style="display: none" />
+            <div class="equipButton arma thirdWidthNoMargin floatLeft" style="display: none">
+                <p id="dfsMao1" class="sheetVariable" data-id="nomeMao1" data-editable="0" data-type="text">Mao 1</p>
+            </div>
+            <div class="equipButton armadura toggled thirdWidthNoMargin floatLeft" style="display: none">
+                <p id="dfsArmadura" class="sheetVariable" data-id="nomeArmadura" data-editable="0" data-type="text">Mao 1</p>
+            </div>
+            <div class="equipButton escudo thirdWidthNoMarginComp floatLeft" style="display: none">
+                <p id="dfsMao2" class="sheetVariable" data-id="nomeMao2" data-editable="0" data-type="text">Mao 2</p>
+            </div>
+    </div>
+
+    <div class="thirdMargin"></div>
+    <div class="floatRight thirdWidth whiteBG">
+        <div id="periciasLista" class="sheetList" data-id="Pericias"
+                 data-default='[{"Attribute":0,"Name":"Atletismo","Valor":0},{"Attribute":2,"Name":"Acrobacia","Valor":0},{"Attribute":2,"Name":"Furtividade","Valor":0},{"Attribute":2,"Name":"Prestidigitação","Valor":0},{"Attribute":3,"Name":"Atuação","Valor":0},{"Attribute":3,"Name":"Blefar","Valor":0},{"Attribute":3,"Name":"Diplomacia","Valor":0},{"Attribute":3,"Name":"Intimidação","Valor":0},{"Attribute":4,"Name":"Discernir","Valor":0},{"Attribute":4,"Name":"Natureza","Valor":0},{"Attribute":4,"Name":"Percepção","Valor":0},{"Attribute":4,"Name":"Socorro","Valor":0},{"Attribute":5,"Name":"Arcanismo","Valor":0},{"Attribute":5,"Name":"História","Valor":0},{"Attribute":5,"Name":"Religião","Valor":0},{"Attribute":5,"Name":"Sistemas","Valor":0},{"Attribute":5,"Name":"Veículos","Valor":0}]' >
+            <p class="testeFor">
+                <a class="deleteButton deleteRow"></a>
+				<a class="viewOnly diceButton button"></a>
+                (<span class="sheetVariable" data-id="Attribute" data-type="select" data-options="For;Con;Agi;Car;Sab;Int;FdV;N/A" data-default="0">For</span>)
+                <span class="sheetVariable" data-id="Name" data-type="text" data-placeholder="Perícia">Nome</span>
+                <span class="innerColumns">
+                    <span class="innerColumn sheetVariable" data-id="Valor" data-type="integer" data-default="0">
+                        3
+                    </span>
+                </span>
+            </p>
+        </div>
+        <a class="addRow" data-for="Pericias">+ Adicionar</a>
+    </div>
+
+    <div class="clearLeft twoThirdsWidth marginTop escudoEquipBg" style="display: none">
+        <p id="descMao1" class="sheetVariable" data-id="descMao1" data-editable="0" data-type="longtext" data-autoresize="1"></p>
+        <p id="descMao2" class="sheetVariable" data-id="descMao2" data-editable="0" data-type="longtext" data-autoresize="1"></p>
+        <p id="descArmadura" class="sheetVariable" data-id="descArmadura" data-editable="0" data-type="longtext" data-autoresize="1"></p>
+    </div>
+
+    <div class="clearLeft twoThirdsWidth typedBG marginTop">
+        <p class="headerArea">
+            Efeitos
+        </p>
+    </div>
+    <div class="clearLeft twoThirdsWidth whiteBG">
+        <div id="dfsDebuffs" class="sheetList" data-id="Debuffs">
+            <div>
+                <a class="viewOnly diceButton button" title="Aplicar esse efeito no meu alvo atual."></a>
+                <a class="deleteRow deleteButton"></a>
+                <b class="sheetVariable" data-id="Nome" data-type="text" data-placeholder="Nome do Efeito"></b>
+                <span class="sheetVariable" data-id="Tipo" data-type="select" data-options="Até o começo do meu próximo turno;Até o fim do meu próximo turno" data-default="0"></span>
+                <a style="clear: right; display: block;"></a>
+            </div>
+        </div>
+        <a class="addRow" data-for="Debuffs">+ Adicionar Efeitos</a>
+    </div>
+    
+    <div class="clearLeft twoThirdsWidth typedBG marginTop">
+        <p class="headerArea">
+            Efeitos (Preterido, parar de usar)
+        </p>
+    </div>
+    <div class="clearLeft twoThirdsWidth whiteBG">
+        <div id="dfsBuffs" class="sheetList" data-id="Buffs">
+            <div>
+                <a class="deleteRow deleteButton"></a>
+                <a style="display: none" class="sheetVariable" data-id="Placername" data-type="text"></a>
+                <a style="display: none" class="sheetVariable" data-id="Placerid" data-type="integer" data-default="-1"></a>
+                <span class="sheetVariable buffName" data-id="Name" data-type="text" data-placeholder="Nome"></span>
+                Duração:
+                <span class="sheetVariable buffDuration" data-id="Duration" data-type="integer" data-default="1"></span>
+                <span style="display: none" title="Ao terminar, o jogador poderá escolher manter esse efeito ativo" class="sheetVariable buffMaintain" data-id="Maintainable" data-type="boolean" data-default="1" data-label="1" data-labelhtml="Manter"></span>
+                <div class="sheetVariable buffEffect" data-id="Effect" data-type="longtext" data-placeholder="Efeito" data-autoresize="1"></div>
+                <div class="buffBonus sheetList" data-id="Bonus">
+                    <p>
+                        <a class="deleteRow deleteButton"></a>
+                        <span class="sheetVariable buffAtributo" data-id="Atributo" data-type="text" data-placeholder="Atributo"></span>
+                        Efeito:
+                        <span class="sheetVariable buffQuantidade" data-id="Quantidade" data-type="integer" data-default="0"></span>
+                        <span class="sheetVariable buffTipo" data-id="Tipo" data-type="text" data-placeholder="Tipo"></span>
+                    </p>
+                </div>
+                <a class="addRow" data-for="Bonus">+ Adicionar Bônus</a>
+                <hr class="tinyHR" />
+            </div>
+        </div>
+        <a class="addRow" data-for="Buffs">+ Adicionar Buff/Debuff</a>
+    </div>
+    <div class="clearLeft fullWidth typedBG marginTop">
+        <p class="headerArea">
+            <a id="dfsRolagensOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsRolagens').toggle(); $(this).text($('#dfsRolagens').is(':visible') ? '(-)' : '(+)');">
+                (-)
+            </a>
+            Rolagens de Combate
+            <a id="dfsRolagensSort" class="sortButton button editOnly" title="Reordena a lista."></a>
+        </p>
+    </div>
+    <div class='whiteBG fullWidth'>
+        <p id="dfsRolagensBonus" style="text-align: center">
+            <b>Bônus Dano: </b><span class="sheetVariable" data-id="BonusDano" data-type="integer" data-default="0"></span>
+            &nbsp; &nbsp; 
+            <b>Bônus Cura: </b><span class="sheetVariable" data-id="BonusCura" data-type="integer" data-default="0"></span>
+            &nbsp; &nbsp; 
+            <b>Bônus Acerto: </b><span class="sheetVariable" data-id="BonusAcerto" data-type="integer" data-default="0"></span>
+            &nbsp; &nbsp; 
+            <b>Bônus Esquiva: </b><span class="sheetVariable" data-id="BonusEsquiva" data-type="integer" data-default="0"></span>
+            &nbsp; &nbsp; 
+            <b>Bônus Bloqueio: </b><span class="sheetVariable" data-id="BonusBloqueio" data-type="integer" data-default="0"></span>
+        </p>
+    </div>
+    <div id="dfsRolagens" class="fullWidth whiteBG selectable sheetList" data-id="Rolagens">
+        <div style="padding: 10px;">
+            <a class="deleteButton deleteRow"></a>
+            <a class="diceButton button viewOnly" style="margin-left: 5px; margin-right: 10px; float: left; margin-top: 5px; margin-bottom: 20px;"></a>
+            <b class="sheetVariable" data-type="text" data-id="Name" data-placeholder="Nome da Rolagem" style="margin-right: 15px;"></b>
+            <span>
+                <span class="sheetVariable" data-type="integer" data-id="Rolls" data-default="1"></span>d<span class="sheetVariable" data-id="Faces" data-type="integer" data-default="6"></span>
+                +
+                <span class="sheetVariable" data-id="Attribute1" data-type="select" data-options="Artes Marciais;Arma;Tecnologia;Elemento;Magia;Liderança;Sabedoria;Defesa;Ataque;Nenhum" data-default="0"></span>
+                +
+                (
+                <span class="sheetVariable" data-id="Attribute2" data-type="select" data-options="Artes Marciais;Arma;Tecnologia;Elemento;Magia;Liderança;Sabedoria;Defesa;Ataque;Nenhum" data-default="9"></span>
+                <span class="sheetVariable" data-id="Attribute2half" data-type="boolean" data-default="0" data-label="1" data-labelhtml="/2"></span>
+                )
+                +
+                <span class="sheetVariable" data-type="integer" data-id="Mod" data-default="0"></span>
+				<br />
+                <span class="sheetVariable" data-type="select" data-id="RollType" data-options="Dano;Cura;Acerto;Esquiva;Bloqueio;Outro"></span>
+				&nbsp; &nbsp; &nbsp;
+				<span class="sheetVariable" data-id="Normalizar" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Normalizar"></span>
+				&nbsp; &nbsp; &nbsp;
+				%Dano: <span class="sheetVariable" data-type="integer" data-id="DanoPerc" data-default="100"></span>
+				&nbsp; &nbsp; &nbsp;
+				Penetração: <span class="sheetVariable" data-type="integer" data-id="Penetracao" data-default="0"></span>
+                <br class="editOnly" />
+                <span class="sheetVariable editOnly" data-id="Automatic" data-type="boolean" data-default="1" data-label="1" data-labelhtml="Achar Atributos Automaticamente (Apenas para Dano)"></span>
+                <br class="editOnly" />
+                <span class="editOnly sheetVariable" data-id="Atr0" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Artes Marciais"></span>
+                &nbsp; &nbsp;
+                <span class="editOnly sheetVariable" data-id="Atr1" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Arma"></span>
+                &nbsp; &nbsp;
+                <span class="editOnly sheetVariable" data-id="Atr2" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Tecnologia"></span>
+                &nbsp; &nbsp;
+                <span class="editOnly sheetVariable" data-id="Atr3" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Elemento"></span>
+                &nbsp; &nbsp;
+                <span class="editOnly sheetVariable" data-id="Atr4" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Magia"></span>
+                &nbsp; &nbsp;
+                <span class="editOnly sheetVariable" data-id="Atr5" data-type="boolean" data-default="0" data-label="1" data-labelhtml="Liderança"></span>
+                
+            </span>
+        </div>
+    </div>
+    <div class='whiteBG fullWidth'>
+        <a class="addRow" data-for='Rolagens'>+ Adicionar rolagem de combate</a>
+    </div>
+    
+    <div class="clearLeft fullWidth typedBG marginTop">
+        <p class="headerArea">
+            <a class="openClose floatRight paddingRight" onclick="$('#dfsrolagensEspeciais').toggle(); $(this).text($('#dfsrolagensEspeciais').is(':visible') ? '(-)' : '(+)');">
+                (-)
+            </a>
+            Rolagens Especiais
+        </p>
+    </div>
+    <div id="dfsrolagensEspeciais" class='whiteBG fullWidth'>
+        <div id="dfsRolagensEspeciaisList" class="fullWidth sheetList" data-id="rollEspRoll"
+             data-default='[{"Bonuses": [{"Valor": "Carisma"}],"Nome": "Aparência"},{"Bonuses": [{"Valor": "Aparência"},{"Valor": "Diplomacia"}],"Nome": "Sedução (Honesta)"},{"Bonuses": [{"Valor": "Aparência"},{"Valor": "Blefar"}],"Nome": "Sedução (Desonesta)"}]'>
+            <p>
+                <a class="deleteButton deleteRow"></a>
+                <a class="diceButton button viewOnly"></a>
+                <b class="sheetVariable" data-id="Nome" data-type="text"></b>
+                =
+                <span class="sheetList" data-id="Bonuses" data-minLength="1">
+                    <span>
+                        <a class="deleteButton deleteRow"></a>
+                        <span class="sheetVariable" data-id="Valor" data-type="text" data-placeholder="Atributo/Bônus"></span>
+                        <span class="sumSymbol">+</span>
+                    </span>
+                </span>
+                <a class="textLink addRow" data-for="Bonuses">(+)</a>
+            </p>
+        </div>
+        <a class="addRow" data-for='rollEspRoll'>+ Adicionar rolagem</a>
+    </div>
+    
+    <div class="clearLeft fullWidth typedBG marginTop">
+        <p class="headerArea">
+            <a id="dfsTecnicasOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsTecnicas').toggle(); $(this).text($('#dfsTecnicas').is(':visible') ? '(-)' : '(+)');">
+                (-)
+            </a>
+            Técnicas
+            <a id="dfsTecnicasSort" class="sortButton button editOnly" title="Reordena a lista de técnicas como Estilo de Luta > Passiva > Ataque > Especial, em ordem alfabética."></a>
+        </p>
+    </div>
+    <div id="dfsTecnicas" class="fullWidth whiteBG selectable sheetList" data-id="Tecnicas">
+        <div class="techDiv techAtaque">
+            <a class="deleteButton deleteRow unselectable"></a>
+            <span class="techName sheetVariable" data-id="Nome" data-type="text" data-placeholder="Nome da Tecnica">
+                Nome
+            </span>
+            <div class="techMiddle">
+                <div class='techAddonsContainer'>
+                    <div class="sheetList" data-id="Addons">
+                        <p>
+                            <a class="deleteButton deleteRow unselectable"></a>
+                            <span class="sheetVariable" data-id="Nome" data-type="text" data-placeholder="Addon">Nome</span>
+                        </p>
+                    </div>
+                    <a class="addRow unselectable" data-for="Addons">+ Adicionar</a>
+                </div>
+                <div class='techDesc'>
+                    <b>Descrição:</b>
+                    <span class="sheetVariable" data-id="Descricao" data-type="longtext" data-autoresize="1" data-placeholder="Descrição">Descrição</span>
+                    <br />
+                    <b>Tipo:</b>
+                    <span class="sheetVariable" data-id="Tipo" data-type="select" data-options='Estilo de Luta;Passiva;Ataque;Especial' data-default="2">Tipo</span>
+                </div>
+                <span style='display: block; clear: both;'></span>
+            </div>
+            <div class='techBar techCusto'>
+                <a class='techCustoIcon'></a>
+                <b>Custo:</b>
+                <span class='sheetVariable' data-id='Custo' data-type='longtext' data-autoresize="1" data-placeholder='Custo'>Custo</span>
+            </div>
+            <div class='techBar techEfeito'>
+                <a class='techEfeitoIcon'></a>
+                <b>Efeito:</b>
+                <span class='sheetVariable' data-id='Efeito' data-type='longtext' data-autoresize="1" data-placeholder='Efeito'>1d6 + 5 Dano</span>
+            </div>
+        </div>
+    </div>
+    <div class='whiteBG fullWidth'>
+        <a class="addRow" data-for='Tecnicas'>+ Adicionar</a>
+    </div>
+
+
+    <div class='thirdWidth clearLeft marginTop selectable' id='dfsVantDesv'>
+        <div class='fullWidth typedBG' title="A somatória de Vantagens não deve ultrapassar a somatória de desvantagens, mas pode-se ter quantas vantagens desejar. Humanos ganham 4 pontos de vantagens grátis, podendo alcançar até 14.">
+            <p class='headerArea'>
+                Vantagens (<span id='VantagensSum'>0</span>)
+                <a id="dfsVantagensSort" class="sortButton button editOnly" title="Reordena a lista."></a>
+            </p>
+        </div>
+        <div class='fullWidth whiteBG clearLeft vantList'>
+            <div class='sheetList' data-id='Vantagens'>
+                <p>
+                    <a class="deleteButton deleteRow"></a>
+                    <b class='sheetVariable smallInput' data-id='Pontos' data-type='integer' data-default='0'>Valor</b>
+                    <span class='sheetVariable bigInput' data-id='Nome' data-type='text' data-placeholder='Nome da Vantagem'>Nome</span>
+                </p>
+            </div>
+            <a class="addRow unselectable" data-for='Vantagens'>+ Adicionar</a>
+        </div>
+        <div class='marginTop fullWidth typedBG' title="Você só pode ganhar pontos por quatro desvantagens e a somatória não ultrapassa 10 pontos.">
+            <p class='headerArea'>
+                Desvantagens (<span id='DesvantagensSum'>0</span>)
+                <a id="dfsDesvantagensSort" class="sortButton button editOnly" title="Reordena a lista."></a>
+            </p>
+        </div>
+        <div class='fullWidth whiteBG clearLeft vantList'>
+            <div class='sheetList' data-id='Desvantagens'>
+                <p>
+                    <a class="deleteButton deleteRow"></a>
+                    <b class='sheetVariable smallInput' data-id='Pontos' data-type='integer' data-default='0'>Valor</b>
+                    <span class='sheetVariable bigInput' data-id='Nome' data-type='text' data-placeholder='Nome da Desvantagem'>Nome</span>
+                </p>
+            </div>
+            <a class="addRow unselectable" data-for='Desvantagens'>+ Adicionar</a>
+        </div>
+    </div>
+
+    <div id="dfsInventarioHeader" class='twoThirdsWidth marginTop typedBG floatRight' title='O limite de inventário é (Força x 4), mas pode ser aumentado por vantagens.'>
+        <p class='headerArea selectable'>
+            <a class="bagIcon"></a>
+            Inventário (<span id='InventarioAtual'>0</span>/<span class='sheetVariable' data-id='InventarioMax' data-type='integer' data-default='8'>Limite</span>)
+            <span class="innerColumns">
+                <span class="innerColumn">
+                    Peso
+                </span>
+                <span class="innerColumn">
+                    Total
+                </span>
+            </span>
+            <a id="dfsInventarioSort" class="sortButton button editOnly" title="Reordena a lista."></a>
+        </p>
+    </div>
+
+    <div class='twoThirdsWidth whiteBG floatRight selectable'>
+        <div id="dfsInventario" class='sheetList' data-id='Inventario'>
+            <div>
+                <p class="noWeight">
+                    <span class="dfsQuantidade sheetVariable" data-id='Quantidade' data-type='integer' data-default='1'>
+                        Quantidade
+                    </span>
+                    <a class="deleteButton deleteRow unselectable"></a>
+                    <span class="dfsNomeItem sheetVariable" data-id='Nome' data-type='text' data-placeholder='Nome do Item'>
+                        Nome
+                    </span>
+                    <span class="innerColumns">
+                        <span class="innerColumn sheetVariable" data-id='Peso' data-default='0' data-type='number' title='Por padrão, itens tem peso 1. Itens pesados, como equipamentos, possuem peso 2. Bandagens possuem peso 0 dentro de kits de primeiros socorros.'>
+                            0
+                        </span>
+                        <span class="innerColumn pesoTotal bagPesoTotal">
+                            0
+                        </span>
+                    </span>
+                </p>
+                <div class='sheetList' data-id='SubInventario'>
+                    <p class="weight">
+                        <span class="dfsQuantidade sheetVariable" data-id='Quantidade' data-type='integer' data-default='1'>
+                            Quantidade
+                        </span>
+                        <a class="deleteButton deleteRow unselectable"></a>
+                        <span class="dfsNomeItem sheetVariable" data-id='Nome' data-type='text' data-placeholder='Nome do Item'>
+                            Nome
+                        </span>
+                        <span class="innerColumns">
+                            <span class="innerColumn sheetVariable" data-id='Peso' data-default='0' data-type='number' title='Por padrão, itens tem peso 1. Itens pesados, como equipamentos, possuem peso 2. Bandagens possuem peso 0 dentro de kits de primeiros socorros.'>
+                                0
+                            </span>
+                            <span class="innerColumn pesoTotal itemPesoTotal">
+                                0
+                            </span>
+                        </span>
+                    </p>
+                </div>
+                <a class="addRow unselectable" data-for='SubInventario'>+ Adicionar</a>
+            </div>
+        </div>
+        <a class="addRow unselectable" data-for='Inventario'>+ Adicionar</a>
+    </div>
+    
+    <div class='fullWidth clearBoth typedBG marginTop'>
+        <p class='headerArea'>
+            <a id="dfsEquipsOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsEquips').toggle(); $(this).text($('#dfsEquips').is(':visible') ? '(-)' : '(+)');">
+                (+)
+            </a>
+            <img src="img/dfs/equips-icon.png" style="margin-left: -5px; margin-bottom: -30px; vertical-align: top" /> Equipamentos
+        </p>
+    </div>
+    
+    <div id="dfsEquips" class='fullWidth clearBoth whiteBG' style="display: none">
+        <div id="dfsEquipList" class="sheetList" data-id="Equipamentos">
+            <div>
+                <a class="deleteButton deleteRow"></a>
+                <p>
+                    <b class="sheetVariable" data-id="Nome">
+                        Nome do Equipamento
+                    </b>
+                    -
+                    <span class="sheetVariable" data-type="select" data-id="Tipo" data-options="Arma de uma mão;Arma de duas mãos;Arma defensiva;Armadura" data-default="0">
+
+                    </span>
+                    <a class="floatRight putonButton" style="display: none">Equipar</a></p>
+                <p class="sheetVariable" data-type="longtext" data-autoresize="1" data-id="Descricao">
+                    Descrição do Equipamento
+                </p>
+            </div>
+        </div>
+        <a class="addRow" data-for="Equipamentos">+ Adicionar</a>
+    </div>
+
+    <div class='fullWidth clearBoth typedBG marginTop'>
+        <p class='headerArea'>
+            Anotações
+            <a id="dfsAnotacoesSort" class="sortButton button editOnly" title="Reordena a lista."></a>
+        </p>
+    </div>
+
+    <div class='fullWidth clearBoth whiteBG'>
+        <div id="dfsAnotacoes" class="selectable sheetList" data-id="Anotacoes"
+             data-default='[{"Campo":"Dinheiro","Valor":"500"},{"Campo":"Pontos de Habilidade","Valor":"0"}]'>
+            <p>
+                <a class="deleteButton deleteRow unselectable"></a>
+                <b class="sheetVariable" data-type="text" data-id="Campo" data-placeholder="Nome da Anotação">Campo</b>
+                :
+                <span class="sheetVariable" data-type="longtext" data-autoresize="1" data-id="Valor" data-placeholder="Anotação">Valor</span>
+            </p>
+        </div>
+        <a class="addRow unselectable" data-for="Anotacoes">+ Adicionar</a>
+    </div>
+    
+    <div class="clearLeft fullWidth typedBG marginTop">
+        <p class="headerArea">
+            <a id="dfsLogsOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsLogs').toggle(); $(this).text($('#dfsLogs').is(':visible') ? '(-)' : '(+)');">
+                (-)
+            </a>
+            Logs
+        </p>
+    </div>
+    <div id='dfsLogs' class='fullWidth whiteBG marginBottom'>
+        <a onclick="$('#dfsLogs > div').hide(); $('#dfsLogs > a').removeClass('active'); $(this).addClass('active'); $('#dfsLogsExp').show();">Log de Experiência</a> | 
+        <a onclick="$('#dfsLogs > div').hide(); $('#dfsLogs > a').removeClass('active'); $(this).addClass('active'); $('#dfsLogsDano').show();">Log de Dano</a> | 
+        <a onclick="$('#dfsLogs > div').hide(); $('#dfsLogs > a').removeClass('active'); $(this).addClass('active'); $('#dfsLogsMP').show();">Log de MP</a>
+        <div id='dfsLogsExp' class='sheetList selectable' data-id='ExpLog' style='display: none'>
+            <p>
+                <a class="deleteButton deleteRow unselectable"></a>
+                <b class='sheetVariable' data-id='Quantidade' data-type='integer' data-default='0'>Quantidade</b>:
+                <span class='sheetVariable bigInput' data-id='Motivo' data-type='text' data-placeholder='Motivo do ganho'>Motivo</span>
+            </p>
+        </div>
+        <div id='dfsLogsMP' class='sheetList selectable' data-id='MPLog' style='display: none'>
+            <p>
+                <a class="deleteButton deleteRow unselectable"></a>
+                <b class='sheetVariable' data-id='Quantidade' data-type='integer' data-default='0'>Quantidade</b>:
+                <span class='sheetVariable bigInput' data-id='Motivo' data-type='text' data-placeholder='Motivo da alteração'>Motivo</span>
+            </p>
+        </div>
+        <div id='dfsLogsDano' class='sheetList selectable' data-id='CombatLog' style='display: none'>
+            <p>
+                <a class="deleteButton deleteRow unselectable"></a>
+                <b class='sheetVariable' data-id='Quantidade' data-type='integer' data-default='0'>Quantidade</b>:
+                <span class='sheetVariable bigInput' data-id='Motivo' data-type='text' data-placeholder='Motivo do ganho'>Motivo</span>
+                <br />
+                <span class='sheetVariable' data-id='Explicacao' data-type='longtext' data-autoresize="1" data-placeholder='Cálculo do dano'>Explicação</span>
+            </p>
+        </div>
+    </div>
+    
+    <div id="dfsLastDiv">
+        
+    </div>
+
+</div>

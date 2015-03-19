@@ -576,8 +576,10 @@ window.lingo['en'] = {
     
     /* FOrum */
     _HOMEFORUM_ : 'Active Topics on the Forums',
-    _HOMEFORUMERROR_ : "It was not possible to load the forum news. Note that the forum news can't be loaded from the offline version.",
+    _HOMEFORUMERROR_ : "It was not possible to load the forum news.",
     _FORUMBY_ : 'by',
+    _FORUMLATESTIN_ : 'in',
+    _FORUMLATESTPOST_ : 'Post',
     
     /* Donations */
     _HOMEDONATIONS_ : 'Donations',

@@ -590,8 +590,10 @@ window.lingo['pt_br'] = {
     
     /* FOrum */
     _HOMEFORUM_ : 'Tópicos ativos no fórum',
-    _HOMEFORUMERROR_ : "Não foi possível carregar o fórum. Note que a versão offline do RedPG não pode carregar o fórum.",
+    _HOMEFORUMERROR_ : "Não foi possível carregar o fórum.",
     _FORUMBY_ : 'por',
+    _FORUMLATESTIN_ : 'em',
+    _FORUMLATESTPOST_ : 'Post',
     
     /* Donations */
     _HOMEDONATIONS_ : 'Doações',
