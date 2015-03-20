@@ -283,6 +283,83 @@ window.chatModules.push({
                 'omuzah' : ['COMEÇO', 'INÍCIO', 'CRIAÇÃO'],
                 'miwonih' : ['FIM', 'FINAL', 'DESTRUIÇÃO']
             }
+        },
+        Celestan : {
+            uppercase : true,
+            allowpoints : true,
+            words : {
+                1 : ['z', 'i', 'h', 'k', 'u'],
+                2 : ['ul', 'ha', 'ko', 'ia', 'ez', 'oh'],
+                3 : ['moh', 'lea', 'sha', 'lok', 'tae'],
+                4 : ['zaha', 'ohta', 'baos', 'naia', 'ezoh'],
+                Bigger: ['lakanoh', 'baenas', 'heraloh', 'tarinae', 'mohzase']
+            },
+            knownWords : {
+                'ladon' : ['ANJO', 'CELESTIAL', 'YUQUN'],
+                'deis' : ['COBRA', 'SERPENTE', 'SNAKE'],
+                'klistera' : ['GELO', 'SÓLIDO', 'CONGELADO', 'GELEIRA'],
+                'toraeh': ['ASAS', 'PENAS', 'ALADO', 'WINGED'],
+                'goetiah' : ['CAÍDO', 'DEMÔNIO', 'INFERNAL', 'TREVAS']
+            }
+        },
+        Ellum : {
+            words : {
+                1 : ['a', 'i', 'e'],
+                2 : ['ae', 'ea', 'tae', 'cea', 'mia', 'lhat', 'maae', 'teah', 'lea', 'ma', 'da', 'te', 'ti', 'la', 'le', 'ia', 'io'],
+                3 : ["a'ta", 'eu', 'maari', 'eaal', 'lentar', 'umit', 'matas', 'nitas', 'vaata', 'miu', 'lhea', 'lhao', 'bae', 'dia'],
+                4 : ["e'tud", "mi'laet", 'tussia', 'lamita', 'tavia', 'mera', 'tiaah', 'paatvas', 'mata', 'lhata', 'looa', 'lheia'],
+                5 : ["tu'lhanis", "lo'meera", "lha'vatsar", 'lotetslraz', 'awynn', 'tissanas', 'otaamiss', 'lovatsar', 'mataasa', 'lhotad'],
+                6 : ["lhatiassu", "teeramas", "su'diet", "mi'dhanas", "lhashama", "tiriana", "tuinassa"],
+                7 : ["tae'missa", "lhot'vana", "sahmita", "milrusata", "toriema", "lotisava"],
+                Bigger : ['tamiaata', 'etalria', 'miatila', 'latvatbas', 'miraata', 'eslraatas', 'leteerats',
+                          'misatulia', 'tilhusoh', "diet'lhanas", "mit'dahni"],
+                Numbers : ['o', 'u', 'uti', 'tia', 'sa', 'mi', 'ota', 'su', 'kaata', 'lhus']
+            },
+            knownWords : {
+                'utotoki' : ['CALOR','QUENTE','FOGO','CHAMA','FLAMEJANTE','CHAMAS','FOGOS'],
+                'lenwar' : ['LETRA', 'LETRAS', 'LETTER', 'LETTERS'],
+                'lhatias' : ['CORAGEM', 'CONFIANÇA', 'CONFIANCA', 'BRAVERY'],
+                'taer' : ['VERAO', 'VERÃO', 'SUMMER'],
+                'lar' : ['ALTO', 'GRANDE'],
+                'metton' : ['AMIGO', 'COMPADRE', 'CAMARADA', "AMIGOS", "CAMARADAS", "COMPADRES", "ALIADO", "ALIADOS"],
+                'zatton' : ['INIMIGO', "INIMIGOS", "ADVERSÁRIO", "ADVERSÁRIOS", "ADVERSARIO", "ADVERSARIOS"],
+                'tuin' : ['AZUL', 'AZULADO'],
+                'hehe' : ['HA', "HAH", "HE", "HEH", "HEHE", "HAHA", "HEHEH", "HAHAH", "HEHEHE", "HAHAHA"],
+                "et'um" : ['ELF', 'ELFO', 'ELFA'],
+                "et'ar" : ['ELFOS', "ELFAS", "ELVES"],
+                "et'zet" : ['FALSO', "FAKE", "FALSOS", "FAKES"],
+                'etain' : ['ESPERANÇA', 'HOPE'],
+                'turia' : ['ALEGRIA', 'FELICIDADE', 'JOY', 'HAPPINESS'],
+                'terasl' : ['RÁPIDO', 'VELOZ', 'VELOCIDADE', 'FAST', 'SPEEDY', 'SPEED'],
+                'vehat' : ['LAMA', 'BARRO', 'MUD', 'CLAY'],
+                'simuh' : ['PÁSSARO', 'AVE', 'PASSARINHO', 'BIRD'],
+                'fahin' : ['CURAR', 'SARAR', 'HEAL'],
+                'amuhn' : ['BRUXA', 'FEITICEIRA', 'MAGA', 'WITCH', 'WIZARD', 'MAGE']
+            },
+            uppercase : true,
+            allowpoints : true
+        },
+        Davek : {
+            uppercase : true,
+            allowpoints : true,
+            words : {
+                1 : ['d', 'k', 'e', 'a', 'u'],
+                2 : ['bu', 'ka', 'ce', 'ke', 'ko', 'za', 'ik', 'ep', 'pa', 'na', 'ma', 'pe'],
+                3 : ['kok', 'kek', 'iek', 'cea', 'sok', 'ask', 'pok', 'pak', 'rak', 'rok', 'ruh', 'ruk', 'ram', 'ran', 'rae', 'era', 'ero', 'erp'],
+                4 : ['doko', 'pika', 'paek', 'caeo', 'peao', 'pako', 'poka', 'mako', 'zako', 'zado', 'edo', 'akad', 'miko', 'adek', 'edao'],
+                5 : ['emaop', 'edaki', 'pedak', 'pokad', 'emako', 'pokad', 'rakza', 'edoru', 'akara', 'iekpa', 'dokok', 'ceape', 'mikora', 'erada', 'erpad'],
+                6 : ['jukoa', 'kodoko', 'pikace', 'peaika', 'pakpoka', 'rokzado', 'maedoru', 'akarape', 'epask', 'dokoran'],
+                Bigger: ['kekokamido', 'maridokiza', 'paridoka', 'taritara', 'monikaze', 'porikaka', 'ukarema', 'poricares', 'mirakuru', 'puaridozua']
+            },
+            knownWords : {
+                'topkek' : ['ENGRAÇADO', "ENGRACADO", "GRAÇA", "GRACA", "PIADA", "PIADAS", "ENGRAÇADOS", "ENGRACADOS"],
+                'kekdoru' : ['COMEDIANTE', 'COMEDIANTES', 'PALHAÇO', "PALHACO", "PALHAÇOS", "PALHAÇOS"],
+                'maraka' : ['AMIGO', "AMIGOS", "COMPADRE", "COMPADRES", "PARCEIRO", "PARCEIROS"],
+                'karama' : ['INIMIGO', 'INIMIGOS', "OPONENTE", "OPONENTES"],
+                'kara' : ['PESSOA', 'CARA', "KRA"],
+                'ma' : ['RUIM', "MALIGNO", "MALIGNA", "MALDADE", "MA", "MÁ", "MAU"],
+                'ukokimadokuzapa' : ['PARALELEPIPEDO', "PARALELEPÍPEDO"]
+            }
         }
     },
     
@@ -485,7 +562,7 @@ window.chatModules.push({
         var speakers = this.whoSpeaks(lingua);
         
         msg.setDestination(speakers);
-        window.app.chatapp.printAndSend(msg, true);
+        window.app.chatapp.fixPrintAndSend(msg, true);
         
         msg.unsetSpecial('translation');
         msg.setDestination(null);
