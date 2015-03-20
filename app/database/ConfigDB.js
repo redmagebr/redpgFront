@@ -21,6 +21,10 @@ function ConfigDB () {
             this.changed = true;
         }
         this.config[index] = value;
+        
+        if (this.config[index] === null) {
+            delete this.config[index];
+        }
     };
     
     this.get = function (index, defaultValue) {

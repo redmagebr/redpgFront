@@ -522,7 +522,7 @@ function UI () {
         this.chat.updateConfig();
         this.language.updateConfig();
         this.gameui.updateConfig();
-        this.soundui.updateConfig();
+        //this.soundui.updateConfig();
         this.youtubeui.updateConfig();
         this.sheetui.updateConfig();
         

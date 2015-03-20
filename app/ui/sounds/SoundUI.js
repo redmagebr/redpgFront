@@ -1,6 +1,5 @@
 function SoundUI () {
     this.$bgmcheck;
-    this.soundList;
     this.$dropbox;
     this.$soundList;
     this.$soundSelect;
@@ -18,7 +17,7 @@ function SoundUI () {
     
     this.init = function () {
         this.$bgmcheck = $('#soundsBGM');
-        this.$soundList = $('#soundList');
+        this.$soundList = $('#soundList').empty();
         this.$soundSelect = $('#folderSelect');
         this.$soundSelectList = $('#foldersOptions');
         this.$soundSelectNone = $('#folderSelectNone');
@@ -35,8 +34,44 @@ function SoundUI () {
         this.$linkradio = $('#soundsLinkMethod');
         this.$fileradio = $('#soundsFolderMethod');
         
-        this.updateConfig();
+        //this.updateConfig();
         this.setBindings();
+        
+        window.app.storage.registerStorage("sounds", this);
+    };
+    
+    this.storageChanged = function () {
+        this.printSounds();
+    };
+    
+    this.storageValidation = function (value) {
+        if (!Array.isArray(value)) return false;
+        var folder;
+        var sound;
+        for (var i = 0; i < value.length; i++) {
+            folder = value[i];
+            if (typeof folder !== 'object') return false;
+            if (typeof folder.index !== "number") return false;
+            if (typeof folder.name !== 'string') return false;
+            if (!Array.isArray(folder.sounds)) return false;
+            if (Object.keys(folder).length !== 3) return false;
+            
+            for (var k = 0; k < folder.sounds.length; k++) {
+                sound = folder.sounds[k];
+                if (typeof sound !== 'object') return false;
+                if (typeof sound.name !== 'string') return false;
+                if (typeof sound.link !== 'string') return false;
+                if (typeof sound.bgm !== 'boolean') return false;
+                if (typeof sound.folderIndex !== 'number') return false;
+                if (typeof sound.index !== 'number') return false;
+                if (Object.keys(sound).length !== 5) return false;
+            }
+        }
+        return true;
+    };
+    
+    this.storageDefault = function () {
+        return [];
     };
     
     this.isBGM = function () {
@@ -49,8 +84,16 @@ function SoundUI () {
         });
         
         $('#soundSaveButton').bind('click', function() {
-            window.app.ui.configui.saveConfig();
-            window.app.ui.callLeftWindow("configWindow");
+            window.app.ui.blockRight();
+            var cbs = function () {
+                window.app.ui.unblockRight();
+            };
+            var cbe = function () {
+                alert("Não foi possível salvar sons.");
+                window.app.ui.unblockRight();
+            };
+            
+            window.app.storageapp.sendStorage("sounds", cbs, cbe);
         });
         
         this.$soundSelect.bind('change', function () {
@@ -104,31 +147,65 @@ function SoundUI () {
         window.app.ui.soundui.$fileform.show();
         window.app.ui.soundui.$corserror.hide();
         window.app.ui.soundui.$foldererror.hide();
+        
+        var oldSounds =  window.app.configdb.get('soundList', null);
+        if (oldSounds !== null) {
+            if (confirm("Você possui sons na configuração antiga. Gostaria de repassá-los ao modelo novo?")) {
+                window.app.storage.store("sounds", oldSounds);
+                this.printSounds();
+                
+                window.app.ui.blockRight();
+                
+                var cbs = function () {
+                    window.app.ui.unblockRight();
+                    window.app.configdb.store("soundList", null);
+                    window.app.ui.configui.saveConfig();
+                    window.app.ui.callLeftWindow("configWindow");
+                };
+                var cbe = function () {
+                    window.app.ui.unblockRight();
+                    alert("Não foi possível salvar os sons.");
+                };
+                
+                window.app.storageapp.sendStorage("sounds", cbs, cbe);
+                return false;
+            }
+        }
+        
+        window.app.ui.blockRight();
+        var cbs = function () {
+            window.app.ui.unblockRight();
+            window.app.ui.soundui.printSounds();
+        };
+        var cbe = function () {
+            alert ("Erro abrindo sons.");
+        };
+        window.app.storageapp.updateStorage("sounds", cbs, cbe);
     };
     
     this.moveUp = function (index, $this) {
-        if (index < 0 || (index - 1) < 0 || index >= this.soundList.length) {
+        if (index < 0 || (index - 1) < 0 || index >= window.app.storage.get("sounds").length) {
             return false;
         }
         
-        var a = this.soundList[index];
-        var b = this.soundList[index - 1];
-        this.soundList[index - 1] = a;
-        this.soundList[index] = b;
+        var a = window.app.storage.get("sounds")[index];
+        var b = window.app.storage.get("sounds")[index - 1];
+        window.app.storage.get("sounds")[index - 1] = a;
+        window.app.storage.get("sounds")[index] = b;
         
         $this.after($this.prev());
         this.updateIndexes();
     };
     
     this.moveDown = function (index, $this) {
-        if (index < 0 || (index + 1) >= this.soundList.length) {
+        if (index < 0 || (index + 1) >= window.app.storage.get("sounds").length) {
             return false;
         }
         
-        var a = this.soundList[index];
-        var b = this.soundList[index + 1];
-        this.soundList[index + 1] = a;
-        this.soundList[index] = b;
+        var a = window.app.storage.get("sounds")[index];
+        var b = window.app.storage.get("sounds")[index + 1];
+        window.app.storage.get("sounds")[index + 1] = a;
+        window.app.storage.get("sounds")[index] = b;
         
         this.printSounds();
         
@@ -138,21 +215,21 @@ function SoundUI () {
     
     this.deleteFolder = function (index, $this) {
         $this.remove();
-        this.soundList.splice(index, 1);
+        window.app.storage.get("sounds").splice(index, 1);
         this.updateIndexes();
     };
     
     this.deleteSound = function (sound, $div) {
         $div.remove();
-        this.soundList[sound.folderIndex].sounds.splice(sound.index, 1);
+        window.app.storage.get("sounds")[sound.folderIndex].sounds.splice(sound.index, 1);
         this.updateIndexes();
     };
     
     this.updateIndexes = function () {
         var folder;
         var sound;
-        for (var i = 0; i < this.soundList.length; i++) {
-            folder = this.soundList[i];
+        for (var i = 0; i < window.app.storage.get("sounds").length; i++) {
+            folder = window.app.storage.get("sounds")[i];
             folder.index = i;
             for (var k = 0; k < folder.length; k++) {
                 sound = folder[k];
@@ -287,11 +364,11 @@ function SoundUI () {
         this.$soundSelectList.empty();
         this.$soundSelect.show().find('option').prop('selected', false);
         this.$soundSelectNone.prop('selected', true);
-        for (var i = 0; i < this.soundList.length; i++) {
-            this.soundList[i].index = i;
-            this.$soundList.append(this.create$folder(this.soundList[i]));
+        for (var i = 0; i < window.app.storage.get("sounds").length; i++) {
+            window.app.storage.get("sounds")[i].index = i;
+            this.$soundList.append(this.create$folder(window.app.storage.get("sounds")[i]));
             this.$soundSelectList.append(
-                $('<option />').text(this.soundList[i].name).val(this.soundList[i].name)
+                $('<option />').text(window.app.storage.get("sounds")[i].name).val(window.app.storage.get("sounds")[i].name)
             );
         }
         window.app.ui.language.applyLanguageOn(this.$soundList);
@@ -414,9 +491,9 @@ function SoundUI () {
             }
         }
         var folder = null;
-        for (i = 0; i < this.soundList.length; i++) {
-            if (this.soundList[i].name.toUpperCase() === folderName.toUpperCase()) {
-                folder = this.soundList[i];
+        for (i = 0; i < window.app.storage.get("sounds").length; i++) {
+            if (window.app.storage.get("sounds")[i].name.toUpperCase() === folderName.toUpperCase()) {
+                folder = window.app.storage.get("sounds")[i];
             }
         }
         if (folder === null) {
@@ -424,7 +501,7 @@ function SoundUI () {
                 name : folderName,
                 sounds : []
             };
-            this.soundList.push(folder);
+            window.app.storage.get("sounds").push(folder);
         }
         
         var sounds = folder.sounds;
@@ -467,9 +544,9 @@ function SoundUI () {
             }
         }
         var folder = null;
-        for (i = 0; i < this.soundList.length; i++) {
-            if (this.soundList[i].name.toUpperCase() === folderName.toUpperCase()) {
-                folder = this.soundList[i];
+        for (i = 0; i < window.app.storage.get("sounds").length; i++) {
+            if (window.app.storage.get("sounds")[i].name.toUpperCase() === folderName.toUpperCase()) {
+                folder = window.app.storage.get("sounds")[i];
             }
         }
         if (folder === null) {
@@ -477,7 +554,7 @@ function SoundUI () {
                 name : folderName,
                 sounds : []
             };
-            this.soundList.push(folder);
+            window.app.storage.get("sounds").push(folder);
         }
         
         var sounds = folder.sounds;
@@ -489,19 +566,6 @@ function SoundUI () {
             });
         }
         this.updateIndexes();
-        this.printSounds();
-    };
-    
-    this.updateConfig = function () {
-        this.soundList = window.app.configdb.get('soundList',
-            [
-//                {index: 0, name: '0', sounds : [{name : 'teste', link : 'http://redpg.com.br/aponi.spc', bgm : true}]},
-//                {index: 1, name: '1', sounds : []},
-//                {index: 2, name: 'Jo', sounds : []},
-//                {index: 3, name: ':)', sounds : []}
-            ]
-        );
-
         this.printSounds();
     };
 }

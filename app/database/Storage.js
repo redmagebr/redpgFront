@@ -58,6 +58,11 @@ function Storage (app) {
     
     this.store = function (id, value) {
         
+        if (value === null) {
+            this.storage[id] = this.registeredStorage[id].storageDefault();
+            this.registeredStorage[id].storageChanged();
+        }
+        
         if (typeof id !== 'string') {
             console.log("Attempt to store a value to an id which wasn't a string:");
             console.log(id);
@@ -73,6 +78,8 @@ function Storage (app) {
         
         // Is it valid? can we clean it?
         if (!this.registeredStorage[id].storageValidation(value)) {
+            console.log("Attempt to store invalid values to Storage: " + id + ", object:");
+            console.log(value);
             if (typeof this.registeredStorage[id].storageClean === 'function') {
                 value = this.registeredStorage[id].storageClean(value);
                 if (!this.registeredStorage[id].storageValidation(value)) {
