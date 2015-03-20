@@ -38,11 +38,15 @@ function ForumUI () {
             $as = $trr.find("td.DiscussionName a");
             
             $threadName = $($as[0]).removeClass().addClass("textLink").attr("target", "_blank");
+            $threadName.attr("href", this.fixHref($threadName.attr("href")));
+            
             $threadCategory = $($as[1]).removeClass().addClass("textLink").attr("target", "_blank");
+            $threadCategory.attr("href", this.fixHref($threadCategory.attr("href")));
             
             $as = $trr.find("td.LastUser a");
             
             $threadPoster = $($as[1]).removeClass().addClass("textLink").attr("target", "_blank");
+            $threadPoster.attr("href", this.fixHref($threadPoster.attr("href")));
             
             $li = $("<li />")
                     .append("<span class='language' data-langhtml='_FORUMLATESTPOST_'>"
@@ -109,5 +113,16 @@ function ForumUI () {
         
         $latest.find("span.DiscussionScore").remove();
         this.$forum.empty().append($latest);
+    };
+    
+    this.fixHref = function (href) {
+        if (href.indexOf("://") === -1) {
+            if (href.indexOf("//") === 0) {
+                href = "http:" + href;
+            } else {
+                href = "http://forum.redpg.com.br" + (href.indexOf("/") === 0 ? "" : "/") + href;
+            }
+        }
+        return href;
     };
 }
