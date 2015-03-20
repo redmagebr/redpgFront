@@ -19,7 +19,53 @@ function ForumUI () {
     };
     
     this.addLatest = function (data) {
-        var $latest = $(data).find(".DataList");
+        this.$forum.empty();
+        var $latest = $(data).find("table.DiscussionsTable.DataTable > tbody");
+        var $tr = $latest.find("tr");
+        
+        var $threadName;
+        var $threadCategory;
+        var $threadPoster;
+        
+        var $as;
+        var $trr;
+        
+        var $ul = $("<ul />");
+        var $li;
+        
+        for (var i = 0; i < $tr.length; i++) {
+            $trr = $($tr[i]);
+            $as = $trr.find("td.DiscussionName a");
+            
+            $threadName = $($as[0]).removeClass().addClass("textLink").attr("target", "_blank");
+            $threadCategory = $($as[1]).removeClass().addClass("textLink").attr("target", "_blank");
+            
+            $as = $trr.find("td.LastUser a");
+            
+            $threadPoster = $($as[1]).removeClass().addClass("textLink").attr("target", "_blank");
+            
+            $li = $("<li />")
+                    .append("<span class='language' data-langhtml='_FORUMLATESTPOST_'>"
+                            + window.app.ui.language.getLingo("_FORUMLATESTPOST_")
+                            + "</span>: ")
+                    .append($threadName)
+                    .append(" <span class='language' data-langhtml='_FORUMLATESTIN_'>" 
+                            + window.app.ui.language.getLingo("_FORUMLATESTIN_") 
+                            + "</span> ")
+                    .append($threadCategory)
+                    .append(", <span class='language' data-langhtml='_FORUMBY_'>" +
+                            + window.app.ui.language.getLingo("_FORUMBY_")
+                            + "</span> ")
+                    .append($threadPoster)
+                    .append(".");
+            
+            $ul.append($li);
+        }
+        
+        this.$forum.append($ul);
+        return;
+        
+        
         
         $latest.find("span.LastCommentBy").each(function () {
             var $this = $(this);
