@@ -541,7 +541,7 @@ function UI () {
      * And for some reason, that disappears once content reflows... So we force a reflow.
      */
     $(window).load(function () {
-        $('body').css('height', '100px');
+        $('body').css('height', (window.app.ui.$window.height() - 1) + 'px');
         window.setTimeout(function () {
             $('body').css('height', '');
         }, 5);
