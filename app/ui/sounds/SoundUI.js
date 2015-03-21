@@ -336,12 +336,17 @@ function SoundUI () {
         return $html;
     };
     
+    this.oldSounds = "";
     this.printSounds = function () {
+        var newSounds = JSON.stringify(window.app.storage.get("sounds"));
+        if (newSounds === this.oldSounds) return;
+        this.oldSounds = newSounds;
         this.$soundList.empty();
         this.$soundInputNew.val('').hide();
         this.$soundSelectList.empty();
         this.$soundSelect.show().find('option').prop('selected', false);
         this.$soundSelectNone.prop('selected', true);
+        
         for (var i = 0; i < window.app.storage.get("sounds").length; i++) {
             window.app.storage.get("sounds")[i].index = i;
             this.$soundList.append(this.create$folder(window.app.storage.get("sounds")[i]));
