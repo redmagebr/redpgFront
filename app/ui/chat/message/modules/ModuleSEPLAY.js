@@ -63,9 +63,9 @@ window.chatModules.push({
         });
 
         var IPlayedItNow = ((typeof slashCMD !== 'undefined' && slashCMD !== null) && !(window.app.ui.chat.cc.firstPrint));
-        var StorytellerPlayedItNow = user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && window.app.configdb.get("autoSE", true);
+        var StorytellerPlayedItNow = user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && (window.app.config.get("autoSE") === 1);
 
-        if (IPlayedItNow || StorytellerPlayedItNow) {
+        if (IPlayedItNow || StorytellerPlayedItNow || (window.app.config.get("autoSE") === 2)) {
             window.app.ui.chat.audioc.playse(cleanMsg);
         }
 

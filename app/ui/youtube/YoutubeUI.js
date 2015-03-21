@@ -15,13 +15,13 @@ function YoutubeUI () {
     
     this.configValidation = function (id, value) {
         if (id === 'autoVIDEO') {
-            if (typeof value === 'boolean') return true;
+            if (typeof value === 'number' && value >= 0 && value <= 2 && parseInt(value) === value) return true;
         }
         return false;
     };
     
     this.configDefault = function (id) {
-        if (id === 'autoVIDEO') return true;
+        if (id === 'autoVIDEO') return 1;
     };
     
     this.configChanged = function (id) {
@@ -70,42 +70,5 @@ function YoutubeUI () {
     this.close = function () {
         this.$player.empty();
         window.app.ui.closeRightWindow();
-    };
-    
-    
-    this.updateConfig = function () {
-        window.app.ui.configui.$configlist.append("<p class='centered language' data-langhtml='_CONFIGAUTOVIDEO_'></p>");
-        
-        var $options = $('<p class="centered" />');
-        var $auto = $('<input id="configautoVIDEOon" type="radio" name="configautoVIDEO" value="auto" />');
-        $auto.bind('change', function () {
-            if ($(this).prop('checked')) {
-                window.app.configdb.store('autoVIDEO', true);
-                window.app.updateConfig();
-            }
-        });
-        if (window.app.configdb.get('autoVIDEO', true)) {
-            $auto.prop('checked', true);
-        }
-        $options.append($auto);
-        $options.append($('<label for="configautoVIDEOon" class="language" data-langhtml="_AUTOVIDEOON_" />'));
-        
-        var $always = $('<input id="configautoVIDEOoff" type="radio" name="configautoVIDEO" value="off" />');
-        $always.bind('change', function () {
-            if ($(this).prop('checked')) {
-                window.app.configdb.store('autoVIDEO', false);
-                window.app.updateConfig();
-            }
-        });
-        if (!window.app.configdb.get('autoVIDEO', true)) {
-            $always.prop('checked', true);
-        }
-        $options.append($always);
-        $options.append($('<label for="configautoVIDEOoff" class="language" data-langhtml="_AUTOVIDEOOFF_" />'));
-        
-        
-        window.app.ui.configui.$configlist.append($options);
-        
-        window.app.ui.configui.$configlist.append($('<p class="explain language" data-langhtml="_CONFIGAUTOVIDEOEXPLAIN_" />'));
     };
 }

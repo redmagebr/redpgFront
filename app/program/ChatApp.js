@@ -151,12 +151,12 @@ function ChatApp () {
             lastMessage : this.room.getNewestMessageId()
         };
         
-        if (window.app.configdb.get('showWhispers', true)) {
+        if (!window.app.ui.isStreaming()) {
             data.typing = window.app.ui.chat.$chatinput.val() !== '';
             data.focused = window.app.ui.hasFocus;
         }
         
-        if (!this.room.hidePersona && window.app.configdb.get('showWhispers', true)) {
+        if (!this.room.hidePersona && !window.app.ui.isStreaming()) {
             if ((this.room.persona !== null)) {
                 data.persona = this.room.persona;
             } else {

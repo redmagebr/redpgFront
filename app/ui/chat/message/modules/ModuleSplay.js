@@ -42,7 +42,11 @@ window.chatModules.push({
             }, {link : cleanMsg}
         ));
         
-        if (((typeof slashCMD !== 'undefined' && slashCMD !== null) || user.isStoryteller()) && !window.app.ui.chat.cc.firstPrint && window.app.configdb.get("autoBGM", true)) {
+
+        var IPlayedItNow = ((typeof slashCMD !== 'undefined' && slashCMD !== null) && !(window.app.ui.chat.cc.firstPrint));
+        var StorytellerPlayedItNow = user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && (window.app.config.get("autoBGM") === 1);
+
+        if (IPlayedItNow || StorytellerPlayedItNow || (window.app.config.get("autoBGM") === 2)) {
             window.app.ui.chat.audioc.play(cleanMsg);
         }
 

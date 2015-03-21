@@ -232,6 +232,13 @@ window.lingo['en'] = {
     _CONFIGSAVE_ : 'Save',
     _CONFIGERROR_ : 'Error while saving the settings. Please try again.',
     _CONFIGSUCCESS_ : 'Settings saved successfully!',
+    _AUTOPLAYBGM2_ : 'Always',
+    _AUTOPLAYSE2_ : 'Always',
+    _AUTOPLAYVIDEO2_ : 'Always',
+    _AUTOPLAYIMAGE_ : 'Show images automatically',
+    _AUTOPLAYIMAGE0_ : 'Never',
+    _AUTOPLAYIMAGE1_ : 'Only when sent by a storyteller',
+    _AUTOPLAYIMAGE2_ : 'Always',
 
 
     /* Room */

@@ -63,7 +63,7 @@ window.chatModules.push({
      * @returns {jQuery || null}
      */
     get$ : function (msg, slashCMD, msgOnly) {
-        if (window.app.configdb.get('showWhispers', true)) {
+        if (!window.app.ui.isStreaming()) {
             var $html = $('<p class="chatWhisper" />');
             var user = msg.getUser();
         

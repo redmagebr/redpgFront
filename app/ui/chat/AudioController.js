@@ -206,8 +206,12 @@ function AudioController () {
         if (id === 'bgmVolume' || id === 'seVolume') {
             if (typeof value === 'number' && value >= 0 && value <= 1) return true;
         }
-        if (id === 'bgmLoop' || id === 'autoBGM'|| id === 'autoSE') {
+        if (id === 'bgmLoop') {
             if (typeof value === 'boolean') return true;
+        }
+        if (id === 'autoBGM'|| id === 'autoSE') {
+            if (typeof value !== 'number' || value < 0 || value > 2 || parseInt(value) !== value) return false;
+            return true;
         }
         return false;
     };
@@ -216,8 +220,8 @@ function AudioController () {
         if (id === 'bgmVolume') return 1;
         if (id === 'seVolume') return 0.05;
         if (id === 'bgmLoop') return true;
-        if (id === 'autoBGM') return true;
-        if (id === 'autoSE') return true;
+        if (id === 'autoBGM') return 1;
+        if (id === 'autoSE') return 1;
     };
     
     this.configChanged = function (id) {

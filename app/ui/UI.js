@@ -320,6 +320,10 @@ function UI () {
         }
     };
     
+    this.isStreaming = function () {
+        return window.app.ui.chat.mc.getModule('stream').isStream;
+    };
+    
     /**
      * Applies bindings to every general User Interface element.
      * Elements that fit better into children need to be bound by the appropriate class.

@@ -87,9 +87,6 @@ window.chatModules.push({
             if (this.isStream) {
                 this.isStream = false;
                 window.app.ui.chat.$chatHeader.show();
-                window.app.configdb.store('showWhispers', true);
-                window.app.configdb.store('autoSE', true);
-                window.app.configdb.store('autoBGM', true);
                 window.app.ui.nonotifications = false;
                 window.app.ui.chat.cc.room.hidePersona = false;
                 window.app.ui.title = "RedPG";
@@ -104,9 +101,6 @@ window.chatModules.push({
                 window.app.ui.checkWidth();
             } else {
                 this.isStream = true;
-                window.app.configdb.store('showWhispers', false);
-                window.app.configdb.store('autoSE', false);
-                window.app.configdb.store('autoBGM', false);
                 window.app.ui.chat.alwaysBottom = true;
                 window.app.ui.nonotifications = true;
                 window.app.ui.chat.cc.room.hidePersona = true;

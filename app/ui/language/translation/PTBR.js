@@ -241,6 +241,13 @@ window.lingo['pt_br'] = {
     _CONFIGSAVE_ : 'Salvar',
     _CONFIGERROR_ : 'Erro ao salvar as configurações, tente novamente.',
     _CONFIGSUCCESS_ : 'Configurações salvas com sucesso!',
+    _AUTOPLAYBGM2_ : 'Sempre',
+    _AUTOPLAYSE2_ : 'Sempre',
+    _AUTOPLAYVIDEO2_ : 'Sempre',
+    _AUTOPLAYIMAGE_ : 'Mostrar imagens automaticamente',
+    _AUTOPLAYIMAGE0_ : 'Nunca',
+    _AUTOPLAYIMAGE1_ : 'Apenas se enviadas por um mestre',
+    _AUTOPLAYIMAGE2_ : 'Sempre',
     
     
     /* Room */

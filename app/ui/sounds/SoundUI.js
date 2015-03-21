@@ -148,30 +148,6 @@ function SoundUI () {
         window.app.ui.soundui.$corserror.hide();
         window.app.ui.soundui.$foldererror.hide();
         
-        var oldSounds =  window.app.configdb.get('soundList', null);
-        if (oldSounds !== null) {
-            if (confirm("Você possui sons na configuração antiga. Gostaria de repassá-los ao modelo novo?")) {
-                window.app.storage.store("sounds", oldSounds);
-                this.printSounds();
-                
-                window.app.ui.blockRight();
-                
-                var cbs = function () {
-                    window.app.ui.unblockRight();
-                    window.app.configdb.store("soundList", null);
-                    window.app.ui.configui.saveConfig();
-                    window.app.ui.callLeftWindow("configWindow");
-                };
-                var cbe = function () {
-                    window.app.ui.unblockRight();
-                    alert("Não foi possível salvar os sons.");
-                };
-                
-                window.app.storageapp.sendStorage("sounds", cbs, cbe);
-                return false;
-            }
-        }
-        
         window.app.ui.blockRight();
         var cbs = function () {
             window.app.ui.unblockRight();

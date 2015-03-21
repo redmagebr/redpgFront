@@ -14,13 +14,17 @@ function ConfigUI () {
         window.app.config.store('fsmode', parseInt($(this).val()));
     });
     this.$ele['autoBGM'] = $("#configAutoBGM").on('change', function () {
-        window.app.config.store('autoBGM', $(this).val() === '1');
+        window.app.config.store('autoBGM', parseInt($(this).val()));
     });
     this.$ele['autoSE'] = $("#configAutoSE").on('change', function () {
-        window.app.config.store('autoSE', $(this).val() === '1');
+        window.app.config.store('autoSE', parseInt($(this).val()));
     });
     this.$ele['autoVIDEO'] = $("#configAutoVIDEO").on('change', function () {
-        window.app.config.store('autoVIDEO', $(this).val() === '1');
+        window.app.config.store('autoVIDEO', parseInt($(this).val()));
+    });
+    
+    this.$ele['autoImage'] = $("#configAutoImage").on('change', function () {
+        window.app.config.store('autoImage', parseInt($(this).val()));
     });
     
     this.$error = $("#configSaveError").hide();
@@ -47,10 +51,8 @@ function ConfigUI () {
             var lang = window.app.config.get("language");
             this.$langSelect.val(lang);
             this.$langImg.removeClass().addClass(lang + "_Flag").attr("title", window.lingo[lang]._LANGUAGENAME_);
-        } else if (['chatuseprompt', 'fsmode'].indexOf(id) !== -1) {
+        } else if (['chatuseprompt', 'fsmode', 'autoBGM', 'autoSE', 'autoVIDEO','autoImage'].indexOf(id) !== -1) {
             this.$ele[id].val(window.app.config.get(id).toString());
-        } else if (['autoBGM', 'autoSE', 'autoVIDEO'].indexOf(id) !== -1) {
-            this.$ele[id].val(window.app.config.get(id) ? '1' : '0');
         }
     };
     
@@ -59,6 +61,7 @@ function ConfigUI () {
         window.app.config.addListener("autoBGM", this);
         window.app.config.addListener("autoSE", this);
         window.app.config.addListener("autoVIDEO", this);
+        window.app.config.addListener("autoImage", this);
         window.app.config.addListener("chatuseprompt", this);
         window.app.config.addListener("fsmode", this);
         
@@ -68,11 +71,6 @@ function ConfigUI () {
             $option = $("<option />").val(key).text(lingos[key]._LANGUAGENAME_);
             this.$langSelect.append($option);
         }
-        
-        this.$langSelect.sort(function (a,b) {
-            var $a = $(a);
-            var $b = $(b);
-        });
         
         
         $('#configVersion').html(window.app.version[0] +

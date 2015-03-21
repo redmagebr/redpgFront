@@ -66,7 +66,7 @@ function Chat () {
             if (value >= 0.95 && value <= 1.90) return true;
             return false;
         }
-        if (id === 'chatuseprompt' && typeof value === 'number') {
+        if ((id === 'chatuseprompt' || id === 'autoImage') && typeof value === 'number') {
             if (value >= 0 && value <=2 && parseInt(value) === value) {
                 return true;
             }
@@ -78,6 +78,7 @@ function Chat () {
     this.configDefault = function (id) {
         if (id === 'chatfontsize') return 0.95;
         if (id === 'chatuseprompt') return 2;
+        if (id === 'autoImage') return 1;
     };
     
     
@@ -102,6 +103,7 @@ function Chat () {
     this.init = function () {
         window.app.config.registerConfig('chatfontsize', this);
         window.app.config.registerConfig('chatuseprompt', this);
+        window.app.config.registerConfig('autoImage', this);
         
         
         // Now that the document is ready, initialize elements

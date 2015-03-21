@@ -18,7 +18,7 @@ window.chatModules.push({
      * @returns {jQuery}
      */
     get$ : function (msg, slashcmd) {
-        if (msg.destination !== null && msg.destination !== 0 && !(window.app.configdb.get('showWhispers', true))) {
+        if (msg.destination !== null && msg.destination !== 0 && window.app.ui.isStreaming()) {
             return null;
         }
         var user = msg.getUser();

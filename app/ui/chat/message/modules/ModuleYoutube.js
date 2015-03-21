@@ -61,12 +61,17 @@ window.chatModules.push({
         $link.attr('href', cleanMsg);
         $link.attr('target', '_blank');
 
-        if ((typeof slashCMD !== 'undefined' && slashCMD !== null)) {
+        var storytellerDid = (user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && window.app.config.get("autoVIDEO") === 1);
+        
+
+        if (window.app.ui.chat.cc.firstPrint) {
+            // do nothing
+        } else if ((typeof slashCMD !== 'undefined' && slashCMD !== null)) {
             var id = window.app.ui.youtubeui.parseUrl(cleanMsg);
             if (id !== null) {
                 window.app.ui.youtubeui.play(id, false);
             }
-        } else if (user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && window.app.configdb.get("autoVIDEO", true)) {
+        } else if (storytellerDid || window.app.config.get("autoVIDEO") === 2) {
             var id = window.app.ui.youtubeui.parseUrl(cleanMsg);
             if (id !== null) {
                 window.app.ui.youtubeui.play(id, true);
