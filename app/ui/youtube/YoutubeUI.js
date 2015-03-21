@@ -4,11 +4,28 @@ function YoutubeUI () {
     this.$player;
     
     this.init = function () {
+        window.app.config.registerConfig('autoVIDEO', this);
+        
         this.$player = $('#youtubePlayer');
         this.$button = $('<a id="openYoutube" class="button"><span class="language" data-langhtml="_OPENYOUTUBE_"></span></a>');
         this.$button.on('click', function () {
             window.app.ui.callRightWindow("youtubeWindow");
         });
+    };
+    
+    this.configValidation = function (id, value) {
+        if (id === 'autoVIDEO') {
+            if (typeof value === 'boolean') return true;
+        }
+        return false;
+    };
+    
+    this.configDefault = function (id) {
+        if (id === 'autoVIDEO') return true;
+    };
+    
+    this.configChanged = function (id) {
+        
     };
     
     this.parseUrl = function (url) {

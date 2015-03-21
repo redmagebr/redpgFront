@@ -57,14 +57,8 @@ function Storage (app) {
     };
     
     this.store = function (id, value) {
-        
-        if (value === null) {
-            this.storage[id] = this.registeredStorage[id].storageDefault();
-            this.registeredStorage[id].storageChanged();
-        }
-        
         if (typeof id !== 'string') {
-            console.log("Attempt to store a value to an id which wasn't a string:");
+            console.log("Attempt to store a value to an Storage id which wasn't a string:");
             console.log(id);
             console.log(value);
             return false;
@@ -74,6 +68,12 @@ function Storage (app) {
             console.log("Attempt to store a value to an unregistered storage at " + id);
             console.log(value);
             return false;
+        }
+        
+        if (value === null) {
+            this.storage[id] = this.registeredStorage[id].storageDefault();
+            this.registeredStorage[id].storageChanged();
+            return true;
         }
         
         // Is it valid? can we clean it?

@@ -13,6 +13,12 @@ function AudioController () {
     this.permittedFiles = $('#chatSounds')[0];
     
     this.init = function () {
+        window.app.config.registerConfig('bgmVolume', this);
+        window.app.config.registerConfig('seVolume', this);
+        window.app.config.registerConfig('bgmLoop', this);
+        window.app.config.registerConfig('autoBGM', this);
+        window.app.config.registerConfig('autoSE', this);
+        
         this.bgm = document.getElementById('musicPlayerAudioBGM');
         this.se = document.getElementById('musicPlayerAudioSE');
         this.$bar = $('#musicPlayerProgressCurrent');
@@ -46,13 +52,10 @@ function AudioController () {
     };
     
     this.considerRepeat = function () {
-        if (this.bgm.loop) {
-            this.bgm.loop = false;
-            window.app.configdb.store('bgmLoop', false);
+        this.bgm.loop = window.app.config.get("bgmLoop");
+        if (!this.bgm.loop) {
             this.$repeat.removeClass('toggled');
         } else {
-            this.bgm.loop = true;
-            window.app.configdb.store('bgmLoop', true);
             this.$repeat.addClass('toggled');
         }
     };
@@ -94,7 +97,6 @@ function AudioController () {
     this.changeVolumeTo = function (newVolume) {
         this.bgm.volume = newVolume;
         this.$volumeslider.height(this.bgm.volume * 100 + '%');
-        window.app.configdb.store('bgmVolume', this.bgm.volume);
     };
     
     this.setBindings = function () {
@@ -107,7 +109,8 @@ function AudioController () {
         });
         
         this.$repeat.bind('click', function () {
-            window.app.ui.chat.audioc.considerRepeat();
+            window.app.config.store("bgmLoop",
+                !window.app.config.get("bgmLoop"));
         });
         
         this.$bar.bind('click', function (e) {
@@ -123,7 +126,10 @@ function AudioController () {
             var pointzero = $this.offset().top;
             var max = $this.height();
             var mouse = e.pageY;
-            window.app.ui.chat.audioc.changeVolumeTo(1 - ((mouse - pointzero) / max));
+            var volume = 1 - ((mouse - pointzero) / max);
+            volume = + volume.toFixed(2);
+            
+            window.app.config.store("bgmVolume", volume);
         });
         
         this.$volup.bind('click', function () {
@@ -196,51 +202,31 @@ function AudioController () {
         }
     };
     
+    this.configValidation = function (id, value) {
+        if (id === 'bgmVolume' || id === 'seVolume') {
+            if (typeof value === 'number' && value >= 0 && value <= 1) return true;
+        }
+        if (id === 'bgmLoop' || id === 'autoBGM'|| id === 'autoSE') {
+            if (typeof value === 'boolean') return true;
+        }
+        return false;
+    };
     
-    this.updateConfig = function () {
-        this.changeVolumeTo(window.app.configdb.get("bgmVolume", 1));
-        window.app.configdb.store("seVolume", 0.55);
-        this.se.volume = window.app.configdb.get("seVolume", 0.05);
-        
-        var loop = window.app.configdb.get("bgmLoop", true);
-        if (loop !== this.bgm.loop) {
+    this.configDefault = function (id) {
+        if (id === 'bgmVolume') return 1;
+        if (id === 'seVolume') return 0.05;
+        if (id === 'bgmLoop') return true;
+        if (id === 'autoBGM') return true;
+        if (id === 'autoSE') return true;
+    };
+    
+    this.configChanged = function (id) {
+        if (id === 'bgmVolume') {
+            this.changeVolumeTo(window.app.config.get('bgmVolume'));
+        } else if (id === 'seVolume') {
+            this.se.volume = window.app.config.get('seVolume');
+        } else if (id === 'bgmLoop') {
             this.considerRepeat();
         }
-        window.app.configdb.get("autoBGM", true);
-        
-        
-        window.app.ui.configui.$configlist.append("<p class='centered language' data-langhtml='_CONFIGAUTOBGM_'></p>");
-        
-        var $options = $('<p class="centered" />');
-        var $auto = $('<input id="configautoBGMon" type="radio" name="configautoBGM" value="on" />');
-        $auto.bind('change', function () {
-            if ($(this).prop('checked')) {
-                window.app.configdb.store('autoBGM', true);
-                window.app.updateConfig();
-            }
-        });
-        if (window.app.configdb.get('autoBGM', true)) {
-            $auto.prop('checked', true);
-        }
-        $options.append($auto);
-        $options.append($('<label for="configautoBGMon" class="language" data-langhtml="_AUTOBGMON_" />'));
-        
-        var $always = $('<input id="configautoBGMoff" type="radio" name="configautoBGM" value="off" />');
-        $always.bind('change', function () {
-            if ($(this).prop('checked')) {
-                window.app.configdb.store('autoBGM', false);
-                window.app.updateConfig();
-            }
-        });
-        if (!window.app.configdb.get('autoBGM', true)) {
-            $always.prop('checked', true);
-        }
-        $options.append($always);
-        $options.append($('<label for="configautoBGMoff" class="language" data-langhtml="_AUTOBGMOFF_" />'));
-        
-        
-        window.app.ui.configui.$configlist.append($options);
-        
-        window.app.ui.configui.$configlist.append($('<p class="explain language" data-langhtml="_CONFIGAUTOBGMEXPLAIN_" />'));
     };
 }

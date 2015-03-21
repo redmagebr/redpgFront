@@ -389,7 +389,7 @@ window.chatModules.push({
      * @returns {String}
      */
     translate : function (word, language) {
-        if (this.lingua[language] === undefined) {
+        if (this.lingua[language] === undefined || word.length === 0) {
             return word;
         }
         

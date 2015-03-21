@@ -28,12 +28,6 @@ function Application (debug) {
     this.imageHost = 'http://images.redpg.com.br/';
     this.wshost = 'ws://redpg.com.br/service/';
     
-    // TEMPORARY DNS FIX
-    this.host = 'http://45.56.67.175/service/';
-    this.staticHost = 'http://45.56.67.175/';
-    this.imageHost = 'http://45.56.67.175/';
-    this.wshost = 'ws://45.56.67.175/service/';
-    
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
     
@@ -43,17 +37,16 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 49, 9];
+    this.version = [0, 50, 0];
     
     /**
      * Settings
      */
-    this.settings = new UserSettings();
+    this.config = new Config2();
     
     /**
      * Databases
      */
-    this.configdb = new ConfigDB();
     this.storage = new Storage(this);
     this.sheetdb = new SheetDB();
     this.gamedb = new GameDB();
@@ -77,11 +70,6 @@ function Application (debug) {
     this.storageapp = new StorageApp(this);
     
     this.ui = new UI();
-    
-    this.updateConfig = function () {
-        this.ui.updateConfig();
-        this.memory.init();
-    };
     
     this.emulateBind = function (f, context) {
         return function () {
@@ -110,5 +98,10 @@ function Application (debug) {
 
         // For Safari / chrome
         return msg;
+    };
+    
+    this.init = function () {
+        this.memory.init();
+        this.ui.init();
     };
 }

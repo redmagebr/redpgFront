@@ -9,8 +9,6 @@ function Chat () {
     this.$hidingCSS = $('<style type="text/css" />');
     $('head').append(this.$hidingCSS);
     
-    this.usePrompt = 'auto'; // 'auto' || '0' || '1'
-    
     this.tracker = new CombatTracker();
     this.langtab = new LanguageTracker();
     this.mc = new MessageController();
@@ -52,18 +50,34 @@ function Chat () {
      * Tamanho atual da fonte mostrada no chat.
      * @type Number
      */
-    this.fontSize = 0.95;
     this.alwaysBottom = true;
     this.powerBottom;
     
-    this.updateConfig = function () {
-        this.fontSize = window.app.configdb.get('chatfontsize', 0.95);
-        this.changeChatFont(0);
-        
-        this.usePrompt = window.app.configdb.get('chatuseprompt', 'auto');
-        this.considerPrompts();
-        
-        this.audioc.updateConfig();
+    this.configChanged = function (id) {
+        if (id === 'chatfontsize') {
+            this.$chatbox.css({'font-size' : window.app.config.get("chatfontsize") + 'em'});
+        } else if (id === 'chatuseprompt') {
+            this.considerPrompts();
+        }
+    };
+    
+    this.configValidation = function (id, value) {
+        if (id === 'chatfontsize' && typeof value === 'number') {
+            if (value >= 0.95 && value <= 1.90) return true;
+            return false;
+        }
+        if (id === 'chatuseprompt' && typeof value === 'number') {
+            if (value >= 0 && value <=2 && parseInt(value) === value) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    };
+    
+    this.configDefault = function (id) {
+        if (id === 'chatfontsize') return 0.95;
+        if (id === 'chatuseprompt') return 2;
     };
     
     
@@ -73,9 +87,12 @@ function Chat () {
      * @returns {void}
      */
     this.changeChatFont = function (diff) {
-        this.fontSize += diff;
-        this.$chatbox.css({'font-size' : this.fontSize + 'em'});
-        window.app.configdb.store('chatfontsize', this.fontSize);
+        var fontsize = window.app.config.get("chatfontsize") + diff;
+        fontsize = +fontsize.toFixed(2);
+        if (fontsize > 1.8) {
+            fontsize = 1.8;
+        }
+        window.app.config.store('chatfontsize', fontsize);
     };
     
     /**
@@ -83,6 +100,10 @@ function Chat () {
      * @returns {void}
      */
     this.init = function () {
+        window.app.config.registerConfig('chatfontsize', this);
+        window.app.config.registerConfig('chatuseprompt', this);
+        
+        
         // Now that the document is ready, initialize elements
         this.$longloadicon = $('#chatNotLoad');
         this.$connectionerroricon = $('#chatNotConnError');
@@ -157,15 +178,15 @@ function Chat () {
      * @returns {undefined}
      */
     this.considerPrompts = function () {
-        if (this.usePrompt === 'auto') {
+        if (this.usePrompt === 2) {
             if (jQuery.browser.mobile) {
                 this.showPrompts();
             } else {
                 this.hidePrompts();
             }
-        } else if (this.usePrompt === '1') {
+        } else if (this.usePrompt === 1) {
             this.showPrompts();
-        } else if (this.usePrompt === '0') {
+        } else if (this.usePrompt === 0) {
             this.hidePrompts();
         }
     };

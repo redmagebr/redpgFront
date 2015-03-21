@@ -85,11 +85,36 @@ function UI () {
     this.lastRight = '';
     
     /**
+     * Configurators
+     */
+    this.configChanged = function (id) {
+        if (id === 'fsmode') {
+            this.handleResize();
+            this.checkWidth();
+        }
+    };
+    
+    this.configValidation = function (id, value) {
+        if (id === 'fsmode') {
+            if (value === 0 || value === 1) return true;
+            return false;
+        }
+    };
+    
+    this.configDefault = function (id) {
+        //window.app.configdb.get('fullscreenmode', 'auto')
+        if (id === 'fsmode') return 0;
+    };
+    
+    
+    /**
      * Initializes User Interface. Applies bindings and such.
      * Also calls init on every child.
      * @returns {void}
      */
     this.init = function () {
+        window.app.config.registerConfig("fsmode", this);
+        
         $('head').append(this.$singletonCss)
                  .append(this.$removeAvatarCss);
         
@@ -245,7 +270,7 @@ function UI () {
      * @returns {void}
      */
     this.checkWidth = function () {
-        if (window.app.configdb.get('fullscreenmode', 'auto') === 'on' || this.lastWidth < 1240) {
+        if (window.app.config.get("fsmode") === 1 || this.lastWidth < 1240) {
             this.$leftWindow.addClass('fullScreen');
             this.$rightWindow.addClass('fullScreen');
             this.$leftHandler.addClass('fullScreen');
@@ -480,61 +505,60 @@ function UI () {
     };
     
     this.updateConfig = function () {
-        this.configui.updateConfig();
-        
-        window.app.ui.configui.$configlist.append("<p class='centered language' data-langhtml='_CONFIGFULLSCREEN_'></p>");
-        
-        var $options = $('<p class="centered" />');
-        var $auto = $('<input id="configfullscreenmodeauto" type="radio" name="configfullscreenmode" value="auto" />');
-        $auto.bind('change', function () {
-            if ($(this).prop('checked')) {
-                window.app.configdb.store('fullscreenmode', 'auto');
-                window.app.updateConfig();
-            }
-        });
-        if (window.app.configdb.get('fullscreenmode', 'auto') === 'auto') {
-            $auto.prop('checked', true);
-        }
-        $options.append($auto);
-        $options.append($('<label for="configfullscreenmodeauto" class="language" data-langhtml="_AUTOFULL_" />'));
-        
-        var $always = $('<input id="configfullscreenmodeon" type="radio" name="configfullscreenmode" value="on" />');
-        $always.bind('change', function () {
-            if ($(this).prop('checked')) {
-                window.app.configdb.store('fullscreenmode', 'on');
-                window.app.ui.callRightWindow(('justhideit'));
-                window.app.updateConfig();
-            }
-        });
-        if (window.app.configdb.get('fullscreenmode', 'auto') === 'on') {
-            $always.prop('checked', true);
-        }
-        $options.append($always);
-        $options.append($('<label for="configfullscreenmodeon" class="language" data-langhtml="_ONFULL_" />'));
-        
-        
-        window.app.ui.configui.$configlist.append($options);
-        
-        window.app.ui.configui.$configlist.append($('<p class="explain language" data-langhtml="_CONFIGFULLSCREENEXPLAIN_" />'));
-        
+//        this.configui.updateConfig();
+//        
+//        window.app.ui.configui.$configlist.append("<p class='centered language' data-langhtml='_CONFIGFULLSCREEN_'></p>");
+//        
+//        var $options = $('<p class="centered" />');
+//        var $auto = $('<input id="configfullscreenmodeauto" type="radio" name="configfullscreenmode" value="auto" />');
+//        $auto.bind('change', function () {
+//            if ($(this).prop('checked')) {
+//                window.app.configdb.store('fullscreenmode', 'auto');
+//                window.app.updateConfig();
+//            }
+//        });
+//        if (window.app.configdb.get('fullscreenmode', 'auto') === 'auto') {
+//            $auto.prop('checked', true);
+//        }
+//        $options.append($auto);
+//        $options.append($('<label for="configfullscreenmodeauto" class="language" data-langhtml="_AUTOFULL_" />'));
+//        
+//        var $always = $('<input id="configfullscreenmodeon" type="radio" name="configfullscreenmode" value="on" />');
+//        $always.bind('change', function () {
+//            if ($(this).prop('checked')) {
+//                window.app.configdb.store('fullscreenmode', 'on');
+//                window.app.ui.callRightWindow(('justhideit'));
+//                window.app.updateConfig();
+//            }
+//        });
+//        if (window.app.configdb.get('fullscreenmode', 'auto') === 'on') {
+//            $always.prop('checked', true);
+//        }
+//        $options.append($always);
+//        $options.append($('<label for="configfullscreenmodeon" class="language" data-langhtml="_ONFULL_" />'));
+//        
+//        
+//        window.app.ui.configui.$configlist.append($options);
+//        
+//        window.app.ui.configui.$configlist.append($('<p class="explain language" data-langhtml="_CONFIGFULLSCREENEXPLAIN_" />'));
+//        
         this.handleResize();
         
-        this.chat.updateConfig();
-        this.language.updateConfig();
-        this.gameui.updateConfig();
-        //this.soundui.updateConfig();
-        this.youtubeui.updateConfig();
-        this.sheetui.updateConfig();
+//        this.chat.updateConfig();
+//        this.language.updateConfig();
+//        this.gameui.updateConfig();
+//        this.youtubeui.updateConfig();
+//        this.sheetui.updateConfig();
         
-        this.language.applyLanguageOn(this.configui.$configlist);
+//        this.language.applyLanguageOn(this.configui.$configlist);
     };
     
     /**
      * Init UI once document is loaded. Fully loaded is overkill
      */
-    $(document).ready(function () {
-        window.app.ui.init();
-    });
+//    $(document).ready(function () {
+//        window.app.ui.init();
+//    });
     
     /**
      * For some reason chrome randomly places the scroll of the singleton divs outside their boxes, resulting in shamefur dispray

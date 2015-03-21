@@ -18,26 +18,3 @@
 #forumRecent > ul > li:hover {
     background-color: #e1e1e1;
 }
-
-/*<div class="selectable" id="forumRecent">
-    <ul class="DataList Discussions">
-        <li id="Discussion_3" class="Item Unread ItemDiscussion">
-           <span class="Options"></span>
-            <div class="ItemContent Discussion">
-                <div class="Title">
-                    <a href="http://forum.redpg.com.br/index.php?p=/discussion/3/segundo-teste">Segundo Teste</a>
-                </div>
-                <div class="Meta Meta-Discussion">
-                    <span class="MItem LastCommentBy">
-                        Started by
-                        <a href="/index.php?p=/profile/3/Raven">Raven</a>
-                    </span>
-                    <span> - </span>
-                    <span class="MItem Category Category-mesas">
-                        <a href="http://forum.redpg.com.br/index.php?p=/categories/mesas">Mesas (Português - Brasil)</a>
-                    </span>     
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>*/

@@ -26,11 +26,12 @@ function LoginApp () {
     
     this.approvedLogin = function (json) {
         this.user.updateFromJSON(json['user']);
-        window.app.configdb.updateFromJSON(json.user['config']);
+        window.app.config.updateFromJSON(json.user['config']);
         this.logged = true;
         this.jsessid = json['session'];
         localStorage.lastSession = this.jsessid;
         localStorage.lastSessionTime = new Date().valueOf();
+        window.app.memory.init();
         this.setTimeout();
     };
     

@@ -5,16 +5,6 @@
  */
 function Language () {
     /**
-     * Not implemented. This needs to be stored and retrieved from database object.
-     * @type String|String
-     */
-    if (localStorage.lastLang !== undefined) {
-        this.currentlang = localStorage.lastLang;
-    } else {
-        this.currentlang = navigator.language;
-    }
-    
-    /**
      * Generates clickable flags to change language.
      * @returns {String} html
      */
@@ -38,8 +28,36 @@ function Language () {
      * @returns {void}
      */
     this.init = function () {
-        this.updateConfig();
-        this.applyLanguage();
+        window.app.config.registerConfig("language", this);
+        this.configChanged();
+    };
+    
+    this.configValidation = function (id, value) {
+        if (id === 'language' && typeof value === 'string') {
+            if (typeof window.lingo[value] !== 'undefined') {
+                return true;
+            }
+        }
+        return false;
+    };
+    
+    this.configDefault = function (id) {
+        if (id === 'language') {
+            var language = this.getNavigator();
+            if (typeof window.lingo[language] !== 'undefined') {
+                return language;
+            }
+            return "pt_br";
+        }
+    };
+    
+    this.getNavigator = function () {
+        var language = navigator.language.toLowerCase();
+        language = language.replace('-', '_');
+        if (typeof window.lingo[language] === 'undefined' && language.indexOf('_') !== -1) {
+            language = language.split('_')[0];
+        }
+        return language;
     };
     
     /**
@@ -72,10 +90,7 @@ function Language () {
      * @returns {void}
      */
     this.changeLanguage = function (lang) {
-        this.currentlang = lang;
-        localStorage.lastLang = lang;
-        window.app.configdb.store("language", lang);
-        this.applyLanguage();
+        window.app.config.store("language", lang);
     };
     
     /**
@@ -177,17 +192,9 @@ function Language () {
     };
     
     
-    this.updateConfig = function () {
-        var language = window.app.configdb.get("language", this.currentlang);
-        language = language.replace('-', '_');
-        if (typeof window.lingo[language] === 'undefined' && language.indexOf('_') !== -1) {
-            language = language.split('_')[0];
-        }
-        if (language !== this.currentlang && typeof window.lingo[language] !== 'undefined') {
-            this.currentlang = language;
-        } else if (window.lingo[this.currentlang] === undefined) {
-            this.currentlang = 'pt_br';
-        }
+    this.configChanged = function () {
+        var language = window.app.config.get("language");
+        this.currentlang = language;
         this.applyLanguage();
     };
 }

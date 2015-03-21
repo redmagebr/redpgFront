@@ -274,7 +274,7 @@ function ChatController (chat) {
     };
     
     this.checkUsers = function () {
-        if (!window.app.configdb.get('showWhispers', true)) {
+        if (!window.app.config.get("showWhispers")) {
             return null;
         }
         var users = this.room.users.users;
