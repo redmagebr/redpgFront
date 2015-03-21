@@ -180,6 +180,7 @@ function Chat () {
      * @returns {undefined}
      */
     this.considerPrompts = function () {
+        this.usePrompt = window.app.config.get("chatuseprompt");
         if (this.usePrompt === 2) {
             if (jQuery.browser.mobile) {
                 this.showPrompts();
