@@ -99,6 +99,8 @@ function PictureUI () {
             }
         }
         
+        var oldUrl = this.$element.attr("src");
+        
         this.$element.off('error').on('error', function () {
             window.app.ui.pictureui.invalidPicture();
         }).attr('src', url).css({
@@ -110,6 +112,10 @@ function PictureUI () {
         if (window.app.ui.pictureui.$canvas !== null) {
             window.app.ui.pictureui.$canvas.remove();
             window.app.ui.pictureui.$canvas = null;
+        }
+        
+        if (oldUrl === url) {
+            this.$element.trigger('load');
         }
     };
     
