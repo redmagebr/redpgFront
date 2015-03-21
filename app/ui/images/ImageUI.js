@@ -188,15 +188,19 @@ function ImageUI () {
         window.app.imagedb.saveStorage(cbs, cbe);
     };
     
+    this.lastImages = "";
     this.fillLists = function (force) {
         if (++this.loaded !== 2 && force !== true) return;
-        this.$linkList.empty();
-        this.$imageList.empty();
-        
         var $foldersLink = {};
         var $foldersUpload = {};
         
         var images = window.app.imagedb.imagesOrdered;
+        var imagesJson = JSON.stringify(images);
+        if (imagesJson === this.lastImages) return false;
+        
+        this.lastImages = imagesJson;
+        this.$linkList.empty();
+        this.$imageList.empty();
         var $folderLink;
         var $image;
         var folder;
