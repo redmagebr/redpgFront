@@ -23,10 +23,10 @@ function Application (debug) {
      * Host must point to the server we're using.
      * It will be prepended to every AJAX url.
      */
-    this.host = 'http://redpg.com.br/service/';
-    this.staticHost = 'http://redpg.com.br/';
+    this.host = 'http://app.redpg.com.br/service/';
+    this.staticHost = 'http://app.redpg.com.br/';
     this.imageHost = 'http://images.redpg.com.br/';
-    this.wshost = 'ws://redpg.com.br/service/';
+    this.wshost = 'ws://app.redpg.com.br/service/';
     
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
@@ -37,7 +37,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 50, 5];
+    this.version = [0, 50, 6];
     
     /**
      * Settings
