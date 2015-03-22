@@ -16,7 +16,6 @@ function SoundUI () {
     
     
     this.init = function () {
-        window.app.config.registerConfig('soundList', this);
         
         this.$bgmcheck = $('#soundsBGM');
         this.$soundList = $('#soundList').empty();
@@ -550,35 +549,5 @@ function SoundUI () {
         }
         this.updateIndexes();
         this.printSounds();
-    };
-    
-    this.configValidation = function (id, value) {
-        if (value !== 0) return false;
-        return true;
-    };
-    
-    this.configChanged = function () {
-        var oldSounds = window.app.config.get('soundList');
-        if (oldSounds !== 0 && Array.isArray(oldSounds)) {
-            if (confirm("Sons detectados na configuração. Passar eles para storage?")) {
-                window.app.storage.store('sounds', oldSounds);
-                window.app.ui.blockRight();
-                var cbs = function () {
-                    window.app.ui.unblockRight();
-                    window.app.ui.soundui.callSelf();
-                    window.app.ui.callLeftWindow("configWindow");
-                    $("#configSaveButton").trigger('click');
-                };
-                var cbe = function () {
-                    window.app.ui.unblockRight();
-                    alert("Erro ao salvar sons!");
-                };
-                window.app.storageapp.sendStorage('sounds', cbs, cbe);
-            }
-        }
-    };
-    
-    this.configDefault = function () {
-        return 0;
     };
 }
