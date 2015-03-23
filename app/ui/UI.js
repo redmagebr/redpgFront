@@ -321,7 +321,7 @@ function UI () {
     };
     
     this.isStreaming = function () {
-        if (window.app.ui.chat.mc.getModule('stream') !== null) return false;
+        if (window.app.ui.chat.mc.getModule('stream') === null) return false;
         return window.app.ui.chat.mc.getModule('stream').isStream;
     };
     
