@@ -27,6 +27,10 @@ function ConfigUI () {
         window.app.config.store('autoImage', parseInt($(this).val()));
     });
     
+    this.$ele['wsPort'] = $("#configWsHost").on('change', function () {
+        window.app.config.store('wsPort', parseInt($(this).val()));
+    });
+    
     this.$error = $("#configSaveError").hide();
     this.$success = $("#configSaveSuccess").hide();
     
@@ -51,7 +55,7 @@ function ConfigUI () {
             var lang = window.app.config.get("language");
             this.$langSelect.val(lang);
             this.$langImg.removeClass().addClass(lang + "_Flag").attr("title", window.lingo[lang]._LANGUAGENAME_);
-        } else if (['chatuseprompt', 'fsmode', 'autoBGM', 'autoSE', 'autoVIDEO','autoImage'].indexOf(id) !== -1) {
+        } else if (['chatuseprompt', 'fsmode', 'autoBGM', 'autoSE', 'autoVIDEO','autoImage', 'wsPort'].indexOf(id) !== -1) {
             this.$ele[id].val(window.app.config.get(id).toString());
         }
     };
@@ -64,12 +68,18 @@ function ConfigUI () {
         window.app.config.addListener("autoImage", this);
         window.app.config.addListener("chatuseprompt", this);
         window.app.config.addListener("fsmode", this);
+        window.app.config.addListener("wsPort", this);
         
         var lingos = window.lingo;
         var $option;
         for (var key in lingos) {
             $option = $("<option />").val(key).text(lingos[key]._LANGUAGENAME_);
             this.$langSelect.append($option);
+        }
+        
+        for (var i = 0; i < window.app.wsHostPorts.length; i++) {
+            $option = $("<option />").val(window.app.wsHostPorts[i]).text(window.app.wsHostPorts[i]);
+            this.$ele['wsPort'].append($option);
         }
         
         

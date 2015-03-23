@@ -313,7 +313,7 @@ function UI () {
                 right += giveBack;
                 this.$leftWindow.css('right', (right) + 'px');
                 this.$rightWindow.css('width', (right - 5) + 'px');
-                if (window.app.ui.chat.mc.getModule('stream') !== null || !window.app.ui.chat.mc.getModule('stream').isStream) {
+                if (!window.app.ui.chat.mc.getModule('stream').isStream) {
                     this.$pictureContainer.css({"width" : (right - 10)});
                 }
             }
@@ -321,6 +321,7 @@ function UI () {
     };
     
     this.isStreaming = function () {
+        if (window.app.ui.chat.mc.getModule('stream') !== null) return false;
         return window.app.ui.chat.mc.getModule('stream').isStream;
     };
     

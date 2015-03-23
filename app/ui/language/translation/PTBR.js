@@ -248,6 +248,8 @@ window.lingo['pt_br'] = {
     _AUTOPLAYIMAGE0_ : 'Nunca',
     _AUTOPLAYIMAGE1_ : 'Apenas se enviadas por um mestre',
     _AUTOPLAYIMAGE2_ : 'Sempre',
+    _CONFIGWSPORT_ : 'Porta usada em WebSockets',
+    _CONFIGWSEXP_ : "Você pode controlar qual porta é utilizada para as conexões WebSocket do Chat. Só mexa aqui se o chat não estiver funcionando.",
     
     
     /* Room */

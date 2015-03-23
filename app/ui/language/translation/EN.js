@@ -239,6 +239,8 @@ window.lingo['en'] = {
     _AUTOPLAYIMAGE0_ : 'Never',
     _AUTOPLAYIMAGE1_ : 'Only when sent by a storyteller',
     _AUTOPLAYIMAGE2_ : 'Always',
+    _CONFIGWSPORT_ : 'Port used in WebSockets',
+    _CONFIGWSEXP_ : "You may select which port is used for the WebSocket connections on the Chat. Don't change this value unless it's already not working.",
 
 
     /* Room */

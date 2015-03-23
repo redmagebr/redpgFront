@@ -26,7 +26,10 @@ function Application (debug) {
     this.host = 'http://app.redpg.com.br/service/';
     this.staticHost = 'http://app.redpg.com.br/';
     this.imageHost = 'http://images.redpg.com.br/';
-    this.wshost = 'ws://app.redpg.com.br/service/';
+    this.wshostServer = 'ws://app.redpg.com.br';
+    this.wshostContext = '/service/';
+    this.wsHostPorts = [80, 8080];
+    this.wshost = this.wshostServer + ':' + this.wsHostPorts[0] + this.wshostContext;
     
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
@@ -37,7 +40,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 50, 7];
+    this.version = [0, 50, 8];
     
     /**
      * Settings
@@ -101,7 +104,26 @@ function Application (debug) {
     };
     
     this.init = function () {
+        this.config.registerConfig('wsPort', this);
+        
         this.memory.init();
         this.ui.init();
+    };
+    
+    this.configChanged = function (id) {
+        if (id === 'wsPort') {
+            this.wshost = this.wshostServer + ':' + this.config.get("wsPort") + this.wshostContext;
+        }
+    };
+    
+    this.configValidation = function (id) {
+        if (id === 'wsPort') {
+            return (this.wsHostPorts.indexOf(this.config.get("wsPort")) !== -1);
+        }
+        return false;
+    };
+    
+    this.configDefault = function (id) {
+        if (id === 'wsPort') return this.wsHostPorts[0];
     };
 }

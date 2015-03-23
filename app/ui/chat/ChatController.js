@@ -162,6 +162,10 @@ function ChatController (chat) {
             }
             for (var i = start; i < messages.length; i++) {
                 message = messages[i];
+                if (window.app.ui.isStreaming() && message.destination !== 0 && message.destination !== null) {
+                    continue;
+                }
+                
                 if (message.localid !== null) {
                     continue;
                 }
@@ -274,7 +278,7 @@ function ChatController (chat) {
     };
     
     this.checkUsers = function () {
-        if (!window.app.config.get("showWhispers")) {
+        if (window.app.ui.isStreaming()) {
             return null;
         }
         var users = this.room.users.users;

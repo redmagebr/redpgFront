@@ -154,8 +154,14 @@ function MessageController () {
      * @returns {undefined}
      */
     this.messageRollUp = function () {
+        var text = this.$chatinput.val().trim();
+        if (text !== '' && this.messageRoller < this.messageHistory.length && this.messageHistory[this.messageRoller] !== text) {
+            this.storeMessage(text);
+            this.messageRoller -= 1;
+        }
         if (this.messageRoller > 0 && (typeof this.messageHistory[this.messageRoller - 1] !== 'undefined')) {
-            this.replaceInput(this.messageHistory[--this.messageRoller]);
+            this.messageRoller -= 1;
+            this.replaceInput(this.messageHistory[this.messageRoller]);
         } else {
             this.messageRoller = 0;
             this.clearInput();
@@ -168,6 +174,10 @@ function MessageController () {
      * @returns {undefined}
      */
     this.messageRollDown = function () {
+        var text = this.$chatinput.val().trim();
+        if (text !== '' && this.messageRoller < this.messageHistory.length && this.messageHistory[this.messageRoller] !== text) {
+            this.storeMessage(text);
+        }
         if (this.messageRoller + 1 < this.messageHistory.length) {
             this.replaceInput(this.messageHistory[++this.messageRoller]);
         } else {
