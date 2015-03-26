@@ -28,7 +28,7 @@ function Application (debug) {
     this.imageHost = 'http://images.redpg.com.br/';
     this.wshostServer = 'ws://app.redpg.com.br';
     this.wshostContext = '/service/';
-    this.wsHostPorts = [80, 8080];
+    this.wsHostPorts = [80, 8080, 8081];
     this.wshost = this.wshostServer + ':' + this.wsHostPorts[0] + this.wshostContext;
     
     //this.host = 'http://localhost:8080/RedPG/';
@@ -40,7 +40,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 50, 9];
+    this.version = [0, 50, 10];
     
     /**
      * Settings
