@@ -2,6 +2,7 @@ function GameUI () {
     this.$ = new Game$();
     this.inviteui = new GameInviteUI();
     this.roomui = new RoomUI();
+    this.privui = new GamePrivilegeUI();
     
     this.edit = null;
     
@@ -20,6 +21,8 @@ function GameUI () {
     this.$header;
     
     this.init = function () {
+        window.app.loginapp.addLoginListener(this);
+        
         this.$nickobj = $('#gamesNickInformant');
         this.$list = $('#gamesList');
         this.$createbutton = $('#gamesNewGameButton');
@@ -192,7 +195,7 @@ function GameUI () {
         window.app.roomapp.deleteRoom(id, cbs, cbe);
     };
     
-    this.updateConfig = function () {
+    this.loginChanged = function () {
         var nickname = window.app.loginapp.user.nickname + '#' + window.app.loginapp.user.nicknamesufix;
         this.$nickobj.attr('data-langp', nickname);
         window.app.ui.language.applyLanguageTo(this.$nickobj);

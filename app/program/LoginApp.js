@@ -3,6 +3,7 @@ function LoginApp () {
     this.user = new User();
     this.jsessid = null;
     this.timeout = null;
+    this.loginListeners = [];
     
     if (localStorage.lastSession !== undefined && localStorage.lastSessionTime !== undefined && !isNaN(localStorage.lastSessionTime, 10) && (new Date().valueOf() - parseInt(localStorage.lastSessionTime)) < 108000) {
         this.jsessid = localStorage.lastSession;
@@ -33,6 +34,8 @@ function LoginApp () {
         localStorage.lastSessionTime = new Date().valueOf();
         window.app.memory.init();
         this.setTimeout();
+        
+        this.callLoginListeners();
     };
     
     this.confirm = function (uuid, cbsuccess, cberror) {
@@ -181,6 +184,22 @@ function LoginApp () {
     this.clearTimeout = function () {
         if (this.timeout !== null) {
             clearTimeout(this.timeout);
+        }
+    };
+    
+    this.addLoginListener = function (object) {
+        if (typeof object !== 'object' || typeof object.loginChanged !== 'function') {
+            console.log("Attempt to register an invalid login listener:");
+            console.log(object);
+            return;
+        }
+        
+        this.loginListeners.push(object);
+    };
+    
+    this.callLoginListeners = function () {
+        for (var i = 0; i < this.loginListeners.length; i++) {
+            this.loginListeners[i].loginChanged();
         }
     };
 }

@@ -40,7 +40,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 50, 10];
+    this.version = [0, 50, 11];
     
     /**
      * Settings
