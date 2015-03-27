@@ -409,6 +409,16 @@ window.lingo['en'] = {
     _VERSIONNAME_ : 'Version',
     _VERSIONINFO_ : 'Click here for more information',
     
+    /* Game Permissions */
+    _GAMEPERMISSIONSHEADER_ : 'Table Permissions',
+    _GAMEPERMISSIONKICK_ : 'Kick',
+    _GAMEPERMISSIONCREATE_ : 'Create Sheets',
+    _GAMEPERMISSIONVIEW_ : 'View Sheets',
+    _GAMEPERMISSIONEDIT_ : 'Edit Sheets',
+    _GAMEPERMISSIONSUBMIT_ : 'Save',
+    _GAMEPERMISSIONEXP1_ : 'These are the global permissions players have within your table.',
+    _GAMEPERMISSIONEXP2_ : 'Therefore, "View Sheets" means that a player can see all sheets. "Edit Sheets" means a player can edit all sheets they can view. "Create Sheets" means a player can create new sheets for the table.',
+    _GAMEPERMISSIONINVITE_ : 'Invite Players',
     
     /* Games */
     _GAMESCONFIRMLEAVE_ : 'Are you sure you wish to leave "%p"? There is no turning back.',

@@ -33,6 +33,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/sheetStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/logger.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/gamePermissions.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/intro.css">
             <!-- Most of the icons used throughout the application were made by Adam Whitcroft for his Batch icon set, under a free License. -->
             <!-- You can find this icon set and more at his website, here: http://adamwhitcroft.com/batch/ -->
@@ -280,6 +281,29 @@
         <div id="leftWindow">
             <div id="leftBlock">
                 <a></a>
+            </div>
+            
+            <div id="gamePermissionWindow" class="window unselectable styledWindow">
+                <h1>
+                    <span class="language" data-langhtml="_GAMEPERMISSIONSHEADER_"></span>
+                    <a class="closeWindow button" onclick="window.app.ui.closeLeftWindow();"></a>
+                </h1>
+                <div class="singleton">
+                    <h1 id="gamePermissionGameID"></h1>
+                    <p id="gamePermissionsError"
+                       class="language"
+                       data-langhtml="_GAMEPERMISSIONERROR_"></p>
+                    <div id='gamePermissionExplanations'>
+                        <p class='language' data-langhtml='_GAMEPERMISSIONEXP1_'></p>
+                        <p class='language' data-langhtml='_GAMEPERMISSIONEXP2_'></p>
+                    </div>
+                    <div id="gamePermissionPrivileges">
+                        
+                    </div>
+                    <p style='text-align: center'>
+                        <a id='gamePermissionSubmit' class='textButton language' data-langhtml='_GAMEPERMISSIONSUBMIT_'></a>
+                    </p>
+                </div>
             </div>
             
             <div id="styleWindow" class="window unselectable styledWindow">
@@ -1219,6 +1243,7 @@
             <script src="app/ui/simpleFloater/SimpleFloater.js"></script>
             <script src="app/ui/games/GameUI.js"></script>
             <script src="app/ui/games/RoomUI.js"></script>
+            <script src="app/ui/games/GamePrivilegeUI.js"></script>
             <script src="app/ui/games/Game$.js"></script>
             <script src="app/ui/games/GameInviteUI.js"></script>
             <script src="app/ui/games/GameInvite$.js"></script>

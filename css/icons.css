@@ -375,6 +375,20 @@ div.styledWindow > h1 > a.closeWindow {
     background-image: url('../img/paint/Eraser.png');
 }
 
+/* Icones Game Permissions */
+.gamePermIconView {
+    background-image: url("../img/games/permView.png");
+}
+.gamePermIconEdit {
+    background-image: url("../img/games/permEdit.png");
+}
+.gamePermIconCreate {
+    background-image: url("../img/games/permCreate.png");
+}
+.gamePermIconInvite {
+    background-image: url("../img/games/permInvite.png");
+}
+
 /* Icones Universais */
 .uiconShare {
     background-image: url('../img/icon/Share.png');

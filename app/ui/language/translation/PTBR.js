@@ -421,6 +421,16 @@ window.lingo['pt_br'] = {
     _VERSIONNAME_ : 'Versão',
     _VERSIONINFO_ : 'Clique aqui para mais informações',
     
+    /* Game Permissions */
+    _GAMEPERMISSIONSHEADER_ : 'Permissões de Mesa',
+    _GAMEPERMISSIONKICK_ : 'Expulsar',
+    _GAMEPERMISSIONCREATE_ : 'Criar Fichas',
+    _GAMEPERMISSIONVIEW_ : 'Ver Fichas',
+    _GAMEPERMISSIONEDIT_ : 'Editar Fichas',
+    _GAMEPERMISSIONSUBMIT_ : 'Salvar',
+    _GAMEPERMISSIONEXP1_ : 'Essas são as permissões globais que os jogadores da sua mesa tem.',
+    _GAMEPERMISSIONEXP2_ : 'Dessa forma, "Ver Fichas" significa que o jogador pode acessar todas as fichas da mesa. "Editar Fichas" significa que o jogador pode editar qualquer ficha que vê. "Criar Fichas" significa que um jogador pode criar fichas dentro daquela mesa.',
+    _GAMEPERMISSIONINVITE_ : 'Convidar Jogadores',
     
     /* Games */
     _GAMESCONFIRMLEAVE_ : 'Tem certeza que deseja sair do jogo "%p"? Isso é irreversível.',

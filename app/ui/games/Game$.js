@@ -45,10 +45,10 @@ function Game$ () {
         
         if (game.promote) {
             var $permissions = $('<a class="right button permissions language" data-langtitle="_GAMESPERMISSIONS_"></a>');
-            $permissions.bind("click", function (e) {
-                alert("Permissions - Not implemented");
+            $permissions.bind("click", window.app.emulateBind(function (e) {
+                window.app.ui.gameui.privui.callSelf(this.gameid);
                 e.stopPropagation();
-            });
+            }, {gameid : game.id}));
             
             $nameline.append($permissions);
         }
