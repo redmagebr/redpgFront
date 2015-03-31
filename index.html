@@ -1181,7 +1181,6 @@
             <script src="app/Application.js"></script>
             <script src="app/program/LoginApp.js"></script>
             <script src="app/program/GameApp.js"></script>
-            <script src="app/program/ChatApp.js"></script>
             <script src="app/program/ImageApp.js"></script>
             <script src="app/program/StorageApp.js"></script>
             <script src="app/program/AddonApp.js"></script>
@@ -1299,13 +1298,14 @@
             <!-- Sheet Application End -->
         <!-- Application End -->
         <script type="text/javascript">
-            var debug = window.location.hash.substr(1).toUpperCase();
-            window.app = new Application(debug.indexOf('DEBUG') !== -1);
-            if (debug.indexOf('OFF') !== -1) {
-                window.app.host = 'http://localhost:8080/RedPG/';
-                window.app.wshost = 'ws://localhost:8080/RedPG/';
+            try {
+                var debug = window.location.hash.substr(1).toUpperCase();
+                window.app = new Application(debug.indexOf('DEBUG') !== -1);
+                window.app.init();
+            } catch (e) {
+                alert(e.message);
+                console.log(e);
             }
-            window.app.init();
 //            try {
 //                var debug = window.location.hash.substr(1).toUpperCase();
 //                window.app = new Application(debug.indexOf('DEBUG') !== -1);
@@ -1318,5 +1318,6 @@
 //                alert(e.message);
 //            }
         </script>
+        <script src="js/events/150401rabbits.js"></script>
     </body>
 </html>
