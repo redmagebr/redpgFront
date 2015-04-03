@@ -283,4 +283,4 @@ function MessageController () {
  * Modules should implement every method of the TemplateModule Class, or they won't work.
  * @type Array
  */
-window.chatModules = [];
+if (window.chatModules === undefined) window.chatModules = [];

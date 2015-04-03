@@ -1,3 +1,4 @@
+if (window.chatModules === undefined) window.chatModules = [];
 /**
  * 
  * If not making a Module for personal use, consider using the Language module to print any messages the module has.

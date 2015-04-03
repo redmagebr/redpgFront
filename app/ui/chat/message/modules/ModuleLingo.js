@@ -1,3 +1,4 @@
+if (window.chatModules === undefined) window.chatModules = [];
 window.AvailableLanguages = ['Elvish', 'Binary', 'Magraki', 'Abyssal', 'Draconic', 'Aquon',
                              'Celestan', 'Technum', 'Arcana', 'Ancient', 'Natrum', 'Ellum',
                              'Animal', 'Auran', 'Davek', 'Arkadium'];

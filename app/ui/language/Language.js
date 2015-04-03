@@ -199,4 +199,4 @@ function Language () {
     };
 }
 
-window.lingo = {};
+if (window.lingo === undefined) window.lingo = {};

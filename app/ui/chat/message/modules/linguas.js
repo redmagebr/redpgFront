@@ -1,3 +1,4 @@
+if (window.chatModules === undefined) window.chatModules = [];
 function ModuleMensagem () {
     /**
      * Hook é o slash command que irá, preferencialmente, ser enviado a esse módulo.

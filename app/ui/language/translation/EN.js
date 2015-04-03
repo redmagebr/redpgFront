@@ -1,3 +1,4 @@
+if (window.lingo === undefined) window.lingo = {};
 window.lingo['en'] = {
     _LANGUAGENAME_ : 'English',
     
