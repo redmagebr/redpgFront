@@ -61,9 +61,14 @@ function PictureUI () {
         window.app.ui.pictureui.close();
     });
     
-    this.$element.on('load', function () {
-        window.app.ui.pictureui.updatePicture();
-    });
+    this.elementOnLoadPicture = function () {
+        this.$element.on('load', function () {
+            window.app.ui.pictureui.updatePicture();
+        });
+    };
+    this.elementOnLoadPicture();
+    
+    this.lastType = 'img'; // 'webm'
     
     this.stream = false;
     
@@ -86,7 +91,8 @@ function PictureUI () {
         this.updatePicture();
     };
     
-    this.open = function (url) {
+    this.open = function (url, webm) {
+        webm = (webm === undefined) ? false : (webm === true);
         try {
             url = decodeURIComponent(url);
         } catch (e) {
@@ -97,6 +103,28 @@ function PictureUI () {
             if (url.indexOf('dl=1') === -1) {
                 url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
             }
+        }
+        
+        var type = webm ? 'webm' : 'img';
+        if (this.lastType !== type) {
+            if (webm) {
+                var $ele = $("<video id='pictureElement' autoplay loop muted controls style='border: none'/>");
+                $ele[0].src = url;
+                this.$element.replaceWith($ele);
+                this.$element.remove();
+                this.$element = $ele;
+                this.$element.on('canplay', function() {
+                   window.app.ui.pictureui.updatePicture();
+                });
+                $ele[0].load();
+            } else {
+                var $ele = $("<img id='pictureElement' />");
+                this.$element.replaceWith($ele);
+                this.$element.remove();
+                this.$element = $ele;
+                this.elementOnLoadPicture();
+            }
+            this.lastType = type;
         }
         
         var oldUrl = this.$element.attr("src");
@@ -123,8 +151,13 @@ function PictureUI () {
         if (this.$element.attr('src') === undefined) return;
         this.$element.css('width', '').css('height', '');
         this.$loading.stop(true,false).fadeOut(200);
-        var oHeight = this.$element[0].naturalHeight;
-        var oWidth = this.$element[0].naturalWidth;
+        if (this.$element.prop('tagName') !== 'VIDEO') {
+            var oHeight = this.$element[0].naturalHeight;
+            var oWidth = this.$element[0].naturalWidth;
+        } else {
+            var oHeight = this.$element[0].videoHeight;
+            var oWidth = this.$element[0].videoWidth;
+        }
         // Anti loop
         if (oHeight === 0 || oWidth === 0) return;
         var margin = this.stream ? 0 : 40;
@@ -222,8 +255,13 @@ function PictureUI () {
         }
         if (this.$canvas === null) {
             updateValues = true;
-            var oWidth = this.$element[0].naturalWidth;
-            var oHeight = this.$element[0].naturalHeight;
+            if (this.$element.prop('tagName') !== 'VIDEO') {
+                var oHeight = this.$element[0].naturalHeight;
+                var oWidth = this.$element[0].naturalWidth;
+            } else {
+                var oHeight = this.$element[0].videoHeight;
+                var oWidth = this.$element[0].videoWidth;
+            }
             this.$canvas = $('<canvas id="pictureCanvas" width="' + oWidth + '" height="' + oHeight + '" />');
             this.$window.append(this.$canvas);
             this.canvasContext = this.$canvas[0].getContext('2d');
@@ -268,7 +306,7 @@ function PictureUI () {
         
         this.canvasContext.clearRect(0,0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
         
-        if (this.src.toUpperCase().indexOf('.GIF') === -1) {
+        if (this.src.toUpperCase().indexOf('.GIF') === -1 && (this.$element.prop('tagName') !== 'VIDEO')) {
             this.canvasContext.drawImage(this.$element[0],0,0);
         }
         this.canvasContext.beginPath();
