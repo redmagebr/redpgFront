@@ -51,21 +51,31 @@ window.chatModules.push({
         
         var msgFinal = '';
         var go = true;
-        var open = false;
+        var open = null;
         
         var $spans = [];
         var $span = null;
         for (var i = 0; i < msgText.length; i++) {
-            if (msgText.charAt(i) === '[' && !open) {
-                open = true;
+            if (msgText.charAt(i) === '[' && open === null) {
+                open = '[';
                 $span = $('<span class="lingua' + lingua + '" />').html(msgFinal);
                 $spans.push($span);
                 msgFinal = '';
-            } else if (msgText.charAt(i) === ']' && open) {
+            } else if (msgText.charAt(i) === ']' && open === '[') {
                 $span = $('<span class="important" />').html(msgFinal);
                 $spans.push($span);
                 msgFinal = '';
-                open = false;
+                open = null;
+            } else if (msgText.charAt(i) === '{' && open === null) {
+                open = '{';
+                $span = $('<span class="lingua' + lingua + '" />').html(msgFinal);
+                $spans.push($span);
+                msgFinal = '';
+            } else if (msgText.charAt(i) === '}' && open === '{') {
+                $span = $('<span class="highlight" />').html(msgFinal);
+                $spans.push($span);
+                msgFinal = '';
+                open = null;
             } else {
                 msgFinal += msgText.charAt(i);
             }

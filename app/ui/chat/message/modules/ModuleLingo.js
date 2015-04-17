@@ -527,7 +527,7 @@ window.chatModules.push({
         for (var i = 0; i < cleanMsg.length; i++) {
             char = cleanMsg.charAt(i);
             if (skipfor === null) {
-                if (['*', '[', '('].indexOf(char) === -1) {
+                if (['*', '[', '(', '{'].indexOf(char) === -1) {
                     sentence += char;
                 } else {
                     if (char === '*') {
@@ -536,6 +536,8 @@ window.chatModules.push({
                         skipfor = ']';
                     } else if (char === '(') {
                         skipfor = ')';
+                    } else if (char === '{') {
+                        skipfor = '}';
                     }
                     if (sentence.length > 0) {
                         pseudo += this.translatePhrase(sentence, lingua);

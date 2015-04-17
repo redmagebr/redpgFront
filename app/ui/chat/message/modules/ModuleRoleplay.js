@@ -57,7 +57,6 @@ window.chatModules.push({
                     if (pmsg.length > 0) {
                         $span = $('<span />').html(pmsg);
                         $span.addClass('lingua' + lingua);
-                        $span.addClass()
                         $spans.push($span);
                     }
                     pmsg = '';
@@ -72,6 +71,23 @@ window.chatModules.push({
                     open = null;
                 } else if (char === '[' && open === null) {
                     open = '[';
+                    if (pmsg.length > 0) {
+                        $span = $('<span />').html(pmsg);
+                        $span.addClass('lingua' + lingua);
+                        $spans.push($span);
+                    }
+                    pmsg = '';
+                } else {
+                    pmsg = pmsg + char;
+                }
+            } else if (['{', '}'].indexOf(char) !== -1) {
+                if (char === '}' && open === '{') {
+                    $span = $('<span class="highlight" />').html(pmsg);
+                    $spans.push($span);
+                    pmsg = '';
+                    open = null;
+                } else if (char === '{' && open === null) {
+                    open = '{';
                     if (pmsg.length > 0) {
                         $span = $('<span />').html(pmsg);
                         $span.addClass('lingua' + lingua);

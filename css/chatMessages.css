@@ -307,6 +307,11 @@
     display: inline-block;
 }
 
+#chatMessages > p.chatMensagem span.highlight, #chatMessages > p.chatNarrativa span.highlight {
+    font-weight: bold;
+    font-style: italic;
+}
+
 #chatMessages > p.chatMensagem > span.langTranslation {
     display: block;
     color: #7f007f;
