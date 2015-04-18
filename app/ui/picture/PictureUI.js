@@ -464,6 +464,9 @@ function PictureUI () {
                 window.app.ui.pictureui.$canvas.remove();
                 window.app.ui.pictureui.$canvas = null;
             }
+            if (window.app.ui.pictureui.$element.prop('tagName') === 'VIDEO') {
+                window.app.ui.pictureui.$element[0].src = null;
+            }
         });
     };
     
