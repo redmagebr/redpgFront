@@ -108,8 +108,9 @@ function PictureUI () {
         var type = webm ? 'webm' : 'img';
         if (this.lastType !== type) {
             if (webm) {
-                var $ele = $("<video id='pictureElement' autoplay loop muted controls style='border: none'/>");
+                var $ele = $("<video id='pictureElement' autoplay loop controls style='border: none'/>");
                 $ele[0].src = url;
+                $ele[0].volume = window.app.config.get('bgmVolume');
                 this.$element.replaceWith($ele);
                 this.$element.remove();
                 this.$element = $ele;
@@ -508,5 +509,15 @@ function PictureUI () {
         } else {
             this.$lock.removeClass('toggled');
         }
+    };
+    
+    this.configChanged = function (id) {
+        if (id === 'bgmVolume' && (this.$element.prop('tagName') === 'VIDEO')) {
+            this.$element[0].volume = window.app.config.get('bgmVolume');
+        }
+    };
+    
+    this.init = function () {
+        window.app.config.addListener("bgmVolume", this);
     };
 }

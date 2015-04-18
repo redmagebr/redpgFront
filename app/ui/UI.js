@@ -159,6 +159,7 @@ function UI () {
         this.youtubeui.init();
         this.sheetui.init();
         this.navigator.init();
+        this.pictureui.init();
         this.handleResize();
         
         this.$leftBlocker = $('#leftBlock');
