@@ -5,6 +5,14 @@
  * @requires UI
  */
 function Application (debug) {
+    /**
+     * Major, Minor, Release
+     * Major covers breakpoints.
+     * Minor covers new functions.
+     * Release covers bugfixes only.
+     */
+    this.version = [0, 52, 3];
+    
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
     } else {
@@ -33,14 +41,6 @@ function Application (debug) {
     
     //this.host = 'http://localhost:8080/RedPG/';
     //this.wshost = 'ws://localhost:8080/RedPG/';
-    
-    /**
-     * Major, Minor, Release
-     * Major covers breakpoints.
-     * Minor covers new functions.
-     * Release covers bugfixes only.
-     */
-    this.version = [0, 52, 2];
     
     /**
      * Settings

@@ -37,7 +37,19 @@ function Variable_Varchar ($visible, style, missingid, parent) {
     } else {
         this.editable = true;
     }
-
+    
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
     this.update$ = function () {
         if (this.style.editing && this.editable) {
             var $input = $('<input type="text" />');

@@ -59,7 +59,19 @@ function Variable_Integer ($visible, style, missingid, parent) {
     } else {
         this.min = null;
     }
-
+    
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
     this.update$ = function () {
         if (this.value === null) this.update(this.default);
         if (this.style.editing) {

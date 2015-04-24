@@ -1,3 +1,73 @@
+/* Rolagens */
+#dfsDiv #dfsRolagens b > input[type=text] {
+   width: 220px;
+}
+
+/* Equipamentos */
+#dfsEquipList > div {
+    padding: 5px;
+    border-bottom: 1px #000 solid;
+}
+
+#dfsEquipList > div:hover {
+    background-color: #e3e3e3;
+}
+
+#dfsEquipList > div > b {
+    margin-right: 20px;
+}
+
+#dfsEquipList > div > b > input[type=text] {
+    width: 150px;
+}
+
+#dfsEquipList > div > hr {
+    margin: 0px;
+    border: none;
+    border-bottom: #bcbcbc 1px solid;
+}
+
+#dfsEquipList > div > a.addRow {
+    display: inline-block;
+    width: 24px;
+    text-indent: 0px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 24px;
+}
+
+#dfsEquipList > div > span > span input[type=text] {
+    width: 90px;
+}
+
+#dfsEquipList > div > span > span {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color: #00339b;
+}
+
+#dfsEquipList > div > span > span:hover {
+    color: #0055ff;
+    cursor: help;
+}
+
+#dfsEquipList > div > div > textarea {
+    width: 98%;
+    display: block;
+    margin: auto;
+    min-height: 30px;
+}
+
+#dfsEquipList > div > div > p:nth-child(n+2) {
+    margin-top: 10px;
+}
+
+#dfsEquipList > div > div > p {
+    text-indent: 1em;
+    text-align: justify;
+}
+
 /* Rolagens Especiais */
 #dfsRolagensEspeciaisList > p > span.sheetList > span:last-child > span.sumSymbol {
     display: none;
@@ -1594,53 +1664,6 @@
 #dfsDiv .centered {
     text-align: center;
 }
-
-#dfsDiv #dfsEquipList > div {
-    padding: 5px;
-    border-top: solid 1px #000;
-}
-
-#dfsDiv #dfsEquipList > div:hover {
-    background-color: #dfdfdf;
-}
-
-#dfsDiv #dfsEquipList > div b {
-    color: #000;
-}
-
-#dfsDiv #dfsEquipList input {
-    width: 300px;
-}
-
-#dfsDiv #dfsEquipList textarea {
-    width: 400px;
-    margin-top: 8px;
-    resize: vertical;
-}
-
-#dfsDiv #dfsEquipList a.deleteButton {
-    float: left;
-}
-
-#dfsEquipList a.putonButton {
-    color: #4034d7;
-    font-weight: bold;
-}
-
-#dfsEquipList a.putonButton:hover {
-    cursor: pointer;
-    color: #574aff;
-}
-
-#dfsEquipList a.putonButton:active {
-    color:#3126ba;
-}
-
-
-
-
-
-
 
 #dfsDiv a.deleteButton {
     background-image: url('img/dfs/fechar1-icon.png');

@@ -18,7 +18,19 @@ function Variable_Template ($visible, style, missingid, parent) {
     } else {
         this.id = 'Variable' + missingid;
     }
-   
+    
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
     this.update$ = function () {
         // if this is editable, consider this.style.editing;
         if (this.style.editing) {

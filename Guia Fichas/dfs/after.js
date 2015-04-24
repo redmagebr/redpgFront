@@ -1,3 +1,30 @@
+// Addonize equipamentos
+sheet.fields['Equipamentos'].$visible.on('updateAddons', function (e, equipamentos) {
+        var addonTipo = ["arma", "escudo", "armadura", "acessorio", "consumivel"];
+        var equipamento;
+	var addonNome;
+        var addon;
+	for (var i = 0; i < equipamentos.list.length; i++) {
+            equipamento = equipamentos.list[i];
+            for (var k = 0; k < equipamento.getField('Addons').list.length; k++) {
+                addon = equipamento.getField('Addons').list[k];
+                if (equipamentos.style.editing) {
+                    window.app.ui.addonui.unAddonize(addon.$visible);
+                } else {
+                    addonNome = equipamento.getField("Tipo").getObject();
+                    if (addonNome >= 0 && addonNome < addonTipo.length) {
+                        addonNome = addonTipo[addonNome] + '-' + addon.getField("Nome").getObject();
+                        window.app.ui.addonui.addonize(addon.$visible, addonNome);
+                    }
+                }
+            }
+	}
+});
+
+sheet.$visible.on('loaded editing viewing', window.app.emulateBind(function () {
+    this.style.mainSheet.fields['Equipamentos'].$visible.trigger('updateAddons', [this.style.mainSheet.fields['Equipamentos']]);
+}, {style : this}));
+
 // Rolar iniciativa
 sheet.$visible.find("#DFSIniciativaButton").on('click', this.emulateBind(function () {
 	this.style.rollIniciativa();
@@ -141,6 +168,37 @@ $(sheet.$visible.find("#dfsPericiasSort")[0]).on('click', this.emulateBind(funct
 }, {style : this}));
 
 // Sort rolagens
+this.sortEquipamentos = function () {
+	var newList = this.mainSheet.fields['Equipamentos'].getObject();
+	newList.sort(function (a,b) {
+		if (a.Tipo !== b.Tipo) {
+			return a.Tipo - b.Tipo;
+		}
+		if (a.Nome.toUpperCase() < b.Nome.toUpperCase()) {
+			return -1;
+		} else if (b.Nome.toUpperCase() < a.Nome.toUpperCase()) {
+			return 1;
+		}
+		return 0;
+	});
+        for (var i = 0; i < newList.length; i++) {
+            newList[i].Addons.sort(function(a, b) {
+                if (a.Nome.toUpperCase() < b.Nome.toUpperCase()) {
+			return -1;
+		} else if (b.Nome.toUpperCase() < a.Nome.toUpperCase()) {
+			return 1;
+		}
+		return 0;
+            });
+        }
+	this.mainSheet.fields['Equipamentos'].update(newList);
+};
+
+$(sheet.$visible.find("#dfsEquipamentosSort")[0]).on('click', this.emulateBind(function () {
+	this.style.sortEquipamentos();
+}, {style : this}));
+
+// Sort rolagens
 this.sortRolagens = function () {
 	var newList = this.mainSheet.fields['Rolagens'].getObject();
 	newList.sort(function (a,b) {
@@ -159,6 +217,24 @@ this.sortRolagens = function () {
 
 $(sheet.$visible.find("#dfsRolagensSort")[0]).on('click', this.emulateBind(function () {
 	this.style.sortRolagens();
+}, {style : this}));
+
+// Sort rolagens especiais
+this.sortRolagensEsp = function () {
+	var newList = this.mainSheet.fields['rollEspRoll'].getObject();
+	newList.sort(function (a,b) {
+		if (a.Nome.toUpperCase() < b.Nome.toUpperCase()) {
+			return -1;
+		} else if (b.Nome.toUpperCase() < a.Nome.toUpperCase()) {
+			return 1;
+		}
+		return 0;
+	});
+	this.mainSheet.fields['rollEspRoll'].update(newList);
+};
+
+$(sheet.$visible.find("#dfsRolagensEspSort")[0]).on('click', this.emulateBind(function () {
+	this.style.sortRolagensEsp();
 }, {style : this}));
 
 // Sort vantagens
@@ -676,7 +752,7 @@ this.turnNpc = function (kind) {
 	} else {
 		this.element['dfsDiv'].removeClass('nonplayer').addClass('character');
 	}
-}
+};
 
 sheet.fields['Jogador'].$visible.on('changedVariable', function (e, variable) {
 	variable.style.turnNpc(variable.getObject());
@@ -701,22 +777,33 @@ for (var i = 0; i < sheet.fields['Pericias'].list.length; i++) {
 
 
 // SOMAR PERICIAS
-this.sumPericias = function () {
+this.lastSumPericias = null;
+this.sumPericias = function (lastCount) {
+    if (this.lastSumPericias === lastCount) return;
 	var pericias = this.mainSheet.fields['Pericias'];
 	var sum = 0;
 
 	for (var i = 0; i < pericias.list.length; i++) {
+            if (pericias.list[i].fields["Attribute"].getObject() !== 7) {
 		sum += pericias.list[i].fields['Valor'].getObject();
+            } else {
+                sum += Math.floor(pericias.list[i].fields['Valor'].getObject() / 2);
+            }
 	}
 
 	this.element['SumPericias'].text('(' + sum + ')');
+    this.lastSumPericias = lastCount;
 };
 
-sheet.fields['Pericias'].$visible.on('changedVariable changedRows', function (e, variable) {
-	variable.style.sumPericias();
+//sheet.fields['Pericias'].$visible.on('changedVariable changedRows', function (e, variable) {
+//	variable.style.sumPericias();
+//});
+
+sheet.fields['Pericias'].onChange(function (lastCount, variable) {
+    variable.style.sumPericias(lastCount);
 });
 
-this.sumPericias();
+this.sumPericias(null);
 
 
 
@@ -724,7 +811,9 @@ this.sumPericias();
 
 
 // Somar vantagens / desvantagens
-this.sumVants = function (type) {
+this.lastSumVants = null;
+this.sumVants = function (lastCount, type) {
+    if (this.lastSumVants === lastCount) return;
 	var desvantagens = this.mainSheet.fields[type];
 	var sum = 0;
 	
@@ -739,18 +828,27 @@ this.sumVants = function (type) {
 	}
 	
 	this.element[type + 'Sum'].text(sum);
+    this.lastSumVants = lastCount;
 };
 
-sheet.fields['Vantagens'].$visible.on('changedVariable changedRows', function (e, variable) {
-	variable.style.sumVants('Vantagens');
+sheet.fields['Vantagens'].onChange(function (lastCount, variable) {
+    variable.style.sumVants(lastCount, 'Vantagens');
 });
 
-sheet.fields['Desvantagens'].$visible.on('changedVariable changedRows', function (e, variable) {
-	variable.style.sumVants('Desvantagens');
+sheet.fields['Vantagens'].onChange(function (lastCount, variable) {
+    variable.style.sumVants(lastCount, 'Vantagens');
 });
 
-this.sumVants('Vantagens');
-this.sumVants('Desvantagens');
+//sheet.fields['Vantagens'].$visible.on('changedVariable changedRows', function (e, variable) {
+//	variable.style.sumVants('Vantagens');
+//});
+//
+//sheet.fields['Desvantagens'].$visible.on('changedVariable changedRows', function (e, variable) {
+//	variable.style.sumVants('Desvantagens');
+//});
+
+this.sumVants(null, 'Vantagens');
+this.sumVants(null, 'Desvantagens');
 
 
 
@@ -758,23 +856,31 @@ this.sumVants('Desvantagens');
 
 
 // SOMAR ATRIBUTOS TESTE
-this.sumAtribTeste = function () {
-	var sheet = this.mainSheet;
-	var atributosTeste = ['Forca', "Constituicao", "Agilidade", "Carisma", "Sabedoria", "Inteligencia", "ForcaDeVontade"];
-	var sum = 0;
-	
-	for (i = 0; i < atributosTeste.length; i++) {
-		sum += sheet.fields[atributosTeste[i]].getObject();
-	}
-	
-	this.element['sumAtributosTeste'].text('(' + sum + ')');
+this.lastSumAtribTeste = null;
+this.sumAtribTeste = function (lastUpdate) {
+    if (this.lastSumAtribTeste === lastUpdate) {
+        return;
+    } 
+    var sheet = this.mainSheet;
+    var atributosTeste = ['Forca', "Constituicao", "Agilidade", "Carisma", "Sabedoria", "Inteligencia", "ForcaDeVontade"];
+    var sum = 0;
+
+    for (i = 0; i < atributosTeste.length; i++) {
+            sum += sheet.fields[atributosTeste[i]].getObject();
+    }
+
+    this.element['sumAtributosTeste'].text('(' + sum + ')');
+    this.lastSumAtribTeste = lastUpdate;
 };
 
 var atributosTeste = ['Forca', "Constituicao", "Agilidade", "Carisma", "Sabedoria", "Inteligencia", "ForcaDeVontade"];        
 for (i = 0; i < atributosTeste.length; i++) {
-	sheet.fields[atributosTeste[i]].$visible.on('changedVariable', function (e, variable) {
-		variable.style.sumAtribTeste();
-	});
+//	sheet.fields[atributosTeste[i]].$visible.on('changedVariable', function (e, variable) {
+//		variable.style.sumAtribTeste();
+//	});
+    sheet.fields[atributosTeste[i]].onChange(function (loadCount, variable) {
+        variable.style.sumAtribTeste(loadCount);
+    });
 }
 this.sumAtribTeste();
 
@@ -785,7 +891,9 @@ this.sumAtribTeste();
 
 // BARRA DE EXP Atual
 this.sabedoriaDeCombate = 0;
-this.fixCurExpSab = function () {
+this.lastFixCurExpSab = null;
+this.fixCurExpSab = function (lastUpdate) {
+    if (this.lastFixCurExpSab === lastUpdate) return;
 	var sheet = this.mainSheet;
 	var atributosCombate = ['ArtesMarciais', 'Arma','Tecnologia',"Elemento",'Magia','Lideranca','Defesa','Ataque'];
 	var atributo;
@@ -847,6 +955,7 @@ this.fixCurExpSab = function () {
 	} else {
 		this.element['dfsExpAtualBar'].width('0%');
 	}
+    this.lastFixCurExpSab = lastUpdate;
 };
 
 var atributosCombate = ['ArtesMarciais', 'Arma','Tecnologia',"Elemento",'Magia','Lideranca','Defesa','Ataque'];
@@ -860,10 +969,13 @@ for (i = 0; i < atributosCombate.length; i++) {
 			parseInt((variable.getObject() * (5 + (variable.getObject() * 5))) / 2) +
 			')'
 		);
-		
-		// Chamar função para barra de exp
-		variable.style.fixCurExpSab();
 	});
+        
+        // Chamar função para barra de exp
+        atributo.onChange(function(lastCount, variable) {
+            variable.style.fixCurExpSab(lastCount);
+        });
+        
 	atributo.$visible.trigger('changedVariable', [atributo]);
 }
 
@@ -901,7 +1013,10 @@ sheet.fields["Agilidade"].$visible.on('changedVariable', function (e, variable) 
 
 sheet.fields['Exp'].$visible.on('changedVariable', function (e, variable) {
 	variable.style.fixExpBar();
-	variable.style.fixCurExpSab();
+});
+
+sheet.fields['Exp'].onChange(function (lastCount, variable) {
+    variable.style.fixCurExpSab(lastCount);
 });
 
 this.fixExpBar();
@@ -925,18 +1040,24 @@ this.fixBar = function (barType) {
 	}
 };
 
-var fixMPBarCallback = function (e, variable) {
+this.lastFixMPBarCallback = null;
+var fixMPBarCallback = function (lastCount, variable) {
+    if (this.lastFixMPBarCallback === lastCount) return;
 	variable.style.fixBar('MP');
+    this.lastFixMPBarCallback = lastCount;
 };
 
-var fixHPBarCallback = function (e, variable) {
+this.lastFixHPBarCallback = null;
+var fixHPBarCallback = function (lastCount, variable) {
+    if (this.lastFixHPBarCallback === lastCount) return;
 	variable.style.fixBar('HP');
+    this.lastFixHPBarCallback = lastCount;
 };
 
-sheet.fields['MPAtual'].$visible.on('changedVariable', fixMPBarCallback);
-sheet.fields['MPMaximo'].$visible.on('changedVariable', fixMPBarCallback);
-sheet.fields['HPAtual'].$visible.on('changedVariable', fixHPBarCallback);
-sheet.fields['HPMaximo'].$visible.on('changedVariable', fixHPBarCallback);
+sheet.fields['MPAtual'].onChange(fixMPBarCallback);
+sheet.fields['MPMaximo'].onChange(fixMPBarCallback);
+sheet.fields['HPAtual'].onChange(fixHPBarCallback);
+sheet.fields['HPMaximo'].onChange(fixHPBarCallback);
 this.fixBar('MP');
 this.fixBar('HP');
 
@@ -944,7 +1065,9 @@ this.fixBar('HP');
 
 
 // INVENTARIO E PESOS
-this.calcularPesos = function () {
+this.lastCalcularPesos = null;
+this.calcularPesos = function (lastCount) {
+    if (this.lastCalcularPesos === lastCount) return;
 	var bags = this.mainSheet.fields["Inventario"];
 	var bag;
 	var itens;
@@ -971,10 +1094,11 @@ this.calcularPesos = function () {
 		pesoTotal += meuPeso;
 	}
 	this.element['InventarioAtual'].text(pesoTotal);
+    this.lastCalcularPesos = lastCount;
 };
 
-sheet.fields['Inventario'].$visible.on('changedVariable changedRows', function (e, variable) {
-	variable.style.calcularPesos();
+sheet.fields['Inventario'].onChange(function (lastCount, variable) {
+	variable.style.calcularPesos(lastCount);
 });
 
 this.calcularPesos();

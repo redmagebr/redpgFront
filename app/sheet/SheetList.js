@@ -52,6 +52,18 @@ function SheetList ($html, baseSheet) {
     
     // $visible is now an empty div or whatever it had to be.
     
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
     this.createRow = function () {
         var $newRow = this.$original.clone();
         this.$html.push($newRow);

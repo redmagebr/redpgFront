@@ -451,23 +451,6 @@
                     </span>
                 </span>
             </p>
-            
-            <p class="typedBG headerArea" style="display: none">
-                Equipamentos
-                <span class="innerColumns">
-                    <img style="margin-right: 3px;" src="img/dfs/equips-icon.png" />
-                </span>
-            </p>
-            <hr class="tinyHR"  style="display: none" />
-            <div class="equipButton arma thirdWidthNoMargin floatLeft" style="display: none">
-                <p id="dfsMao1" class="sheetVariable" data-id="nomeMao1" data-editable="0" data-type="text">Mao 1</p>
-            </div>
-            <div class="equipButton armadura toggled thirdWidthNoMargin floatLeft" style="display: none">
-                <p id="dfsArmadura" class="sheetVariable" data-id="nomeArmadura" data-editable="0" data-type="text">Mao 1</p>
-            </div>
-            <div class="equipButton escudo thirdWidthNoMarginComp floatLeft" style="display: none">
-                <p id="dfsMao2" class="sheetVariable" data-id="nomeMao2" data-editable="0" data-type="text">Mao 2</p>
-            </div>
     </div>
 
     <div class="thirdMargin"></div>
@@ -618,6 +601,7 @@
                 (-)
             </a>
             Rolagens Especiais
+            <a id="dfsRolagensEspSort" class="sortButton button editOnly" title="Reordena a lista."></a>
         </p>
     </div>
     <div id="dfsrolagensEspeciais" class='whiteBG fullWidth'>
@@ -793,26 +777,26 @@
             <a id="dfsEquipsOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsEquips').toggle(); $(this).text($('#dfsEquips').is(':visible') ? '(-)' : '(+)');">
                 (+)
             </a>
-            <img src="img/dfs/equips-icon.png" style="margin-left: -5px; margin-bottom: -30px; vertical-align: top" /> Equipamentos
+            <img src="img/dfs/equips-icon.png" style="margin-left: -5px; margin-bottom: -30px; vertical-align: top" />
+            Equipamentos e Consumíveis
+            <a id="dfsEquipamentosSort" class="sortButton button editOnly" title="Reordena a lista."></a>
         </p>
     </div>
     
     <div id="dfsEquips" class='fullWidth clearBoth whiteBG' style="display: none">
-        <div id="dfsEquipList" class="sheetList" data-id="Equipamentos">
+        <div id="dfsEquipList" class="sheetList selectable" data-id="Equipamentos">
             <div>
-                <a class="deleteButton deleteRow"></a>
-                <p>
-                    <b class="sheetVariable" data-id="Nome">
-                        Nome do Equipamento
-                    </b>
-                    -
-                    <span class="sheetVariable" data-type="select" data-id="Tipo" data-options="Arma de uma mão;Arma de duas mãos;Arma defensiva;Armadura" data-default="0">
-
+                <a class="deleteButton deleteRow unselectable"></a>
+                <b class="sheetVariable" data-id="Nome" data-type="text" data-placeholder="Nome"></b>
+                <span class="sheetVariable" data-id="Tipo" data-type="select" data-options="Arma;Arma Defensiva;Armadura;Acessório;Consumível"></span>
+                <hr />
+                <b>Addons:</b> <span class="sheetList" data-id="Addons">
+                    <span>
+                        <a class="deleteButton deleteRow unselectable"></a>
+                        <span class="sheetVariable" data-type="text" data-id="Nome"></span>
                     </span>
-                    <a class="floatRight putonButton" style="display: none">Equipar</a></p>
-                <p class="sheetVariable" data-type="longtext" data-autoresize="1" data-id="Descricao">
-                    Descrição do Equipamento
-                </p>
+                </span> <a class="addRow" data-for="Addons">(+)</a>
+                <div class="sheetVariable" data-type="longtext" data-id="Descricao" data-autoresize="1" data-paragraph="1" data-emptyparagraph="0"></div>
             </div>
         </div>
         <a class="addRow" data-for="Equipamentos">+ Adicionar</a>

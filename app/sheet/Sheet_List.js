@@ -39,6 +39,22 @@ function Sheet_List ($visible, style, missingId, parent) {
     
     console.log(this.id + ' - created - minrows : ' + this.minLength);
     
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
+    this.$visible.on('changedVariable', this.style.emulateBind(function () {
+        this.style.addChanged(this.variable);
+    }, {style : this.style, variable : this}));
+    
     this.addRow = function () {
         console.log(this.id + ' - adding row');
         if (this.maxLength < this.list.length + 1) {
@@ -63,6 +79,11 @@ function Sheet_List ($visible, style, missingId, parent) {
 //        } else {
 //            $deletes.hide();
 //        }
+
+        newRow.$visible.on('changedVariable', this.style.emulateBind(function () {
+            this.style.addChanged(this.variable);
+        }, {style : this.style, variable : newRow}));
+        
         newRow.update$();
         this.$visible.append($newRow);
         
@@ -74,6 +95,8 @@ function Sheet_List ($visible, style, missingId, parent) {
         this.$visible.trigger('changedRows', [newRow]);
         this.parent.$visible.trigger('changedRows', [newRow]);
         this.style.$html.trigger('changedRows', [newRow]);
+        
+        this.style.addChanged(this);
         
         return true;
     };
@@ -101,6 +124,7 @@ function Sheet_List ($visible, style, missingId, parent) {
         this.$visible.trigger('changedRows', [oldRow]);
         this.parent.$visible.trigger('changedRows', [oldRow]);
         this.style.$html.trigger('changedRows', [oldRow]);
+        this.style.addChanged(this);
     };
     
     this.getObject = function () {

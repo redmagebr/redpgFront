@@ -9,6 +9,10 @@ function Style (sheet, styleInstance) {
     
     this.mainSheet = new Sheet(this.$html, this, true);
     
+    this.changedFields = [];
+    this.loadId = 0;
+    this.loading = true;
+    
     this.nameField;
     
     this.variableTypes = {
@@ -36,11 +40,15 @@ function Style (sheet, styleInstance) {
     };
     
     this.setValues = function () {
+        this.loading = true;
         this.mainSheet.setDefault();
         this.mainSheet.update(this.sheet.values);
         this.nameField.update();
         this.mainSheet.update$();
         this.mainSheet.$visible.trigger("loaded");
+        this.loading = false;
+        this.loadId++;
+        this.doCallbacks();
     };
     
     this.beforeProcess = function (sheet, instance, style) {
@@ -68,6 +76,10 @@ function Style (sheet, styleInstance) {
     this.process = function () {
         this.beforeProcess(this.mainSheet, this.sheet, this);
         
+        this.mainSheet.$visible.on('changedVariable', this.emulateBind(function () {
+            this.style.addChanged(this.mainSheet);
+        }, {style : this, mainSheet : this.mainSheet}));
+        
         this.mainSheet.process();
         this.mainSheet.setDefault();
         
@@ -78,6 +90,9 @@ function Style (sheet, styleInstance) {
             this.nameField = new Variable_Name($('<p class="sheetName" />'), this, 0, this.mainSheet);
         }
         this.nameField.setDefault();
+        this.nameField.$visible.on('changedVariable', this.emulateBind(function () {
+            this.style.addChanged(this.variable);
+        }, {style : this, variable : this.nameField}));
         
         var setChanged = this.emulateBind(
             function () {
@@ -167,6 +182,22 @@ function Style (sheet, styleInstance) {
             this.$html.addClass('character').removeClass('nonplayer');
         } else {
             this.$html.addClass('nonplayer').removeClass('character');
+        }
+    };
+    
+    this.doCallbacks = function () {
+        for (var i = 0; i < this.changedFields.length; i++) {
+            this.changedFields[i].onChange(this.loadId);
+        }
+        
+        this.changedFields = [];
+    };
+    
+    this.addChanged = function (obj) {
+        if (!this.loading) {
+            obj.onChange(++this.loadId);
+        } else if (this.changedFields.indexOf(obj) === -1) {
+            this.changedFields.push(obj);
         }
     };
 }

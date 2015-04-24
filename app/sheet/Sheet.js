@@ -15,6 +15,18 @@ function Sheet ($list, style, baseSheet) {
     this.listCount = 0;
     this.varCount = 0;
     
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
     /**
      * Gets the Sheet Element for id.
      * @param {string} id
@@ -98,6 +110,9 @@ function Sheet ($list, style, baseSheet) {
                 varC = this.style.variableTypes['text'];
             }
             variable = new varC ($found, this.style, this.varCount++, this);
+            variable.$visible.on('changedVariable', this.style.emulateBind(function () {
+                this.style.addChanged(this.variable);
+            }, {style : this.style, variable : variable}));
             this.fields[variable.id] = variable;
         }
         

@@ -24,7 +24,19 @@ function Variable_Sheet ($visible, style, missingid, parent) {
     } else {
         this.empty = null;
     }
-   
+    
+    this.changedCallbacks = [];
+    
+    this.onChange = function (v) {
+        if (typeof v === 'function') {
+            this.changedCallbacks.push(v);
+        } else {
+            for (var i = 0; i < this.changedCallbacks.length; i++) {
+                this.changedCallbacks[i](v, this);
+            }
+        }
+    };
+    
     this.update$ = function () {
         if (this.style.editing) {
             var $select = $('<select />');
