@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 52, 3];
+    this.version = [0, 53, 0];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -39,8 +39,12 @@ function Application (debug) {
     this.wsHostPorts = [80, 8080, 8081];
     this.wshost = this.wshostServer + ':' + this.wsHostPorts[0] + this.wshostContext;
     
-    //this.host = 'http://localhost:8080/RedPG/';
-    //this.wshost = 'ws://localhost:8080/RedPG/';
+    /**
+     * BETA
+     */
+//    this.host = 'http://app.redpg.com.br:8081/serviceBeta/';
+//    this.wsHostPorts = [8081];
+//    this.wshostContext = '/serviceBeta/';
     
     /**
      * Settings

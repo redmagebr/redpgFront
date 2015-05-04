@@ -178,6 +178,8 @@ function ChatWsApp () {
         } else if (obj[0] === 'getroom') {
             this.updateUsers(obj[1]);
             this.room.memory.updateFromJSON(obj[2]);
+            this.room.updateFromJSON({'messages' : obj[3]});
+            window.app.ui.chat.cc.printMessages();
         }
     };
     
