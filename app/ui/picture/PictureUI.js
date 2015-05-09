@@ -308,7 +308,7 @@ function PictureUI () {
         this.canvasContext.clearRect(0,0, this.canvasContext.canvas.width, this.canvasContext.canvas.height);
         
         if (this.src.toUpperCase().indexOf('.GIF') === -1 && (this.$element.prop('tagName') !== 'VIDEO')) {
-            this.canvasContext.drawImage(this.$element[0],0,0);
+            //this.canvasContext.drawImage(this.$element[0],0,0);
         }
         this.canvasContext.beginPath();
         

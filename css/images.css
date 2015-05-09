@@ -1,3 +1,43 @@
+/* Space bar */
+#imagesStorage {
+    margin: auto;
+    position: relative;
+    margin-top: 10px;
+    display: block;
+    width: 250px;
+    height: 20px;
+    line-height: 20px;
+    border: solid 1px #000;
+    background-color: #ddffda;
+}
+
+#imagesStorageText {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    right: 5px;
+    bottom: 0px;
+    z-index: 1;
+}
+
+#imagesStorageLeft {
+    float: left;
+    line-height: 20px;
+}
+
+#imagesStorageRight {
+    float: right;
+    line-height: 20px;
+}
+
+#imagesStorageUsed {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #ffdada;
+}
+
 /* Link form */
 
 #imagesLink > input[type=text] {

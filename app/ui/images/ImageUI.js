@@ -13,6 +13,8 @@ function ImageUI () {
         window.app.ui.imageui.saveStorage();
     });
     
+    this.$imageFileList = $("#imageFileList");
+    
     this.$corsError = $('#imageCorsError').hide();
     
     this.$imageList = $('#imageList');
@@ -35,6 +37,12 @@ function ImageUI () {
     this.$linkisList = $('#imagesLinkList');
     
     this.lastFolder = null;
+    
+    this.$storageUsed = $("#imagesStorageUsed");
+    this.$storageText = {
+        left : $("#imagesStorageLeft"),
+        right : $("#imagesStorageRight")
+    };
     
     this.updateForm = function () {
         if (this.$imageLink[0].checked) {
@@ -81,7 +89,21 @@ function ImageUI () {
             this.$linkName.val('').focus();
             this.$linkLink.val('');
         } else {
-            alert("Not implemented");
+            var cbs = function () {
+                window.app.ui.unblockRight();
+                window.app.ui.imageui.callSelf();
+            };
+            var cbe = function (data) {
+                alert(JSON.stringify(data));
+                window.app.ui.unblockRight();
+            };
+            var data = new FormData();
+            for (var i = 0; i < this.$imageFileList[0].files.length; i++) {
+                data.append('file' + i, this.$imageFileList[0].files[i]);
+            }
+            
+            window.app.ui.blockRight();
+            window.app.imageapp.uploadImage(data, cbs, cbe);
         }
     };
     
@@ -91,9 +113,10 @@ function ImageUI () {
         
         this.loaded = 0;
         
-        var cbs = function () {
+        var cbs = function (data) {
             window.app.ui.imageui.fillLists();
             window.app.ui.unblockRight();
+            window.app.ui.imageui.setupSpaceBar(data['space']);
         };
         
         var cbe = function () {
@@ -102,10 +125,9 @@ function ImageUI () {
         };
         
         window.app.ui.blockRight();
-        window.app.ui.blockRight();
         
         window.app.imageapp.updateDB(cbs, cbe);
-        window.app.imagedb.updateStorage(cbs, cbe);
+        //window.app.imagedb.updateStorage(cbs, cbe);
     };
     
     /**
@@ -134,42 +156,69 @@ function ImageUI () {
         }, {image : image}));
         $image.append($persona);
         
-        if (image.id !== null) {
-            // Deletar
-            var $delete = $('<a class="uiconDelete floatRight button language" data-langtitle="_IMAGESDELETE_" />').on('click', window.app.emulateBind(function () {
-                window.app.ui.imageui.deleteImage(this.id);
-            }, {id : image.id}));
-            $image.append($delete);
-            
-            // Folder
-            var $folder = $('<a class="uiconFolder floatRight button language" data-langtitle="_IMAGESFOLDER_" />').on('click', window.app.emulateBind(function () {
-                window.app.ui.imageui.editFolder(this.id, window.prompt(window.app.ui.language.getLingo("_IMAGESFOLDERPROMPT_" + ":")));
-            }, {id : image.id}));
-            $image.append($folder);
+        // Deletar
+        var $delete = $('<a class="uiconDelete floatRight button language" data-langtitle="_IMAGESDELETE_" />').on('click', window.app.emulateBind(function () {
+            window.app.ui.imageui.deleteImage(this.id);
+        }, {id : image.getId()}));
+        $image.append($delete);
+
+        // Folder
+        var $folder = $('<a class="uiconFolder floatRight button language" data-langtitle="_IMAGESFOLDER_" />').on('click', window.app.emulateBind(function () {
+            window.app.ui.imageui.editFolder(this.id, window.prompt(window.app.ui.language.getLingo("_IMAGESFOLDERPROMPT_") + ":"));
+        }, {id : image.getId()}));
+        $image.append($folder);
+
+        if (!image.isLink()) {
+            // Cloud
+            $image.append($('<a class="uiconCloud floatRight button language" data-langtitle="_IMAGESCLOUD_" />'));
         }
         
         return $image;
     };
     
     this.editFolder = function (id, folder) {
+        this.lastFolder = window.app.imagedb.getImage(id).folder;
         if (id < 0) {
             window.app.imagedb.getImage(id).folder = folder;
             window.app.imagedb.saveToStorage();
             this.fillLists(true);
         } else {
-            // not implemented
+            var data = {
+                uuid : id,
+                folder : folder,
+                name : window.app.imagedb.getImage(id).name
+            };
+            window.app.ui.blockRight();
+            var cbs = function () {
+                window.app.ui.unblockRight();
+                window.app.ui.imageui.callSelf();
+            };
+            var cbe = function () {
+                alert("ERROR");
+                window.app.ui.unblockRight();
+            };
+            window.app.imageapp.updateImage (data, cbs, cbe);
         }
     };
     
     this.deleteImage = function (id) {
+        var image = window.app.imagedb.getImage(id);
+        this.lastFolder = image.folder;
         if (id < 0) {
-            var image = window.app.imagedb.getImage(id);
-            this.lastFolder = image.folder;
             window.app.imagedb.deleteImage(id);
             window.app.imagedb.saveToStorage();
             this.fillLists(true);
         } else {
-            alert ("Not implemented");
+            window.app.ui.blockRight();
+            var cbs = function () {
+                window.app.ui.unblockRight();
+                window.app.ui.imageui.callSelf();
+            };
+            var cbe = function () {
+                alert("Error");
+                window.app.ui.unblockRight();
+            };
+            window.app.imageapp.deleteImage(id, cbs, cbe);
         }
     };
     
@@ -189,8 +238,7 @@ function ImageUI () {
     };
     
     this.lastImages = "";
-    this.fillLists = function (force) {
-        if (++this.loaded !== 2 && force !== true) return;
+    this.fillLists = function () {
         var $foldersLink = {};
         var $foldersUpload = {};
         
@@ -209,29 +257,17 @@ function ImageUI () {
             folder = images[i].folder;
             if (folder === '') folder = window.app.ui.language.getLingo('_IMAGESNOFOLDER_');
             if (this.lastFolder === '') this.lastFolder = window.app.ui.language.getLingo('_IMAGESNOFOLDER_');
-            if (images[i].id < 0) {
-                if ($foldersLink[images[i].folder] === undefined) {
-                    $folderLink = $("<p class='folder' />").text(folder).on('click', function () {
-                        $(this).toggleClass('toggled');
-                    }).append($("<a />").addClass('uiconFolderButton'));
-                    if (folder === this.lastFolder) {
-                        $folderLink.addClass('toggled');
-                    }
-                    $foldersLink[images[i].folder] = $('<div />');
-                    this.$linkList.append($folderLink).append($foldersLink[images[i].folder]);
+            if ($foldersLink[images[i].folder] === undefined) {
+                $folderLink = $("<p class='folder' />").text(folder).on('click', function () {
+                    $(this).toggleClass('toggled');
+                }).append($("<a />").addClass('uiconFolderButton'));
+                if (folder === this.lastFolder) {
+                    $folderLink.addClass('toggled');
                 }
-                $foldersLink[images[i].folder].append($image);
-            } else {
-                if ($foldersUpload[images[i].folder] === undefined) {
-                    $folderLink = $("<p class='folder' />").text(folder).append($("<a />").addClass('uiconFolderButton'));
-                    if (folder === this.lastFolder) {
-                        $folderLink.addClass('toggled');
-                    }
-                    $foldersUpload[images[i].folder] = $('<div />');
-                    this.$imageList.append($folderLink).append($foldersUpload[images[i].folder]);
-                }
-                $foldersUpload[images[i].folder].append($image);
+                $foldersLink[images[i].folder] = $('<div />');
+                this.$linkList.append($folderLink).append($foldersLink[images[i].folder]);
             }
+            $foldersLink[images[i].folder].append($image);
         }
         
         window.app.ui.language.applyLanguageOn(this.$linkList);
@@ -248,5 +284,20 @@ function ImageUI () {
     
     this.personaImage = function (image) {
         window.app.ui.chat.pc.addPersona(image.getName().replace(/ *\([^)]*\) */, '').trim(), image.getUrl(), false);
+    };
+    
+    this.setupSpaceBar = function (json) {
+        //{"TotalSpace":10240,"UsedSpace":1024,"FreeSpace":5242880}
+        var used = json.UsedSpace / (1024 * 1024);
+        used = +(used.toFixed(2));
+        var total = ((json.TotalSpace + json.FreeSpace) / (1024 * 1024));
+        total = +(total.toFixed(2));
+        this.$storageText.left.text(used + " MB");
+        this.$storageText.right.text(total + " MB");
+        if (total > 0) {
+            this.$storageUsed.css("width", (used * 100 / total) + "%");
+        } else {
+            this.$storageUsed.css("width", "100%");
+        }
     };
 }

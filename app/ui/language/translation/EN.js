@@ -33,6 +33,8 @@ window.lingo['en'] = {
     /* Images */
     
     _IMAGESHEADER_ : 'Images',
+    _IMAGESFOLDERPROMPT_ : 'New folder (leave empty for none)',
+    _IMAGESCLOUD_ : 'This image has been uploaded and consumes storage space.',
     _IMAGESEXPLAIN1_ : 'Images are attached to your account. The space each account has for images is finite, so caution needs to be exerted when uploading new files.',
     _IMAGESEXPLAIN2_ : 'You can increase your total space through donations which help cover RedPG\'s server costs. If you end up having more images uploaded than your total space allows, they will not be deleted, but you will be unable to upload new images until you bring your usage down.',
     _IMAGESEXPLAIN3_ : 'When printing an image name, as a Persona or in the Chat, anything between parentheses will not be printed.',
@@ -42,7 +44,6 @@ window.lingo['en'] = {
     _IMAGESLINKEDEXPLAIN_ : 'These images are stored as simple storage in the server. They will not be lost, but you have to click "Save to server" to save them.',
     _IMAGESLINKEDSAVE_ : 'Save to server',
     _IMAGESFOLDER_ : 'Folder',
-    _IMAGESFOLDERPROMPT_ : 'Folder',
     _IMAGESNOFOLDER_ : 'No folder',
     _IMAGESUPLOAD_ : 'New Upload',
     _IMAGESLINK_ : 'New Link',
@@ -55,6 +56,9 @@ window.lingo['en'] = {
     _IMAGESPERSONA_ : "Use as Persona",
     _IMAGESOPEN_ : 'Open Image',
     _IMAGESLINKLISTEXPLAIN_ : 'Without checking this, the system will add the address as a single picture. If you check this box, the system will access the address and add every image address it finds there.',
+    _IMAGESFILEUPLOADEXPLAIN1_ : 'Uploading images will utilize your storage space.',
+    _IMAGESFILEUPLOADEXPLAIN2_ : 'You may upload more than one image at once. Text before a hyphen (-) on file names will be treated as folder names.',
+    
     
     /* Sounds */
     _OPENSOUNDS_ : 'Sounds',

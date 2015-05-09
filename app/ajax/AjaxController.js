@@ -43,17 +43,24 @@ function AjaxController () {
         
         if (typeof object.data !== 'undefined') {
             object.type = 'POST';
-            for (var i in object.data) {
-                if (typeof object.data[i] === 'object' || typeof object.data[i] === 'array') {
-                    object.data[i] = JSON.stringify(object.data[i]);
+            if (!(object.data instanceof FormData)) {
+                for (var i in object.data) {
+                    if (typeof object.data[i] === 'object' || typeof object.data[i] === 'array') {
+                        object.data[i] = JSON.stringify(object.data[i]);
+                    }
+                    // null gets turned into "null" on the form and that fucks things up.
+                    if (object.data[i] === null) {
+                        delete object.data[i];
+                    }
                 }
-                // null gets turned into "null" on the form and that fucks things up.
-                if (object.data[i] === null) {
-                    delete object.data[i];
-                }
+                console.log("Ajax request includes data:");
+                console.log(object.data);
+            } else {
+                console.log("Ajax request includes FormData:");
+                console.log(object.data);
+                object.contentType = false;
+                object.processData = false;
             }
-            console.log("Ajax request includes data:");
-            console.log(object.data);
         }
         
         if (typeof object.timeout === 'undefined') {

@@ -58,8 +58,12 @@ window.chatModules.push({
             }, {link : cleanMsg}
         ));
 
-        var IPlayedItNow = ((typeof slashCMD !== 'undefined' && slashCMD !== null) && !(window.app.ui.chat.cc.firstPrint));
-        var StorytellerPlayedItNow = user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && (window.app.config.get("autoBGM") === 1);
+        if (window.app.ui.chat.cc.firstPrint) {
+            return $msg;
+        }
+
+        var IPlayedItNow = ((typeof slashCMD !== 'undefined' && slashCMD !== null));
+        var StorytellerPlayedItNow = user.isStoryteller() && (window.app.config.get("autoBGM") === 1);
 
         if (IPlayedItNow || StorytellerPlayedItNow || (window.app.config.get("autoBGM") === 2)) {
             window.app.ui.chat.audioc.play(cleanMsg);

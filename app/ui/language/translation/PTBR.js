@@ -35,6 +35,8 @@ window.lingo['pt_br'] = {
     /* Images */
     
     _IMAGESHEADER_ : 'Imagens',
+    _IMAGESCLOUD_ : 'Essa imagem está salva no RedPG e ocupa espaço.',
+    _IMAGESFOLDERPROMPT_ : 'Nova pasta (deixe vazio para nenhuma)',
     _IMAGESEXPLAIN1_ : 'Imagens ficam anexadas à sua conta ao invés de a algum jogo em específico. O espaço que cada conta possui para imagens é finito e deve-se tomar cuidado com o tamanho das imagens que se guarda aqui.',
     _IMAGESEXPLAIN2_ : 'Você pode aumentar seu espaço para imagens através de doações que ajudam a pagar o servidor do RedPG. Se seu espaço para imagens diminuir além do seu espaço gasto com imagens, suas imagens não serão apagadas, mas você não poderá enviar novas imagens até reduzir o uso de espaço.',
     _IMAGESEXPLAIN3_ : 'Nos nomes das imagens, qualquer coisa entre parênteses será ignorada na hora de imprimir seu nome, tanto quando usada como Persona quanto quando enviada para o chat.',
@@ -45,7 +47,6 @@ window.lingo['pt_br'] = {
     _IMAGESLINKEDSAVE_ : 'Salvar Imagens Linkadas no servidor',
     _IMAGESUPLOAD_ : 'Novo Upload',
     _IMAGESFOLDER_ : 'Pasta',
-    _IMAGESFOLDERPROMPT_ : 'Pasta',
     _IMAGESNOFOLDER_ : 'Sem pasta',
     _IMAGESLINK_ : 'Novo Link',
     _IMAGESLINKISLIST_ : 'Possui imagens dentro',
@@ -57,6 +58,9 @@ window.lingo['pt_br'] = {
     _IMAGESPERSONA_ : "Usar como persona",
     _IMAGESOPEN_ : 'Visualizar imagem',
     _IMAGESLINKLISTEXPLAIN_ : 'Sem marcar essa caixa, o sistema vai adicionar o link digitado como um link de imagem. Marcando essa caixa, o sistema irá abrir o link digitado e varrer ele atrás de links de imagens, adicionando cada uma delas.',
+    _IMAGESFILEUPLOADEXPLAIN1_ : 'Upload de imagens consome seu espaço.',
+    _IMAGESFILEUPLOADEXPLAIN2_ : "Você pode enviar várias imagens de uma só vez. Texto antes do primeiro hífen (-) no nome do arquivo será considerado o nome da pasta.",
+    
     
     /* Sounds */
     _OPENSOUNDS_ : 'Sons',

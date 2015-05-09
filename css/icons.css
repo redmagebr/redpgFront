@@ -414,6 +414,10 @@ div.styledWindow > h1 > a.closeWindow {
     background-image: url('../img/icon/Folder.png');
 }
 
+.uiconCloud {
+    background-image: url('../img/icon/Cloud.png');
+}
+
 .uiconFolderButton {
     background-image: url('../img/icon/FolderButton.png');
 }

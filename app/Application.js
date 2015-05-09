@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 53, 0];
+    this.version = [0, 54, 0];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -33,7 +33,7 @@ function Application (debug) {
      */
     this.host = 'http://app.redpg.com.br/service/';
     this.staticHost = 'http://app.redpg.com.br/';
-    this.imageHost = 'http://images.redpg.com.br/';
+    this.imageHost = 'http://img.redpg.com.br/';
     this.wshostServer = 'ws://app.redpg.com.br';
     this.wshostContext = '/service/';
     this.wsHostPorts = [80, 8080, 8081];

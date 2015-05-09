@@ -20,4 +20,12 @@ function Image_Link () {
     this.getUrl = function () {
         return this.url;
     };
+    
+    this.getId = function () {
+        return this.id;
+    };
+    
+    this.isLink = function () {
+        return true;
+    };
 }

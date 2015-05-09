@@ -46,6 +46,7 @@ function ImageDB (app) {
     this.updateFromJSON = function (json, clean) {
         if (clean) this.empty();
         for (var i = 0; i < json.length; i++) {
+            if (json[i].id === undefined) json[i].id = json[i].uuid;
             if (typeof this.images[json[i].id] === 'undefined') {
                 if (json[i].id < 0) {
                     this.images[json[i].id] = new Image_Link();
@@ -116,7 +117,7 @@ function ImageDB (app) {
         var fakeImages = [];
         //var attr = ['id', 'name', 'url', 'folder'];
         for (var id in this.images) {
-            if (parseInt(id) > 0) continue;
+            if (!(parseInt(id) < 0)) continue;
             fakeImages.push({
                 id : this.images[id].id,
                 name : this.images[id].name,
@@ -137,7 +138,7 @@ function ImageDB (app) {
      */
     this.storageChanged = function () {
         for (var id in this.images) {
-            if (parseInt(id, 10) > 0) continue;
+            if (isNaN(id, 10) || parseInt(id) > 0) continue;
             console.log("Deleting " + id);
             this.deleteImage(id);
         }

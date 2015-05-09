@@ -71,8 +71,12 @@ window.chatModules.push({
         $link.attr('href', cleanMsg);
         $link.attr('target', '_blank');
         
-        var IPlayedItNow = ((typeof slashCMD !== 'undefined' && slashCMD !== null) && !(window.app.ui.chat.cc.firstPrint));
-        var StorytellerPlayedItNow = user.isStoryteller() && !(window.app.ui.chat.cc.firstPrint) && (window.app.config.get("autoImage") === 1);
+        if (window.app.ui.chat.cc.firstPrint) {
+            return $msg;
+        }
+        
+        var IPlayedItNow = ((typeof slashCMD !== 'undefined' && slashCMD !== null));
+        var StorytellerPlayedItNow = user.isStoryteller() && (window.app.config.get("autoImage") === 1);
 
         if (IPlayedItNow || StorytellerPlayedItNow || (window.app.config.get("autoImage") === 2)) {
             window.app.ui.pictureui.open(cleanMsg);
