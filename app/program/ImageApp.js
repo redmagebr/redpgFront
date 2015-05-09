@@ -69,7 +69,8 @@ function ImageApp () {
 //            progressUpload : progress,
             success: cbs,
             error: cbe,
-            data: formdata
+            data: formdata,
+            timeout: 120 * 1000 // 120 seconds or 2 minutes
         };
         
         var ajax = new AjaxController();
