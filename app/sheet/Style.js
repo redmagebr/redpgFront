@@ -40,15 +40,22 @@ function Style (sheet, styleInstance) {
     };
     
     this.setValues = function () {
+        var $dom = this.$html.parent();
+        this.$html.detach();
+        
         this.loading = true;
-        this.mainSheet.setDefault();
+        
+        //this.mainSheet.setDefault();
         this.mainSheet.update(this.sheet.values);
+        
         this.nameField.update();
         this.mainSheet.update$();
         this.mainSheet.$visible.trigger("loaded");
         this.loading = false;
         this.loadId++;
         this.doCallbacks();
+        
+        $dom.append(this.$html);
     };
     
     this.beforeProcess = function (sheet, instance, style) {
@@ -123,6 +130,9 @@ function Style (sheet, styleInstance) {
     };
     
     this.toggleEdit = function () {
+        var $dom = this.$html.parent();
+        this.$html.detach();
+        
         if (!this.sheet.editable) {
             this.editing = false;
         } else {
@@ -135,6 +145,8 @@ function Style (sheet, styleInstance) {
         } else {
             this.mainSheet.$visible.trigger("viewing");
         }
+        
+        $dom.append(this.$html);
     };
     
     this.getField = function (id) {

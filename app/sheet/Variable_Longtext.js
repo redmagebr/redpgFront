@@ -68,39 +68,44 @@ function Variable_Longtext ($visible, style, missingid, parent) {
         }
     };
     
-    this.update$ = function () {
-        if (this.style.editing && this.editable) {
-            var $input = $('<textarea spellcheck="false" />');
-            
-            $input.val(this.value);
-            
-            if (this.placeholder !== null) {
-                $input.attr("placeholder", this.placeholder);
+    this.$input = $('<textarea spellcheck="false" />');
+    
+    if (this.placeholder !== null) {
+        this.$input.attr("placeholder", this.placeholder);
+    }
+    
+    this.$input.on('change', this.style.emulateBind(
+        function () {
+            this.variable.storeValue(this.$input.val());
+        }, {$input : this.$input, variable : this}
+    ));
+    
+    if (this.autoresize) {
+        this.$input.css('overflow-y', 'hidden');
+        this.$input.css('min-height', '0px');
+        this.$input.on('keydown.resize keyup.resize click.resize', function () {
+            this.style.height = 'auto';
+            if (this.scrollHeight < 20) {
+                this.style.height = '1em';
+            } else { 
+                this.style.height = this.scrollHeight + 'px';
             }
-
-            $input.on('change', this.style.emulateBind(
-                function () {
-                    this.variable.storeValue(this.$input.val());
-                }, {$input : $input, variable : this}
-            ));
-
-            this.$visible.empty().append($input);
-
-            
-            if (this.autoresize) {
-                $input.css('overflow-y', 'hidden');
-                $input.css('min-height', '0px');
-                $input.on('keydown.resize keyup.resize click.resize', function () {
-                    this.style.height = 'auto';
-                    if (this.scrollHeight < 20) {
-                        this.style.height = '1em';
-                    } else { 
-                        this.style.height = this.scrollHeight + 'px';
-                    }
-                });
-                $input.trigger('keyup.resize', [false]);
+        });
+        this.$input.trigger('keyup.resize', [false]);
+    }
+    
+    this.hasInput = false;
+    
+    this.update$ = function () {
+        this.$input.val(this.value);
+        if (this.style.editing && this.editable) {
+            if (!this.hasInput) {
+                this.$visible.empty().append(this.$input);
+                this.$input.trigger('keyup.resize', [false]);
+                this.hasInput = true;
             }
         } else {
+            this.$input.detach();
             if (!this.paragraph) {
                 var html = $("<p />").text(this.value).html();
                 html = html.replace(/\r\n|\r|\n/g,"<br />");
@@ -120,6 +125,7 @@ function Variable_Longtext ($visible, style, missingid, parent) {
                     this.$visible.append($p);
                 }
             }
+            this.hasInput = false;
         }
     };
 

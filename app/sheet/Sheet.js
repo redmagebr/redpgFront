@@ -140,8 +140,10 @@ function Sheet ($list, style, baseSheet) {
      * @returns {undefined}
      */
     this.update = function (obj) {
-        for (var i in obj) {
-            if (typeof this.fields[i] !== 'undefined') {
+        for (var i in this.fields) {
+            if (obj[i] === undefined) {
+                this.fields[i].setDefault();
+            } else {
                 this.fields[i].update(obj[i]);
             }
         }

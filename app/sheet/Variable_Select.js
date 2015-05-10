@@ -62,32 +62,38 @@ function Variable_Select ($visible, style, missingid, parent) {
         }
     };
     
+    this.$input = $('<select />');
+    var $option;
+    for (var i = 0; i < this.options.length; i++) {
+        $option = $("<option />").attr('value', i).text(this.options[i]);
+        if (i === this.value) {
+            $option.prop('selected', true);
+        }
+        this.$input.append($option);
+    }
+    
+    this.$input.on('change', this.style.emulateBind(
+        function () {
+            this.variable.storeValue(this.$input.val());
+            console.log(this.variable);
+            console.log(this.$input);
+        }, {$input : this.$input, variable : this}
+    ));
+    
+    this.hasInput = false;
+    
     this.update$ = function () {
         if (this.value === null) this.setDefault();
+        this.$input.val(this.value);
         if (this.style.editing) {
-            var $input = $('<select />');
-            
-            var $option;
-            for (var i = 0; i < this.options.length; i++) {
-                $option = $("<option />").attr('value', i).text(this.options[i]);
-                if (i === this.value) {
-                    $option.prop('selected', true);
-                }
-                $input.append($option);
+            if (!this.hasInput) {
+                this.$visible.empty().append(this.$input);
+                this.hasInput = true;
             }
-            
-
-            $input.on('change', this.style.emulateBind(
-                function () {
-                    this.variable.storeValue(this.$input.val());
-                    console.log(this.variable);
-                    console.log(this.$input);
-                }, {$input : $input, variable : this}
-            ));
-
-            this.$visible.empty().append($input);
         } else {
+            this.$input.detach();
             this.$visible.text(this.options[this.value]);
+            this.hasInput = false;
         }
     };
 
@@ -105,6 +111,7 @@ function Variable_Select ($visible, style, missingid, parent) {
             if (!this.parent.isRoot) {
                 this.style.get$().trigger('changedVariable', [this]);
             }
+            this.update$();
         }
     };
     

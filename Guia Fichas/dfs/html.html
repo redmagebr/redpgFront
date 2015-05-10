@@ -496,37 +496,6 @@
         <a class="addRow" data-for="Debuffs">+ Adicionar Efeitos</a>
     </div>
     
-    <div class="clearLeft twoThirdsWidth typedBG marginTop">
-        <p class="headerArea">
-            Efeitos (Preterido, parar de usar)
-        </p>
-    </div>
-    <div class="clearLeft twoThirdsWidth whiteBG">
-        <div id="dfsBuffs" class="sheetList" data-id="Buffs">
-            <div>
-                <a class="deleteRow deleteButton"></a>
-                <a style="display: none" class="sheetVariable" data-id="Placername" data-type="text"></a>
-                <a style="display: none" class="sheetVariable" data-id="Placerid" data-type="integer" data-default="-1"></a>
-                <span class="sheetVariable buffName" data-id="Name" data-type="text" data-placeholder="Nome"></span>
-                Duração:
-                <span class="sheetVariable buffDuration" data-id="Duration" data-type="integer" data-default="1"></span>
-                <span style="display: none" title="Ao terminar, o jogador poderá escolher manter esse efeito ativo" class="sheetVariable buffMaintain" data-id="Maintainable" data-type="boolean" data-default="1" data-label="1" data-labelhtml="Manter"></span>
-                <div class="sheetVariable buffEffect" data-id="Effect" data-type="longtext" data-placeholder="Efeito" data-autoresize="1"></div>
-                <div class="buffBonus sheetList" data-id="Bonus">
-                    <p>
-                        <a class="deleteRow deleteButton"></a>
-                        <span class="sheetVariable buffAtributo" data-id="Atributo" data-type="text" data-placeholder="Atributo"></span>
-                        Efeito:
-                        <span class="sheetVariable buffQuantidade" data-id="Quantidade" data-type="integer" data-default="0"></span>
-                        <span class="sheetVariable buffTipo" data-id="Tipo" data-type="text" data-placeholder="Tipo"></span>
-                    </p>
-                </div>
-                <a class="addRow" data-for="Bonus">+ Adicionar Bônus</a>
-                <hr class="tinyHR" />
-            </div>
-        </div>
-        <a class="addRow" data-for="Buffs">+ Adicionar Buff/Debuff</a>
-    </div>
     <div class="clearLeft fullWidth typedBG marginTop">
         <p class="headerArea">
             <a id="dfsRolagensOpenClose" class="openClose floatRight paddingRight" onclick="$('#dfsRolagens').toggle(); $(this).text($('#dfsRolagens').is(':visible') ? '(-)' : '(+)');">

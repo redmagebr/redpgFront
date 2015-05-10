@@ -72,27 +72,34 @@ function Variable_Integer ($visible, style, missingid, parent) {
         }
     };
     
+    this.$input = $('<input type="text" />');
+    
+    if (this.placeholder !== null) {
+        this.$input.attr("placeholder", this.placeholder);
+    }
+    
+    this.$input.on('change', this.style.emulateBind(
+        function () {
+            this.variable.storeValue(this.$input.val());
+            console.log(this.variable);
+            console.log(this.$input);
+        }, {$input : this.$input, variable : this}
+    ));
+    
+    this.hasInput = false;
+    
     this.update$ = function () {
         if (this.value === null) this.update(this.default);
+        this.$input.val(this.value);
         if (this.style.editing) {
-            var $input = $('<input type="text" />');
-            $input.val(this.value);
-            
-            if (this.placeholder !== null) {
-                $input.attr("placeholder", this.placeholder);
+            if (!this.hasInput) {
+                this.$visible.empty().append(this.$input);
+                this.hasInput = true;
             }
-
-            $input.on('change', this.style.emulateBind(
-                function () {
-                    this.variable.storeValue(this.$input.val());
-                    console.log(this.variable);
-                    console.log(this.$input);
-                }, {$input : $input, variable : this}
-            ));
-
-            this.$visible.empty().append($input);
         } else {
+            this.$input.detach();
             this.$visible.text(this.value);
+            this.hasInput = false;
         }
     };
 
@@ -115,8 +122,8 @@ function Variable_Integer ($visible, style, missingid, parent) {
             if (!this.parent.isRoot) {
                 this.style.get$().trigger('changedVariable', [this, this.$visible]);
             }
+            this.update$();
         }
-        this.update$();
     };
     
     this.setDefault = function () {

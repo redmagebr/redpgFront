@@ -811,9 +811,9 @@ this.sumPericias(null);
 
 
 // Somar vantagens / desvantagens
-this.lastSumVants = null;
+this.lastSumVants = {Vantagens : null, Desvantagens : null};
 this.sumVants = function (lastCount, type) {
-    if (this.lastSumVants === lastCount) return;
+    if (this.lastSumVants[type] === lastCount) return;
 	var desvantagens = this.mainSheet.fields[type];
 	var sum = 0;
 	
@@ -828,15 +828,15 @@ this.sumVants = function (lastCount, type) {
 	}
 	
 	this.element[type + 'Sum'].text(sum);
-    this.lastSumVants = lastCount;
+    this.lastSumVants[type] = lastCount;
 };
 
 sheet.fields['Vantagens'].onChange(function (lastCount, variable) {
     variable.style.sumVants(lastCount, 'Vantagens');
 });
 
-sheet.fields['Vantagens'].onChange(function (lastCount, variable) {
-    variable.style.sumVants(lastCount, 'Vantagens');
+sheet.fields['Desvantagens'].onChange(function (lastCount, variable) {
+    variable.style.sumVants(lastCount, 'Desvantagens');
 });
 
 //sheet.fields['Vantagens'].$visible.on('changedVariable changedRows', function (e, variable) {

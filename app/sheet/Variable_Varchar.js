@@ -40,6 +40,20 @@ function Variable_Varchar ($visible, style, missingid, parent) {
     
     this.changedCallbacks = [];
     
+    this.$input = $('<input type="text" />');
+    
+    this.$input.on('change', this.style.emulateBind(
+        function () {
+            this.variable.storeValue(this.$input.val());
+        }, {$input : this.$input, variable : this}
+    ));
+
+    if (this.placeholder !== null) {
+        this.$input.attr("placeholder", this.placeholder);
+    }
+    
+    this.hasInput = false;
+    
     this.onChange = function (v) {
         if (typeof v === 'function') {
             this.changedCallbacks.push(v);
@@ -51,23 +65,16 @@ function Variable_Varchar ($visible, style, missingid, parent) {
     };
     
     this.update$ = function () {
+        this.$input.val(this.value);
         if (this.style.editing && this.editable) {
-            var $input = $('<input type="text" />');
-            $input.val(this.value);
-            
-            if (this.placeholder !== null) {
-                $input.attr("placeholder", this.placeholder);
+            if (!this.hasInput) {
+                this.$visible.empty().append(this.$input);
+                this.hasInput = true;
             }
-
-            $input.on('change', this.style.emulateBind(
-                function () {
-                    this.variable.storeValue(this.$input.val());
-                }, {$input : $input, variable : this}
-            ));
-
-            this.$visible.empty().append($input);
         } else {
+            this.$input.detach();
             this.$visible.text(this.value);
+            this.hasInput = false;
         }
     };
 
