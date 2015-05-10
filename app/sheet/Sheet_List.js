@@ -37,6 +37,8 @@ function Sheet_List ($visible, style, missingId, parent) {
     this.$html = $(this.$visible.html());
     this.$visible.empty();
     
+    this.pool = [];
+    
     console.log(this.id + ' - created - minrows : ' + this.minLength);
     
     this.changedCallbacks = [];
@@ -55,17 +57,25 @@ function Sheet_List ($visible, style, missingId, parent) {
         this.style.addChanged(this.variable);
     }, {style : this.style, variable : this}));
     
-    this.addRow = function () {
+    this.addRow = function (initialState) {
+        initialState = initialState === undefined ? {} : initialState;
         console.log(this.id + ' - adding row');
         if (this.maxLength < this.list.length + 1) {
             return false;
         }
         
-        var $newRow = this.$html.clone();
-        var newRow = new Sheet ($newRow, this.style, false, this.parent);
+        if (this.pool.length > 0) {
+            var newRow = this.pool.pop();
+            var $newRow = newRow.$visible;
+            newRow.update(initialState);
+        } else {
+            var $newRow = this.$html.clone();
+            var newRow = new Sheet ($newRow, this.style, false, this.parent);
+            newRow.process();
+            newRow.update(initialState);
+        }
         var index = this.list.push(newRow);
         this.$list.push($newRow);
-        newRow.process();
         var $deletes = $newRow.find('.deleteRow');
         console.log($deletes);
         $deletes.on('click', this.style.emulateBind(
@@ -117,7 +127,9 @@ function Sheet_List ($visible, style, missingId, parent) {
             this.$list.splice(index, 1);
         }
         
-        $oldRow.remove();
+        $oldRow.detach();
+        $oldRow.off();
+        this.pool.push(oldRow);
         
         
         this.$visible.trigger('removedRow', [oldRow]);
@@ -145,13 +157,15 @@ function Sheet_List ($visible, style, missingId, parent) {
         while (this.list.length > obj.length) {
             this.removeRow(0);
         }
-        while (this.list.length < obj.length) {
-            this.addRow();
-        }
+//        while (this.list.length < obj.length) {
+//            this.addRow();
+//        }
         for (var i = 0; i < obj.length; i++) {
-            console.log(this.list[i]);
-            console.log("Updated with");
-            console.log(obj[i]);
+            if (i >= this.list.length) {
+                this.addRow(obj[i]);
+            } else {
+                this.list[i].update(obj[i]);
+            }
             this.list[i].update(obj[i]);
         }
         
