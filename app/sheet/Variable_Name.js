@@ -43,8 +43,8 @@ function Variable_Name ($visible, style, missingid, parent) {
     ));
     
     this.update$ = function () {
-        this.$input.val(this.value);
         if (this.style.editing) {
+            this.$input.val(this.value);
             if (!this.hasInput) {
                 this.$visible.empty().append(this.$input);
                 this.hasInput = true;

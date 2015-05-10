@@ -56,26 +56,25 @@ function Variable_Boolean ($visible, style, missingid, parent) {
             }
         }
     };
+    
+    this.$input = $('<input type="checkbox" ' + (this.value ? 'checked' : '') + ' />');
+    
+    if (this.label) {
+        var $label = $('<label />').text(this.labelhtml).prepend(this.$input);
+        this.$visible.empty().append($label);
+    } else {
+        this.$visible.empty().append($input);
+    }
+    
+    this.$input.on('change', this.style.emulateBind(
+        function () {
+            this.variable.storeValue(this.$input[0].checked);
+        }, {$input : this.$input, variable : this}
+    ));
 
     this.update$ = function () {
-        var $input = $('<input type="checkbox" ' + (this.value ? 'checked' : '') + ' />');
-
-        if (!this.style.editing || !this.editable) {
-            $input[0].disabled = 'disabled';
-        }
-
-        $input.on('change', this.style.emulateBind(
-            function () {
-                this.variable.storeValue(this.$input[0].checked);
-            }, {$input : $input, variable : this}
-        ));
-
-        if (this.label) {
-            var $label = $('<label />').text(this.labelhtml).prepend($input);
-            this.$visible.empty().append($label);
-        } else {
-            this.$visible.empty().append($input);
-        }
+        this.$input.prop('disabled', (!this.style.editing || !this.editable));
+        this.$input.prop('checked', this.value);
     };
 
     this.storeValue = function (value) {

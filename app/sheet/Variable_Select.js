@@ -84,8 +84,8 @@ function Variable_Select ($visible, style, missingid, parent) {
     
     this.update$ = function () {
         if (this.value === null) this.setDefault();
-        this.$input.val(this.value);
         if (this.style.editing) {
+            this.$input.val(this.value);
             if (!this.hasInput) {
                 this.$visible.empty().append(this.$input);
                 this.hasInput = true;

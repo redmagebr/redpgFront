@@ -97,8 +97,8 @@ function Variable_Longtext ($visible, style, missingid, parent) {
     this.hasInput = false;
     
     this.update$ = function () {
-        this.$input.val(this.value);
         if (this.style.editing && this.editable) {
+            this.$input.val(this.value);
             if (!this.hasInput) {
                 this.$visible.empty().append(this.$input);
                 this.$input.trigger('keyup.resize', [false]);
