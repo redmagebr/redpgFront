@@ -71,6 +71,7 @@ window.chatModules.push({
         $link.attr('href', cleanMsg);
         $link.attr('target', '_blank');
 
+        $msg.append($link);
         if (window.app.ui.chat.cc.firstPrint) {
             return $msg;
         }
@@ -82,7 +83,6 @@ window.chatModules.push({
             window.app.ui.pictureui.open(cleanMsg, true);
         }
 
-        $msg.append($link);
         
         return $msg;
     },

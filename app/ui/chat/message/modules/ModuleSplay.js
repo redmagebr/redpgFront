@@ -43,6 +43,7 @@ window.chatModules.push({
             }, {link : cleanMsg}
         ));
 
+        $msg.append($link);
         if (window.app.ui.chat.cc.firstPrint) {
             return $msg;
         }
@@ -54,7 +55,6 @@ window.chatModules.push({
             window.app.ui.chat.audioc.play(cleanMsg);
         }
 
-        $msg.append($link);
         
         return $msg;
     },

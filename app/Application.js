@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 54, 4];
+    this.version = [0, 54, 5];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;

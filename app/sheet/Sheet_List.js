@@ -6,7 +6,6 @@
  * @param {Sheet} parent
  */
 function Sheet_List ($visible, style, missingId, parent) {
-    
     this.style = style;
     this.parent = parent;
     this.list = [];
@@ -65,43 +64,48 @@ function Sheet_List ($visible, style, missingId, parent) {
         }
         
         if (this.pool.length > 0) {
+        	var fromPool = true;
             var newRow = this.pool.pop();
             var $newRow = newRow.$visible;
             newRow.update(initialState);
         } else {
+        	var fromPool = false;
             var $newRow = this.$html.clone();
             var newRow = new Sheet ($newRow, this.style, false, this.parent);
             newRow.process();
-            newRow.update(initialState);
+            if (!jQuery.isEmptyObject(initialState)) newRow.update(initialState);
         }
         var index = this.list.push(newRow);
         this.$list.push($newRow);
-        var $deletes = $newRow.find('.deleteRow');
-        console.log($deletes);
-        $deletes.on('click', this.style.emulateBind(
-            function () {
-                this.list.deleteRow(this.row);
-                console.log("CLICKED");
-            }, {list : this, row : newRow}
-        ));
 //        if (this.style.editing) {
 //            $deletes.show();
 //        } else {
 //            $deletes.hide();
 //        }
 
-        newRow.$visible.on('changedVariable', this.style.emulateBind(function () {
-            this.style.addChanged(this.variable);
-        }, {style : this.style, variable : newRow}));
         
+
         newRow.update$();
         this.$visible.append($newRow);
-        
-        
-        
+
         console.log(this.id + ' changed rows');
         
-        this.$visible.trigger('newRow', [newRow]);
+        if (!fromPool) {
+	        var $deletes = $newRow.find('.deleteRow');
+	        console.log($deletes);
+	        $deletes.on('click', this.style.emulateBind(
+	            function () {
+	                this.list.deleteRow(this.row);
+	                console.log("CLICKED");
+	            }, {list : this, row : newRow}
+	        ));
+	        
+	        newRow.$visible.on('changedVariable', this.style.emulateBind(function () {
+	            this.style.addChanged(this.variable);
+	        }, {style : this.style, variable : newRow}));
+	        this.$visible.trigger('newRow', [newRow]);
+        }
+        
         this.$visible.trigger('changedRows', [newRow]);
         this.parent.$visible.trigger('changedRows', [newRow]);
         this.style.$html.trigger('changedRows', [newRow]);

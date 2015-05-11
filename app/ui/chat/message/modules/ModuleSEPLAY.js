@@ -63,6 +63,10 @@ window.chatModules.push({
             window.app.ui.chat.audioc.stopse();
         });
 
+        $msg.append(' ');
+        $msg.append($link);
+        $msg.append(' ');
+        $msg.append($link2);
         if (window.app.ui.chat.cc.firstPrint) {
             return $msg;
         }
@@ -74,10 +78,6 @@ window.chatModules.push({
             window.app.ui.chat.audioc.playse(cleanMsg);
         }
 
-        $msg.append(' ');
-        $msg.append($link);
-        $msg.append(' ');
-        $msg.append($link2);
         
         return $msg;
     },
