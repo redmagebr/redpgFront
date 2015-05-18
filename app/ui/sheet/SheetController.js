@@ -199,30 +199,40 @@ function SheetController () {
         if (typeof this.styles[styleid] === 'undefined') {
             var lesheet = window.app.sheetdb.getSheet(sheetid);
             var lestyle = window.app.styledb.getStyle(styleid);
-            this.styles[styleid] = new Style (lesheet, lestyle);
-            this.styles[styleid].process();
-            this.styles[styleid].setValues();
+            this.styles[styleid] = new Sheet_Style (lesheet, lestyle);
+            window.app.ui.language.applyLanguageOn($(this.styles[styleid].visible));
+//            this.styles[styleid].process();
+//            this.styles[styleid].setValues();
             
-            if (typeof this.styles[styleid].nameField !== 'undefined') {
-                this.styles[styleid].nameField.$visible.on('changedVariable', function () {
-                    window.app.ui.sheetui.controller.updateCurrentButton();
-                });
+            if (this.styles[styleid].sheet.nameField !== null) {
+            	this.styles[styleid].sheet.nameField.addChangedListener({
+            		handleEvent : function () {
+            			window.app.ui.sheetui.controller.updateCurrentButton();
+            		}
+            	})
             }
             
-            if (typeof this.styles[styleid].mainSheet.fields['Jogador'] !== 'undefined') {
-                this.styles[styleid].mainSheet.fields['Jogador'].$visible.on('changedVariable', function () {
-                    window.app.ui.sheetui.controller.updateCurrentButton();
-                });
+            var style = this.styles[styleid];
+            if (style.sheet.getField('Jogador') !== null) {
+            	var player = style.sheet.getField('Jogador');
+            } else if (style.sheet.getField('Player') !== null) {
+            	var player = style.sheet.getField('Player');
+            } else {
+            	var player = null;
             }
             
-            if (typeof this.styles[styleid].mainSheet.fields['Player'] !== 'undefined') {
-                this.styles[styleid].mainSheet.fields['Player'].$visible.on('changedVariable', function () {
-                    window.app.ui.sheetui.controller.updateCurrentButton();
-                });
+            if (player !== null) {
+            	player.addChangedListener({
+            		handleEvent : function () {
+            			window.app.ui.sheetui.controller.updateCurrentButton();
+            		}
+            	});
             }
             
-            this.styles[styleid].mainSheet.$visible.on('hasChanged', function () {
-                window.app.ui.sheetui.controller.considerChanged();
+            style.sheet.addChangedListener({
+            	handleEvent : function () {
+            		window.app.ui.sheetui.controller.considerChanged();
+            	}
             });
         } else {
             this.styles[styleid].switchInstance(window.app.sheetdb.getSheet(sheetid));
@@ -232,8 +242,8 @@ function SheetController () {
         if (this.currentStyle !== styleid) {
             this.$css.detach();
             this.$html.detach();
-            this.$html = this.styles[styleid].get$();
-            this.$css = this.styles[styleid].get$css();
+            this.$html = $(this.styles[styleid].visible);
+            this.$css = $(this.styles[styleid].css);
             this.$viewer.empty().append(this.$html);
             $('head').append(this.$css);
             this.currentStyle = styleid;
@@ -295,10 +305,12 @@ function SheetController () {
         
         if (typeof this.styles[this.currentStyle] !== 'undefined') {
             var style = this.styles[this.currentStyle];
-            if (typeof style.mainSheet.fields['Jogador'] !== 'undefined') {
-                var jogador = style.mainSheet.fields['Jogador'].getObject();
-            } else if (typeof style.mainSheet.fields['Player'] !== 'undefined') {
-                var jogador = style.mainSheet.fields['Player'].getObject();
+            if (style.sheet.getField('Jogador') !== null) {
+            	var jogador = style.sheet.getField('Jogador').getValue();
+            } else if (style.sheet.getField('Player') !== null) {
+            	var jogador = style.sheet.getField('Player').getValue();
+            } else {
+            	var jogador = "";
             }
         } else {
             var sheet = window.app.sheetdb.getSheet(this.currentInstance);
@@ -306,16 +318,20 @@ function SheetController () {
                 var jogador = sheet.values['Jogador'];
             } else if (typeof sheet.values['Player'] !== 'undefined') {
                 var jogador = sheet.values['Player'];
+            } else {
+            	var jogador = "";
             }
         }
         
         
         
-        
+        this.$html.removeClass('character nonplayer');
         if ( jogador === 'NPC') {
             this.$listed[this.currentInstance].addClass('nonplayer');
+            this.$html.addClass('nonplayer');
         } else {
             this.$listed[this.currentInstance].addClass('character');
+            this.$html.addClass('character');
         }
         
         var name = window.app.sheetdb.getSheet(this.currentInstance).name;
@@ -425,6 +441,7 @@ function SheetController () {
             window.app.ui.unblockRight();
             window.app.ui.sheetui.controller.considerWarning();
             var sheet = window.app.sheetdb.getSheet(window.app.ui.sheetui.controller.currentInstance);
+            window.app.memory.unsetMemory("Sheet_" + window.app.ui.sheetui.controller.currentInstance);
             sheet.changed = false;
             window.app.ui.sheetui.controller.considerChanged();
         };

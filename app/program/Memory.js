@@ -10,6 +10,10 @@ function Memory () {
         }
     };
     
+    this.hasMemory = function (id) {
+    	return typeof this.memory[id] !== 'undefined';
+    }
+    
     this.getMemory = function (id, obj) {
         if (typeof this.memory[id] === 'undefined') {
             this.memory[id] = obj;
@@ -21,6 +25,11 @@ function Memory () {
     this.setMemory = function (id, obj) {
         this.memory[id] = obj;
         this.saveMemory();
+    };
+    
+    this.unsetMemory = function (id) {
+    	delete this.memory[id];
+    	this.saveMemory();
     };
     
     this.saveMemory = function () {

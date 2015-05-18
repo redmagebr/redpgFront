@@ -21,6 +21,25 @@ function ImageDB (app) {
     
     this.fakeId = 0;
     
+    this.listeners = [];
+    
+    this.addListener = function (handler) {
+    	this.listeners.push(handler);
+    };
+    
+    this.removeListener = function (handler) {
+    	this.listeners.splice(this.listeners.indexOf(handler), 1);
+    };
+    
+    this.triggerListeners = function () {
+    	for (var i = 0; i < this.listeners.length; i++) {
+    		try {
+    			this.listeners[i].handleEvent();
+    		} catch (e) {}
+    	}
+    };
+    
+    
     /**
      * 
      * @param {number} id
@@ -64,6 +83,7 @@ function ImageDB (app) {
         
         this.sort();
         this.$trigger.trigger('loaded').off('loaded');
+        this.triggerListeners();
     };
     
     this.sort = function () {

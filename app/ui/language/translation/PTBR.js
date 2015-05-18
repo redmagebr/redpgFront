@@ -601,6 +601,7 @@ window.lingo['pt_br'] = {
     _IMAGEARCHIVE_ : 'Banco de Imagens',
     _SHEETCOMMONSTYPE_ : 'Tipo',
     _SHEETCOMMONSPICKIMAGE_ : 'Escolha uma imagem',
+    _SHEETCOMMONSPICKIMAGENOFOLDER_ : "Sem pasta",
     _SHEETCOMMONSPICKIMAGENONE_ : 'Sem Imagem',
     _SHEETCOMMONSPICKSHEET_ : 'Escolha uma ficha',
     _SHEETCOMMONSNEWDUAL_ : 'Nova lista dupla',

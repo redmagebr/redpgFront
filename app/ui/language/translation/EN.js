@@ -592,6 +592,7 @@ window.lingo['en'] = {
     _IMAGEARCHIVE_ : 'Image Bank',
     _SHEETCOMMONSTYPE_ : 'Type',
     _SHEETCOMMONSPICKIMAGE_ : 'Choose a picture',
+    _SHEETCOMMONSPICKIMAGENOFOLDER_ : "No folder",
     _SHEETCOMMONSPICKIMAGENONE_ : 'No picture',
     _SHEETCOMMONSPICKSHEET_ : 'Choose a sheet',
     _SHEETCOMMONSNEWDUAL_ : 'New double list',
