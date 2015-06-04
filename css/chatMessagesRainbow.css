@@ -1,0 +1,45 @@
+#chatMessages > p.chatDice .box.rainbow {
+	animation: rainbowDice 1.5s linear 0s infinite;
+}
+
+#chatMessages > p.chatDice.rainbow .box {
+	animation: rainbowDice 1.5s linear 0s infinite;
+}
+
+@keyframes rainbowDice {
+    from {
+        color: rgb(100, 0, 0);
+        background-color: rgb(255, 150, 150);
+        border-color: rgb(200, 0, 0);
+    }
+    16.6% {
+        color: rgb(100, 0, 100);
+        background-color: rgb(255, 150, 255);
+        border-color: rgb(200, 0, 200);
+    }
+    33.3% {
+        color: rgb(0, 0, 100);
+        background-color: rgb(150, 150, 255);
+        border-color: rgb(0, 0, 200);
+    }
+    50% {
+        color: rgb(0, 100, 100);
+        background-color: rgb(150, 255, 255);
+        border-color: rgb(0, 200, 200);
+    }
+    66.6% {
+        color: rgb(0, 100, 0);
+        background-color: rgb(150, 255, 150);
+        border-color: rgb(0, 200, 0);
+    }
+    83.3% {
+        color: rgb(100, 100, 0);
+        background-color: rgb(255, 255, 150);
+        border-color: rgb(200, 200, 0);
+    }
+    to {
+        color: rgb(100, 0, 0);
+        background-color: rgb(255, 150, 150);
+        border-color: rgb(200, 0, 0);
+    }
+}

@@ -117,8 +117,14 @@ window.chatModules.push({
             rolls.sort();
             rolls.reverse();
 
+            var maxxes = 0;
             for (var i = 0; i < rolls.length; i++) {
-                $results.append($('<a class="box" />').text(rolls[i]));
+            	var classes = 'box';
+            	if (dices[i] === rolls[i]) {
+            		classes += " rainbow";
+            		maxxes += 1;
+            	}
+                $results.append($('<a class="' + classes + '" />').text(rolls[i]));
                 if (i + 1 < rolls.length) {
                     $results.append($('<a class="plus" />').text('+'));
                 }
@@ -130,6 +136,11 @@ window.chatModules.push({
             }
 
             $msg.append($results);
+            
+            if (maxxes === rolls.length && maxxes > 1) {
+            	$results.find(".rainbow").removeClass("rainbow");
+            	$msg.addClass("rainbow");
+            }
 
             $msg.append($('<a class="equals" />').text('='));
             $msg.append($('<span class="box square sum" />').text(sum));
