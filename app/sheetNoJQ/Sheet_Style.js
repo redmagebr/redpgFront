@@ -38,17 +38,18 @@ function Sheet_Style (sheetInstance, styleInstance) {
     
     this.switchInstance = function (sheetInstance) {
     	var start = new Date().getTime();
-		var parent = this.visible.parentNode;
-		if (parent !== null && parent !== undefined) parent.removeChild(this.visible);
+    	this.editing = false;
+		//var parent = this.visible.parentNode;
+		//if (parent !== null && parent !== undefined) parent.removeChild(this.visible);
 		this.loading = true;
     	this.sheetInstance = sheetInstance;
     	this.sheet.updateSheetInstance();
     	this.loading = false;
     	this.triggerChanged(null);
-    	if (parent !== null && parent !== undefined) parent.appendChild(this.visible);
-		if (this.editing) {
-			this.sheet.resizeBoxes();
-		}
+    	//if (parent !== null && parent !== undefined) parent.appendChild(this.visible);
+//		if (this.editing) {
+//			this.sheet.resizeBoxes();
+//		}
     	var finish = new Date().getTime();
     	console.log("SwitchInstance Process took " + (finish - start) + " ms to finish for Style " + this.id + ", " + this.styleInstance.name + ".");
     };
