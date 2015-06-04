@@ -1,0 +1,123 @@
+#sheetDiv {
+    font-family: alegreya;
+}
+
+/* Header */
+#headerList > div {
+    padding: 8px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+#headerList > div:hover {
+    background-color: #e3e3e3;
+}
+
+#headerList > div > div {
+    display: inline;
+}
+
+#headerList > div > div > p {
+    text-align: justify;
+    display: inline;
+    margin: 0px;
+}
+
+#headerList > div > div > p + p {
+    text-indent: 2em;
+    margin-top: 8px;
+    display: block;
+}
+
+#headerList > div > div > textarea {
+    display: block;
+    width: 95%;
+    margin: auto;
+}
+
+/* List */
+#stoCategories > div > div.sheetList > div > div.indent {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0px;
+}
+
+#stoCategories > div > div.sheetList > div > div.indent input {
+    width: 600px;
+}
+
+
+#stoCategories > div > div.sheetList > div > div.sheetVariable > p {
+    text-align: justify;
+    text-indent: 2em;
+    margin: 0px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#stoCategories > div > div.sheetList > div > div.sheetVariable > p:hover {
+    background-color: #e3e3e3;
+}
+
+#stoCategories > div > div.sheetList > div > div.sheetVariable > textarea {
+    display: block;
+    width: 95%;
+    margin: auto;
+}
+
+#stoCategories > div > div.sheetList > div > div.indent:hover {
+    background-color: #cccccc;
+}
+
+#stoCategories > div > div.sheetList > div > div.indent:hover + div {
+    background-color: #e6e6e6;
+}
+
+#sheetDiv a.addRow {
+    display: block;
+    width: 100%;
+    text-indent: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#sheetDiv a.addRow:hover {
+    background-color:#e6e6e6;
+}
+
+#addRowCategoria {
+    background-color: white;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-indent: 10px;
+    display: block;
+    margin-top: 30px;
+}
+
+#addRowCategoria:hover {
+    background-color: #e6e6e6;
+}
+
+#sheetDiv .typedBG .deleteRow {
+    color: #e6e2ff;
+    padding-right: 5px;
+}
+
+#sheetDiv .typedBG .deleteRow:hover {
+    color: #9482ff;
+}
+
+#sheetDiv .typedBG .deleteRow:active {
+    color: #978cdc;
+}
+
+#sheetDiv .typedBG input {
+    width: 230px;
+}
+
+#sheetDiv #stoCategories .typedBG input {
+    width: 500px;
+}

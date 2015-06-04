@@ -1,0 +1,17 @@
+#hoverBox {
+	position: fixed;
+	z-index: 400;
+	width: 350px;
+	height: auto;
+	border: solid 2px #000;
+	background-color: white;
+	font-size: 0.8em;
+	font-family: alegreya;
+	display: none;
+	pointer-events: none;
+}
+
+#hoverBox > p {
+	margin: 0px;
+	padding: 3px;
+}

@@ -1,0 +1,226 @@
+/* Colors by Sheet Type */
+#sheetDiv.character .typedBG {
+    background-color: #333745;
+}
+
+#sheetDiv.nonplayer .typedBG {
+    background-color: #734443;
+}
+
+#sheetDiv.character .typedColor {
+    color: #00ffea;
+}
+
+#sheetDiv.nonplayer .typedColor {
+    color: #ffb500;
+}
+
+/* Other Colors */
+#sheetDiv .whiteBG {
+    background-color: #fff;
+}
+
+/* Inputs */
+#sheetDiv .commonsInputs input, #sheetDiv .commonsInputs textarea {
+    font-family: inherit;
+    vertical-align: middle;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+#sheetDiv .commonsInputs textarea {
+    border: solid 1px #000;
+    background-color: #fff;
+}
+
+#sheetDiv .commonsInputs input {
+    border-bottom: 1px solid #000;
+}
+
+#sheetDiv .typedBG.commonsInputs input {
+    border-bottom-color: #fff;
+}
+
+/* Float */
+
+#sheetDiv .floatLeft {
+    float: left;
+}
+
+#sheetDiv .floatRight {
+    float: right;
+}
+
+#sheetDiv .clearLeft {
+    clear: left;
+}
+
+#sheetDiv .clearRight {
+    clear: right;
+}
+
+#sheetDiv .clearBoth {
+    clear: both;
+}
+
+/* Columns */
+#sheetDiv .column1_1 {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+
+#sheetDiv .column1_3 {
+    position: relative;
+    width: 32.5%;
+    display: inline-block;
+}
+
+#sheetDiv .column1_3.margin {
+    margin-left: 1%;
+}
+
+#sheetDiv .column1_3l {
+    position: relative;
+    width: 33%;
+    display: inline-block;
+}
+
+#sheetDiv .column1_2 {
+    position: relative;
+    width: 49.5%;
+    display: inline-block;
+}
+
+#sheetDiv .column1_2.margin {
+    position: relative;
+    margin-left: 1%;
+    display: inline-block;
+}
+
+#sheetDiv .column1_4 {
+    width: 24%;
+    display: inline-block;
+    position: relative;
+}
+
+#sheetDiv .column1_4c {
+    width: 25%;
+    display: inline-block;
+    position: relative;
+}
+
+#sheetDiv .column2_4 {
+    width: 49%;
+    display: inline-block;
+    position: relative;
+}
+
+#sheetDiv .column1_4.margin {
+    margin-left: 1%;
+}
+
+#sheetDiv .column3_4 {
+    width: 74%;
+    display: inline-block;
+    position: relative;
+}
+
+#sheetDiv .marginTop {
+    margin-top: 7px;
+}
+
+/* Text Effects */
+#sheetDiv .white {
+    color: white;
+}
+
+#sheetDiv .black {
+    color: black;
+}
+
+#sheetDiv .blue {
+    color: blue;
+}
+
+#sheetDiv .red {
+    color: red;
+}
+
+#sheetDiv .bold {
+    font-weight: bold;
+}
+
+#sheetDiv .italic {
+    font-style: italic;
+}
+
+#sheetDiv .underline {
+    text-decoration: underline;
+}
+
+#sheetDiv .smallcaps {
+    font-variant: small-caps;
+}
+
+#sheetDiv .paragraph {
+    text-indent: 1em;
+    text-align: justify;
+}
+
+#sheetDiv .centered {
+    text-align: center;
+}
+
+#sheetDiv .pnoMargin p {
+    margin: 0px;
+}
+
+#sheetDiv .noMargin {
+    margin: 0px;
+}
+
+#sheetDiv .padding {
+    padding: 4px;
+}
+
+/* Sizes */
+#sheetDiv .headerSize {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 35px;
+}
+
+#sheetDiv .headerHeight {
+    line-height: 35px;
+}
+
+#sheetDiv .indent {
+    text-indent: 1em;
+}
+
+#sheetDiv .reverseIndent {
+    padding-right: 1em;
+}
+
+/* Buttons */
+#sheetDiv .commonsLink {
+    color: #0016d2;
+}
+
+#sheetDiv .commonsLink:hover {
+    color: #3f54ff;
+    cursor: pointer;
+}
+
+#sheetDiv .typedBG .commonsLink {
+    color: #c0c0e6;
+}
+
+#sheetDiv .typedBG .commonsLink:hover {
+    color: #efefff;
+}

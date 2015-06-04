@@ -1,0 +1,820 @@
+/* Ferramentas */
+#dfsFerramentas {
+	font-size: 0.8em;
+}
+
+#dfsFerramentas input {
+	font-size: inherit;
+	font-family: alegreya;
+}
+
+#dfsFerramentas input[type=checkbox] {
+	vertical-align: middle;
+}
+
+/* Logs */
+#dfsHPLog, #dfsExpLog, #dfsMPLog {
+	font-size: 0.8em
+}
+
+#dfsHPLog .diff, #dfsExpLog .diff, #dfsMPLog .diff {
+	color: #0027d0;
+	font-weight: bold;
+}
+
+/* Equipamentos */
+#dfsEquips b, #dfsEquips .headerSize {
+	color: #00275f;
+}
+
+#dfsEquips p {
+	margin: 0px;
+	text-indent: 1em;
+	font-size: 0.8em;
+	text-align: justify;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+#dfsEquips > div {
+	border: solid 1px #000;
+	border-top: none;
+}
+
+#dfsEquips .addon {
+	display: inline-block;
+}
+
+#dfsEquips .addon img {
+	vertical-align: middle;
+	margin-top: -2px
+}
+
+#dfsEquips .addon img:hover {
+	margin: -1px;
+	margin-top: -3px;
+	border: solid 1px #000;
+	border-radius: 6px;
+}
+
+#sheetDiv.editToggled #dfsEquips .addon {
+	display: block;
+}
+
+/* Tecnicas */
+#dfsTecnicas input[type=checkbox] {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+#dfsTecnicas .addRow {
+	display: block;
+	font-size: 0.9em;
+	font-weight: bold;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	text-indent: 4px;
+}
+
+#dfsTecnicas .addRow:hover {
+	color: #c9dfff;
+	background-color: rgba(255,255,255, .3);
+	cursor: pointer;
+}
+
+#dfsTecnicas p {
+	margin: 0px;
+	text-align: justify;
+	text-indent: 1em;
+	padding-right: 6px
+}
+
+#dfsTecnicas > div > div:hover {
+	color: white !important;
+}
+
+#dfsTecnicas > div > div:FIRST-CHILD {
+	color: white !important;
+}
+
+#dfsTecnicas img:hover {
+	margin: -1px;
+	border: solid 1px #000;
+	border-radius: 6px;
+}
+/*******************
+ ***   ATAQUE    ***
+ *******************/
+#dfsTecnicas > div.ataque > div:FIRST-CHILD {
+	background-color: #b11e3b !important;
+}
+
+#dfsTecnicas > div.ataque > div:nth-child(odd) {
+	color: #9a1c1f;
+	background-color: #f2737a;
+}
+
+#dfsTecnicas > div.ataque > div:nth-child(odd):hover {
+	background-color: #b11e3b;
+}
+
+#dfsTecnicas > div.ataque > div:nth-child(even) {
+	color: #9a1c1f;
+	background-color: #f69693;
+}
+
+#dfsTecnicas > div.ataque > div:nth-child(even):hover {
+	background-color: #ee304e;
+}
+
+/*******************
+ ***   PASSIVA   ***
+ *******************/
+#dfsTecnicas > div.passiva > div:FIRST-CHILD {
+	background-color: #007883 !important;
+}
+
+#dfsTecnicas > div.passiva > div:nth-child(odd) {
+	color: #025a70;
+	background-color: #68c7bd;
+}
+
+#dfsTecnicas > div.passiva > div:nth-child(odd):hover {
+	background-color: #007883;
+}
+
+#dfsTecnicas > div.passiva > div:nth-child(even) {
+	color: #025a70;
+	background-color: #9cd6c9;
+}
+
+#dfsTecnicas > div.passiva > div:nth-child(even):hover {
+	background-color: #03b19c;
+}
+
+/*******************
+ ***  ESPECIAL   ***
+ *******************/
+#dfsTecnicas > div.especial > div:FIRST-CHILD {
+	background-color: #e85725 !important;
+}
+
+#dfsTecnicas > div.especial > div:nth-child(odd) {
+	color: #e64f25;
+	background-color: #ffcd55;
+}
+
+#dfsTecnicas > div.especial > div:nth-child(odd):hover {
+	background-color: #e85725;
+}
+
+#dfsTecnicas > div.especial > div:nth-child(even) {
+	color: #e64f25;
+	background-color: #ffe46e;
+}
+
+#dfsTecnicas > div.especial > div:nth-child(even):hover {
+	background-color: #f79036;
+}
+
+/*******************
+ ***     EdL     ***
+ *******************/
+#dfsTecnicas > div.estilodeluta > div:FIRST-CHILD {
+	background-color: #692d8a !important;
+}
+
+#dfsTecnicas > div.estilodeluta > div:nth-child(odd) {
+	color: #453386;
+	background-color: #ac87bd;
+}
+
+#dfsTecnicas > div.estilodeluta > div:nth-child(odd):hover {
+	background-color: #692d8a;
+}
+
+#dfsTecnicas > div.estilodeluta > div:nth-child(even) {
+	color: #453386;
+	background-color: #c9a8d0;
+}
+
+#dfsTecnicas > div.estilodeluta > div:nth-child(even):hover {
+	background-color: #8255a2;
+}
+
+/* ANotacoes */
+#dfsAnotacoes b {
+	color: #00275f
+}
+
+#dfsAnotacoes b:after {
+	content: ": ";
+}
+
+#dfsAnotacoes p {
+	margin: 0px !important;
+	text-indent: 1em;
+}
+
+/* Inventário */
+#dfsInventarioList {
+	font-size: 0.75em;
+	line-height: 22px;
+	font-weight: bold;
+}
+
+#dfsInventarioList .addRowLineButton {
+	padding: 0px !important;
+}
+
+/* Vantagens */
+#dfsVantagens .valueField {
+	color: #003e97
+}
+
+#dfsDesvantagens .valueField {
+	color: #970000
+}
+
+#dfsVantagensList, #dfsDesvantagensList {
+	font-size: 0.8em;
+}
+
+#dfsVantagensList > div, #dfsDesvantagensList > div {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#dfsVantagensList > div > :FIRST-CHILD, #dfsDesvantagensList > div > :FIRST-CHILD {
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+#dfsVantagensList > div > :FIRST-CHILD:BEFORE {
+	content: "+ ";
+}
+
+#dfsDesvantagensList > div > :FIRST-CHILD:BEFORE {
+	content: "- ";
+}
+
+#sheetDiv.editToggled #dfsVantagensList > div > :FIRST-CHILD:BEFORE, #sheetDiv.editToggled #dfsDesvantagensList > div > :FIRST-CHILD:BEFORE {
+	content: "";
+}
+
+/* Valores Especiais */
+#dfsValores b {
+	color: #002862
+}
+
+#dfsValores > div {
+	padding-top: 4px; padding-bottom: 4px; text-align: center; width: 33.33%; float: left;
+}
+
+#sheetDiv.editToggled #dfsValores > div {
+	width: 50%;
+}
+
+#dfsValores b:AFTER {
+	content: ':';
+}
+
+#dfsValores {
+	font-size: 0.7em;
+}
+
+/* Rolagens */
+
+#sheetDiv .tinyDice {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	background-image: url('img/dfs/tinyDice.png');
+}
+
+#dfsRolagensSettings b {
+	color: #002862;
+}
+
+#dfsRolagens b {
+	color: #002862
+}
+
+#dfsRolagens {
+	line-height: 24px;
+	font-size: 0.8em;
+}
+
+#dfsRolagens > div {
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+
+#sheetDiv.editToggled #dfsRolagens > div {
+	float: none;
+	width: initial;
+}
+
+#dfsRolagensSettings:hover {
+	background-color: #ebebeb
+}
+
+#dfsRolagensSettings > label {
+/* 	border-left: solid 1px #000;
+	border-right: solid 1px #000; */
+	display: inline-block;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-right: -2px;
+	margin-left: -2px;
+	font-size: 0.7em;
+	line-height: 26px;
+	height: 26px;
+}
+
+#dfsRolagensSettings > label:hover {
+	background-color: #cdcdcd;
+}
+
+/* ATRIBUTOS */
+#sheetDiv.editToggled #dfsIniciativa {
+	min-width: initial;
+	max-width: initial;
+	flex-grow: 2;
+	text-align: right;
+	padding-right: 4px
+}
+
+#dfsIniciativa {
+	text-align: center;
+	min-width: 30px;
+	max-width: 30px;
+}
+
+#sheetDiv hr {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+	border-bottom: 1px solid #000;
+}
+
+#sheetDiv .atributo {
+	padding-left: 5px;
+	position: relative;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 0.8em;
+	background-color: white;
+}
+
+#sheetDiv .atributo > .atributoExp {
+	display: none;
+	color: inherit;
+	background-color: inherit;
+	position: absolute;
+	left: 0px;
+	top: 100%;
+	padding: 5px;
+	pointer-events: none;
+	line-height: initial;
+}
+
+#sheetDiv .atributo:hover > .atributoExp {
+	display: block;
+}
+
+#sheetDiv .atributoArtesMarciais, #sheetDiv .atributoFor {
+	color: #6b078d;
+}
+
+#sheetDiv .atributoArtesMarciais:hover, #sheetDiv .atributoFor:hover {
+	background-color: #ebd9f1;
+}
+
+/* New Stat */
+#sheetDiv .atributoArma, #sheetDiv .atributoCon {
+	color: #c71c19;
+}
+
+#sheetDiv .atributoArma:hover, #sheetDiv .atributoCon:hover {
+	background-color: #f4bcbb;
+}
+
+#sheetDiv .atributoTecnologia, #sheetDiv .atributoAgi {
+	color: #007d4c;
+}
+
+#sheetDiv .atributoTecnologia:hover, #sheetDiv .atributoAgi:hover {
+	background-color: #cefbea;
+}
+
+#sheetDiv .atributoElemento, #sheetDiv .atributoCar {
+	color: #9f4b01;
+}
+
+#sheetDiv .atributoElemento:hover, #sheetDiv .atributoCar:hover {
+	background-color: #fde3b2;
+}
+
+#sheetDiv .atributoMagia, #sheetDiv .atributoSab {
+	color: #1c2a8f;
+}
+
+#sheetDiv .atributoMagia:hover, #sheetDiv .atributoSab:hover {
+	background-color: #d9dcf1;
+}
+
+#sheetDiv .atributoLideranca, #sheetDiv .atributoInt {
+	color: #1f7001;
+}
+
+#sheetDiv .atributoLideranca:hover, #sheetDiv .atributoInt:hover {
+	background-color: #daf3d1;
+}
+
+#sheetDiv .atributoFdV {
+	color: #000;
+}
+
+#sheetDiv .atributoFdV:hover {
+	background-color: #e1e1e1;
+}
+
+/* BARS */
+#dfsExpBar > b {
+	color: white !important;
+	margin-right: 10px
+}
+
+
+#sheetDiv div.textOverBar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	z-index: 2;
+	height: 18px;
+	line-height: 18px;
+}
+
+#sheetDiv div.barUnderText {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: 1;
+}
+
+
+#sheetDiv .bar {
+	border: solid 1px;
+	box-sizing: border-box;
+	position: relative;
+	border-radius: 10%;
+	width: 85%;
+	display: block;
+	height: 18px;
+	line-height: 18px;
+	font-size: 0.8em;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+#sheetDiv .barExpAtual {
+	border-color: #fd7ffc
+}
+
+#sheetDiv .barExpAtual > div.barUnderText {
+	background-color: #9b48fa;
+}
+
+#sheetDiv .barHP {
+	border-color: #ef494b
+}
+
+#sheetDiv .barHP > div.barUnderText {
+	background-color: #db3136;
+}
+
+#sheetDiv .barMP {
+	border-color: #00ffd8
+}
+
+#sheetDiv .barMP > div.barUnderText {
+	background-color: #00b2ca;
+}
+
+/* ORGANIZE LATER */
+#dfsInformationTableTwo p {
+	text-align: justify;
+	text-indent: 1em;
+	padding-right: 12px;
+}
+
+#dfsAvatar > img {
+	border: solid 1px #000;
+	max-width: 80%;
+	height: auto;
+	margin-bottom: 5px;
+}
+
+#dfsInformationTableTwo > div {
+	margin-left: 10px;
+	font-size: 0.8em;
+	margin-bottom: 6px;
+}
+
+#sheetDiv {
+	font-family: alegreya;
+}
+
+#sheetDiv .openerBar {
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	height: 20px;
+	background-image: url('img/dfs/openerBarDown.png');
+	background-position: top center;
+	background-repeat: no-repeat;
+}
+
+#sheetDiv .openerBar.toggled {
+	background-image: url('img/dfs/openerBarUp.png');
+}
+
+#sheetDiv .openerBar:hover {
+	background-color: rgba(255,255,255,.25);
+}
+
+#sheetDiv .openerBar:active {
+	background-color: rgba(255,255,255,.15);
+}
+
+#dfsInfoTab b {
+	color: #ccff32;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+#sheetDiv .hasPlusButtonLeft {
+	position: relative;
+	padding-left: 30px;
+}
+
+#sheetDiv .hasPlusButtonRight {
+	position: relative;
+	padding-right: 30px;
+}
+
+#sheetDiv .plusButton {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	width: 30px;
+	text-align: center;
+	text-indent: 0px;
+}
+
+#sheetDiv .plusButtonLeft {
+	left: 0px;
+}
+
+#sheetDiv .plusButtonRight {
+	right: 0px;
+}
+
+#sheetDiv .plusButton:hover {
+	background-color: rgba(255,255,255,.2);
+}
+
+#sheetDiv .plusButton:active {
+	background-color: rgba(255,255,255,.05);
+}
+
+/* Buttons */
+#sheetDiv .addRowLineButton {
+	display: block;
+	background-color: #FFF;
+	color: #2d4bbe;
+	font-weight: bold;
+	text-indent: 5px;
+	font-size: 0.8em;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#sheetDiv .addRowLineButton:hover {
+	cursor: pointer;
+	background-color: #ebefff;
+}
+
+#sheetDiv .addRowLineButton:active {
+	background-color: #d0d4e2;
+}
+
+#sheetDiv .sortList {
+	background-image: url("img/dfs/sortIcon.png");
+	width: 21px;
+	height: 21px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px;
+	margin-left: 5px;
+	padding: 0px;
+	margin-top: -5px;
+}
+
+#sheetDiv .deleteRowCuteButton {
+	background-image:url('img/dfs/xButtonSingle.png');
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	background-position: right;
+	margin-top: -4px;
+	margin-bottom: -4px;
+}
+
+#sheetDiv .deleteRowCuteButton:hover {
+	cursor: pointer;
+	background-position: left;
+}
+
+/* Input Sizes */
+#dfsInfoTab input {
+	width: 80%;
+}
+
+#dfsInfoTab .smallerInputs input {
+	width: 50%;
+}
+
+#sheetDiv #dfsAvatar > select {
+	max-width: 70%;
+}
+
+#sheetDiv #dfsInformationTableTwo textarea {
+	width: 95%;
+	max-width: none !important;
+	display: block;
+}
+
+#dfsStaminaAtual > input {
+	width: 15px;
+}
+
+#dfsPericias select {
+	width: 48px;
+	margin-top: -2px;
+	margin-bottom: -2px;
+	color: inherit
+}
+
+#dfsPericias .nameSpace input {
+	width: 50%;
+}
+
+#dfsRolagensSettings input[type=number] {
+	width: 35px;
+	text-align: center;
+}
+
+#dfsRolagens b > input {
+	width: 120px
+}
+
+#dfsRolagens span {
+	display: inline-block;
+}
+
+#dfsRolagens span > input[type=text] {
+	width: 180px
+}
+
+#dfsValores input {
+	width: 80px;
+}
+
+#dfsExpText input {
+	width: 30px;
+}
+
+#dfsVantagens .valueField > input {
+	width: 30px;
+}
+
+#dfsVantagens .nameField > input {
+	width: 100%;
+}
+
+#dfsDesvantagens .valueField > input {
+	width: 30px;
+}
+
+#dfsDesvantagens .nameField > input {
+	width: 100%;
+}
+
+#dfsInventarioPesoMax > input {
+	width: 55px;
+	font-size: 0.8em !important;
+	height: initial !important;
+	line-height: initial !important;
+	margin-top: 5px !important;
+}
+
+#dfsIniciativa input {
+	text-align: center !important;
+}
+
+#dfsExpBar input {
+	width: 25px !important;
+}
+
+#dfsHpMp input {
+	width: 25px !important;
+}
+
+#dfsInventarioList input {
+	line-height: initial !important;
+	margin-top: 1px !important;
+}
+
+#dfsInventarioList .inventarioNome > input {
+	width: 100%;
+}
+
+#dfsAnotacoes input {
+	width: 160px;
+}
+
+#dfsAnotacoes textarea {
+	width: 90%;
+	max-width: none !important;
+}
+
+#dfsTecnicas textarea {
+	width: 90% !important;
+	max-width: none !important;
+}
+
+#dfsTecnicas .techName > input {
+	width: 100%;
+}
+
+#dfsTecnicas .addonList select {
+	max-width: 80%;
+}
+
+#dfsTecnicas .custoEefeito input {
+	width: 80px;
+}
+
+#dfsTecnicas .danoDiceAmount > input {
+	width: 25px;
+	text-align: center !important;
+}
+
+#dfsTecnicas .danoDiceFaces > input {
+	width: 25px;
+	text-align: center !important;
+}
+
+#dfsTecnicas .danoDiceMod > input {
+	width: 150px;
+	text-align: center !important;
+}
+
+#dfsTecnicas > div > div:FIRST-CHILD input {
+	height: initial !important;
+	font-size: 0.85em !important;
+	line-height: initial !important;
+	border-bottom: 1px solid #fff !important;
+}
+
+#dfsEquips .addon select {
+	width: 80%;
+}
+
+
+
+#dfsEquips textarea {
+	display: block;
+	margin-left: 5%;
+	margin-bottom: 6px;
+	width: 90% !important;
+	max-width: none !important;
+	font-size: 0.8em !important;
+}
+
+#dfsTecnicas label input {
+	width: 25px !important;
+	text-align: center !important;
+}

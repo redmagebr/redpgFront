@@ -1,0 +1,212 @@
+/* Columns */
+#sheetDiv .commonsFlex {
+	width: 100%;
+	position: relative;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	align-items: stretch;
+}
+
+#sheetDiv .commonsFlex > * {
+	position: relative;
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+#sheetDiv .commonsFlexAddMargin > *:FIRST-CHILD {
+	margin-left: 0px;
+}
+
+#sheetDiv .commonsFlexAddMargin > * {
+	margin-left: 8px;
+}
+
+#sheetDiv .commonsMarginTop {
+	margin-top: 8px;
+}
+
+/* Inputs */
+
+#sheetDiv .commonsInputs input, #sheetDiv .commonsInputs textarea, #sheetDiv .commonsInputs select {
+    max-width: 90%;
+}
+
+#sheetDiv .commonsInputs input, #sheetDiv .commonsInputs textarea {
+    font-family: inherit;
+    vertical-align: top;
+    line-height: inherit;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    text-align: inherit;
+}
+
+#sheetDiv .commonsInputs select {
+	font-family: inherit;
+	line-height: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+#sheetDiv .commonsInputs textarea {
+    border: solid 1px #000;
+    background-color: rgba(255,255,255,.2);
+}
+
+#sheetDiv .commonsInputs input {
+	margin-top: -1px;
+    border-bottom: 1px solid #000;
+    margin-bottom: -2px;
+}
+
+#sheetDiv .typedBG.commonsInputs input {
+    border-bottom-color: #fff;
+}
+
+/* Float */
+
+#sheetDiv .floatLeft {
+    float: left;
+}
+
+#sheetDiv .floatRight {
+    float: right;
+}
+
+#sheetDiv .clearLeft {
+    clear: left;
+}
+
+#sheetDiv .clearRight {
+    clear: right;
+}
+
+#sheetDiv .clearBoth {
+    clear: both;
+}
+
+/* Text Effects */
+#sheetDiv .bold {
+    font-weight: bold;
+}
+
+#sheetDiv .italic {
+    font-style: italic;
+}
+
+#sheetDiv .underline {
+    text-decoration: underline;
+}
+
+#sheetDiv .smallcaps {
+    font-variant: small-caps;
+}
+
+#sheetDiv .paragraph {
+    text-indent: 1em;
+    text-align: justify;
+}
+
+#sheetDiv .centered {
+    text-align: center;
+}
+
+#sheetDiv .pnoMargin p {
+    margin: 0px;
+}
+
+#sheetDiv .noMargin {
+    margin: 0px;
+}
+
+#sheetDiv .padding {
+    padding: 4px;
+}
+
+#sheetDiv .hoverable:hover {
+	background-color: rgba(0,0,0,.1);
+}
+
+/* Sizes */
+#sheetDiv .headerSize {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 35px;
+}
+
+#sheetDiv .headerHeight {
+    line-height: 35px;
+}
+
+#sheetDiv .indent {
+    text-indent: 1em;
+}
+
+#sheetDiv .reverseIndent {
+    padding-right: 1em;
+}
+
+/* Buttons */
+#sheetDiv .commonsLink {
+    color: #0016d2;
+}
+
+#sheetDiv .commonsLink:hover {
+    color: #3f54ff;
+    cursor: pointer;
+}
+
+#sheetDiv .typedBG .commonsLink {
+    color: #c0c0e6;
+}
+
+#sheetDiv .typedBG .commonsLink:hover {
+    color: #efefff;
+}
+
+/* Colors by Sheet Type */
+#sheetDiv.character .typedBG {
+    background-color: #333745;
+}
+
+#sheetDiv.nonplayer .typedBG {
+    background-color: #734443;
+}
+
+#sheetDiv.character .typedColor {
+    color: #00ffea;
+}
+
+#sheetDiv.nonplayer .typedColor {
+    color: #ffb500;
+}
+
+/* Other Colors */
+#sheetDiv .whiteBG {
+    background-color: #fff;
+}
+
+#sheetDiv .white {
+    color: white;
+}
+
+#sheetDiv .black {
+    color: black;
+}
+
+#sheetDiv .blue {
+    color: blue;
+}
+
+#sheetDiv .red {
+    color: red;
+}

@@ -1,0 +1,864 @@
+<!-- AVISOS PARA OS USUARIOS
+	>> APARENCIA antiga foi renomeada dentro do sistema, então essa informação será PERDIDA durante a troca.
+	>> DANOS DE TECNICAS SERÃO PERDIDOS
+	>> CUSTOS DE TECNICAS SERÃO PERDIDOS
+	>> EFEITOS DE TÉCNICAS SERÃO PERDIDOS
+	>> ADDONS DE TÉCNICA, VANTAGENS, DESVANTAGENS, RAÇA E ARQUÈTIPO QUE NÃO TENHAM NOMES ESCRITOS PERFEITAMENTE SERÃO PERDIDOS
+	 AVISOS PARA OS USUARIOS -->
+<!-- Pointers para Atributos -->
+	<span class='sheetVariable' data-id='ArtesMarciais' data-type='pointer' data-pointer='ArtesMarciaisNivel'></span>
+	<span class='sheetVariable' data-id='Arma' data-type='pointer' data-pointer='ArmaNivel'></span>
+	<span class='sheetVariable' data-id='Tecnologia' data-type='pointer' data-pointer='TecnologiaNivel'></span>
+	<span class='sheetVariable' data-id='Elemento' data-type='pointer' data-pointer='ElementoNivel'></span>
+	<span class='sheetVariable' data-id='Magia' data-type='pointer' data-pointer='MagiaNivel'></span>
+	<span class='sheetVariable' data-id='Lideranca' data-type='pointer' data-pointer='LiderancaNivel'></span>
+	<span class='sheetVariable' data-id='ResistenciaGeral' data-type='pointer' data-pointer='GeralRD'></span>
+	<span class='sheetVariable' data-id='SdC' data-type='pointer' data-pointer='SabedoriaDeCombate'></span>
+	<span class='sheetVariable' data-id='Defesa' data-type='pointer' data-pointer='DefesaNivel'></span>
+	<span class='sheetVariable' data-id='Ataque' data-type='pointer' data-pointer='AtaqueNivel'></span>
+	<span class='sheetVariable' data-id='ForcaDeVontade' data-type='pointer' data-pointer='FdV'></span>
+<!-- Pointers para Atributos FIM -->
+<!-- Calculos de uso geral -->
+<div style='display: none'>
+	<span class='sheetVariable' data-id='ExpAtributosDano' data-type='math' data-editable='0'
+		  data-default="ArmaTotalExp + ArtesMarciaisTotalExp + TecnologiaTotalExp + ElementoTotalExp + MagiaTotalExp + LiderancaTotalExp"></span>
+	<span class='sheetVariable' data-id='ExpTotalGasta' data-type='math' data-editable='0'
+		  data-default="ExpAtributosDano + DefesaTotalExp + AtaqueTotalExp"></span>
+ 	<span data-id='SabedoriaDeCombateExpUsed' class='sheetVariable' data-type='math' data-editable='0'
+          data-default='(floor(SabedoriaDeCombate) * (5 + (5 * floor(SabedoriaDeCombate))))/2'></span>
+ 	
+    
+</div>
+
+<!-- Calculos de uso geral -->
+
+<div id='dfsInfoTab' class="white typedBG commonsInputs" style='padding-top: 5px;'>
+	<!-- Quatro Colunas de Informações do Personagem -->
+		<div class='commonsFlex selectable' style='align-items: center; justify-content: center;'>
+			<div style='flex-grow: 5' class="centered">
+				<!-- Primeira Coluna -->
+					<span id='dfsName' class='sheetName headerSize typedColor' style='display: block; line-height: initial'></span>
+					<b>
+						Nível
+						<span class='sheetVariable' data-id='Nivel' data-type='math' data-editable='0'
+							  data-default='floor((-5 + sqrt(25 - (-40 * (Exp/4))))/10)'></span>
+					</b>
+				<!-- Primeira Coluna FIM -->
+			</div>
+			<div style='flex-grow: 4'>
+				<!-- Segunda Coluna -->
+				<span id='dfsRaca' class='sheetVariable' data-id='Raça' data-type='select' data-placeholder='Raça' style='display: block; text-align: center'></span>
+				<span id='dfsArquetipo' class='sheetVariable' data-id='Arquétipo' data-type='select' data-placeholder='Arquétipo' style='display: block; text-align: center'></span>
+				<!-- Segunda Coluna FIM -->
+			</div>
+			<div style='flex-grow: 4'>
+				<b>Jogador:</b>
+				<span class='sheetVariable smallerInputs' data-id='Jogador' data-default='NPC' data-placeholder='Jogador'></span>
+				<br />
+				<b>Idade:</b>
+				<span class='sheetVariable smallerInputs' data-id='Idade' data-placeholder='Idade'></span>
+			</div>
+			<div style='flex-grow: 3; margin-bottom: 0px'>
+				<!-- Quarta Coluna -->
+					<div id='dfsExpBars' class='commonsFlex' style="height: 100%; align-items: center; justify-content: center; flex-direction: column">
+						<div class='barExpAtual bar'>
+							<div id='dfsExpBar' class='textOverBar'>
+								<b>XP</b>
+								<span class='sheetVariable' data-id='Exp' data-type='integer' data-default='20'></span>/<span class='sheetVariable' data-id='ExpLevelUp' data-type='math' data-editable='0'
+							      														                data-default='10((Nivel+1)^2) + 10(Nivel+1)'></span>
+							</div>
+							<div id='dfsExpBarFillings' class='barUnderText' style='width: 50%;'></div>
+						</div>
+						<div id='dfsExpText'>
+							<b>Disponível:</b>
+							<span class='sheetVariable' data-id='ExpRestante' data-type='math'
+	  							  data-default="Exp - ExpTotalGasta" data-editable='0'></span>
+						</div>
+					</div>
+				<!-- Quarta Coluna FIM -->
+			</div>
+			<div id='dfsHpMp' style='flex-grow: 3'>
+				<!-- Quinta Coluna -->
+					<div class='commonsFlex' style="height: 100%; align-items: center; justify-content: center; flex-direction: column">
+						<div class='barHP bar'>
+							<div class='textOverBar'>
+								<img class='unselectable' src='img/dfs/heart-icon.png' style='vertical-align: middle' />
+								<span class='sheetVariable' data-id='HPAtual' data-type='integer' data-default='10'>
+								</span>/<span class='sheetVariable' data-id='HPMaximo' data-type='integer' data-default='10'
+								              ></span>
+							</div>
+							<div id='dfsHPBarFillings' class='barUnderText' style='width: 50%;'></div>
+						</div>
+						<div class='barMP bar'>
+							<div class='textOverBar'>
+								<img class='unselectable' src='img/dfs/energy-icon.png' style='vertical-align: middle' />
+								<span class='sheetVariable' data-id='MPAtual' data-type='integer' data-default='40'>
+								</span>/<span class='sheetVariable' data-id='MPMaximo' data-type='integer' data-default='40'
+								              ></span>
+							</div>
+							<div id='dfsMPBarFillings' class='barUnderText' style='width: 50%;'></div>
+						</div>
+					</div>
+				<!-- Quinta Coluna FIM -->
+			</div>
+		</div>
+	<!-- Quatro Colunas de Informações do Personagem FIM -->
+	<!-- Segunda tabela de informações do personagem -->
+		<div id="dfsInformationTableExtra" class='commonsFlex' style='overflow: hidden; display: none'>
+			<div id='dfsAvatar' style='flex-grow: 5' class="centered sheetVariable" data-id='Avatar' data-type='image'></div>
+			<div id='dfsInformationTableTwo' style='flex-grow: 14' class='selectable pnoMargin'>
+				<b>Objetivo:</b>
+				<div class='sheetVariable' data-type='longtext' data-id='Objetivo' style='min-height: 1em'></div>
+				<b>Aparência:</b>
+				<div class='sheetVariable' data-type='longtext' data-id='AparenciaText' style='min-height: 1em'></div>
+				<b>Personalidade:</b>
+				<div class='sheetVariable' data-type='longtext' data-id='Personalidade' style='min-height: 1em'></div>
+			</div>
+		</div>
+	<!-- Segunda tabela de informações do personagem FIM -->
+	<a id='dfsInformationTableExtraButton' class='button openerBar white'></a>
+</div>
+
+
+<!-- FERRAMENTAS -->
+<div id='dfsFerramentasHeader' class='headerSize typedBG white commonsMarginTop hasPlusButtonRight' style='text-indent: 5px'>
+	Ferramentas
+	<a id='dfsFerramentasButton' class='plusButton plusButtonRight button'
+	   onclick="$log = $('#dfsFerramentas').finish(); if($log[0].style.display !== 'none') {$(this).text('(+)');} else {$(this).text('(-)');} $log.slideToggle(250); ">(+)</a>
+</div>
+<div id='dfsFerramentas' class='whiteBG' style='display: none'>
+	<div class='commonsFlex' style="padding: 5px">
+		<div class='centered'>
+			<div class='commonsFlex'>
+				<div>
+					<input id='dfsCalcAtributos' type='text' placeholder='Atributos (Números)' style='width: 120px' />
+					<input id='dfsCalcDano' type='text' placeholder='Dano' style='width: 40px' />
+				</div>
+				<div>
+					%Dano: <input id='dfsCalcDanoPerc' type='text' data-default="100" style='width: 40px' />
+					%Penetração: <input id='dfsCalcDanoPent' type='text' data-default="0" style='width: 40px' />
+				</div>
+			</div>
+			<label>
+				<input id='dfsCalcARTESMARCIAIS' type="checkbox" />
+				0 - Artes Marciais
+			</label>
+			<label>
+				<input id='dfsCalcARMA' type="checkbox" />
+				1 - Arma
+			</label>
+			<label>
+				<input id='dfsCalcTECNOLOGIA' type="checkbox" />
+				2 - Tecnologia
+			</label><br />
+			<label>
+				<input id='dfsCalcELEMENTO' type="checkbox" />
+				3 - Elemento
+			</label>
+			<label>
+				<input id='dfsCalcMAGIA' type="checkbox" />
+				4 - Magia
+			</label>
+			<label>
+				<input id='dfsCalcLIDERANCA' type="checkbox" />
+				5 - Liderança
+			</label>
+		</div>
+		<div style="flex: 0 0 auto; text-align: right; padding-right: 5px">
+			<input class='buttonAutomation' id='dfsCalcHealAll' type="button" value="Curar Completamente" /><br />
+			<input class='buttonAutomation' id='dfsCalcHealNoStam' type="button" value="Curar Completamente (Sem devolver Stamina)" />
+		</div>
+	</div>
+	<div class='centered'>
+		<input class='buttonAutomation' id='dfsCalcApplyDamage' type="button" value="Aplicar Dano" />
+		<input class='buttonAutomation' id='dfsCalcApplyDamageStamina' type="button" value="Aplicar Dano e consumir stamina" />
+		<input class='buttonAutomation' id='dfsCalcApplyDamageAsHeal' type="button" value="Aplicar Dano como Cura" />
+	</div>
+	<hr />
+	<div class='commonsFlex'>
+		<div style='flex: 1 0 auto; text-align: right'>
+			<input id='dfsCalcExp' type='text' placeholder='Exp' style='width: 50px' /><br/>
+			<input id='dfsCalcExpReason' type='text' placeholder='Motivo para a Exp' style='width: 180px' />
+		</div>
+		<div style='flex: 1 0 auto; text-align: left'>
+			<input class='buttonAutomation' id='dfsCalcApplyExp' type="button" value="Aplicar Exp" /><br/>
+			<input class='buttonAutomation' id='dfsCalcApplyExpToAll' type="button" value="Aplicar Exp a fichas marcadas no Combat Tracker" />
+		</div>
+	</div>
+	<hr />
+	<div class='centered'>
+		<label>
+			<input id='dfsCalcSave' type="checkbox" checked />
+			Salvar ao fazer mudanças
+		</label>
+		<label>
+			<input id='dfsCalcAnnounce' type="checkbox" checked />
+			Lançar Mudanças no Chat
+		</label>
+	</div>
+</div>
+<!-- FERRAMENTAS END -->
+
+
+<div class='commonsFlex commonsFlexAddMargin commonsMarginTop selectable'>
+	<div style='flex-grow: 2'>
+		<div class='commonsFlex commonsFlexAddMargin'>
+			<!-- Atributos de Combate -->
+			<div class='commonsInputs'>
+				<div class='commonsFlex typedBG'>
+					<div class='white headerSize' style='height: 30px; line-height: 30px; padding-left: 5px'>
+						Combate
+					</div>
+					<div style='max-width: 30px; min-width: 30px'><img src='img/dfs/sword-icon.png' style='vertical-align: top' /></div>
+					<div style='max-width: 30px; min-width: 30px'><img src='img/dfs/shield-icon.png' style='vertical-align: top' /></div>
+				</div>
+				<div class='atributo atributoArtesMarciais' style='z-index: 10'>
+					<div class='commonsFlex'>
+						<div>
+							Artes Marciais
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='ArtesMarciaisNivel' data-type='integer'>0</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='ArtesMarciaisRD' data-type='integer'>0</div>
+					</div>
+					<div class='atributoExp' id='expArtesMarciais'>
+						<span data-default='(ArtesMarciaisNivel + 1) * 5' data-id='ArtesMarciaisLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='ArtesMarciaisNivel * (5 + ArtesMarciaisNivel * 5) / 2' data-id='ArtesMarciaisTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoArma' style='z-index: 9'>
+					<div class='commonsFlex'>
+						<div>Arma</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='ArmaNivel' data-type='integer'>0</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='ArmaRD' data-type='integer'>0</div>
+					</div>
+					<div class='atributoExp' id='expArma'>
+						<span data-default='(ArmaNivel + 1) * 5' data-id='ArmaLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='ArmaNivel * (5 + ArmaNivel * 5) / 2' data-id='ArmaTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoTecnologia' style='z-index: 8'>
+					<div class='commonsFlex'>
+						<div>Tecnologia</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='TecnologiaNivel' data-type='integer'>0</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='TecnologiaRD' data-type='integer'>0</div>
+					</div>
+					<div class='atributoExp' id='expTecnologia'>
+						<span data-default='(TecnologiaNivel + 1) * 5' data-id='TecnologiaLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='TecnologiaNivel * (5 + TecnologiaNivel * 5) / 2' data-id='TecnologiaTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoElemento' style='z-index: 7'>
+					<div class='commonsFlex'>
+						<div>Elemento</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='ElementoNivel' data-type='integer'>0</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='ElementoRD' data-type='integer'>0</div>
+					</div>
+					<div class='atributoExp' id='expElemento'>
+						<span data-default='(ElementoNivel + 1) * 5' data-id='ElementoLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='ElementoNivel * (5 + ElementoNivel * 5) / 2' data-id='ElementoTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoMagia' style='z-index: 6'>
+					<div class='commonsFlex'>
+						<div>Magia</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='MagiaNivel' data-type='integer'>0</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='MagiaRD' data-type='integer'>0</div>
+					</div>
+					<div class='atributoExp' id='expMagia'>
+						<span data-default='(MagiaNivel + 1) * 5' data-id='MagiaLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='MagiaNivel * (5 + MagiaNivel * 5) / 2' data-id='MagiaTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoLideranca' style='z-index: 5'>
+					<div class='commonsFlex'>
+						<div>Liderança</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='LiderancaNivel' data-type='integer'>0</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='LiderancaRD' data-type='integer'>0</div>
+					</div>
+					<div class='atributoExp' id='expLideranca'>
+						<span data-default='(LiderancaNivel + 1) * 5' data-id='LiderancaLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='LiderancaNivel * (5 + LiderancaNivel * 5) / 2' data-id='LiderancaTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoFdV' style='z-index: 4'>
+					<div class='commonsFlex'>
+						<div>Resistência Geral</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='GeralRD' data-type='integer'>0</div>
+					</div>
+				</div>
+				<hr />
+				<div class='atributo atributoElemento' style='z-index: 10'>
+					<div class='commonsFlex'>
+						<div>Sabedoria de Combate</div>
+						<!-- (-5 + sqrt(25 - (-40 * sum)))/10 -->
+						<div data-default='round(-5 + sqrt(25 - (-40 * SabedoriaDeCombateTotalExp)))/10' style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='SabedoriaDeCombate' data-type='math' data-editable='0'>0</div>
+					</div>
+					<div class='atributoExp' id='expSab'>
+						Level Up:
+						<span data-default='SabedoriaDeCombateTotalExp - SabedoriaDeCombateExpUsed' data-id='SabedoriaDeCombateExpRemaining' class='sheetVariable' data-type='math' data-editable='0'></span>/<span data-id='SabedoriaDeCombateExpNext' class='sheetVariable' data-type='math' data-editable='0'
+          																																					  data-default='floor(SabedoriaDeCombate + 1) * 5'></span>																																  	 
+						(Exp Total: 
+						<span data-default='(ExpAtributosDano/2) + (ExpRestante > 0 ? (ExpRestante/2) : 0)' data-id='SabedoriaDeCombateTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoMagia' style='z-index: 9'>
+					<div class='commonsFlex'>
+						<div>Resistência</div>
+						<div data-default='round(SabedoriaDeCombate * 10) /20' style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Resistencia' data-type='math' data-editable='0'>0</div>
+					</div>
+				</div>
+				<hr />
+				<div class='atributo atributoTecnologia' style='z-index: 10'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Defesa' data-extra='Esquiva' title='Rolar Dados' data-view='0'></a>
+							Defesa
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='DefesaNivel' data-type='integer'>0</div>
+					<div style='max-width: 30px; min-width: 30px' class='centered'><img src='img/dfs/def-icon.png' style='vertical-align: top' /></div>
+					</div>
+					<div class='atributoExp' id='expDefesa'>
+						<span data-default='(DefesaNivel + 1) * 5' data-id='DefesaLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='DefesaNivel * (5 + DefesaNivel * 5) / 2' data-id='DefesaTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+				<div class='atributo atributoArma' style='z-index: 9'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Ataque' data-extra='Acerto' title='Rolar Dados' data-view='0'></a>
+							Ataque
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='AtaqueNivel' data-type='integer'>0</div>
+					<div style='max-width: 30px; min-width: 30px' class='centered'><img src='img/dfs/atk-icon.png' style='vertical-align: top' /></div>
+					</div>
+					<div class='atributoExp' id='expAtaque'>
+						<span data-default='(AtaqueNivel + 1) * 5' data-id='AtaqueLevelUpExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp para level up (Total: 
+						<span data-default='AtaqueNivel * (5 + AtaqueNivel * 5) / 2' data-id='AtaqueTotalExp' class='sheetVariable' data-type='math' data-editable='0'></span>
+						Exp)
+					</div>
+				</div>
+			</div>
+			<!-- Atributos de Combate END -->
+			<!-- Atributos-Teste -->
+			<div class='commonsInputs'>
+				<div class='commonsFlex typedBG'>
+					<div class='white headerSize' style='height: 30px; line-height: 30px; padding-left: 5px'>
+						Atributos-Teste
+					</div>
+					<div class='white headerSize centered' style='height: 30px; line-height: 30px; max-width: 40px; min-width: 40px'>
+						(<span
+						class='sheetVariable' data-type='math' data-id='AtributosTesteSum' data-editable='0'
+						data-default='Forca+Agilidade+Constituicao+Carisma+Sabedoria+Inteligencia+FdV'
+						></span>)
+					</div>
+				</div>
+				<div class='atributo atributoFor'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Força' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Força
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Forca' data-type='integer' data-default='2'>0</div>
+					</div>
+				</div>
+				<div class='atributo atributoCon'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Constituição' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Constituição
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Constituicao' data-type='integer' data-default='2'>0</div>
+					</div>
+				</div>
+				<div class='atributo atributoAgi'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Agilidade' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Agilidade
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Agilidade' data-type='integer' data-default='2'>0</div>
+					</div>
+				</div>
+				<div class='atributo atributoCar'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Carisma' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Carisma
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Carisma' data-type='integer' data-default='2'>0</div>
+					</div>
+				</div>
+				<div class='atributo atributoSab'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Sabedoria' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Sabedoria
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Sabedoria' data-type='integer' data-default='2'>0</div>
+					</div>
+				</div>
+				<div class='atributo atributoInt'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Inteligência' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Inteligência
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Inteligencia' data-type='integer' data-default='2'>0</div>
+					</div>
+				</div>
+				<div class='atributo atributoFdV'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Força de Vontade' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Força de Vontade
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='FdV' data-type='integer' data-default='2'>0</div>
+						<span class='sheetVariable' data-id='ForcaDeVontade' data-type='pointer' data-pointer='FdV'></span>
+					</div>
+				</div>
+				<hr />
+				<div class='atributo atributoCon'>
+					<div class='commonsFlex'>
+						<div>Stamina</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered'>
+							<span id='dfsStaminaAtual' class="sheetVariable" data-id="StaminaAtual" data-type="integer">3</span>/<span data-default='floor(SabedoriaDeCombate)+2' class='sheetVariable' data-type='math' data-id='StaminaMax' data-editable='0'></span>
+						</div>
+					</div>
+				</div>
+				<div class='atributo atributoSab'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='6' data-modtarget='Cura' data-extra='Cura' title='Rolar Dados' data-view='0'></a>
+							Cura
+						</div>
+						<div style='max-width: 30px; min-width: 30px' class='centered'>
+							<span data-default='floor(SabedoriaDeCombate)+2' class='sheetVariable' data-type='math' data-id='Cura' data-editable='0'></span>
+						</div>
+					</div>
+				</div>
+				<div class='atributo atributoAgi'>
+					<div class='commonsFlex'>
+						<div>
+							<a class='rollDice tinyDice button' data-amount='1' data-faces='10' data-modtarget='Iniciativa' data-extra='Outro' title='Rolar Dados' data-view='0'></a>
+							Iniciativa
+						</div>
+						<div id='dfsIniciativa'>
+							<span data-default='(Agilidade/2) + Nível' class='sheetVariable' data-type='math' data-id='Iniciativa'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Atributos-Teste END -->
+		</div>
+		<!-- Valores Especiais -->
+		<div class='headerSize headerSize white typedBG commonsMarginTop' style='padding-left: 5px; height: 30px; line-height: 30px'>
+			Valores Especiais
+		</div>
+		<div class='whiteBG'>
+			<div id='dfsValores' class='sheetList commonsInputs' data-id='Valores' data-key='Nome' data-valuekey='Valor'
+			     data-default='[{"Nome":"RD Geral Bônus","Valor":"0"},{"Nome":"Artes Marciais RD Bônus","Valor":"0"},{"Nome":"Arma RD Bônus","Valor":"0"},{"Nome":"Tecnologia RD Bônus","Valor":"0"},{"Nome":"Elemento RD Bônus","Valor":"0"},{"Nome":"Magia RD Bônus","Valor":"0"},{"Nome":"Liderança RD Bônus","Valor":"0"},{"Nome":"Aparência","Valor":"Carisma"}]'>
+				<div class='hoverable'>
+					<a class='deleteRow deleteRowCuteButton'></a>
+					<b class='sheetVariable' data-id='Nome' data-placeholder='Nome'></b>
+					<span class='sheetVariable' data-id='Valor' data-type='math' data-default='Força + 2'></span>
+				</div>
+			</div>
+			<span style='clear: left; display: block; height: 0px; width: 100%'></span>
+			<a class='addRow addRowLineButton' data-for='Valores'>+ Adicionar Valor Especial</a>
+		</div>
+		<!-- Valores Especiais END -->
+	</div>
+	<!-- Perícias -->
+	<div id='dfsPericias' class='commonsInputs'>
+		<div class='commonsFlex typedBG'>
+			<div class='white headerSize' style='height: 30px; line-height: 30px; padding-left: 5px'>
+				Perícias
+				<a class='sortList button' data-for='Pericias'></a>
+			</div>
+			<div class='white headerSize centered' style='height: 30px; line-height: 30px; max-width: 40px; min-width: 40px'>
+				(<span class='sheetVariable' data-id='PericiasSum' data-editable='0' data-type='math'
+					   data-default='sum(Pericias)'
+				></span>)
+			</div>
+		</div>
+		<div class='sheetList' data-id='Pericias' data-key='Name' data-order='Attribute;Name' data-valuekey='Valor'
+			 data-default='[{"Attribute":0,"Name":"Atletismo","Valor":0},{"Attribute":2,"Name":"Acrobacia","Valor":0},{"Attribute":2,"Name":"Furtividade","Valor":0},{"Attribute":2,"Name":"Prestidigitação","Valor":0},{"Attribute":3,"Name":"Atuação","Valor":0},{"Attribute":3,"Name":"Blefar","Valor":0},{"Attribute":3,"Name":"Diplomacia","Valor":0},{"Attribute":3,"Name":"Intimidação","Valor":0},{"Attribute":4,"Name":"Discernir","Valor":0},{"Attribute":4,"Name":"Natureza","Valor":0},{"Attribute":4,"Name":"Percepção","Valor":0},{"Attribute":4,"Name":"Socorro","Valor":0},{"Attribute":5,"Name":"Arcanismo","Valor":0},{"Attribute":5,"Name":"História","Valor":0},{"Attribute":5,"Name":"Religião","Valor":0},{"Attribute":5,"Name":"Sistemas","Valor":0},{"Attribute":5,"Name":"Veículos","Valor":0}]' >
+			<div class='atributo atributoInt'>
+				<div class='commonsFlex nameSpace'>
+					<div>
+						<a class='deleteRow deleteRowCuteButton'></a>
+						<a class='rollDice tinyDice button' data-amount='1' data-faces='10' data-modtarget='Valor' data-extra='Pericia' title='Rolar Dados' data-view='1'></a>
+						(<span class="sheetVariable" data-id="Attribute" data-type="select" data-options="For;Con;Agi;Car;Sab;Int;FdV;N/A" data-default="0">For</span>)
+						<span class="sheetVariable" data-id="Name" data-type="text" data-placeholder="Perícia">Nome</span>
+					</div>
+					<div style='max-width: 30px; min-width: 30px' class='centered sheetVariable' data-id='Valor' data-type='integer' data-default='0'>0</div>
+				</div>
+			</div>
+		</div>
+		<a class='addRow addRowLineButton' data-for='Pericias'>+ Adicionar Perícia</a>
+	</div>
+	<!-- Perícias END -->
+</div>
+
+<!-- ROLAGENS BEGIN -->
+<div class='commonsMarginTop commonsInputs typedBG headerSize white' style='text-indent: 5px'>
+	Rolagens <a class='sortList button' data-for='Rolagens'></a>
+</div>
+<div class='whiteBG'>
+	<div id='dfsRolagens' class='sheetList whiteBG commonsInputs selectable' data-id='Rolagens' data-order='Tipo;Nome' data-key='Nome' data-valuekey='DiceMod'
+	     data-default='[{"Nome":"Sedução Honesta","DiceFaces":3,"DiceMod":"Aparência + Diplomacia","Tipo":0},{"Nome":"Sedução Desonesta","DiceFaces":3,"DiceMod":"Aparência + Blefar","Tipo":0}]'>
+		<div class='hoverable'>
+			<a class='rollDice tinyDice button' data-amount='1' title='Rolar Dados' data-view='1' data-extra='GetTipo'></a>
+			<a class='deleteRow deleteRowCuteButton'></a>
+			<b class='sheetVariable' data-id='Nome' data-placeholder='Nome'></b>
+			&nbsp;
+			-
+			&nbsp;
+			1d<span class='sheetVariable' data-type='select' data-options='4;6;8;10;12;20' data-id='DiceFaces'></span>
+			+
+			<span class='sheetVariable' data-type='math' data-id='DiceMod'
+				   data-default='Artes Marciais + (Arma/2) + 2'></span>
+		    &nbsp;
+			-
+			&nbsp;
+			<span>
+				<b>Tipo:</b>
+				<span class='sheetVariable' data-type='select' data-id='Tipo' data-options='Outro;Dano;Dano Normalizado;Acerto;Esquiva;Cura'></span>
+			</span>
+		</div>
+	</div>
+	<span style='clear: left; display: block; height: 0px; width: 100%'></span>
+</div>
+<a class='addRow addRowLineButton' data-for='Rolagens'>+ Adicionar Rolagem</a>
+<div id='dfsRolagensSettings' class='whiteBG centered'>
+	<b>Bônus</b><br />
+	<label>
+		<b>Dano:</b>
+		<input type="number" id='dfsBonusDano' value='0' />
+	</label>
+	<label>
+		<b>Esquiva:</b>
+		<input type="number" id='dfsBonusEsquiva' value='0' />
+	</label>
+	<label>
+		<b>Acerto:</b>
+		<input type="number" id='dfsBonusAcerto' value='0' />
+	</label>
+	<label>
+		<b>Cura:</b>
+		<input type="number" id='dfsBonusCura' value='0' />
+	</label>
+	<label>
+		<b>Outro:</b>
+		<input type="number" id='dfsBonusOutro' value='0' />
+	</label>
+	<label>
+		<input type='checkbox' id='dfsNormalizarDano' />
+		<b>Normalizar</b>
+	</label>
+</div>
+<!-- ROLAGENS END -->
+
+<!-- TECNICAS BEGIN -->
+<div class='commonsMarginTop commonsInputs typedBG headerSize white' style='text-indent: 5px'>
+	Técnicas <a class='sortList button' data-for='Tecnicas'></a>
+</div>
+<div id='dfsTecnicas' class='sheetList commonsInputs selectable' data-id='Tecnicas'>
+	<div style='border: solid 1px #000; border-top: none'>
+		<div class='commonsFlex'>
+			<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 1px'></div>
+			<div class="sheetVariable headerSize techName" style='line-height: initial; margin-left: 6px' data-id="Nome" data-type="text" data-placeholder="Nome da Tecnica" style='flex: 1 1 auto'></div>
+			<div style='flex: 0 0 auto; align-self: center; margin-right: 10px'>
+				<b>Tipo:</b>
+				<span class="sheetVariable" data-id="Tipo" data-type="select" data-options="Estilo de Luta;Passiva;Ataque;Especial" data-default="2">Passiva</span>
+			</div>
+		</div>
+		<div class='commonsFlex'>
+			<div style='flex: 1 1 auto; margin: 6px; max-width: 190px; min-width: 90px'>
+				<div class="sheetList centered addonList" data-id='Addons'>
+					<a class='deleteRow deleteRowCuteButton'></a>
+					<span class="sheetVariable" data-id="Nome" data-type="addon" data-placeholder="Addon"></span>
+				</div>
+				<a class='addRow' data-for='Addons'>+ Adicionar Addon</a>
+			</div>
+			<div style='flex: 0 0 auto; margin-right: 6px'>
+				<b style='font-size: 1.1em'>Descrição:</b>
+			</div>
+			<div style='flex: 1 1 auto; font-size: 0.8em; margin-top: 4px' class="sheetVariable" data-id="Descricao" data-type="longtext" data-autoresize="1" data-placeholder="Descrição"></div>
+		</div>
+		<div class='commonsFlex custoEefeito'>
+			<div class='commonsFlex'>
+				<div style='flex: 0 0 auto;'>
+					<b style='font-size: 1.1em; padding-left: 6px'>Custos:</b>
+				</div>
+				<div style='margin-left: 10px; margin-right: 10px'>
+					<div class='sheetList' data-id='Custos'>
+						<p class='hoverable' style='padding: 3px;'>
+							<a class='deleteRow deleteRowCuteButton'></a>
+							<a class='tinyDice button buttonAutomation' data-type='Custo' style='margin-top: -1px' title='Automatizar'></a>
+							<span class='sheetVariable' data-type='math' data-id='Custo'></span>
+							-
+							<span class='sheetVariable' data-type='select' data-id='Tipo' data-options='MP;HP;Stamina'></span>
+						</p>
+					</div>
+					<a class='addRow' data-for='Custos'>+ Custo</a>
+				</div>
+			</div>
+			<div class='commonsFlex'>
+				<div style='flex: 0 0 auto;'>
+					<b style='font-size: 1.1em;'>Efeitos:</b>
+				</div>
+				<div style='margin-left: 10px;'>
+					<div class='sheetList' data-id='Efeitos'>
+						<p class='hoverable' style='padding: 3px; font-size: 0.85em'>
+							<a class='deleteRow deleteRowCuteButton'></a>
+							<a class='tinyDice button buttonAutomation' data-type='Efeito' style='margin-top: -1px' title='Automatizar'></a>
+							<span class='sheetVariable' data-type='text' data-id='Efeito'></span>
+							-
+							<span class='sheetVariable' data-type='select' data-id='Tipo' data-options='Começo do meu turno;Fim do meu turno'></span>
+						</p>
+					</div>
+					<a class='addRow' data-for='Efeitos'>+ Efeito</a>
+				</div>
+			</div>
+		</div>
+		<div class='commonsFlex'>
+			<div style='flex: 0 1 auto; padding-left: 6px; margin-right: 10px;'>
+				<b style='font-size: 1.1em'>Rolagens:</b>
+			</div>
+			<div>
+				<div class='sheetList' data-id='Danos'>
+					<p class='hoverable centered' style='padding: 3px; font-size: 0.85em'>
+						<a class='deleteRow deleteRowCuteButton'></a>
+						<a class='tinyDice button rollDice' style='margin-top: -1px' title='Rolar Dados' data-extra='DanoTech'></a>
+						<span class='sheetVariable danoDiceAmount' data-type='math' data-default='1' data-id='DiceAmount'>
+						      </span>d<span class='sheetVariable danoDiceFaces' data-type='math' data-id='DiceFaces' data-default='6'></span>
+				        +
+						<span class='sheetVariable danoDiceMod' data-type='math' data-id='DiceMod' data-placeholder='Artes Marciais + (Arma / 2)'></span>
+						<label style='margin-left: 20px'>
+							<b>Dano:</b>
+							<span class='sheetVariable' data-type='integer' data-id='Porcentagem' data-default='100'></span>%
+						</label>
+						<label style='margin-left: 20px'>
+							<b>Penetração:</b>
+							<span class='sheetVariable' data-type='integer' data-id='Penetracao' data-default='0'></span>%
+						</label>
+						<br />
+						<span class='sheetVariable unselectable' data-id='PreNormalizado' data-type='boolean' data-label='Já Normalizado' data-default='0'></span>
+						<span class='sheetVariable unselectable' data-id='AutoAttr' data-type='boolean' data-label='Encontrar Atributos Automaticamente' data-default='1'></span>
+						<span class='atributosManuais unselectable' style='display: none'>
+							<br />
+							<span class='sheetVariable' data-id='ARTESMARCIAIS' data-type='boolean' data-label='Artes Marciais' data-default='0'></span>
+							<span class='sheetVariable' data-id='ARMA' data-type='boolean' data-label='Arma' data-default='0'></span>
+							<span class='sheetVariable' data-id='TECNOLOGIA' data-type='boolean' data-label='Tecnologia' data-default='0'></span>
+							<span class='sheetVariable' data-id='ELEMENTO' data-type='boolean' data-label='Elemento' data-default='0'></span>
+							<span class='sheetVariable' data-id='MAGIA' data-type='boolean' data-label='Magia' data-default='0'></span>
+							<span class='sheetVariable' data-id='LIDERANCA' data-type='boolean' data-label='Liderança' data-default='0'></span>
+						</span>
+						<br />
+						<span class='sheetVariable' data-id='Cura' data-type='boolean' data-label='Cura' data-default='0'></span>
+						<span class='sheetVariable' data-id='ConsomeStaminaAlvo' data-type='boolean' data-label='Consome Stamina Alvo' data-default='0'></span>
+						<span class='sheetVariable' data-id='SumStaminaAlvo' data-type='boolean' data-label='Rolagem soma Cura Alvo' data-default='0'></span>
+					</p>
+				</div>
+				<a class='addRow' data-for='Danos'>+ Dano</a>
+			</div>
+		</div>
+	</div>
+</div>
+<a class='addRow addRowLineButton' data-for='Tecnicas'>+ Adicionar Técnica</a>
+<!-- TECNICAS END -->
+
+<!-- Equipamentos -->
+<div class='headerSize white typedBG commonsMarginTop' style='text-indent: 5px'>
+	<img src='img/dfs/equips-icon.png' style='vertical-align: middle; margin-top: -4px' />
+	Equipamentos e Itens Especiais
+</div>
+<div id='dfsEquips' class='sheetList commonsInputs whiteBG selectable' data-id='Equipamentos'>
+	<div>
+		<div class='commonsFlex' style='padding-top: 2px; padding-bottom: 2px;'>
+			<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: -3px; align-self: center'></div>
+			<div style='flex: 1 0 auto; text-indent: 6px; align-self: center'' class='sheetVariable headerSize' data-id='Nome'></div>
+			<div style='flex: 1 0 auto; align-self: center;'>
+				<div class='sheetList unselectable' data-id='Addons'>
+					<div class='addon'>
+						<a class='deleteRow deleteRowCuteButton'></a>
+						<span class="sheetVariable" data-id="Nome" data-type="addon" data-placeholder="Addon"></span>
+					</div>
+				</div>
+				<a class='addRow addRowLineButton' data-for='Addons'>+ Addon</a>
+			</div>
+			<div style='flex: 0 0 auto; align-self: center; text-align: right'>
+				<b>Tipo:</b>
+				<span class='sheetVariable' style='text-align: center; margin-right: 6px' data-id="Tipo" data-type="select" data-options="Arma;Arma Defensiva;Armadura;Acessório;Item Consumível" data-default="2"></span>
+			</div>
+		</div>
+		<div class='sheetVariable descricao' data-id='Descricao' data-type='longtext'></div>
+	</div>
+</div>
+<a class='addRow addRowLineButton' data-for='Equipamentos'>+ Adicionar Item</a>
+<!-- Equipamentos END -->
+
+<div class='commonsFlex commonsFlexAddMargin commonsMarginTop selectable'>
+	<!-- COLUNA -->
+	<div>
+	<!-- Vantagens -->
+		<div id='dfsVantagens'>
+			<div class='headerSize typedBG white' style='text-indent: 5px'>
+				Vantagens (<span class='sheetVariable' data-default='sum(Vantagens)' data-type='math' data-id='VantagensSum' data-editable='0'></span>)
+				<a class='sortList button' data-for='Vantagens'></a>
+			</div>
+			<div id='dfsVantagensList' class='whiteBG sheetList commonsInputs' data-id='Vantagens' data-key='Nome' data-valuekey='Pontos' data-order='Valor;Nome'>
+				<div class='commonsFlex hoverable'>
+					<div class='sheetVariable valueField' data-id='Pontos' data-type='integer' style='min-width: 30px; max-width: 30px'></div>
+					<div class='sheetVariable nameField' data-id='Nome' data-type='select'></div>
+					<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: -3px'></div>
+				</div>
+			</div>
+			<a class='addRow addRowLineButton' data-for='Vantagens'>+ Adicionar Vantagem</a>
+		</div>
+		<!-- Vantagens END -->
+		<!-- Desvantagens -->
+		<div id='dfsDesvantagens' class='commonsMarginTop'>
+			<div class='headerSize typedBG white' style='text-indent: 5px'>
+				Desvantagens (<span class='sheetVariable' data-default='sum(Desvantagens)' data-type='math' data-id='DesvantagensSum' data-editable='0'></span>)
+				<a class='sortList button' data-for='Desvantagens'></a>
+			</div>
+			<div id='dfsDesvantagensList' class='whiteBG sheetList commonsInputs' data-id='Desvantagens' data-key='Nome' data-valuekey='Pontos' data-order='Valor;Nome'>
+				<div class='commonsFlex hoverable'>
+					<div class='sheetVariable valueField' data-id='Pontos' data-type='integer' style='min-width: 30px; max-width: 30px'></div>
+					<div class='sheetVariable nameField' data-id='Nome' data-type='select'></div>
+					<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: -3px'></div>
+				</div>
+			</div>
+			<a class='addRow addRowLineButton' data-for='Desvantagens'>+ Adicionar Desvantagem</a>
+		</div>
+		<!-- Desvantagens END -->
+	</div>
+	<!-- COLUNA -->
+	<!-- Inventário -->
+	<div id='dfsInventario' style='flex-grow: 2'>
+		<div class='headerSize typedBG white commonsInputs' style='text-indent: 5px'>
+			<img src='img/dfs/bag-icon.png' style='vertical-align: middle; margin-top: -3px; margin-right: -5px' />
+			Inventário
+			(<span class='sheetVariable' data-default='sum(Inventario)' data-type='math' data-id='Peso' data-editable='0'></span>/<span id='dfsInventarioPesoMax' class='sheetVariable' data-type='math' data-id='PesoMax' data-default='Força * 4'></span>)
+			<a class='sortList button' data-for='Inventario'></a>
+		</div>
+		<div class='commonsFlex whiteBG'>
+			<div style='background-color: #efefef; max-width: 30px; min-width:30px; text-align: center; font-size: 0.8em; font-weight: bold; border-right: solid 1px #8a8a8a; border-bottom: solid 1px #8a8a8a'>
+				#
+			</div>
+			<div>
+				
+			</div>
+			<div style='background-color: #efefef; text-align: center; max-width: 30px; min-width: 30px; font-size: 0.8em; font-weight: bold; border-left: solid 1px #8a8a8a; border-bottom: solid 1px #8a8a8a'>
+				Peso
+			</div>
+		</div>
+		<div id='dfsInventarioList' class='sheetList whiteBG commonsInputs' data-id='Inventario' data-key='Nome' data-valuekey='Peso' data-order='Nome'>
+			<div class='hoverable' style='border-bottom: 1px solid #000'>
+				<div class='commonsFlex'>
+					<div style='max-width: 30px; min-width:30px; text-align: center; font-weight: bold'
+						 class='sheetVariable' data-type='number' data-id='Quantidade'>
+					</div>
+					<div style='text-indent: 5px; color: #691e23' class='sheetVariable inventarioNome' data-type='text' data-id='Nome' data-placeholder='Container'>
+					</div>
+					<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 1px'></div>
+					<div style='max-width: 30px; min-width: 30px; text-align: center; font-weight: bold'
+						 class='sheetVariable' data-type='number' data-id='Peso'>
+					</div>
+				</div>
+				<div class='sheetList whiteBG' data-id='SubInventario' data-key='Nome' data-valuekey='Peso' data-order='Nome'>
+					<div class='commonsFlex hoverable'>
+						<div style='max-width: 30px; min-width:30px; text-align: center; font-weight: bold; background-color: #ebeaf2'
+						 	 class='sheetVariable' data-type='number' data-id='Quantidade'>
+						</div>
+						<div style='max-width: 15px; min-width:15px; text-align: center; font-weight: bold; background-color: #ebeaf2'></div>
+						<div style='text-indent: 5px; color: #265f56' class='sheetVariable inventarioNome' data-type='text' data-id='Nome' data-placeholder='Item'></div>
+						<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 0px'></div>
+						<div style='max-width: 30px; min-width: 30px; text-align: center; font-weight: bold'
+						 	 class='sheetVariable' data-type='number' data-id='Peso'>
+						</div>
+					</div>
+				</div>
+				<div class='commonsFlex'>
+					<div style='max-width: 60px; min-width:60px; background-color: #ebeaf2'></div>
+					<div>
+						<a class='addRow addRowLineButton' data-for='SubInventario'>+ Adicionar Sub-Item</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class='addRow addRowLineButton' data-for='Inventario'>+ Adicionar Item</a>
+	</div>
+	<!-- Inventário END -->
+</div>
+
+<div class='headerSize white typedBG commonsMarginTop' style='text-indent: 4px'>
+	Anotações
+</div>
+<div id='dfsAnotacoes' class='sheetList commonsInputs whiteBG selectable' data-id='Anotacoes' data-default='[{"Campo":"Dinheiro","Valor":"500"},{"Campo":"Pontos de Habilidade","Valor":"0"}]'>
+	<div class='commonsFlex hoverable' style='padding: 6px;'>
+		<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 1px'></div>
+		<div style='flex: 0 1 auto;'>
+			<b class='sheetVariable' data-id='Campo'></b>
+		</div>
+		<div class='sheetVariable' data-id='Valor' data-type='longtext' style='align-self: auto'></div>
+	</div>
+</div>
+<a class='addRow addRowLineButton' data-for='Anotacoes'>+ Adicionar Anotação</a>
+
+<div class='headerSize typedBG white commonsMarginTop hasPlusButtonRight' style='text-indent: 5px'>
+	Log de Exp
+	<a id='dfsExpButton' class='plusButton plusButtonRight button'
+	   onclick="$log = $('#dfsExpLog').finish(); if($log[0].style.display !== 'none') {$(this).text('(+)');} else {$(this).text('(-)');} $log.slideToggle(250); ">(-)</a>
+</div>
+<div id='dfsExpLog' class='sheetList whiteBG selectable' data-id='ExpLog'>
+	<div class='commonsFlex hoverable' style='border-bottom: 1px solid #000;'>
+		<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 1px'></div>
+		<div style='flex: 0 0 auto; margin-left: 6px; margin-right: 12px' class='sheetVariable diff' data-type='integer' data-id='Diff' data-editable='0'></div>
+		<div style='flex: 1 0 auto; margin-right: 6px' class='sheetVariable' data-type='simplelongtext' data-id='Expl' data-editable='0'></div>
+	</div>
+</div>
+
+<div class='headerSize typedBG white commonsMarginTop hasPlusButtonRight' style='text-indent: 5px'>
+	Log de HP
+	<a id='dfsHPButton' class='plusButton plusButtonRight button'
+	   onclick="$log = $('#dfsHPLog').finish(); if($log[0].style.display !== 'none') {$(this).text('(+)');} else {$(this).text('(-)');} $log.slideToggle(250); ">(+)</a>
+</div>
+<div id='dfsHPLog' class='sheetList whiteBG selectable' data-id='HPLog' style='display: none'>
+	<div class='commonsFlex hoverable' style='border-bottom: 1px solid #000;'>
+		<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 1px'></div>
+		<div style='flex: 0 0 auto; margin-left: 6px; margin-right: 12px' class='sheetVariable diff' data-type='integer' data-id='Diff' data-editable='0'></div>
+		<div style='flex: 1 0 auto; margin-right: 6px' class='sheetVariable' data-type='simplelongtext' data-id='Expl' data-editable='0'></div>
+	</div>
+</div>
+
+<div class='headerSize typedBG white commonsMarginTop hasPlusButtonRight' style='text-indent: 5px'>
+	Log de MP
+	<a id='dfsMPButton' class='plusButton plusButtonRight button'
+	   onclick="$log = $('#dfsMPLog').finish(); if($log[0].style.display !== 'none') {$(this).text('(+)');} else {$(this).text('(-)');} $log.slideToggle(250); ">(+)</a>
+</div>
+<div id='dfsMPLog' class='sheetList whiteBG selectable' data-id='MPLog' style='display: none'>
+	<div class='commonsFlex hoverable' style='border-bottom: 1px solid #000;'>
+		<div class='deleteRow deleteRowCuteButton' style='min-width: 20px; max-width: 20px; margin-top: 1px'></div>
+		<div style='flex: 0 0 auto; margin-left: 6px; margin-right: 12px' class='sheetVariable diff' data-type='integer' data-id='Diff' data-editable='0'></div>
+		<div style='flex: 1 0 auto; margin-right: 6px' class='sheetVariable' data-type='simplelongtext' data-id='Expl' data-editable='0'></div>
+	</div>
+</div>

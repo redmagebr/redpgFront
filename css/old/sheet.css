@@ -1,0 +1,180 @@
+#sheetPermissionsList > p.permission {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 36px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#sheetPermissionsList > p.permission:hover {
+    background-color: #e8e8e8;
+}
+
+#sheetPermissionsList > p.permission > span {
+    font-size: 1.4em;
+    line-height: 36px;
+}
+
+#sheetPermissionsList > p.permission > input, #sheetPermissionsList > p.permission > label {
+    float: right;
+}
+
+#sheetPermissionsList > p.permission > input {
+    width: 26px;
+    height: 26px;
+    vertical-align: top;
+    margin-left: 20px;
+    margin-top: 5px;
+    display: block;
+}
+
+#sheetPermissionsSheetName, #sheetPermissionsSendButton {
+    text-align: center;
+}
+
+#sheetPermissionsList > p.permission > label {
+    display: block;
+    height: 36px;
+    line-height: 36px;
+}
+
+#sheetPermissionsList > p.permission > input:hover, #sheetPermissionsList > p.permission > label:hover {
+    cursor: pointer;
+}
+
+#sheetCreationForm > p {
+    text-align: center;
+}
+
+#sheetCreationForm > h1, #sheetPermissionForm > h1 {
+    text-align: center;
+}
+
+#sheetCreationGameName, #sheetPermissionsSheetName {
+    font-weight: bold;
+}
+
+#sheetListDiv .floatRight {
+    float: right;
+}
+
+#sheetListDiv > div > h1 {
+    font-size: 1.6em;
+    padding-left: 10px;
+    line-height: 2em;
+    height: 2em;
+    vertical-align: middle;
+    margin: 0px;
+}
+
+#sheetListDiv > div > h1:hover {
+    color: #5b5b5b;
+    cursor: pointer;
+}
+
+#sheetListDiv > div > h1:active {
+    color: #797979;
+}
+
+#sheetListDiv > div.open {
+    background-color: #ececec;
+}
+
+#sheetListDiv > div.open > h1 {
+    background-color: #a6a6a6;
+}
+
+#sheetListDiv > div > p {
+    display: none;
+    line-height: 50px;
+    height: 50px;
+    padding-left: 10px;
+    margin: 0px;
+}
+
+#sheetListDiv > div > p:hover {
+    background-color: #dadada;
+}
+
+#sheetListDiv > div > p > .textButton {
+    height: 24px;
+    line-height: 24px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#sheetListDiv > div.open > p {
+    display: block;
+}
+
+#sheetListDiv > div > p > a.safeIcon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-image: url('../img/sheet/sistemaSafe.png');
+    vertical-align: middle;
+}
+
+#sheetListDiv > div > p > a.unsafeIcon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-image: url('../img/sheet/sistemaUnsafe.png');
+    vertical-align: middle;
+}
+
+#sheetListDiv > div > p > a.sheetName {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-left: 10px;
+    width: 400px;
+    margin-right: -300px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#sheetListDiv > div > p > a.sheetName:hover {
+    color: #858585;
+    cursor: pointer;
+}
+
+#sheetListDiv > div > p > a.sheetName:active {
+    color: #6d6d6d;
+}
+
+#sheetListWindow > div {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    background-color: #FFF;
+    border: solid 2px #000;
+    font-family: alegreya;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+#sheetListWindow > div > h1 {
+    text-align: center;
+}
+
+#sheetListWindow > div > p {
+    padding-left: 5px;
+    padding-right: 10px;
+    text-align: justify;
+    text-indent: 1em;
+}
+
+#sheetListWindow > div > p.centered {
+    padding: 0px;
+    text-align: center;
+    text-indent: 0px;
+}
+
+#sheetListLoadError {
+    color: #273dc3;
+    padding-left: 10px;
+    padding-right: 10px;
+}
