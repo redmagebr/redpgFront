@@ -29,7 +29,7 @@ function Sheet_Style (sheetInstance, styleInstance) {
     this.fillScope = function (scope, button) {
 		for (var id in scope) {
 			var closest = button.parent.getValueFor(id);
-			scope[id] = isNaN(closest) ? this.sheet.getValueFor(id) : closest;
+			scope[id] = closest === null || isNaN(closest, 10) ? this.sheet.getValueFor(id) : closest;
 		}
 	};
 
