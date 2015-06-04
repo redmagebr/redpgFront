@@ -616,6 +616,7 @@ window.lingo['pt_br'] = {
     _SHEETMAP_ : 'Mapa',
     _SHEETCOMMONSADDTOKEN_ : 'Adicionar token',
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+    _SHEETPLAYER_ : "Jogador",
     
     
     /* Map */

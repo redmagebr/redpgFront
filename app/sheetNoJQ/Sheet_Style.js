@@ -46,9 +46,9 @@ function Sheet_Style (sheetInstance, styleInstance) {
     	this.loading = false;
     	this.triggerChanged(null);
     	//if (parent !== null && parent !== undefined) parent.appendChild(this.visible);
-		if (this.editing) {
-			this.sheet.resizeBoxes();
-		}
+//		if (this.editing) {
+//			this.sheet.resizeBoxes();
+//		}
     	var finish = new Date().getTime();
     	console.log("SwitchInstance Process took " + (finish - start) + " ms to finish for Style " + this.id + ", " + this.styleInstance.name + ".");
     };

@@ -1,0 +1,110 @@
+<div class='typedBG commonsInputs centered white sheetVariable selectable' data-id='SystemName' style='padding: 4px;font-size: 1.7em; font-weight: bold'></div>
+<div class='typedBG commonsFlex white commonsInputs selectable'>
+	<div style='align-self: center; padding: 4px'>
+		<div class='centered sheetName headerSize typedColor'></div>
+		<div class='centered sheetVariable' data-id='SecondName'></div>
+	</div>
+	<div style='flex-grow: 2; align-self: center'>
+		<div class='commonsFlex'>
+			<div style='flex: 0 0 auto; padding-left: 6px'>
+				<b class='language' data-langhtml='_SHEETPLAYER_'></b>:
+			</div>
+			<div>
+				<span class='sheetVariable' data-id='Player' style='padding-left: 6px'></span>
+			</div>
+		</div>
+	</div>
+</div>
+<div class='whiteBG sheetList commonsInputs selectable' data-id='Info'>
+	<div class='commonsFlex hoverable'>
+		<div style='padding: 3px; flex: 0 0 auto'>
+			<a class='deleteRow textLink'>(X)</a>
+			<b class='sheetVariable' data-id='Field'></b>:
+		</div>
+		<div class='sheetVariable' data-id='Value' style='padding: 3px'>
+		</div>
+	</div>
+</div>
+<a class="addRow addRowLineButton" data-for="Info">+ Adicionar Campo</a>
+
+<div class='sheetList selectable commonsInputs' data-id='ValueRow' data-key='1' data-valuekey='1'>
+	<div class='commonsMarginTop'>
+		<a class="deleteRow addRowLineButton">- Remover Categoria</a>
+		<div class='sheetList commonsFlex commonsFlexAddMargin' data-id='ValueColumn'>
+			<div>
+				<div class='typedBG headerSize white' style='text-indent: 5px'>
+					<div class='commonsFlex'>
+						<div class='deleteRow textLink' style='flex: 0 0 auto'>(X)</div>
+						<div class='sheetVariable' data-id='ColumnName'></div>
+					</div>
+				</div>
+				<div class='whiteBG'>
+					<div class='sheetList' data-id='Fields' data-key='Field' data-valuekey='Value'>
+						<div class='commonsFlex hoverable'>
+							<div style='padding: 3px; flex: 0 0 auto; max-width: 80px'>
+								<div class='commonsFlex'>
+									<div class='deleteRow textLink' style='flex: 0 0 auto'>(X)</div>
+									<div class='sheetVariable' data-id='Field' style='font-weight:bold'></div>
+									<div style='flex: 0 0 auto'>:</div>
+								</div>
+							</div>
+							<div class='sheetVariable' data-id='Value' style='padding: 3px'>
+							</div>
+						</div>
+					</div>
+					<a class="addRow addRowLineButton" data-for="Fields">+ Adicionar Linha</a>
+				</div>
+			</div>
+		</div>
+		<a class="addRow addRowLineButton" data-for="ValueColumn">+ Adicionar Coluna</a>
+	</div>
+</div>
+
+<a class="addRow addRowLineButton commonsMarginTop" data-for="ValueRow">+ Adicionar Categorias</a>
+
+<div class='typedBG commonsMarginTop headerSize white' style='text-indent: 5px'>Cálculos</div>
+<div class='whiteBG commonsInputs'>
+	<div class='sheetList' data-id='Calculi' data-key='Field' data-valuekey='Value'>
+		<div class='commonsFlex hoverable' style='float:left; width: 50%'>
+			<div style='padding: 3px; flex: 0 0 auto; max-width: 80px'>
+				<div class='commonsFlex'>
+					<div class='deleteRow textLink' style='flex: 0 0 auto'>(X)</div>
+					<div class='sheetVariable' data-id='Field' style='font-weight:bold'></div>
+					<div style='flex: 0 0 auto'>:</div>
+				</div>
+			</div>
+			<div class='sheetVariable' data-id='Value' data-type='math' style='padding: 3px'>
+			</div>
+		</div>
+	</div>
+	<span style='display: block; height: 0px; clear: both'></span>
+</div>
+<a class="addRow addRowLineButton" data-for="Calculi">+ Adicionar Cálculo</a>
+
+<div class='typedBG commonsMarginTop headerSize white' style='text-indent: 5px'>Rolagens</div>
+<div class='whiteBG commonsInputs'>
+	<div class='sheetList' data-id='Rolls'>
+		<div class='commonsFlex hoverable' style='float:left; width: 50%'>
+			<div style='flex: 0 0 auto; max-width: 130px'>
+				<div class='commonsFlex'>
+					<div class='deleteRow textLink' style='flex: 0 0 auto'>(X)&nbsp;</div>
+					<div class='rollDice textLink' style='flex: 0 0 auto' data-view='1'>(Roll)&nbsp;</div>
+					<div style='font-weight:bold'>
+						<span class='sheetVariable' data-id='Field'></span>:&nbsp;
+					</div>
+				</div>
+			</div>
+			<div style='flex: 1 1 auto'>
+				<div class='commonsFlex'>
+					<div class='sheetVariable centered' data-id='DiceAmount' data-type='math' style='flex: 0 0 auto; max-width: 30px'></div>
+					<div style='flex: 0 0 auto;'>d</div>
+					<div class='sheetVariable centered' data-id='DiceFaces' data-type='math' style='flex: 0 0 auto; max-width: 30px'></div>
+					<div style='flex: 0 0 auto;'> + </div>
+					<div class='sheetVariable' data-id='DiceMod' data-type='math' style='flex: 1 0 auto'></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span style='display: block; height: 0px; clear: both'></span>
+</div>
+<a class="addRow addRowLineButton" data-for="Rolls">+ Adicionar Rolagem</a>

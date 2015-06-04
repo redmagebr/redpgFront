@@ -224,7 +224,7 @@ function Sheet_List (element, style, parent) {
 	};
 	
 	this.getValueFor = function (id) {
-		if (this.key === null || this.valueKey === null) return NaN;
+		if (this.key === null || this.valueKey === null) return null;
 		try {
 			for (var i = 0; i < this.sheets.length; i++) {
 				var row = this.sheets[i];
@@ -239,7 +239,7 @@ function Sheet_List (element, style, parent) {
 			return null;
 		} catch (e) {
 			console.log("Faulty key/valueKey for list " + this.id + ".");
-			return NaN;
+			return null;
 		}
 //		for (var k = 0; k < this.lists[i].sheets.length; k++) {
 //			var field = this.lists[i].sheets[k].getField(this.lists[i].key);

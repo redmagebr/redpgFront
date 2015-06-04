@@ -190,11 +190,12 @@ function Sheet (elements, style, parent) {
 		} else {
 			// look in lists...
 			for (var i = 0; i < this.lists.length; i++) {
+				console.log("Searching " + this.lists[i].id);
 				var value = this.lists[i].getValueFor(id);
 				if (value !== null) return value;
 			}
 		}
-		return NaN;
+		return null;
 	};
 	
 	// Search each Child Node for variables

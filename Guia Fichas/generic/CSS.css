@@ -1,0 +1,45 @@
+#sheetDiv {
+	font-family: alegreya;
+}
+
+#sheetDiv .addRowLineButton {
+	display: block;
+	background-color: #FFF;
+	color: #2d4bbe;
+	font-weight: bold;
+	text-indent: 5px;
+	font-size: 0.8em;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#sheetDiv .addRowLineButton:hover {
+	cursor: pointer;
+	background-color: #ebefff;
+}
+
+#sheetDiv .addRowLineButton:active {
+	background-color: #d0d4e2;
+}
+
+#sheetDiv textarea {
+	max-width: none;
+	display: block;
+	width: 90%;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#sheetDiv input {
+	width: 80%;
+}
+
+#sheetDiv p {
+	margin: 0px;
+	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: justify;
+	text-indent: 0.6em;
+}

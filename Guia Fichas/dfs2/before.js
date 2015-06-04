@@ -21,8 +21,8 @@ this.applyExp = function (exp, reason) {
 	var logM = exp + " exp concedida. Experiência era " + expAntiga + " e agora é " + expNova + ".\nMotivo: " + reason + ".";
 	
 	var log = this.sheet.getField("ExpLog").addRow();
-	log.getField("Diff").storeValue(exp);
-	log.getField("Expl").storeValue(logM);
+	log.getField("Quantidade").storeValue(exp);
+	log.getField("Motivo").storeValue(logM);
 	
 	if (this.inputs['dfsCalcSave'].checked) {
 		window.app.ui.sheetui.controller.saveSheet()
@@ -430,12 +430,9 @@ this.getRDGeral = function () {
 };
 
 /**
- * Raça, Arquétipo, Desvantagens e Vantagens:
+ * Desvantagens e Vantagens:
  * Adicionar Opções aos elementos para funcionar automaticamente.
  */
-this.$visible.find("#dfsRaca").attr('data-options', window.racas.join(';')).attr("data-default", window.racas.indexOf("Humano"));
-this.$visible.find("#dfsArquetipo").attr('data-options', window.arquetipos.join(';')).attr("data-default", window.arquetipos.indexOf("Guerreiro"));
-
 var vantagens = [];
 for (var i = 0; i < window.vantagensArray.length; i++) {
 	vantagem = window.vantagensArray[i];
