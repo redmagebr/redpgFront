@@ -9,6 +9,7 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/forumLatest.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/hoverBox.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/forumLatest.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/picture.css">
@@ -16,21 +17,20 @@
             <link rel="stylesheet" type="text/css" media="all" href="css/soundsStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/alert.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/handlers.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/chat.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/addonBox.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/simpleFloater.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/sheets.css">
-            <link rel="stylesheet" type="text/css" media="all" href="css/sheetCommons.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/sheetCommonsv2.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/images.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/navigatorStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/buffTracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
+            <link rel="stylesheet" type='text/css' media='all' href='css/sheets.css'>
             <link rel="stylesheet" type="text/css" media="all" href="css/sheetStyled.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/logger.css">
             <link rel="stylesheet" type="text/css" media="all" href="css/gamePermissions.css">
@@ -170,6 +170,10 @@
         </div>
         
         <div id="simpleFloater" style="display: none;">
+        </div>
+        
+        <div id='hoverBox'>
+        
         </div>
         
         <div id="addonBox">
@@ -623,6 +627,18 @@
                                 <option class="language" data-langhtml="_AUTOPLAYIMAGE0_" value="0"></option>
                                 <option class="language" data-langhtml="_AUTOPLAYIMAGE1_" value="1"></option>
                                 <option class="language" data-langhtml="_AUTOPLAYIMAGE2_" value="2"></option>
+                            </select>
+                        </span>
+                    </div>
+                    <div>
+                        <label class="label">
+                            <span class="language" data-langhtml="_PLAYWHISPERSOUND_"></span>
+                            :
+                        </label>
+                        <span class="input">
+                            <select id="configWhisperSound">
+                                <option class="language" data-langhtml="_WHISPERSOUNDYES_" value="1"></option>
+                                <option class="language" data-langhtml="_WHISPERSOUNDNO_" value="0"></option>
                             </select>
                         </span>
                     </div>
@@ -1177,6 +1193,8 @@
         <a id="pictureTrigger" style="display: none"></a>
         <a style="display: none" id="triggerTarget"></a>
         <!-- jQuery and libraries -->
+            <script src="js/latinize.js"></script>
+            <script src="js/math.min.js"></script>
             <script src="js/jquery-2.1.1.min.js"></script>
             <script src="js/jQueryExt.js"></script>
             <script src="js/jquery-mobile-browser.js"></script>
@@ -1224,6 +1242,7 @@
             <script src="app/ui/language/translation/PTBR.js"></script>
             <script src="app/ui/language/translation/EN.js"></script>
             <script src="app/ui/UI.js"></script>
+            <script src="app/ui/hover/Hover.js"></script>
             <script src="app/ui/addon/AddonUI.js"></script>
             <script src="app/ui/picture/PictureUI.js"></script>
             <script src="app/ui/sounds/SoundUI.js"></script>
@@ -1296,17 +1315,24 @@
 				<script type="text/javascript" src="app/sheetNoJQ/Sheet.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Sheet_List.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Button_DeleteRow.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_Automation.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Button_AddRow.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_RollDice.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_SortList.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/VariableFactory.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Null.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Name.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Longtext.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_SimpleLongtext.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Integer.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Number.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Boolean.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Select.js"></script>
 				<script type="text/javascript" src="app/sheetNoJQ/Variable_Image.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Math.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Pointer.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Addon.js"></script>
             <!-- Sheet Application without jQuery End -->
         <!-- Application End -->
         <script type="text/javascript">
@@ -1319,5 +1345,7 @@
                 console.log(e);
             }
         </script>
+        <script type='text/javascript' src='http://rules.redpg.com.br/paginas/TecnicasAddons.js'></script>
+        <script type='text/javascript' src='http://rules.redpg.com.br/paginas/Vantagens.js'></script>
     </body>
 </html>

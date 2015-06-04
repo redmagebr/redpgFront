@@ -108,4 +108,67 @@ function DiceController () {
         this.dicese.volume = 0.3;
         this.dicese.play();
     };
+    
+    this.rollDice = function (diceInfo) {
+    	if (!Array.isArray(diceInfo.dices)) {
+    		diceInfo.dices = []
+    	}
+    	for (var i = 0; i < diceInfo.dices.length; i++) {
+    		if (isNaN(diceInfo.dices[i], 10)) {
+    			diceInfo.dices = [];
+    			break;
+    		}
+    	}
+    	if (isNaN(diceInfo.mod, 10)) {
+    		diceInfo.mod = 0;
+    	}
+    	if (window.app.chatapp.room === null) return;
+    	var message = new Message();
+    	message.module = 'dice';
+    	message.setMessage(diceInfo.message);
+    	
+    	if (this.$dicesecret.hasClass('toggled')) {
+            var storytellers = window.app.ui.chat.cc.room.getStorytellers();
+            message.destination = storytellers;
+        }
+    	
+    	message.setSpecial('dice', diceInfo.dices);
+        message.setSpecial('mod', diceInfo.mod);
+        
+        for (key in diceInfo.special) {
+        	message.setSpecial(key, diceInfo.special[key]);
+        }
+        
+        window.app.chatapp.fixPrintAndSend(message, true);
+        
+        this.dicese.currentTime = 0;
+        this.dicese.volume = 0.3;
+        this.dicese.play();
+    };
+    
+    this.diceListener = {};
+    
+    this.registerDiceListener = function (style, listener) {
+    	this.diceListener['' + style.id] = listener;
+    };
+    
+    this.interceptDice = function (styleid, message, $message) {
+    	if (this.diceListener[styleid] === undefined) {
+    		var $span = $('<span class="language" data-langhtml="_DICENOSTYLE_" />');
+    		var nome = message.getSpecial("styleName", null);
+    		nome = nome === null ? '?????' : nome;
+    		$span.attr('data-langp', nome);
+    		$message.append("(").append($span).append(")");
+    	} else {
+    		try {
+	    		if (typeof this.diceListener[styleid] === 'function') {
+	    			this.diceListener[styleid](message, $message);
+	    		} else {
+	    			this.diceListener[styleid].handleEvent(message, $message);
+	    		}
+    		} catch (e) {
+    			alert("Faulty Dice Interceptor for style " + styleid + ".");
+    		}
+    	}
+    };
 }

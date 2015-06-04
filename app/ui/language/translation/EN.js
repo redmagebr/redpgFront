@@ -244,6 +244,9 @@ window.lingo['en'] = {
     _AUTOPLAYIMAGE0_ : 'Never',
     _AUTOPLAYIMAGE1_ : 'Only when sent by a storyteller',
     _AUTOPLAYIMAGE2_ : 'Always',
+    _PLAYWHISPERSOUND_ : 'Play sound when receiving whispers',
+    _WHISPERSOUNDYES_ : 'Yes',
+    _WHISPERSOUNDNO_ : 'No',
     _CONFIGWSPORT_ : 'Port used in WebSockets',
     _CONFIGWSEXP_ : "You may select which port is used for the WebSocket connections on the Chat. Don't change this value unless it's already not working.",
 
@@ -290,6 +293,7 @@ window.lingo['en'] = {
     _DICEWAITING_ : 'Waiting for rolls...',
     _DICEERROR_ : 'There was an error with the roll. Try again.',
     _NODICEREASON_ : 'No reason informed.',
+    _DICENOSTYLE_ : 'Had automation for unloaded style: "%p".',
     _NONOTON_ : 'Message notification enabled.',
     _NONOTOFF_ : 'Message notification disabled..',
     _STREAMON_ : 'Streaming mode enabled. Automatic playing of sounds disabled. It is recommended to have automatic picture displaying and automatic video playing set to ON.',

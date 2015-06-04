@@ -22,9 +22,18 @@ function ChatController (chat) {
     
     this.onlineUsers = [];
     
+    this.configValidation = function (id, value) {
+    	if (value === 1 || value === 0) return true;
+    };
+    
+    this.configChanged = function (id) {};
+    
+    this.configDefault = function () {
+    	return 1;
+    };
+    
     this.init = function () {
-        
-        
+        window.app.config.registerConfig('whisperSound', this);
         this.setBindings();
     };
     

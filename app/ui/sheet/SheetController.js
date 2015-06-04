@@ -390,9 +390,10 @@ function SheetController () {
         sheet.values = values;
         
         var style = this.styles[this.currentStyle];
-        style.setValues();
+        style.updateSheetInstance();
         
         $('#sheetImportForm').fadeOut();
+        this.$importButton.removeClass('toggled');
     };
     
     this.openImport = function () {

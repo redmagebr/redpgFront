@@ -253,6 +253,9 @@ window.lingo['pt_br'] = {
     _AUTOPLAYIMAGE0_ : 'Nunca',
     _AUTOPLAYIMAGE1_ : 'Apenas se enviadas por um mestre',
     _AUTOPLAYIMAGE2_ : 'Sempre',
+    _PLAYWHISPERSOUND_ : 'Tocar som ao receber Whispers',
+    _WHISPERSOUNDYES_ : 'Sim',
+    _WHISPERSOUNDNO_ : 'Não',
     _CONFIGWSPORT_ : 'Porta usada em WebSockets',
     _CONFIGWSEXP_ : "Você pode controlar qual porta é utilizada para as conexões WebSocket do Chat. Só mexa aqui se o chat não estiver funcionando.",
     
@@ -300,6 +303,7 @@ window.lingo['pt_br'] = {
     _DICEWAITING_ : 'Esperando rolagens do servidor...',
     _DICEERROR_ : 'Houve um erro ao rolar os dados. Tente novamente.',
     _NODICEREASON_ : 'Uma razão para os dados não foi informada.',
+    _DICENOSTYLE_ : 'Continha automatização para estilo não carregado: "%p".',
     _NONOTON_ : 'Notificações de novas mensagens desativadas',
     _NONOTOFF_ : 'Notificações de novas mensagens ativadas.',
     _STREAMON_ : 'Modo para streams ativo. Play automático de sons e efeitos desativado. É recomendável ter Play automático de vídeos e Mostrar imagens automaticamente ativos.',

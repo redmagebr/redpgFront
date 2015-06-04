@@ -91,9 +91,11 @@
 }
 
 #combatTrackerBody > p.target {
-    border: solid 2px #f00;
-    border-left: none;
-    border-right: none;
+	background-color: #e4acac
+}
+
+#combatTrackerBody > p.target:hover {
+	background-color: #ff8d8d
 }
 
 #combatTrackerBody > p.hisTurn {

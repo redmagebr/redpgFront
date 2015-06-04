@@ -47,6 +47,11 @@ window.chatModules.push({
 //            ));
 //        }
         
+        var log = msg.getSpecial("log", null);
+        if (log !== null) {
+        	window.app.ui.hover.makeHover($msg[0], log);
+        }
+        
         return $msg;
     },
     

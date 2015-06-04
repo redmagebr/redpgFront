@@ -86,7 +86,7 @@ function Room () {
                     message.updateFromJSON(json.messages[i]);
                     this.messageHash[message.getId()] = this.messages.push(message) - 1;
                 } else {
-                    this.messages[this.messageHash[message.getId()]].updateFromJSON(json.messages[i]);
+                    this.messages[this.messageHash[json.messages[i].id]].updateFromJSON(json.messages[i]);
                 }
             }
         }

@@ -1,5 +1,10 @@
 function AddonApp () {
+	this.loadingVantagens = false;
+	this.loadingTecnicas = false;
+	
     this.loadVantagens = function (cbs, cbe) {
+    	if (this.loadingVantagens) return;
+    	this.loadingVantagens = true;
         var ajax = new AjaxController();
         
         ajax.requestPage({
@@ -11,6 +16,8 @@ function AddonApp () {
     };
     
     this.loadTecnicas = function (cbs, cbe) {
+    	if (this.loadingTecnicas) return;
+    	this.loadingTecnicas = true;
         var ajax = new AjaxController();
         
         ajax.requestPage({

@@ -5,6 +5,8 @@
  * @requires Chat
  */
 function UI () {
+	this.hover = new Hover();
+	
     /**
      * @type Chat
      */

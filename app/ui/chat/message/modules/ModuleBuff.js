@@ -64,12 +64,14 @@ window.chatModules.push({
         $a.on("click", window.app.emulateBind(function () {
             window.app.ui.chat.tracker.bufftracker.addBuff(this.applier, this.target, 1, this.nome, this.iniciofim);
             this.$a.remove();
+            this.$html[0].style.display = "none";
         }, {
             applier : applierId,
             target : targetId,
             nome : msg.getMessage(),
             iniciofim : msg.getSpecial("eot", 0) === 1,
-            $a : $a
+            $a : $a,
+            $html : $html
         }));
         
         $html.append(" <span class='language' data-langhtml='_BUFFAPPLYINGBUFF_'></span> \"" + msg.getMessage() + "\"")
@@ -79,6 +81,8 @@ window.chatModules.push({
         
         if (!window.app.chatapp.room.getMe().isStoryteller()) {
             $a.remove();
+        } else if (window.app.chatapp.room.getMe().id === msg.origin && !window.app.ui.chat.cc.firstPrint) {
+        	$a.trigger('click');
         }
         
         window.app.ui.language.applyLanguageOn($html);

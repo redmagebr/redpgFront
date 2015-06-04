@@ -15,7 +15,7 @@ function CombatTracker () {
     this.$body = $('#combatTrackerBody').empty();
     this.$footer = $('#combatTrackerFooter').hide();
     
-    this.target = -1;
+    this.target = [];
     
     /** @type Room_Memory */ this.memory;
     this.myStuff = {};
@@ -237,14 +237,11 @@ function CombatTracker () {
             $target = $('<a class="setTarget button language" data-langtitle="_COMBATTRACKERSETTARGET_" />');
             $target.on('click', window.app.emulateBind(function () {
                 if (this.$p.hasClass('target')) {
-                    this.$p.removeClass('target');
-                    this.tracker.target = -1;
-                    return;
+                    this.tracker.removeTarget(this.id);
+                } else {
+                	this.tracker.addTarget(this.id);
                 }
-                this.tracker.$body.children('p').removeClass('target');
-                this.tracker.target = this.id;
-                this.$p.addClass('target');
-            }, {$p : $participant, tracker : this, id : i}));
+            }, {$p : $participant, tracker : this, id : participant.id}));
             
             $setturn = $('<a class="setTurn button language" data-langtitle="_COMBATTRACKERSETTURN_" />');
             $setturn.on('click', window.app.emulateBind(function () {
@@ -285,7 +282,7 @@ function CombatTracker () {
             if (turn === i) {
                 $participant.addClass('hisTurn');
             }
-            if (i === this.target) {
+            if (this.target.indexOf(participant.id) !== -1) {
                 $participant.addClass('target');
             }
             $participant.attr('data-id', participant.id);
@@ -400,9 +397,49 @@ function CombatTracker () {
     };
     
     this.getTarget = function () {
-       if (this.target === undefined || this.myStuff.ordered === undefined || typeof this.myStuff.ordered[this.target] === 'undefined') {
-            return -1;
-        }
-        return this.myStuff.ordered[this.target].id;
+    	var targets = [];
+    	for (var i = 0 ; i < this.target.length; i++) {
+    		for (var k = 0; k < this.myStuff.ordered.length; k++) {
+    			var participant = this.myStuff.ordered[k];
+    			if (participant.id === this.target[i]) {
+    				targets.push(participant);
+    				break;
+    			}
+    		}
+    	}
+    	return targets;
+    };
+    
+    this.addTarget = function (id) {
+    	if (this.target.indexOf(id) === -1) {
+    		this.target.push(id);
+    	}
+    	this.updateParticipants();
+    };
+    
+    this.removeTarget = function (id) {
+    	if (this.target.indexOf(id) !== -1) {
+    		this.target.splice(this.target.indexOf(id), 1);
+    	}
+    	this.updateParticipants();
+    };
+    
+    this.getParticipants = function (id) {
+    	var result = [];
+    	for (var k = 0; k < this.myStuff.ordered.length; k++) {
+			var participant = this.myStuff.ordered[k];
+			if (participant.id === id) {
+				result.push({
+					order: k,
+					participant: participant
+				});
+			}
+    	}
+    	return result;
+    };
+    
+    this.setInit = function (order, init) {
+    	this.tracker.myStuff.ordered[order].init = val;
+        this.tracker.memory.setMemory('combat', this.tracker.myStuff, false);
     };
 }

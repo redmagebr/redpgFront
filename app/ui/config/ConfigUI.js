@@ -27,6 +27,10 @@ function ConfigUI () {
         window.app.config.store('autoImage', parseInt($(this).val()));
     });
     
+    this.$ele['whisperSound'] = $("#configWhisperSound").on('change', function () {
+        window.app.config.store('whisperSound', parseInt($(this).val()));
+    });
+    
     this.$ele['wsPort'] = $("#configWsHost").on('change', function () {
         window.app.config.store('wsPort', parseInt($(this).val()));
     });
@@ -55,7 +59,7 @@ function ConfigUI () {
             var lang = window.app.config.get("language");
             this.$langSelect.val(lang);
             this.$langImg.removeClass().addClass(lang + "_Flag").attr("title", window.lingo[lang]._LANGUAGENAME_);
-        } else if (['chatuseprompt', 'fsmode', 'autoBGM', 'autoSE', 'autoVIDEO','autoImage', 'wsPort'].indexOf(id) !== -1) {
+        } else if (['chatuseprompt', 'fsmode', 'autoBGM', 'autoSE', 'autoVIDEO','autoImage', 'wsPort', 'whisperSound'].indexOf(id) !== -1) {
             this.$ele[id].val(window.app.config.get(id).toString());
         }
     };
@@ -69,6 +73,7 @@ function ConfigUI () {
         window.app.config.addListener("chatuseprompt", this);
         window.app.config.addListener("fsmode", this);
         window.app.config.addListener("wsPort", this);
+        window.app.config.addListener("whisperSound", this);
         
         var lingos = window.lingo;
         var $option;

@@ -24,6 +24,7 @@
     bottom: 60px;
     width: 300px;
     padding-left: 100px;
+    z-index: 400;
 }
 
 #sheetSaveSuccess > h1, #sheetSaveError > h1 {

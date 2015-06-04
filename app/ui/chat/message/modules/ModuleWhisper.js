@@ -95,6 +95,14 @@ window.chatModules.push({
                         }, {nick : user.nickname + '#' + user.nicknamesufix}
                     ));
                 }
+                
+                // Play sound
+                if (!window.app.ui.hasFocus && !window.app.ui.chat.cc.firstPrint && (window.app.config.get('whisperSound') === 1)) {
+	                var audio = document.getElementById('yourTurnAudio');
+	                audio.currentTime = 0;
+	                audio.volume = 1;
+	                audio.play();
+                }
             } else {
                 if (typeof msg.destination === 'number' || msg.destination.length === 1) {
                     var destination = msg.getDestinationUser();

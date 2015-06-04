@@ -144,38 +144,10 @@ window.chatModules.push({
         }
         
         
-        // Strictly for Dragon Fantasy Saga, ignore
-        var extra = msg.getSpecial("extra", null);
-        if (extra !== null && typeof extra === 'object' && (extra.type === "Dano" || extra.type === "Cura")) {
-            if (typeof window.app.ui.chat.tracker.myStuff !== 'undefined' &&
-                    typeof window.app.ui.chat.tracker.myStuff.ordered !== 'undefined' &&
-                    typeof window.app.ui.chat.tracker.myStuff.ordered[extra.target] !== 'undefined') {
-                var mine = window.app.ui.chat.tracker.myStuff.ordered[extra.target];
-                if (mine.id === extra.id && mine.name === extra.name && typeof window.app.ui.sheetui.controller.$listed[extra.id] !== "undefined" && window.app.sheetdb.getSheet(extra.id).editable) {
-                    // we have everything to do it
-                    msg.setSpecial("sum", sum);
-                    var tiposDano = "";
-                    if (extra.type === "Dano") {
-                        var atributos = ['Artes Marciais', 'Arma', 'Tecnologia', 'Elemento', 'Magia', 'Liderança'];
-                        tiposDano = [];
-                        for (var id = 0; id < atributos.length; id++) {
-                            if (extra.damageType.indexOf(id) === -1) continue;
-                            tiposDano.push(atributos[id]);
-                        }
-                        if (tiposDano.length === 0) {
-                            tiposDano = "Sem Tipo";
-                        } else {
-                            tiposDano = tiposDano.join(", ");
-                        }
-                        tiposDano = " (" + tiposDano + ")";
-                    }
-                    var $a = $("<a class='automaticButton button' />").attr("title", "Essa rolagem é de " + extra.type + tiposDano + " e teve " + mine.name + " como alvo. Clique aqui para aplicar automaticamente.");
-                    $a.on('click', window.app.emulateBind(function () {
-                        window.dfsDice(this.msg);
-                    }, {msg : msg}));
-                    $reason.append($a);
-                }
-            }
+        // Allow Styles to intercept dices
+        var style = msg.getSpecial("style", null);
+        if (style !== null) {
+        	window.app.ui.chat.dc.interceptDice(style, msg, $msg);
         }
         
         // Back to default dice behavior
