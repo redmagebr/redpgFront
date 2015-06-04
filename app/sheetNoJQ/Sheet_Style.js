@@ -38,7 +38,7 @@ function Sheet_Style (sheetInstance, styleInstance) {
     
     this.switchInstance = function (sheetInstance) {
     	var start = new Date().getTime();
-    	this.editing = false;
+    	if (this.editing) this.toggleEdit();
 		//var parent = this.visible.parentNode;
 		//if (parent !== null && parent !== undefined) parent.removeChild(this.visible);
 		this.loading = true;
