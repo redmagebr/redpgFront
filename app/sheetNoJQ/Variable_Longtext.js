@@ -56,7 +56,7 @@ window.sheetVariableTypes['longtext'] = function (element, style, parent) {
 		if (!this.editing) return;
 		this.fakeInput.value = this.input.value;
 		this.visible.appendChild(this.fakeInput);
-		var foundHeight = this.input.scrollHeight;
+		var foundHeight = this.fakeInput.scrollHeight;
 		if (foundHeight < 20) {
 			this.input.style.height = "";
 		} else {
