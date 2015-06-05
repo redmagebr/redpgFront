@@ -52,6 +52,7 @@ function Sheet_List (element, style, parent) {
 			for (var i = 0; i < newSheet.visible.length; i++) {
 				this.visible.appendChild(newSheet.visible[i]);
 			}
+			newSheet.update();
 			newSheet.reset();
 		}
 		this.sheets.push(newSheet);
