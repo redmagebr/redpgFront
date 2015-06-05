@@ -4,37 +4,54 @@
         <title>RedPG</title>
         <meta charset="UTF-8">
         <script type='text/javascript'>
-        	window.CSSFile = ["App_20150605.css"];
-        	window.debugCSS = ['geral.css', "geral.css", "home.css", "forumLatest.css", "styledWindow.css", "changelog.css", "hoverBox.css", "forumLatest.css", "twitch.css", "picture.css", "styleui.css", "soundsStyled.css", "config.css", "login.css", "handlers.css", "chat.css", "chatMessages.css", "chatMessagesRainbow.css", "youtube.css", "addonBox.css", "simpleFloater.css", "sheetCommonsv2.css", "images.css", "navigatorStyled.css", "combatTracker.css", "buffTracker.css", "languagetracker.css", "gamesStyled.css", "sheets.css", "sheetStyled.css", "logger.css", "gamePermissions.css", "intro.css", "icons.css"];
+        	window.CSSFile = ["App150605.css"];
         	
-        	window.JSFile = ["js/App_20150605v2.js"];
-        	window.debugJS = ["app/Application.js", "app/program/LoginApp.js", "app/program/GameApp.js", "app/program/ImageApp.js", "app/program/StorageApp.js", "app/program/AddonApp.js", "app/program/ChatWsApp.js", "app/program/RoomApp.js", "app/program/Memory.js", "app/program/SheetApp.js", "app/ajax/AjaxController.js", "app/ajax/WsController.js", "app/ajax/ImageAjax.js", "app/ajax/ChangelogAjax.js", "app/database/kinds/Message.js", "app/database/kinds/User.js", "app/database/kinds/UserSettings.js", "app/database/kinds/Room.js", "app/database/kinds/Room_Memory.js", "app/database/kinds/Style_Instance.js", "app/database/kinds/Invite.js", "app/database/kinds/Game.js", "app/database/kinds/Image.js", "app/database/kinds/Image_Link.js", "app/database/kinds/Sheet_Instance.js", "app/database/GameDB.js", "app/database/RoomDB.js", "app/database/StyleDB.js", "app/database/ImageDB.js", "app/database/UserDB.js", "app/database/SheetDB.js", "app/database/Storage.js", "app/database/Config2.js", "app/ui/language/Language.js", "app/ui/language/translation/PTBR.js", "app/ui/language/translation/EN.js", "app/ui/UI.js", "app/ui/hover/Hover.js", "app/ui/addon/AddonUI.js", "app/ui/picture/PictureUI.js", "app/ui/sounds/SoundUI.js", "app/ui/images/ImageUI.js", "app/ui/youtube/YoutubeUI.js", "app/ui/sheet/SheetUI.js", "app/ui/sheet/SheetController.js", "app/ui/config/ConfigUI.js", "app/ui/changelog/ChangelogUI.js", "app/ui/forum/ForumUI.js", "app/ui/FormValidator.js", "app/ui/Validator.js", "app/ui/chat/Chat.js", "app/ui/chat/combat/CombatTracker.js", "app/ui/chat/combat/BuffTracker.js", "app/ui/chat/language/LanguageTracker.js", "app/ui/chat/ChatController.js", "app/ui/chat/Logger.js", "app/ui/chat/PlayerController.js", "app/ui/chat/DiceController.js", "app/ui/chat/AudioController.js", "app/ui/chat/message/MessageController.js", "app/ui/chat/persona/PersonaController.js", "app/ui/chat/avatar/AvatarController.js", "app/ui/simpleFloater/SimpleFloater.js", "app/ui/games/GameUI.js", "app/ui/games/RoomUI.js", "app/ui/games/GamePrivilegeUI.js", "app/ui/games/Game$.js", "app/ui/games/GameInviteUI.js", "app/ui/games/GameInvite$.js", "app/ui/login/LoginUI.js", "app/ui/intro/IntroUI.js", "app/ui/navigator/Navigator.js", "app/ui/style/StyleUI.js", "app/ui/chat/message/modules/ModuleRoleplay.js", "app/ui/chat/message/modules/ModuleYoutube.js", "app/ui/chat/message/modules/ModuleCountdown.js", "app/ui/chat/message/modules/ModuleSystem.js", "app/ui/chat/message/modules/ModuleVote.js", "app/ui/chat/message/modules/ModuleBGM.js", "app/ui/chat/message/modules/ModuleSEPLAY.js", "app/ui/chat/message/modules/ModulePowerBottom.js", "app/ui/chat/message/modules/ModuleAction.js", "app/ui/chat/message/modules/ModuleClear.js", "app/ui/chat/message/modules/ModuleImage.js", "app/ui/chat/message/modules/ModuleWebm.js", "app/ui/chat/message/modules/ModuleHelp.js", "app/ui/chat/message/modules/ModuleNotification.js", "app/ui/chat/message/modules/ModuleStream.js", "app/ui/chat/message/modules/ModuleTitle.js", "app/ui/chat/message/modules/ModuleSplay.js", "app/ui/chat/message/modules/ModuleStory.js", "app/ui/chat/message/modules/ModuleZebra.js", "app/ui/chat/message/modules/ModuleDice.js", "app/ui/chat/message/modules/ModuleOff.js", "app/ui/chat/message/modules/ModuleBuff.js", "app/ui/chat/message/modules/ModuleWhisper.js", "app/ui/chat/message/modules/ModulePersona.js", "app/ui/chat/message/modules/ModulePica.js", "app/ui/chat/message/modules/ModuleLogger.js", "app/ui/chat/message/modules/ModuleSheetup.js", "app/ui/chat/message/modules/ModuleSheetdm.js", "app/ui/chat/message/modules/ModuleSheettr.js", "app/ui/chat/message/modules/ModuleLingo.js", "app/sheetNoJQ/Sheet_Style.js", "app/sheetNoJQ/Sheet.js", "app/sheetNoJQ/Sheet_List.js", "app/sheetNoJQ/Button_DeleteRow.js", "app/sheetNoJQ/Button_Automation.js", "app/sheetNoJQ/Button_AddRow.js", "app/sheetNoJQ/Button_RollDice.js", "app/sheetNoJQ/Button_SortList.js", "app/sheetNoJQ/Variable.js", "app/sheetNoJQ/VariableFactory.js", "app/sheetNoJQ/Variable_Null.js", "app/sheetNoJQ/Variable_Name.js", "app/sheetNoJQ/Variable_Longtext.js", "app/sheetNoJQ/Variable_SimpleLongtext.js", "app/sheetNoJQ/Variable_Integer.js", "app/sheetNoJQ/Variable_Number.js", "app/sheetNoJQ/Variable_Boolean.js", "app/sheetNoJQ/Variable_Select.js", "app/sheetNoJQ/Variable_Image.js", "app/sheetNoJQ/Variable_Math.js", "app/sheetNoJQ/Variable_Pointer.js", "app/sheetNoJQ/Variable_Addon.js"];
+        	
+        	window.debugCSS = ['geral.css'];
         	
         	// Individual licenses for fonts can be found in the respective CSS file
-        	window.fontFiles =["fontface/anudaw.css", "fontface/alegreya2.css", "fontface/caudex4.css", "fontface/lingo5.css"];
+        	window.CSSFile.push("fontface/anudaw.css", "fontface/alegreya2.css", "css/fontface/caudex4.css", "css/fontface/lingo5.css");
+        	window.debugCSS.push("fontface/anudaw.css", "fontface/alegreya2.css", "css/fontface/caudex4.css", "css/fontface/lingo5.css");
         	
-        	// Print CSS scripts function
-        	function writeCSS (array) {
-        		for (var i = 0; i < array.length; i++) {
-        			document.writeln('<link rel="stylesheet" type="text/css" media="all" href="css/' + array[i] + '">');
-        		}
-        	}
-        	
-        	var debug = window.location.hash.substr(1).toUpperCase();
-        	if (debug.indexOf("DEBUG") !== -1) {
-        		writeCSS(window.debugCSS);
-        	} else {
-        		writeCSS(window.CSSFile);
-            	delete window.CSSFile;
-            	delete window.debugCSS;
-        	}
-        	
-        	writeCSS(window.fontFiles);
         </script>
-        <!-- Most of the icons used throughout the application were made by Adam Whitcroft for his Batch icon set, under a free License. -->
-        <!-- You can find this icon set and more at his website: http://adamwhitcroft.com/batch/ -->
-        <!-- Library -->
-            <link rel="stylesheet" type="text/css" media="all" href="js/colpick-jqueryui.css">
+        <!-- CSS Geral -->
+            <link rel="stylesheet" type="text/css" media="all" href="css/geral.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/home.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/forumLatest.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/styledWindow.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/changelog.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/hoverBox.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/forumLatest.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/twitch.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/picture.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/styleui.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/soundsStyled.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/config.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/login.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/handlers.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/chat.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/chatMessages.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/chatMessagesRainbow.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/youtube.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/addonBox.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/simpleFloater.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/sheetCommonsv2.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/images.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/navigatorStyled.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/combatTracker.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/buffTracker.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/languagetracker.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/gamesStyled.css">
+            <link rel="stylesheet" type='text/css' media='all' href='css/sheets.css'>
+            <link rel="stylesheet" type="text/css" media="all" href="css/sheetStyled.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/logger.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/gamePermissions.css">
+            <link rel="stylesheet" type="text/css" media="all" href="css/intro.css">
+            <!-- Most of the icons used throughout the application were made by Adam Whitcroft for his Batch icon set, under a free License. -->
+            <!-- You can find this icon set and more at his website, here: http://adamwhitcroft.com/batch/ -->
+                <link rel="stylesheet" type="text/css" media="all" href="css/icons.css">
+        <!-- Required for Library -->
+            <link rel="stylesheet" type="text/css" media="all" href="js/colpick-jquery-ui.min.css">
         <!-- Facebook -->
             <meta property="og:type" content="website">
             <meta property="og:title" content="RedPG">
@@ -1177,25 +1194,147 @@
         <a id="pictureTrigger" style="display: none"></a>
         <a style="display: none" id="triggerTarget"></a>
         <!-- jQuery and libraries -->
-            <script src="js/libraries150605.js"></script>
+            <script src="js/latinize.js"></script>
+            <script src="js/math.min.js"></script>
+            <script src="js/jquery-2.1.1.min.js"></script>
+            <script src="js/jQueryExt.js"></script>
+            <script src="js/jquery-mobile-browser.js"></script>
+            <script src="js/jquery-ui.min.js"></script>
+            <script src="js/jquery-ui-touch-punch.js"></script>
+            <script src="js/colpick.js"></script>
+            <script src="js/jquery.idle.min.js"></script>
+            <script src="js/seedrandom.min.js"></script>
+            <script src="js/FileSaver.min.js"></script>
         <!-- Application! -->
-        	<script type='text/javascript'>
-	        	// Print JS scripts function
-	        	function writeJS (array) {
-	        		for (var i = 0; i < array.length; i++) {
-	        			document.writeln("<script type='text\/javascript' src='" + array[i] + "'><\/script>");
-	        		}
-	        	}
-	        	
-	        	var debug = window.location.hash.substr(1).toUpperCase();
-	        	if (debug.indexOf("DEBUG") !== -1) {
-	        		writeJS(window.debugJS);
-	        	} else {
-	        		writeJS(window.JSFile);
-	            	delete window.JSFile;
-	            	delete window.debugJS;
-	        	}
-        	</script>
+            <script src="app/Application.js"></script>
+            <script src="app/program/LoginApp.js"></script>
+            <script src="app/program/GameApp.js"></script>
+            <script src="app/program/ImageApp.js"></script>
+            <script src="app/program/StorageApp.js"></script>
+            <script src="app/program/AddonApp.js"></script>
+            <script src="app/program/ChatWsApp.js"></script>
+            <script src="app/program/RoomApp.js"></script>
+            <script src="app/program/Memory.js"></script>
+            <script src="app/program/SheetApp.js"></script>
+            <script src="app/ajax/AjaxController.js"></script>
+            <script src="app/ajax/WsController.js"></script>
+            <script src="app/ajax/ImageAjax.js"></script>
+            <script src="app/ajax/ChangelogAjax.js"></script>
+            <script src="app/database/kinds/Message.js"></script>
+            <script src="app/database/kinds/User.js"></script>
+            <script src="app/database/kinds/UserSettings.js"></script>
+            <script src="app/database/kinds/Room.js"></script>
+            <script src="app/database/kinds/Room_Memory.js"></script>
+            <script src="app/database/kinds/Style_Instance.js"></script>
+            <script src="app/database/kinds/Invite.js"></script>
+            <script src="app/database/kinds/Game.js"></script>
+            <script src="app/database/kinds/Image.js"></script>
+            <script src="app/database/kinds/Image_Link.js"></script>
+            <script type="text/javascript" src="app/database/kinds/Sheet_Instance.js"></script>
+            <script src="app/database/GameDB.js"></script>
+            <script src="app/database/RoomDB.js"></script>
+            <script src="app/database/StyleDB.js"></script>
+            <script src="app/database/ImageDB.js"></script>
+            <script src="app/database/UserDB.js"></script>
+            <script src="app/database/SheetDB.js"></script>
+            <script src="app/database/Storage.js"></script>
+            <script src="app/database/Config2.js"></script>
+            <script src="app/ui/language/Language.js"></script>
+            <script src="app/ui/language/translation/PTBR.js"></script>
+            <script src="app/ui/language/translation/EN.js"></script>
+            <script src="app/ui/UI.js"></script>
+            <script src="app/ui/hover/Hover.js"></script>
+            <script src="app/ui/addon/AddonUI.js"></script>
+            <script src="app/ui/picture/PictureUI.js"></script>
+            <script src="app/ui/sounds/SoundUI.js"></script>
+            <script src="app/ui/images/ImageUI.js"></script>
+            <script src="app/ui/youtube/YoutubeUI.js"></script>
+            <script src="app/ui/sheet/SheetUI.js"></script>
+            <script src="app/ui/sheet/SheetController.js"></script>
+            <script src="app/ui/config/ConfigUI.js"></script>
+            <script src="app/ui/changelog/ChangelogUI.js"></script>
+            <script src="app/ui/forum/ForumUI.js"></script>
+            <script src="app/ui/FormValidator.js"></script>
+            <script src="app/ui/Validator.js"></script>
+            <script src="app/ui/chat/Chat.js"></script>
+            <script src="app/ui/chat/combat/CombatTracker.js"></script>
+            <script src="app/ui/chat/combat/BuffTracker.js"></script>
+            <script src="app/ui/chat/language/LanguageTracker.js"></script>
+            <script src="app/ui/chat/ChatController.js"></script>
+            <script src="app/ui/chat/Logger.js"></script>
+            <script src="app/ui/chat/PlayerController.js"></script>
+            <script src="app/ui/chat/DiceController.js"></script>
+            <script src="app/ui/chat/AudioController.js"></script>
+            <script src="app/ui/chat/message/MessageController.js"></script>
+            <script src="app/ui/chat/persona/PersonaController.js"></script>
+            <script src="app/ui/chat/avatar/AvatarController.js"></script>
+            <script src="app/ui/simpleFloater/SimpleFloater.js"></script>
+            <script src="app/ui/games/GameUI.js"></script>
+            <script src="app/ui/games/RoomUI.js"></script>
+            <script src="app/ui/games/GamePrivilegeUI.js"></script>
+            <script src="app/ui/games/Game$.js"></script>
+            <script src="app/ui/games/GameInviteUI.js"></script>
+            <script src="app/ui/games/GameInvite$.js"></script>
+            <script src="app/ui/login/LoginUI.js"></script>
+            <script src="app/ui/intro/IntroUI.js"></script>
+            <script src="app/ui/navigator/Navigator.js"></script>
+            <script src="app/ui/style/StyleUI.js"></script>
+            <!-- Chat Modules -->
+                <script src="app/ui/chat/message/modules/ModuleRoleplay.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleYoutube.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleCountdown.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleSystem.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleVote.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleBGM.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleSEPLAY.js"></script>
+                <script src="app/ui/chat/message/modules/ModulePowerBottom.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleAction.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleClear.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleImage.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleWebm.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleHelp.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleNotification.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleStream.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleTitle.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleSplay.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleStory.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleZebra.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleDice.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleOff.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleBuff.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleWhisper.js"></script>
+                <script src="app/ui/chat/message/modules/ModulePersona.js"></script>
+                <script src="app/ui/chat/message/modules/ModulePica.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleLogger.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleSheetup.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleSheetdm.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleSheettr.js"></script>
+                <script src="app/ui/chat/message/modules/ModuleLingo.js"></script>
+            <!-- Chat Modules End -->
+            <!-- Sheet Application without jQuery -->
+				<script type="text/javascript" src="app/sheetNoJQ/Sheet_Style.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Sheet.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Sheet_List.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_DeleteRow.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_Automation.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_AddRow.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_RollDice.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Button_SortList.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/VariableFactory.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Null.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Name.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Longtext.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_SimpleLongtext.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Integer.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Number.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Boolean.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Select.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Image.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Math.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Pointer.js"></script>
+				<script type="text/javascript" src="app/sheetNoJQ/Variable_Addon.js"></script>
+            <!-- Sheet Application without jQuery End -->
         <!-- Application End -->
         <script type="text/javascript">
             try {
@@ -1209,69 +1348,5 @@
         </script>
         <script type='text/javascript' src='http://rules.redpg.com.br/paginas/TecnicasAddons.js'></script>
         <script type='text/javascript' src='http://rules.redpg.com.br/paginas/Vantagens.js'></script>
-        <script type='text/javascript'>
-        function WriteCSSBat () {
-            var d = new Date();
-            var curr_date = d.getDate();
-            if (curr_date < 10) {
-                curr_date = "0" + curr_date;
-            }
-            var curr_month = d.getMonth() + 1; //Months are zero based
-            if (curr_month < 10) {
-                curr_month = "0" + curr_month;
-            }
-            var curr_year = d.getFullYear();
-            
-            dateName = "_" + curr_year + curr_month + curr_date;
-            
-    		var batText = "@echo off";
-    		
-    		for (var i = 0; i < window.debugCSS.length; i++) {
-    			batText += "\ntype \"" + window.debugCSS[i] + "\" >> \"%temp%\\App" + dateName + ".css\"";
-    			batText += "\ntype \"ln.txt\" >> \"%temp%\\App" + dateName + ".css\"";
-    		}
-            
-            batText += "\nmove \"%temp%\\App" + dateName + ".css\" . >nul";
-            batText += "\necho done\npause";
-            
-            var blob = new Blob([batText], {
-                type: "text/plain;charset=utf-8;",
-            });
-            
-            saveAs(blob, curr_year + curr_month + curr_date + "-RedPGCSSBatGeneration.bat");
-    	}
-        
-        function WriteJSBat () {
-            var d = new Date();
-            var curr_date = d.getDate();
-            if (curr_date < 10) {
-                curr_date = "0" + curr_date;
-            }
-            var curr_month = d.getMonth() + 1; //Months are zero based
-            if (curr_month < 10) {
-                curr_month = "0" + curr_month;
-            }
-            var curr_year = d.getFullYear();
-            
-            dateName = "_" + curr_year + curr_month + curr_date;
-            
-    		var batText = "@echo off";
-    		
-    		for (var i = 0; i < window.debugJS.length; i++) {
-    			var filename = window.debugJS[i].replace(new RegExp("\/", 'g'), "\\")
-    			batText += "\ntype \"..\\" + filename + "\" >> \"%temp%\\App" + dateName + ".js\"";
-    			batText += "\ntype \"ln.txt\" >> \"%temp%\\App" + dateName + ".js\"";
-    		}
-            
-            batText += "\nmove \"%temp%\\App" + dateName + ".js\" . >nul";
-            batText += "\necho done\npause";
-            
-            var blob = new Blob([batText], {
-                type: "text/plain;charset=utf-8;",
-            });
-            
-            saveAs(blob, curr_year + curr_month + curr_date + "-RedPGJSBatGeneration.bat");
-    	}
-        </script>
     </body>
 </html>
