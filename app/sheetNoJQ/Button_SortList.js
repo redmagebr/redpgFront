@@ -29,3 +29,8 @@ function Button_SortList (element, style, parent) {
 		}
 	};
 }
+
+if (window.sheetButtonTypes === undefined || window.sheetButtonTypes === null)
+	window.sheetButtonTypes = {};
+
+window.sheetButtonTypes['sortlist'] = Button_SortList;

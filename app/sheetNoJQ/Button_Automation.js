@@ -29,3 +29,8 @@ function Button_Automation (element, style, parent) {
 		}
 	};
 }
+
+if (window.sheetButtonTypes === undefined || window.sheetButtonTypes === null)
+	window.sheetButtonTypes = {};
+
+window.sheetButtonTypes['automation'] = Button_Automation;

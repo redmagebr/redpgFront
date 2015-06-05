@@ -30,3 +30,8 @@ function Button_DeleteRow (element, style, parent) {
 		}
 	};
 }
+
+if (window.sheetButtonTypes === undefined || window.sheetButtonTypes === null)
+	window.sheetButtonTypes = {};
+
+window.sheetButtonTypes['deleterow'] = Button_DeleteRow;

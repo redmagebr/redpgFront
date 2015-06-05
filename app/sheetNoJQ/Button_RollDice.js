@@ -75,3 +75,8 @@ function Button_RollDice (element, style, parent) {
 		return mod;
 	};
 }
+
+if (window.sheetButtonTypes === undefined || window.sheetButtonTypes === null)
+	window.sheetButtonTypes = {};
+
+window.sheetButtonTypes['rolldice'] = Button_RollDice;

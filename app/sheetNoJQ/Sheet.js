@@ -237,6 +237,10 @@ function Sheet (elements, style, parent) {
 		} else if (element.classList.contains('sheetName')) {
 			this.nameField = this.style.varFactory.createVariable(element, this.style, this);
 			continue;
+		} else if (element.classList.contains('sheetButton')) {
+			var newButton = this.style.butFactory.createButton(element, this.style, this);
+			this.buttons.push(newButton);
+			continue;
 		}
 		
 		// Find and create Sheet_List objects
@@ -280,6 +284,13 @@ function Sheet (elements, style, parent) {
 		var diceButtons = element.getElementsByClassName('sortList');
 		for (var j = 0; j < diceButtons.length; j++) {
 			var newButton = new Button_SortList(diceButtons[j], this.style, this);
+			this.buttons.push(newButton);
+		}
+		
+		// Find All Buttons
+		var buttons = element.getElementsByClassName("sheetButton");
+		for (var j = 0; j < buttons.length; j++) {
+			var newButton = this.style.butFactory.createButton(buttons[j], this.style, this);
 			this.buttons.push(newButton);
 		}
 		

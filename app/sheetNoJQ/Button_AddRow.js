@@ -29,3 +29,8 @@ function Button_AddRow (element, style, parent) {
 		}
 	};
 }
+
+if (window.sheetButtonTypes === undefined || window.sheetButtonTypes === null)
+	window.sheetButtonTypes = {};
+
+window.sheetButtonTypes['addrow'] = Button_AddRow;

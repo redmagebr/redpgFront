@@ -1,6 +1,7 @@
 function Sheet_Style (sheetInstance, styleInstance) {
 	var start = new Date().getTime();
 	this.varFactory = new VariableFactory();
+	this.butFactory = new ButtonFactory();
 	
 	this.sheetInstance = sheetInstance;
 	this.styleInstance = styleInstance;
