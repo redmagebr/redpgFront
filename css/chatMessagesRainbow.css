@@ -6,6 +6,14 @@
 	animation: rainbowDice 1.5s linear 0s infinite;
 }
 
+#chatMessages > p.chatDice .box.shame {
+	animation: shameDice 1.5s linear 0s infinite;
+}
+
+#chatMessages > p.chatDice.shame .box {
+	animation: shameDice 1.5s linear 0s infinite;
+}
+
 @keyframes rainbowDice {
     from {
         color: rgb(100, 0, 0);
@@ -41,5 +49,23 @@
         color: rgb(100, 0, 0);
         background-color: rgb(255, 150, 150);
         border-color: rgb(200, 0, 0);
+    }
+}
+
+@keyframes shameDice {
+    from {
+        color: rgb(100, 0, 0);
+        background-color: rgb(255, 173, 173);
+        border-color: rgb(225, 0, 55);
+    }
+    50% {
+        color: rgb(0, 100, 100);
+        background-color: rgb(189, 127, 127);
+        border-color: rgb(169, 0, 44);
+    }
+    to {
+        color: rgb(100, 0, 0);
+        background-color: rgb(255, 173, 173);
+        border-color: rgb(225, 0, 55);
     }
 }
