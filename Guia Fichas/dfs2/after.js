@@ -1,3 +1,21 @@
+/**
+ * Desvantagens
+ * Somar apenas os 4 maiores
+ */
+this.sheet.getField("Desvantagens").getValue2 = this.sheet.getField("Desvantagens").getValue;
+this.sheet.getField("Desvantagens").getValue = function () {
+	var r = this.getValue2();
+		if (Array.isArray(r)) {
+		r.sort(function(a,b) {
+			return b - a;
+		});
+		if (r.length > 4) {
+			return [r[0], r[1], r[2], r[3]];
+		}
+	}
+	return r;
+};
+
 // HIDE AND SHOW FERRAMENTAS
 this.sheet.addInstanceListener(function(sheet) {
 	var style = sheet.style;
@@ -42,14 +60,21 @@ this.sheet.getFieldByName('Pericias').addCreatedRowListener(function (list, row)
  * Perícias
  * Pegar valor de Perícias
  */
-this.sheet.getFieldByName('Pericias').getValue = function () {
+/**
+ * Perícias
+ * Redução de custo para Perícias N/A
+ */
+this.sheet.getField("Pericias").getValue = function () {
 	var results = [];
 	for (var i = 0; i < this.sheets.length; i++) {
-		var sheet = this.sheets[i];
-		var valor = sheet.getField('Valor').getValue();
-		results.push(valor);
+		var pericia = this.sheets[i];
+		if (pericia.getField("Attribute").getValue() === "N/A") {
+			results.push(Math.round(pericia.getField("Valor").getValue() / 2));
+		} else {
+			results.push(pericia.getField("Valor").getValue());
+		}
 	}
-	if (results.length === 0) results.push(0);
+	if (results.length === 0) return 0;
 	return results;
 };
 

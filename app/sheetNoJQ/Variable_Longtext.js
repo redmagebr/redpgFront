@@ -53,12 +53,14 @@ window.sheetVariableTypes['longtext'] = function (element, style, parent) {
 	
 	this.resize = function () {
 		if (!this.autoresize) return;
-		this.visible.appendChild(this.fakeInput);
+		if (!this.editing) return;
 		this.fakeInput.value = this.input.value;
-		if (this.fakeInput.scrollHeight < 20) {
+		this.visible.appendChild(this.fakeInput);
+		var foundHeight = this.input.scrollHeight;
+		if (foundHeight < 20) {
 			this.input.style.height = "";
 		} else {
-			this.input.style.height = this.fakeInput.scrollHeight + "px";
+			this.input.style.height = foundHeight + "px";
 		}
 		this.visible.removeChild(this.fakeInput);
 	};
@@ -79,8 +81,10 @@ window.sheetVariableTypes['longtext'] = function (element, style, parent) {
 	this.update = function () {
 		if (this.editing !== this.style.editing) this.toggleEdit();
 		if (this.editing) {
-			this.input.value = this.value;
-			this.resize();
+			if (this.value !== this.input.value) {
+				this.input.value = this.value;
+				this.resize();
+			}
 		} else {
 			var lines = this.value.split(/\r\n|\r|\n/);
 			var goodlines = [];
