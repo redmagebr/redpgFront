@@ -159,10 +159,10 @@ window.chatModules.push({
         
         if (msg.msg !== null && msg.msg !== '') {
             var $reason = $('<span class="reason" />');
-            $reason.append($('<b class="language" data-langhtml="_DICEREASON_" />'));
-            $reason.append($('<p />').text(msg.msg).html());
+        	$reason.append($('<b class="language" data-langhtml="_DICEREASON_" />'));
+        	$reason.append($('<p />').text(msg.msg).html());
 
-            $msg.append($reason);
+        	$msg.append($reason);
         }
         
         

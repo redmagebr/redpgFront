@@ -53,6 +53,7 @@ function ImageUI () {
             this.$uploadForm.unhide();
         }
     };
+    this.updateForm();
     
     this.submitUpload = function () {
         this.$corsError.hide();

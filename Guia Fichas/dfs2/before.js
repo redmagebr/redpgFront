@@ -93,16 +93,26 @@ this.removeMP = function (amount, reason) {
 		message.module = "sheetdm";
 		message.setSpecial('type', 'MP');
 		message.setSpecial('sheetname', this.sheetInstance.name);
-		message.setSpecial('amount', -amount);
+		message.setSpecial('amount', (amount < 0 ? "+" + (-amount) : -amount));
 		message.setSpecial("log", logM);
 		
 		window.app.chatapp.fixPrintAndSend(message, true);
 	}
 };
 
-this.removeStamina = function (amount) {
+this.removeStamina = function (amount, reason) {
 	var stamina = this.sheet.getField("StaminaAtual");
-	stamina.storeValue(stamina.getValue() - 1);
+	var oldStamina = stamina.getValue();
+	var newStamina = oldStamina - amount;
+	stamina.storeValue(newStamina);
+	
+	if (reason !== undefined) {
+		var logM = "Stamina reduzida em " + amount + ". Stamina era " + oldStamina + " e agora é " + newStamina + ".";
+		logM += "\nMotivo: " + reason + ".";
+		var log = this.sheet.getField("HPLog").addRow();
+		log.getField("Diff").storeValue(0);
+		log.getField("Expl").storeValue(logM);
+	}
 	
 	if (this.inputs['dfsCalcSave'].checked) {
 		window.app.ui.sheetui.controller.saveSheet()
@@ -340,6 +350,21 @@ this.automate = function (button) {
 			window.app.ui.sheetui.controller.openSheet(targets[i].id);
 			this.applyExp(exp, reason);
 		}
+	} else if (id === "dfsCalcApplyMana") {
+		var mana = parseInt(this.inputs['dfsCalcMana'].value);
+		var reason = this.inputs['dfsCalcManaReason'].value;
+		if (isNaN(mana, 10)) return;
+		this.removeMP(mana, reason);
+	} else if (id === "dfsCalcApplyHP") {
+		var hp = parseInt(this.inputs['dfsCalcHP'].value);
+		var reason = this.inputs['dfsCalcHPReason'].value;
+		if (isNaN(hp, 10)) return;
+		this.removeHP(hp, reason);
+	} else if (id === "dfsCalcApplyStamina") {
+		var stam = parseInt(this.inputs['dfsCalcStamina'].value);
+		var reason = this.inputs['dfsCalcStaminaReason'].value;
+		if (isNaN(stam, 10)) return;
+		this.removeStamina(stam, reason);
 	} else if (button.visible.dataset.type === 'Custo') {
 		if (!this.sheetInstance.editable) {
 			// can't do this
@@ -474,7 +499,13 @@ var findInputs = ["dfsBonusDano", "dfsBonusEsquiva", "dfsBonusAcerto", "dfsBonus
     "dfsCalcAnnounce",
     "dfsFerramentasHeader",
     "dfsFerramentas",
-    "dfsFerramentasButton"
+    "dfsFerramentasButton",
+    "dfsCalcMana",
+    "dfsCalcManaReason",
+    "dfsCalcHP",
+    "dfsCalcHPReason",
+    "dfsCalcStamina",
+    "dfsCalcStaminaReason"
 ];
 
 for (var i = 0; i < findInputs.length; i++) {

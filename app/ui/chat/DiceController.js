@@ -154,11 +154,13 @@ function DiceController () {
     
     this.interceptDice = function (styleid, message, $message) {
     	if (this.diceListener[styleid] === undefined) {
-    		var $span = $('<span class="language" data-langhtml="_DICENOSTYLE_" />');
+    		//var $span = $('<span class="language" data-langhtml="_DICENOSTYLE_" />');
     		var nome = message.getSpecial("styleName", null);
     		nome = nome === null ? '?????' : nome;
-    		$span.attr('data-langp', nome);
-    		$message.append("(").append($span).append(")");
+    		var noStyleMSG = window.app.ui.language.getLingo("_DICENOSTYLE_").replace("%p", nome);
+    		window.app.ui.hover.makeHover($message[0], noStyleMSG);
+    		//$span.attr('data-langp', nome);
+    		//$message.append("(").append($span).append(")");
     	} else {
     		try {
 	    		if (typeof this.diceListener[styleid] === 'function') {

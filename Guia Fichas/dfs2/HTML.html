@@ -129,40 +129,43 @@
 <div id='dfsFerramentas' class='whiteBG' style='display: none'>
 	<div class='commonsFlex' style="padding: 5px">
 		<div class='centered'>
-			<div class='commonsFlex'>
-				<div>
-					<input id='dfsCalcAtributos' type='text' placeholder='Atributos (Números)' style='width: 120px' />
-					<input id='dfsCalcDano' type='text' placeholder='Dano' style='width: 40px' />
+			<form onsubmit='$("#dfsCalcApplyDamage").trigger("click"); return false;'>
+				<input type="submit" style='display: none' />
+				<div class='commonsFlex'>
+					<div>
+						<input id='dfsCalcAtributos' type='text' placeholder='Atributos (Números)' style='width: 120px' />
+						<input id='dfsCalcDano' type='text' placeholder='Dano' style='width: 40px' />
+					</div>
+					<div>
+						%Dano: <input id='dfsCalcDanoPerc' type='text' data-default="100" style='width: 40px' />
+						%Penetração: <input id='dfsCalcDanoPent' type='text' data-default="0" style='width: 40px' />
+					</div>
 				</div>
-				<div>
-					%Dano: <input id='dfsCalcDanoPerc' type='text' data-default="100" style='width: 40px' />
-					%Penetração: <input id='dfsCalcDanoPent' type='text' data-default="0" style='width: 40px' />
-				</div>
-			</div>
-			<label>
-				<input id='dfsCalcARTESMARCIAIS' type="checkbox" />
-				0 - Artes Marciais
-			</label>
-			<label>
-				<input id='dfsCalcARMA' type="checkbox" />
-				1 - Arma
-			</label>
-			<label>
-				<input id='dfsCalcTECNOLOGIA' type="checkbox" />
-				2 - Tecnologia
-			</label><br />
-			<label>
-				<input id='dfsCalcELEMENTO' type="checkbox" />
-				3 - Elemento
-			</label>
-			<label>
-				<input id='dfsCalcMAGIA' type="checkbox" />
-				4 - Magia
-			</label>
-			<label>
-				<input id='dfsCalcLIDERANCA' type="checkbox" />
-				5 - Liderança
-			</label>
+				<label>
+					<input id='dfsCalcARTESMARCIAIS' type="checkbox" />
+					0 - Artes Marciais
+				</label>
+				<label>
+					<input id='dfsCalcARMA' type="checkbox" />
+					1 - Arma
+				</label>
+				<label>
+					<input id='dfsCalcTECNOLOGIA' type="checkbox" />
+					2 - Tecnologia
+				</label><br />
+				<label>
+					<input id='dfsCalcELEMENTO' type="checkbox" />
+					3 - Elemento
+				</label>
+				<label>
+					<input id='dfsCalcMAGIA' type="checkbox" />
+					4 - Magia
+				</label>
+				<label>
+					<input id='dfsCalcLIDERANCA' type="checkbox" />
+					5 - Liderança
+				</label>
+			</form>
 		</div>
 		<div style="flex: 0 0 auto; text-align: right; padding-right: 5px">
 			<input class='buttonAutomation' id='dfsCalcHealAll' type="button" value="Curar Completamente" /><br />
@@ -174,18 +177,47 @@
 		<input class='buttonAutomation' id='dfsCalcApplyDamageStamina' type="button" value="Aplicar Dano e consumir stamina" />
 		<input class='buttonAutomation' id='dfsCalcApplyDamageAsHeal' type="button" value="Aplicar Dano como Cura" />
 	</div>
-	<hr />
+	<hr style='margin-top: 10px; margin-bottom: 10px' />
 	<div class='commonsFlex'>
 		<div style='flex: 1 0 auto; text-align: right'>
-			<input id='dfsCalcExp' type='text' placeholder='Exp' style='width: 50px' /><br/>
-			<input id='dfsCalcExpReason' type='text' placeholder='Motivo para a Exp' style='width: 180px' />
+			<form onsubmit='$("#dfsCalcApplyExp").trigger("click"); return false;'>
+				<input type="submit" style='display: none' />
+				<input id='dfsCalcExp' type='text' placeholder='Exp' style='width: 50px' /><br/>
+				<input id='dfsCalcExpReason' type='text' placeholder='Motivo para a Exp' style='width: 180px' />
+			</form>
 		</div>
 		<div style='flex: 1 0 auto; text-align: left'>
 			<input class='buttonAutomation' id='dfsCalcApplyExp' type="button" value="Aplicar Exp" /><br/>
 			<input class='buttonAutomation' id='dfsCalcApplyExpToAll' type="button" value="Aplicar Exp a fichas marcadas no Combat Tracker" />
 		</div>
 	</div>
-	<hr />
+	<hr style='margin-top: 10px; margin-bottom: 10px' />
+	<div class='centered'>
+		<form onsubmit='$("#dfsCalcApplyMana").trigger("click"); return false;'>
+			<input type="submit" style='display: none' />
+			<input id='dfsCalcMana' type='text' placeholder='Mana a reduzir' style='width: 80px' />
+			<input id='dfsCalcManaReason' type='text' placeholder='Motivo' style='width: 180px' />
+			<input class='buttonAutomation' id='dfsCalcApplyMana' type="button" value="Remover Mana" />
+		</form>
+		
+		<br/><br/>
+		
+		<form onsubmit='$("#dfsCalcApplyHP").trigger("click"); return false;'>
+			<input type="submit" style='display: none' />
+			<input id='dfsCalcHP' type='text' placeholder='HP a reduzir' style='width: 80px' />
+			<input id='dfsCalcHPReason' type='text' placeholder='Motivo' style='width: 180px' />
+			<input class='buttonAutomation' id='dfsCalcApplyHP' type="button" value="Remover HP" />
+		</form>
+		
+		<br/><br/>
+		
+		<form onsubmit='$("#dfsCalcApplyStamina").trigger("click"); return false;'>
+			<input id='dfsCalcStamina' type='text' placeholder='Stamina a reduzir' style='width: 80px' />
+			<input id='dfsCalcStaminaReason' type='text' placeholder='Motivo' style='width: 180px' />
+			<input class='buttonAutomation' id='dfsCalcApplyStamina' type="button" value="Remover Stamina" />
+		</form>
+	</div>
+	<hr style='margin-top: 10px; margin-bottom: 10px' />
 	<div class='centered'>
 		<label>
 			<input id='dfsCalcSave' type="checkbox" checked />
@@ -578,6 +610,9 @@
 <!-- TECNICAS BEGIN -->
 <div class='commonsMarginTop commonsInputs typedBG headerSize white' style='text-indent: 5px'>
 	Técnicas <a class='sortList button' data-for='Tecnicas'></a>
+	<div title='Clique aqui para abrir Da Rules à esquerda.' id='dfsRulesButton' onclick='window.app.ui.navigator.navigate("http://rules.redpg.com.br/"); return false;'>
+		http://rules.redpg.com.br
+	</div>
 </div>
 <div id='dfsTecnicas' class='sheetList commonsInputs selectable' data-id='Tecnicas'>
 	<div style='border: solid 1px #000; border-top: none'>

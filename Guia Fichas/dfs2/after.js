@@ -5,10 +5,11 @@
 this.sheet.getField("Desvantagens").getValue2 = this.sheet.getField("Desvantagens").getValue;
 this.sheet.getField("Desvantagens").getValue = function () {
 	var r = this.getValue2();
-		if (Array.isArray(r)) {
+	if (Array.isArray(r)) {
 		r.sort(function(a,b) {
 			return b - a;
 		});
+		
 		if (r.length > 4) {
 			return [r[0], r[1], r[2], r[3]];
 		}

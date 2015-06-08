@@ -6,6 +6,9 @@ window.sheetVariableTypes['integer'] = function (element, style, parent) {
 	varb.takeMe(this);
 	varb = null;
 	
+	// although correct, this is unpleasant
+	//this.input.type = 'number';
+	
 	var data = this.visible.dataset;
 	this.defaultValue = data['default'];
 	

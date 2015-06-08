@@ -207,6 +207,7 @@
 #chatMessages > p.chatDice {
     color: #b900b3;
     line-height: 1.5em;
+    font-size: 0.9em;
 }
 
 #chatMessages > p.chatDice a.automaticButton {
@@ -221,14 +222,14 @@
 
 #chatMessages > p.chatDice .box {
     display: inline-block;
-    font-size: 1.2em;
     vertical-align: middle;
     background-color: #ffe3fe;
-    padding: 0.3em;
+    padding: 0.25em;
+    padding-top: 0px;
+    padding-bottom: 0px;
     border: solid 1px;
     border-color: #e782e4;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    margin-left: 4px;
     border-radius: 15%;
     min-width: 1em;
     text-align: center;
@@ -254,6 +255,8 @@
 
 #chatMessages > p.chatDice > span.reason {
     display: block;
+    font-size: 0.9em;
+    line-height: initial;
 }
 
 #chatMessages > p.chatDice > span.reason > b:after {
@@ -264,8 +267,7 @@
     display: inline-block;
     font-size: 1.5em;
     vertical-align: middle;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    margin-left: 4px;
 }
 
 #chatMessages > p.chatWhisper {

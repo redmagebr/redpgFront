@@ -1,3 +1,23 @@
+#dfsRulesButton {
+	color: #cbcfff;
+	font-weight: bold;
+	float:right;
+	line-height: inherit;
+	height: inherit;
+	font-size: 0.7em;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+#dfsRulesButton:hover {
+	cursor: pointer;
+	color: #848dff;
+}
+
+#dfsRulesButton:active {
+	color: #5c63bb
+}
+
 /* Ferramentas */
 #dfsFerramentas {
 	font-size: 0.8em;

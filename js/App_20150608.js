@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 56, 1];
+    this.version = [0, 56, 2];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -3525,9 +3525,11 @@ window.lingo['pt_br'] = {
     _IMAGESHEADER_ : 'Imagens',
     _IMAGESCLOUD_ : 'Essa imagem está salva no RedPG e ocupa espaço.',
     _IMAGESFOLDERPROMPT_ : 'Nova pasta (deixe vazio para nenhuma)',
-    _IMAGESEXPLAIN1_ : 'Imagens ficam anexadas à sua conta ao invés de a algum jogo em específico. O espaço que cada conta possui para imagens é finito e deve-se tomar cuidado com o tamanho das imagens que se guarda aqui.',
-    _IMAGESEXPLAIN2_ : 'Você pode aumentar seu espaço para imagens através de doações que ajudam a pagar o servidor do RedPG. Se seu espaço para imagens diminuir além do seu espaço gasto com imagens, suas imagens não serão apagadas, mas você não poderá enviar novas imagens até reduzir o uso de espaço.',
-    _IMAGESEXPLAIN3_ : 'Nos nomes das imagens, qualquer coisa entre parênteses será ignorada na hora de imprimir seu nome, tanto quando usada como Persona quanto quando enviada para o chat.',
+    _IMAGESGEXPLAIN1_ : 'Imagens ficam anexadas à sua conta e podem ser utilizadas em qualquer seção do RedPG.',
+    _IMAGESGEXPLAIN2_ : 'Existem duas formas de guardar imagens. Na primeira forma, você envia apenas o Link de uma imagem e esse Link é salvo para ser usado posteriormente. A segunda forma é enviando as imagens direto para o RedPG.',
+    _IMAGESGEXPLAIN3_ : 'A primeira forma é barata para o servidor, então todos os usuários podem utilizar ela sem problemas. A segunda forma consome recursos do servidor, então está disponível apenas a doadores. Quando espaço fornecido para uploads acabar, o servidor irá preferir deletar suas imagens mais velhas até seu espaço gasto alcançar o seu espaço máximo atual. O servidor apenas deletará as imagens quando for conveniente, o que pode acontecer instantes após seu espaço acabar ou meses depois.',
+    _IMAGESALL_ : "Imagens",
+    _IMAGESALLEXPLAIN_ : "Essa é sua lista completa de imagens. Imagens feitas como upload vão receber um ícone especial de Nuvem para indicar esse detalhe.",
     _IMAGESUPLOADED_ : 'Imagens Salvas (Não implementadas)',
     _IMAGESUPLOADEDEXPLAIN_ : 'Imagens salvas no servidor não serão perdidas entre sessões. Caso você tenha mais imagens do que seu espaço total, elas não serão deletadas, mas você não poderá enviar mais imagens até remover o suficiente.',
     _IMAGESLINKED_ : 'Imagens Linkadas',
@@ -4175,9 +4177,11 @@ window.lingo['en'] = {
     _IMAGESHEADER_ : 'Images',
     _IMAGESFOLDERPROMPT_ : 'New folder (leave empty for none)',
     _IMAGESCLOUD_ : 'This image has been uploaded and consumes storage space.',
-    _IMAGESEXPLAIN1_ : 'Images are attached to your account. The space each account has for images is finite, so caution needs to be exerted when uploading new files.',
-    _IMAGESEXPLAIN2_ : 'You can increase your total space through donations which help cover RedPG\'s server costs. If you end up having more images uploaded than your total space allows, they will not be deleted, but you will be unable to upload new images until you bring your usage down.',
-    _IMAGESEXPLAIN3_ : 'When printing an image name, as a Persona or in the Chat, anything between parentheses will not be printed.',
+    _IMAGESGEXPLAIN1_ : 'Images are attached to your account and are usable across all RedPG.',
+    _IMAGESGEXPLAIN2_ : 'Images are stored in two different ways. In the first one, only a link is stored to be used later. The second one will upload images straight into RedPG.',
+    _IMAGESGEXPLAIN3_ : 'The first form is easy on the server, so it\'s completely free. The second form spends a lot of server resources, so it is only available for donors. When your space expires, the server will prefer to delete old images until your space used becomes lower or equal to your available space. The server will only delete images at its own convenience, which may happen immediately as your space expires or a month afterwards - it is never scheduled.',
+    _IMAGESALL_ : "Images",
+    _IMAGESALLEXPLAIN_ : "This is your list of images. Images that were uploaded to RedPG will be marked with a Cloud icon.",
     _IMAGESUPLOADED_ : 'Server Images (Not implemented)',
     _IMAGESUPLOADEDEXPLAIN_ : 'Server Images will not be lost between sessions. If you end up having more images uploaded than your total space allows, they will not be deleted, but you will be unable to upload new images until you bring your usage down.',
     _IMAGESLINKED_ : 'Linked Images',
@@ -5192,6 +5196,9 @@ function UI () {
      */
     this.callLeftWindow = function (windowid, history) {
         if (history === undefined) history = true;
+        if (this.isFullscreen()) {
+            this.hideRightWindows();
+        }
         if (windowid === this.lastLeft) return;
         if (history && windowid !== this.lastLeft) {
             this.lastLeft = windowid;
@@ -5217,9 +5224,6 @@ function UI () {
                 $(this).trigger('shown.UI');
             }
         );
-        if (this.isFullscreen()) {
-            this.hideRightWindows();
-        }
     };
     
     this.closeLeftWindow = function (history) {
@@ -6776,6 +6780,7 @@ function ImageUI () {
             this.$uploadForm.unhide();
         }
     };
+    this.updateForm();
     
     this.submitUpload = function () {
         this.$corsError.hide();
@@ -10710,11 +10715,13 @@ function DiceController () {
     
     this.interceptDice = function (styleid, message, $message) {
     	if (this.diceListener[styleid] === undefined) {
-    		var $span = $('<span class="language" data-langhtml="_DICENOSTYLE_" />');
+    		//var $span = $('<span class="language" data-langhtml="_DICENOSTYLE_" />');
     		var nome = message.getSpecial("styleName", null);
     		nome = nome === null ? '?????' : nome;
-    		$span.attr('data-langp', nome);
-    		$message.append("(").append($span).append(")");
+    		var noStyleMSG = window.app.ui.language.getLingo("_DICENOSTYLE_").replace("%p", nome);
+    		window.app.ui.hover.makeHover($message[0], noStyleMSG);
+    		//$span.attr('data-langp', nome);
+    		//$message.append("(").append($span).append(")");
     	} else {
     		try {
 	    		if (typeof this.diceListener[styleid] === 'function') {
@@ -15252,10 +15259,10 @@ window.chatModules.push({
         
         if (msg.msg !== null && msg.msg !== '') {
             var $reason = $('<span class="reason" />');
-            $reason.append($('<b class="language" data-langhtml="_DICEREASON_" />'));
-            $reason.append($('<p />').text(msg.msg).html());
+        	$reason.append($('<b class="language" data-langhtml="_DICEREASON_" />'));
+        	$reason.append($('<p />').text(msg.msg).html());
 
-            $msg.append($reason);
+        	$msg.append($reason);
         }
         
         
@@ -18387,6 +18394,9 @@ window.sheetVariableTypes['integer'] = function (element, style, parent) {
 	var varb = new Variable(element, style, parent, true, true);
 	varb.takeMe(this);
 	varb = null;
+	
+	// although correct, this is unpleasant
+	//this.input.type = 'number';
 	
 	var data = this.visible.dataset;
 	this.defaultValue = data['default'];

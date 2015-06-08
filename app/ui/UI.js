@@ -415,6 +415,9 @@ function UI () {
      */
     this.callLeftWindow = function (windowid, history) {
         if (history === undefined) history = true;
+        if (this.isFullscreen()) {
+            this.hideRightWindows();
+        }
         if (windowid === this.lastLeft) return;
         if (history && windowid !== this.lastLeft) {
             this.lastLeft = windowid;
@@ -440,9 +443,6 @@ function UI () {
                 $(this).trigger('shown.UI');
             }
         );
-        if (this.isFullscreen()) {
-            this.hideRightWindows();
-        }
     };
     
     this.closeLeftWindow = function (history) {
