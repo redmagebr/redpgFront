@@ -1,0 +1,63 @@
+#mapMap {
+    position: absolute;
+    overflow: auto;
+    background-color: #fff;
+    top: 42px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: solid 1px #000;
+}
+
+#mapMap > div.token {
+    position: absolute;
+    z-index: 3;
+}
+
+#mapMap > div.token > img.token {
+    border: solid 3px transparent;
+    box-sizing: border-box;
+    pointer-events: none;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#mapMap > div.token > img.token.turn {
+    border-color: #002099;
+    border-top-color: #002099 !important;
+    border-left-color: #002099 !important;
+    border-radius: 100%;
+}
+
+#mapMap > div.token > img.token.target {
+    border-color: #f00;
+    border-bottom-color: #f00 !important;
+    border-right-color: #f00 !important;
+    border-radius: 100%;
+}
+
+#mapMap > div.token:hover {
+    cursor: move;
+    background-color: rgba(0,0,0,.5);
+}
+
+#mapBackground {
+    position: absolute;
+    z-index: 1;
+}
+
+#mapCanvas {
+    position: absolute;
+    z-index: 2;
+}
+
+#mapConfig > h1 {
+    margin: 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-indent: 1em;
+}
+
+#mapTokenList > div {
+    margin-left: 1em;
+}

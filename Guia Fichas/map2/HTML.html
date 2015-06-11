@@ -1,0 +1,26 @@
+<div class='commonsInputs typedBG typedColor headerSize centered sheetName' style='height: 30px; line-height: 30px'></div>
+
+<div id='mapView' style='background-color: #000; position: absolute; bottom: 0px; top: 30px; left: 0px; right: 0px; overflow: auto'>
+	<div id='mapContainer' style='position: absolute'>
+		<div class='token' style='height: 40px; width: 40px' style='display: flex'>
+			<div style='background-image: url("https://www.dropbox.com/s/9njw5y0oanpkbda/TokenLassie.png?dl=1");'></div>
+		</div>
+		<div class='token target' style='left: 100px; top: 100px; height: 80px; width: 80px' style='display: flex'>
+			<div style='background-image: url("https://www.dropbox.com/s/9njw5y0oanpkbda/TokenLassie.png?dl=1");'></div>
+		</div>
+		<canvas id='mapCanvas' style='position: absolute; z-index: 3' width='100' height='100'></canvas>
+		<canvas id='fogCanvas' style='position: absolute; z-index: 3' width='100' height='100'></canvas>
+		<img id='mapPicture' style='position: absolute; z-index: 1' src="http://i.imgur.com/UdtGefT.jpg" />
+	</div>
+</div>
+
+<div id='mapEdit'>
+	<div class='typedBG commonsMarginTop language' data-langhtml='_SHEETCOMMONSMAPINFO_'></div>
+</div>
+
+<div style='display: none'>
+	<a class='sheetVariable' data-id='offsetX' data-type='number'></a>
+	<a class='sheetVariable' data-id='offsetY' data-type='number'></a>
+	<a class='sheetVariable' data-id='squareSize' data-type='number'></a>
+	<a class='sheetVariable' data-id='mapType' data-type='select' data-options='Grid;Hexa'></a>
+</div>
