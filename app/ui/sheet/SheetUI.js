@@ -467,12 +467,16 @@ function SheetUI() {
         $dom.on('mouseenter', window.app.emulateBind(function (e) {
             window.app.ui.addonui.$handle.text(sheet.name);
             var $ul = window.app.ui.addonui.$ul.empty();
+            var styleName = sheet.styleName;
+            if (styleName.charAt(0) === '_') {
+            	styleName = window.app.ui.language.getLingo(styleName);
+            }
             $ul.append(
                 $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERCREATOR_") + ": </strong>"
                                  + sheet.criadorNick + '#' + sheet.criadorNickSufix)
             ).append(
                 $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERSTYLE_") + ": </strong>"
-                                 + sheet.styleName)
+                                 + styleName)
             ).append(
                 $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERSTYLECREATOR_") + ": </strong>"
                                  + sheet.nickStyleCreator + '#' + sheet.nicksufixStyleCreator)

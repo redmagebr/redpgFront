@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 56, 2];
+    this.version = [0, 56, 3];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -1070,6 +1070,20 @@ function ChatWsApp () {
             this.sendAction("memory", JSON.stringify(this.room.memory.memory));
             this.room.memory.updateFromJSON(this.room.memory.memory);
         }
+    };
+    
+    this.printSystemMessage = function (langhtml, p) {
+    	var $html = $('<p class="chatSistema" />');
+    	var $span = $('<span class="language" />');
+    	
+    	$span.attr("data-langhtml", langhtml);
+    	if (p !== undefined) {
+    		$span.attr("data-langp", p);
+    	}
+    	
+        $html.append($span);
+        window.app.ui.language.applyLanguageOn($html);
+        window.app.ui.chat.appendToMessages($html);
     };
 }
 
@@ -4108,6 +4122,23 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
     _SHEETPLAYER_ : "Jogador",
     
+    /* New Map */
+    _SHEETMAPSMOVEMENTREQUESTED_ : 'Movimento requisitado.',
+    _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requisitou mover',
+    _SHEETMAPPICTURE_ : 'Imagem de Fundo',
+    _SHEETMAPTOKENEXPL_ : 'Abaixo defina quais Tokens estarão no mapa. Tokens são uma imagem que ocupa um certo espaço no mapa e apontam uma direção. Caso o token seja marcado como Rodar, ele vai rodar para demonstrar para qual direção está apontando. Imagens que rodam devem começar olhando para o Sul. O espaço ocupado é em área (quadrados do mapa).',
+    _SHEETMAPTOKENROTATE_ : 'Rodar',
+    _SHEETMAPADDTOKEN_ : 'Adicionar Token',
+    _SHEETMAPSHOWGRID_ : 'Mostrar Grade',
+    _SHEETMAPGRIDEXPLAIN_ : 'Independente de mostrar a grade, o mapa possuirá ela e você pode alterar ela. Essa opção apenas define se o mapa irá desenhar as linhas pretas para mostrar cada posição.',
+    _SHEETMAPAUTOMOVE_ : 'Aceitar Movimentos Automaticamente (Não implementado)',
+    _SHEETMAPGRADEBUTTON_ : 'Definir Grade',
+    _SHEETMAPFOGBUTTON_ : 'Definir Névoa',
+    _SHEETMAPCENTERBUTTON_ : 'Centrar essa Visão para Todos',
+    _SHEETMAPADDVISIONBUTTON_ : 'Adicionar Visão',
+    _SHEETMAPREMOVEVISIONBUTTON_ : 'Remover Visão',
+    _SHEETMAPHIDEALLBUTTON_ : 'Esconder mapa inteiro',
+    _SHEETMAPSHOWALLBUTTON_ : 'Revelar mapa inteiro',
     
     /* Map */
     _MAPCURRENTTURN_ : 'Turno Atual',
@@ -4751,6 +4782,25 @@ window.lingo['en'] = {
     _SHEETMAP_ : 'Map',
     _SHEETCOMMONSADDTOKEN_ : 'Add new token',
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+
+    
+    /* New Map */
+    _SHEETMAPSMOVEMENTREQUESTED_ : 'Movement requested.',
+    _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requested movement',
+    _SHEETMAPPICTURE_ : 'Background Image',
+    _SHEETMAPTOKENEXPL_ : 'Define which Tokens will be available below. Tokens are an Image that is on the map, occupies a certain space and points towards a direction. If the token is marked to rotate, it will rotate to point the direction it is facing. Rotating images must initially point towards the South. The space occupied is notated in squares (as per the map grid).',
+    _SHEETMAPTOKENROTATE_ : 'Rotate',
+    _SHEETMAPADDTOKEN_ : 'Add Token',
+    _SHEETMAPSHOWGRID_ : 'Show Grid',
+    _SHEETMAPGRIDEXPLAIN_ : 'The map will have a grid regardless of this option\'s value. This option only defines whether the map will actually draw the grid lines.',
+    _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement (Not Implemented)',
+    _SHEETMAPGRADEBUTTON_ : 'Define Grid',
+    _SHEETMAPFOGBUTTON_ : 'Define Fog',
+    _SHEETMAPCENTERBUTTON_ : 'Center this Vision for All',
+    _SHEETMAPADDVISIONBUTTON_ : 'Add visibility',
+    _SHEETMAPREMOVEVISIONBUTTON_ : 'Remove visibility',
+    _SHEETMAPHIDEALLBUTTON_ : 'Hide whole map',
+    _SHEETMAPSHOWALLBUTTON_ : 'Reveal whole map',
     
     
     /* FOrum */
@@ -7574,12 +7624,16 @@ function SheetUI() {
         $dom.on('mouseenter', window.app.emulateBind(function (e) {
             window.app.ui.addonui.$handle.text(sheet.name);
             var $ul = window.app.ui.addonui.$ul.empty();
+            var styleName = sheet.styleName;
+            if (styleName.charAt(0) === '_') {
+            	styleName = window.app.ui.language.getLingo(styleName);
+            }
             $ul.append(
                 $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERCREATOR_") + ": </strong>"
                                  + sheet.criadorNick + '#' + sheet.criadorNickSufix)
             ).append(
                 $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERSTYLE_") + ": </strong>"
-                                 + sheet.styleName)
+                                 + styleName)
             ).append(
                 $('<li />').append('<strong>' + window.app.ui.language.getLingo("_SHEETHOVERSTYLECREATOR_") + ": </strong>"
                                  + sheet.nickStyleCreator + '#' + sheet.nicksufixStyleCreator)
@@ -9431,12 +9485,13 @@ function CombatTracker () {
         var message = new Message();
         message.module = "sheettr";
         message.setSpecial('sheetname', this.myStuff.ordered[this.myStuff.turn].name);
+        message.setSpecial('sheetid', this.myStuff.ordered[this.myStuff.turn].id);
         message.setOrigin(window.app.loginapp.user.id);
         message.roomid = window.app.ui.chat.cc.room.id;
         message.setSpecial('player', this.myStuff.ordered[this.myStuff.turn].player);
         window.app.chatapp.printAndSend(message, true);
         
-        this.bufftracker.printBuffs(this.myStuff.ordered[this.myStuff.turn].id);
+        //this.bufftracker.printBuffs(this.myStuff.ordered[this.myStuff.turn].id);
     };
     
     this.getCurrentTurn = function () {
@@ -9523,16 +9578,21 @@ function BuffTracker (mainTracker) {
         for (var i = 0; i < this.mainTracker.myStuff.ordered.length; i++) {
             idToName[this.mainTracker.myStuff.ordered[i].id] = this.mainTracker.myStuff.ordered[i].name;
         }
-        var $html = $('<p class="chatSistema" />');
-        $html.append("<span class='language' data-langhtml='_CURRENTBUFFS_'></span> " + idToName[id] + ": ");
-        var buffMessages = [];
-        //[buffer, targetId, duration, buffName, buffEndOfTurn]
-        for (var i = 0; i < buffs.length; i++) {
-             buffMessages.push(buffs[i][3] + " <span class='language' data-langhtml='_CURRENTBUFFBY_'></span> " + idToName[buffs[i][0]]);
-        }
-        $html.append(buffMessages.join(", "));
+        var $html = $('<p class="chatSistema" style="font-size:0.9em" />');
+        $html.append("<span class='language' data-langhtml='_CURRENTBUFFS_'></span> " + idToName[id] + ":");
+
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
+        
+        //[buffer, targetId, duration, buffName, buffEndOfTurn]
+        for (var i = 0; i < buffs.length; i++) {
+        	var $Bhtml = $('<p class="chatSistema" style="font-size: 0.9em" />');
+            $Bhtml.append(buffs[i][3] + " <span class='language' data-langhtml='_CURRENTBUFFBY_'></span> " + idToName[buffs[i][0]]);
+            
+            window.app.ui.language.applyLanguageOn($Bhtml);
+            window.app.ui.chat.appendToMessages($Bhtml);
+        }
+        //$html.append(buffMessages.join(", "));
     };
     
     this.moveTurns = function (oldTurn, newTurn) {
@@ -15377,6 +15437,7 @@ window.chatModules.push({
      * @returns {jQuery || null}
      */
     get$ : function (msg, slashCMD, message) {
+    	if (window.app.ui.isStreaming()) return null;
         var $html = $('<p class="chatSistema" />');
         var targetId = msg.getSpecial("target", -1);
         var targetName;
@@ -15427,9 +15488,7 @@ window.chatModules.push({
                 .append(" <span class='language' data-langhtml='_BUFFAPPLYINGFROM_'></span> " + applierName + ". ")
                 .append($a);
         
-        if (!window.app.chatapp.room.getMe().isStoryteller()) {
-            $a.remove();
-        } else if (window.app.chatapp.room.getMe().id === msg.origin && !window.app.ui.chat.cc.firstPrint) {
+        if (window.app.chatapp.room.getMe().id === msg.origin && !window.app.ui.chat.cc.firstPrint && msg.localid !== null) {
         	$a.trigger('click');
         }
         
@@ -16108,6 +16167,47 @@ if (window.chatModules === undefined) window.chatModules = [];
  */
 window.chatModules.push({
 
+    ID : 'sheetcmd',
+    
+    Slash : [],
+    
+    
+    isValid : function (slashCMD, message) {
+        return false;
+    },
+
+    /**
+     * @param {Message} msg
+     * @returns {jQuery}
+     */
+    get$ : function (msg) {
+    	if (window.app.ui.chat.cc.firstPrint) return null;
+    	
+        var styleid = msg.getSpecial('styleid', 0);
+        if (typeof window.app.ui.sheetui.controller.styles[styleid] === 'undefined') {
+            return null;
+        }
+        
+        try {
+        	window.app.ui.sheetui.controller.styles[styleid].interpretCommand(msg);
+        } catch (e) {
+        	
+        }
+        return null;
+    },
+    
+    getMsg : function (slashCMD, message) {
+        return null;
+    }
+});
+
+if (window.chatModules === undefined) window.chatModules = [];
+/**
+ * 
+ * If not making a Module for personal use, consider using the Language module to print any messages the module has.
+ */
+window.chatModules.push({
+
     ID : 'sheettr',
     
     Slash : [],
@@ -16149,6 +16249,10 @@ window.chatModules.push({
             audio.play();
         }
         
+        var sheetid = msg.getSpecial("sheetid", null);
+        if (sheetid !== null && !window.app.ui.chat.cc.firstPrint) {
+        	window.app.ui.chat.tracker.bufftracker.printBuffs(sheetid);
+        }
         
         return $msg;
     },
@@ -16869,54 +16973,20 @@ function Sheet_Style (sheetInstance, styleInstance) {
     	}
     };
     
-    // SHEET
-    try {
-    	eval(this.styleInstance.beforeProcess);
-    } catch (e) {
-    	console.log("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
-    	console.log(e);
-    	console.log(e.stack);
-    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
-    		alert("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + e.lineNumber + ".\n More details on Console.");
-    }
-	this.sheet = new Sheet([this.visible], this);
-	try {
-    	eval(this.styleInstance.afterProcess);
-    } catch (e) {
-    	console.log("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
-    	console.log(e);
-    	console.log(e.stack);
-    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
-    		alert("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + ".\n More details on Console.");
-    }
-	this.sheet.updateSheetInstance();
-	this.loading = false;
-	this.triggerChanged(null);
-	this.sheet.addChangedListener({
-		style : this,
-		sheet : this.sheet,
-		handleEvent : function () {
-			if (!this.style.loading) {
-				var obj = this.style.sheet.getObject();
-				this.style.sheetInstance.changed = true;
-				this.style.sheetInstance.values = obj;
-				//window.app.memory.setMemory("Sheet_" + this.style.sheetInstance.id, obj);
-			}
-		}
-	});
-	this.sheet.triggerLoaded();
-	var finish = new Date().getTime();
-	console.log("Sheet Generation Process took " + (finish - start) + " ms to finish for Style " + this.id + ", " + this.styleInstance.name + ".");
+this.interpretCommand = function (message) {};
 	
-	this.updateSheetInstance = function () {
-		this.loading = true;
-		this.sheet.updateSheetInstance();
-		this.loading = false;
-		this.triggerChanged(null);
-	};
-	
-	this.seppuku = function () {
-		this.sheet.seppuku();
+	this.sendCommand = function(command, special) {
+		var message = new Message();
+		message.module = 'sheetcmd';
+		message.setMessage(command);
+		
+		for (key in special) {
+        	message.setSpecial(key, special[key]);
+        }
+		
+		message.setSpecial('styleid', this.id);
+		
+		window.app.chatapp.fixPrintAndSend(message, true);
 	};
 	
 	this.registerDiceAutomation = function (diceInfo) {
@@ -16988,6 +17058,56 @@ function Sheet_Style (sheetInstance, styleInstance) {
 //	        };
 //	    }
 	};
+	
+	this.updateSheetInstance = function () {
+		this.loading = true;
+		this.sheet.updateSheetInstance();
+		this.loading = false;
+		this.triggerChanged(null);
+	};
+	
+	this.seppuku = function () {
+		this.sheet.seppuku();
+	};
+    
+    // SHEET
+    try {
+    	eval(this.styleInstance.beforeProcess);
+    } catch (e) {
+    	console.log("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
+    	console.log(e);
+    	console.log(e.stack);
+    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
+    		alert("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + e.lineNumber + ".\n More details on Console.");
+    }
+	this.sheet = new Sheet([this.visible], this);
+	try {
+    	eval(this.styleInstance.afterProcess);
+    } catch (e) {
+    	console.log("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
+    	console.log(e);
+    	console.log(e.stack);
+    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
+    		alert("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + ".\n More details on Console.");
+    }
+	this.sheet.updateSheetInstance();
+	this.loading = false;
+	this.triggerChanged(null);
+	this.sheet.addChangedListener({
+		style : this,
+		sheet : this.sheet,
+		handleEvent : function () {
+			if (!this.style.loading) {
+				var obj = this.style.sheet.getObject();
+				this.style.sheetInstance.changed = true;
+				this.style.sheetInstance.values = obj;
+				//window.app.memory.setMemory("Sheet_" + this.style.sheetInstance.id, obj);
+			}
+		}
+	});
+	this.sheet.triggerLoaded();
+	var finish = new Date().getTime();
+	console.log("Sheet Generation Process took " + (finish - start) + " ms to finish for Style " + this.id + ", " + this.styleInstance.name + ".");
 }
 
 function Sheet (elements, style, parent) {
@@ -17850,6 +17970,10 @@ function Variable (element, style, parent, createInput, createTextnode) {
 		this.input.type = "text";
 		this.input.value = this.defaultValue;
 		this.input.placeholder = this.placeholder;
+		
+		if (!this.editable) {
+			this.input.disabled = true;
+		}
 		
 		this.inputListener = {
 			variable : this,

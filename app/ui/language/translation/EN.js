@@ -609,6 +609,25 @@ window.lingo['en'] = {
     _SHEETMAP_ : 'Map',
     _SHEETCOMMONSADDTOKEN_ : 'Add new token',
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+
+    
+    /* New Map */
+    _SHEETMAPSMOVEMENTREQUESTED_ : 'Movement requested.',
+    _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requested movement',
+    _SHEETMAPPICTURE_ : 'Background Image',
+    _SHEETMAPTOKENEXPL_ : 'Define which Tokens will be available below. Tokens are an Image that is on the map, occupies a certain space and points towards a direction. If the token is marked to rotate, it will rotate to point the direction it is facing. Rotating images must initially point towards the South. The space occupied is notated in squares (as per the map grid).',
+    _SHEETMAPTOKENROTATE_ : 'Rotate',
+    _SHEETMAPADDTOKEN_ : 'Add Token',
+    _SHEETMAPSHOWGRID_ : 'Show Grid',
+    _SHEETMAPGRIDEXPLAIN_ : 'The map will have a grid regardless of this option\'s value. This option only defines whether the map will actually draw the grid lines.',
+    _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement (Not Implemented)',
+    _SHEETMAPGRADEBUTTON_ : 'Define Grid',
+    _SHEETMAPFOGBUTTON_ : 'Define Fog',
+    _SHEETMAPCENTERBUTTON_ : 'Center this Vision for All',
+    _SHEETMAPADDVISIONBUTTON_ : 'Add visibility',
+    _SHEETMAPREMOVEVISIONBUTTON_ : 'Remove visibility',
+    _SHEETMAPHIDEALLBUTTON_ : 'Hide whole map',
+    _SHEETMAPSHOWALLBUTTON_ : 'Reveal whole map',
     
     
     /* FOrum */

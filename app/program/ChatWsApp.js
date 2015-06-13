@@ -389,4 +389,18 @@ function ChatWsApp () {
             this.room.memory.updateFromJSON(this.room.memory.memory);
         }
     };
+    
+    this.printSystemMessage = function (langhtml, p) {
+    	var $html = $('<p class="chatSistema" />');
+    	var $span = $('<span class="language" />');
+    	
+    	$span.attr("data-langhtml", langhtml);
+    	if (p !== undefined) {
+    		$span.attr("data-langp", p);
+    	}
+    	
+        $html.append($span);
+        window.app.ui.language.applyLanguageOn($html);
+        window.app.ui.chat.appendToMessages($html);
+    };
 }

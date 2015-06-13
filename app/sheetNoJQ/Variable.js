@@ -35,6 +35,10 @@ function Variable (element, style, parent, createInput, createTextnode) {
 		this.input.value = this.defaultValue;
 		this.input.placeholder = this.placeholder;
 		
+		if (!this.editable) {
+			this.input.disabled = true;
+		}
+		
 		this.inputListener = {
 			variable : this,
 			input : this.input,

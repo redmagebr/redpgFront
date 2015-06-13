@@ -620,6 +620,23 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
     _SHEETPLAYER_ : "Jogador",
     
+    /* New Map */
+    _SHEETMAPSMOVEMENTREQUESTED_ : 'Movimento requisitado.',
+    _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requisitou mover',
+    _SHEETMAPPICTURE_ : 'Imagem de Fundo',
+    _SHEETMAPTOKENEXPL_ : 'Abaixo defina quais Tokens estarão no mapa. Tokens são uma imagem que ocupa um certo espaço no mapa e apontam uma direção. Caso o token seja marcado como Rodar, ele vai rodar para demonstrar para qual direção está apontando. Imagens que rodam devem começar olhando para o Sul. O espaço ocupado é em área (quadrados do mapa).',
+    _SHEETMAPTOKENROTATE_ : 'Rodar',
+    _SHEETMAPADDTOKEN_ : 'Adicionar Token',
+    _SHEETMAPSHOWGRID_ : 'Mostrar Grade',
+    _SHEETMAPGRIDEXPLAIN_ : 'Independente de mostrar a grade, o mapa possuirá ela e você pode alterar ela. Essa opção apenas define se o mapa irá desenhar as linhas pretas para mostrar cada posição.',
+    _SHEETMAPAUTOMOVE_ : 'Aceitar Movimentos Automaticamente (Não implementado)',
+    _SHEETMAPGRADEBUTTON_ : 'Definir Grade',
+    _SHEETMAPFOGBUTTON_ : 'Definir Névoa',
+    _SHEETMAPCENTERBUTTON_ : 'Centrar essa Visão para Todos',
+    _SHEETMAPADDVISIONBUTTON_ : 'Adicionar Visão',
+    _SHEETMAPREMOVEVISIONBUTTON_ : 'Remover Visão',
+    _SHEETMAPHIDEALLBUTTON_ : 'Esconder mapa inteiro',
+    _SHEETMAPSHOWALLBUTTON_ : 'Revelar mapa inteiro',
     
     /* Map */
     _MAPCURRENTTURN_ : 'Turno Atual',

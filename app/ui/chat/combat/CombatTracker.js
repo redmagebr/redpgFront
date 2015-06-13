@@ -381,12 +381,13 @@ function CombatTracker () {
         var message = new Message();
         message.module = "sheettr";
         message.setSpecial('sheetname', this.myStuff.ordered[this.myStuff.turn].name);
+        message.setSpecial('sheetid', this.myStuff.ordered[this.myStuff.turn].id);
         message.setOrigin(window.app.loginapp.user.id);
         message.roomid = window.app.ui.chat.cc.room.id;
         message.setSpecial('player', this.myStuff.ordered[this.myStuff.turn].player);
         window.app.chatapp.printAndSend(message, true);
         
-        this.bufftracker.printBuffs(this.myStuff.ordered[this.myStuff.turn].id);
+        //this.bufftracker.printBuffs(this.myStuff.ordered[this.myStuff.turn].id);
     };
     
     this.getCurrentTurn = function () {

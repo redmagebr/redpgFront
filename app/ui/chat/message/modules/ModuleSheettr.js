@@ -46,6 +46,10 @@ window.chatModules.push({
             audio.play();
         }
         
+        var sheetid = msg.getSpecial("sheetid", null);
+        if (sheetid !== null && !window.app.ui.chat.cc.firstPrint) {
+        	window.app.ui.chat.tracker.bufftracker.printBuffs(sheetid);
+        }
         
         return $msg;
     },

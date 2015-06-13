@@ -1,3 +1,69 @@
+#sheetDiv p {
+	margin: 0px;
+	padding: 4px;
+	text-align: justify;
+}
+
+#mapButtons > a {
+	padding: 5px;
+}
+
+#sheetDiv {
+	font-family: alegreya;
+}
+
+#fogOptions {
+	position: absolute;
+	left: 5px;
+	bottom: 11px;
+	background-color: white;
+	border: solid 1px #000;
+	z-index: 7;
+}
+
+#fogOptions > a {
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	padding-left: 7px;
+	padding-right: 7px;
+	color: #00259e;
+	font-size: 80%;
+}
+
+#fogOptions > a:hover {
+	color: #003bff;
+	cursor: pointer;
+}
+
+#fogOptions > a.toggled {
+	color: #0b9a00;
+}
+
+#fogOptions > a.toggled:hover {
+	color: #12ff00;
+}
+
+#mapTokenOptions {
+	display: none;
+	position: absolute;
+	z-index: 6;
+	pointer-events: none;
+}
+
+
+#mapTokenOptions > a {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background-image: url("img/mapArrowNorth.png");
+	pointer-events: auto;
+}
+
+#mapTokenOptions > a:hover {
+	cursor: pointer;
+}
+
 #sheetDiv input {
 	line-height: initial !important;
 }
@@ -6,6 +72,7 @@
 	position: absolute;
 	z-index: 4;
 	text-align: center;
+	pointer-events: auto
 }
 
 #mapContainer div.token:hover {
@@ -15,13 +82,35 @@
 
 #mapContainer div.token > div {
 	position: absolute;
-	top: 2px;
-	left: 2px;
-	bottom: 2px;
-	right: 2px;
+	z-index: 1;
+	top: 4px;
+	left: 4px;
+	bottom: 4px;
+	right: 4px;
 	background-position: center center;
     background-repeat:no-repeat;
     background-size:contain;
+}
+
+#mapContainer div.token > a {
+	position: absolute;
+	z-index: 2;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	background-image: url("img/mapArrowSouth.png");
+	background-position: center center;
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+#mapContainer div.token.rotate > a {
+	display: none;
+}
+
+#mapContainer div.token img {
+	display: none;
 }
 
 #mapContainer div.token.target > div {
@@ -30,5 +119,5 @@
 	bottom: 0px;
 	right: 0px;
 	left: 0px;
-	border-radius: 25%;
+	border-radius: 50%;
 }

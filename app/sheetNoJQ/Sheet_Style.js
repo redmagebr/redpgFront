@@ -112,54 +112,20 @@ function Sheet_Style (sheetInstance, styleInstance) {
     	}
     };
     
-    // SHEET
-    try {
-    	eval(this.styleInstance.beforeProcess);
-    } catch (e) {
-    	console.log("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
-    	console.log(e);
-    	console.log(e.stack);
-    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
-    		alert("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + e.lineNumber + ".\n More details on Console.");
-    }
-	this.sheet = new Sheet([this.visible], this);
-	try {
-    	eval(this.styleInstance.afterProcess);
-    } catch (e) {
-    	console.log("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
-    	console.log(e);
-    	console.log(e.stack);
-    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
-    		alert("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + ".\n More details on Console.");
-    }
-	this.sheet.updateSheetInstance();
-	this.loading = false;
-	this.triggerChanged(null);
-	this.sheet.addChangedListener({
-		style : this,
-		sheet : this.sheet,
-		handleEvent : function () {
-			if (!this.style.loading) {
-				var obj = this.style.sheet.getObject();
-				this.style.sheetInstance.changed = true;
-				this.style.sheetInstance.values = obj;
-				//window.app.memory.setMemory("Sheet_" + this.style.sheetInstance.id, obj);
-			}
-		}
-	});
-	this.sheet.triggerLoaded();
-	var finish = new Date().getTime();
-	console.log("Sheet Generation Process took " + (finish - start) + " ms to finish for Style " + this.id + ", " + this.styleInstance.name + ".");
+this.interpretCommand = function (message) {};
 	
-	this.updateSheetInstance = function () {
-		this.loading = true;
-		this.sheet.updateSheetInstance();
-		this.loading = false;
-		this.triggerChanged(null);
-	};
-	
-	this.seppuku = function () {
-		this.sheet.seppuku();
+	this.sendCommand = function(command, special) {
+		var message = new Message();
+		message.module = 'sheetcmd';
+		message.setMessage(command);
+		
+		for (key in special) {
+        	message.setSpecial(key, special[key]);
+        }
+		
+		message.setSpecial('styleid', this.id);
+		
+		window.app.chatapp.fixPrintAndSend(message, true);
 	};
 	
 	this.registerDiceAutomation = function (diceInfo) {
@@ -231,4 +197,54 @@ function Sheet_Style (sheetInstance, styleInstance) {
 //	        };
 //	    }
 	};
+	
+	this.updateSheetInstance = function () {
+		this.loading = true;
+		this.sheet.updateSheetInstance();
+		this.loading = false;
+		this.triggerChanged(null);
+	};
+	
+	this.seppuku = function () {
+		this.sheet.seppuku();
+	};
+    
+    // SHEET
+    try {
+    	eval(this.styleInstance.beforeProcess);
+    } catch (e) {
+    	console.log("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
+    	console.log(e);
+    	console.log(e.stack);
+    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
+    		alert("Before Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + e.lineNumber + ".\n More details on Console.");
+    }
+	this.sheet = new Sheet([this.visible], this);
+	try {
+    	eval(this.styleInstance.afterProcess);
+    } catch (e) {
+    	console.log("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".");
+    	console.log(e);
+    	console.log(e.stack);
+    	if (window.location.hash.substr(1).toUpperCase().indexOf("DEBUG") !== -1)
+    		alert("After Process Error for Style " + this.id + ", " + this.styleInstance.name + ".\nError: " + e.message + ".\n More details on Console.");
+    }
+	this.sheet.updateSheetInstance();
+	this.loading = false;
+	this.triggerChanged(null);
+	this.sheet.addChangedListener({
+		style : this,
+		sheet : this.sheet,
+		handleEvent : function () {
+			if (!this.style.loading) {
+				var obj = this.style.sheet.getObject();
+				this.style.sheetInstance.changed = true;
+				this.style.sheetInstance.values = obj;
+				//window.app.memory.setMemory("Sheet_" + this.style.sheetInstance.id, obj);
+			}
+		}
+	});
+	this.sheet.triggerLoaded();
+	var finish = new Date().getTime();
+	console.log("Sheet Generation Process took " + (finish - start) + " ms to finish for Style " + this.id + ", " + this.styleInstance.name + ".");
 }

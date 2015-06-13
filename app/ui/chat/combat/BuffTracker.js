@@ -27,16 +27,21 @@ function BuffTracker (mainTracker) {
         for (var i = 0; i < this.mainTracker.myStuff.ordered.length; i++) {
             idToName[this.mainTracker.myStuff.ordered[i].id] = this.mainTracker.myStuff.ordered[i].name;
         }
-        var $html = $('<p class="chatSistema" />');
-        $html.append("<span class='language' data-langhtml='_CURRENTBUFFS_'></span> " + idToName[id] + ": ");
-        var buffMessages = [];
-        //[buffer, targetId, duration, buffName, buffEndOfTurn]
-        for (var i = 0; i < buffs.length; i++) {
-             buffMessages.push(buffs[i][3] + " <span class='language' data-langhtml='_CURRENTBUFFBY_'></span> " + idToName[buffs[i][0]]);
-        }
-        $html.append(buffMessages.join(", "));
+        var $html = $('<p class="chatSistema" style="font-size:0.9em" />');
+        $html.append("<span class='language' data-langhtml='_CURRENTBUFFS_'></span> " + idToName[id] + ":");
+
         window.app.ui.language.applyLanguageOn($html);
         window.app.ui.chat.appendToMessages($html);
+        
+        //[buffer, targetId, duration, buffName, buffEndOfTurn]
+        for (var i = 0; i < buffs.length; i++) {
+        	var $Bhtml = $('<p class="chatSistema" style="font-size: 0.9em" />');
+            $Bhtml.append(buffs[i][3] + " <span class='language' data-langhtml='_CURRENTBUFFBY_'></span> " + idToName[buffs[i][0]]);
+            
+            window.app.ui.language.applyLanguageOn($Bhtml);
+            window.app.ui.chat.appendToMessages($Bhtml);
+        }
+        //$html.append(buffMessages.join(", "));
     };
     
     this.moveTurns = function (oldTurn, newTurn) {

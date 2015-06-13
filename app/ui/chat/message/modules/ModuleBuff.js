@@ -29,6 +29,7 @@ window.chatModules.push({
      * @returns {jQuery || null}
      */
     get$ : function (msg, slashCMD, message) {
+    	if (window.app.ui.isStreaming()) return null;
         var $html = $('<p class="chatSistema" />');
         var targetId = msg.getSpecial("target", -1);
         var targetName;
@@ -79,9 +80,7 @@ window.chatModules.push({
                 .append(" <span class='language' data-langhtml='_BUFFAPPLYINGFROM_'></span> " + applierName + ". ")
                 .append($a);
         
-        if (!window.app.chatapp.room.getMe().isStoryteller()) {
-            $a.remove();
-        } else if (window.app.chatapp.room.getMe().id === msg.origin && !window.app.ui.chat.cc.firstPrint) {
+        if (window.app.chatapp.room.getMe().id === msg.origin && !window.app.ui.chat.cc.firstPrint && msg.localid !== null) {
         	$a.trigger('click');
         }
         

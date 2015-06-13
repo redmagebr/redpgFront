@@ -1,26 +1,96 @@
 <div class='commonsInputs typedBG typedColor headerSize centered sheetName' style='height: 30px; line-height: 30px'></div>
 
-<div id='mapView' style='background-color: #000; position: absolute; bottom: 0px; top: 30px; left: 0px; right: 0px; overflow: auto'>
-	<div id='mapContainer' style='position: absolute'>
-		<div class='token' style='height: 40px; width: 40px' style='display: flex'>
-			<div style='background-image: url("https://www.dropbox.com/s/9njw5y0oanpkbda/TokenLassie.png?dl=1");'></div>
-		</div>
-		<div class='token target' style='left: 100px; top: 100px; height: 80px; width: 80px' style='display: flex'>
-			<div style='background-image: url("https://www.dropbox.com/s/9njw5y0oanpkbda/TokenLassie.png?dl=1");'></div>
-		</div>
+<div id='mapButtons' class='whiteBG centered' style='height: 30px; line-height: 30px;'>
+	<a id='mapGrade' class='textLink language' data-langhtml='_SHEETMAPGRADEBUTTON_'>Fazer Grade</a>
+	<a id='fogButton' class='textLink language' data-langhtml='_SHEETMAPFOGBUTTON_'>Desenhar Névoa</a>
+	<a id='centerButton' class='textLink language' data-langhtml='_SHEETMAPCENTERBUTTON_'>Centrar visão de todos</a>
+	<a id='mapZoomIn' class='textLink'>(+)</a>
+	<a id='mapZoomOut' class='textLink'>(-)</a>
+</div>
+
+<div id='mapTokenOptions'>
+	<a data-direction='3' style='left: 0px; top: 0px; transform: rotate(-45deg)'></a>
+	<a data-direction='4' style='left: 50%; margin-left: -12.5px; top: 0px; '></a>
+	<a data-direction='5' style='right: 0px; top: 0px; transform: rotate(45deg)'></a>
+	<a data-direction='6' style='right: 0px; top: 50%; margin-top: -12.5px; transform: rotate(90deg)'></a>
+	<a data-direction='7' style='right: 0px; bottom: 0px; transform: rotate(135deg)'></a>
+	<a data-direction='0' style='bottom: 0px; left: 50%; margin-left: -12.5px; transform: rotate(180deg)'></a>
+	<a data-direction='1' style='bottom: 0px; left: 0px; transform: rotate(225deg)'></a>
+	<a data-direction='2' style='left: 0px; top: 50%; margin-top: -12.5px; transform: rotate(275deg)'></a>
+</div>
+
+<div id='fogOptions' style='display: none'>
+	<a id='fogAddVision' class='toggled language' data-langhtml='_SHEETMAPADDVISIONBUTTON_'>Adicionar Visão</a>
+	
+	<a id='fogRemoveVision' class='language' data-langhtml='_SHEETMAPREMOVEVISIONBUTTON_'>Remover Visão</a>
+	
+	<a id='fogHideAll' class='language' data-langhtml='_SHEETMAPHIDEALLBUTTON_'>Esconder Mapa Inteiro</a>
+	
+	<a id='fogShowAll' class='language' data-langhtml='_SHEETMAPSHOWALLBUTTON_'>Revelar Mapa Inteiro</a>
+</div>
+
+<div id='mapView' style='background-color: #000; position: absolute; bottom: 0px; top: 60px; left: 0px; right: 0px; overflow: auto'>
+	<div id='mapContainer' style='display: none; position: absolute'>
+		<canvas id='gridCanvas' style='display: none; position: absolute; z-index: 5; background-color: rgba(0,0,0,.5)' width='100' height='100'></canvas>
+		<canvas id='fogDrawCanvas' style='display: none; position: absolute; z-index: 5; background-color: #000; opacity: 0.5' width='100' height='100'></canvas>
+		<div id='mapTokens' style='z-index: 4; position: absolute; pointer-events: none'></div>
 		<canvas id='mapCanvas' style='position: absolute; z-index: 3' width='100' height='100'></canvas>
-		<canvas id='fogCanvas' style='position: absolute; z-index: 3' width='100' height='100'></canvas>
+		<canvas id='fogCanvas' style='position: absolute; z-index: 2' width='100' height='100'></canvas>
 		<img id='mapPicture' style='position: absolute; z-index: 1' src="http://i.imgur.com/UdtGefT.jpg" />
 	</div>
 </div>
 
-<div id='mapEdit'>
-	<div class='typedBG commonsMarginTop language' data-langhtml='_SHEETCOMMONSMAPINFO_'></div>
+<div id='mapEdit' style='display: none'>
+	<div class='typedBG commonsMarginTop language white headerSize' data-langhtml='_SHEETCOMMONSMAPINFO_'></div>
+	
+	<div class='whiteBG'>
+		<p>
+			<span class='language' data-langhtml='_SHEETMAPPICTURE_'></span>:
+			<span class='sheetVariable' data-type='image' data-id='MapPic'></span>
+		</p>
+		<p>
+			<label>
+				<span class='language' data-langhtml='_SHEETMAPSHOWGRID_'></span>:
+				<span class='sheetVariable' data-id='hasGrid' data-type='boolean' data-default='0'></span>
+			</label>
+		</p>
+		<p class='language' data-langhtml='_SHEETMAPGRIDEXPLAIN_'></p>
+		<p class='commonsMarginTop language' data-langhtml='_SHEETMAPTOKENEXPL_'></p>
+		<div class='sheetList commonsMarginTop' data-id='Tokens'>
+			<span style='display: none' class='sheetVariable' data-type='integer' data-id='X'></span>
+			<span style='display: none' class='sheetVariable' data-type='integer' data-id='Y'></span>
+			<span style='display: none' class='sheetVariable' data-type='integer' data-id='Rotation'></span>
+			<p>
+				<span class='deleteRow textLink'>(X)</span>
+				-
+				<span class='sheetVariable' data-type='image' data-id='TokenPicture'></span>
+				-
+				<span class='sheetVariable' data-type='select' data-id='TokenSize' data-options='1x1;2x2;3x3'></span>
+				//
+				<label>
+					<span class='language' data-langhtml='_SHEETMAPTOKENROTATE_'></span>:
+					<span class='sheetVariable' data-type='boolean' data-id='Rotate'></span>
+				</label>
+			</p>
+		</div>
+		
+		<p class='addRow textLink' data-for='Tokens'>
+			+ <span class='language' data-langhtml='_SHEETMAPADDTOKEN_'></span>
+		</p>
+		
+		<p>
+			<label>
+				<span class='language' data-langhtml='_SHEETMAPAUTOMOVE_'></span>:
+				<span class='sheetVariable' data-id='autoMove' data-type='boolean' data-default='1' data-editable='0'></span>
+			</label>
+		</p>
+	</div>
 </div>
 
 <div style='display: none'>
-	<a class='sheetVariable' data-id='offsetX' data-type='number'></a>
-	<a class='sheetVariable' data-id='offsetY' data-type='number'></a>
-	<a class='sheetVariable' data-id='squareSize' data-type='number'></a>
-	<a class='sheetVariable' data-id='mapType' data-type='select' data-options='Grid;Hexa'></a>
+	<a class='sheetVariable' data-id='offsetX' data-type='number' data-default='10'></a>
+	<a class='sheetVariable' data-id='offsetY' data-type='number' data-default='5'></a>
+	<a class='sheetVariable' data-id='squareSize' data-type='number' data-default='40'></a>
+	<a class='sheetVariable' data-id='Fog' data-default=''></a>
+	<span class='sheetVariable' data-id='hasFog' data-type='boolean' data-default='0'></span>
 </div>
