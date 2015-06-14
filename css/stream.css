@@ -1,5 +1,9 @@
 body {
-    min-height: 800px;
+    /*min-height: 800px;*/
+}
+
+#personaBox, #dadosForm, #dadosButtons {
+	display: none;
 }
 
 #stream {
@@ -9,8 +13,8 @@ body {
     background-color: #000;
     width: 854px;
     height: 480px;
-    left: 100px;
-    top: 10px;
+    left: 15px;
+    top: 0px;
 }
 
 #youtubeiFrame {
@@ -18,8 +22,8 @@ body {
     display: block;
     width: 854px;
     height: 480px;
-    left: 100px;
-    top: 10px;
+    left: 15px;
+    top: 0px;
     right: initial;
     bottom: initial;
     border: none;
@@ -42,7 +46,7 @@ body {
 }
 
 #youtubeWindow, #rightWindow {
-    z-index: 400;
+    z-index: 199;
 }
 
 #stream > img {
@@ -50,13 +54,17 @@ body {
     height: 480px;
 }
 
+#chatWindow.noAvatar #avatarContainer {
+	display: none;
+}
+
 #avatarContainer {
     position: fixed;
-    left: 100px;
-    top: 388px;
+    left: 15px;
+    top: 378px;
     width: 854px;
     height: 98px;
-    z-index: 50;
+    z-index: 100;
     background-color: rgba(0,0,0,.5);
     border-top: 3px solid #000;
 }
@@ -77,13 +85,17 @@ div.avatarWrapper {
 
 body #leftWindow #areaChat {
     position: fixed;
-    left: 100px;
-    top: 10px;
+    left: 15px;
+    top: 0px;
     width: 552px;
     height: 378px;
     z-index: 100;
     border: none;
     border-right: 3px #000 solid;
+}
+
+#chatWindow.noAvatar #areaChat {
+	height: 480px;
 }
 
 #areaChat {
@@ -106,21 +118,7 @@ body #leftWindow #areaChat {
 }
 
 #leftWindow, #chatWindow, #areaChat {
-    z-index: 400;
     overflow: visible;
-}
-
-#pictureContainer {
-    position: fixed;
-    left: 626px;
-    border-left: solid 3px #000;
-    top: 10px;
-    right: initial;
-    bottom: initial;
-    width: 323px;
-    height: 480px;
-    z-index: 45;
-    overflow: hidden;
 }
 
 #pictureShow {
@@ -132,14 +130,17 @@ body #leftWindow #areaChat {
     z-index: 45;
 }
 
-#pictureContainer a {
-    display: none;
+#areaChatButtons {
+	height: auto;
+    position: fixed;
+    left: 15px;
+    top: 490px;
+    width: 854px;
 }
 
-#areaChatButtons {
-    position: fixed;
-    right: 10px;
-    top: 10px;
+#areaChatButtons > a {
+	float: left !important;
+	margin-right: 8px;
 }
 
 #chatScrolltoBottom {
@@ -150,11 +151,11 @@ body #leftWindow #areaChat {
 
 /* Smaller Tracker */
 body #combatTracker {
-    width: 344px;
+    width: 344px !important;
 }
 
 body #combatTrackerBody {
-    max-height: 280px;
+    max-height: 280px !important;
 }
 
 body #combatTracker a.deleteRow, body #combatTracker a.openSheet, body #combatTracker a.setTurn, body #combatTracker a.setTarget, body #combatTrackerFooter {
@@ -170,15 +171,15 @@ body #combatTracker a.deleteRow, body #combatTracker a.openSheet, body #combatTr
 /* New Picture */
 body #pictureWindow {
     position: fixed;
-    left: 652px;
+    left: 566px;
     border: none;
     border-left: solid 3px #000;
-    top: 10px;
+    top: 0px;
     right: initial;
     bottom: initial;
     width: 300px;
     height: 480px;
-    z-index: 45;
+    z-index: 1 !important;
     overflow: hidden;
     background-color: transparent;
 }
@@ -204,4 +205,9 @@ body #picturePaint {
 
 body #pictureWindowClose {
     display: none;
+}
+
+#rightWindow {
+	left: 864px;
+	width: auto !important;
 }

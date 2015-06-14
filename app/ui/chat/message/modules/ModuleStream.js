@@ -84,6 +84,18 @@ window.chatModules.push({
      */
     getMsg : function (slashCMD, message) {
         var msg = null;
+        
+        if (message === '1') {
+        	message = '';
+        }
+        
+        if (message === '0') {
+        	$("#chatWindow").addClass("noAvatar");
+        	message = '';
+        } else {
+        	$("#chatWindow").removeClass("noAvatar");
+        }
+        
         if (message === '' || message === null) {
             if (this.isStream) {
                 this.isStream = false;

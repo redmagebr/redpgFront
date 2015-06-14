@@ -357,6 +357,7 @@ this.updateTokens = function () {
 	while (this.tokens.length < this.sheet.getField("Tokens").sheets.length) {
 		var newToken = this.createToken();
 		newToken.index = this.tokens.push(newToken) - 1;
+		newToken.isNew = true;
 		$(newToken.container).draggable({
             containment : '#mapView',
             start : function (ev, ui) {
@@ -458,8 +459,18 @@ this.updateTokens = function () {
 
 		this.tokens[i].container.style.width = (squareSize * size) + "px";
 		this.tokens[i].container.style.height = (squareSize * size) + "px";
-		this.tokens[i].container.style.left = x + "px";
-		this.tokens[i].container.style.top = y + "px";
+		
+		if (this.tokens[i].isNew) {
+			this.tokens[i].container.style.left = x + "px";
+			this.tokens[i].container.style.top = y + "px";
+			this.tokens[i].isNew = false;
+			this.tokens[i].$container = $(this.tokens[i].container);
+		} else {
+			this.tokens[i].$container.finish().animate({
+				left : x + "px",
+				top : y + "px"
+			});
+		}
 		
 		this.tokens[i].container.title = token.getField("TokenPicture").value[1];
 	}

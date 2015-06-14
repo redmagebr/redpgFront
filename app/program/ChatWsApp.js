@@ -86,7 +86,7 @@ function ChatWsApp () {
         this.notConnected = true;
         this.waitForAck();
         this.sendAction("room", this.room.id);
-        window.app.ui.chat.cc.firstPrint = false;
+        window.app.ui.chat.cc.firstPrint = true;
         window.app.ui.chat.cc.ignoreTooMany = false;
     };
     

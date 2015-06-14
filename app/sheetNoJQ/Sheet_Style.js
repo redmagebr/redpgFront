@@ -20,6 +20,8 @@ function Sheet_Style (sheetInstance, styleInstance) {
 	this.$visible = $(this.visible);
 	this.$css = $(this.css);
 	
+	window.app.ui.language.applyLanguageOn(this.$visible);
+	
 	this.emulateBind = function (f, context) {
         return function () {
             f.apply(context, arguments);
