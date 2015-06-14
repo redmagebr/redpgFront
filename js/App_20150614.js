@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 56, 3];
+    this.version = [0, 56, 4];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -6183,13 +6183,16 @@ function PictureUI () {
     };
     
     this.changeSize = function () {
-        this.$currentSize.removeClass("paintIconSmall paintIconMedium paintIconLarge");
+        this.$currentSize.removeClass("paintIconXXLL paintIconSmall paintIconMedium paintIconLarge");
         if (this.size === 1) {
             this.size = 3;
             this.$currentSize.addClass("paintIconMedium");
         } else if (this.size === 3) {
             this.size = 6;
             this.$currentSize.addClass("paintIconLarge");
+        }  else if (this.size === 6) {
+            this.size = 15;
+            this.$currentSize.addClass("paintIconXXLL");
         } else {
             this.size = 1;
             this.$currentSize.addClass("paintIconSmall");
