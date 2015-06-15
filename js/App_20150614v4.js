@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 56, 6];
+    this.version = [0, 56, 7];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -4130,7 +4130,11 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
     _SHEETPLAYER_ : "Jogador",
     
+    _SHEETCMDOPEN_ : 'Abrir',
+    _SHEETCMDREQUESTEDOPEN_ : 'requisitou a abertura de',
+    
     /* New Map */
+    _SHEETMAPSHAREBUTTON_ : 'Compartilhar',
     _SHEETMAPSMOVEMENTREQUESTED_ : 'Movimento requisitado.',
     _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requisitou mover',
     _SHEETMAPPICTURE_ : 'Imagem de Fundo',
@@ -4140,9 +4144,9 @@ window.lingo['pt_br'] = {
     _SHEETMAPSHOWGRID_ : 'Mostrar Grade',
     _SHEETMAPGRIDEXPLAIN_ : 'Independente de mostrar a grade, o mapa possuirá ela e você pode alterar ela. Essa opção apenas define se o mapa irá desenhar as linhas pretas para mostrar cada posição.',
     _SHEETMAPAUTOMOVE_ : 'Aceitar Movimentos Automaticamente',
-    _SHEETMAPGRADEBUTTON_ : 'Definir Grade',
-    _SHEETMAPFOGBUTTON_ : 'Definir Névoa',
-    _SHEETMAPCENTERBUTTON_ : 'Centrar essa Visão para Todos',
+    _SHEETMAPGRADEBUTTON_ : 'Grade',
+    _SHEETMAPFOGBUTTON_ : 'Fog of War',
+    _SHEETMAPCENTERBUTTON_ : 'Compartilhar Visão',
     _SHEETMAPADDVISIONBUTTON_ : 'Adicionar Visão',
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remover Visão',
     _SHEETMAPHIDEALLBUTTON_ : 'Esconder mapa inteiro',
@@ -4807,9 +4811,13 @@ window.lingo['en'] = {
     _SHEETMAP_ : 'Map',
     _SHEETCOMMONSADDTOKEN_ : 'Add new token',
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+    
+    _SHEETCMDOPEN_ : 'Abrir',
+    _SHEETCMDREQUESTEDOPEN_ : 'requisitou a abertura de',
 
     
     /* New Map */
+    _SHEETMAPSHAREBUTTON_ : 'Share',
     _SHEETMAPSMOVEMENTREQUESTED_ : 'Movement requested.',
     _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requested movement',
     _SHEETMAPPICTURE_ : 'Background Image',
@@ -4820,8 +4828,8 @@ window.lingo['en'] = {
     _SHEETMAPGRIDEXPLAIN_ : 'The map will have a grid regardless of this option\'s value. This option only defines whether the map will actually draw the grid lines.',
     _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement',
     _SHEETMAPGRADEBUTTON_ : 'Define Grid',
-    _SHEETMAPFOGBUTTON_ : 'Define Fog',
-    _SHEETMAPCENTERBUTTON_ : 'Center this Vision for All',
+    _SHEETMAPFOGBUTTON_ : 'Fog of War',
+    _SHEETMAPCENTERBUTTON_ : 'Share Vision',
     _SHEETMAPADDVISIONBUTTON_ : 'Add visibility',
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remove visibility',
     _SHEETMAPHIDEALLBUTTON_ : 'Hide whole map',
@@ -16241,6 +16249,36 @@ window.chatModules.push({
      */
     get$ : function (msg) {
     	if (window.app.ui.chat.cc.firstPrint) return null;
+    	
+    	if (msg.getMessage() === 'openSheet') {
+    		var sheetid = msg.getSpecial('sheetid', null);
+    		var styleid = msg.getSpecial('styleid', null);
+    		var gameid = msg.getSpecial('gameid', null);
+    		var sheetname = msg.getSpecial("sheetname", "???");
+    		if (sheetid !== null && styleid !== null && gameid !== null
+    				&& !isNaN(sheetid, 10) && !isNaN(styleid, 10) && !isNaN(gameid, 10)) {
+    			$p = $("<p class='chatSistema'></p>");
+    			
+    			$a = $("<a class='textLink language' data-langhtml='_SHEETCMDOPEN_'></a>");
+    			$a[0].addEventListener('click', {
+    				sheetid : sheetid,
+    				styleid : styleid,
+    				gameid : gameid,
+    				handleEvent : function () {
+    					window.app.ui.sheetui.openSheet(this.sheetid, this.styleid, this.gameid, false);
+    				}
+    			});
+    			
+    			var user = msg.getUser().getShortestName();
+    			
+    			$p.append(document.createTextNode(user + " "))
+    			  .append("<span class='language' data-langhtml='_SHEETCMDREQUESTEDOPEN_'></span>")
+    			  .append(document.createTextNode(" " + sheetname + ". "))
+    			  .append($a);
+    			
+    			return $p;
+    		}
+    	}
     	
         var styleid = msg.getSpecial('styleid', 0);
         if (typeof window.app.ui.sheetui.controller.styles[styleid] === 'undefined') {

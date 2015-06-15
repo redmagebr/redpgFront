@@ -620,7 +620,11 @@ window.lingo['pt_br'] = {
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
     _SHEETPLAYER_ : "Jogador",
     
+    _SHEETCMDOPEN_ : 'Abrir',
+    _SHEETCMDREQUESTEDOPEN_ : 'requisitou a abertura de',
+    
     /* New Map */
+    _SHEETMAPSHAREBUTTON_ : 'Compartilhar',
     _SHEETMAPSMOVEMENTREQUESTED_ : 'Movimento requisitado.',
     _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requisitou mover',
     _SHEETMAPPICTURE_ : 'Imagem de Fundo',
@@ -630,9 +634,9 @@ window.lingo['pt_br'] = {
     _SHEETMAPSHOWGRID_ : 'Mostrar Grade',
     _SHEETMAPGRIDEXPLAIN_ : 'Independente de mostrar a grade, o mapa possuirá ela e você pode alterar ela. Essa opção apenas define se o mapa irá desenhar as linhas pretas para mostrar cada posição.',
     _SHEETMAPAUTOMOVE_ : 'Aceitar Movimentos Automaticamente',
-    _SHEETMAPGRADEBUTTON_ : 'Definir Grade',
-    _SHEETMAPFOGBUTTON_ : 'Definir Névoa',
-    _SHEETMAPCENTERBUTTON_ : 'Centrar essa Visão para Todos',
+    _SHEETMAPGRADEBUTTON_ : 'Grade',
+    _SHEETMAPFOGBUTTON_ : 'Fog of War',
+    _SHEETMAPCENTERBUTTON_ : 'Compartilhar Visão',
     _SHEETMAPADDVISIONBUTTON_ : 'Adicionar Visão',
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remover Visão',
     _SHEETMAPHIDEALLBUTTON_ : 'Esconder mapa inteiro',

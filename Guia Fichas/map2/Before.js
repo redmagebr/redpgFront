@@ -167,7 +167,7 @@ this.mapToggleEdit = function () {
 /**
  * Elements that are used elsewhere
  */
-var elementsToFind = ['centerButton', 'fogAddVision', 'fogRemoveVision', 'fogCanvas', 'fogHideAll', 'fogShowAll', 'fogOptions', 'fogButton', 'mapTokenOptions', 'mapView', "mapTokens", 'mapEdit', 'mapCanvas', 'mapPicture', 'mapContainer', 'mapButtons', 'mapGrade', 'gridCanvas', 'mapZoomIn', 'mapZoomOut', 'fogDrawCanvas'];
+var elementsToFind = ['mapShare', 'centerButton', 'fogAddVision', 'fogRemoveVision', 'fogCanvas', 'fogHideAll', 'fogShowAll', 'fogOptions', 'fogButton', 'mapTokenOptions', 'mapView', "mapTokens", 'mapEdit', 'mapCanvas', 'mapPicture', 'mapContainer', 'mapButtons', 'mapGrade', 'gridCanvas', 'mapZoomIn', 'mapZoomOut', 'fogDrawCanvas'];
 this.elements = {};
 
 for (var i = 0 ; i < elementsToFind.length; i++) {
@@ -248,6 +248,18 @@ this.elements['centerButton'].addEventListener("click", {
 	}
 });
 
+this.elements['mapShare'].addEventListener("click", {
+	style : this,
+	handleEvent : function () {
+		this.style.sendCommand('openSheet', {
+			sheetid : this.style.sheetInstance.id,
+			styleid : this.style.id,
+			gameid : this.style.sheetInstance.gameid,
+			sheetname : this.style.sheetInstance.name
+		});
+	}
+});
+
 this.askforCenter = function () {
 	var aHeight = this.elements['mapView'].clientHeight;
 	var aWidth = this.elements['mapView'].clientWidth;
@@ -297,7 +309,7 @@ this.interpretCommand = function (message, force) {
 		
 		var tokenSheet = this.sheet.getField("Tokens").sheets[message.getSpecial('index', null)];
 		
-		var XMovement = (tokenSheet.getField("X").getValue() - message.getSpecial("x", 0));
+		var XMovement = (message.getSpecial("x", 0) - tokenSheet.getField("X").getValue());
 		var YMovement = (tokenSheet.getField("Y").getValue() - message.getSpecial("y", 0));
 		var totalMovement = Math.abs(XMovement) + Math.abs(YMovement);
 		

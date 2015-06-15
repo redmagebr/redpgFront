@@ -609,9 +609,13 @@ window.lingo['en'] = {
     _SHEETMAP_ : 'Map',
     _SHEETCOMMONSADDTOKEN_ : 'Add new token',
     _SHEETCOMMONSCHANGETOKEN_ : 'Edit token',
+    
+    _SHEETCMDOPEN_ : 'Abrir',
+    _SHEETCMDREQUESTEDOPEN_ : 'requisitou a abertura de',
 
     
     /* New Map */
+    _SHEETMAPSHAREBUTTON_ : 'Share',
     _SHEETMAPSMOVEMENTREQUESTED_ : 'Movement requested.',
     _SHEETMAPSPLAYERMOVEMENTREQUESTED1_ : 'requested movement',
     _SHEETMAPPICTURE_ : 'Background Image',
@@ -622,8 +626,8 @@ window.lingo['en'] = {
     _SHEETMAPGRIDEXPLAIN_ : 'The map will have a grid regardless of this option\'s value. This option only defines whether the map will actually draw the grid lines.',
     _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement',
     _SHEETMAPGRADEBUTTON_ : 'Define Grid',
-    _SHEETMAPFOGBUTTON_ : 'Define Fog',
-    _SHEETMAPCENTERBUTTON_ : 'Center this Vision for All',
+    _SHEETMAPFOGBUTTON_ : 'Fog of War',
+    _SHEETMAPCENTERBUTTON_ : 'Share Vision',
     _SHEETMAPADDVISIONBUTTON_ : 'Add visibility',
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remove visibility',
     _SHEETMAPHIDEALLBUTTON_ : 'Hide whole map',
