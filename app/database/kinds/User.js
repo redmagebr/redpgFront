@@ -99,6 +99,14 @@ function User () {
         return true;
     };
     
+    this.getShortestName = function () {
+    	if (this.specialSnowflakeCheck()) {
+    		return this.nickname;
+    	} else {
+    		return this.getFullName();
+    	}
+    }
+    
     this.getFullName = function () {
         return this.nickname + "#" + this.nicknamesufix;
     };

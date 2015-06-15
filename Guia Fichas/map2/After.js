@@ -524,7 +524,8 @@ this.sheet.getField("Tokens").addChangedListener({
 	}
 });
 
-this.centerOn = function (x, y) {
+this.centerOn = function (x, y, animate) {
+	if (animate === undefined) animate = false;
 	var nWidth = this.elements['mapPicture'].naturalWidth;
 	var nHeight = this.elements['mapPicture'].naturalHeight;
 	
@@ -545,8 +546,15 @@ this.centerOn = function (x, y) {
 		newY = (newHeight - aHeight);
 	}
 	
-	this.elements['mapView'].scrollTop = newY;
-	this.elements['mapView'].scrollLeft = newX;
+	if (animate) {
+		$(this.elements['mapView']).finish().animate({
+			scrollTop : newY,
+			scrollLeft : newX
+		});
+	} else {
+		this.elements['mapView'].scrollTop = newY;
+		this.elements['mapView'].scrollLeft = newX;
+	}
 	
 	this.centerX = x;
 	this.centerY = y;

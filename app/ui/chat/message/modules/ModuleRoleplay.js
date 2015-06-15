@@ -134,7 +134,7 @@ window.chatModules.push({
         }
         
         var translation = msg.getSpecial('translation', null);
-        if (translation !== null) {
+        if (translation !== null && !(window.app.ui.chat.cc.mc.getModule("stream") !== null && window.app.ui.chat.cc.mc.getModule("stream").isStream)) {
             $msg.append(
                     $('<span class="langTranslation" />')
                             .append($('<b class="language" data-langhtml="_CHATTRANSLATEDAS_" />'))

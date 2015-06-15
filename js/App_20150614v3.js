@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 56, 5];
+    this.version = [0, 56, 6];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -1970,6 +1970,14 @@ function User () {
         return true;
     };
     
+    this.getShortestName = function () {
+    	if (this.specialSnowflakeCheck()) {
+    		return this.nickname;
+    	} else {
+    		return this.getFullName();
+    	}
+    }
+    
     this.getFullName = function () {
         return this.nickname + "#" + this.nicknamesufix;
     };
@@ -3644,7 +3652,7 @@ window.lingo['pt_br'] = {
     _SHEETFULLRELOAD_ : 'Recarregar Valores e Aparência da Ficha',
     _SHEETIMPORT_ : 'Importar JSON com Valores',
     _SHEETEXPORT_ : 'Exportar JSON com Valores',
-    _SHEETAUTO_ : 'Atualizar Automaticamente (Não implementado)',
+    _SHEETAUTO_ : 'Atualizar Automaticamente (Requer que chat esteja aberto)',
     _SHEETCLOSE_ : 'Fechar a ficha (Mudanças não salvas serão perdidas)',
     _SHEETHIDEWINDOW_ : 'Esconder a Janela',
     _SHEETIMPORTEXPLAIN_ : 'Cole aqui o código JSON da ficha que deseja importar.',
@@ -4093,7 +4101,7 @@ window.lingo['pt_br'] = {
     _STYLENOSTYLES_ : "Sem estilos carregados. Abra uma ficha.",
     
     /* Picture UI */
-    _DRAWINGSIZE_ : 'Tamanho do pincel (Não implementado)',
+    _DRAWINGSIZE_ : 'Tamanho do pincel',
     _DRAWINGCOLOR_ : 'Cor do pincel',
     _DRAWINGCLEAR_ : 'Apagar desenhos',
     _DRAWINGERASER_ : 'Borracha, tamanho 10',
@@ -4131,7 +4139,7 @@ window.lingo['pt_br'] = {
     _SHEETMAPADDTOKEN_ : 'Adicionar Token',
     _SHEETMAPSHOWGRID_ : 'Mostrar Grade',
     _SHEETMAPGRIDEXPLAIN_ : 'Independente de mostrar a grade, o mapa possuirá ela e você pode alterar ela. Essa opção apenas define se o mapa irá desenhar as linhas pretas para mostrar cada posição.',
-    _SHEETMAPAUTOMOVE_ : 'Aceitar Movimentos Automaticamente (Não implementado)',
+    _SHEETMAPAUTOMOVE_ : 'Aceitar Movimentos Automaticamente',
     _SHEETMAPGRADEBUTTON_ : 'Definir Grade',
     _SHEETMAPFOGBUTTON_ : 'Definir Névoa',
     _SHEETMAPCENTERBUTTON_ : 'Centrar essa Visão para Todos',
@@ -4139,6 +4147,23 @@ window.lingo['pt_br'] = {
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remover Visão',
     _SHEETMAPHIDEALLBUTTON_ : 'Esconder mapa inteiro',
     _SHEETMAPSHOWALLBUTTON_ : 'Revelar mapa inteiro',
+    _SHEETMAPMOVEEXPL_ : 'Com a caixa marcada, jogadores podem mover personagens automaticamente. Caso contrário, um pedido será impresso no chat e o mestre pode decidir aceitar o comando ou não.',
+    
+    _SHEETMAPUSERMOVED_ : 'moveu',
+    _SHEETMAPTOKENMOVEDTOTAL_ : 'Movimento',
+    _SHEETMAPUSERWISHMOVED_ : 'deseja mover',
+    _SHEETMAPTOKENMOVEACCEPT_ : "Aceitar",
+
+	_SHEETMAPUSERROTATED_ : "mudou direção de",
+	_SHEETMAPTOKENROTATION0_ : "para o Sul",
+	_SHEETMAPTOKENROTATION1_ : "para o Sudoeste",
+	_SHEETMAPTOKENROTATION2_ : "para o Oeste",
+	_SHEETMAPTOKENROTATION3_ : "para o Noroeste",
+	_SHEETMAPTOKENROTATION4_ : "para o Norte",
+	_SHEETMAPTOKENROTATION5_ : "para o Nordeste",
+	_SHEETMAPTOKENROTATION6_ : "para o Leste",
+	_SHEETMAPTOKENROTATION7_ : "para o Sudeste",
+	_SHEETMAPUSERWISHROTATED_ : 'deseja mudar direção de',
     
     /* Map */
     _MAPCURRENTTURN_ : 'Turno Atual',
@@ -4793,7 +4818,7 @@ window.lingo['en'] = {
     _SHEETMAPADDTOKEN_ : 'Add Token',
     _SHEETMAPSHOWGRID_ : 'Show Grid',
     _SHEETMAPGRIDEXPLAIN_ : 'The map will have a grid regardless of this option\'s value. This option only defines whether the map will actually draw the grid lines.',
-    _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement (Not Implemented)',
+    _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement',
     _SHEETMAPGRADEBUTTON_ : 'Define Grid',
     _SHEETMAPFOGBUTTON_ : 'Define Fog',
     _SHEETMAPCENTERBUTTON_ : 'Center this Vision for All',
@@ -4801,6 +4826,23 @@ window.lingo['en'] = {
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remove visibility',
     _SHEETMAPHIDEALLBUTTON_ : 'Hide whole map',
     _SHEETMAPSHOWALLBUTTON_ : 'Reveal whole map',
+    _SHEETMAPMOVEEXPL_ : 'If moving automatically, players can move tokens freely. Otherwise, a request will be printed in chat and a storyteller can choose to accept or deny the movement.',
+    
+    _SHEETMAPUSERMOVED_ : 'moved',
+    _SHEETMAPTOKENMOVEDTOTAL_ : 'Movement',
+    _SHEETMAPUSERWISHMOVED_ : 'wishes to move',
+    _SHEETMAPTOKENMOVEACCEPT_ : "Accept",
+
+	_SHEETMAPUSERROTATED_ : "changed direction of",
+	_SHEETMAPTOKENROTATION0_ : "towards South",
+	_SHEETMAPTOKENROTATION1_ : "towards Southwest",
+	_SHEETMAPTOKENROTATION2_ : "towards West",
+	_SHEETMAPTOKENROTATION3_ : "towards Northwest",
+	_SHEETMAPTOKENROTATION4_ : "towards North",
+	_SHEETMAPTOKENROTATION5_ : "towards Northeast",
+	_SHEETMAPTOKENROTATION6_ : "towards East",
+	_SHEETMAPTOKENROTATION7_ : "towards Southeast",
+	_SHEETMAPUSERWISHROTATED_ : 'wishes to change direction of',
     
     
     /* FOrum */
@@ -13531,7 +13573,7 @@ window.chatModules.push({
         }
         
         var translation = msg.getSpecial('translation', null);
-        if (translation !== null) {
+        if (translation !== null && !(window.app.ui.chat.cc.mc.getModule("stream") !== null && window.app.ui.chat.cc.mc.getModule("stream").isStream)) {
             $msg.append(
                     $('<span class="langTranslation" />')
                             .append($('<b class="language" data-langhtml="_CHATTRANSLATEDAS_" />'))
@@ -15081,8 +15123,10 @@ window.chatModules.push({
             $msg.append($spans[i]);
         }
         
+        
+        
         var translation = msg.getSpecial('translation', null);
-        if (translation !== null) {
+        if (translation !== null && !(window.app.ui.chat.cc.mc.getModule("stream") !== null && window.app.ui.chat.cc.mc.getModule("stream").isStream)) {
             $msg.append(
                     $('<span class="langTranslation" />')
                             .append($('<b class="language" data-langhtml="_CHATTRANSLATEDAS_" />'))

@@ -268,10 +268,10 @@ this.hasSheet = function (id) {
 	return (window.app.sheetdb.getSheet(id) !== null && window.app.sheetdb.getSheet(id).values !== null);
 };
 
-this.interpretCommand = function (message) {
+this.interpretCommand = function (message, force) {
 	if (message.localid !== null) return;
 	
-	
+	if (force === undefined) force = false;
 	
 	if (message.msg === 'center') {
 		
@@ -282,34 +282,131 @@ this.interpretCommand = function (message) {
 		}
 		window.app.ui.sheetui.controller.openSheet(message.getSpecial('sheetid'));
 		
-		this.centerOn(message.getSpecial("x", 0), message.getSpecial("y", 0));
-	} else if (message.msg === 'moveToken') {
+		this.centerOn(message.getSpecial("x", 0), message.getSpecial("y", 0), true);
+		return;
+	}
+	
+	// We don't want the rest if streaming
+	if (window.app.ui.chat.cc.mc.getModule("stream") !== null && window.app.ui.chat.cc.mc.getModule("stream").isStream) return;
+	
+	// The rest
+	if (message.msg === 'moveToken') {
 		if (!this.sheetInstance.editable || this.sheetInstance.id !== message.getSpecial('sheetid')) return;
 		
+		var user = message.getUser().getShortestName();
+		
+		var tokenSheet = this.sheet.getField("Tokens").sheets[message.getSpecial('index', null)];
+		
+		var XMovement = (tokenSheet.getField("X").getValue() - message.getSpecial("x", 0));
+		var YMovement = (tokenSheet.getField("Y").getValue() - message.getSpecial("y", 0));
+		var totalMovement = Math.abs(XMovement) + Math.abs(YMovement);
+		
+		var tokenName = tokenSheet.getField('TokenPicture').value[1];
+		
 		// Can we move directly?
-		if (!this.sheet.getField("autoMove").getValue()) {
-			// not implemented
+		if (!this.sheet.getField("autoMove").getValue() && !force) {
+			
+			
+			var $p = $("<p class='chatSistema' />");
+			
+			var clickObj = {
+					style : this,
+					message : message,
+					$p : $p,
+					handleEvent : function () {
+						this.style.interpretCommand(this.message, true);
+						this.$p.remove();
+					}
+				};
+				
+			var $a = $("<span class='language textLink' data-langhtml='_SHEETMAPTOKENMOVEACCEPT_'></span>");
+			$a[0].addEventListener('click', clickObj);
+			
+			$p.append(document.createTextNode(user + ' '))
+			    .append("<span class='language' data-langhtml='_SHEETMAPUSERWISHMOVED_'></span> ")
+			    .append(document.createTextNode(tokenName + ' '))
+	            .append("<span class='language' data-langhtml='_SHEETMAPTOKENMOVEDTOTAL_'></span>: " + totalMovement)
+	            .append(". X:" + XMovement + "; Y: " + YMovement + ". ")
+	            .append($a);
+			
+			window.app.ui.language.applyLanguageOn($p);
+			
+			window.app.ui.chat.appendToMessages($p);
+			
 			return;
 		}
 		
 		// Move Directly
-		var tokenSheet = this.sheet.getField("Tokens").sheets[message.getSpecial('index', null)];
+		
 		tokenSheet.getField("X").storeValue(message.getSpecial("x", 0));
 		tokenSheet.getField("Y").storeValue(message.getSpecial("y", 0));
+		
 		this.updateTokens();
 		window.app.ui.sheetui.controller.saveSheet();
+		
+		var $p = $("<p class='chatSistema' />")
+        			.append(document.createTextNode(user + ' '))
+		            .append("<span class='language' data-langhtml='_SHEETMAPUSERMOVED_'></span> ")
+		            .append(document.createTextNode(tokenName + ' '))
+		            .append("<span class='language' data-langhtml='_SHEETMAPTOKENMOVEDTOTAL_'></span> " + totalMovement)
+		            .append(". X:" + XMovement + "; Y: " + YMovement + ".");
+		
+		window.app.ui.language.applyLanguageOn($p);
+		
+		window.app.ui.chat.appendToMessages($p);
+		
 	} else if (message.msg === 'rotateToken') {
 		if (!this.sheetInstance.editable || this.sheetInstance.id !== message.getSpecial('sheetid')) return;
 		
+		this.currentToken = message.getSpecial('index', 0);
+		var direction = message.getSpecial("direction", 0);
+		direction = parseInt(direction, 10);
+		
+		var user = message.getUser().getShortestName();
+		var tokenSheet = this.sheet.getField("Tokens").sheets[this.currentToken];
+		var tokenName = tokenSheet.getField('TokenPicture').value[1];
+		
 		// Can we move directly?
-		if (!this.sheet.getField("autoMove").getValue()) {
-			// not implemented
+		if (!this.sheet.getField("autoMove").getValue() && !force) {
+			var $p = $("<p class='chatSistema' />");
+			
+			var clickObj = {
+					style : this,
+					message : message,
+					$p : $p,
+					handleEvent : function () {
+						this.style.interpretCommand(this.message, true);
+						this.$p.remove();
+					}
+				};
+				
+			var $a = $("<span class='language textLink' data-langhtml='_SHEETMAPTOKENMOVEACCEPT_'></span>");
+			$a[0].addEventListener('click', clickObj);
+			
+			$p.append(document.createTextNode(user + ' '))
+			    .append("<span class='language' data-langhtml='_SHEETMAPUSERWISHROTATED_'></span> ")
+			    .append(document.createTextNode(tokenName + ' '))
+				.append("<span class='language' data-langhtml='_SHEETMAPTOKENROTATION" + direction + "_'></span>. ")
+	            .append($a);
+			
+			window.app.ui.language.applyLanguageOn($p);
+			
+			window.app.ui.chat.appendToMessages($p);
 			return;
 		}
 		
 		// Move Directly
-		this.currentToken = message.getSpecial('index', 0);
-		var direction = message.getSpecial("direction", 0);
+		
 		this.rotateToken(direction);
+		
+		var $p = $("<p class='chatSistema' />");
+		$p.append(document.createTextNode(user + ' '))
+		    .append("<span class='language' data-langhtml='_SHEETMAPUSERROTATED_'></span> ")
+		    .append(document.createTextNode(tokenName + ' '))
+			.append("<span class='language' data-langhtml='_SHEETMAPTOKENROTATION" + direction + "_'></span>.");
+		
+		window.app.ui.language.applyLanguageOn($p);
+		
+		window.app.ui.chat.appendToMessages($p);
 	}
 };

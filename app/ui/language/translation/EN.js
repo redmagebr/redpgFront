@@ -620,7 +620,7 @@ window.lingo['en'] = {
     _SHEETMAPADDTOKEN_ : 'Add Token',
     _SHEETMAPSHOWGRID_ : 'Show Grid',
     _SHEETMAPGRIDEXPLAIN_ : 'The map will have a grid regardless of this option\'s value. This option only defines whether the map will actually draw the grid lines.',
-    _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement (Not Implemented)',
+    _SHEETMAPAUTOMOVE_ : 'Automatically Accept Movement',
     _SHEETMAPGRADEBUTTON_ : 'Define Grid',
     _SHEETMAPFOGBUTTON_ : 'Define Fog',
     _SHEETMAPCENTERBUTTON_ : 'Center this Vision for All',
@@ -628,6 +628,23 @@ window.lingo['en'] = {
     _SHEETMAPREMOVEVISIONBUTTON_ : 'Remove visibility',
     _SHEETMAPHIDEALLBUTTON_ : 'Hide whole map',
     _SHEETMAPSHOWALLBUTTON_ : 'Reveal whole map',
+    _SHEETMAPMOVEEXPL_ : 'If moving automatically, players can move tokens freely. Otherwise, a request will be printed in chat and a storyteller can choose to accept or deny the movement.',
+    
+    _SHEETMAPUSERMOVED_ : 'moved',
+    _SHEETMAPTOKENMOVEDTOTAL_ : 'Movement',
+    _SHEETMAPUSERWISHMOVED_ : 'wishes to move',
+    _SHEETMAPTOKENMOVEACCEPT_ : "Accept",
+
+	_SHEETMAPUSERROTATED_ : "changed direction of",
+	_SHEETMAPTOKENROTATION0_ : "towards South",
+	_SHEETMAPTOKENROTATION1_ : "towards Southwest",
+	_SHEETMAPTOKENROTATION2_ : "towards West",
+	_SHEETMAPTOKENROTATION3_ : "towards Northwest",
+	_SHEETMAPTOKENROTATION4_ : "towards North",
+	_SHEETMAPTOKENROTATION5_ : "towards Northeast",
+	_SHEETMAPTOKENROTATION6_ : "towards East",
+	_SHEETMAPTOKENROTATION7_ : "towards Southeast",
+	_SHEETMAPUSERWISHROTATED_ : 'wishes to change direction of',
     
     
     /* FOrum */
