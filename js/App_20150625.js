@@ -11,7 +11,7 @@ function Application (debug) {
      * Minor covers new functions.
      * Release covers bugfixes only.
      */
-    this.version = [0, 56, 7];
+    this.version = [0, 56, 8];
     
     if (typeof debug === 'undefined' || debug) {
         this.debug = true;
@@ -18820,8 +18820,12 @@ window.sheetVariableTypes['select'] = function (element, style, parent) {
 		}
 	};
 	
+	this.getObject = function () {
+		return this.options[this.value];
+	};
+	
 	this.storeValue = function (idx) {
-		if (typeof idx === 'string' && idx !== '' && isNaN(idx, 10)) {
+		if (typeof idx === 'string' && idx !== '') {
 			idx = this.options.indexOf(idx);
 		}
 		idx = idx === null || idx === ''? 0 : parseInt(idx);
