@@ -18792,7 +18792,7 @@ window.sheetVariableTypes['select'] = function (element, style, parent) {
 		variable : this,
 		input : this.input,
 		handleEvent : function () {
-			this.variable.storeValue(this.input.value);
+			this.variable.storeValue(this.variable.options[this.input.value]);
 		}
 	};
 	
