@@ -1,6 +1,9 @@
 function AudioController () {
     this.bgm;
     this.se;
+
+    this.revokeurl = false;
+    this.attemptedURL;
     
     this.$bar;
     
@@ -32,6 +35,13 @@ function AudioController () {
         this.$volumeslider = $('#musicPlayerCurrentVolume');
         
         this.setBindings();
+
+        this.bgm.onload = function (e) {
+            if (window.app.ui.chat.audioc.revokeurl) {
+                URL.revokeObjectURL(this.src);
+                alert("Revoked");
+            }
+        }
     };
     
     this.updateBar = function (current, max) {
@@ -162,6 +172,10 @@ function AudioController () {
     this.play = function (filename) {
         this.lastFilename = filename;
         this.$player.addClass('shown');
+        if (filename.indexOf("dropbox.com") !== -1) {
+            this.playDropbox(filename);
+            return;
+        }
         var foundPerfect = false;
         if (filename.indexOf('://') === -1) {
             foundPerfect = this.setPermittedSource(true, filename);
@@ -233,4 +247,28 @@ function AudioController () {
             this.considerRepeat();
         }
     };
+
+    this.playDropbox = function (url) {
+        this.bgm.pause();
+        this.attemptedURL = url;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+        xhr.onload = function(e) {
+            if (this.status == 200) {
+                // Note: .response instead of .responseText
+                var blob = new Blob([this.response], {type: 'audio'});
+            }
+            var audioc = window.app.ui.chat.audioc;
+            audioc.revokeurl = true;
+            audioc.bgm.src = URL.createObjectURL(blob);
+            audioc.justPlayBGM();
+        };
+        xhr.onerror = function () {
+            var audioc = window.app.ui.chat.audioc;
+            audioc.bgm.setAttribute("src", audioc.attemptedURL);
+            audioc.justPlayBGM();
+        };
+        xhr.send();
+    }
 }

@@ -613,7 +613,7 @@ function UI () {
     };
     
     this.addHistory = function () {
-        history.pushState({left : this.lastLeft, right: this.lastRight}, '', window.location);
+        //history.pushState({left : this.lastLeft, right: this.lastRight}, '', window.location);
     };
     
     window.onpopstate = function (e) {

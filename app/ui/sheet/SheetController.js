@@ -186,7 +186,7 @@ function SheetController () {
         }
         
         if (history && sheetid !== this.currentInstance) {
-            window.history.pushState({sheetid : sheetid}, '', window.location);
+            //window.history.pushState({sheetid : sheetid}, '', window.location);
         }
         
         var oldInstance = this.currentInstance;
