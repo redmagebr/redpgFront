@@ -170,12 +170,11 @@ function AudioController () {
     };
     
     this.play = function (filename) {
+        if (filename.indexOf("dropbox.com") !== -1) {
+            filename = filename.replace("www.dropbox.com", "dl.dropboxusercontent.com");
+        }
         this.lastFilename = filename;
         this.$player.addClass('shown');
-        if (filename.indexOf("dropbox.com") !== -1) {
-            this.playDropbox(filename);
-            return;
-        }
         var foundPerfect = false;
         if (filename.indexOf('://') === -1) {
             foundPerfect = this.setPermittedSource(true, filename);

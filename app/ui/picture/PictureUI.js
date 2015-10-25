@@ -103,6 +103,7 @@ function PictureUI () {
             if (url.indexOf('dl=1') === -1) {
                 url = url + (url.indexOf('?') !== -1 ? '' : '?') + 'dl=1';
             }
+            url = url.replace("www.dropbox.com", "dl.dropboxusercontent.com");
         }
         
         var type = webm ? 'webm' : 'img';
