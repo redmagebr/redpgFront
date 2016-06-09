@@ -31,10 +31,10 @@ function Application (debug) {
      * Host must point to the server we're using.
      * It will be prepended to every AJAX url.
      */
-    this.host = 'http://backup.redpg.com.br/service/';
-    this.staticHost = 'http://backup.redpg.com.br/';
+    this.host = 'http://app.redpg.com.br/service/';
+    this.staticHost = 'http://app.redpg.com.br/';
     this.imageHost = 'http://img.redpg.com.br/';
-    this.wshostServer = 'ws://backup.redpg.com.br';
+    this.wshostServer = 'ws://app.redpg.com.br';
     this.wshostContext = '/service/';
     this.wsHostPorts = [80, 8080, 8081];
     this.wshost = this.wshostServer + ':' + this.wsHostPorts[0] + this.wshostContext;
