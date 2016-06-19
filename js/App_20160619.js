@@ -691,17 +691,28 @@ function ChatWsApp () {
     this.idleFlag = false;
     this.notConnected = false;
     this.room = null;
+	this.focusTimeout = null;
     
     this.disconnectisExpected = false;
     
     $(window).bind('focus', function (e) {
+		if (window.app.chatapp.focusTimeout !== null) {
+			window.clearTimeout(window.app.chatapp.focusTimeout);
+			window.app.chatapp.focusTimeout = null;
+		}
         window.app.chatapp.focusFlag = true;
         window.app.chatapp.sendFocus();
     });
     
     $(window).bind('blur', function (e) {
-        window.app.chatapp.focusFlag = false;
-        window.app.chatapp.sendFocus();
+		if (window.app.chatapp.focusTimeout !== null) {
+			window.clearTimeout(window.app.chatapp.focusTimeout);
+			window.app.chatapp.focusTimeout = null;
+		}
+		window.app.chatapp.focusTimeout = setTimeout(function(){
+			window.app.chatapp.focusFlag = false;
+			window.app.chatapp.sendFocus();
+		}, 15000);
     });
     
     $(window).idle({
